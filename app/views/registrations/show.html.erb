@@ -1,0 +1,28 @@
+<p>
+  <b>User:</b>
+  <%=h @registration.user_id %>
+</p>
+
+<p>
+  <b>Comments:</b>
+  <%=h @registration.comments %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%=h @registration.price %>
+</p>
+
+<p>
+  <b>Invoiced at:</b>
+  <%=h @registration.invoiced_at %>
+</p>
+
+<p>
+  <b>Paid at:</b>
+  <%=h @registration.paid_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_registration_path(@registration) %> |
+<%= link_to 'Back', registrations_path %>

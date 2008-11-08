@@ -1,0 +1,15 @@
+<%= @page_title = @content.title %>
+
+<h1><%=h @content.title %></h1>
+
+<%= @content.body %>
+
+
+<% if current_user and current_user.can_edit? @content %>
+<div class="admin"><%= link_to 'Edit', edit_content_path(@content) %> |
+  <%= link_to 'History', content_content_revisions_path(@content) %>
+  <% if current_user.admin? %>
+  | <%= link_to 'All pages', contents_path %>
+  <% end %>
+</div>
+<% end %>

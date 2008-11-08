@@ -1,0 +1,36 @@
+<%= feed_link "Comments for #{@talk.title}", formatted_talk_comments_path(@talk, :rss) %>
+
+<h2><%=h @talk.title %> (<span class="topic"><%=h @talk.topic_name %></span>, <%= @talk.votes_count %> votes)</h2>
+
+<h3><%= render :partial => @talk.speaker %></h3>
+
+<%= render :partial => "votes" %>
+
+<div class="description">
+  <%=textile @talk.description %>  
+</div>
+
+
+<%= render :partial => "video" %>
+<%= render :partial => "slides" %>
+
+
+<p>
+  <b>Audience level:</b>
+  <%=h @talk.audience_level %>
+</p>
+
+<h2>Comments</h2>
+
+<%= render :partial => @talk.comments %>
+
+<% if logged_in %>
+<h3>Post a new comment:</h3>
+<%= render :partial => "comments/new" %>
+<% else %>
+<h3><%= link_to "Log in to post a comment", new_session_path %></h3>
+<% end %>
+
+<%= link_to 'Edit', edit_talk_path(@talk) %> |
+<%= link_to 'Back', talks_path %>
+

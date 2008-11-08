@@ -1,0 +1,23 @@
+<p>
+  <b>Time:</b>
+  <%=h @period.time_id %>
+</p>
+
+<p>
+  <b>Scene:</b>
+  <%=h @period.scene_id %>
+</p>
+
+<p>
+  <b>Topic:</b>
+  <%=h @period.topic_id %>
+</p>
+
+<p>
+  <b>Topic offset:</b>
+  <%=h @period.topic_offset %>
+</p>
+
+
+<%= link_to 'Edit', edit_period_path(@period) %> |
+<%= link_to 'Back', periods_path %>

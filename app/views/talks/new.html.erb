@@ -1,0 +1,35 @@
+<h1>New talk</h1>
+
+<% form_for :talk, :url => topic_talks_path do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :slideshare_url %><br />
+    <%= f.text_field :slideshare_url %>
+  </p>
+  <p>
+    <%= f.label :presenting_naked, "Not using slides" %><br />
+    <%= f.check_box :presenting_naked %>
+  </p>
+  <p>
+    <%= f.label :video_url %><br />
+    <%= f.text_field :video_url %>
+  </p>
+  <p>
+    <%= f.label :audience_level, "The audience should..." %><br />
+    <%= f.select :audience_level,  [['... have heard about agile', 'novice'], ['... have tried agile', 'intermediate'], ['... be using agile', 'expert']] %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', talks_path %>

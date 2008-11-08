@@ -1,0 +1,21 @@
+<% unless @talk.video_url.blank? %>
+<p id="player1"><a href="http://www.macromedia.com/go/getflashplayer">Get the Flash Player</a> to see this player.</p> 
+<script type="text/javascript" src="http://smidig2007.confreaks.com/ufo.js"></script> 
+<script type="text/javascript"> 
+var FO = {
+  movie: "http://smidig2007.confreaks.com/flvplayer.swf",
+  width: "640",
+  height: "260",
+  majorversion: "8",
+  build: "0",
+  bgcolor: "#FFFFFF",
+  allowfullscreen: "true",
+  flashvars: "file=http://smidig2007.confreaks.com/videos/<%= @talk.video_url %>_640x240.flv&image=http://smidig2007.confreaks.com/images/<%= @talk.video_url %>_preview.png"
+}
+UFO.create(FO, "player1");
+</script>
+
+  <p><a href="http://smidig2007.confreaks.com/<%= @talk.video_url %>.html" target="_new">Last ned video i andre formater</a></p> 
+
+ 
+<% end %>

@@ -1,0 +1,19 @@
+<h1>Revisions of <%= link_to @content.title, @content %></h1>
+
+<table>
+  <tr>
+    <th>When</th>
+    <th>Title</th>
+    <th>Author</th>
+  </tr>
+
+<% for content_revision in @content_revisions %>
+  <tr>
+    <td><%=h time_ago_in_words(content_revision.created_at) %> ago</td>
+    <td><%=h content_revision.title %></td>
+    <td><%=h content_revision.author.name %></td>
+    <td><%= link_to 'Show', content_content_revision_path(content_revision.content, content_revision) %></td>
+  </tr>
+<% end %>
+</table>
+

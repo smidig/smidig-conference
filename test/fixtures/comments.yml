@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  talk_id: 1
+  user_id: 1
+  title: MyString
+  description: MyText
+  is_displayed: false
+  is_a_review: false
+
+two:
+  talk_id: 1
+  user_id: 1
+  title: MyString
+  description: MyText
+  is_displayed: false
+  is_a_review: false

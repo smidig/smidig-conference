@@ -1,0 +1,45 @@
+<h1>Listing topics</h1>
+
+<table border="">
+<% for index in 0..@topics.size/3 %>
+
+<tr>
+  <th><%= link_to h(@topics[index*3+0].title), @topics[index*3+0] if @topics[index*3+0] %></th>
+  <th><%= link_to h(@topics[index*3+1].title), @topics[index*3+1] if @topics[index*3+1] %></th>
+  <th><%= link_to h(@topics[index*3+2].title), @topics[index*3+2] if @topics[index*3+2] %></th>
+</tr>
+
+<tr>
+  <td>
+    <% if @topics[index*3+0] %>
+      <div class="description"><%= h(@topics[index*3+0].description) %></div>
+      <div class="talks_submitted">
+        <%= @topics[index*3+0].talks.size %> talks submitted
+      </div>
+    <% end %>
+  </td>
+  <td>
+    <% if @topics[index*3+1] %>
+      <div class="description"><%= h(@topics[index*3+1].description) %></div>
+      <div class="talks_submitted">
+        <%= @topics[index*3+1].talks.size %> talks submitted
+      </div>
+    <% end %>
+  </td>
+  <td>
+    <% if @topics[index*3+2] %>
+      <div class="description"><%= h(@topics[index*3+2].description) %></div>
+      <div class="talks_submitted">
+        <%= @topics[index*3+2].talks.size %> talks submitted
+      </div>
+    <% end %>
+  </td>
+</tr>
+
+<% end %>
+</table>
+
+
+<br />
+
+<%= link_to 'New topic', new_topic_path %>

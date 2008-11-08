@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  time_id: 1
+  scene_id: 1
+  topic_id: 1
+  topic_offset: 1
+
+two:
+  time_id: 1
+  scene_id: 1
+  topic_id: 1
+  topic_offset: 1

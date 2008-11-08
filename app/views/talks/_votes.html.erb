@@ -1,0 +1,7 @@
+<% if not logged_in? %>
+<%= link_to "Log in to vote", new_session_path(:return_to => url_for(@talk)) %>
+<% elsif @talk.votes.find(:all, :conditions => { :user_id => current_user }).empty? %>
+<%= link_to "Vote for this talk", talk_votes_url(@talk), :method => :post %>
+<% else %>
+You have voted for this talk
+<% end %>

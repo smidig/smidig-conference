@@ -1,0 +1,8 @@
+<div class="talk" id="<%= dom_id(talk) %>">
+  <%= link_to talk.title, talk %>
+  <%= link_to image_tag("icon_slides.gif", :border=>0), "http://slideshare.net/#{talk.slideshare_url}" if talk.slideshare_url %>
+  <%= link_to(image_tag("icon_video.gif", :border=>0),  "http://smidig2007.confreaks.com/#{talk.video_url}.html") if talk.video_url %>
+  <div class="speaker"><%= render :partial => talk.speaker %></div>
+  <div class="votes"><%= talk.votes_count %> votes</div>
+  <div class="submitted_time">Submitted <%= time_ago_in_words(talk.created_at) %> ago</div>
+</div>

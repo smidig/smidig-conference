@@ -1,0 +1,15 @@
+atom_feed do |feed|
+  feed.title("Comments for Smidig 2009 talks")
+  feed.updated(@comments.first.created_at)
+
+  for comment in @comments
+    feed.entry(comment) do |entry|
+      entry.title(comment.title)
+      entry.content(comment.description, :type => 'html')
+
+      entry.author do |author|
+        author.name(comment.user.name)
+      end
+    end
+  end
+end

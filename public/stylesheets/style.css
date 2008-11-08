@@ -1,0 +1,6 @@
+div.topic           { font-size: larger; font-weight: bold;}
+div.speaker         { margin-left:3em; font-size:smaller; }
+div.submitted_time  { margin-left:3em; font-size:smaller; }
+div.votes           { margin-left:3em; font-size:smaller; }
+div.talks_submitted { font-style:italic; margin-top: 1em;}
+div.admin           { background-color: orange; }

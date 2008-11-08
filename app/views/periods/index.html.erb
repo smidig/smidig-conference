@@ -1,0 +1,21 @@
+<h1>Showing program</h1>
+
+<%= feed_link "All proposed talks", formatted_talks_path(:rss) %> 
+
+<table border="">
+  <tr>
+    <th>Time</th>
+    <th>Scene A</th>
+    <th>Scene B</th>
+    <th>Scene C</th>
+  </tr>
+  <% for time_id in @time_ids %>
+    <tr>
+      <td><%= time_id %></td>
+      <td><%= render :partial => @periods_by_time_and_scene[time_id][0]  %></td>
+      <td><%= render :partial => @periods_by_time_and_scene[time_id][1]  %></td>
+      <td><%= render :partial => @periods_by_time_and_scene[time_id][2]  %></td>
+    </tr>
+  <% end %>
+</table>
+

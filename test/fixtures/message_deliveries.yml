@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  message_id: 1
+  registration_id: 1
+  sent_at: 2008-10-18 20:09:09
+
+two:
+  message_id: 1
+  registration_id: 1
+  sent_at: 2008-10-18 20:09:09

@@ -1,0 +1,44 @@
+<h1>Listing talks</h1>
+
+<table>
+  <tr>
+    <th>Speaker</th>
+    <th>Topic</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Slideshare url</th>
+    <th>Presenting naked</th>
+    <th>Video url</th>
+    <th>Position</th>
+    <th>Submitted</th>
+    <th>Red votes</th>
+    <th>Yellow votes</th>
+    <th>Green votes</th>
+    <th>Audience level</th>
+  </tr>
+
+<% for talk in @talks %>
+  <tr>
+    <td><%=h talk.speaker_id %></td>
+    <td><%=h talk.topic_id %></td>
+    <td><%=h talk.title %></td>
+    <td><%=h talk.description %></td>
+    <td><%=h talk.slideshare_url %></td>
+    <td><%=h talk.presenting_naked %></td>
+    <td><%=h talk.video_url %></td>
+    <td><%=h talk.position %></td>
+    <td><%=h talk.submitted %></td>
+    <td><%=h talk.red_votes %></td>
+    <td><%=h talk.yellow_votes %></td>
+    <td><%=h talk.green_votes %></td>
+    <td><%=h talk.audience_level %></td>
+    <td><%= link_to 'Show', talk %></td>
+    <td><%= link_to 'Edit', edit_talk_path(talk) %></td>
+    <td><%= link_to 'Destroy', talk, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New talk', new_talk_path %>

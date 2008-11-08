@@ -1,0 +1,18 @@
+<p>
+  <b>Message:</b>
+  <%=h @message_delivery.message_id %>
+</p>
+
+<p>
+  <b>Registration:</b>
+  <%=h @message_delivery.registration_id %>
+</p>
+
+<p>
+  <b>Sent at:</b>
+  <%=h @message_delivery.sent_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_message_delivery_path(@message_delivery) %> |
+<%= link_to 'Back', message_deliveries_path %>
