@@ -3,7 +3,7 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.xml
   def index
-    @topics = Topic.find(:all)
+    @topics = Topic.find(:all, :include => :talks)
 
     respond_to do |format|
       format.html # index.html.erb
