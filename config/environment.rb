@@ -28,7 +28,7 @@ Rails::Initializer.run do |config|
   
   config.gem "capistrano"
   #config.gem "capistrano-ext"
-  config.gem "redcloth"
+  #config.gem "RedCloth"
   config.gem "faker"
   config.gem "populator"
 
