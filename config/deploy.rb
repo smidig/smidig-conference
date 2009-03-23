@@ -30,8 +30,7 @@ namespace :deploy do
   %w(start restart).each { |name| task name, :roles => :app do mod_rails.restart end }
 end
 
-# Avoid keeping the database.yml configuration in git.
 task :copy_database_yml, :roles => :app do
-  db_config = "/var/www/#{application}/conf/database.yml"
+  db_config = "/home/smidig_no/apps/#{application}/conf/database.yml"
   run "cp #{db_config} #{release_path}/config/database.yml"
 end
