@@ -1,7 +1,8 @@
+
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   def textile(text)
-    RedCloth.new(html_escape(text)).to_html
+    html_escape(text)
   end
 
   def feed_link(title, url)
