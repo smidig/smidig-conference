@@ -6,11 +6,12 @@ default_run_options[:pty] = true
 
 
 set :application, "smidig2009"
-set :repository,  "http://svn.smidig.no/smidig2009"
+set :repository,  "http://svn.smidig.no/smidig2009/smidig2009"
 
 set(:deploy_to) { "/home/smidig_no/apps/#{application}/#{stage}" }
 set(:rails_env) { stage }
-set :database, "#{application}_#{environment}"
+set(:environment) { stage }
+set(:database) { "#{application}_#{environment}" }
 
 set :user, "smidig_no"
 set :domain, "bubbleyum.dreamhost.com"
