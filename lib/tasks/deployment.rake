@@ -71,11 +71,9 @@ namespace :deploy do
       config = { :hostname => hostname, :username => username, :password => password }
 
       server_task :checkout, config do |connection|
-        revision = ENV['REVISION'] || 'HEAD'
-        # rm is slow for big directories. Lets just move it and delete it async
-        async_delete_dir = "$HOME/tmp/#{config[:username]}-#{(rand*100000).to_i}"
-        connection.exec "[ -d #{application_path} ] && mkdir -p $HOME/tmp && mv #{application_path} #{async_delete_dir} && rm -rf #{async_delete_dir} &"
+        connection.exec "rm -rf #{application_path}"
 
+        revision = ENV['REVISION'] || 'HEAD'
         connection.exec "svn checkout --revision #{revision} #{svn_root} #{application_path}"
 
         database_config =<<-EOF
