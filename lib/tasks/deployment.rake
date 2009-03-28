@@ -101,6 +101,7 @@ EOF
       server_task :update, config do |connection|
         revision = ENV['REVISION'] || 'HEAD'
         connection.exec "svn up --revision #{revision} #{application_path}"
+        connection.exec "touch #{application_path}/tmp/restart.txt"
       end
       
       desc "Migrate the database in #{stage}. Add variable VERSION=... update to a given version"
