@@ -31,6 +31,7 @@ Rails::Initializer.run do |config|
   #config.gem "RedCloth"
   config.gem "faker"
   config.gem "populator"
+  config.gem "sqlite3-ruby", :version => '1.2.3', :lib => "sqlite3"
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
