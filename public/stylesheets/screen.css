@@ -1,0 +1,238 @@
+
+#ielte6 {display: none}
+
+body {
+    background-color: white;
+    color: black;
+    font-family: Georgia, serif;
+    margin: 0;
+    padding: 0;
+    min-width: 660px;
+    font-size: .85em
+    }
+
+a:link {
+    color: #C24C00;
+    text-decoration: none;
+    }
+
+a:visited {
+    color: #C24C00;
+    text-decoration: none;
+    }
+
+a:hover {
+    text-decoration: underline;
+    }
+
+a:active {
+    color: #00ff00;
+    }
+
+
+img {
+    border: 0;
+    }
+
+p {line-height: 1.5em;}
+
+#header {
+    margin-top: 60px;
+    background-repeat: no-repeat;
+    background-image: url("../images/logo-subpage.png");
+    background-position: top right;
+    float: right;
+    width: 100%;
+    }
+
+#hjem #header {
+    background-image: url("../images/logo.png");
+    background-position: top left;
+    float: right;
+    }
+
+#content {
+    clear: both;
+    }
+
+h1 {
+    height: 0px;
+    width: 630px;
+    overflow: hidden;
+    padding: 47px 0 0 0;
+    margin: 0;
+    float: right;
+    clear: right;
+    }
+
+#hjem h1 {
+    float: left;
+    }
+
+
+ul#menu {
+    float: right;
+    margin: -13px 30px 0 30px;
+    clear: left;
+    }
+
+ul#menu li {
+    float: left;
+    display: inline;
+    list-style-type: none;
+    margin-right: 30px;
+    }
+
+ul#menu, ul#menu li {
+    height: 15px;
+    overflow: hidden;
+    background-position: top left;
+    background-repeat: no-repeat;
+    }
+
+ul#menu li:hover {
+    background-position: 0 -15px;
+    }
+
+#hjem .hjem, #lyntaler .lyntaler, #open_space .open_space, #arrangoerene .arrangoerene,
+#hjem .hjem:hover, #lyntaler .lyntaler:hover, #open_space .open_space:hover, #arrangoerene .arrangoerene:hover {
+    background-position: 0 -30px;
+    }
+
+
+ul#menu li, ul#menu li a {
+    height: 0px;
+    padding-top: 15px;
+    }
+
+ul#menu li.lyntaler, #lyntaler .lyntaler{
+    background-image: url(../images/lyntaler.png);
+    width: 63px;
+    }
+
+ul#menu li.arrangoerene, #arrangoerene .arrangoerene {
+    width: 112px;
+    background-image: url(../images/arrangoerene.png);
+    }
+
+ul#menu li.open_space, #open_space .open_space {
+    background-image: url(../images/open_space.png);
+    width: 107px;
+   }
+
+ul#menu li.forum {
+    background-image: url(../images/forum.png);
+    width: 56px;
+   }
+
+ul#menu li.hjem, #hjem .hjem {
+    background-image: url(../images/hjem.png);
+    width: 46px;
+   }
+
+
+
+
+
+
+h2 {
+    overflow: hidden;
+    padding: 19px 0 0 0;
+    height: 0;
+    background-repeat: no-repeat;
+    float: left;
+    margin: 28px 0px 0px 60px;
+    }
+
+#lyntaler h2  {
+    background-image: url("../images/heading-lyntale.png");
+    width: 227px;
+    }
+
+#open_space h2  {
+    background-image: url("../images/heading-open_space.png");
+    width: 260px;
+    }
+
+#arrangoerene h2  {
+    background-image: url("../images/heading-arrangoerene.png");
+    width: 397px;
+    }
+
+#hjem h2  {
+    background-image: url("../images/heading-hjem.png");
+    background-position: top right;
+    padding: 39px 0 0 0;
+    width: 253px;
+    float: right;
+    margin: 8px 60px 0px 0px;
+    clear: right;
+    }
+
+
+
+#content {
+    padding: 15px 60px 15px 90px;
+    }
+
+#rightcol {
+    width: 49.5%;
+    float: right;
+        }
+#leftcol {
+    width: 49.5%;
+    float: left;
+    }
+
+#leftcol p, #leftcol div {
+    margin-right: 30px;
+    }
+
+#rightcol p, #rightcol div {
+    margin-left: 30px;
+    }
+
+
+
+#def {
+    font-family: verdana;
+    font-size: .8em;
+    }
+
+#def * {
+    line-height: normal;
+    }
+
+.intro {
+    float: right;
+    margin-left: 30px;
+    width: 30%;
+    font-size: 1.5em;
+    padding: 15px;
+    color: #d45a00;
+    font-style: italic;
+    }
+
+
+#todo {
+    font-size: 1.5em;
+    padding: 15px 15px 15px 45px;
+    font-style: italic;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px 0;
+    }
+
+#todo li {
+    list-style: disc;
+    padding: .25em 0;
+    }
+
+.attribution {
+    display: block;
+    text-align: right;
+    }
+
+dt {
+    padding-top: 1em
+    }

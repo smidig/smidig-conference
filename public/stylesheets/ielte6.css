@@ -1,0 +1,54 @@
+#ielte6 {position: absolute; top: 0;
+left: 0; display: block;font-size: .7em;font-family:sans-serif;border: 1px solid red;padding: 10px;margin:10px;width: 90%}
+
+#leftcol, #rightcol {width: 45%!important;margin: 0!important}
+
+#header {
+    margin-top: 100px;
+    background-repeat: no-repeat;
+    background-image: url("../images/logo-subpage.png");
+    background-position: top right;
+    height: 47px;
+    overflow: hidden;
+    }
+
+#hjem #header {
+    background-image: url("../images/logo.png");
+    background-position: top left;
+    float: right;
+    }
+h1 {display: none}
+
+#hjem h2  {
+display: none    }
+
+
+#hjem #menu {float: right;clear: left}
+
+
+ul#menu {
+    float: left;
+    margin: 2px 30px 0 30px;
+    clear: none;
+    }
+
+ul#menu li {
+    float: left;
+    display: inline;
+    list-style-type: none;
+    margin-right: 30px;
+    height: 20px!importnat;
+    }
+
+ul#menu, ul#menu li {
+    background-image: none!important
+    height: 20px!importnat;
+    }
+
+
+ul#menu li, ul#menu li a {
+    padding-top: 0px;
+    height: 20px!importnat;
+    background-image: none!important
+    }
+ h2 {position: absolute;left: 0;top: -1px}
