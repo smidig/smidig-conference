@@ -1,6 +1,12 @@
 require 'test_helper'
 
 class VotesControllerTest < ActionController::TestCase
+  include AuthenticatedTestHelper
+  
+  def setup
+    login_as('quentin')
+  end
+  
   def test_should_get_index
     get :index
     assert_response :success
@@ -12,12 +18,12 @@ class VotesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  def test_should_create_vote
+  def test_should_create_votes
     assert_difference('Vote.count') do
-      post :create, :vote => { }
+      post :create, :vote => { }, :talk_id => '953125641'
     end
 
-    assert_redirected_to vote_path(assigns(:vote))
+    assert_redirected_to talk_votes_path(assigns(:vote))
   end
 
   def test_should_show_vote

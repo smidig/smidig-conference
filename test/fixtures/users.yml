@@ -8,7 +8,10 @@ quentin:
   created_at:                <%= 5.days.ago.to_s :db  %>
   remember_token_expires_at: <%= 1.days.from_now.to_s %>
   remember_token:            77de68daecd823babbb58edb1c8e14d7106e83bb
-      
+  name:                      Quentin                  # Royalty have one name
+  company:                   Royal Monarchy of Norway
+  phone_number:              +47 22 00 00 00
+  billing_address:           Karl Johans gt 1
 aaron:
   id:                        2
   login:                     aaron
@@ -18,6 +21,10 @@ aaron:
   created_at:                <%= 1.days.ago.to_s :db %>
   remember_token_expires_at: 
   remember_token:            
+  name:                      Aaron
+  company:                   Royal Monarchy of Norway
+  phone_number:              +47 22 00 00 00
+  billing_address:           Karl Johans gt 1
 
 
 old_password_holder:

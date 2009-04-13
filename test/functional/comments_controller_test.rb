@@ -1,6 +1,13 @@
 require 'test_helper'
 
 class CommentsControllerTest < ActionController::TestCase
+  include AuthenticatedTestHelper
+  
+  def setup
+    login_as('quentin')
+    @talk = Talk.find(:first) 
+  end
+  
   def test_should_get_index
     get :index
     assert_response :success
@@ -14,10 +21,10 @@ class CommentsControllerTest < ActionController::TestCase
 
   def test_should_create_comment
     assert_difference('Comment.count') do
-      post :create, :comment => { }
+      post :create, :comment => { }, :talk_id => @talk.id
     end
 
-    assert_redirected_to comment_path(assigns(:comment))
+    assert_redirected_to talk_comments_path(assigns(:comment))
   end
 
   def test_should_show_comment
