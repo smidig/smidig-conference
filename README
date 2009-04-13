@@ -1,3 +1,18 @@
+= Smidig 2009 Conference site
+
+== Getting started
+
+<code>
+gem i -v=2.3.2 rails
+gem i faker populator capistrano
+gem i -v=1.2.3 sqlite3-ruby
+rake db:migrate
+rake db:populate
+rake db:migrate RAILS_ENV=test
+rake db:populate RAILS_ENV=test
+rake test
+</code>
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create 
