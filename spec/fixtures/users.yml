@@ -1,0 +1,15 @@
+one:
+  email: MyString
+  password: MyString
+  name: MyString
+  company: MyString
+  phone_number: MyString
+  billing_address: MyText
+
+two:
+  email: MyString
+  password: MyString
+  name: MyString
+  company: MyString
+  phone_number: MyString
+  billing_address: MyText

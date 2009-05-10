@@ -1,31 +1,28 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :user_sessions
-
-  map.resources :users
 
 
   # Route for displaying static html pages
   # See http://railscasts.com/episodes/117-semi-static-pages for details
   map.with_options :controller => 'pages' do |page|
-  	page.openspace 'openspace', :action => 'openspace'
-  	page.lyntaler 'lyntaler', :action => 'lyntaler'
-  	page.arrangorene 'arrangoerene', :action => 'arrangoerene'
+    page.openspace 'openspace', :action => 'openspace'
+    page.lyntaler 'lyntaler', :action => 'lyntaler'
+    page.arrangorene 'arrangoerene', :action => 'arrangoerene'
   end
 
   map.resources :contents do |contents|
     contents.resources :content_revisions
   end
 
-  map.login "/login", :controller => "user_sessions", :action => "new"
-  map.logout "/logout", :controller => "user_sessions", :action => "destroy"
-  map.register '/register', :controller => 'users', :action => 'create'
-  map.signup '/signup', :controller => 'users', :action => 'new'
-  map.resource :session
+  map.open_id_complete 'session', :controller => "user_sessions"
+  map.login "login", :controller => "user_sessions", :action => "new"
+  map.logout "logout", :controller => "user_sessions", :action => "destroy"
+  map.register 'register', :controller => 'users', :action => 'create'
+  map.signup 'signup', :controller => 'users', :action => 'new'
 
+  map.resources :user_sessions
+  map.resources :users
   map.resources :periods
-
   map.resources :votes
-
   map.resources :comments
 
   map.resources :talks do |talks|
