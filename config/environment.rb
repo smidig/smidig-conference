@@ -8,6 +8,8 @@ File.exist?(tmp_environment) and load(tmp_environment)
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
 
+INCLUDE_UNFINISHED = true
+
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 

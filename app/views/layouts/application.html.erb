@@ -34,6 +34,7 @@
 </div>
 
 <div id="content">
+  <% unfinished do %>
     <div id="user_nav">
       <% if current_user %>
         <%= link_to "Edit Profile", edit_user_path(:current) %> |
@@ -43,6 +44,7 @@
         <%= link_to "Login", login_path %>
       <% end %>
     </div>
+  <% end %>
 <p style="color: green"><%= flash[:notice] %></p>
 <p style="color: yellow"><%= flash[:warn] %></p>
 <p style="color: red"><%= flash[:error] %></p>

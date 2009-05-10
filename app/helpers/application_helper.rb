@@ -17,4 +17,9 @@ module ApplicationHelper
   def logged_in
     current_user
   end
+  
+  # Don't include the following in production or staging
+  def unfinished
+    yield if INCLUDE_UNFINISHED
+  end
 end
