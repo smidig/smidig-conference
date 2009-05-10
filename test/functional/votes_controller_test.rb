@@ -23,22 +23,12 @@ class VotesControllerTest < ActionController::TestCase
       post :create, :vote => { }, :talk_id => '953125641'
     end
 
-    assert_redirected_to talk_votes_path(assigns(:vote))
+    assert_redirected_to talk_path(assigns(:talk))
   end
 
   def test_should_show_vote
     get :show, :id => votes(:one).id
     assert_response :success
-  end
-
-  def test_should_get_edit
-    get :edit, :id => votes(:one).id
-    assert_response :success
-  end
-
-  def test_should_update_vote
-    put :update, :id => votes(:one).id, :vote => { }
-    assert_redirected_to vote_path(assigns(:vote))
   end
 
   def test_should_destroy_vote

@@ -1,6 +1,5 @@
 
 quentin:
-  id:                        1
   login:                     quentin
   email:                     quentin@example.com
   salt:                      356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
@@ -13,7 +12,6 @@ quentin:
   phone_number:              +47 22 00 00 00
   billing_address:           Karl Johans gt 1
 aaron:
-  id:                        2
   login:                     aaron
   email:                     aaron@example.com
   salt:                      da4b9237bacccdf19c0760cab7aec4a8359010b0 # SHA1('1')
@@ -28,7 +26,6 @@ aaron:
 
 
 old_password_holder:
-  id:                        3
   login:                     old_password_holder
   email:                     salty_dog@example.com
   salt:                      7e3041ebc2fc05a40c60028e2c4901a81035d3cd

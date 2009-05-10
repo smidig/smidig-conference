@@ -1,4 +1,4 @@
-<%= feed_link "Talks in #{@topic.title}", formatted_topic_talks_path(@topic, :rss) %> 
+<%= feed_link "Talks in #{@topic.title}", topic_talks_path(@topic, :format => :rss) %> 
 
 
 <h2><%=h @topic.title %></h2>

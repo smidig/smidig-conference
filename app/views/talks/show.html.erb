@@ -1,4 +1,4 @@
-<%= feed_link "Comments for #{@talk.title}", formatted_talk_comments_path(@talk, :rss) %>
+<%= feed_link "Comments for #{@talk.title}", talk_comments_path(@talk, :format => :rss) %>
 
 <h2><%=h @talk.title %> (<span class="topic"><%=h @talk.topic_name %></span>, <%= @talk.votes_count %> votes)</h2>
 

@@ -1,8 +1,8 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  speaker_id: 1
-  topic_id: 1
+  speaker: aaron
+  topic: one
   title: MyString
   description: MyText
   slideshare_url: MyString
@@ -16,8 +16,8 @@ one:
   audience_level: MyString
 
 two:
-  speaker_id: 1
-  topic_id: 1
+  speaker: quentin
+  topic: one
   title: MyString
   description: MyText
   slideshare_url: MyString

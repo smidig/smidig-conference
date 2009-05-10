@@ -13,19 +13,6 @@ class TalksControllerTest < ActionController::TestCase
     assert_not_nil assigns(:talks)
   end
 
-  def test_should_get_new
-    get :new
-    assert_response :success
-  end
-
-  def test_should_create_talk
-    assert_difference('Talk.count') do
-      post :create, :talk => { }
-    end
-
-    assert_redirected_to talk_path(assigns(:talk))
-  end
-
   def test_should_show_talk
     get :show, :id => talks(:one).id
     assert_response :success

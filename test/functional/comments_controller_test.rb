@@ -1,7 +1,11 @@
 require 'test_helper'
 
+# for dom_id. Is there a better way?
+require 'action_view/helpers/record_identification_helper'
+
 class CommentsControllerTest < ActionController::TestCase
   include AuthenticatedTestHelper
+  include ActionView::Helpers::RecordIdentificationHelper	
   
   def setup
     login_as('quentin')
@@ -24,7 +28,7 @@ class CommentsControllerTest < ActionController::TestCase
       post :create, :comment => { }, :talk_id => @talk.id
     end
 
-    assert_redirected_to talk_comments_path(assigns(:comment))
+    assert_redirected_to talk_path(assigns(:talk), :anchor => dom_id(assigns(:comment)))
   end
 
   def test_should_show_comment
