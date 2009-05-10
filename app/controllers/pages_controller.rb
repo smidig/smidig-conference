@@ -1,3 +1,5 @@
+# Controller for displaying static html pages
+# See http://railscasts.com/episodes/117-semi-static-pages for details
 class PagesController < ApplicationController
 
 	# Generic controller for serving static content

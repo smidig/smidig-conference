@@ -3,7 +3,6 @@ ActionController::Routing::Routes.draw do |map|
   # Route for displaying static html pages
   # See http://railscasts.com/episodes/117-semi-static-pages for details
   map.with_options :controller => 'pages' do |page|
-  	page.home 'home', :action => 'home'
   	page.openspace 'openspace', :action => 'openspace'
   	page.lyntaler 'lyntaler', :action => 'lyntaler'
   	page.arrangorene 'arrangoerene', :action => 'arrangoerene'
@@ -43,7 +42,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   #map.root :controller => "contents", :action => "show", :id => 1
-  map.root :controller => "pages", :action => "home"
+  map.root :controller => "pages"
 
   # The priority is based upon order of creation: first created -> highest priority.
 
