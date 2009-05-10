@@ -58,11 +58,12 @@ namespace :deploy do
 
   svn_root = "http://svn.smidig.no/smidig2009/#{application}"
   hostname = 'bubbleyum.dreamhost.com'
-  apps_path = "/home/smidig_no/test"
+  apps_path = "/home/smidig_no/apps"
   username = 'smidig_no'
   password = nil
   dbusername = username
   dbpassword = password
+  dbhost = 'mysql.smidig.no'
     
   %w(staging production).each do |stage|
     namespace stage do
@@ -82,7 +83,7 @@ namespace :deploy do
   database: #{database}
   username: #{dbusername}
   password: #{dbpassword}
-  host: mysql.smidig.no
+  host: #{dbhost}
   encoding: utf8
 EOF
         connection.upload StringIO.new(database_config), "#{application_path}/config/database.yml"
@@ -91,11 +92,12 @@ EOF
       server_task :prepare, config do |connection|
         connection.exec "cd #{application_path} && rake gems:install RAILS_ENV=#{stage}"
         connection.exec "cd #{application_path} && rake rails:freeze:gems RAILS_ENV=#{stage}"
+        connection.exec %Q(echo "RAILS_ENV='#{stage}'" > #{application_path}/tmp/environment.rb)
+        connection.exec "touch #{application_path}/tmp/restart.txt"
       end
       
       desc "Create initial structure for #{stage}"
       task :setup => [:checkout, :prepare]
-        
       
       desc "Update the code in #{stage}. Add variable REVISION=... update to a given revision"
       server_task :update, config do |connection|
