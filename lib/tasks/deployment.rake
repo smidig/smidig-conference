@@ -1,5 +1,8 @@
 # TODO: Extract this...
 def execute_on_server(config)
+  require 'net/ssh'
+  require 'net/scp'
+
   login = "#{config[:username]}@#{config[:hostname]}"
   $stdout.puts "[#{login}] Logging in"
   Net::SSH.start(config[:hostname], config[:username], :password => config[:password]) do |ssh|
@@ -49,10 +52,7 @@ class Connection
 end
 
 
-namespace :deploy do
-  require 'net/ssh'
-  require 'net/scp'
-  
+namespace :deploy do  
   # TODO What's the best place to get this from?
   application = "smidig2009"
 
@@ -92,7 +92,7 @@ EOF
       server_task :prepare, config do |connection|
         connection.exec %Q(echo "RAILS_ENV='#{stage}'" > #{application_path}/tmp/environment.rb)
 
-        connection.exec "cd #{application_path} && rake gems:install RAILS_ENV=#{stage}"
+        connection.exec "cd #{application_path} && rake gems:unpack RAILS_ENV=#{stage}"
         connection.exec "cd #{application_path} && rake rails:freeze:gems RAILS_ENV=#{stage}"
         connection.exec "touch #{application_path}/tmp/restart.txt"
       end
@@ -104,6 +104,7 @@ EOF
       server_task :update, config do |connection|
         revision = ENV['REVISION'] || 'HEAD'
         connection.exec "svn up --revision #{revision} #{application_path}"
+        connection.exec "cd #{application_path} && rake gems:unpack RAILS_ENV=#{stage}"
         connection.exec "touch #{application_path}/tmp/restart.txt"
       end
       

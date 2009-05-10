@@ -29,14 +29,8 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "aws-s3", :lib => "aws/s3"
   
-  config.gem "capistrano"
-  #config.gem "capistrano-ext"
-  #config.gem "RedCloth"
-  config.gem "faker"
-  config.gem "populator"
-
   config.gem "authlogic"
-  config.gem "authlogic-oid", :lib => "authlogic_openid"
+  #config.gem "authlogic-oid", :lib => "authlogic_openid"
 
   #unless RUBY_PLATFORM =~ /java/
   #config.gem "sqlite3-ruby", :lib => "sqlite3"
