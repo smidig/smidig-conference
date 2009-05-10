@@ -6,27 +6,48 @@ def execute_on_server(config)
   login = "#{config[:username]}@#{config[:hostname]}"
   $stdout.puts "[#{login}] Logging in"
   Net::SSH.start(config[:hostname], config[:username]) do |ssh|
-    yield Connection.new(login, ssh)
+    yield Connection.new(login, ssh, config[:application_path], config[:stage])
   end
 rescue Net::SSH::AuthenticationFailed
  $stdout.puts "Authentication failed for #{config[:username]}@#{config[:hostname]}"
 end
 
-def server_task(taskname, config)
-  task taskname do
-    execute_on_server(config) { |conn| yield conn }
-  end
-end
 
 def prompt_for_variable(prompt)
   puts prompt
   $stdin.gets.chomp
 end
 
+def database_config(stage, database, dbusername, dbpassword, dbhost)
+  return <<-EOF
+#{stage}:
+  adapter: mysql
+  database: #{database}
+  username: #{dbusername}
+  password: #{dbpassword}
+  host: #{dbhost}
+  encoding: utf8
+EOF
+end
+
+class Server
+  def initialize(config)
+    @config = config
+  end
+
+  def server_task(taskname)
+    task taskname do
+      execute_on_server(@config) { |conn| yield conn }
+    end
+  end
+end
+
 class Connection
-  def initialize(login, ssh)
+  def initialize(login, ssh, application_path, stage)
     @login = login
     @ssh = ssh
+    @application_path = application_path
+    @stage = stage
   end
   def exec(command)
     $stdout.puts "[#{@login}] #{command}"
@@ -50,6 +71,12 @@ class Connection
     end
     channel.wait
   end
+  def rake(tasks)
+    tasks = [tasks] if tasks.instance_of? String
+    for task in tasks
+      self.exec "cd #{@application_path} && rake #{task} RAILS_ENV=#{@stage}"
+    end
+  end
   def upload(io, path)
     $stdout.puts "[#{@login}] Uploading #{path}"
     @ssh.scp.upload! io, path
@@ -66,8 +93,8 @@ namespace :deploy do
   apps_path = "/home/smidig_no/apps"
   username = 'smidig_no'
   dbusername = username
+  $dbpassword = nil
   dbhost = 'mysql.smidig.no'
-  dbpassword ||= prompt_for_variable("Please input database password: ")
     
   %w(staging production experimental).each do |stage|
     
@@ -77,52 +104,40 @@ namespace :deploy do
     namespace stage do
       application_path = "#{apps_path}/#{application}/#{stage}/#{application}"
       database = "#{application}_#{stage}"
-      config = { :hostname => hostname, :username => username }
+      config = Server.new :hostname => hostname, :username => username, :application_path => application_path, :stage => stage
 
-      server_task :checkout, config do |connection|
+      desc "Create initial structure for #{stage}"
+      config.server_task :setup => :get_dbpassword do |connection|
         connection.exec "rm -rf #{application_path}"
+
         revision = ENV['REVISION'] || 'HEAD'
         connection.exec "svn checkout --revision #{revision} #{svn_root} #{application_path}"
-      end
-      
-      server_task :database_config, config do |connection|
-        database_config =<<-EOF
-#{stage}:
-  adapter: mysql
-  database: #{database}
-  username: #{dbusername}
-  password: #{dbpassword}
-  host: #{dbhost}
-  encoding: utf8
-EOF
-        connection.upload StringIO.new(database_config), "#{application_path}/tmp/database.yml"
-      end
-      
-      server_task :prepare, config do |connection|
+
+        config = database_config(stage, database, dbusername, $dbpassword, dbhost)
+        connection.upload StringIO.new(config), "#{application_path}/tmp/database.yml"
         connection.exec %Q(echo "RAILS_ENV='#{stage}'" > #{application_path}/tmp/environment.rb)
 
-        connection.exec "cd #{application_path} && rake rails:freeze:gems RAILS_ENV=#{stage}"
-        connection.exec "cd #{application_path} && rake gems:unpack RAILS_ENV=#{stage}"
-        connection.exec "cd #{application_path} && rake db:migrate RAILS_ENV=#{stage}"
+        connection.rake ["rails:freeze:gems", "gems:unpack", "db:migrate"]
 
         connection.exec "touch #{application_path}/tmp/restart.txt"
       end
       
-      desc "Create initial structure for #{stage}"
-      task :setup => [:checkout, :database_config, :prepare]
-      
       desc "Update the code in #{stage}. Add variable REVISION=... update to a given revision"
-      server_task :update, config do |connection|
+      config.server_task :update do |connection|
         revision = ENV['REVISION'] || 'HEAD'
         connection.exec "svn up --revision #{revision} #{application_path}"
-        connection.exec "cd #{application_path} && rake gems:unpack RAILS_ENV=#{stage}"
+        connection.rake "gems:unpack"
         connection.exec "touch #{application_path}/tmp/restart.txt"
       end
       
       desc "Migrate the database in #{stage}. Add variable VERSION=... update to a given version"
-      server_task :migrate, config do |connection|
+      config.server_task :migrate do |connection|
         version = ENV["VERSION"] ? "VERSION=ENV['VERSION']" : ""
-        connection.exec "cd #{application_path} && rake db:migrate #{version}"
+        connection.rake "db:migrate #{version}"
+      end
+      
+      task :get_dbpassword do
+        $dbpassword ||= prompt_for_variable("Please input database password: ")
       end
     end
   end
