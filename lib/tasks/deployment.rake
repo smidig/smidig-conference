@@ -5,7 +5,7 @@ def execute_on_server(config)
 
   login = "#{config[:username]}@#{config[:hostname]}"
   $stdout.puts "[#{login}] Logging in"
-  Net::SSH.start(config[:hostname], config[:username], :password => config[:password]) do |ssh|
+  Net::SSH.start(config[:hostname], config[:username]) do |ssh|
     yield Connection.new(login, ssh)
   end
 rescue Net::SSH::AuthenticationFailed
@@ -60,15 +60,18 @@ namespace :deploy do
   hostname = 'bubbleyum.dreamhost.com'
   apps_path = "/home/smidig_no/apps"
   username = 'smidig_no'
-  password = nil
   dbusername = username
   dbhost = 'mysql.smidig.no'
     
-  %w(staging production).each do |stage|
+  %w(staging production experimental).each do |stage|
+    
+    desc "Updates the installed version on #{stage}"
+    task stage => "deploy:#{stage}:update"
+    
     namespace stage do
       application_path = "#{apps_path}/#{application}/#{stage}/#{application}"
       database = "#{application}_#{stage}"
-      config = { :hostname => hostname, :username => username, :password => password }
+      config = { :hostname => hostname, :username => username }
 
       server_task :checkout, config do |connection|
         connection.exec "rm -rf #{application_path}"
@@ -77,12 +80,14 @@ namespace :deploy do
       end
       
       server_task :database_config, config do |connection|
+        puts "Please input database password: "
+        dbpassword = $stdin.gets.chomp
         database_config =<<-EOF
 #{stage}:
   adapter: mysql
   database: #{database}
   username: #{dbusername}
-  password: #{password}
+  password: #{dbpassword}
   host: #{dbhost}
   encoding: utf8
 EOF
@@ -94,6 +99,7 @@ EOF
 
         connection.exec "cd #{application_path} && rake gems:unpack RAILS_ENV=#{stage}"
         connection.exec "cd #{application_path} && rake rails:freeze:gems RAILS_ENV=#{stage}"
+        connection.exec "cd #{application_path} && rake db:migrate RAILS_ENV=#{stage}"
         connection.exec "touch #{application_path}/tmp/restart.txt"
       end
       
