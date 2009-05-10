@@ -25,11 +25,11 @@
 
 <div id="header">
     <ul id="menu">
-        <li class="lyntaler" title="Lyntaler"><a href="lyntaler">Lyntaler</a></li>
-        <li class="open_space" title="Open Space"><a href="openspace">Open Space</a></li>
-        <li class="arrangoerene" title="Arrangørene"><a href="arrangoerene">Arrangørene</a></li>
+        <li class="lyntaler" title="Lyntaler"><%= link_to "Lyntaler", :controller => 'pages', :action => 'lyntaler' %></li>
+        <li class="open_space" title="Open Space"><%= link_to "Open Space", :controller => 'pages', :action => 'openspace' %></li>
+        <li class="arrangoerene" title="Arrangørene"><%= link_to "Arrangørene", :controller => 'pages', :action => 'arrangoerene' %></li>
         <li class="forum" title="Forum"><a href="http://forum.smidig.no">Forum</a></li>
-        <li class="hjem" title="Hjem"><a href="home">Hjem</a></li>
+        <li class="hjem" title="Hjem"><%= link_to "Hjem", :controller => 'pages', :action => 'index' %></li>
     </ul>
     <h1 title="Smidig 2009">Smidig 2009</h1>
     <h2>22. - 23. oktober - Oslo Konferansesenter</h2>
