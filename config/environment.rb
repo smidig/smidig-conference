@@ -2,7 +2,8 @@
 
 # Uncomment below to force Rails into production mode when
 # you don't control web/app server and can't set it the proper way
-# ENV['RAILS_ENV'] ||= 'production'
+tmp_environment=File.join(File.dirname(__FILE__), '../tmp/environment.rb')
+File.exist? tmp_environment and load tmp_environment
 
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
