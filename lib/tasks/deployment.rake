@@ -18,6 +18,11 @@ def server_task(taskname, config)
   end
 end
 
+def prompt_for_variable(prompt)
+  puts prompt
+  $stdin.gets.chomp
+end
+
 class Connection
   def initialize(login, ssh)
     @login = login
@@ -62,6 +67,7 @@ namespace :deploy do
   username = 'smidig_no'
   dbusername = username
   dbhost = 'mysql.smidig.no'
+  dbpassword ||= prompt_for_variable("Please input database password: ")
     
   %w(staging production experimental).each do |stage|
     
@@ -80,8 +86,6 @@ namespace :deploy do
       end
       
       server_task :database_config, config do |connection|
-        puts "Please input database password: "
-        dbpassword = $stdin.gets.chomp
         database_config =<<-EOF
 #{stage}:
   adapter: mysql
@@ -97,9 +101,10 @@ EOF
       server_task :prepare, config do |connection|
         connection.exec %Q(echo "RAILS_ENV='#{stage}'" > #{application_path}/tmp/environment.rb)
 
-        connection.exec "cd #{application_path} && rake gems:unpack RAILS_ENV=#{stage}"
         connection.exec "cd #{application_path} && rake rails:freeze:gems RAILS_ENV=#{stage}"
+        connection.exec "cd #{application_path} && rake gems:unpack RAILS_ENV=#{stage}"
         connection.exec "cd #{application_path} && rake db:migrate RAILS_ENV=#{stage}"
+
         connection.exec "touch #{application_path}/tmp/restart.txt"
       end
       
