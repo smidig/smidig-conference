@@ -1,2 +1,0 @@
-module ContentRevisionsHelper
-end

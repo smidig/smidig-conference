@@ -16,7 +16,7 @@ namespace :db do
     require 'faker'
     require 'RedCloth'
     
-    [MessageDelivery, Message, Period, Registration, Comment, Vote, Talk, ContentRevision, Content, User, Topic].each(&:delete_all)
+    [MessageDelivery, Message, Period, Registration, Comment, Vote, Talk, User, Topic].each(&:delete_all)
     
     User.populate 300..550 do |user|
       user.email   = Faker::Internet.email
@@ -33,16 +33,7 @@ namespace :db do
       :company => "Bar Corp", :billing_address => "test"
     
     user_ids = User.find(:all).collect { |u| u.id }
-    
-    Populator.value_in_range(4..10).times do
-      page = Content.create(:author => u, :title => Populator.words(1..5).titleize, :body => 
-          RedCloth.new(Populator.paragraphs(1..5)).to_html)
-      Populator.value_in_range(1..20).times do
-        page.body = RedCloth.new(Populator.paragraphs(1..5)).to_html
-        page.save!
-      end
-    end
-    
+        
     Topic.populate 20 do |topic|
       topic.title = Populator.words(1..3).titleize
       topic.description = Populator.paragraphs(1..5)

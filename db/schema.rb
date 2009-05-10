@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081024230629) do
+ActiveRecord::Schema.define(:version => 20081024202036) do
 
   create_table "comments", :force => true do |t|
     t.integer  "talk_id"
@@ -18,19 +18,6 @@ ActiveRecord::Schema.define(:version => 20081024230629) do
     t.text     "description"
     t.boolean  "is_displayed"
     t.boolean  "is_a_review"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "content_revisions", :force => true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.integer  "content_id"
-    t.integer  "author_id"
-    t.datetime "created_at"
-  end
-
-  create_table "contents", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
