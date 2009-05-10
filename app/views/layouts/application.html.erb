@@ -18,8 +18,6 @@
   <%= auto_discovery_link_tag :rss, { :controller => 'talks', :format => :rss }, { :title => "All talks" } %>
   <%= auto_discovery_link_tag :rss, { :controller => 'talks', :topic_id => @topic, :format => :rss }, { :title => "Talks for #{@topic.title}" } if @topic %>
   <%= auto_discovery_link_tag :rss, { :controller => 'comments', :talk_id => @talk, :format => :rss }, { :title => "Comments for #{@talk.title}" } if @talk %>
-
-
 </head>
 <body>
 
@@ -36,7 +34,15 @@
 </div>
 
 <div id="content">
-
+    <div id="user_nav">
+      <% if current_user %>
+        <%= link_to "Edit Profile", edit_user_path(:current) %> |
+        <%= link_to "Logout", logout_path %>
+      <% else %>
+        <%= link_to "Register", new_user_path %> |
+        <%= link_to "Login", login_path %>
+      <% end %>
+    </div>
 <p style="color: green"><%= flash[:notice] %></p>
 <p style="color: yellow"><%= flash[:warn] %></p>
 <p style="color: red"><%= flash[:error] %></p>

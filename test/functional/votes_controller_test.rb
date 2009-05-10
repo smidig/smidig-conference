@@ -1,10 +1,9 @@
 require 'test_helper'
 
 class VotesControllerTest < ActionController::TestCase
-  include AuthenticatedTestHelper
   
   def setup
-    login_as('quentin')
+    #login_as('quentin')
   end
   
   def test_should_get_index

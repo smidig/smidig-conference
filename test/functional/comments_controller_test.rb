@@ -4,7 +4,6 @@ require 'test_helper'
 require 'action_view/helpers/record_identification_helper'
 
 class CommentsControllerTest < ActionController::TestCase
-  include AuthenticatedTestHelper
   include ActionView::Helpers::RecordIdentificationHelper	
   
   def setup

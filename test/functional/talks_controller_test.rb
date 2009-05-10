@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class TalksControllerTest < ActionController::TestCase
-  include AuthenticatedTestHelper
   
   def setup
     login_as('quentin')

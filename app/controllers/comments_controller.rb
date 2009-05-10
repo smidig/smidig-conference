@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :login_required, :only => [ :new, :create, :edit ]
+  #before_filter :login_required, :only => [ :new, :create, :edit ]
   
   # GET /comments
   # GET /comments.xml

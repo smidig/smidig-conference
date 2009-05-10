@@ -1,5 +1,4 @@
 class VotesController < ApplicationController
-  before_filter :login_required
   
   # GET /votes
   # GET /votes.xml

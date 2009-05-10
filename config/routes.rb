@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :user_sessions
+
+  map.resources :users
+
 
   # Route for displaying static html pages
   # See http://railscasts.com/episodes/117-semi-static-pages for details
@@ -12,12 +16,10 @@ ActionController::Routing::Routes.draw do |map|
     contents.resources :content_revisions
   end
 
-  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
-  map.login '/login', :controller => 'sessions', :action => 'new'
+  map.login "/login", :controller => "user_sessions", :action => "new"
+  map.logout "/logout", :controller => "user_sessions", :action => "destroy"
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
-  map.resources :users
-
   map.resource :session
 
   map.resources :periods

@@ -55,7 +55,7 @@ p {line-height: 1.5em;}
     clear: both;
     }
 
-h1 {
+#header h1 {
     height: 0px;
     width: 630px;
     overflow: hidden;

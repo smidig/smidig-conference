@@ -21,15 +21,19 @@ namespace :db do
     User.populate 300..550 do |user|
       user.email   = Faker::Internet.email
       user.name    = Faker::Name.name
-      user.login   = Faker::Internet.email
       user.company = Faker::Company.name
-      user.phone_number   = Faker::PhoneNumber.phone_number
+      user.phone_number = Faker::PhoneNumber.phone_number
       user.billing_address = Faker::Address.secondary_address
       user.created_at = Populator.value_in_range 3.months.ago..Time.now
+      user.persistence_token = Faker::Lorem.words(1).to_s.capitalize
+      user.crypted_password = Faker::Lorem.words(1).to_s.capitalize 
+      user.password_salt = Faker::Lorem.words(1).to_s.capitalize
+      user.login_count = rand(100)
+      user.failed_login_count = rand(3)
     end
-    u = User.create :email => 'test@test.com', :name => "Foo", :login => "foo", :password => "password", :password_confirmation => "password", 
+    u = User.create :email => 'test@test.com', :name => "Foo", :password => "password",
       :company => "Foo Bar Corp", :billing_address => "test"
-    User.create :email => 'bar@test.com', :name => "Bar", :login => "bar", :password => "password", :password_confirmation => "password", 
+    User.create :email => 'bar@test.com', :name => "Bar", :password => "password",
       :company => "Bar Corp", :billing_address => "test"
     
     user_ids = User.find(:all).collect { |u| u.id }

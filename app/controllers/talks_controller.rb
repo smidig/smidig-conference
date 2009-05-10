@@ -1,5 +1,5 @@
 class TalksController < ApplicationController
-  before_filter :login_required, :only => [ :new, :create ]
+  #before_filter :login_required, :only => [ :new, :create ]
   
   # GET /talks
   # GET /talks.xml
