@@ -35,7 +35,7 @@ class Server
     @config = config
   end
 
-  def server_task(taskname)
+  def remote_task(taskname)
     task taskname do
       execute_on_server(@config) { |conn| yield conn }
     end
@@ -78,8 +78,16 @@ class Connection
     end
   end
   def upload(io, path)
+    path = File.join(@application_path, path) unless path.start_with? "/"
     $stdout.puts "[#{@login}] Uploading #{path}"
     @ssh.scp.upload! io, path
+  end
+  def upload_text(text, path)
+    upload(StringIO.new(text), path)
+  end
+  def touch(path)
+    path = File.join(@application_path, path) unless path.start_with? "/"
+    exec "touch #{path}"
   end
 end
 
@@ -104,34 +112,34 @@ namespace :deploy do
     namespace stage do
       application_path = "#{apps_path}/#{application}/#{stage}/#{application}"
       database = "#{application}_#{stage}"
-      config = Server.new :hostname => hostname, :username => username, :application_path => application_path, :stage => stage
+      server = Server.new :hostname => hostname, :username => username, :application_path => application_path, :stage => stage
 
       desc "Create initial structure for #{stage}"
-      config.server_task :setup => :get_dbpassword do |connection|
+      server.remote_task :setup => :get_dbpassword do |connection|
         connection.exec "rm -rf #{application_path}"
 
         revision = ENV['REVISION'] || 'HEAD'
         connection.exec "svn checkout --revision #{revision} #{svn_root} #{application_path}"
 
         config = database_config(stage, database, dbusername, $dbpassword, dbhost)
-        connection.upload StringIO.new(config), "#{application_path}/tmp/database.yml"
-        connection.exec %Q(echo "RAILS_ENV='#{stage}'" > #{application_path}/tmp/environment.rb)
+        connection.upload_text config, "tmp/database.yml"
+        connection.upload_text "RAILS_ENV='#{stage}'", "tmp/environment.rb"
 
         connection.rake ["rails:freeze:gems", "gems:unpack", "db:migrate"]
 
-        connection.exec "touch #{application_path}/tmp/restart.txt"
+        connection.touch "tmp/restart.txt"
       end
       
       desc "Update the code in #{stage}. Add variable REVISION=... update to a given revision"
-      config.server_task :update do |connection|
+      server.remote_task :update do |connection|
         revision = ENV['REVISION'] || 'HEAD'
         connection.exec "svn up --revision #{revision} #{application_path}"
         connection.rake "gems:unpack"
-        connection.exec "touch #{application_path}/tmp/restart.txt"
+        connection.touch "tmp/restart.txt"
       end
       
       desc "Migrate the database in #{stage}. Add variable VERSION=... update to a given version"
-      config.server_task :migrate do |connection|
+      server.remote_task :migrate do |connection|
         version = ENV["VERSION"] ? "VERSION=ENV['VERSION']" : ""
         connection.rake "db:migrate #{version}"
       end
