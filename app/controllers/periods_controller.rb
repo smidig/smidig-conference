@@ -1,4 +1,6 @@
 class PeriodsController < ApplicationController
+  before_filter :require_admin, :except => [ :index, :show ]
+  
   # GET /periods
   # GET /periods.xml
   def index

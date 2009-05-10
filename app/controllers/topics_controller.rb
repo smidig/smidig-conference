@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
-
+  before_filter :require_user, :only => [ :new, :create ]
+  
   # GET /topics
   # GET /topics.xml
   def index

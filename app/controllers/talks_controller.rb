@@ -1,5 +1,5 @@
 class TalksController < ApplicationController
-  #before_filter :login_required, :only => [ :new, :create ]
+  before_filter :require_user, :except => [ :index, :show ]
   
   # GET /talks
   # GET /talks.xml
@@ -62,7 +62,7 @@ class TalksController < ApplicationController
   # PUT /talks/1
   # PUT /talks/1.xml
   def update
-    @talk = Talk.find(params[:id])
+    @talk = current_user.talks.find(params[:id])
 
     respond_to do |format|
       if @talk.update_attributes(params[:talk])
@@ -79,7 +79,7 @@ class TalksController < ApplicationController
   # DELETE /talks/1
   # DELETE /talks/1.xml
   def destroy
-    @talk = Talk.find(params[:id])
+    @talk = current_user.talks.find(params[:id])
     @talk.destroy
 
     respond_to do |format|
@@ -90,7 +90,7 @@ class TalksController < ApplicationController
   
 protected
   def login_required
-    return if logged_in?
+    return unless current_user
     flash[:error] = "Please log in to add your talk"
     access_denied
   end

@@ -1,4 +1,5 @@
 class RegistrationsController < ApplicationController
+  before_filter :require_user
   # GET /registrations
   # GET /registrations.xml
   def index
@@ -57,7 +58,7 @@ class RegistrationsController < ApplicationController
   # PUT /registrations/1
   # PUT /registrations/1.xml
   def update
-    @registration = Registration.find(params[:id])
+    @registration = current_user.registration.find(params[:id])
 
     respond_to do |format|
       if @registration.update_attributes(params[:registration])
@@ -74,7 +75,7 @@ class RegistrationsController < ApplicationController
   # DELETE /registrations/1
   # DELETE /registrations/1.xml
   def destroy
-    @registration = Registration.find(params[:id])
+    @registration = current_user.registration.find(params[:id])
     @registration.destroy
 
     respond_to do |format|

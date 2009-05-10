@@ -1,4 +1,5 @@
 class VotesController < ApplicationController
+  before_filter :require_user
   
   # GET /votes
   # GET /votes.xml
@@ -61,7 +62,7 @@ class VotesController < ApplicationController
   # PUT /votes/1
   # PUT /votes/1.xml
   def update
-    @vote = Vote.find(params[:id])
+    @vote = current_user.vote.find(params[:id])
 
     respond_to do |format|
       if @vote.update_attributes(params[:vote])
@@ -78,7 +79,7 @@ class VotesController < ApplicationController
   # DELETE /votes/1
   # DELETE /votes/1.xml
   def destroy
-    @vote = Vote.find(params[:id])
+    @vote = current_user.votes.find(params[:id])
     @vote.destroy
 
     respond_to do |format|

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090510170049) do
+ActiveRecord::Schema.define(:version => 20090510172418) do
 
   create_table "comments", :force => true do |t|
     t.integer  "talk_id"
@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(:version => 20090510170049) do
     t.datetime "last_login_at"
     t.string   "current_login_ip"
     t.string   "last_login_ip"
+    t.boolean  "is_admin"
   end
 
   add_index "users", ["openid_identifier"], :name => "index_users_on_openid_identifier"
