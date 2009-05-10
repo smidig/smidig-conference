@@ -60,7 +60,7 @@ namespace :deploy do
       server.remote_task :update do |connection|
         revision = ENV['REVISION'] || 'HEAD'
         connection.exec "svn up --revision #{revision} #{application_path}"
-        connection.rake "gems:unpack"
+        connection.rake ["gems:unpack", "cache:expire_all"]
         connection.touch "tmp/restart.txt"
       end
       
@@ -68,7 +68,6 @@ namespace :deploy do
       server.remote_task :migrate do |connection|
         version = ENV["VERSION"] ? "VERSION=ENV['VERSION']" : ""
         connection.rake "db:migrate #{version}"
-        connection.rake "cache:expire_all"
       end
       
       task :get_dbpassword do
