@@ -2,8 +2,8 @@
 
 # Uncomment below to force Rails into production mode when
 # you don't control web/app server and can't set it the proper way
-tmp_environment=File.join(File.dirname(__FILE__), '../tmp/environment.rb')
-File.exist? tmp_environment and load tmp_environment
+tmp_environment = File.join(File.dirname(__FILE__), '../tmp/environment.rb')
+File.exist?(tmp_environment) and load(tmp_environment)
 
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
@@ -16,6 +16,8 @@ Rails::Initializer.run do |config|
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.
   # See Rails::Configuration for more options.
+  local_database_config = File.join(File.dirname(__FILE__), '../tmp/database.yml')
+  File.exists?(local_database_config) and config.database_configuration_file = local_database_config
 
   # Skip frameworks you're not going to use. To use Rails without a database
   # you must remove the Active Record framework.

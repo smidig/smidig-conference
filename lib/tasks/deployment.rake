@@ -62,7 +62,6 @@ namespace :deploy do
   username = 'smidig_no'
   password = nil
   dbusername = username
-  dbpassword = password
   dbhost = 'mysql.smidig.no'
     
   %w(staging production).each do |stage|
@@ -73,31 +72,33 @@ namespace :deploy do
 
       server_task :checkout, config do |connection|
         connection.exec "rm -rf #{application_path}"
-
         revision = ENV['REVISION'] || 'HEAD'
         connection.exec "svn checkout --revision #{revision} #{svn_root} #{application_path}"
-
+      end
+      
+      server_task :database_config, config do |connection|
         database_config =<<-EOF
 #{stage}:
   adapter: mysql
   database: #{database}
   username: #{dbusername}
-  password: #{dbpassword}
+  password: #{password}
   host: #{dbhost}
   encoding: utf8
 EOF
-        connection.upload StringIO.new(database_config), "#{application_path}/config/database.yml"
+        connection.upload StringIO.new(database_config), "#{application_path}/tmp/database.yml"
       end
       
       server_task :prepare, config do |connection|
+        connection.exec %Q(echo "RAILS_ENV='#{stage}'" > #{application_path}/tmp/environment.rb)
+
         connection.exec "cd #{application_path} && rake gems:install RAILS_ENV=#{stage}"
         connection.exec "cd #{application_path} && rake rails:freeze:gems RAILS_ENV=#{stage}"
-        connection.exec %Q(echo "RAILS_ENV='#{stage}'" > #{application_path}/tmp/environment.rb)
         connection.exec "touch #{application_path}/tmp/restart.txt"
       end
       
       desc "Create initial structure for #{stage}"
-      task :setup => [:checkout, :prepare]
+      task :setup => [:checkout, :database_config, :prepare]
       
       desc "Update the code in #{stage}. Add variable REVISION=... update to a given revision"
       server_task :update, config do |connection|
