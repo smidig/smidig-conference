@@ -28,7 +28,7 @@
 <h3>Post a new comment:</h3>
 <%= render :partial => "comments/new" %>
 <% else %>
-<h3><%= link_to "Log in to post a comment", new_session_path %></h3>
+<h3><%= link_to "Log in to post a comment", new_user_session_url %></h3>
 <% end %>
 
 <%= link_to 'Edit', edit_talk_path(@talk) %> |
