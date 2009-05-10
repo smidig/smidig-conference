@@ -13,9 +13,8 @@ ActionController::Routing::Routes.draw do |map|
     contents.resources :content_revisions
   end
 
-  map.open_id_complete 'session', :controller => "user_sessions"
-  map.login "login", :controller => "user_sessions", :action => "new"
-  map.logout "logout", :controller => "user_sessions", :action => "destroy"
+  map.login 'login', :controller => "user_sessions", :action => "new"
+  map.logout 'logout', :controller => "user_sessions", :action => "destroy"
   map.register 'register', :controller => 'users', :action => 'create'
   map.signup 'signup', :controller => 'users', :action => 'new'
 

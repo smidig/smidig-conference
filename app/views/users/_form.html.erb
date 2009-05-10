@@ -1,5 +1,9 @@
 <% form_for @user do |f| %>
   <%= f.error_messages %>
+  <!--<p>
+    <%# f.label :openid_identifier %><br />
+    <%# f.text_field :openid_identifier %>
+  </p>-->
   <p>
     <%= f.label :email %><br />
     <%= f.text_field :email %>
@@ -16,7 +20,7 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
-  <p>
+  <p>                                                   
     <%= f.label :company %><br />
     <%= f.text_field :company %>
   </p>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090510152948) do
+ActiveRecord::Schema.define(:version => 20090510170049) do
 
   create_table "comments", :force => true do |t|
     t.integer  "talk_id"
@@ -36,6 +36,21 @@ ActiveRecord::Schema.define(:version => 20090510152948) do
     t.boolean  "is_published"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "open_id_authentication_associations", :force => true do |t|
+    t.integer "issued"
+    t.integer "lifetime"
+    t.string  "handle"
+    t.string  "assoc_type"
+    t.binary  "server_url"
+    t.binary  "secret"
+  end
+
+  create_table "open_id_authentication_nonces", :force => true do |t|
+    t.integer "timestamp",  :null => false
+    t.string  "server_url"
+    t.string  "salt",       :null => false
   end
 
   create_table "periods", :force => true do |t|
