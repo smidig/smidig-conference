@@ -28,6 +28,6 @@ module ApplicationHelper
   
   # Don't include the following in production or staging
   def unfinished
-    yield if INCLUDE_UNFINISHED
+    yield unless (RAILS_ENV == 'production' || RAILS_ENV == 'staging')
   end
 end

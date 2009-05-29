@@ -14,7 +14,6 @@ namespace :db do
   task :populate => :environment do
     require 'populator'
     require 'faker'
-    require 'RedCloth'
     
     [MessageDelivery, Message, Period, Registration, Comment, Vote, Talk, User, Topic].each(&:delete_all)
     

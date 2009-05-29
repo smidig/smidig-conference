@@ -3,13 +3,20 @@
 == Getting started
 
 <code>
-gem i -v=2.3.2 rails
-gem i faker populator capistrano RedCloth
-gem i -v=1.2.3 sqlite3-ruby
+Check out the code from http://svn.smidig.no/smidig2009/
+Install Ruby
+gem install rails --version=2.3.2 
+gem install sqlite3-ruby --version=1.2.3
+rake gems:install
 rake db:migrate
 rake db:populate
-rake db:migrate RAILS_ENV=test
-rake db:populate RAILS_ENV=test
+ruby script/server
+http://localhost:3000
+</code>
+
+== Running the tests
+
+<code>
 rake test
 </code>
 
