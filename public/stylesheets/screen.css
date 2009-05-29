@@ -131,30 +131,35 @@ li#index_menu {
 
 
 h2.page_title {
-    overflow: hidden;
     padding: 19px 0 0 0;
     height: 0;
     background-repeat: no-repeat;
     float: left;
     margin: 28px 0px 0px 60px;
+    color: #008800;
+    font: arial;
     }
 
 h2#page_lyntaler_title  {
+    overflow: hidden;
     background-image: url("../images/heading-lyntale.png");
     width: 227px;
     }
 
 h2#page_openspace_title  {
+    overflow: hidden;
     background-image: url("../images/heading-open_space.png");
     width: 260px;
     }
 
 h2#page_arrangoerene_title  {
+    overflow: hidden;
     background-image: url("../images/heading-arrangoerene.png");
     width: 397px;
     }
 
-#hjem h2  {
+#hjem h2#page_index_title  {
+    overflow: hidden;
     background-image: url("../images/heading-hjem.png");
     background-position: top right;
     padding: 39px 0 0 0;
