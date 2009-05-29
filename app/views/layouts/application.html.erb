@@ -13,25 +13,27 @@
   <!--[if lte IE 6]>
     <%= stylesheet_link_tag 'ielte6.css' %>
   <![endif]-->
-  <%= stylesheet_link_tag 'scaffold' %>
   <%= stylesheet_link_tag 'style' %>
   <%= auto_discovery_link_tag :rss, { :controller => 'talks', :format => :rss }, { :title => "All talks" } %>
   <%= auto_discovery_link_tag :rss, { :controller => 'talks', :topic_id => @topic, :format => :rss }, { :title => "Talks for #{@topic.title}" } if @topic %>
   <%= auto_discovery_link_tag :rss, { :controller => 'comments', :talk_id => @talk, :format => :rss }, { :title => "Comments for #{@talk.title}" } if @talk %>
 </head>
-<body>
+<body
+  <%= current_page?(:controller => 'pages', :action => 'index') ? 'id="hjem"' : '' %>
+>
 
 <div id="header">
     <ul id="menu">
-        <li class="lyntaler" title="Lyntaler"><%= link_to "Lyntaler", :controller => 'pages', :action => 'lyntaler' %></li>
-        <li class="open_space" title="Open Space"><%= link_to "Open Space", :controller => 'pages', :action => 'openspace' %></li>
-        <li class="arrangoerene" title="Arrangørene"><%= link_to "Arrangørene", :controller => 'pages', :action => 'arrangoerene' %></li>
-        <li class="forum" title="Forum"><a href="http://forum.smidig.no">Forum</a></li>
-        <li class="hjem" title="Hjem"><%= link_to "Hjem", :controller => 'pages', :action => 'index' %></li>
+        <%= page_menu_item "Lyntaler", 'lyntaler' %>
+        <%= page_menu_item "Open Space", 'openspace' %>
+        <%= page_menu_item "Arrangørene", 'arrangoerene' %>
+        <li id="forum_menu" title="Forum"><a href="http://forum.smidig.no">Forum</a></li>
+        <%= page_menu_item "Hjem", 'index' %>
     </ul>
-    <h1 title="Smidig 2009">Smidig 2009</h1>
-    <h2>22. - 23. oktober - Oslo Konferansesenter</h2>
+    <h1 id="site_title" title="Smidig 2009">Smidig 2009</h1>
+    <h2 class="page_title" id="page_<%= controller.action_name %>_title"><%= yield :title %></h2>
 </div>
+
 
 <div id="content">
   <% unfinished do %>

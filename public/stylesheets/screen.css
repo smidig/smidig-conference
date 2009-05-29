@@ -55,7 +55,7 @@ p {line-height: 1.5em;}
     clear: both;
     }
 
-#header h1 {
+h1#site_title {
     height: 0px;
     width: 630px;
     overflow: hidden;
@@ -65,7 +65,7 @@ p {line-height: 1.5em;}
     clear: right;
     }
 
-#hjem h1 {
+#hjem h1#site_title {
     float: left;
     }
 
@@ -90,52 +90,47 @@ ul#menu, ul#menu li {
     background-repeat: no-repeat;
     }
 
-ul#menu li:hover {
+ul#menu li.menu_link:hover {
     background-position: 0 -15px;
     }
 
-#hjem .hjem, #lyntaler .lyntaler, #open_space .open_space, #arrangoerene .arrangoerene,
-#hjem .hjem:hover, #lyntaler .lyntaler:hover, #open_space .open_space:hover, #arrangoerene .arrangoerene:hover {
+ul#menu li.menu_current {
     background-position: 0 -30px;
     }
-
 
 ul#menu li, ul#menu li a {
     height: 0px;
     padding-top: 15px;
     }
 
-ul#menu li.lyntaler, #lyntaler .lyntaler{
+li#lyntaler_menu{
     background-image: url(../images/lyntaler.png);
     width: 63px;
     }
 
-ul#menu li.arrangoerene, #arrangoerene .arrangoerene {
+li#arrangoerene_menu {
     width: 112px;
     background-image: url(../images/arrangoerene.png);
     }
 
-ul#menu li.open_space, #open_space .open_space {
+li#openspace_menu {
     background-image: url(../images/open_space.png);
     width: 107px;
    }
 
-ul#menu li.forum {
+li#forum_menu {
     background-image: url(../images/forum.png);
     width: 56px;
    }
 
-ul#menu li.hjem, #hjem .hjem {
+li#index_menu {
     background-image: url(../images/hjem.png);
     width: 46px;
    }
 
 
 
-
-
-
-h2 {
+h2.page_title {
     overflow: hidden;
     padding: 19px 0 0 0;
     height: 0;
@@ -144,17 +139,17 @@ h2 {
     margin: 28px 0px 0px 60px;
     }
 
-#lyntaler h2  {
+h2#page_lyntaler_title  {
     background-image: url("../images/heading-lyntale.png");
     width: 227px;
     }
 
-#open_space h2  {
+h2#page_openspace_title  {
     background-image: url("../images/heading-open_space.png");
     width: 260px;
     }
 
-#arrangoerene h2  {
+h2#page_arrangoerene_title  {
     background-image: url("../images/heading-arrangoerene.png");
     width: 397px;
     }
@@ -168,8 +163,6 @@ h2 {
     margin: 8px 60px 0px 0px;
     clear: right;
     }
-
-
 
 #content {
     padding: 15px 60px 15px 90px;

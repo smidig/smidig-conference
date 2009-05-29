@@ -1,14 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
 
-
-  # Route for displaying static html pages
-  # See http://railscasts.com/episodes/117-semi-static-pages for details
-  map.with_options :controller => 'pages' do |page|
-    page.openspace 'openspace', :action => 'openspace'
-    page.lyntaler 'lyntaler', :action => 'lyntaler'
-    page.arrangorene 'arrangoerene', :action => 'arrangoerene'
-  end
-
   map.resources :contents do |contents|
     contents.resources :content_revisions
   end 
@@ -40,7 +31,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   #map.root :controller => "contents", :action => "show", :id => 1
-  map.root :controller => "pages"
+  #map.root :controller => "pages", :action => 'index'
 
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -74,7 +65,7 @@ ActionController::Routing::Routes.draw do |map|
   #   end
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  # map.root :controller => "pages", :action => "home"
+  map.root :controller => "pages"
 
   # See how all your routes lay out with "rake routes"
 

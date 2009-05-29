@@ -1,6 +1,14 @@
 
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+  def page_menu_item(text, action)
+    if current_page?(:controller => 'pages', :action => action)
+      %Q{<li id="#{action}_menu" class="menu_current" title="#{text}">#{text}</li>}
+    else
+      %Q{<li id="#{action}_menu" class="menu_link" title="#{text}">#{ link_to text, :controller => 'pages', :action => action }</li>}
+    end
+  end
+  
   def textile(text)
     html_escape(text)
   end
