@@ -23,6 +23,7 @@ rake test
 == Deploying new version to staging environment
 
 <code>
+gem install net-ssh net-scp
 svn commit
 rake deploy:staging:update
 (if database was changed) rake deploy:staging:migrate
