@@ -1,0 +1,12 @@
+<h1>Editing payment_notification</h1>
+
+<% form_for(@payment_notification) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @payment_notification %> |
+<%= link_to 'Back', payment_notifications_path %>
