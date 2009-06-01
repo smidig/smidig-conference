@@ -1,4 +1,45 @@
-<h1>Edit Profile</h1>
+<h1>Status</h1>
 
-<%= render :partial => 'form' %>
+<% if @paid %>
+
+Vi har mottatt bekreftelse fra PayPal, og dermed registrert din betaling i systemet. Vi sees på Smidig 2009!
+
+<% else %>
+
+<p>Hei <%=h @user.name %>, og takk for påmeldingen til Smidig 2009. Vi venter på bekreftelse fra PayPal, dette tar vanligvis ikke mer enn noen sekunder. Om du laster denne siden på nytt kan betalingen allerede ha blitt registrert. Først når betalingen har blitt registrert kan du stemme på og foreslå lyninnlegg</p>
+
+<% end %>
+
+<h2>Registreringsstatus</h2>
+<ul>
+	<li><%=h @user.registration.description %></li>
+	<li>Pris: <%=h @user.registration.price %></li>
+	<li>Betalt: <%=h @paid_amount %></li>
+</ul>
+
+<% form_for @user do |f| %>
+  <%= f.error_messages %>
+
+  <p>                                                   
+    <%= f.label :company %><br />
+    <%= f.text_field :company %>
+  </p>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :phone_number %><br />
+    <%= f.text_field :phone_number %>
+  </p>
+  <p>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <p><%= f.submit "Oppdater detaljer" %></p>
+<% end %>
 

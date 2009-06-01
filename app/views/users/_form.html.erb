@@ -4,9 +4,23 @@
     <%# f.label :openid_identifier %><br />
     <%# f.text_field :openid_identifier %>
   </p>-->
+  <h1>Påmelding til Smidig 2009</h1>
+  <p>Påmeldingen til Smidig 2009 har nå åpnet. De første 150 billettene selges til Early Bird-pris på kun til kroner 1000! Easrly Bird er for tiden _kun_ tilgjengelig ved betaling med kredittkort. Nytt av året er at middag kjøpes separat.
+  <p>
+	 <%= f.label :name %><br />
+	 <%= f.text_field :name %>
+  </p>
+  <p>                                                   
+    <%= f.label :company %><br />
+    <%= f.text_field :company %>
+  </p>
   <p>
     <%= f.label :email %><br />
     <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :phone_number %><br />
+    <%= f.text_field :phone_number %>
   </p>
   <p>
     <%= f.label :password %><br />
@@ -17,20 +31,8 @@
     <%= f.password_field :password_confirmation %>
   </p>
   <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%=  radio_button_tag 'ticket_type', 'uten_middag', false %> Jeg vil ha Early Bird til kroner 1000, men finanskrisen gjør at vi ikke har råd til middag<br />
+    <%=  radio_button_tag 'ticket_type', 'med_middag', true %> Jeg vil ha Early Bird, til kroner 1000 og gleder meg til middagen til kroner 500, totalt kroner 1500!
   </p>
-  <p>                                                   
-    <%= f.label :company %><br />
-    <%= f.text_field :company %>
-  </p>
-  <p>
-    <%= f.label :phone_number %><br />
-    <%= f.text_field :phone_number %>
-  </p>
-  <p>
-    <%= f.label :billing_address %><br />
-    <%= f.text_area :billing_address, :cols => 35, :rows => 5 %>
-  </p>
-  <p><%= f.submit "Submit" %></p>
+  <p><%= f.submit "Til betaling >>>" %></p>
 <% end %>

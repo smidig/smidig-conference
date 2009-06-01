@@ -11,6 +11,7 @@
 
 <% for registration in @registrations %>
   <tr>
+	<td><%=h registration.id %></td>
     <td><%=h registration.user_id %></td>
     <td><%=h registration.comments %></td>
     <td><%=h registration.price %></td>

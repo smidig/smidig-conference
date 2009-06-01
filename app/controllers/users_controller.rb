@@ -5,16 +5,62 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    @registration = Registration.new
+    @registration.user = @user
+          
     if @user.save
-      flash[:notice] = "Successfully created user."
-      redirect_to root_url
-    else
-      render :action => 'new'
-    end
+      
+      # find price based on options
+  
+      @registration.is_earlybird = true
+  
+      if params["ticket_type"] == "uten_middag"
+        @registration.includes_dinner = false
+        @registration.price = 1000
+        @registration.description = "Earlybird-billett til Smidig 2009 uten middag"
+      else
+        @registration.includes_dinner = true
+        @registration.price = 1500
+        @registration.description = "Earlybird-billett til Smidig 2009 inkludert middag"
+      end
+      
+      @registration.save
+        
+      @user_session = UserSession.new
+      @user_session.email = @user.email
+      @user_session.password = @user.password      
+      
+      @user_session.save
+        
+      values = {
+        :business => 'simen._1243697759_biz@iterate.no',
+        :cmd => '_cart',
+        :upload => '1',
+        :currency_code => 'NOK',
+        :notify_url => 'http://experimental.smidig2009.no/payment_notifications',
+        :return => 'http://experimental.smidig2009.no/users/current/edit',
+        :invoice => @registration.id,
+        :amount_1 => @registration.price,
+        :item_name_1 => @registration.description,
+        :item_number_1 => '1',
+        :quantity_1 => '1'
+      }
+    
+      redirect_to "https://www.sandbox.paypal.com/cgi-bin/websrc?"+values.map {|k,v| "#{k}=#{v}" }.join("&")
+     
+     else
+       render :action => 'new'
+     end
   end
   
   def edit
-    @user = current_user    
+    @user = current_user
+    @paid = false
+    @paid_amount = 0
+    if @user.registration.payment_notification != nil && @user.registration.payment_notification.status =="Completed"
+      @paid_amount = @user.registration.price
+      @paid = true
+    end
   end
   
   def update

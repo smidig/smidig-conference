@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090510172418) do
+ActiveRecord::Schema.define(:version => 20090601185448) do
 
   create_table "comments", :force => true do |t|
     t.integer  "talk_id"
@@ -53,6 +53,15 @@ ActiveRecord::Schema.define(:version => 20090510172418) do
     t.string  "salt",       :null => false
   end
 
+  create_table "payment_notifications", :force => true do |t|
+    t.text     "params"
+    t.integer  "registration_id"
+    t.string   "status"
+    t.string   "transaction_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "periods", :force => true do |t|
     t.integer  "time_id"
     t.integer  "scene_id"
@@ -70,6 +79,9 @@ ActiveRecord::Schema.define(:version => 20090510172418) do
     t.date     "paid_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_earlybird"
+    t.boolean  "includes_dinner"
+    t.string   "description"
   end
 
   create_table "talks", :force => true do |t|
@@ -108,6 +120,7 @@ ActiveRecord::Schema.define(:version => 20090510172418) do
     t.string   "company"
     t.string   "phone_number"
     t.text     "billing_address"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "login_count",        :default => 0, :null => false
@@ -120,7 +133,8 @@ ActiveRecord::Schema.define(:version => 20090510172418) do
     t.boolean  "is_admin"
   end
 
-  add_index "users", ["openid_identifier"], :name => "index_users_on_openid_identifier"
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["openid_identifier"], :name => "index_users_on_openid_identifier", :unique => true
 
   create_table "votes", :force => true do |t|
     t.integer  "talk_id"
