@@ -23,15 +23,11 @@ class UsersController < ApplicationController
         @registration.price = 1500
         @registration.description = "Earlybird-billett til Smidig 2009 inkludert middag"
       end
-      
-      @registration.save
         
       @user_session = UserSession.new
       @user_session.email = @user.email
       @user_session.password = @user.password      
       
-      @user_session.save
-        
       values = {
         :business => 'simen._1243697759_biz@iterate.no',
         :cmd => '_cart',
@@ -45,8 +41,13 @@ class UsersController < ApplicationController
         :item_number_1 => '1',
         :quantity_1 => '1'
       }
+      
+      @registration.payment_link = "https://www.sandbox.paypal.com/cgi-bin/websrc?"+values.map {|k,v| "#{k}=#{v}" }.join("&")
     
-      redirect_to "https://www.sandbox.paypal.com/cgi-bin/websrc?"+values.map {|k,v| "#{k}=#{v}" }.join("&")
+      @registration.save
+      @user_session.save
+    
+      redirect_to @registration.payment_link
      
      else
        render :action => 'new'
@@ -57,9 +58,13 @@ class UsersController < ApplicationController
     @user = current_user
     @paid = false
     @paid_amount = 0
-    if @user.registration.payment_notification != nil && @user.registration.payment_notification.status =="Completed"
-      @paid_amount = @user.registration.price
-      @paid = true
+    @payment_notification = nil
+    if @user.registration != nil && @user.registration.payment_notification != nil
+      @payment_notification = @user.registration.payment_notification
+       if @user.registration.payment_notification.status =="Completed"
+         @paid_amount = @user.registration.price
+         @paid = true
+      end
     end
   end
   
