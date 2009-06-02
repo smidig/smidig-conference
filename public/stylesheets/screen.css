@@ -85,7 +85,6 @@ ul#menu li {
 
 ul#menu, ul#menu li {
     height: 15px;
-    overflow: hidden;
     background-position: top left;
     background-repeat: no-repeat;
     }
@@ -102,29 +101,39 @@ ul#menu li, ul#menu li a {
     height: 0px;
     padding-top: 15px;
     }
+    
+li#program_menu a {
+    padding-top: 0px;
+    color: black;
+    }
 
 li#lyntaler_menu{
     background-image: url(../images/lyntaler.png);
+    overflow: hidden;
     width: 63px;
     }
 
 li#arrangoerene_menu {
     width: 112px;
+    overflow: hidden;
     background-image: url(../images/arrangoerene.png);
     }
 
 li#openspace_menu {
     background-image: url(../images/open_space.png);
+    overflow: hidden;
     width: 107px;
    }
 
 li#forum_menu {
     background-image: url(../images/forum.png);
+    overflow: hidden;
     width: 56px;
    }
 
 li#index_menu {
     background-image: url(../images/hjem.png);
+    overflow: hidden;
     width: 46px;
    }
 

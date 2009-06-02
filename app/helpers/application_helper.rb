@@ -8,9 +8,13 @@ module ApplicationHelper
       %Q{<li id="#{action}_menu" class="menu_link" title="#{text}">#{ link_to text, :controller => 'pages', :action => action }</li>}
     end
   end
-  
-  def textile(text)
-    html_escape(text)
+
+  def menu_item(text, id, route)
+    if current_page?(route)
+      %Q{<li id="#{id}_menu" class="menu_current" title="#{text}">#{text}</li>}
+    else
+      %Q{<li id="#{id}_menu" class="menu_link" title="#{text}">#{ link_to text, route }</li>}
+    end
   end
 
   def feed_link(title, url)

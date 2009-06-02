@@ -24,6 +24,9 @@
 
 <div id="header">
     <ul id="menu">
+        <%- unfinished do -%>
+          <%= menu_item "Program", 'program', :controller => 'topics', :action => 'index' %>
+        <%- end -%>
         <%= page_menu_item "Lyntaler", 'lyntaler' %>
         <%= page_menu_item "Open Space", 'openspace' %>
         <%= page_menu_item "Arrangørene", 'arrangoerene' %>

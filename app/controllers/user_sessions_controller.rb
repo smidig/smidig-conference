@@ -1,5 +1,6 @@
 class UserSessionsController < ApplicationController
   def new
+    store_referer if params[:save]
     @user_session = UserSession.new
   end
   
@@ -9,7 +10,8 @@ class UserSessionsController < ApplicationController
       flash[:notice] = "Successfully logged in."
       redirect_back_or_default root_url
     else
-      render :action => 'new'
+      flash[:error] = "Login incorrect."
+      redirect_to :action => 'new'
     end
   end
   
