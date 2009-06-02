@@ -5,7 +5,6 @@ class Talk < ActiveRecord::Base
   has_many :votes
   
   validates_acceptance_of :accepted_guidelines
-  validates_presence_of :allow_derivatives
   
   def topic_name
     topic.title

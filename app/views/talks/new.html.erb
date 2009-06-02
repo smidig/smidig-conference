@@ -37,11 +37,11 @@
   </p>
   <p>Allow modifications of your work?</p>
   <p>
-      <%= f.radio_button :allow_derivatives, true %>
+      <%= f.radio_button :allow_derivatives, '' %>
       <%= f.label :allow_derivatives_true, "Yes" %><br />
       <%= f.radio_button :allow_derivatives, 'sa' %>
       <%= f.label :allow_derivatives_sa, "Share alike" %><br />
-      <%= f.radio_button :allow_derivatives, false %>
+      <%= f.radio_button :allow_derivatives, 'nd' %>
       <%= f.label :allow_derivatives_false, "No" %><br />
   </p>
   <hr />
