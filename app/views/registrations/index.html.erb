@@ -2,21 +2,36 @@
 
 <table>
   <tr>
-    <th>User</th>
-    <th>Comments</th>
+    <th>Invoice ID</th>
+    <th>Name</th>
+    <th>Description</th>
     <th>Price</th>
+    <th>Early Bird</th>
+    <th>Dinner</th>
     <th>Invoiced at</th>
-    <th>Paid at</th>
+    <th>PayPal-status</th>
   </tr>
 
 <% for registration in @registrations %>
   <tr>
 	<td><%=h registration.id %></td>
-    <td><%=h registration.user_id %></td>
-    <td><%=h registration.comments %></td>
+	<% if !registration.user.nil? %>
+    	<td><%=h registration.user.name %></td>
+	<% else %>
+		<td>N/A</td>
+	<% end %>	
+    <td><%=h registration.description %></td>
     <td><%=h registration.price %></td>
-    <td><%=h registration.invoiced_at %></td>
-    <td><%=h registration.paid_at %></td>
+    <td><%=h registration.is_earlybird %></td>
+    <td><%=h registration.includes_dinner %></td>
+	<% if !registration.payment_notification.nil? %>
+    	<td><%=h registration.payment_notification.paid_amount %>,-</td>
+    	<td><%=h registration.payment_notification.status %>,-</td>
+	<% else %>
+		<td>0,-</td>
+		<td>N/A</td>
+	<% end %>
+    <td><%=h registration.comments %></td>
     <td><%= link_to 'Show', registration %></td>
     <td><%= link_to 'Edit', edit_registration_path(registration) %></td>
     <td><%= link_to 'Destroy', registration, :confirm => 'Are you sure?', :method => :delete %></td>

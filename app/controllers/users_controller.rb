@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       @user_session.password = @user.password      
       
       values = {
-        :business => 'simen._1243697759_biz@iterate.no',
+        :business => 'experi_1243951372_biz@iterate.no',
         :cmd => '_cart',
         :upload => '1',
         :currency_code => 'NOK',
