@@ -18,7 +18,7 @@
     </td>
     <td>
       <% if user.registration %>
-        <%= link_to user.registration.payment.link, user.registration.payment.description %>
+        <%= link_to user.registration.description, user.registration.payment_link %>
         Price: <%= user.registration.price %>.
       <% end %>
     </td>
