@@ -37,6 +37,8 @@ class UsersController < ApplicationController
       @user_session.email = @user.email
       @user_session.password = @user.password      
       
+      @registration.save
+      
       values = {
         :business => 'experi_1243951372_biz@iterate.no',
         :cmd => '_cart',
