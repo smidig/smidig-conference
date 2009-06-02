@@ -13,12 +13,14 @@ Vi har mottatt bekreftelse fra PayPal, og dermed registrert din betaling i syste
 	<% end %>
 <% end %>
 
-<h2>Registreringsstatus</h2>
-<ul>
-	<li><%=h @user.registration.description %></li>
-	<li>Pris: <%=h @user.registration.price %></li>
-	<li>Betalt: <%=h @paid_amount %></li>
-</ul>
+<% if @user.registration %>
+  <h2>Registreringsstatus</h2>
+  <ul>
+  	<li><%=h @user.registration.description %></li>
+  	<li>Pris: <%=h @user.registration.price %></li>
+  	<li>Betalt: <%=h @paid_amount %></li>
+  </ul>
+<% end %>
 
 <% if @payment_notification != nil %>
 <h2>Betalingsstatus</h2>

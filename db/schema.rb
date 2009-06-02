@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090602071419) do
+ActiveRecord::Schema.define(:version => 20090602222449) do
 
   create_table "comments", :force => true do |t|
     t.integer  "talk_id"
@@ -101,9 +101,11 @@ ActiveRecord::Schema.define(:version => 20090602071419) do
     t.integer  "yellow_votes"
     t.integer  "green_votes"
     t.string   "audience_level"
-    t.integer  "votes_count",      :default => 0
+    t.integer  "votes_count",          :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "allow_commercial_use"
+    t.string   "allow_derivatives"
   end
 
   create_table "topics", :force => true do |t|

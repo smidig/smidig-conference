@@ -4,14 +4,6 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :speaker_id %><br />
-    <%= f.text_field :speaker_id %>
-  </p>
-  <p>
-    <%= f.label :topic_id %><br />
-    <%= f.text_field :topic_id %>
-  </p>
-  <p>
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </p>
@@ -24,32 +16,8 @@
     <%= f.text_field :slideshare_url %>
   </p>
   <p>
-    <%= f.label :presenting_naked %><br />
+    <%= f.label :presenting_naked, "Not using slides" %><br />
     <%= f.check_box :presenting_naked %>
-  </p>
-  <p>
-    <%= f.label :video_url %><br />
-    <%= f.text_field :video_url %>
-  </p>
-  <p>
-    <%= f.label :position %><br />
-    <%= f.text_field :position %>
-  </p>
-  <p>
-    <%= f.label :submitted %><br />
-    <%= f.check_box :submitted %>
-  </p>
-  <p>
-    <%= f.label :red_votes %><br />
-    <%= f.text_field :red_votes %>
-  </p>
-  <p>
-    <%= f.label :yellow_votes %><br />
-    <%= f.text_field :yellow_votes %>
-  </p>
-  <p>
-    <%= f.label :green_votes %><br />
-    <%= f.text_field :green_votes %>
   </p>
   <p>
     <%= f.label :audience_level %><br />

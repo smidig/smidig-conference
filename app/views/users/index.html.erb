@@ -2,16 +2,27 @@
 
 <table>
   <tr>
-    <th>Login</th>
-    <th>Name</th>
+    <th>User</th>
+    <th>Email</th>
+    <th>Payment</th>
     <th>Joined</th>
   </tr>
 <% for user in @users %>
   <tr>
-    <td><%=h user.login %></td>
-    <td><%=h user.name %></td>
+    <td>
+      <%=link_to user.name, user %>
+      (<%=h user.company %>)
+    </td>
+    <td>
+      <%=link_to user.email, "mailto:#{user.email}" %>
+    </td>
+    <td>
+      <% if user.registration %>
+        <%= link_to user.registration.payment.link, user.registration.payment.description %>
+        Price: <%= user.registration.price %>.
+      <% end %>
+    </td>
     <td><%=h time_ago_in_words(user.created_at) %> ago</td>
-    <td><%= link_to 'Show', user %></td>
   </tr>
 <% end %>
 </table>

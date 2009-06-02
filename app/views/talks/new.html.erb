@@ -1,34 +1,56 @@
-<h1>New talk</h1>
+<%= content_for :title, "Lightning Talk Proposal" %>
+
+<p><em>Text here about how all this can be changed until the final acceptance date</em></p>
+
 
 <% form_for :talk, :url => topic_talks_path do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :title %><br />
+    <%= f.label :title, "Påstand" %> <%= image_tag "help.png" %><br />
     <%= f.text_field :title %>
   </p>
   <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.label :slideshare_url %><br />
-    <%= f.text_field :slideshare_url %>
-  </p>
-  <p>
-    <%= f.label :presenting_naked, "Not using slides" %><br />
-    <%= f.check_box :presenting_naked %>
-  </p>
-  <p>
-    <%= f.label :video_url %><br />
-    <%= f.text_field :video_url %>
+    <%= f.label :description, "Argumentasjon" %> <%= image_tag "help.png" %><br />
+    <%= f.text_area :description, :rows => 10 %>
   </p>
   <p>
     <%= f.label :audience_level, "The audience should..." %><br />
     <%= f.select :audience_level,  [['... have heard about agile', 'novice'], ['... have tried agile', 'intermediate'], ['... be using agile', 'expert']] %>
   </p>
   <p>
-    <%= f.submit "Create" %>
+    <%= f.label :slideshare_url, "Link til slider på Slideshare" %><br />
+    <%= f.text_field :slideshare_url %>
+  </p>
+  <p>
+    <%= f.check_box :presenting_naked %>
+    <%= f.label :presenting_naked, "Not using slides" %>
+  </p>
+  <hr />
+  <p>Choose a Creative Commons License <%= image_tag "help.png" %>
+  <p>Allow commercial use of your work?</p>
+  <p>
+      <%= f.radio_button :allow_commercial_use, true %>
+      <%= f.label :allow_commercial_use_true, "Yes" %><br />
+      <%= f.radio_button :allow_commercial_use, false %>
+      <%= f.label :allow_commercial_use_false, "No" %><br />
+  </p>
+  <p>Allow modifications of your work?</p>
+  <p>
+      <%= f.radio_button :allow_derivatives, true %>
+      <%= f.label :allow_derivatives_true, "Yes" %><br />
+      <%= f.radio_button :allow_derivatives, 'sa' %>
+      <%= f.label :allow_derivatives_sa, "Share alike" %><br />
+      <%= f.radio_button :allow_derivatives, false %>
+      <%= f.label :allow_derivatives_false, "No" %><br />
+  </p>
+  <hr />
+  <p>
+    <%= f.check_box :accepted_guidelines %>
+    <%= f.label :accepted_guidelines, "I have read the #{link_to 'guidelines for Smidig 2009 lightning talks', :controller => 'pages'}" %>
+  </p>
+  <p>
+    <%= f.submit "Publish proposal" %>
   </p>
 <% end %>
 

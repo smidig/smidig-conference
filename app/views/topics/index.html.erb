@@ -1,13 +1,16 @@
 <% content_for :title, "Listing topics" %>
 
-<table border>
+<table id="topics">
 	<thead>
 <% for index in 0..@topics.size/3 %>
 
 <tr>
-  <th><%= link_to h(@topics[index*3+0].title), @topics[index*3+0] if @topics[index*3+0] %></th>
-  <th><%= link_to h(@topics[index*3+1].title), @topics[index*3+1] if @topics[index*3+1] %></th>
-  <th><%= link_to h(@topics[index*3+2].title), @topics[index*3+2] if @topics[index*3+2] %></th>
+  <th width="33%">
+    <%= link_to h(@topics[index*3+0].title), @topics[index*3+0] if @topics[index*3+0] %></th>
+  <th width="34%">
+    <%= link_to h(@topics[index*3+1].title), @topics[index*3+1] if @topics[index*3+1] %></th>
+  <th width="33%">
+    <%= link_to h(@topics[index*3+2].title), @topics[index*3+2] if @topics[index*3+2] %></th>
 </tr>
 </thead>
 

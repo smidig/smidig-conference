@@ -1,0 +1,9 @@
+<% for attribute in %w(name company last_request_at created_at crypted_password updated_at openid_identifier failed_login_count current_login_ip phone_number password_salt is_admin current_login_at persistence_token login_count billing_address last_login_ip description last_login_at email) %>
+  <p>
+    <b><%= attribute %>:</b>
+    <%= @user.attributes[attribute] %>
+  </p>
+<% end %>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

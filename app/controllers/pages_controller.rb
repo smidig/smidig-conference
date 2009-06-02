@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 
   # Page cache for all views.
   # See http://www.railsenvy.com/2007/2/28/rails-caching-tutorial for details
-  caches_page :index, :arrangoerene, :lyntaler, :openspace
+  #caches_page :index, :arrangoerene, :lyntaler, :openspace
 	
 end
 

@@ -1,4 +1,10 @@
 class UsersController < ApplicationController
+  before_filter :require_admin, :only => [ :index, :show ]  
+  
+  def index
+    @users = User.find(:all)
+  end
+  
   def show
     @user = User.find(params[:id])
 
@@ -10,6 +16,7 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
+    @user.registration = Registration.new
   end
 
   def create
