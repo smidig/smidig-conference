@@ -8,8 +8,8 @@ one:
   paid_at: 2008-10-18
 
 two:
-  user_id: 1
+  user_id: 2
   comments: MyText
-  price: 9.99
+  price: 19.99
   invoiced_at: 2008-10-18
   paid_at: 2008-10-18

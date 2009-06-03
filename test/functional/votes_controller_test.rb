@@ -3,7 +3,7 @@ require 'test_helper'
 class VotesControllerTest < ActionController::TestCase
   
   def setup
-    #login_as('quentin')
+    login_as :quentin
   end
   
   def test_should_get_index
@@ -19,7 +19,7 @@ class VotesControllerTest < ActionController::TestCase
 
   def test_should_create_votes
     assert_difference('Vote.count') do
-      post :create, :vote => { }, :talk_id => '953125641'
+      post :create, :vote => { }, :talk_id => '10'
     end
 
     assert_redirected_to talk_path(assigns(:talk))

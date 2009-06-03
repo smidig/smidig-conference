@@ -9,8 +9,8 @@ one:
   is_a_review: false
 
 two:
-  talk: one
-  user: quentin
+  talk: two
+  user: god
   title: MyString
   description: MyText
   is_displayed: false

@@ -1,8 +1,17 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'test_help'
+require 'authlogic/test_case'
 
-class ActiveSupport::TestCase
+class ActionController::TestCase
+  setup :activate_authlogic
+  # AuthLogic helper...
+  def login_as(u)
+    UserSession.create(users(u))
+  end  
+end
+
+class ActiveSupport::TestCase  
   # Transactional fixtures accelerate your tests by wrapping each test method
   # in a transaction that's rolled back on completion.  This ensures that the
   # test database remains unchanged so your fixtures don't have to be reloaded
@@ -36,3 +45,4 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+

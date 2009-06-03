@@ -1,5 +1,5 @@
 class VotesController < ApplicationController
-  before_filter :require_user
+  before_filter :require_user, :except => [:index]
   
   # GET /votes
   # GET /votes.xml
@@ -42,10 +42,10 @@ class VotesController < ApplicationController
   # POST /votes
   # POST /votes.xml
   def create
-    @talk = Talk.find(params[:talk_id])
+    @talk = Talk.find(params[:talk_id])    
     @vote = @talk.votes.new(params[:vote])
     @vote.user = current_user
-
+    
     respond_to do |format|
       if @vote.save
         flash[:notice] = 'Your vote for this talk is registred.'

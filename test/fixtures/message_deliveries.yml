@@ -6,6 +6,6 @@ one:
   sent_at: 2008-10-18 20:09:09
 
 two:
-  message_id: 1
-  registration_id: 1
+  message_id: 2
+  registration_id: 2
   sent_at: 2008-10-18 20:09:09

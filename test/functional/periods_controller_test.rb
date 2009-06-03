@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class PeriodsControllerTest < ActionController::TestCase
+
+  def setup
+    login_as :quentin
+  end
+
   def test_should_get_index
     get :index
     assert_response :success

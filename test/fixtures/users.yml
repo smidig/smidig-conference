@@ -1,0 +1,17 @@
+quentin:
+  id: 1
+  email: whatever@whatever.com
+  name: Quentin
+  password_salt: <%= salt = Authlogic::Random.hex_token %>
+  crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("quentin" + salt) %>
+  persistence_token: <%= Authlogic::Random.hex_token %>
+
+god:
+  id: 2
+  email: god@paradise.net
+  name: Jahve
+  password_salt: <%= salt = Authlogic::Random.hex_token %>
+  crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("god" + salt) %>
+  persistence_token: <%= Authlogic::Random.hex_token %>
+  is_admin: true
+    
