@@ -3,7 +3,7 @@ require 'test_helper'
 class PeriodsControllerTest < ActionController::TestCase
 
   def setup
-    login_as :quentin
+    login_as :god
   end
 
   def test_should_get_index

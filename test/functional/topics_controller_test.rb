@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class TopicsControllerTest < ActionController::TestCase
+
+
   def test_should_get_index
     get :index
     assert_response :success
@@ -8,11 +10,13 @@ class TopicsControllerTest < ActionController::TestCase
   end
 
   def test_should_get_new
+    login_as :quentin
     get :new
     assert_response :success
   end
 
   def test_should_create_topic
+    login_as :quentin
     assert_difference('Topic.count') do
       post :create, :topic => { }
     end

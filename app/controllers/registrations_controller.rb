@@ -58,7 +58,7 @@ class RegistrationsController < ApplicationController
   # PUT /registrations/1
   # PUT /registrations/1.xml
   def update
-    @registration = current_user.registration.find(params[:id])
+    @registration = current_user.registration
 
     respond_to do |format|
       if @registration.update_attributes(params[:registration])
@@ -75,7 +75,7 @@ class RegistrationsController < ApplicationController
   # DELETE /registrations/1
   # DELETE /registrations/1.xml
   def destroy
-    @registration = current_user.registration.find(params[:id])
+    @registration = current_user.registration
     @registration.destroy
 
     respond_to do |format|

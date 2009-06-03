@@ -6,5 +6,8 @@ class User < ActiveRecord::Base
   has_many :talks, :foreign_key => 'speaker_id'
     
   has_many :comments
+  
+  attr_accessible :name
+  
   accepts_nested_attributes_for :registration
 end

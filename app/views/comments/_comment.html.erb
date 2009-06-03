@@ -1,6 +1,6 @@
 <div id="<%= dom_id(comment) %>" class="comment">
 <h3><%= comment.title %></h3>
-<h4>Posted by <%= link_to h(comment.user.name), comment.user %>, <%= time_ago_in_words comment.created_at %> ago</h4>
+<h4>Posted by <%= h(comment.user) %>, <%= time_ago_in_words comment.created_at %> ago</h4>
 
 <div><%=simple_format comment.description %></div>
 </div>

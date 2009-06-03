@@ -1,12 +1,14 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
+  id: 1
   time_id: 1
   scene_id: 1
   topic_id: 1
   topic_offset: 1
 
 two:
+  id: 2
   time_id: 2
   scene_id: 2
   topic_id: 2
