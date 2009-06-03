@@ -243,3 +243,6 @@ h2#page_arrangoerene_title  {
 dt {
     padding-top: 1em
     }
+
+#sponsors { background: white; width:100%; z-index:100; clear: both; float:left;}
+#sponsors img { margin: 0 20px; line-height: 55px;}
