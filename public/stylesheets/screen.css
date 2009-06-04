@@ -1,4 +1,3 @@
-
 #ielte6 {display: none}
 
 body {
@@ -244,5 +243,5 @@ dt {
     padding-top: 1em
     }
 
-#sponsors { background: white; width:100%; z-index:100; clear: both; float:left;}
-#sponsors img { margin: 0 20px; line-height: 55px;}
+#sponsors { background: white; width:100%; z-index:100; clear: both; float:left; line-height: 40px;}
+#sponsors img { margin: 0 20px; }
