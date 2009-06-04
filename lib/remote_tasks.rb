@@ -28,10 +28,10 @@ class Server
       @environment = environment
     end
     def rake(tasks)
-      tasks = [tasks] if tasks.instance_of? String
-      for task in tasks
-        $stdout.puts "[#{@login}] rake #{task}"
-        self.execute "cd #{@application_path} && rake #{task} RAILS_ENV=#{@environment}"
+      tasks = [tasks.strip] if tasks.instance_of? String
+      tasks.each do |t|
+        $stdout.puts "[#{@login}] rake #{t}"
+        self.execute "cd #{@application_path} && rake #{t} RAILS_ENV=#{@environment}"
       end
     end
     def upload(io, path)
