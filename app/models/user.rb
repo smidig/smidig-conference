@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
     
   has_many :comments
   
-  attr_accessible :name
+  attr_accessible :name, :email, :password, :password_confirmation, :company,
+  	:is_admin
   
   accepts_nested_attributes_for :registration
 end

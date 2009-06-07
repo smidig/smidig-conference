@@ -30,25 +30,13 @@ namespace :db do
       user.login_count = rand(100)
       user.failed_login_count = rand(3)
     end
-    # For some reason, the User model has stopped accepting
-    #  the attributes that are nested from acts_as_authentic.
-    #  (email, password, password_confirmation)
-    # Each of these could be a oneliner if we fixed this.
-    u = User.create :name => "Foo", :company => "Foo Bar Corp"
-    u.email = 'test@test.com'
-    u.password = 'password'
-    u.password_confirmation = 'password'
-    u.save!
-    u = User.create :name => "Bar", :company => "Bar Corp"
-    u.email = 'bar@test.com'
-    u.password = 'password'
-    u.password_confirmation = 'password'
-    u.save!
-    u = User.create :name => "Smidig Admin", :company => "Smidig 2009", :is_admin => true
-    u.email = 'admin@smidig.no'
-    u.password = 'password'
-    u.password_confirmation = 'password'
-    u.save!
+    User.create! :name => "Foo", :company => "Foo Bar Corp", :email => 'test@test.com',
+	    :password => 'password', :password_confirmation => 'password'
+    User.create! :name => "Bar", :company => "Bar Corp", :email => 'bar@test.com',
+	    :password => 'password', :password_confirmation => 'password'
+    User.create! :name => "Smidig Admin", :company => "Smidig 2009", :email => 'admin@smidig.no',
+	    :password => 'password', :password_confirmation => 'password',
+	    :is_admin => true
     
     user_ids = User.find(:all).collect { |u| u.id }
         

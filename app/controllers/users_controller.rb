@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :require_admin, :only => [ :index, :show ]  
   
   def index
-    @users = User.find(:all)
+    @users = User.find(:all, :include => :registration)
   end
   
   def show
