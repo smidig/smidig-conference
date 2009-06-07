@@ -11,7 +11,7 @@ end
 
 namespace :db do
   desc "Erase and fill database"
-  task :populate => :environment do
+  task :populate => :migrate do
     require 'populator'
     require 'faker'
     
@@ -30,15 +30,25 @@ namespace :db do
       user.login_count = rand(100)
       user.failed_login_count = rand(3)
     end
-    User.create! :email => 'test@test.com', :name => "Foo", 
-      :password => "password", :password_confirmation => "password", 
-      :company => "Foo Bar Corp"
-    User.create! :email => 'bar@test.com', :name => "Bar", 
-      :password => "password", :password_confirmation => "password",
-      :company => "Bar Corp"
-    User.create! :email => 'admin@smidig.no', :name => "Smidig Admin",
-      :password => "password", :password_confirmation => "password",
-      :company => "Smidig 2009", :is_admin => true
+    # For some reason, the User model has stopped accepting
+    #  the attributes that are nested from acts_as_authentic.
+    #  (email, password, password_confirmation)
+    # Each of these could be a oneliner if we fixed this.
+    u = User.create :name => "Foo", :company => "Foo Bar Corp"
+    u.email = 'test@test.com'
+    u.password = 'password'
+    u.password_confirmation = 'password'
+    u.save!
+    u = User.create :name => "Bar", :company => "Bar Corp"
+    u.email = 'bar@test.com'
+    u.password = 'password'
+    u.password_confirmation = 'password'
+    u.save!
+    u = User.create :name => "Smidig Admin", :company => "Smidig 2009", :is_admin => true
+    u.email = 'admin@smidig.no'
+    u.password = 'password'
+    u.password_confirmation = 'password'
+    u.save!
     
     user_ids = User.find(:all).collect { |u| u.id }
         
@@ -54,6 +64,8 @@ namespace :db do
         talk.slideshare_url = "20080910-javazone-brodwall-continuous-deployment-1222324585598609-9" if rand > 0.5
         talk.created_at = Populator.value_in_range 3.months.ago..Time.now
         talk.votes_count = 0
+        talk.allow_derivatives = ['', 'nd', 'sa'].rand
+        talk.allow_commercial_use = [true,false].rand
         
         Comment.populate 0..5 do |comment|
           comment.talk_id = talk.id
