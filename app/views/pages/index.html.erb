@@ -3,7 +3,7 @@
 <div id="leftcol">
     <p>Smidig 2009 er et tverrfaglig initiativ for alle som jobber med IT-prosjekter. Konferansen arrangeres av frivillige entusiaster fra forskjellige fagmiljøer med en felles interesse for smidige metoder, og støttes av et bredt spekter av bedrifter. Vi tror at den mest verdifulle erfaringen eksisterer i hodene på de som gjennomfører prosjekter til daglig, enten de kaller måten de jobber smidig eller ikke. Smidig-konferansene er et forum der vi
     setter fokus på denne erfaringen.</p>
-
+	
     <p>Smidig-konferansene følger et unikt format: Begge dager starter med tre timer med korte, erfaringsbaserte foredrag. Vi kaller disse foredragene Lyntaler. Hver lyntale er på ti minutter, så i løpet av hver formiddag får du høre lyntaler fra tolv forskjellige personer. I Open Space etter lunsj stemmer deltakerne selv fram hvilke temaer de ønsker å fordype seg i og jobber så med disse problemstillingene i mindre grupper. Enkle regler sikrer interaktivitet og faglig utbytte for deltakerne.</p>
 
     <p>Dette er tredje gangen smidig-konferansen blir arrangert. Smidig 2007 og Smidig 2008 hadde mange gode foredrag og var en god plass for faglig og profesjonelt påfyll. Du kan se video av alle foredragene både fra <a href="http://smidig2008.confreaks.com">Smidig 2008</a> og <a href="http://smidig2007.confreaks.com">Smidig 2007</a> online.</p>
@@ -11,6 +11,20 @@
 </div>
 
 <div id="rightcol">
+
+	<% link_to new_registration_path do %>
+		<div class="largeButton">
+			Påmelding
+		</div>
+	<% end %>
+	
+	<% unfinished do %>
+		<% link_to new_talk_path do %>
+			<div class="largeButton">
+				Foreslå lyntale
+			</div>
+		<% end %>
+	<% end %>
 
     <div id="practical">
         <p>Konferansen blir avholdt 22.-23. oktober i Oslo Kongressenter. Registreringen for deltagere og foredragsholdere vil åpne snart. Deltageravgiften for tidlig påmelding vil være på kr. 1500.</p>

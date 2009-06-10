@@ -271,6 +271,15 @@ h2#page_arrangoerene_title  {
     padding: .25em 0;
     }
 
+.largeButton {
+	background: #337700;
+	padding: 25px;
+	text-align: center;
+	margin: 5px;
+	color: #FFFFFF;
+	font-size: 2em;
+}
+	
 .attribution {
     display: block;
     text-align: right;
