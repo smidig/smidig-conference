@@ -99,11 +99,14 @@ ul#menu li.menu_current {
 ul#menu li, ul#menu li a {
     height: 0px;
     padding-top: 15px;
+    font-size: 22px;
+    white-space: nowrap;
     }
-    
-li#program_menu a {
-    padding-top: 0px;
-    color: black;
+
+li#program_menu {
+    background-image: url(../images/program.png);
+    overflow: hidden;
+    width: 80px;
     }
 
 li#lyntaler_menu{
