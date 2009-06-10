@@ -15,7 +15,7 @@
         too_long: "er for lang (maksimum er {{count}} karakterer)"
         too_short: "er for kort (minimum er {{count}} karakterer)"
         wrong_length: "er av feil lengde (skal være {{count}} karakterer lang)"
-        taken: "har allerede blitt brukt"
+        taken: "er allerede i bruk"
         not_a_number: "er ikke et tall"
         greater_than: "må være større enn {{count}}"
         greater_than_or_equal_to: "må være større enn eller lik {{count}}"
@@ -23,7 +23,13 @@
         less_than: "må være mindre enn {{count}}"
         less_than_or_equal_to: "må være mindre enn eller lik {{count}}"
         odd: "må være oddetall"
-        even: "må være partall"     
+        even: "må være partall" 
+    #
+    attributes:          
+      user:
+        password_confirmation: "Passordbekreftelse"
+        password: "Passord"
+        email: "e-post"
            
   #
   date:
@@ -102,5 +108,4 @@
     array:
       words_connector: ", "
       two_words_connector: " og "
-      last_word_connector: ", og "  
-        
+      last_word_connector: ", og "
