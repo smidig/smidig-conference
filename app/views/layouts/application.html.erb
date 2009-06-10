@@ -23,6 +23,17 @@
 >
 
 <div id="header">
+  <% unfinished do %>
+    <ul id="user_nav">
+      <% if current_user %>
+        <li id="min_paamelding"><%= link_to "Min påmelding", edit_user_path(:current) %></li>
+        <li id="logg_ut"><%= link_to "logg_ut", logout_path %></li>
+      <% else %>
+        <li id="meld_meg_paa"><%= link_to "Meld meg på!", new_user_path %></li>
+        <li id="logg_inn"><%= link_to "Logg inn", login_path %></li>
+      <% end %>
+    </ul>
+  <% end %>
     <ul id="menu">
         <%- unfinished do -%>
           <%= menu_item "Program", 'program', :controller => 'topics', :action => 'index' %>
@@ -38,17 +49,6 @@
 
 
 <div id="content">
-  <% unfinished do %>
-    <div id="user_nav">
-      <% if current_user %>
-        <%= link_to "Rediger profil", edit_user_path(:current) %> |
-        <%= link_to "Logg ut", logout_path %>
-      <% else %>
-        <%= link_to "Registrer", new_user_path %> |
-        <%= link_to "Logg inn", login_path %>
-      <% end %>
-    </div>
-  <% end %>
 <p style="color: green"><%= flash[:notice] %></p>
 <p style="color: yellow"><%= flash[:warn] %></p>
 <p style="color: red"><%= flash[:error] %></p>
