@@ -176,11 +176,11 @@ li#index_menu {
 
 
 h2.page_title {
-    padding: 19px 0 0 0;
+    padding: 23px 0 0 0;
     height: 0;
     background-repeat: no-repeat;
     float: left;
-    margin: 28px 0px 0px 60px;
+    margin: 25px 0px 0px 60px;
     color: #008800;
     font: arial;
     }
@@ -188,19 +188,27 @@ h2.page_title {
 h2#page_lyntaler_title  {
     overflow: hidden;
     background-image: url("../images/heading-lyntale.png");
-    width: 227px;
+    width: 242px;
     }
+
+h2#page_program_title  {
+    overflow: hidden;
+    background-image: url("../images/heading-program.png");
+    width: 144px;
+    }
+
+
 
 h2#page_openspace_title  {
     overflow: hidden;
     background-image: url("../images/heading-open_space.png");
-    width: 260px;
+    width: 286px;
     }
 
 h2#page_arrangoerene_title  {
     overflow: hidden;
     background-image: url("../images/heading-arrangoerene.png");
-    width: 397px;
+    width: 162px;
     }
 
 #hjem h2#page_index_title  {
@@ -215,7 +223,7 @@ h2#page_arrangoerene_title  {
     }
 
 #content {
-    padding: 15px 60px 15px 90px;
+    padding: 15px 60px;
     }
 
 #rightcol {
@@ -279,7 +287,7 @@ h2#page_arrangoerene_title  {
 	color: #FFFFFF;
 	font-size: 2em;
 }
-	
+
 .attribution {
     display: block;
     text-align: right;
