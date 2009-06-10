@@ -1,0 +1,17 @@
+development:
+  paypal_email: experi_1243951372_biz@iterate.no
+  paypal_url: "https://www.sandbox.paypal.com/cgi-bin/webscr"
+
+test:
+  <<: *development
+
+experimental:
+  <<: *development
+
+
+production:
+  paypal_email: experi_1243951372_biz@iterate.no
+  paypal_url: "https://www.sandbox.paypal.com/cgi-bin/webscr"
+
+staging:
+  <<: *production

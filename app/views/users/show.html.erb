@@ -1,9 +1,42 @@
-<% for attribute in %w(name company last_request_at created_at crypted_password updated_at openid_identifier failed_login_count current_login_ip phone_number password_salt is_admin current_login_at persistence_token login_count billing_address last_login_ip description last_login_at email) %>
-  <p>
-    <b><%= attribute %>:</b>
-    <%= @user.attributes[attribute] %>
-  </p>
+<% if @paid %>
+
+Vi har mottatt bekreftelse fra PayPal, og dermed registrert din betaling i systemet. Vi sees på Smidig 2009!
+
+<% else %>
+
+<p>Hei <%=h @user.name %>, og takk for påmeldingen til Smidig 2009. Vi venter på bekreftelse fra PayPal, dette tar vanligvis ikke mer enn noen sekunder. Om du laster denne siden på nytt kan betalingen allerede ha blitt registrert.</p>
+
+	<% if @user.registration != nil %>
+<p>Dersom du ikke fikk gjennomført betalingen din første gang, kan du følge denne <%=link_to "linken til PayPay", @user.registration.payment_link %> for å prøve på nytt.</p>
+	<% end %>
 <% end %>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+
+Vi har registrert følgende informasjon om deg:
+
+<ul>
+  <li><strong>Navn:</strong> <%= @user.name %></li>
+  <li><strong>Firma:</strong> <%= @user.company %></li>
+  <li><strong>E-post:</strong> <%= @user.email %></li>
+  <li><strong>Telefonnummer:</strong> <%= @user.phone_number %></li>
+</ul>
+
+<%= link_to "Endre din registrering", edit_user_path(@user) %>
+
+
+
+<% if @user.registration %>
+  <h2>Betalingstatus</h2>
+  <ul>
+  	<li><%=h @user.registration.description %></li>
+  	<li><strong>Pris:</strong> <%=h @user.registration.price %></li>
+  	<li><strong>Betalt:</strong> <%=h @user.registration.paid? ? "ja" : "nei" %>
+  	  <% unless @user.registration.paid? %>
+  	  (<%= link_to "se status på PayPal", @user.registration.payment_link %>)
+  	  <% end %>
+  	</li>
+    <% if @payment_notification != nil %>
+    	<li><strong>Transaksjonsid:</strong> <%=h @payment_notification.transaction_id %> Status: <%=h @payment_notification.status %> Betalt: <%=h @payment_notification.currency %> <%=h @payment_notification.paid_amount %></li>
+  	<% end %>
+  </ul>
+<% end %>

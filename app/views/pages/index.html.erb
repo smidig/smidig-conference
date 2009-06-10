@@ -12,12 +12,14 @@
 
 <div id="rightcol">
 
-	<% link_to new_registration_path do %>
-		<div class="largeButton">
-			Påmelding
-		</div>
-	<% end %>
-	
+  <% if not current_user %>
+  	<% link_to new_user_path do %>
+  		<div class="largeButton">
+  			Påmelding
+  		</div>
+  	<% end %>
+  <% end %>
+  	
 	<% unfinished do %>
 		<% link_to new_talk_path do %>
 			<div class="largeButton">

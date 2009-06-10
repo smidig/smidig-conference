@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   map.signup 'signup', :controller => 'users', :action => 'new'
 
   map.resources :user_sessions
-  map.resources :users
+  map.resources :users, :collection => { :current => :get, :edit_current => :get, :update_current => :put }
   map.resources :periods
   map.resources :votes
   map.resources :comments

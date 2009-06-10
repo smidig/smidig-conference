@@ -1,5 +1,5 @@
 class TalksController < ApplicationController
-  before_filter :require_user, :except => [ :index, :show ]
+  before_filter :require_user, :except => [ :index, :show, :new, :create ]
   
   # GET /talks
   # GET /talks.xml

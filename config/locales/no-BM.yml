@@ -27,11 +27,26 @@
     # Her legges attributter for Model < ActiveRecord::Base
     attributes:          
       user:
+        name: Navn
         password_confirmation: "Passordbekreftelse"
         password: "Passord"
         email: "e-post"
-           
-  #
+        phone_number: "Telefonnummer"
+        
+  authlogic:
+    error_messages:
+      login_blank: må oppgis
+      login_not_found: finnes ikke
+      login_invalid: kan kun innholde bokstaver, tall, mellomrom og tegnene .-@_
+      email_invalid: ser ikke ut som en emailadresse
+      password_blank: kan ikke være blank
+      password_invalid: er ugyldig
+      not_active: Din konto er ikke aktiv
+      not_confirmed: Din konto er ikke bekreftet
+      not_approved: Din konto har ikke blitt godkjent
+      blank_record: Du kan ikke logge inn med en blank record
+      new_record: Du kan ikke logge inn med en ny record
+
   date:
     formats:
       default: "%d.%m.%Y"
