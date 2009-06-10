@@ -1,11 +1,11 @@
 <% form_for @user do |f| %>
-  <%= f.error_messages %>
-  <!--<p>
-    <%# f.label :openid_identifier %><br />
-    <%# f.text_field :openid_identifier %>
-  </p>-->
   <h1>Påmelding til Smidig 2009</h1>
-  <p>Påmeldingen til Smidig 2009 har nå åpnet. De første 150 billettene selges til Early Bird-pris på kun til kroner 1000! Easrly Bird er for tiden <i>kun</i> tilgjengelig ved betaling med kredittkort. Nytt av året er at middag kjøpes separat.
+  
+  <p>Påmeldingen til Smidig 2009 har nå åpnet. De første 150 billettene selges til Early Bird-pris på kun til kroner 1000! Early Bird er for tiden <i>kun</i> tilgjengelig ved betaling med kredittkort. Nytt av året er at middag kjøpes separat.</p>
+
+  <%= f.error_messages %>
+
+  <div>
   <p>
     <%= f.label :name, "Navn"%><br />
     <%= f.text_field :name %>
@@ -39,4 +39,5 @@
       "Jeg vil ha Early Bird, til kroner 1000 og gleder meg til middagen til kroner 500, totalt kroner 1500!" %>
   </p>
   <p><%= f.submit "Til betaling >>>" %></p>
+  </div>
 <% end %>
