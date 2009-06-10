@@ -289,7 +289,7 @@ dt {
     padding-top: 1em
     }
 
-#sponsors { background: white; width:100%; z-index:100; clear: both; float:left; line-height: 40px;}
+#sponsors { background: white; margin-left:5em; margin-right:5em; z-index:100; clear: both; float:left; line-height: 40px; text-align: center;}
 #sponsors img { margin: 0 20px; }
 
 
