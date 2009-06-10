@@ -1,4 +1,4 @@
-<%= feed_link "Talks in #{@topic.title}", topic_talks_path(@topic, :format => :rss) %> 
+<%= feed_link "Lyntaler i #{@topic.title}", topic_talks_path(@topic, :format => :rss) %> 
 
 
 <h2><%=h @topic.title %></h2>
@@ -7,12 +7,12 @@
   <%=simple_format @topic.description %>
 </div>
 
-<h2>Suggested talks</h2>
+<h2>Foreslåtte lyntaler</h2>
 
 <%= render :partial => @topic.talks %>
 
-<h3><%= link_to "Submit your talk", new_topic_talk_path(@topic) %></h3>
+<h3><%= link_to "Foreslå en lyntalek", new_topic_talk_path(@topic) %></h3>
 
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
+<%= link_to 'Rediger', edit_topic_path(@topic) %> |
+<%= link_to 'Tilbake', topics_path %>
