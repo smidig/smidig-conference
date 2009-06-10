@@ -316,13 +316,13 @@ form span {
     display: block;
     padding-bottom: 2px;
     }
-/*
-form div {
+
+form#new_user_session div {
     display: inline;
     margin-right: 15px;
     float: left;
     }
-*/
+
 input {
 
     }
