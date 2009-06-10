@@ -33,23 +33,23 @@ Vi har mottatt bekreftelse fra PayPal, og dermed registrert din betaling i syste
   <%= f.error_messages %>
 
   <p>                                                   
-    <%= f.label :company %><br />
+    <%= f.label :company, "Firma" %><br />
     <%= f.text_field :company %>
   </p>
   <p>
-    <%= f.label :email %><br />
+    <%= f.label :email, "E-post" %><br />
     <%= f.text_field :email %>
   </p>
   <p>
-    <%= f.label :phone_number %><br />
+    <%= f.label :phone_number, "Telefon" %><br />
     <%= f.text_field :phone_number %>
   </p>
   <p>
-    <%= f.label :password %><br />
+    <%= f.label :password, "Passord" %><br />
     <%= f.password_field :password %>
   </p>
   <p>
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation, "Bekreft passord" %><br />
     <%= f.password_field :password_confirmation %>
   </p>
   <p><%= f.submit "Oppdater detaljer" %></p>
