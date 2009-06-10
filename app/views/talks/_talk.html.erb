@@ -3,6 +3,8 @@
   <%= link_to image_tag("icon_slides.gif", :border=>0), "http://slideshare.net/#{talk.slideshare_url}" if talk.slideshare_url %>
   <%= link_to(image_tag("icon_video.gif", :border=>0),  "http://smidig2007.confreaks.com/#{talk.video_url}.html") if talk.video_url %>
   <div class="speaker"><%= render :partial => talk.speaker %></div>
-  <div class="votes"><%= antall_stemmer(talk.votes_count) %></div>
-  <div class="submitted_time">Foreslått <%= time_ago_in_words(talk.created_at) %> siden</div>
+  <% unfinished do %>
+    <div class="votes"><%= antall_stemmer(talk.votes_count) %></div>
+  <% end %>
+  <div class="submitted_time">Foreslått for <%= time_ago_in_words(talk.created_at) %> siden</div>
 </div>

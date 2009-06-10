@@ -32,6 +32,8 @@
         password: "Passord"
         email: "e-post"
         phone_number: "Telefonnummer"
+      talk:
+        accepted_guidelines: "Retningslinjer for lyntaler"
         
   authlogic:
     error_messages:

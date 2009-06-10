@@ -28,6 +28,7 @@ class TalksController < ApplicationController
   # GET /talks/new.xml
   def new
     @talk = Talk.new
+    @talk.topic = Topic.find(params[:topic_id]) if params[:topic_id]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,7 +46,6 @@ class TalksController < ApplicationController
   def create
     @talk = Talk.new(params[:talk])
     @talk.speaker = current_user
-    @talk.topic = Topic.find(params[:topic_id])
 
     respond_to do |format|
       if @talk.save

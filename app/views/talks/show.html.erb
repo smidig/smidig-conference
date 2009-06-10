@@ -2,11 +2,14 @@
 
 <h3><%= link_to "&gt; #{@talk.topic.title}", @talk.topic  %></h3>
 
-<h2><%=h @talk.title %> (<span class="topic"><%=h @talk.topic_name %></span>, <%= @talk.votes_count %> votes)</h2>
+<h2><%=h @talk.title %> 
+  (<span class="topic"><%=h @talk.topic_name %></span><% unfinished do %>, <%= antall_stemmer(@talk.votes_count) %><% end %>)</h2>
 
 <h3><%= render :partial => @talk.speaker %></h3>
 
+<% unfinished do %>
 <%= render :partial => "votes" %>
+<% end %>
 
 <div class="description">
   <%=simple_format @talk.description %>  

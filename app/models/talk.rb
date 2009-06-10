@@ -6,6 +6,8 @@ class Talk < ActiveRecord::Base
   
   validates_acceptance_of :accepted_guidelines
   
+  accepts_nested_attributes_for :speaker, :allow_destroy => false
+
   def topic_name
     topic.title
   end

@@ -18,3 +18,11 @@ test:
   adapter: sqlite3
   database: db/test.sqlite3
   timeout: 5000
+
+# Warning: This will be overridden by local configuration in
+# the actual production environment. Use to test production
+# settings locally
+production:
+  adapter: sqlite3
+  database: db/production.sqlite3
+  timeout: 5000

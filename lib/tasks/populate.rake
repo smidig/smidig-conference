@@ -30,11 +30,11 @@ namespace :db do
       user.login_count = rand(100)
       user.failed_login_count = rand(3)
     end
-    User.create! :name => "Foo", :company => "Foo Bar Corp", :email => 'test@test.com',
+    User.create! :name => "Foo", :company => "Foo Bar Corp", :email => 'test@test.com', :phone_number => "98057660",
 	    :password => 'password', :password_confirmation => 'password'
-    User.create! :name => "Bar", :company => "Bar Corp", :email => 'bar@test.com',
+    User.create! :name => "Bar", :company => "Bar Corp", :email => 'bar@test.com', :phone_number => "98057660",
 	    :password => 'password', :password_confirmation => 'password'
-    User.create! :name => "Smidig Admin", :company => "Smidig 2009", :email => 'admin@smidig.no',
+    User.create! :name => "Smidig Admin", :company => "Smidig 2009", :email => 'admin@smidig.no', :phone_number => "98057660",
 	    :password => 'password', :password_confirmation => 'password',
 	    :is_admin => true
     
