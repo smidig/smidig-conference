@@ -105,6 +105,7 @@ ul#menu {
     margin: 0px 60px 5px 0px;
     float: right;
     clear: both;
+    white-space: nowrap;
     }
 
 ul#menu li {
@@ -281,3 +282,49 @@ dt {
 
 #sponsors { background: white; width:100%; z-index:100; clear: both; float:left; line-height: 40px;}
 #sponsors img { margin: 0 20px; }
+
+
+
+
+form {
+    font-family: verdana, sans-serif;
+    font-size: .8em;
+    float: left;
+    clear: both;
+    position: relative;
+    margin: 30px 0px;
+    }
+
+form span {
+    display: block;
+    padding-bottom: 2px;
+    }
+
+form div {
+    display: inline;
+    margin-right: 15px;
+    float: left;
+    }
+
+input {
+
+    }
+
+
+#user_session_submit {
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+}
+
+
+#user_session_email {
+width: 10em;
+}
+
+
+#user_session_password {
+width: 7em;
+
+}
