@@ -24,7 +24,7 @@
         less_than_or_equal_to: "må være mindre enn eller lik {{count}}"
         odd: "må være oddetall"
         even: "må være partall" 
-    #
+    # Her legges attributter for Model < ActiveRecord::Base
     attributes:          
       user:
         password_confirmation: "Passordbekreftelse"
@@ -57,6 +57,7 @@
   datetime:
     distance_in_words:
       half_a_minute: 'et halvt minutt'
+      ago: 'siden'
       less_than_x_seconds:
         one: 'mindre enn 1 sekund'
         other: 'mindre enn {{count}} sekunder'
