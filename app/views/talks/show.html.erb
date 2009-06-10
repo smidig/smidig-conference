@@ -1,5 +1,7 @@
 <%= feed_link "Comments for #{@talk.title}", talk_comments_path(@talk, :format => :rss) %>
 
+<h3><%= link_to "&gt; #{@talk.topic.title}", @talk.topic  %></h3>
+
 <h2><%=h @talk.title %> (<span class="topic"><%=h @talk.topic_name %></span>, <%= @talk.votes_count %> votes)</h2>
 
 <h3><%= render :partial => @talk.speaker %></h3>
