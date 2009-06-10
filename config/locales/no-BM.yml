@@ -1,0 +1,106 @@
+"no-BM":        
+  activerecord:
+    errors:
+      template:
+        header: "Kunne ikke lagre {{model}} på grunn av {{count}} feil."
+        body: "Det oppstod problemer i følgende felt:"
+      messages:
+        inclusion: "er ikke inkludert i listen"
+        exclusion: "er reservert"
+        invalid: "er ikke gyldig"
+        confirmation: "passer ikke bekreftelsen"
+        accepted: "må være akseptert"
+        empty: "kan ikke være tom"
+        blank: "kan ikke være blank"
+        too_long: "er for lang (maksimum er {{count}} karakterer)"
+        too_short: "er for kort (minimum er {{count}} karakterer)"
+        wrong_length: "er av feil lengde (skal være {{count}} karakterer lang)"
+        taken: "har allerede blitt brukt"
+        not_a_number: "er ikke et tall"
+        greater_than: "må være større enn {{count}}"
+        greater_than_or_equal_to: "må være større enn eller lik {{count}}"
+        equal_to: "må være lik {{count}}"
+        less_than: "må være mindre enn {{count}}"
+        less_than_or_equal_to: "må være mindre enn eller lik {{count}}"
+        odd: "må være oddetall"
+        even: "må være partall"     
+           
+  #
+  date:
+    formats:
+      default: "%d.%m.%Y"
+      short: "%e. %b"
+      long: "%e. %B %Y"
+      only_day: "%e"
+    day_names: [Søndag, Mandag, Tirsdag, Onsdag, Torsdag, Fredag, Lørdag]
+    abbr_day_names: [Søn, Man, Tir, Ons, Tor, Fre, Lør]
+    month_names: [~, Januar, Februar, Mars, April, Mai, Juni, Juli, August, September, Oktober, November, Desember]
+    abbr_month_names: [~, jan, feb, mar, apr, mai, jun, jul, aug, sep, okt, nov, des]
+    order: [ :day, :month, :year ]
+
+  time:
+    formats:
+      default: "%A, %e. %B %Y, %H:%M"
+      time: "%H:%M"
+      short: "%e. %B, %H:%M"
+      long: "%A, %e. %B %Y, %H:%M"
+      only_second: "%S"
+    am: "formiddag"
+    pm: "ettermiddag"
+
+  datetime:
+    distance_in_words:
+      half_a_minute: 'et halvt minutt'
+      less_than_x_seconds:
+        one: 'mindre enn 1 sekund'
+        other: 'mindre enn {{count}} sekunder'
+      x_seconds:
+        one: '1 sekund'
+        other: '{{count}} sekunder'
+      less_than_x_minutes:
+        one: 'mindre enn 1 minutt'
+        other: 'mindre enn {{count}} minutter'
+      x_minutes:
+        one: '1 minutt'
+        other: '{{count}} minutter'
+      about_x_hours:
+        one: 'rundt 1 time'
+        other: 'rundt {{count}} timer'
+      x_days:
+        one: '1 dag'
+        other: '{{count}} dager'
+      about_x_months:
+        one: 'rundt 1 måned'
+        other: '{{count}} måneder'
+      x_months:
+        one: '1 måned'
+        other: '{{count}} måneder'
+      about_x_years:
+        one: 'rundt 1 år'
+        other: 'rundt {{count}} år'
+      over_x_years:
+        one: 'over 1 år'
+        other: 'over {{count}} år'
+
+  number:
+    format:
+      separator: ","
+      delimiter: "."
+      precision: 2
+
+    currency:
+      format:
+        format: "%n %u"
+        unit: "kr"
+
+    precision:
+      format:
+        delimiter: ""
+        precision: 4
+
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " og "
+      last_word_connector: ", og "  
+        
