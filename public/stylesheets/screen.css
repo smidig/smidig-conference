@@ -6,7 +6,7 @@ body {
     font-family: Georgia, serif;
     margin: 0;
     padding: 0;
-    min-width: 660px;
+    min-width: 713px;
     font-size: .85em
     }
 
@@ -36,7 +36,7 @@ img {
 p {line-height: 1.5em;}
 
 #header {
-    margin-top: 60px;
+    margin-top: 100px;
     background-repeat: no-repeat;
     background-image: url("../images/logo-subpage.png");
     background-position: top right;
@@ -56,13 +56,21 @@ p {line-height: 1.5em;}
 
 h1#site_title {
     height: 0px;
-    width: 630px;
+    width: 660px;
     overflow: hidden;
-    padding: 47px 0 0 0;
+    padding: 53px 0 0 0;
     margin: 0;
     float: right;
     clear: right;
     }
+
+#site_title a {
+    height: 0px;
+    padding: 53px 0 0 0;
+    font-size: 92px;
+    white-space: nowrap;
+
+}
 
 #hjem h1#site_title {
     float: left;
@@ -71,7 +79,7 @@ h1#site_title {
 
 ul#menu {
     float: right;
-    margin: -13px 30px 0 30px;
+    margin: -17px 30px 0 30px;
     clear: left;
     }
 
@@ -101,6 +109,7 @@ ul#menu li, ul#menu li a {
     padding-top: 15px;
     font-size: 22px;
     white-space: nowrap;
+    width: auto;
     }
 
 li#program_menu {

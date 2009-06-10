@@ -31,9 +31,8 @@
         <%= page_menu_item "Open Space", 'openspace' %>
         <%= page_menu_item "Arrangørene", 'arrangoerene' %>
         <li id="forum_menu" class="menu_link" title="Forum"><a href="http://forum.smidig.no">Forum</a></li>
-        <%= page_menu_item "Hjem", 'index' %>
     </ul>
-    <h1 id="site_title" title="Smidig 2009">Smidig 2009</h1>
+    <h1 id="site_title" title="Smidig 2009 hjem"><span><%= link_to_unless_current("Smidig 2009", { :controller => 'pages', :action => 'index' }) %></span></h1>
     <h2 class="page_title" id="page_<%= controller.action_name %>_title"><%= yield :title %></h2>
 </div>
 
