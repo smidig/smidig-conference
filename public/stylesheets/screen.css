@@ -185,6 +185,12 @@ h2.page_title {
     font: arial;
     }
 
+h2#page_index_title  {
+        overflow: hidden;
+        background-image: url("../images/heading-program.png");
+        width: 242px;
+        }
+
 h2#page_lyntaler_title  {
     overflow: hidden;
     background-image: url("../images/heading-lyntale.png");
