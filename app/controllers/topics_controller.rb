@@ -48,7 +48,7 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.save
-        flash[:notice] = 'Topic was successfully created.'
+        flash[:notice] = 'Opprettet emne.'
         format.html { redirect_to(@topic) }
         format.xml  { render :xml => @topic, :status => :created, :location => @topic }
       else
@@ -65,7 +65,7 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.update_attributes(params[:topic])
-        flash[:notice] = 'Topic was successfully updated.'
+        flash[:notice] = 'Oppdaterte emne.'
         format.html { redirect_to(@topic) }
         format.xml  { head :ok }
       else
