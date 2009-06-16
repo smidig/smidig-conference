@@ -8,7 +8,7 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
-      flash[:notice] = "Successfully logged in."
+      flash[:notice] = "Logget inn."
       redirect_back_or_default root_url
     else
       flash[:error] = "Login incorrect."
@@ -19,7 +19,7 @@ class UserSessionsController < ApplicationController
   def destroy
     @user_session = UserSession.find
     @user_session.destroy
-    flash[:notice] = "Successfully logged out."
+    flash[:notice] = "Logget ut."    
     redirect_back_or_default root_url
   end
   

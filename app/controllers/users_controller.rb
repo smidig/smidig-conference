@@ -96,17 +96,19 @@ class UsersController < ApplicationController
   
   def update_current
     @user = current_user
-    if @user.update_attributes(params[:user])
-      flash[:notice] = "Successfully updated profile."
-      redirect_to root_url
-    else
-      render :action => 'edit'
-    end
+    update_user
   end
+  
   def update
     @user = User.find(params[:id])
+    update_user
+  end
+  
+protected
+  
+  def update_user
     if @user.update_attributes(params[:user])
-      flash[:notice] = "Successfully updated profile."
+      flash[:notice] = "Oppdaterte profil."
       redirect_to root_url
     else
       render :action => 'edit'
