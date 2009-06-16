@@ -48,11 +48,11 @@ class VotesController < ApplicationController
     
     respond_to do |format|
       if @vote.save
-        flash[:notice] = 'Your vote for this talk is registred.'
+        flash[:notice] = 'Din stemme for denne talen er registrert.'
         format.html { redirect_to(@talk) }
         format.xml  { render :xml => @vote, :status => :created, :location => @vote }
       else
-        flash[:error] = 'You can only vote for a talk once'
+        flash[:error] = 'Du kan kun stemme en gang for hver tale.'
         format.html { redirect_to(@talk) }
         format.xml  { render :xml => @vote.errors, :status => :unprocessable_entity }
       end
@@ -66,7 +66,7 @@ class VotesController < ApplicationController
 
     respond_to do |format|
       if @vote.update_attributes(params[:vote])
-        flash[:notice] = 'Vote was successfully updated.'
+        flash[:notice] = 'Stemmen din ble oppdatert.'
         format.html { redirect_to(@vote) }
         format.xml  { head :ok }
       else
