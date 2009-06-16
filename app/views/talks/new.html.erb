@@ -7,7 +7,7 @@
   <%= f.error_messages %>
   
   <% if @talk.speaker.new_record? %>
-    <h3>Registrer deg som bruker</h3>
+    <h3>Registrer deg som bruker (eller <%= link_to 'Logg inn', :controller => :user_sessions, :action => :new, :save => true %>)</h3>
     
     <% f.fields_for :speaker do |user_form| %>
       <p>
