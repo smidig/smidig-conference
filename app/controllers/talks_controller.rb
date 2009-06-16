@@ -51,7 +51,7 @@ class TalksController < ApplicationController
     @talk.speaker ||= current_user
     respond_to do |format|
       if @talk.speaker && @talk.save
-        flash[:notice] = 'Talk was successfully created.'
+        flash[:notice] = 'Lyntale opprettet.'
         format.html { redirect_to(@talk) }
         format.xml  { render :xml => @talk, :status => :created, :location => @talk }
       else
@@ -68,7 +68,7 @@ class TalksController < ApplicationController
     
     respond_to do |format|
       if @talk.update_attributes(params[:talk])
-        flash[:notice] = 'Talk was successfully updated.'
+        flash[:notice] = 'Lyntale oppdatert.'
         format.html { redirect_to(@talk) }
         format.xml  { head :ok }
       else
@@ -93,14 +93,14 @@ class TalksController < ApplicationController
 protected
   def login_required
     return unless current_user
-    flash[:error] = "Please log in to add your talk"
+    flash[:error] = "Vennligst logg inn"
     access_denied
   end
 
   def is_admin_or_owner
     talk = Talk.find(params[:id])
     unless current_user.is_admin? || talk.speaker == current_user
-      flash[:error] = "You must be admin or owner to access this page."
+      flash[:error] = "Du må være administrator eller eier for å endre siden."
       access_denied
     end
   end  
