@@ -10,18 +10,18 @@ class ApplicationController < ActionController::Base
 
   filter_parameter_logging :password, :password_confirmation
 
-  helper_method :current_user_session, :current_user
+  helper_method :current_user_session, :current_user, :access_denied
 
   private
-
-  def current_user_session
-    return @current_user_session if defined?(@current_user_session)
-    @current_user_session = UserSession.find
-  end
-
+  
   def current_user
     return @current_user if defined?(@current_user)
     @current_user = current_user_session && current_user_session.record
+  end
+  
+  def current_user_session
+    return @current_user_session if defined?(@current_user_session)
+    @current_user_session = UserSession.find
   end
 
   def require_user
@@ -54,6 +54,7 @@ class ApplicationController < ActionController::Base
   def store_location
     session[:return_to] = request.request_uri
   end
+  
   def store_referer
     session[:return_to] = request.env["HTTP_REFERER"]
   end
@@ -61,6 +62,22 @@ class ApplicationController < ActionController::Base
   def redirect_back_or_default(default)
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
+  end
+
+  def access_denied
+    respond_to do |format|
+      format.html do
+        if current_user
+          render_optional_error_file(403)
+          return false
+        else
+          redirect_to new_user_session_path
+        end
+      end
+      format.any(:json, :xml) do
+        request_http_basic_authentication 'Web Password'
+      end
+    end
   end
 
 end

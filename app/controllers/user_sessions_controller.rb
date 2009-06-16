@@ -1,4 +1,5 @@
 class UserSessionsController < ApplicationController
+  before_filter :require_user, :only => [:restricted]
   def new
     store_referer if params[:save]
     @user_session = UserSession.new
@@ -20,5 +21,9 @@ class UserSessionsController < ApplicationController
     @user_session.destroy
     flash[:notice] = "Successfully logged out."
     redirect_back_or_default root_url
+  end
+  
+  def restricted
+    render :text => "OK"
   end
 end

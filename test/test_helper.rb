@@ -6,9 +6,13 @@ require 'authlogic/test_case'
 class ActionController::TestCase
   setup :activate_authlogic
   # AuthLogic helper...
-  def login_as(u)
+
+  def login_as(u)    
     UserSession.create(users(u))
   end  
+  def logout
+    UserSession.find.destroy if UserSession.find
+  end
 end
 
 class ActiveSupport::TestCase  
