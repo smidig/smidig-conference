@@ -1,5 +1,6 @@
 class TalksController < ApplicationController
   before_filter :require_user, :except => [ :index, :show, :new, :create ]
+  before_filter :is_admin_or_owner, :only => [ :update, :destroy ]
   
   # GET /talks
   # GET /talks.xml
@@ -62,8 +63,8 @@ class TalksController < ApplicationController
   # PUT /talks/1
   # PUT /talks/1.xml
   def update
-    @talk = current_user.talks.find(params[:id])
-
+    @talk = current_user.is_admin ? Talk.find(params[:id]) : current_user.talks.find(params[:id])
+    
     respond_to do |format|
       if @talk.update_attributes(params[:talk])
         flash[:notice] = 'Talk was successfully updated.'
@@ -79,7 +80,7 @@ class TalksController < ApplicationController
   # DELETE /talks/1
   # DELETE /talks/1.xml
   def destroy
-    @talk = current_user.talks.find(params[:id])
+    @talk = current_user.is_admin ? Talk.find(params[:id]) : current_user.talks.find(params[:id])
     @talk.destroy
 
     respond_to do |format|
@@ -94,5 +95,13 @@ protected
     flash[:error] = "Please log in to add your talk"
     access_denied
   end
+
+  def is_admin_or_owner
+    talk = Talk.find(params[:id])
+    unless current_user.is_admin? || talk.speaker == current_user
+      flash[:error] = "You must be admin or owner to access this page."
+      access_denied
+    end
+  end  
   
 end
