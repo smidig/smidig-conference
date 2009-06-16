@@ -1,0 +1,18 @@
+development:
+  :address: localhost
+  :port: 25
+  :authentication: plain
+  :user_name: 
+  :password: 
+production:
+  :address: smtp.dreamhost.com
+  :port: 25
+  :authentication: plain
+  :user_name: smidig_no
+  :password: pass
+production:
+  :address: smtp.dreamhost.com
+  :port: 25
+  :authentication: plain
+  :user_name: smidig_no
+  :password: pass
