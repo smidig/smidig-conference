@@ -15,3 +15,18 @@ god:
   persistence_token: <%= Authlogic::Random.hex_token %>
   is_admin: true
     
+test:
+  id: 3
+  email: test@whatever.com
+  name: Test
+  password_salt: <%= salt = Authlogic::Random.hex_token %>
+  crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("test") %>
+  persistence_token: <%= Authlogic::Random.hex_token %>
+
+other:
+  id: 4
+  email: other@whatever.com
+  name: Other Guy
+  password_salt: <%= salt = Authlogic::Random.hex_token %>
+  crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("test") %>
+  persistence_token: <%= Authlogic::Random.hex_token %>
