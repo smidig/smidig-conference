@@ -45,6 +45,10 @@ class TalksControllerTest < ActionController::TestCase
     put :update, :id => talks(:one).id, :talk => { }
     assert_redirected_to talk_path(assigns(:talk))
   end
-    
+  
+  def test_anybody_can_create_talks
+    get :new
+    assert_response :success    
+  end
       
 end

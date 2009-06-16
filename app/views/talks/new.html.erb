@@ -1,41 +1,39 @@
 <%= content_for :title, "Foreslå lyntale" %>
 
-<p><em>Text here about how all this can be changed until the final acceptance date</em></p>
+<p><em>TODO: Skriv innledning (i templatet)</em></p>
 
 
 <% form_for @talk do |f| %>
   <%= f.error_messages %>
   
-  <% unfinished do %>
-    <% unless current_user %>
-      <h3>Registrer deg som bruker</h3>
-      
-      <% f.fields_for :speaker do |user_form| %>
-        <p>
-          <%= user_form.label :name, "Navn"%><br />
-          <%= user_form.text_field :name %>
-        </p>
-        <p>                                                   
-          <%= user_form.label :company, "Firma"%><br />
-          <%= user_form.text_field :company %>
-        </p>
-        <p>
-          <%= user_form.label :email, "E-post"%><br />
-          <%= user_form.text_field :email %>
-        </p>
-        <p>
-          <%= user_form.label :phone_number, "Telefon"%><br />
-          <%= user_form.text_field :phone_number %>
-        </p>
-        <p>
-          <%= user_form.label :password, "Passord"%><br />
-          <%= user_form.password_field :password %>
-        </p>
-        <p>
-          <%= user_form.label :password_confirmation, "Bekreft passord"%><br />
-          <%= user_form.password_field :password_confirmation %>
-        </p>
-      <% end %>
+  <% if @talk.speaker.new_record? %>
+    <h3>Registrer deg som bruker</h3>
+    
+    <% f.fields_for :speaker do |user_form| %>
+      <p>
+        <%= user_form.label :name, "Navn"%><br />
+        <%= user_form.text_field :name %>
+      </p>
+      <p>                                                   
+        <%= user_form.label :company, "Firma"%><br />
+        <%= user_form.text_field :company %>
+      </p>
+      <p>
+        <%= user_form.label :email, "E-post"%><br />
+        <%= user_form.text_field :email %>
+      </p>
+      <p>
+        <%= user_form.label :phone_number, "Telefon"%><br />
+        <%= user_form.text_field :phone_number %>
+      </p>
+      <p>
+        <%= user_form.label :password, "Passord"%><br />
+        <%= user_form.password_field :password %>
+      </p>
+      <p>
+        <%= user_form.label :password_confirmation, "Bekreft passord"%><br />
+        <%= user_form.password_field :password_confirmation %>
+      </p>
     <% end %>
   <% end %>
   
@@ -60,33 +58,33 @@
     <%= f.text_area :description, :rows => 10 %>
   </p>
   <p>
-    <%= f.label :audience_level, "The audience should..." %><br />
-    <%= f.select :audience_level,  [['... have heard about agile', 'novice'], ['... have tried agile', 'intermediate'], ['... be using agile', 'expert']] %>
+    <%= f.label :audience_level, "Publikummet..." %><br />
+    <%= f.select :audience_level,  [['... har hørt om smidig', 'novice'], ['... har benyttet smidig', 'intermediate'], ['... er smidige', 'expert']] %>
   </p>
   <hr />
-  <p>Choose a Creative Commons License <%= image_tag "help.png" %>
-  <p>Allow commercial use of your work?</p>
+  <p>Velg en Creative Commons License <%= image_tag "help.png" %>
+  <p>Tillater du kommersiell bruk av ditt bidrag?</p>
   <p>
       <%= f.radio_button :allow_commercial_use, true, :checked => true %>
-      <%= f.label :allow_commercial_use_true, "Yes" %><br />
+      <%= f.label :allow_commercial_use_true, "Ja" %><br />
       <%= f.radio_button :allow_commercial_use, false %>
-      <%= f.label :allow_commercial_use_false, "No" %><br />
+      <%= f.label :allow_commercial_use_false, "Nei" %><br />
   </p>
-  <p>Allow modifications of your work?</p>
+  <p>Tillater du modifikasjoner av ditt bidrag?</p>
   <p>
       <%= f.radio_button :allow_derivatives, '' %>
-      <%= f.label :allow_derivatives_true, "Yes" %><br />
+      <%= f.label :allow_derivatives_true, "Ja" %><br />
       <%= f.radio_button :allow_derivatives, 'sa' %>
       <%= f.label :allow_derivatives_sa, "Share alike" %><br />
       <%= f.radio_button :allow_derivatives, 'nd' %>
-      <%= f.label :allow_derivatives_false, "No" %><br />
+      <%= f.label :allow_derivatives_false, "Nei" %><br />
   </p>
   <hr />
   <p>
     <%= f.check_box :accepted_guidelines %>
-    <%= f.label :accepted_guidelines, "I have read the #{link_to 'guidelines for Smidig 2009 lightning talks', :controller => 'pages'}" %>
+    <%= f.label :accepted_guidelines, "Jeg kjenner til tidsbegrensningen og formatet for lyntaler på Smidig 2009 (#{link_to 'Om lyntaler', :controller => 'pages', :action => 'lyntaler'})" %>
   </p>
   <p>
-    <%= f.submit "Publish proposal" %>
+    <%= f.submit "Publiser forslag" %>
   </p>
 <% end %>

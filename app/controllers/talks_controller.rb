@@ -30,7 +30,9 @@ class TalksController < ApplicationController
   def new
     @talk = Talk.new
     @talk.topic = Topic.find(params[:topic_id]) if params[:topic_id]
-
+    
+    @talk.speaker = current_user ? current_user : User.new
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @talk }
@@ -46,10 +48,9 @@ class TalksController < ApplicationController
   # POST /talks.xml
   def create
     @talk = Talk.new(params[:talk])
-    @talk.speaker = current_user
-
+    @talk.speaker ||= current_user
     respond_to do |format|
-      if @talk.save
+      if @talk.speaker && @talk.save
         flash[:notice] = 'Talk was successfully created.'
         format.html { redirect_to(@talk) }
         format.xml  { render :xml => @talk, :status => :created, :location => @talk }
