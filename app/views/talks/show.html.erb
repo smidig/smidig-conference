@@ -7,9 +7,14 @@
 
 <h3><%= render :partial => @talk.speaker %></h3>
 
+<% if current_user == @talk.speaker %>
+  <p><%= link_to 'Rediger forslaget ditt', edit_talk_path(@talk) %></p>
+<% else %>
 <% unfinished do %>
 <%= render :partial => "votes" %>
 <% end %>
+<% end %>
+
 
 <div class="description">
   <%=simple_format @talk.description %>  
@@ -39,6 +44,4 @@
 <h3><%= link_to "Log in to post a comment", new_user_session_url(:save => true) %></h3>
 <% end %>
 
-<%= link_to 'Edit', edit_talk_path(@talk) %> |
-<%= link_to 'Back', talks_path %>
 

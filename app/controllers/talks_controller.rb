@@ -1,6 +1,6 @@
 class TalksController < ApplicationController
   before_filter :require_user, :except => [ :index, :show, :new, :create ]
-  before_filter :is_admin_or_owner, :only => [ :update, :destroy ]
+  before_filter :is_admin_or_owner, :only => [ :edit, :update, :destroy ]
   
   # GET /talks
   # GET /talks.xml
@@ -30,9 +30,7 @@ class TalksController < ApplicationController
   def new
     @talk = Talk.new
     @talk.topic = Topic.find(params[:topic_id]) if params[:topic_id]
-    
-    @talk.speaker = current_user ? current_user : User.new
-    
+    @talk.speaker = current_user||User.new
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @talk }
@@ -49,9 +47,16 @@ class TalksController < ApplicationController
   def create
     @talk = Talk.new(params[:talk])
     @talk.speaker ||= current_user
+    @user_session = UserSession.new(params[:talk][:speaker_attributes])
+    if @user_session.save
+      @talk.speaker = current_user if current_user
+      flash[:warn] = 'Registreringen finnes allerede.'
+      flash[:registration_already_exists] = true
+    end
+
     respond_to do |format|
       if @talk.speaker && @talk.save
-        flash[:notice] = 'Lyntale opprettet.'
+        flash[:notice] = 'Forslaget er publisert.'
         format.html { redirect_to(@talk) }
         format.xml  { render :xml => @talk, :status => :created, :location => @talk }
       else
@@ -68,7 +73,7 @@ class TalksController < ApplicationController
     
     respond_to do |format|
       if @talk.update_attributes(params[:talk])
-        flash[:notice] = 'Lyntale oppdatert.'
+        flash[:notice] = 'Forslaget er endret.'
         format.html { redirect_to(@talk) }
         format.xml  { head :ok }
       else

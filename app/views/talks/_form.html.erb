@@ -1,0 +1,86 @@
+<% form_for @talk do |f| %>
+  <%= f.error_messages %>
+  
+  <% unless current_user %>
+    <h3>Hvem er du?</h3>
+    
+    <p>(Dersom du allerede har registrert deg, behøver du bare oppgi email og passord)</p>
+    
+    <% f.fields_for :speaker do |user_form| %>
+      <p>
+        <%= user_form.label :email, "E-post"%><br />
+        <%= user_form.text_field :email %>
+        (blir aldri delt med andre)
+      </p>
+      <p>
+        <%= user_form.label :password, "Passord"%><br />
+        <%= user_form.password_field :password %>
+      </p>
+      <hr />
+      (Bare dersom du ikke har registrert deg)
+      <p>
+        <%= user_form.label :password_confirmation, "Bekreft passord"%><br />
+        <%= user_form.password_field :password_confirmation %>
+      </p>
+      <p>
+        <%= user_form.label :name, "Navn"%><br />
+        <%= user_form.text_field :name %>
+      </p>
+      <p>                                                   
+        <%= user_form.label :company, "Firma"%><br />
+        <%= user_form.text_field :company %>
+      </p>
+      <p>
+        <%= user_form.label :phone_number, "Telefon"%><br />
+        <%= user_form.text_field :phone_number %>
+      </p>
+      <p>
+        <%= radio_button_tag 'ticket_type', 'uten_middag', false %>
+        <%= label_tag 'ticket_type_uten_middag', 
+          "Jeg vil ønsker ikke å delta på middagen" %><br />
+        <%= radio_button_tag 'ticket_type', 'med_middag', true %>
+        <%= label_tag 'ticket_type_med_middag', 
+          "Jeg ønsker å delta på middagen" %>
+      </p>
+      <hr />
+    <% end %>
+  <% end %>
+  
+  <h3>Hva vil du snakke om?</h3>
+
+  <p>
+    <%= f.label :topic_id, "Tema" %><br />
+    <% if @talk.topic %>
+      <%= @talk.topic.title %>
+      <%= f.hidden_field :topic_id, :value => @talk.topic.id %>
+    <% else %>
+      <%= f.collection_select :topic_id, Topic.find(:all), :id, :title %>
+    <% end %>
+  </p>
+
+  <p>
+    <%= f.label :title, "Påstand" %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :description, "Argumentasjon" %><br />
+    <%= f.text_area :description, :rows => 10 %>
+  </p>
+  <p>
+    <%= f.label :audience_level, "Publikum bør..." %><br />
+    <%= f.select :audience_level,  [['... ha hørt om smidig', 'novice'], ['... ha benyttet smidige metoder', 'intermediate'], ['... benytte smidige metoder', 'expert']] %>
+  </p>
+  <% if @talk.new_record? %>
+    <p>
+      <%= f.check_box :accepted_guidelines %>
+      <%= f.label :accepted_guidelines, "Jeg kjenner til tidsbegrensningen og formatet for lyntaler på Smidig 2009 (#{link_to 'Om lyntaler', :controller => 'pages', :action => 'lyntaler'})" %>
+    </p>
+    <p>
+      <%= f.check_box :accepted_cc_license %>
+      <%= f.label :accepted_cc_license, "Jeg forstår at foredraget blir gjort tilgjengelig med en <a href='http://creativecommons.org/licenses/by/3.0/no/'>Creative Commons Navngivelse 3.0 Norge</a> lisens." %>
+    </p>
+  <% end %>
+  <p>
+    <%= f.submit "Publiser forslaget" %>
+  </p>
+<% end %>
