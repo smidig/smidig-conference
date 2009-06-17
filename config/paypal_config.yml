@@ -10,8 +10,8 @@ experimental:
 
 
 production:
-  paypal_email: experi_1243951372_biz@iterate.no
-  paypal_url: "https://www.sandbox.paypal.com/cgi-bin/webscr"
+  paypal_email: paypal@smidig.no
+  paypal_url: "https://www.paypal.com/cgi-bin/webscr"
 
 staging:
   <<: *production
