@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :require_user
+  before_filter :require_user, :except => [ :new, :create ]
   before_filter :require_admin, :only => [ :index ]  
   before_filter :require_admin_or_self, :only => [ :show, :edit, :update ]  
   
@@ -100,7 +100,7 @@ protected
   def update_user
     if @user.update_attributes(params[:user])
       flash[:notice] = "Oppdaterte profil."
-      redirect_to root_url
+      redirect_to @user
     else
       render :action => 'edit'
     end

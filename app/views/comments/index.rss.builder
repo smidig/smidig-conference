@@ -1,6 +1,6 @@
 atom_feed do |feed|
   feed.title("Comments for Smidig 2009 talks")
-  feed.updated(@comments.first.created_at)
+  feed.updated(@comments.first.created_at) unless @comments.empty?
 
   for comment in @comments
     feed.entry(comment) do |entry|
