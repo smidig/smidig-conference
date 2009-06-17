@@ -39,11 +39,11 @@ class UsersController < ApplicationController
     
         if params["ticket_type"] == "uten_middag"
           @registration.includes_dinner = false
-          @registration.price = 1000
+          @registration.price = PRICE_CONFIG[:early_bird]
           @registration.description = "Earlybird-billett til Smidig 2009 uten middag"
         else
           @registration.includes_dinner = true
-          @registration.price = 1500
+          @registration.price = PRICE_CONFIG[:early_bird_dinner]
           @registration.description = "Earlybird-billett til Smidig 2009 inkludert middag"
         end
           
