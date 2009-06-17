@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_filter :require_user, :only => [ :current, :edit_current]
-  before_filter :require_admin, :only => [ :index, :show, :edit, :update ]  
+  before_filter :require_user
+  before_filter :require_admin, :only => [ :index ]  
+  before_filter :require_admin_or_self, :only => [ :show, :edit, :update ]  
   
   def index
     @users = User.find(:all, :include => :registration)
@@ -59,7 +60,7 @@ class UsersController < ApplicationController
           :upload => '1',
           :currency_code => 'NOK',
           :notify_url => payment_notifications_url,
-          :return => edit_user_url(@user),
+          :return => user_url(@user),
           :invoice => @registration.id,
           :amount_1 => @registration.price,
           :item_name_1 => @registration.description,
@@ -89,16 +90,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def edit_current
-    @user = current_user
-    render "edit"
-  end
-  
-  def update_current
-    @user = current_user
-    update_user
-  end
-  
   def update
     @user = User.find(params[:id])
     update_user
@@ -114,4 +105,13 @@ protected
       render :action => 'edit'
     end
   end
+
+  def require_admin_or_self
+    user = User.find(params[:id])
+    unless (current_user.is_admin? || user == current_user)
+      flash[:error] = "Du har ikke lov å se andre brukeres informasjon."
+      access_denied
+    end
+  end  
+
 end

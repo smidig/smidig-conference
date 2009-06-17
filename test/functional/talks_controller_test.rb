@@ -37,7 +37,7 @@ class TalksControllerTest < ActionController::TestCase
   def test_users_can_only_update_their_own_talks
     login_as :other 
     put :update, :id => talks(:one).id, :talk => { }
-    assert_response 403    
+    assert_response 302    
   end
   
   def test_admins_can_update_talks

@@ -68,8 +68,7 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.html do
         if current_user
-          render_optional_error_file(403)
-          return false
+          redirect_to root_path
         else
           redirect_to new_user_session_path
         end
