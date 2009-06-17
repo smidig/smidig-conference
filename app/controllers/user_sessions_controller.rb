@@ -1,5 +1,6 @@
 class UserSessionsController < ApplicationController
-  before_filter :require_user, :only => [:restricted]
+  before_filter :require_user, :only => [:restricted, :destroy, :logout]
+
   def new
     store_referer if params[:save]
     @user_session = UserSession.new
@@ -16,11 +17,16 @@ class UserSessionsController < ApplicationController
     end
   end
   
+  def logout
+    current_user_session.destroy
+    redirect_to root_url
+  end            
+  
   def destroy
     @user_session = UserSession.find
     @user_session.destroy
     flash[:notice] = "Logget ut."    
-    redirect_back_or_default root_url
+    redirect_to root_url
   end
   
   def restricted

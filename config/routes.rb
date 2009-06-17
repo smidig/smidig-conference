@@ -1,13 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :payment_notifications
 
-
   map.resources :contents do |contents|
     contents.resources :content_revisions
   end 
 
   map.login 'login', :controller => "user_sessions", :action => "new"
-  map.logout 'logout', :controller => "user_sessions", :action => "destroy"
+  map.logout 'logout', :controller => "user_sessions", :action => "logout"
   map.register 'register', :controller => 'users', :action => 'create'
   map.signup 'signup', :controller => 'users', :action => 'new'
 
