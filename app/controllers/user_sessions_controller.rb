@@ -19,14 +19,14 @@ class UserSessionsController < ApplicationController
   
   def logout
     current_user_session.destroy
-    redirect_to root_url
+    redirect_to '/'
   end            
   
   def destroy
     @user_session = UserSession.find
     @user_session.destroy
     flash[:notice] = "Logget ut."    
-    redirect_to root_url
+    redirect_to '/'
   end
   
   def restricted
