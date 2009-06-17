@@ -35,8 +35,8 @@ Vi har registrert følgende informasjon om deg:
   	  (<%= link_to "se status på PayPal", @user.registration.payment_link %>)
   	  <% end %>
   	</li>
-    <% if @payment_notification != nil %>
-    	<li><strong>Transaksjonsid:</strong> <%=h @payment_notification.transaction_id %> Status: <%=h @payment_notification.status %> Betalt: <%=h @payment_notification.currency %> <%=h @payment_notification.paid_amount %></li>
-  	<% end %>
+    <% if @user.registration.payment_notification != nil %>
+       	<li><strong>Transaksjonsid:</strong> <%=h @user.registration.payment_notification.transaction_id %> Status: <%=h @user.registration.payment_notification.status %> Betalt: <%=h @user.registration.payment_notification.currency %> <%=h @user.registration.payment_notification.paid_amount %></li>
+    <% end %>
   </ul>
 <% end %>
