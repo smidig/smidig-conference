@@ -74,4 +74,22 @@ namespace :db do
       end
     end
   end
+  
+  namespace :populate do
+    task :production do
+      Topic.create!(:title => 'Lean og kanban', 
+        :description => 'Hva skjer dersom etter at man har fortsatt videre forbi tidsboksede iterasjoner? Hva skjer når kapasiteten styrer planen?')
+      Topic.create!(:title => 'Forretningsverdi', 
+        :description => 'Hvordan finner du forretningsverdien som du kan styre det smidige prosjektet ditt etter? Hvilke analogier for smidige metoder eksisterer for toppledelsen?')
+      Topic.create!(:title => 'Produkteieren', 
+        :description => 'Hvordan beskriver og prioriterer du krav slik at du oppnår forretningsverdi?')
+      Topic.create!(:title => 'Scrum masteren', 
+        :description => 'Hvordan kan teamet sitt ytterste og ha det trives?')
+      Topic.create!(:title => 'Fallgruver', 
+        :description => 'Hvilke feil ser du ofte i smidige prosjekter?')
+      Topic.create!(:title => 'Software Craftmanship', 
+        :description => 'Hvordan holder du koden ren og skaper en god arkitektur i smidige prosjekter?')
+
+    end
+  end
 end

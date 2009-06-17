@@ -23,7 +23,6 @@
 >
 
 <div id="header">
-  <% unfinished do %>
     <ul id="user_nav">
       <% if current_user %>
         <li id="min_paamelding"><%= link_to "Min påmelding", edit_current_users_path %></li>
@@ -33,11 +32,8 @@
         <li id="logg_inn"><%= link_to "Logg inn", login_path %></li>
       <% end %>
     </ul>
-  <% end %>
     <ul id="menu">
-        <%- unfinished do -%>
-          <%= menu_item "Program", 'program', :controller => 'topics', :action => 'index' %>
-        <%- end -%>
+        <%= menu_item "Program", 'program', :controller => 'topics', :action => 'index' %>
         <%= page_menu_item "Lyntaler", 'lyntaler' %>
         <%= page_menu_item "Open Space", 'openspace' %>
         <%= page_menu_item "Arrangørene", 'arrangoerene' %>
