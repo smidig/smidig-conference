@@ -9,7 +9,7 @@ experimental:
   <<: *development
 
 
-production:
+production: &production
   paypal_email: paypal@smidig.no
   paypal_url: "https://www.paypal.com/cgi-bin/webscr"
 
