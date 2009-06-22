@@ -1,9 +1,7 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  id: 10
-  #speaker: quentin
-  speaker_id: 1
+  speaker: quentin
   topic: one
   title: MyString
   description: MyText
@@ -18,7 +16,6 @@ one:
   audience_level: MyString
 
 two:
-  id: 20
   speaker: god
   topic: one
   title: MyString

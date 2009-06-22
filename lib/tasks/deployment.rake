@@ -36,7 +36,7 @@ namespace :deploy do
     task environment => "deploy:#{environment}:update"
     
     namespace environment do
-      application_path = "#{apps_path}/#{application}/#{environment}/#{application}"
+      application_path = "#{apps_path}/#{application}/#{environment}/#{application}".chomp
       database = "#{application}_#{environment}"
       server = Server.new :hostname => hostname, :username => username, :application_path => application_path, :environment => environment
 
@@ -46,6 +46,7 @@ namespace :deploy do
 
         revision = ENV['REVISION'] || 'HEAD'
         connection.exec "svn checkout --revision #{revision} #{svn_root} #{application_path}"
+        connection.exec %Q(cd #{application_path} && echo "`date` => `svn info | grep Revision:`" >> log/deployment.log)
 
         config = database_config(environment, database, dbusername, $dbpassword, dbhost)
         connection.upload_text config, "tmp/database.yml"
@@ -60,6 +61,7 @@ namespace :deploy do
       server.remote_task :update do |connection|
         revision = ENV['REVISION'] || 'HEAD'
         connection.exec "svn up --revision #{revision} #{application_path}"
+        connection.exec %Q(cd #{application_path} && echo "`date` => `svn info | grep Revision:`" >> log/deployment.log)
         connection.rake ["gems:unpack", "cache:expire_all"]
         connection.touch "tmp/restart.txt"
       end

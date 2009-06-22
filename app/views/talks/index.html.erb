@@ -1,44 +1,24 @@
-<h1>Listing talks</h1>
+<% content_for :title, "Foreslåtte foredrag" %>
 
-<table>
-  <tr>
-    <th>Speaker</th>
-    <th>Topic</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Slideshare url</th>
-    <th>Presenting naked</th>
-    <th>Video url</th>
-    <th>Position</th>
-    <th>Submitted</th>
-    <th>Red votes</th>
-    <th>Yellow votes</th>
-    <th>Green votes</th>
-    <th>Audience level</th>
-  </tr>
+<h1>Foreslåtte foredrag</h1>
+
+<%= feed_link "Abonner", talks_path(:format => :rss) %>
 
 <% for talk in @talks %>
-  <tr>
-    <td><%=h talk.speaker_id %></td>
-    <td><%=h talk.topic_id %></td>
-    <td><%=h talk.title %></td>
-    <td><%=h talk.description %></td>
-    <td><%=h talk.slideshare_url %></td>
-    <td><%=h talk.presenting_naked %></td>
-    <td><%=h talk.video_url %></td>
-    <td><%=h talk.position %></td>
-    <td><%=h talk.submitted %></td>
-    <td><%=h talk.red_votes %></td>
-    <td><%=h talk.yellow_votes %></td>
-    <td><%=h talk.green_votes %></td>
-    <td><%=h talk.audience_level %></td>
-    <td><%= link_to 'Show', talk %></td>
-    <td><%= link_to 'Edit', edit_talk_path(talk) %></td>
-    <td><%= link_to 'Destroy', talk, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
 
-<br />
+<div class="talk" id="<%= dom_id(talk) %>">
+  <h3><%=link_to h(talk.title), talk %></h3>
+  
+  <div class="speaker"><%=h talk.speaker.name %></div>
+  <div class="submitted_time">Foreslått for <%= time_ago_in_words(talk.created_at) %> siden</div>
+  <div class="talk_topic"><%= link_to talk.topic.title, talk.topic %></div>
+  
+  <div class="talk_description">
+    <%=simple_format talk.description %>
+  </div>
+</div>  
+
+<% end %>
+
 
 <%= link_to 'New talk', new_talk_path %>

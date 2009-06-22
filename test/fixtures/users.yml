@@ -1,5 +1,4 @@
 quentin:
-  id: 1
   email: whatever@whatever.com
   name: Quentin
   password_salt: <%= salt = Authlogic::Random.hex_token %>
@@ -7,7 +6,6 @@ quentin:
   persistence_token: <%= Authlogic::Random.hex_token %>
 
 god:
-  id: 2
   email: god@paradise.net
   name: Jahve
   password_salt: <%= salt = Authlogic::Random.hex_token %>
@@ -16,7 +14,6 @@ god:
   is_admin: true
     
 test:
-  id: 3
   email: test@whatever.com
   name: Test
   password_salt: <%= salt = Authlogic::Random.hex_token %>
@@ -24,7 +21,6 @@ test:
   persistence_token: <%= Authlogic::Random.hex_token %>
 
 other:
-  id: 4
   email: other@whatever.com
   name: Other Guy
   password_salt: <%= salt = Authlogic::Random.hex_token %>
