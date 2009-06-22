@@ -15,3 +15,6 @@ experimental:
 staging:
   early_bird: 10
   early_bird_dinner: 15
+
+oc:
+  <<: *development

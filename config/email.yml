@@ -16,3 +16,10 @@ production:
   :authentication: plain
   :user_name: smidig_no
   :password: pass
+oc:
+  :address: localhost
+  :port: 25
+  :authentication: plain
+  :user_name: smidig_no
+  :password: pass
+  

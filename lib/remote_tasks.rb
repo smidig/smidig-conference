@@ -12,7 +12,7 @@ class Server
         login = "#{@config[:username]}@#{@config[:hostname]}"
         $stdout.puts "[#{login}] Logging in"
         Net::SSH.start(@config[:hostname], @config[:username]) do |ssh|
-          yield Connection.new(login, ssh, @config[:application_path], @config[:environment])
+          yield Connection.new(login, ssh, @config[:application_path], @config[:environment], @config[:jruby])
         end
       rescue Net::SSH::AuthenticationFailed
         $stdout.puts "Authentication failed for #{@config[:username]}@#{@config[:hostname]}"
@@ -21,17 +21,18 @@ class Server
   end
 
   class Connection
-    def initialize(login, ssh, application_path, environment)
+    def initialize(login, ssh, application_path, environment, jruby=false)
       @login = login
       @ssh = ssh
       @application_path = application_path
       @environment = environment
+      @rake = jruby ? "jruby -S rake" : "rake"
     end
     def rake(tasks)
       tasks = [tasks.strip] if tasks.instance_of? String
       tasks.each do |t|
-        $stdout.puts "[#{@login}] rake #{t}"
-        self.execute "cd #{@application_path} && rake #{t} RAILS_ENV=#{@environment}"
+        $stdout.puts "[#{@login}] #{@rake} #{t}"
+        self.execute "cd #{@application_path} && #{@rake} #{t} RAILS_ENV=#{@environment}"
       end
     end
     def upload(io, path)
