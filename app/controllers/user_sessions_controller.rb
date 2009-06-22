@@ -18,12 +18,13 @@ class UserSessionsController < ApplicationController
   end
   
   def logout
-    current_user_session.destroy
+    @user_session = UserSession.find
+    @user_session.destroy    
     redirect_to '/'
   end            
   
   def destroy
-    @user_session = UserSession.find
+    @user_session = UserSession.find  
     @user_session.destroy
     flash[:notice] = "Logget ut."    
     redirect_to '/'

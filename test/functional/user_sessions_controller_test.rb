@@ -11,7 +11,7 @@ class UserSessionsControllerTest < ActionController::TestCase
     get :restricted
     assert UserSession.find
     
-    get :destroy
+    get :logout
     assert !UserSession.find
   end
     

@@ -33,12 +33,7 @@ Rails::Initializer.run do |config|
   
   config.gem "authlogic"
   config.gem "prawn"
-  
   #config.gem "authlogic-oid", :lib => "authlogic_openid"
-
-  #unless RUBY_PLATFORM =~ /java/
-  #config.gem "sqlite3-ruby", :lib => "sqlite3"
-  #end
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.

@@ -2,7 +2,7 @@ production: &production
   early_bird: 1000
   early_bird_dinner: 1500
 
-development:
+development: &development
   early_bird: 1042
   early_bird_dinner: 1542
 
