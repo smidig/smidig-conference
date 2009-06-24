@@ -1,0 +1,51 @@
+<?xml version='1.0'?>
+<!DOCTYPE service_bundle SYSTEM '/usr/share/lib/xml/dtd/service_bundle.dtd.1'>
+<service_bundle type='manifest' name='glassfish-gem'>
+  <service name='network/glassfish-gem' type='service' version='0'>
+    <dependency name='fs' grouping='require_all' restart_on='none' type='service'>
+      <service_fmri value='svc:/system/filesystem/local'/>
+    </dependency>
+    <dependency name='net' grouping='require_all' restart_on='none' type='service'>
+      <service_fmri value='svc:/network/loopback'/>
+    </dependency>
+    <dependent name='glassfish-gem_multi-user' restart_on='none' grouping='optional_all'>
+      <service_fmri value='svc:/milestone/multi-user'/>
+    </dependent>
+    <exec_method name='start' type='method' exec='/opt/jruby/bin/glassfish' timeout_seconds='60' />
+    <exec_method name='stop' type='method' exec=':kill' timeout_seconds='60' />
+	  <!-- INSTANCES -->
+	  <instance name='smidig2009_oc' enabled='false'>
+		  <method_context working_directory='/var/apps/smidig2009/oc/smidig2009'>
+			  <method_credential user='smidig_no' group='daemon' />
+			  <method_environment>
+			    <envvar name="PATH" value="/opt/jruby/bin:/usr/bin:/bin" />
+			  </method_environment>
+		  </method_context>
+	  </instance>
+	  <instance name='smidig2009_production' enabled='false'>
+		  <method_context working_directory='/var/apps/smidig2009/production/smidig2009'>
+			  <method_credential user='smidig_no' group='daemon' />
+			  <method_environment>
+			    <envvar name="PATH" value="/opt/jruby/bin:/usr/bin:/bin" />
+			  </method_environment>
+		  </method_context>
+	  </instance>
+	  <instance name='smidig2009_staging' enabled='false'>
+		  <method_context working_directory='/var/apps/smidig2009/staging/smidig2009'>
+			  <method_credential user='smidig_no' group='daemon' />
+			  <method_environment>
+			    <envvar name="PATH" value="/opt/jruby/bin:/usr/bin:/bin" />
+			  </method_environment>
+		  </method_context>
+	  </instance>
+	  <instance name='smidig2009_experimental' enabled='false'>
+		  <method_context working_directory='/var/apps/smidig2009/experimental/smidig2009'>
+			  <method_credential user='smidig_no' group='daemon' />
+			  <method_environment>
+			    <envvar name="PATH" value="/opt/jruby/bin:/usr/bin:/bin" />
+			  </method_environment>
+		  </method_context>
+	  </instance>	  
+  </service>
+</service_bundle>
+
