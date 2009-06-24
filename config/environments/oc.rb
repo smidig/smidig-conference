@@ -23,7 +23,10 @@ config.action_view.cache_template_loading            = true
 
 # Use glassfish gem
 #config.gem "glassfish"
-config.gem "activerecord-jdbcmysql-adapter", :version => '0.9.1', :lib => 'active_record/connection_adapters/jdbcmysql_adapter'
+#config.gem "activerecord-jdbcmysql-adapter", :version => '0.9.1', :lib => 'active_record/connection_adapters/jdbcmysql_adapter'
+config.gem "activerecord-jdbcmysql-adapter", :version => '0.9.1'
+config.gem "activerecord-jdbc-adapter", :version => '0.9.1'
+config.gem "jdbc-mysql", :version => '5.0.4'
 
 # Use threadsafe Rails (JRuby)
 config.threadsafe!
