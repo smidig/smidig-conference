@@ -22,9 +22,8 @@ daemon:
     enable: true
 
     # DEFAULT PID tmp/pids/glassfish-<PID>.pid
-    #pid:
+    #pid: tmp/pids/glassfish-example.pid
 
     # DEFAULT jvm-options: -server -Xmx512m -XX:MaxPermSize=192m -XX:NewRatio=2 -XX:+DisableExplicitGC -Dhk2.file.directory.changeIntervalTimer=6000
-
     jvm-options: -server -Xmx2500m -Xms64m -XX:PermSize=256m -XX:MaxPermSize=256m -XX:NewRatio=2 -XX:+DisableExplicitGC -Dhk2.file.directory.changeIntervalTimer=6000
 
