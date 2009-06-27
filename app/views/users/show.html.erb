@@ -40,3 +40,13 @@ Vi har registrert følgende informasjon om deg:
     <% end %>
   </ul>
 <% end %>
+
+<% if @user.talks %>
+  <h2>Foreslåtte foredrag</h2>
+  
+  <ul>
+    <% for talk in @user.talks %>
+      <li><%= link_to talk.title, talk %></li>
+    <% end %>
+  </ul>
+<% end %>

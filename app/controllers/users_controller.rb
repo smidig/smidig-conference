@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_filter :require_admin_or_self, :only => [ :show, :edit, :update ]  
   
   def index
-    @users = User.find(:all, :include => :registration)
+    @users = User.find_with_filter(params[:filter])
   end
   
   def current

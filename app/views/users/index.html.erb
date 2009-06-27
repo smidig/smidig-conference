@@ -1,11 +1,20 @@
 <h1>Brukere</h1>
 
+<ul>
+  <li><%= link_to "Alle", :filter => 'all' %></li>
+  <li><%= link_to "Foredragsholdere", :filter => 'speakers' %></li>
+  <li><%= link_to "Betalte", :filter => 'paid' %></li>
+  <li><%= link_to "Betaling avbrudt", :filter => 'unpaid' %></li>
+  <li><%= link_to "Foredragsholdere som har betalt", :filter => 'paying_speaker' %></li>
+  <li><%= link_to "Administratorer", :filter => 'admin' %></li>
+</ul>
+
 <table>
   <tr>
     <th>Bruker</th>
     <th>E-post</th>
-    <th>Betalingsinformasjon</th>
     <th>Påmeldt</th>
+    <th>Brukerstatus</th>
   </tr>
 <% for user in @users %>
   <tr>
@@ -16,13 +25,19 @@
     <td>
       <%=link_to user.email, "mailto:#{user.email}" %>
     </td>
+    <td><%=h time_ago_in_words(user.created_at) %> siden</td>
     <td>
       <% if user.registration %>
-        <%= link_to user.registration.description, user.registration.payment_link %>
+        Status: <%= user.registration.paid? ? "betalt" : "ikke betalt" %>
+        <%=h user.registration.description %>
         Price: <%= user.registration.price %>.
+      <% elsif user.is_admin %>
+        Status: Administratror
+      <% end %>
+      <% if not user.talks.empty? %>
+        Status: Foredragsholder
       <% end %>
     </td>
-    <td><%=h time_ago_in_words(user.created_at) %> siden</td>
   </tr>
 <% end %>
 </table>
