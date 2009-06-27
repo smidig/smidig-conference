@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   
   def self.find_with_filter(filter)
     case filter
-    when "all"
+    when "all","", nil
       return find(:all, :include => :registration)
     when "admin"
       return find(:all, :conditions => { :is_admin => true }, :include => :registration)
