@@ -18,7 +18,7 @@ EOF
 end
 
 
-namespace :deploy do  
+namespace :dreamhost do  
   # TODO What's the best place to get this from?
   application = "smidig2009"
 
