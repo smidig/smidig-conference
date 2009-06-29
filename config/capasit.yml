@@ -1,0 +1,23 @@
+defaults: &defaults
+  application:    smidig2009
+  svn_root:       http://svn.smidig.no/smidig2009/smidig2009
+  username:       smidig_no
+  dbusername:     smidig_no
+  adapter:        jdbcmysql
+  apps_path:      /var/apps
+  hostname:       app1.oc.capasit.net
+  dbhost:         localhost  
+  jruby:          true
+
+production:
+  <<: *defaults
+  glassfish_port: 3000         
+
+staging:
+  <<: *defaults
+  glassfish_port: 3001         
+
+experimental:
+  <<: *defaults
+  glassfish_port: 3002
+
