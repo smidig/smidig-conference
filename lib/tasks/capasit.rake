@@ -79,7 +79,7 @@ namespace :capasit do
         config = database_config(environment, cfg[:adapter], database, cfg[:dbusername], $dbpassword, cfg[:dbhost])
         glassfish_config = glassfish_gem_config(environment, cfg[:glassfish_port])
         connection.upload_text config, "tmp/database.yml"
-        connection.upload_text glassfish_config, "config/glassfish.yml"        
+        connection.upload_text glassfish_config, "tmp/glassfish.yml"        
         connection.upload_text "RAILS_ENV='#{environment}'", "tmp/environment.rb"
         connection.rake ["rails:freeze:gems", "gems:unpack", "db:migrate"]
         connection.exec "/usr/sbin/svcadm enable glassfish-gem:smidig2009_#{environment}" 
