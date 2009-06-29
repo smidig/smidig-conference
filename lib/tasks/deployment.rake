@@ -5,10 +5,10 @@ def prompt_for_variable(prompt)
   $stdin.gets.chomp
 end
 
-def database_config(environment, adapter, database, dbusername, dbpassword, dbhost)
+def database_config(environment, database, dbusername, dbpassword, dbhost)
   return <<-EOF
 #{environment}:
-  adapter: #{adapter}
+  adapter: mysql
   database: #{database}
   username: #{dbusername}
   password: #{dbpassword}
@@ -18,56 +18,27 @@ EOF
 end
 
 
-$configuration = {
-  :default => {
-    :application => "smidig2009",
-    :svn_root    => "http://svn.smidig.no/smidig2009/smidig2009",
-    :adapter     => "mysql",
-    :apps_path   => "/home/smidig_no/apps",
-    :hostname    => "bubbleyum.dreamhost.com",
-    :username    => "smidig_no",
-    :dbusername  => "smidig_no",
-    :dbhost      => "mysql.smidig.no",
-    :jruby       => false  
-  },
-  :oc => {
-    :hostname    => "app1.oc.capasit.net",
-    :adapter     => "jdbcmysql",
-    :apps_path   => "/var/apps",
-    :dbhost      => "localhost",
-    :jruby       => true    
-  }
-}
-
-def cfg(key,environment='default')
-  environment = environment.to_sym
-  if $configuration.has_key?(environment) && $configuration[environment].has_key?(key)
-    $configuration[environment][key]
-  else 
-    $configuration[:default][key]
-  end
-end
-
 namespace :deploy do  
   # TODO What's the best place to get this from?
+  application = "smidig2009"
+
+  svn_root = "http://svn.smidig.no/smidig2009/#{application}"
+  hostname = 'bubbleyum.dreamhost.com'
+  apps_path = "/home/smidig_no/apps"
+  username = 'smidig_no'
+  dbusername = username
   $dbpassword = nil
-      
-  %w(oc staging production experimental).each do |environment|
+  dbhost = 'mysql.smidig.no'
+    
+  %w(staging production experimental).each do |environment|
     
     desc "Updates the installed version on #{environment}"
     task environment => "deploy:#{environment}:update"
     
     namespace environment do
-      application = cfg(:application, environment)      
-      svn_root = cfg(:svn_root, environment)      
-      application_path = cfg(:apps_path, environment) + "/#{application}/#{environment}/#{application}".chomp
+      application_path = "#{apps_path}/#{application}/#{environment}/#{application}".chomp
       database = "#{application}_#{environment}"
-
-      server = Server.new(:hostname => cfg(:hostname, environment), 
-                          :username => cfg(:username, environment), 
-                          :application_path => application_path, 
-                          :environment => environment,
-                          :jruby => cfg(:jruby, environment))
+      server = Server.new :hostname => hostname, :username => username, :application_path => application_path, :environment => environment
 
       desc "Create initial structure for #{environment}"
       server.remote_task :setup => :get_dbpassword do |connection|
@@ -77,15 +48,10 @@ namespace :deploy do
         connection.exec "svn checkout --revision #{revision} #{svn_root} #{application_path}"
         connection.exec %Q(cd #{application_path} && echo "`date` => `svn info | grep Revision:`" >> log/deployment.log)
 
-        config = database_config(
-                      environment, 
-                      cfg(:adapter, environment), 
-                      database,
-                      cfg(:dbusername, environment),
-                      $dbpassword, 
-                      cfg(:dbhost, environment))
+        config = database_config(environment, database, dbusername, $dbpassword, dbhost)
         connection.upload_text config, "tmp/database.yml"
         connection.upload_text "RAILS_ENV='#{environment}'", "tmp/environment.rb"
+
         connection.rake ["rails:freeze:gems", "gems:unpack", "db:migrate"]
 
         connection.touch "tmp/restart.txt"
