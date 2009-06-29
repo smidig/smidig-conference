@@ -13,39 +13,54 @@
     </dependent>
     <exec_method name='start' type='method' exec='/opt/jruby/bin/glassfish' timeout_seconds='60' />
     <exec_method name='stop' type='method' exec=':kill' timeout_seconds='60' />
-	  <!-- INSTANCES -->
-	  <instance name='smidig2009_oc' enabled='false'>
-		  <method_context working_directory='/var/apps/smidig2009/oc/smidig2009'>
-			  <method_credential user='smidig_no' group='daemon' />
-			  <method_environment>
-			    <envvar name="PATH" value="/opt/jruby/bin:/usr/bin:/bin" />
-			  </method_environment>
-		  </method_context>
-	  </instance>
-	  <instance name='smidig2009_production' enabled='false'>
-		  <method_context working_directory='/var/apps/smidig2009/production/smidig2009'>
-			  <method_credential user='smidig_no' group='daemon' />
-			  <method_environment>
-			    <envvar name="PATH" value="/opt/jruby/bin:/usr/bin:/bin" />
-			  </method_environment>
-		  </method_context>
-	  </instance>
-	  <instance name='smidig2009_staging' enabled='false'>
-		  <method_context working_directory='/var/apps/smidig2009/staging/smidig2009'>
-			  <method_credential user='smidig_no' group='daemon' />
-			  <method_environment>
-			    <envvar name="PATH" value="/opt/jruby/bin:/usr/bin:/bin" />
-			  </method_environment>
-		  </method_context>
-	  </instance>
-	  <instance name='smidig2009_experimental' enabled='false'>
-		  <method_context working_directory='/var/apps/smidig2009/experimental/smidig2009'>
-			  <method_credential user='smidig_no' group='daemon' />
-			  <method_environment>
-			    <envvar name="PATH" value="/opt/jruby/bin:/usr/bin:/bin" />
-			  </method_environment>
-		  </method_context>
-	  </instance>	  
+    <!-- INSTANCES -->
+    <instance name='smidig2009_oc' enabled='false'>
+      <method_context working_directory='/var/apps/smidig2009/oc/smidig2009'>
+        <method_credential user='smidig_no' group='daemon' />
+        <method_environment>
+          <envvar name="PATH" value="/opt/jruby/bin:/usr/bin:/bin" />
+        </method_environment>
+      </method_context>
+      <property_group name='general' type='framework'>
+        <propval name='action_authorization' type='astring' value='smidig2009.applications' />
+        <propval name='value_authorization'  type='astring' value='smidig2009.applications' />
+      </property_group>         
+    </instance>
+    <instance name='smidig2009_production' enabled='false'>
+      <method_context working_directory='/var/apps/smidig2009/production/smidig2009'>
+        <method_credential user='smidig_no' group='daemon' />
+        <method_environment>
+          <envvar name="PATH" value="/opt/jruby/bin:/usr/bin:/bin" />
+        </method_environment>
+      </method_context>
+      <property_group name='general' type='framework'>
+        <propval name='action_authorization' type='astring' value='smidig2009.applications' />
+        <propval name='value_authorization'  type='astring' value='smidig2009.applications' />
+      </property_group>         
+    </instance>
+    <instance name='smidig2009_staging' enabled='false'>
+      <method_context working_directory='/var/apps/smidig2009/staging/smidig2009'>
+        <method_credential user='smidig_no' group='daemon' />
+        <method_environment>
+          <envvar name="PATH" value="/opt/jruby/bin:/usr/bin:/bin" />
+        </method_environment>
+      </method_context>
+      <property_group name='general' type='framework'>
+        <propval name='action_authorization' type='astring' value='smidig2009.applications' />
+        <propval name='value_authorization'  type='astring' value='smidig2009.applications' />
+      </property_group>         
+    </instance>
+    <instance name='smidig2009_experimental' enabled='false'>
+      <method_context working_directory='/var/apps/smidig2009/experimental/smidig2009'>
+        <method_credential user='smidig_no' group='daemon' />
+        <method_environment>
+          <envvar name="PATH" value="/opt/jruby/bin:/usr/bin:/bin" />
+        </method_environment>
+      </method_context>
+      <property_group name='general' type='framework'>
+        <propval name='action_authorization' type='astring' value='smidig2009.applications' />
+        <propval name='value_authorization'  type='astring' value='smidig2009.applications' />
+      </property_group>         
+    </instance>
   </service>
 </service_bundle>
-
