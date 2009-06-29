@@ -11,7 +11,7 @@
     <dependent name='glassfish-gem_multi-user' restart_on='none' grouping='optional_all'>
       <service_fmri value='svc:/milestone/multi-user'/>
     </dependent>
-    <exec_method name='start' type='method' exec='/opt/jruby/bin/glassfish' timeout_seconds='60' />
+    <exec_method name='start' type='method' exec='/opt/jruby/bin/glassfish --config ../tmp/glassfish.yml' timeout_seconds='60' />
     <exec_method name='stop' type='method' exec=':kill' timeout_seconds='60' />
     <!-- INSTANCES -->
     <instance name='smidig2009_oc' enabled='false'>
