@@ -1,4 +1,6 @@
 class Talk < ActiveRecord::Base
+  default_scope :order => 'created_at desc'
+
   belongs_to :speaker, :class_name => "User"
   belongs_to :topic
   has_many :comments, :order => "created_at", :include => :user
