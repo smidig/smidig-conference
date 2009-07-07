@@ -3,7 +3,7 @@ class Registration < ActiveRecord::Base
   has_one :payment_notification
   
   def paid?
-    payment_notification && payment_notification.status =="Completed"
+    payment_notification && payment_notification.status == "Completed"
   end
   
   # todo
