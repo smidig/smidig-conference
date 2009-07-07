@@ -8,6 +8,7 @@ defaults: &defaults
   hostname:       app1.oc.capasit.net
   dbhost:         localhost  
   jruby:          true
+  twitter_user:   smidig
 
 production:
   <<: *defaults

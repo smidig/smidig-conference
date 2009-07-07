@@ -38,6 +38,14 @@ def database_config(environment, adapter, database, dbusername, dbpassword, dbho
 EOF
 end
 
+def twitter_config(environment, username, password)
+  return <<-EOF
+#{environment}:
+  username: #{username}
+  password: #{password}
+EOF
+end 
+
 class Hash
   def symbolize_keys
     inject({}) do |options, (key, value)|
@@ -78,6 +86,12 @@ namespace :capasit do
 
         config = database_config(environment, cfg[:adapter], database, cfg[:dbusername], $dbpassword, cfg[:dbhost])
         glassfish_config = glassfish_gem_config(environment, cfg[:glassfish_port])
+
+        #if environment == 'production'
+          twitter_config = twitter_config(environment, cfg[:twitter_user], $dbpassword)
+          connection.upload_text twitter_config, "tmp/twitter.yml"
+        #end
+
         connection.upload_text config, "tmp/database.yml"
         connection.upload_text glassfish_config, "tmp/glassfish.yml"        
         connection.upload_text "RAILS_ENV='#{environment}'", "tmp/environment.rb"
