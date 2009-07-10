@@ -33,7 +33,7 @@ namespace :dreamhost do
   %w(staging production experimental).each do |environment|
     
     desc "Updates the installed version on #{environment}"
-    task environment => "deploy:#{environment}:update"
+    task environment => "dreamhost:#{environment}:update"
     
     namespace environment do
       application_path = "#{apps_path}/#{application}/#{environment}/#{application}".chomp
