@@ -5,6 +5,14 @@ def prompt_for_variable(prompt)
   $stdin.gets.chomp
 end
 
+def twitter_config(environment, username, password)
+  return <<-EOF
+#{environment}:
+  username: #{username}
+  password: #{password}
+EOF
+end
+
 def database_config(environment, database, dbusername, dbpassword, dbhost)
   return <<-EOF
 #{environment}:
@@ -49,6 +57,12 @@ namespace :dreamhost do
         connection.exec %Q(cd #{application_path} && echo "`date` => `svn info | grep Revision:`" >> log/deployment.log)
 
         config = database_config(environment, database, dbusername, $dbpassword, dbhost)
+        
+        if environment == 'production'
+          twitter_config = twitter_config(environment, 'smidig', $dbpassword)
+          connection.upload_text twitter_config, "tmp/twitter.yml"
+        end
+        
         connection.upload_text config, "tmp/database.yml"
         connection.upload_text "RAILS_ENV='#{environment}'", "tmp/environment.rb"
 
