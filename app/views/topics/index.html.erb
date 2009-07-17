@@ -1,5 +1,8 @@
 <% content_for :title, "Temaer" %>
 
+<h3><%= feed_link "Følg med på nye forslag", talks_path(:format => :rss) %></h3>
+
+
 <table id="topics">
 	<thead>
 <% for index in 0..@topics.size/3 %>
@@ -16,33 +19,19 @@
 
 <tfoot>
 	</tfoot>
-<tr>
+<tr style="vertical-align: top">
   <td>
-    <% if @topics[index*3+0] %>
-      <div class="description"><%= h(@topics[index*3+0].description) %></div>
-      <div class="talks_submitted">
-        <%= antall_lyntaler(@topics[index*3+0].talks.size) %>
-      </div>
-    <% end %>
+    <%= render :partial => @topics[index*3+0] %>
   </td>
   <td>
-    <% if @topics[index*3+1] %>
-      <div class="description"><%= h(@topics[index*3+1].description) %></div>
-      <div class="talks_submitted">
-        <%= antall_lyntaler(@topics[index*3+1].talks.size) %>
-      </div>
-    <% end %>
+    <%= render :partial => @topics[index*3+1] %>
   </td>
   <td>
-    <% if @topics[index*3+2] %>
-      <div class="description"><%= h(@topics[index*3+2].description) %></div>
-      <div class="talks_submitted">
-        <%= antall_lyntaler(@topics[index*3+2].talks.size) %>
-      </div>
-    <% end %>
+    <%= render :partial => @topics[index*3+2] %>
   </td>
 </tr>
 
 <% end %>
 </table>
 
+<% if admin? %><h3><%= link_to "Legg til tema", new_topic_path %></h3><% end %>

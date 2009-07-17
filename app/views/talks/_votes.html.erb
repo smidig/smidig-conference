@@ -1,7 +1,7 @@
 <% if !current_user %>
-<%= link_to "Log in to vote", new_user_session_url %>
+  <%= link_to "Logg inn for å stemme på lyntalen", new_user_session_url %>
 <% elsif @talk.votes.find(:all, :conditions => { :user_id => current_user }).empty? %>
-<%= link_to "Vote for this talk", talk_votes_url(@talk), :method => :post %>
+  <%= link_to "Stem på denne lyntalen", talk_votes_url(@talk), :method => :post %>
 <% else %>
-You have voted for this talk
+  <em>Du har stemt på denne lyntalen</em>
 <% end %>

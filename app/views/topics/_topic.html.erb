@@ -1,2 +1,9 @@
-<div class="topic"><%= link_to topic.title, topic %></div>
-<%= render :partial => topic.talks[topic_offset,4] %>
+<% if topic %>
+  <div class="description"><%= h(topic.description) %></div>
+  <div class="talks_submitted">
+    <% for talk in topic.talks[0,4] %>
+      <div class="detail" id="<%= dom_id(talk) %>"><%= link_to talk.title, talk %> by <%=link_to_if admin?, h(talk.speaker.name), talk.speaker %></div>
+    <% end %>
+  </div>
+  <div class="detail"><%= antall_flere_lyntaler(topic.talks.size-4) %></div>
+<% end %>

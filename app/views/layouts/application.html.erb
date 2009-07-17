@@ -26,7 +26,9 @@
     <ul id="user_nav">
       <% if current_user %>
         <li id="min_paamelding"><%= link_to "Min påmelding", current_users_path %></li>
-        <li id="logg_ut"><%= link_to "Logg ut", logout_path %></li>
+        <% unfinished do %>
+          <li id="logg_ut"><%= link_to "Logg ut", logout_path %></li>
+        <% end %>
       <% else %>
         <li id="meld_meg_paa"><%= link_to "Meld meg på!", new_user_path %></li>
         <li id="logg_inn"><%= link_to "Logg inn", login_path %></li>

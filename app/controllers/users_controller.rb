@@ -40,11 +40,11 @@ class UsersController < ApplicationController
     
         if params["ticket_type"] == "uten_middag"
           @registration.includes_dinner = false
-          @registration.price = PRICE_CONFIG[:early_bird]
+          @registration.price = PAYMENT_CONFIG[:early_bird]
           @registration.description = "Earlybird-billett til Smidig 2009 uten middag"
         else
           @registration.includes_dinner = true
-          @registration.price = PRICE_CONFIG[:early_bird_dinner]
+          @registration.price = PAYMENT_CONFIG[:early_bird_dinner]
           @registration.description = "Earlybird-billett til Smidig 2009 inkludert middag"
         end
           
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
         @registration.save
         
         values = {
-          :business => PAYPAL_CONFIG[:paypal_email],
+          :business => PAYMENT_CONFIG[:paypal_email],
           :cmd => '_cart',
           :upload => '1',
           :currency_code => 'NOK',
@@ -68,7 +68,7 @@ class UsersController < ApplicationController
           :quantity_1 => '1'
         }
         
-        @registration.payment_link = PAYPAL_CONFIG[:paypal_url] +"?"+values.map do
+        @registration.payment_link = PAYMENT_CONFIG[:paypal_url] +"?"+values.map do
           |k,v| "#{k}=#{CGI::escape(v.to_s)}"
         end.join("&")
       

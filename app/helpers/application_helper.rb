@@ -30,6 +30,10 @@ module ApplicationHelper
     current_user
   end
   
+  def admin?
+    current_user and current_user.is_admin
+  end
+  
   # Don't include the following in production or staging
   def unfinished
     yield unless (RAILS_ENV == 'production' || RAILS_ENV == 'staging')

@@ -1,13 +1,14 @@
-<%= feed_link "Lyntaler i #{@topic.title}", topic_talks_path(@topic, :format => :rss) %> 
 
-
+<h3><%= link_to "Alle temaer", topics_path %> &gt;</h3>
 <h2><%=h @topic.title %></h2>
+
+<% if admin? %><%= link_to "Endre beskrivelse", edit_topic_path(@topic) %><% end %>
 
 <div>
   <%=simple_format @topic.description %>
 </div>
 
-<h2>Foreslåtte lyntaler</h2>
+<h2>Foreslåtte lyntaler <%= feed_link "(rss)", topic_talks_path(@topic, :format => :rss) %></h2>
 
 <%= render :partial => @topic.talks %>
 

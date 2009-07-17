@@ -1,6 +1,5 @@
-<%= feed_link "Comments for #{@talk.title}", talk_comments_path(@talk, :format => :rss) %>
 
-<h3><%= link_to "&gt; #{@talk.topic.title}", @talk.topic  %></h3>
+<h3><%= link_to "Alle foredrag", topics_path %> &gt; <%= link_to "#{@talk.topic.title}", @talk.topic  %> &gt; </h3>
 
 <h2><%=h @talk.title %> 
   (<span class="topic"><%=h @talk.topic_name %></span><% unfinished do %>, <%= antall_stemmer(@talk.votes_count) %><% end %>)</h2>
@@ -10,9 +9,7 @@
 <% if current_user == @talk.speaker %>
   <p><%= link_to 'Rediger forslaget ditt', edit_talk_path(@talk) %></p>
 <% else %>
-<% unfinished do %>
-<%= render :partial => "votes" %>
-<% end %>
+  <% unfinished do %><%= render :partial => "talks/votes" %><% end %>
 <% end %>
 
 
@@ -24,24 +21,28 @@
    "http://creativecommons.org/licenses/#{@talk.license}/3.0/no/", :rel => 'license' %>
 
 
-<%= render :partial => "video" %>
-<%= render :partial => "slides" %>
+<%= render :partial => "talks/video" %>
+<%= render :partial => "talks/slides" %>
 
 
 <p>
-  <strong>Audience level:</strong>
+  <strong>Nivå:</strong>
   <%=h @talk.audience_level %>
 </p>
 
-<h2>Comments</h2>
+<h2>Kommentarer</h2>
 
-<%= render :partial => @talk.comments %>
+<%= feed_link "Følg med på kommentarer til #{@talk.title}", talk_comments_path(@talk, :format => :rss) %>
+
+<div id="comments">
+  <%= render :partial => @talk.comments %>
+</div>
 
 <% if logged_in %>
-<h3>Post a new comment:</h3>
+<h3 id="new_comment">Skriv en ny kommentar:</h3>
 <%= render :partial => "comments/new" %>
 <% else %>
-<h3><%= link_to "Log in to post a comment", new_user_session_url(:save => true) %></h3>
+<h3><%= link_to "Logg inn for å skrive en ny kommentar", new_user_session_url(:save => true) %></h3>
 <% end %>
 
 

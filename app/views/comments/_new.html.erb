@@ -1,5 +1,6 @@
-<% form_for :comment, :url => talk_comments_path(@talk) do |f| %>
-  <p><%= f.label :title %> <%= f.text_field :title %></p>
-  <p><%= f.label :description %> <br /><%= f.text_area :description, :rows => 5 %></p>
-  <p><%= f.submit "Create" %></p>	
+<% form_for :comment, :url => talk_comments_path(@talk, :anchor => 'new_comment') do |f| %>
+  <%= f.error_messages %>
+  <p><%= f.label :title, "Overskrift" %> <%= f.text_field :title %></p>
+  <p><%= f.text_area :description, :rows => 5 %></p>
+  <p><%= f.submit "Registrer kommentar" %></p>	
 <% end %>
