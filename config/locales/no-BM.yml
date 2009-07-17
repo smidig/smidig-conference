@@ -24,7 +24,13 @@
         less_than_or_equal_to: "må være mindre enn eller lik {{count}}"
         odd: "må være oddetall"
         even: "må være partall" 
+        topic: "Tema"
     # Her legges attributter for Model < ActiveRecord::Base
+    models:
+      topic: "tema"
+      talk: "lyntale"
+      bruker: "registrering"
+      comment: "kommentar"
     attributes:          
       user:
         name: "Navn"
@@ -42,6 +48,12 @@
         speaker_phone_number: "Foredragsholders telefonnummer"
         speaker_password: "Passord"
         speaker_password_confirmation: "Passordbekreftelse"
+      topic:
+        title: "Tittel"
+        description: "Beskrivelse"
+      comment:
+        title: "Overskrift"
+        description: "Kommentar"
         
   authlogic:
     error_messages:

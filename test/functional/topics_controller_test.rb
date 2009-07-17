@@ -22,7 +22,7 @@ class TopicsControllerTest < ActionController::TestCase
   def test_registered_users_should_create_topic
     login_as :quentin
     assert_difference('Topic.count') do
-      post :create, :topic => { }
+      post :create, :topic => { :title => 'foo', :description => 'bar' }
     end
 
     assert_redirected_to topic_path(assigns(:topic))

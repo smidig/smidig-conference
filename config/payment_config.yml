@@ -1,0 +1,33 @@
+development: &development
+  early_bird: 1042
+  early_bird_dinner: 1542
+  paypal_email: experi_1243951372_biz@iterate.no
+  paypal_url: "https://www.sandbox.paypal.com/cgi-bin/webscr"
+
+test:
+  early_bird: 1042
+  early_bird_dinner: 1542
+  paypal_email: paypal@smidig.no
+  paypal_url: "https://www.paypal.com/cgi-bin/webscr"
+
+experimental:
+  early_bird: 1000
+  early_bird_dinner: 1500
+  paypal_email: experi_1243951372_biz@iterate.no
+  paypal_url: "https://www.sandbox.paypal.com/cgi-bin/webscr"
+
+
+production: &production
+  early_bird: 1000
+  early_bird_dinner: 1500
+  paypal_email: paypal@smidig.no
+  paypal_url: "https://www.paypal.com/cgi-bin/webscr"
+
+staging:
+  early_bird: 10
+  early_bird_dinner: 15
+  paypal_email: paypal@smidig.no
+  paypal_url: "https://www.paypal.com/cgi-bin/webscr"
+
+oc:
+  <<: *development
