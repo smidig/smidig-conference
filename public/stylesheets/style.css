@@ -9,3 +9,4 @@ div.talks_submitted { font-style:italic; margin-top: 1em;}
 div.admin           { background-color: orange; }
 div#user_nav        { float: right; font-size: 12px; }
 div#comments        { margin-left:3em; }
+div.help            { margin-left:3em; font-size:smaller; font-variant:italic; }

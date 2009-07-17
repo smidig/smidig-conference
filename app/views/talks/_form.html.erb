@@ -59,11 +59,21 @@
   </p>
 
   <p>
-    <%= f.label :title, "Påstand" %><br />
+    <%= f.label :title, "Påstand" %><%= link_to image_tag("help.png"), "#", :onClick => "$('title_help').toggle()"  %><br />
+    <div id="title_help" style="display: none" class="help">
+      Vår erfaring fra Smidig 2007 og 2008 er at gode lyntaler tar utgangspunkt i en påstand
+      (for eksempel: "gode lyntaler tar utgangspunkt i en påstand") og bruker foredraget på å
+      diskutere bakgrunnen og konsekvensen av denne påstanden.
+    </div>
     <%= f.text_field :title %>
   </p>
   <p>
-    <%= f.label :description, "Argumentasjon" %><br />
+    <%= f.label :description, "Argumentasjon" %><%= link_to image_tag("help.png"), "#", :onClick => "$('description_help').toggle()"  %><br />
+    <div id="description_help" style="display: none" class="help">
+      Vår erfaring fra Smidig 2007 og 2008 er at gode lyntaler tar utgangspunkt i en påstand
+      (for eksempel: "gode lyntaler tar utgangspunkt i en påstand") og bruker foredraget på å
+      diskutere bakgrunnen og konsekvensen av denne påstanden.
+    </div>
     <%= f.text_area :description, :rows => 10 %>
   </p>
   <p>
@@ -73,11 +83,11 @@
   <% if @talk.new_record? %>
     <p>
       <%= f.check_box :accepted_guidelines %>
-      <%= f.label :accepted_guidelines, "Jeg kjenner til tidsbegrensningen og formatet for lyntaler på Smidig 2009 (#{link_to 'Om lyntaler', :controller => 'pages', :action => 'lyntaler'})" %>
+      <%= f.label :accepted_guidelines, "Jeg kjenner til tidsbegrensningen og formatet for lyntaler på Smidig 2009 (#{link_to 'Om lyntaler', :controller => 'pages', :action => 'lyntaler', :target => '_top'})" %>
     </p>
     <p>
       <%= f.check_box :accepted_cc_license %>
-      <%= f.label :accepted_cc_license, "Jeg forstår at foredraget blir gjort tilgjengelig med en <a href='http://creativecommons.org/licenses/by/3.0/no/'>Creative Commons Navngivelse 3.0 Norge</a> lisens." %>
+      <%= f.label :accepted_cc_license, "Jeg forstår at foredraget blir gjort tilgjengelig med en <a href='http://creativecommons.org/licenses/by/3.0/no/' target='top'>Creative Commons Navngivelse 3.0 Norge</a> lisens." %>
     </p>
   <% end %>
   <p>
