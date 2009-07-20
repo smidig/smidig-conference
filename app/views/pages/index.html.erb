@@ -8,37 +8,7 @@
 
     <p>Dette er tredje gangen smidig-konferansen blir arrangert. Smidig 2007 og Smidig 2008 hadde mange gode foredrag og var en god plass for faglig og profesjonelt påfyll. Du kan se video av alle foredragene både fra <a href="http://smidig2008.confreaks.com">Smidig 2008</a> og <a href="http://smidig2007.confreaks.com">Smidig 2007</a> online.</p>
 
-</div>
-
-<div id="rightcol">
-  <% if not current_user %>
-  	<% link_to new_user_path do %>
-  		<div class="largeButton" id="meld_deg_paa">
-  			Påmelding
-  		</div>
-  	<% end %>
-  <% end %>
-  <% link_to new_talk_path do %>
-    <div class="largeButton" id="foreslaa_en_lyntale">
-      Foreslå lyntale
-    </div>
-	<% end %>
-
-    <div id="practical">
-        <p>Konferansen blir avholdt 22.-23. oktober i Oslo Kongressenter. Registreringen for deltagere og foredragsholdere vil åpne snart. Deltageravgiften for tidlig påmelding vil være på kr. 1500.</p>
-
-
-    <ul id="todo">
-        <li><a href="http://www.google.com/calendar/event?action=TEMPLATE&amp;text=Smidig%202009&amp;dates=20091022/20091024&amp;details=&amp;location=Oslo%20Kongressenter%2C%20Youngsgate%2011%2C%200181%20Oslo%2C%20Norway&amp;trp=false&amp;sprop=http%3A%2F%2Fsmidig2009.no&amp;sprop=name:Smidig%202009">Hold av datoen</a> i kalenderen din.</li>
-        <li><a href="http://twitter.com/smidig">Følg Smidig</a> på Twitter.</li>
-        <li><a href="http://forum.smidig.no">Henvend deg til forumet</a> for informasjon om smidige metoder.</li>
-    </ul>
-
-
-
-
-    </div>
-
+	<br/>
     <div id="def">
         <h3>Hva er smidig utvikling?</h3>
 
@@ -56,4 +26,34 @@
 
         <p>Vi kaller prosjekter som følger disse prinsippene for smidige prosjekter. Arrangørene bak Smidig 2008 tror at norske IT-prosjekter kan bli mer vellykkede med bruk av smidige metoder gjennom å realisere gevinster tidligere og håndtere endringer på en bedre måte.</p>
     </div>
+</div>
+
+<div id="rightcol">
+  <% if not current_user %>
+  	<% link_to new_user_path do %>
+  		<div class="largeButton" id="meld_deg_paa">
+  			Påmelding
+  		</div>
+  	<% end %>
+  <% end %>
+  <% link_to new_talk_path do %>
+    <div class="largeButton" id="foreslaa_en_lyntale">
+      Foreslå lyntale
+    </div>
+	<% end %>
+
+    <div id="practical">
+        <p>Konferansen blir avholdt 22.-23. oktober i Oslo Kongressenter. Registreringen er nå åpen, klikk på lenkene ovenfor. Deltageravgiften for tidlig påmelding er på kr. 1000/1500 uten/med middag.</p>
+
+
+    <ul id="todo">
+        <li><a href="http://www.google.com/calendar/event?action=TEMPLATE&amp;text=Smidig%202009&amp;dates=20091022/20091024&amp;details=&amp;location=Oslo%20Kongressenter%2C%20Youngsgate%2011%2C%200181%20Oslo%2C%20Norway&amp;trp=false&amp;sprop=http%3A%2F%2Fsmidig2009.no&amp;sprop=name:Smidig%202009">Hold av datoen</a> i kalenderen din.</li>
+        <li><a href="http://twitter.com/smidig">Følg Smidig</a> på Twitter.</li>
+        <li><a href="http://forum.smidig.no">Henvend deg til forumet</a> for informasjon om smidige metoder.</li>
+    </ul>
+
+
+
+    </div>
+
 </div>

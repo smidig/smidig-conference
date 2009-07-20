@@ -12,16 +12,10 @@ body {
 
 a:link {
     color: #C24C00;
-    text-decoration: none;
     }
 
 a:visited {
     color: #C24C00;
-    text-decoration: none;
-    }
-
-a:hover {
-    text-decoration: underline;
     }
 
 a:active {
@@ -254,6 +248,8 @@ h2#page_arrangoerene_title  {
 #def {
     font-family: verdana;
     font-size: .8em;
+	background: #f3f3f3;
+	padding: 1em;
     }
 
 #def * {
@@ -286,12 +282,13 @@ h2#page_arrangoerene_title  {
     }
 
 .largeButton {
-	background: #337700;
+	background: #559900;
 	padding: 25px;
 	text-align: center;
 	margin: 5px;
-	color: #FFFFFF;
 	font-size: 2em;
+    color: #FFFFFF;
+	text-decoration: underline;
 }
 
 .attribution {
@@ -303,7 +300,20 @@ dt {
     padding-top: 1em
     }
 
-#sponsors { background: white; margin-left:5em; margin-right:5em; z-index:100; clear: both; float:left; line-height: 40px; text-align: center;}
+#sponsors { 
+	background: white;
+	margin-left:5em; 
+	margin-right:5em; 
+	padding: 0.5em;
+	padding-top: 2em;
+
+	clear: both;
+	z-index:100; 
+
+	line-height: 40px; 
+	text-align: center; 
+}
+
 #sponsors img { margin: 0 20px; }
 
 
