@@ -1,5 +1,15 @@
 = Smidig 2009 Conference site
 
+== Recommended tools
+
+=== Windows
+
+* "Ruby installer":http://www.ruby-lang.org/en/downloads/
+* "TortoiseSVN":http://tortoisesvn.net/downloads
+* "e TextEditor":http://www.e-texteditor.com/
+* "Subversion command line binaries":http://www.collab.net/downloads/subversion/
+
+
 == Getting started
 
 <code>
@@ -36,14 +46,14 @@ vim ~/svn/smidig2009.access
 <code>
 gem install net-ssh net-scp
 svn commit
-rake deploy:staging:update
-(if database was changed) rake deploy:staging:migrate
+rake dreamhost:staging
+(if database was changed) rake dreamhost:staging:migrate
 </code>
 
 == Setting up the staging environment from scratch
 
 <code>
 svn commit
-rake deploy:staging:setup
-rake deploy:staging:migrate
+rake dreamhost:staging:setup
+rake dreamhost:staging:migrate
 </code>
