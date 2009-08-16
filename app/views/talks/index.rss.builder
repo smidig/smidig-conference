@@ -5,7 +5,7 @@ atom_feed do |feed|
   for talk in @talks
     feed.entry(talk) do |entry|
       entry.title(talk.title)
-      entry.content(talk.description, :type => 'html')
+      entry.content(simple_format(talk.description), :type => 'html')
 
       entry.author do |author|
         author.name(talk.speaker.name)
