@@ -3,17 +3,29 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN"
     "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="no" lang="no">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="no">
 
 <head>
   <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
   <title>Smidig 2009: <%= yield :title %></title>
   <%= javascript_include_tag :defaults %>
-  <%= stylesheet_link_tag 'screen' %>
-  <!--[if lte IE 6]>
-    <%= stylesheet_link_tag 'ielte6.css' %>
+   
+  <!--[if !IE]><!-->
+	<%= stylesheet_link_tag 'screen' %>
+  <!-- <![endif]-->
+	
+  <!--[if gte IE 7]>
+	<%= stylesheet_link_tag 'screen' %>
   <![endif]-->
-  <%= stylesheet_link_tag 'style' %>
+	
+  <!--[if lte IE 6]>
+	<%= stylesheet_link_tag 'ielte6.css' %>
+  <![endif]-->
+    
+  <!--[if IE 7]>
+	<%= stylesheet_link_tag 'ie7.css' %>
+  <![endif]-->  
+  
   <%= auto_discovery_link_tag :rss, { :controller => 'talks', :format => :rss }, { :title => "Alle lyntaler" } %>
   <%= auto_discovery_link_tag :rss, { :controller => 'talks', :topic_id => @topic, :format => :rss }, { :title => "Lyntaler for #{@topic.title}" } if @topic %>
   <%= auto_discovery_link_tag :rss, { :controller => 'comments', :talk_id => @talk, :format => :rss }, { :title => "Kommentarer for #{@talk.title}" } if @talk %>
@@ -23,44 +35,76 @@
 >
 
 <div id="header">
-    <ul id="user_nav">
+    <ul class="menu" id="user_nav">
       <% if current_user %>
-        <li id="min_paamelding"><%= link_to "Min påmelding", current_users_path %></li>
         <% unfinished do %>
           <li id="logg_ut"><%= link_to "Logg ut", logout_path %></li>
         <% end %>
       <% else %>
-        <li id="meld_meg_paa"><%= link_to "Meld meg på!", new_user_path %></li>
         <li id="logg_inn"><%= link_to "Logg inn", login_path %></li>
       <% end %>
     </ul>
-    <ul id="menu">
+    
+    <h1 id="site_title" title="Smidig 2009 hjem"><span><%= link_to_unless_current("Smidig 2009", { :controller => 'pages', :action => 'index' }) %></span></h1>
+	
+    <ul class="menu" id="site_nav">
         <%= menu_item "Program", 'program', :controller => 'topics', :action => 'index' %>
         <%= page_menu_item "Lyntaler", 'lyntaler' %>
         <%= page_menu_item "Open Space", 'openspace' %>
         <%= page_menu_item "Arrangørene", 'arrangoerene' %>
-        <li id="forum_menu" class="menu_link" title="Forum"><a href="http://forum.smidig.no">Forum</a></li>
+        <li id="forum_menu" class="menu_link forum" title="Forum"><a href="http://forum.smidig.no">Forum</a></li>
+        <% if current_user %>
+          <%= menu_item "Min påmelding", 'min_paamelding', :controller => 'users', :action => 'edit' %>
+        <% else %>
+          <%= menu_item "Meld meg på!", 'paamelding', :controller => 'users', :action => 'new' %>
+        <% end %>
+        
+        
+        
     </ul>
-    <h1 id="site_title" title="Smidig 2009 hjem"><span><%= link_to_unless_current("Smidig 2009", { :controller => 'pages', :action => 'index' }) %></span></h1>
-    <h2 class="page_title" id="page_<%= controller.action_name %>_title"><%= yield :title %></h2>
 </div>
 
 
-<div id="content">
-<p style="color: green"><%= flash[:notice] %></p>
-<p style="color: yellow"><%= flash[:warn] %></p>
-<p style="color: red"><%= flash[:error] %></p>
-
-<%= yield  %>
+<div class="floating_text_box folder" id="<%= controller.action_name %>">
+	<div class='content'>
+	    <div class='top'></div>
+	    <div class='background-color'>
+			<div class='floating_text_box paper'>
+	     		<div class='content'>
+				    <div class='top'></div>
+				    <div class='color'>
+						<div id="main">
+     						<h2 class="page_title" id="page_<%= controller.action_name %>_title"><%= yield :title %></h2>
+							<div id="notifications">
+								<p style="color: green"><%= flash[:notice] %></p>
+								<p style="color: yellow"><%= flash[:warn] %></p>
+								<p style="color: red"><%= flash[:error] %></p>
+							</div>
+							<%= yield  %>	
+						</div>
+					</div>
+				</div>
+				<div class='bottom'>
+				    <div></div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div class='bottom'>
+	    <div></div>
+    </div>
 </div>
 
-<!-- START Disclaimer/Tracking Stuff -->
 
-<div id="ielte6">
-    <p>Visste du at du bruker en nettleser som ble utgitt før 2002?  Websider kommer til å se bedre ut og webutvilkere blir spart mye frustrasjon om du oppgraderer nettleseren din.  For det beste webopplevelse, anbefaler vi at du oppgraderer til <a href="http://google.com/chrome">Google Chrome</a> eller <a href="http://getfirefox.com">Mozilla Firefox</a>.  Dersom du får denne meldingen på en jobb-pc, bør du kontakte personen som er IT-ansvarlig hos dere for å få oppgraderte nettleseren din.</p>
-</div>
 
-<!-- END Disclaimer/Tracking Stuff -->
+
+
+
+
+
+							
+
+
 <div id="sponsors">
 	<a href="http://www.agilealliance.org"><img src="/images/logos/agilealliance.jpg" alt="Agile Alliance"/></a>
 	<a href="http://www.avenir.no"><img src="/images/logos/avenir.gif" alt="Avenir"/></a>
@@ -69,13 +113,17 @@
 	<a href="http://www.conax.no"><img src="/images/logos/conax.gif" alt="Conax"/></a>
 	<a href="http://www.computas.no"><img src="/images/logos/computas.gif" alt="Computas"/></a>
 	<a href="http://www.iterate.no"><img src="/images/logos/iterate.gif" alt="Iterate"/></a>
-	<a href="http://www.kantega.no"><img src="/images/logos/kantega.gif" alt="Kantega"/></a
+	<a href="http://www.kantega.no"><img src="/images/logos/kantega.gif" alt="Kantega"/></a>
 	<a href="http://www.sintef.no"><img src="/images/logos/sintef.gif" alt="Sintef"/></a>
   <a href="http://www.spk.no"><img src="/images/logos/spk.gif" alt="SPK"/></a>
 	<a href="http://www.steria.no"><img src="/images/logos/steria.gif" alt="Steria"/></a>
 	<a href="http://www.tandberg.no"><img src="/images/logos/tandberg.gif" alt="Tandberg"/></a>
 	<a href="http://www.zenior.no"><img src="/images/logos/zenior.gif" alt="Zenior"/></a>
 </div>
+
+
+<!-- START Disclaimer/Tracking Stuff -->
+
 
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
@@ -87,5 +135,9 @@ var pageTracker = _gat._getTracker("UA-2694058-4");
 pageTracker._trackPageview();
 } catch(err) {}</script>
 
+<div id="ielte6">
+    <p>Denne websiden ser kjedelig ut fordi du bruker en nettleser som ble utgitt før 2002. For det beste webopplevelse, anbefaler vi at du oppgraderer til det gode norske <a href="http://opera.com">Opera</a>, <a href="http://google.com/chrome">Google Chrome</a> eller <a href="http://getfirefox.com">Mozilla Firefox</a>.  Dersom du får denne meldingen på en jobb-pc, bør du kontakte personen som er IT-ansvarlig hos dere for å få oppgraderte nettleseren din.</p>
+</div>
+<!-- END Disclaimer/Tracking Stuff -->
 </body>
 </html>

@@ -3,17 +3,17 @@
 module ApplicationHelper
   def page_menu_item(text, action)
     if current_page?(:controller => 'pages', :action => action)
-      %Q{<li id="#{action}_menu" class="menu_current" title="#{text}">#{text}</li>}
+      %Q{<li id="#{action}_menu" class="menu_current #{action}" title="#{text}"><span>#{text}</span></li>}
     else
-      %Q{<li id="#{action}_menu" class="menu_link" title="#{text}">#{ link_to text, :controller => 'pages', :action => action }</li>}
+      %Q{<li id="#{action}_menu" class="menu_link #{action}" title="#{text}"><span>#{ link_to text, :controller => 'pages', :action => action }</span></li>}
     end
   end
 
   def menu_item(text, id, route)
     if current_page?(route)
-      %Q{<li id="#{id}_menu" class="menu_current" title="#{text}">#{text}</li>}
+      %Q{<li id="#{id}_menu" class="menu_current #{route[:controller]}" title="#{text}"><span>#{text}</span></li>}
     else
-      %Q{<li id="#{id}_menu" class="menu_link" title="#{text}">#{ link_to text, route }</li>}
+      %Q{<li id="#{id}_menu" class="menu_link #{route[:controller]}" title="#{text}"><span>#{ link_to text, route }</span></li>}
     end
   end
 
@@ -25,6 +25,23 @@ module ApplicationHelper
     (@feed_icons ||= []) << { :url => url, :title => title }
     link_to image_tag('icon_feed.png', :size => '14x14', :alt => "Subscribe to #{title}"), url
   end
+  
+  def floating_text_box(text)
+	%Q{
+		<div class='floating_text_box note'>
+		  <div class='content'>
+		    <div class='top'></div>
+		    <div class='background-color'>
+		    #{text}
+		    </div>
+		  </div>
+		  <div class='bottom'>
+		    <div></div>
+		  </div>
+		</div>
+	}
+  end
+  
   
   def logged_in
     current_user

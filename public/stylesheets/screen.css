@@ -1,13 +1,12 @@
 #ielte6 {display: none}
 
 body {
-    background-color: white;
+    background-color: #004000;
     color: black;
     font-family: Georgia, serif;
     margin: 0;
     padding: 0;
     min-width: 712px;
-    font-size: .85em
     }
 
 a:link {
@@ -31,239 +30,295 @@ p {line-height: 1.5em;}
 
 #header {
     background-repeat: no-repeat;
-    background-image: url("../images/logo-subpage.png");
-    background-position: right 80px;
-    float: right;
+    background-image: url(/images/logo.png);
+    background-position: left 80px;
+    float: left;
     width: 100%;
     position: relative;
-    }
-
-#hjem #header {
-    background-image: url("../images/logo.png");
-    background-position: left 80px;
-    float: right;
-    }
-
-#content {
     clear: both;
     }
+
+/* Title Image Replacement */
 
 h1#site_title {
-    height: 0px;
-    width: 660px;
-    overflow: hidden;
-    padding: 53px 0 0 0;
-    margin: 0;
+	margin: 80px 15px 10px 40px;
+	position: relative;
+	overflow:hidden;
+	padding: 0;
+	float: left;
+	width: 472px;
+	height: 39px;}
+
+h1#site_title span {
+	padding-top: 39px;
+	position: absolute;
+	height: 0;
+	width: 100%;
+
+}
+
+h1#site_title a {
+	padding-top: 39px;
+	position: absolute;
+	height: 0;
+	width: 100%;
+	bottom: 0;
+}
+
+/* End Title Image Replacement */
+
+
+
+h3 {margin-top:0}
+
+
+/* Menu Stuff */
+
+#program_menu {z-index:99;}
+#lyntaler_menu {z-index:98;}
+#openspace_menu {z-index:97;}
+#arrangoerene_menu {z-index:96;}
+#forum_menu {z-index:95;}
+#paamelding_menu {z-index:94;}
+
+ul.menu {
     float: right;
-    clear: right;
-    }
-
-#site_title a {
-    height: 0px;
-    padding: 53px 0 0 0;
-    font-size: 92px;
     white-space: nowrap;
+    font-family: Verdana, sans-serif;
+    font-size: 1.2em;
+    list-style-type: none;
+    margin: 0;padding: 0;
     }
 
-#hjem h1#site_title {
+ul.menu li {
     float: left;
-    }
-
-
-
+    display: inline;
+    list-style-type: none;	
+    position: relative;
+	}
 
 ul#user_nav {
-    margin: 0px 60px;
-    height: 60px;
-    float: right;
-    clear: both;
-    }
-
-
-
+    margin: 0px 30px;
+    height: 80px;
+    font-size: .9em;
+	}
+	
 ul#user_nav li {
     margin: 10px 0px 0px 30px;
-    float: left;
-    display: inline;
-    list-style-type: none;
     }
 
-
-
-
-
-
-
-
-ul#menu {
-    margin: 0px 60px 5px 0px;
-    float: right;
-    clear: both;
-    white-space: nowrap;
+ul#site_nav {
+	float: right;
+    margin: 0px 30px 0px 0px;
+	height: 45px;
+	color: black;
+	font-size: .8em;
+	clear: right;
     }
 
-ul#menu li {
-    float: left;
-    display: inline;
-    list-style-type: none;
-    margin-left: 30px;
+ul#site_nav li {
+	height: 39px;
+    background:transparent url(/images/shadow.png) no-repeat center right;
+	margin-right: -16px;
+	padding-right: 16px;
     }
 
-ul#menu, ul#menu li {
-    height: 15px;
-    background-position: top left;
-    background-repeat: no-repeat;
+ul#site_nav li.menu_current {
+background-position: top right;
     }
 
-ul#menu li.menu_link:hover {
-    background-position: 0 -15px;
-    }
+    
+ul#site_nav li a {
+	color: black;	
+	text-decoration: none;
+	}
 
-ul#menu li.menu_current {
-    background-position: 0 -30px;
-    }
+.menu_link a, .menu_current span {
+	display: block;
+	height: 15px;
+	padding: 12px 15px 12px 15px;
+	}
 
-ul#menu li, ul#menu li a {
-    height: 0px;
-    padding-top: 15px;
-    font-size: 21px;
-    white-space: nowrap;
-    width: auto;
-    }
+.menu_link a {
+	}
 
-li#program_menu {
-    background-image: url(../images/program.png);
-    overflow: hidden;
-    width: 80px;
-    }
+.menu_current {
+	z-index:100!important;
+	font-weight: bold;
+}
+.menu_current span {
 
-li#lyntaler_menu{
-    background-image: url(../images/lyntaler.png);
-    overflow: hidden;
-    width: 63px;
-    }
-
-li#arrangoerene_menu {
-    width: 112px;
-    overflow: hidden;
-    background-image: url(../images/arrangoerene.png);
-    }
-
-li#openspace_menu {
-    background-image: url(../images/open_space.png);
-    overflow: hidden;
-    width: 107px;
-   }
-
-li#forum_menu {
-    background-image: url(../images/forum.png);
-    overflow: hidden;
-    width: 56px;
-   }
-
-li#index_menu {
-    background-image: url(../images/hjem.png);
-    overflow: hidden;
-    width: 46px;
-   }
+	margin-top: -5px;
+	height: 21px;
+	padding-top: 17px
+	}
 
 
 
-h2.page_title {
-    padding: 23px 0 0 0;
-    height: 0;
-    background-repeat: no-repeat;
-    float: left;
-    margin: 25px 0px 0px 60px;
+
+/* Layered-look frame for content */
+
+.floating_text_box {
+    position: relative;
+    margin: 0px auto;
+    z-index: 1;
+    margin-left: 22px; /* width of left side of the frame */
+    	clear: both;
+	padding: 16px;
+}
+
+.floating_text_box .content,
+.floating_text_box .top,
+.floating_text_box .bottom,
+.floating_text_box .bottom div {
+    background:transparent url(/images/shadow.png) no-repeat top right;
+}
+
+.floating_text_box .content {
+    position:relative;
+    padding-top: 6px; /* The height of the top of the frame */
+    padding-right: 16px;/* The width of the right side of the frame */
+}
+
+.floating_text_box .top, .floating_text_box .bottom div {
+    width: 22px; /* bottom left corner's width */
+    margin-left: -22px;	
+}
+
+.floating_text_box .top {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    background-position: top left;z-index:-1;
+}
+
+.floating_text_box .bottom div, .floating_text_box .bottom {
+ 	height: 16px; /* The height of the bottom of the frame */
+	position: relative;
+	
+}
+
+.floating_text_box .bottom div {
+ 	background-position: bottom left;
+}
+
+.floating_text_box .bottom {
+ 	position:relative;
+ 	width:100%;
+    background-position:bottom right;
+}
+
+.floating_text_box p,
+.cutout_text_box p {
+    margin:0px; 
+    padding:0.5em 0;
+}
+
+.floating_text_box h3,
+.cutout_text_box h3, 
+.floating_text_box h4, 
+.cutout_text_box h4 {
+    padding-bottom:0px;
+}
+
+#main .floating_text_box {
+	float: right;
+	width: 300px;
+}
+
+
+
+
+/* Frame-specific stuff */
+
+.folder {
+	padding: 0px 14px 16px 22px;
+	top: -12px;
+ 	}
+
+.background-color {
+	padding: 16px 6px 6px 16px; /* Any additional height or width desired for the frame, */
+	margin-left:-16px;
+}
+
+.paper {
+	padding: 0px; /* Offsets to change location of paper on folder */
+	margin: -12px -10px -10px 10px;
+ 	}
+
+.color {
+	padding: 16px 6px 6px 16px; /* Any additional height or width desired for the frame, */
+	margin-left:-16px;
+}
+
+.note {
+	padding: 0px
+ 	}
+ 	
+.note .background-color {
+	padding: 6px 16px;	
+	
+}
+
+
+/* End Floating Text Box Stuff */
+
+
+
+#main {
+	padding: 30px
+
+}
+
+#footer {clear:both;}
+
+.quote {font-style: italic}
+
+h2 {
     color: #008800;
-    font: arial;
-    }
-
-h2#page_index_title  {
-        overflow: hidden;
-        background-image: url("../images/heading-program.png");
-        width: 242px;
-        }
-
-h2#page_lyntaler_title  {
-    overflow: hidden;
-    background-image: url("../images/heading-lyntale.png");
-    width: 242px;
-    }
-
-h2#page_program_title  {
-    overflow: hidden;
-    background-image: url("../images/heading-program.png");
-    width: 144px;
+	font-family: verdana, sans-serif;
+	margin: 0 1em 0 0;
+	padding:0;
     }
 
 
+#notifications p {
+	padding:0;
+	
+}
 
-h2#page_openspace_title  {
-    overflow: hidden;
-    background-image: url("../images/heading-open_space.png");
-    width: 286px;
-    }
+#index_buttons {
+	margin-top: -87px;
+}
 
-h2#page_arrangoerene_title  {
-    overflow: hidden;
-    background-image: url("../images/heading-arrangoerene.png");
-    width: 162px;
-    }
-
-#hjem h2#page_index_title  {
-    overflow: hidden;
-    background-image: url("../images/heading-hjem.png");
-    background-position: top right;
-    padding: 41px 0 0 0;
-    width: 259px;
-    float: right;
-    margin: 7px 60px 0px 0px;
-    clear: right;
-    }
-
-#content {
-    padding: 15px 60px;
-    }
 
 #rightcol {
     width: 49.5%;
     float: right;
+
         }
 #leftcol {
     width: 49.5%;
     float: left;
+
     }
 
-#leftcol p, #leftcol div {
-    margin-right: 30px;
-    }
-
-#rightcol p, #rightcol div {
-    margin-left: 30px;
-    }
-
+#leftcol .floating_text_box {
+	padding-top:15px;
+	width:100%;
+}
 
 
 #def {
     font-family: verdana;
     font-size: .8em;
-	background: #f3f3f3;
-	padding: 1em;
+	margin-right: 0px;
     }
 
 #def * {
     line-height: normal;
-    }
-
-.intro {
-    float: right;
-    margin-left: 30px;
-    width: 30%;
-    font-size: 1.5em;
-    padding: 15px;
-    color: #d45a00;
-    font-style: italic;
+	margin-right: 0px;
     }
 
 
@@ -316,17 +371,18 @@ dt {
 
 #sponsors img { margin: 0 20px; }
 
-
+/* Form */
 
 
 form {
     font-family: verdana, sans-serif;
-    font-size: .8em;
-    float: left;
-    clear: both;
-    position: relative;
-    margin: 30px 0px;
+	overflow:auto;
     }
+
+form#new_user_session {
+	clear: both;
+	line-height: 1.5em;
+	}
 
 form#new_user_session span {
     display: block;
@@ -337,18 +393,15 @@ form#new_user_session div {
     display: inline;
     margin-right: 15px;
     float: left;
-    }
+}
+	
+form#new_user_session div.button {
+	padding-top:1.6em;
+}
 
-input {
-
-    }
-
-
-#user_session_submit {
-    position: absolute;
-    bottom: 0;
-    margin: 0;
-    padding: 0;
+form#new_user_session .button input {
+	margin:0;
+	vertical-align:bottom;
 }
 
 
@@ -356,10 +409,12 @@ input {
 width: 10em;
 }
 
+#user_session_password {
+width: 7em;
+}
 
 #user_session_password {
 width: 7em;
-
 }
 
 
@@ -399,4 +454,98 @@ width: 7em;
   font-size: 12px;
   list-style: square;
 }
+
+
+
+ul#site_nav li.topics *, #index .background-color {background-color: #e0f0c6!important;}
+ul#site_nav li.lyntaler *, #lyntaler .background-color  {background-color: #bbdd88;}
+ul#site_nav li.openspace *, #openspace .background-color  {background-color: #aacc55;}
+ul#site_nav li.arrangoerene *, #arrangoerene .background-color  {background-color: #779933;}
+ul#site_nav li.forum * {background-color: #446622;}
+ul#site_nav li.users *, #new .background-color {background-color: #ff7417;}
+
+
+.paper .color {background-color: white;}
+
+
+
+
+
+
+
+
+
+
+/* Button Image Replacement */
+
+.transparent_button {
+    background-repeat: no-repeat;
+	position: relative;
+	overflow:hidden;
+	padding: 0;
+}
+
+.transparent_button span {
+	position: absolute;
+	height: 0;
+	width: 100%;
+}
+
+.transparent_button a {
+	position: absolute;
+	height: 0;
+	width: 100%;
+	bottom: 0;
+}
+
+#meld_deg_paa, #foreslaa_en_lyntale {
+	height: 36px;
+}
+
+#meld_deg_paa {
+    background-image: url(/images/meld_deg_paa.png);
+    width: 238px;
+    background-position: bottom left;
+}
+
+#foreslaa_en_lyntale {
+    background-image: url(/images/foreslaa_en_lyntale.png);
+    width: 313px;
+    background-position: bottom left;
+    margin-top: 15px;
+}
+
+#meld_deg_paa span, #meld_deg_paa a, #foreslaa_en_lyntale span, #foreslaa_en_lyntale a {
+	padding-top: 36px;
+}
+
+
+#meld_deg_paa:hover {
+    background-position: top left;
+
+}
+
+#foreslaa_en_lyntale:hover {
+    background-position: top left;
+}
+
+	
+#index h2 {
+    background-repeat: no-repeat;
+	position: relative;
+	overflow:hidden;
+	padding-top: 74px;
+	height: 0px;
+	width: 372px;
+	background-image: url(/images/date_and_place.png);
+	background-position:top left;
+}
+
+
+
+
+
+
+
+
 

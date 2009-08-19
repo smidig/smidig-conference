@@ -1,4 +1,4 @@
-<% content_for :title, "22. - 23. oktober - Oslo Konferansesenter" %>
+	<% content_for :title, "22. - 23. oktober - Oslo Kongressenter" %>  
 
 <div id="leftcol">
     <p>Smidig 2009 er et tverrfaglig initiativ for alle som jobber med IT-prosjekter. Konferansen arrangeres av frivillige entusiaster fra forskjellige fagmiljøer med en felles interesse for smidige metoder, og støttes av et bredt spekter av bedrifter. Vi tror at den mest verdifulle erfaringen eksisterer i hodene på de som gjennomfører prosjekter til daglig, enten de kaller måten de jobber smidig eller ikke. Smidig-konferansene er et forum der vi
@@ -8,39 +8,52 @@
 
     <p>Dette er tredje gangen smidig-konferansen blir arrangert. Smidig 2007 og Smidig 2008 hadde mange gode foredrag og var en god plass for faglig og profesjonelt påfyll. Du kan se video av alle foredragene både fra <a href="http://smidig2008.confreaks.com">Smidig 2008</a> og <a href="http://smidig2007.confreaks.com">Smidig 2007</a> online.</p>
 
-	<br/>
-    <div id="def">
-        <h3>Hva er smidig utvikling?</h3>
-
-        <p>Vi oppdager nye og bedre måter å utvikle systemer på, ved å gjøre det selv og ved å hjelpe andre. Derved har vi lært oss å verdsette:</p>
-
-        <ul><li>Individer og samspill framfor prosesser og verktøy</li>
-            <li>Fungerende system framfor utførlig dokumentasjon</li>
-            <li>Samarbeid med kunden framfor kontraktsforhandlinger</li>
-            <li>Å reagere på endringer framfor å følge en plan</li>
-        </ul>
-
-        <p>Det betyr at selv om punktene til høyre er verdifulle, verdsetter vi de til venstre mer.</p>
-
-        <div class="attribution">~Manifesto for Agile Software Development</div>
-
-        <p>Vi kaller prosjekter som følger disse prinsippene for smidige prosjekter. Arrangørene bak Smidig 2008 tror at norske IT-prosjekter kan bli mer vellykkede med bruk av smidige metoder gjennom å realisere gevinster tidligere og håndtere endringer på en bedre måte.</p>
-    </div>
+	<%= floating_text_box "
+	    <div id='def'>
+	        <h3>Hva er smidig utvikling?</h3>
+	        <p>Vi oppdager nye og bedre måter å utvikle systemer på, ved å gjøre det selv og ved å hjelpe andre. Derved har vi lært oss å verdsette:</p>
+	
+	        <ul><li>Individer og samspill framfor prosesser og verktøy</li>
+	            <li>Fungerende system framfor utførlig dokumentasjon</li>
+	            <li>Samarbeid med kunden framfor kontraktsforhandlinger</li>
+	            <li>Å reagere på endringer framfor å følge en plan</li>
+	        </ul>
+	
+	        <p>Det betyr at selv om punktene til høyre er verdifulle, verdsetter vi de til venstre mer.</p>
+	        <div class='attribution'>~Manifesto for Agile Software Development</div>
+	        <p>Vi kaller prosjekter som følger disse prinsippene for smidige prosjekter. Arrangørene bak Smidig 2008 tror at norske IT-prosjekter kan bli mer vellykkede med bruk av smidige metoder gjennom å realisere gevinster tidligere og håndtere endringer på en bedre måte.</p>
+	    </div>
+	" %>	
+	
+	
+	
 </div>
 
 <div id="rightcol">
-  <% if not current_user %>
-  	<% link_to new_user_path do %>
-  		<div class="largeButton" id="meld_deg_paa">
-  			Påmelding
-  		</div>
-  	<% end %>
-  <% end %>
-  <% link_to new_talk_path do %>
-    <div class="largeButton" id="foreslaa_en_lyntale">
-      Foreslå lyntale
-    </div>
-	<% end %>
+
+<div id="index_buttons">
+<div class="transparent_button" id="meld_deg_paa" title="Meld deg på!">				
+	<span>
+		<% if not current_user %>
+			<% link_to new_user_path do %>
+				Meld deg på!
+			<% end %>
+		<% end %>
+	</span>
+</div>	
+	 
+<div class="transparent_button" id="foreslaa_en_lyntale" title="Foreslå en lyntale!">
+	<span>	
+		<% link_to new_talk_path do %>
+			Foreslå en lyntale!
+		<% end %>
+	</span>
+</div>	
+ 
+  
+  </div>
+
+
 
     <div id="practical">
         <p>Konferansen blir avholdt 22.-23. oktober i Oslo Kongressenter. Registreringen er nå åpen, klikk på lenkene ovenfor. Deltageravgiften for tidlig påmelding er på kr. 1000/1500 uten/med middag.</p>
@@ -57,3 +70,4 @@
     </div>
 
 </div>
+<div id="footer">Blah</div>

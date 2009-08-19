@@ -1,13 +1,17 @@
 <% form_for @user_session do |f| %>
-  <div>
-    <span><%= f.label :'e-post' %></span>
-    <%= f.text_field :email %>
-  </div>
-  <div>
-    <span><%= f.label :passord %></span>
-    <%= f.password_field :password %>
-  </div>
-  <%= f.submit "Logg inn" %>
+	<div id="loginform" class="form">
+	  <div>
+	    <span><%= f.label :'e-post' %></span>
+	    <%= f.text_field :email %>
+	  </div>
+	  <div>
+	    <span><%= f.label :passord %></span>
+	    <%= f.password_field :password %>
+	  </div>
+	  <div class="button">
+		  <%= f.submit "Logg inn" %>
+	  </div>		  
+	 </div>
 <% end %>
 
 

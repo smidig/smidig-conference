@@ -1,0 +1,17 @@
+#user_nav {float:none;}
+
+#user_nav li {
+float:right;
+}
+
+h1#site_title {
+	margin-top:0px
+}
+
+#site_nav {min-width:590px}
+
+#header {z-index:20}
+.folder {min-width:1089px;right:6px;
+
+}
+html{float:left}
