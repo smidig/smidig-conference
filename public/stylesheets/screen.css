@@ -167,10 +167,9 @@ ul#site_nav li a {
     position: relative;
     margin: 0px auto;
     z-index: 1;
-    margin-left: 22px; /* width of left side of the frame */
-    clear: both;
+    margin-left: 22px; /* width of left corner */
+    clear: both; 
 	padding: 16px;
-
 }
 
 .floating_text_box .content,

@@ -18,4 +18,5 @@ html{float:left}
 
 .paper .content {padding-bottom:6px}
 
-.note .content {padding-bottom:0px;}
+.note .content {padding-bottom:0px; zoom:1;}
+
