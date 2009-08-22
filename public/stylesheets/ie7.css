@@ -11,7 +11,11 @@ h1#site_title {
 #site_nav {min-width:590px}
 
 #header {z-index:20}
-.folder {min-width:1089px;right:6px;
+.folder {min-width:1089px;right:6px; top:-8px;
 
 }
 html{float:left}
+
+.paper .content {padding-bottom:6px}
+
+.note .content {padding-bottom:0px;}

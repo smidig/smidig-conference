@@ -13,6 +13,8 @@ a:link {
     color: #C24C00;
     }
 
+
+
 a:visited {
     color: #C24C00;
     }
@@ -21,6 +23,9 @@ a:active {
     color: #00ff00;
     }
 
+a:hover {
+	color: #ff7417;
+}
 
 img {
     border: 0;
@@ -163,8 +168,9 @@ ul#site_nav li a {
     margin: 0px auto;
     z-index: 1;
     margin-left: 22px; /* width of left side of the frame */
-    	clear: both;
+    clear: both;
 	padding: 16px;
+
 }
 
 .floating_text_box .content,
@@ -221,14 +227,12 @@ ul#site_nav li a {
 .cutout_text_box h4 {
     padding-bottom:0px;
 }
-
+#footer {overflow:auto;clear:both}
 #main .floating_text_box {
 	float: right;
-	width: 300px;
 }
 
-
-
+.note {width:300px}
 
 /* Frame-specific stuff */
 
@@ -237,19 +241,20 @@ ul#site_nav li a {
 	top: -12px;
  	}
 
-.background-color {
-	padding: 16px 6px 6px 16px; /* Any additional height or width desired for the frame, */
+.background-color { 
 	margin-left:-16px;
+	padding: 6px 0px 0px 16px; /* Any additional height or width desired for the frame, */
 }
 
-.paper {
-	padding: 0px; /* Offsets to change location of paper on folder */
-	margin: -12px -10px -10px 10px;
+.paper {  
+	margin: 0px;
+	padding-right:0;
+	padding-top:0;
+	padding-bottom:0;
  	}
 
-.color {
-	padding: 16px 6px 6px 16px; /* Any additional height or width desired for the frame, */
-	margin-left:-16px;
+.color {  
+	margin-left:-16px;	
 }
 
 .note {
@@ -293,17 +298,6 @@ h2 {
 }
 
 
-#rightcol {
-    width: 49.5%;
-    float: right;
-
-        }
-#leftcol {
-    width: 49.5%;
-    float: left;
-
-    }
-
 #leftcol .floating_text_box {
 	padding-top:15px;
 	width:100%;
@@ -321,20 +315,101 @@ h2 {
 	margin-right: 0px;
     }
 
+#todo {clear:both;overflow:auto}
+#index .color .floating_text_box {clear:none;float:right;min-width:300px;margin-left: 52px;width:40%}
+#index_text {clear:both;margin-top:15px}
 
-#todo {
-    font-size: 1.5em;
-    padding: 15px 15px 15px 45px;
-    font-style: italic;
-    border-style: solid;
-    border-color: black;
-    border-width: 1px 0;
+
+#index h2 {
+    background-repeat: no-repeat;
+	position: relative;
+	overflow:hidden;
+	padding-top: 87px;
+	height: 0px;
+	width: 258px;
+	background-image: url(/images/date_and_place.png);
+	background-position:top left;
+}
+
+#todo h4 {
+	font-family: verdana, sans-serif;
+	padding:0;
+	margin:0;
+	border-style: solid;
+	border-color: #aaaaaa;
+	border-width: 0 0 2px 0; 
+	position:relative;	
     }
 
-#todo li {
-    list-style: disc;
-    padding: .25em 0;
+#todo h4 a, #todo h4 span {
+	text-decoration:none;
+	font-weight:bold;
+	position:absolute;
+	bottom:0;
+	padding-right:20px
     }
+
+#todo h4:hover {
+	border-color: #ff7417;
+    }
+
+#todo p {
+	font-size: .8em;
+	padding: 5px 20px 0 0 ;
+}
+
+#todo #firstrow {
+	clear:both;
+	margin:0em;
+}
+
+#todo #firstrow h2 {float:left}
+
+#todo #firstrow h4 {
+	margin-left:291px;
+	font-size: 1.4em;
+	height: 1.8em;
+}
+#todo #firstrow p {
+	margin-left:291px;
+	margin-bottom:15px;
+}
+
+
+#todo #secondrow {
+	clear:both;
+}
+
+#todo #secondrow div{
+	width: 49.5%;
+	float:left;
+	margin-bottom:15px;
+}
+#todo #secondrow h4 {
+	clear:both;
+	height: 2em;
+}
+#todo #thirdrow {
+	clear:both;
+}
+
+#todo #thirdrow div {
+	width: 24.5%;
+	float:left;
+	margin-bottom: 15px;
+} 
+
+#todo #thirdrow h4 {height:2.5em}
+
+
+
+
+
+
+
+
+
+
 
 .largeButton {
 	background: #559900;
@@ -351,9 +426,6 @@ h2 {
     text-align: right;
     }
 
-dt {
-    padding-top: 1em
-    }
 
 #sponsors { 
 	background: white;
@@ -458,6 +530,8 @@ width: 7em;
 
 
 ul#site_nav li.topics *, #index .background-color {background-color: #e0f0c6!important;}
+ul#site_nav li.om_konferansen *, #om_konferansen .background-color  {background-color: #bbdd88;}
+ul#site_nav li.spre_ordet *, #spre_ordet .background-color  {background-color: #aacc55;}
 ul#site_nav li.lyntaler *, #lyntaler .background-color  {background-color: #bbdd88;}
 ul#site_nav li.openspace *, #openspace .background-color  {background-color: #aacc55;}
 ul#site_nav li.arrangoerene *, #arrangoerene .background-color  {background-color: #779933;}
@@ -497,55 +571,3 @@ ul#site_nav li.users *, #new .background-color {background-color: #ff7417;}
 	width: 100%;
 	bottom: 0;
 }
-
-#meld_deg_paa, #foreslaa_en_lyntale {
-	height: 36px;
-}
-
-#meld_deg_paa {
-    background-image: url(/images/meld_deg_paa.png);
-    width: 238px;
-    background-position: bottom left;
-}
-
-#foreslaa_en_lyntale {
-    background-image: url(/images/foreslaa_en_lyntale.png);
-    width: 313px;
-    background-position: bottom left;
-    margin-top: 15px;
-}
-
-#meld_deg_paa span, #meld_deg_paa a, #foreslaa_en_lyntale span, #foreslaa_en_lyntale a {
-	padding-top: 36px;
-}
-
-
-#meld_deg_paa:hover {
-    background-position: top left;
-
-}
-
-#foreslaa_en_lyntale:hover {
-    background-position: top left;
-}
-
-	
-#index h2 {
-    background-repeat: no-repeat;
-	position: relative;
-	overflow:hidden;
-	padding-top: 74px;
-	height: 0px;
-	width: 372px;
-	background-image: url(/images/date_and_place.png);
-	background-position:top left;
-}
-
-
-
-
-
-
-
-
-
