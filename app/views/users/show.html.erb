@@ -1,3 +1,5 @@
+<% content_for :title, @user.name %>
+
 <% if @user.registration && @user.registration.paid? %>
 
 Vi har mottatt bekreftelse fra PayPal, og dermed registrert din betaling i systemet. Vi sees på Smidig 2009!
@@ -37,6 +39,16 @@ Vi har registrert følgende informasjon om deg:
        	<li><strong>Transaksjonsid:</strong> <%=h @user.registration.payment_notification.transaction_id %> Status: <%=h @user.registration.payment_notification.status %> Betalt: <%=h @user.registration.payment_notification.currency %> <%=h @user.registration.payment_notification.paid_amount %></li>
     <% end %>
   </ul>
+  
+  <% if admin? %>
+    <h3 style="color:red">Admin: Test utsendelse av betalingsbekreftelse</h3>
+    
+    <% form_for(@user.registration) do |f| %>
+      <%= f.submit "Send bekreftelse til bruker" %>
+    <% end %>
+    
+  <% end %>
+  
 <% end %>
 
 <% if @user.talks and !@user.talks.empty? %>

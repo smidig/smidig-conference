@@ -1,4 +1,4 @@
-<h1>Brukere</h1>
+<h2>Brukere</h2>
 
 <ul>
   <li><%= link_to "Alle", :filter => 'all' %></li>
@@ -8,6 +8,8 @@
   <li><%= link_to "Foredragsholdere som har betalt", :filter => 'paying_speaker' %></li>
   <li><%= link_to "Administratorer", :filter => 'admin' %></li>
 </ul>
+
+<h3><%= @users.length %> brukere:</h3>
 
 <table>
   <tr>

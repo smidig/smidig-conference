@@ -2,6 +2,10 @@ class PaymentNotificationsController < ApplicationController
   protect_from_forgery :except => [:create]
   def create
     PaymentNotification.create!(:params => params, :registration_id => params[:invoice], :status => params[:payment_status], :transaction_id => params[:txn_id], :paid_amount => params[:mc_gross], :currency => params[:mc_currency])
+    
+    registration = Registration.find(params[:invoice])
+    SmidigMailer.deliver_payment_confirmation(registration)
+    
     render :nothing => true
   end
   

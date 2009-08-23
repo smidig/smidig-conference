@@ -4,7 +4,7 @@ class Talk < ActiveRecord::Base
   belongs_to :speaker, :class_name => "User"
   belongs_to :topic
   has_many :comments, :order => "created_at", :include => :user
-  has_many :votes
+  has_many :votes, :include => :user
   
   validates_acceptance_of :accepted_guidelines  
   validates_acceptance_of :accepted_cc_license

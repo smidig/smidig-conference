@@ -2,39 +2,42 @@ require 'test_helper'
 
 class SmidigMailerTest < ActionMailer::TestCase
   test "registration_confirmation" do
-    @expected.subject = 'Smidig 2009 Bekreftelse brukerregistrering'
     @expected.body    = read_fixture('registration_confirmation')
-    @expected.date    = Time.now
-    
-    name = "Ole Christian Rynning"
-    email = "oc+smidig2009@rynning.no"
-    password = "123qwe"
 
-    assert_equal @expected.encoded, SmidigMailer.create_registration_confirmation(name, email, password, @expected.date).encoded
+    user = User.new :email => "oc+smidig2009@rynning.no", :name => "Ole Christian Rynning"
+
+    assert_equal @expected.body, SmidigMailer.create_registration_confirmation(user).body
   end
 
   test "payment_confirmation" do
-    @expected.subject = 'SmidigMailer#payment_confirmation'
     @expected.body    = read_fixture('payment_confirmation')
-    @expected.date    = Time.now
 
-    assert_equal @expected.encoded, SmidigMailer.create_payment_confirmation(@expected.date).encoded
+    user = User.new :email => "oc+smidig2009@rynning.no", :name => "Ole Christian Rynning"
+    registration = Registration.new :user => user, :description => "Text", :price => 123.0
+
+    assert_equal @expected.body, SmidigMailer.create_payment_confirmation(registration).body
   end
 
   test "talk_confirmation" do
-    @expected.subject = 'SmidigMailer#talk_confirmation'
     @expected.body    = read_fixture('talk_confirmation')
-    @expected.date    = Time.now
 
-    assert_equal @expected.encoded, SmidigMailer.create_talk_confirmation(@expected.date).encoded
+    user = User.new :email => "oc+smidig2009@rynning.no", :name => "Ole Christian Rynning"
+    talk = Talk.new :speaker => user, :title => "A fine talk"
+    talk_url = "http://smidig2009.no/talks/1234"
+
+    assert_equal @expected.body, 
+      SmidigMailer.create_talk_confirmation(talk, talk_url).body
   end
 
   test "comment_notification" do
-    @expected.subject = 'SmidigMailer#comment_notification'
     @expected.body    = read_fixture('comment_notification')
-    @expected.date    = Time.now
 
-    assert_equal @expected.encoded, SmidigMailer.create_comment_notification(@expected.date).encoded
+    user = User.new :email => "oc+smidig2009@rynning.no", :name => "Ole Christian Rynning"
+    talk = Talk.new :speaker => user, :title => "A fine talk"
+    comment = Comment.new :talk => talk
+    comment_url = "http://smidig2009.no/talks/1234#comment_1"
+
+    assert_equal @expected.body, SmidigMailer.create_comment_notification(comment, comment_url).body
   end
 
 end

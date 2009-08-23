@@ -28,6 +28,8 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         flash[:notice] = 'Kommentaren har blitt opprettet.'
+        SmidigMailer.deliver_comment_notification(@comment,
+          talk_url(@comment.talk, :anchor => dom_id(@comment)))
         format.html { redirect_to(:controller => 'talks', :action => 'show', :id => @talk, :anchor => dom_id(@comment)) }
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else

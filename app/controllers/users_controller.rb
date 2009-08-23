@@ -80,6 +80,8 @@ class UsersController < ApplicationController
     end
 
     if saved
+      SmidigMailer.deliver_registration_confirmation(@user)
+      
       redirect_to @registration.payment_link     
     else
        render :action => 'new'

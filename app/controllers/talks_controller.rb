@@ -17,7 +17,7 @@ class TalksController < ApplicationController
   # GET /talks/1
   # GET /talks/1.xml
   def show
-    @talk = Talk.find(params[:id])
+    @talk = Talk.find(params[:id], :include => [:speaker, :topic, :comments, :votes])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -57,6 +57,7 @@ class TalksController < ApplicationController
     respond_to do |format|
       if @talk.speaker && @talk.save
         flash[:notice] = 'Forslaget er publisert.'
+        SmidigMailer.deliver_talk_confirmation(@talk, talk_url(@talk))
         format.html { redirect_to(@talk) }
         format.xml  { render :xml => @talk, :status => :created, :location => @talk }
       else
