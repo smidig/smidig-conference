@@ -16,7 +16,7 @@ a:link {
 
 
 a:visited {
-    color: #C24C00;
+    color: #c04d00;
     }
 
 a:active {
@@ -46,7 +46,7 @@ p {line-height: 1.5em;}
 /* Title Image Replacement */
 
 h1#site_title {
-	margin: 80px 15px 10px 40px;
+	margin: 80px 15px 10px 74px;
 	position: relative;
 	overflow:hidden;
 	padding: 0;
