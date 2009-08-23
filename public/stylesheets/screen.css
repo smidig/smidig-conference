@@ -528,15 +528,15 @@ width: 7em;
 
 
 
-ul#site_nav li.topics *, #index .background-color {background-color: #e0f0c6}
+ul#site_nav li.topics *, #index .background-color, #show .background-color {background-color: #e0f0c6}
 ul#site_nav li.om_konferansen *, #om_konferansen .background-color  {background-color: #bbdd88;}
 ul#site_nav li.spre_ordet *, #spre_ordet .background-color  {background-color: #aacc55;}
 ul#site_nav li.lyntaler *, #lyntaler .background-color  {background-color: #bbdd88;}
 ul#site_nav li.openspace *, #openspace .background-color  {background-color: #aacc55;}
 ul#site_nav li.arrangoerene *, #arrangoerene .background-color  {background-color: #779933;}
 ul#site_nav li.forum * {background-color: #446622;}
-ul#site_nav li.users *, #new .background-color {background-color: #ff7417;}
-#hjem #index .background-color {background-color: #f5fbeb;}
+ul#site_nav li.users *, #new .background-color, #current .background-color, #edit .background-color {background-color: #ff7417;}
+#hjem #index .background-color {background-color: #f4faea;}
 
 .paper .color {background-color: white;}
 
