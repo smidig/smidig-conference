@@ -98,7 +98,7 @@ ul.menu {
 ul.menu li {
     float: left;
     display: inline;
-    list-style-type: none;	
+    list-style-type: none;
     position: relative;
 	}
 
@@ -107,7 +107,7 @@ ul#user_nav {
     height: 80px;
     font-size: .9em;
 	}
-	
+
 ul#user_nav li {
     margin: 10px 0px 0px 30px;
     }
@@ -132,9 +132,9 @@ ul#site_nav li.menu_current {
 background-position: top right;
     }
 
-    
+
 ul#site_nav li a {
-	color: black;	
+	color: black;
 	text-decoration: none;
 	}
 
@@ -168,7 +168,7 @@ ul#site_nav li a {
     margin: 0px auto;
     z-index: 1;
     margin-left: 22px; /* width of left corner */
-    clear: both; 
+    clear: both;
 	padding: 16px;
 }
 
@@ -187,7 +187,7 @@ ul#site_nav li a {
 
 .floating_text_box .top, .floating_text_box .bottom div {
     width: 22px; /* bottom left corner's width */
-    margin-left: -22px;	
+    margin-left: -22px;
 }
 
 .floating_text_box .top {
@@ -201,7 +201,7 @@ ul#site_nav li a {
 .floating_text_box .bottom div, .floating_text_box .bottom {
  	height: 16px; /* The height of the bottom of the frame */
 	position: relative;
-	
+
 }
 
 .floating_text_box .bottom div {
@@ -216,13 +216,13 @@ ul#site_nav li a {
 
 .floating_text_box p,
 .cutout_text_box p {
-    margin:0px; 
+    margin:0px;
     padding:0.5em 0;
 }
 
 .floating_text_box h3,
-.cutout_text_box h3, 
-.floating_text_box h4, 
+.cutout_text_box h3,
+.floating_text_box h4,
 .cutout_text_box h4 {
     padding-bottom:0px;
 }
@@ -240,29 +240,29 @@ ul#site_nav li a {
 	top: -12px;
  	}
 
-.background-color { 
+.background-color {
 	margin-left:-16px;
 	padding: 6px 0px 0px 16px; /* Any additional height or width desired for the frame, */
 }
 
-.paper {  
+.paper {
 	margin: 0px;
 	padding-right:0;
 	padding-top:0;
 	padding-bottom:0;
  	}
 
-.color {  
-	margin-left:-16px;	
+.color {
+	margin-left:-16px;
 }
 
 .note {
 	padding: 0px
  	}
- 	
+
 .note .background-color {
-	padding: 6px 16px;	
-	
+	padding: 6px 16px;
+
 }
 
 
@@ -289,7 +289,7 @@ h2 {
 
 #notifications p {
 	padding:0;
-	
+
 }
 
 #index_buttons {
@@ -336,8 +336,8 @@ h2 {
 	margin:0;
 	border-style: solid;
 	border-color: #aaaaaa;
-	border-width: 0 0 2px 0; 
-	position:relative;	
+	border-width: 0 0 2px 0;
+	position:relative;
     }
 
 #todo h4 a, #todo h4 span {
@@ -396,7 +396,7 @@ h2 {
 	width: 24.5%;
 	float:left;
 	margin-bottom: 15px;
-} 
+}
 
 #todo #thirdrow h4 {height:2.5em}
 
@@ -426,18 +426,18 @@ h2 {
     }
 
 
-#sponsors { 
+#sponsors {
 	background: white;
-	margin-left:5em; 
-	margin-right:5em; 
+	margin-left:5em;
+	margin-right:5em;
 	padding: 0.5em;
 	padding-top: 2em;
 
 	clear: both;
-	z-index:100; 
+	z-index:100;
 
-	line-height: 40px; 
-	text-align: center; 
+	line-height: 40px;
+	text-align: center;
 }
 
 #sponsors img { margin: 0 20px; }
@@ -465,7 +465,7 @@ form#new_user_session div {
     margin-right: 15px;
     float: left;
 }
-	
+
 form#new_user_session div.button {
 	padding-top:1.6em;
 }
@@ -528,7 +528,7 @@ width: 7em;
 
 
 
-ul#site_nav li.topics *, #index .background-color {background-color: #e0f0c6!important;}
+ul#site_nav li.topics *, #index .background-color {background-color: #e0f0c6}
 ul#site_nav li.om_konferansen *, #om_konferansen .background-color  {background-color: #bbdd88;}
 ul#site_nav li.spre_ordet *, #spre_ordet .background-color  {background-color: #aacc55;}
 ul#site_nav li.lyntaler *, #lyntaler .background-color  {background-color: #bbdd88;}
@@ -536,7 +536,7 @@ ul#site_nav li.openspace *, #openspace .background-color  {background-color: #aa
 ul#site_nav li.arrangoerene *, #arrangoerene .background-color  {background-color: #779933;}
 ul#site_nav li.forum * {background-color: #446622;}
 ul#site_nav li.users *, #new .background-color {background-color: #ff7417;}
-
+#hjem #index .background-color {background-color: #f5fbeb;}
 
 .paper .color {background-color: white;}
 
