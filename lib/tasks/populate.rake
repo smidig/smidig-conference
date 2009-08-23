@@ -51,9 +51,8 @@ namespace :db do
         talk.video_url = "d2t2p02" if rand > 0.5
         talk.slideshare_url = "20080910-javazone-brodwall-continuous-deployment-1222324585598609-9" if rand > 0.5
         talk.created_at = Populator.value_in_range 3.months.ago..Time.now
-        talk.votes_count = 0
-        talk.allow_derivatives = ['', 'nd', 'sa'].rand
-        talk.allow_commercial_use = [true,false].rand
+        talk.votes_count = [0..10]
+        talk.audience_level = %w(novice intermediate expert)
         
         Comment.populate 0..5 do |comment|
           comment.talk_id = talk.id

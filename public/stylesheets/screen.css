@@ -31,8 +31,6 @@ img {
     border: 0;
     }
 
-p {line-height: 1.5em;}
-
 #header {
     background-repeat: no-repeat;
     background-image: url(/images/logo.png);
@@ -71,10 +69,6 @@ h1#site_title a {
 }
 
 /* End Title Image Replacement */
-
-
-
-h3 {margin-top:0}
 
 
 /* Menu Stuff */
@@ -279,17 +273,20 @@ ul#site_nav li a {
 
 .quote {font-style: italic}
 
+h2, h3, h4 {
+  color: #008800;
+	font-family: verdana, sans-serif;  
+	margin-bottom: 0;
+}
+
 h2 {
-    color: #008800;
-	font-family: verdana, sans-serif;
 	margin: 0 1em 0 0;
 	padding:0;
-    }
+}
 
 
 #notifications p {
 	padding:0;
-
 }
 
 #index_buttons {
@@ -528,7 +525,9 @@ width: 7em;
 
 
 
-ul#site_nav li.topics *, #index .background-color, #show .background-color {background-color: #e0f0c6}
+ul#site_nav li.topics *, #topics .background-color, #talks .background-color {background-color: #e0f0c6}
+ul#site_nav li.users *, #users .background-color {background-color: #ff7417;}
+
 ul#site_nav li.om_konferansen *, #om_konferansen .background-color  {background-color: #bbdd88;}
 ul#site_nav li.spre_ordet *, #spre_ordet .background-color  {background-color: #aacc55;}
 ul#site_nav li.lyntaler *, #lyntaler .background-color  {background-color: #bbdd88;}
@@ -542,11 +541,20 @@ ul#site_nav li.users *, #new .background-color, #current .background-color, #edi
 
 
 
+div.topic           { font-size: larger; font-weight: bold;}
+div.detail          { margin-left:3em; font-size:smaller; }
+div.speaker         { margin-left:3em; font-size:smaller; }
+div.submitted_time  { margin-left:3em; font-size:smaller; }
+div.votes           { margin-left:3em; font-size:smaller; }
+div.talk_topic      { margin-left:3em; font-size:smaller; }
+div.talk_description { margin-left:4em; font-size:smaller; }
+div.talks_submitted { font-style:italic; margin-top: 1em;}
+div.admin           { background-color: orange; }
+div#user_nav        { float: right; font-size: 12px; }
+div#comments        { margin-left:3em; }
+div.help            { margin-left:3em; font-size:smaller; font-variant:italic; }
 
-
-
-
-
+li.detail          { margin-left:3em; font-size:smaller; list-style-type: none;  }
 
 
 /* Button Image Replacement */

@@ -1,14 +1,15 @@
+<% content_for :title, h(@topic.title) %>
 
-<h3><%= link_to "Alle temaer", topics_path %> &gt;</h3>
+<p><%= link_to "Alle temaer", topics_path %> &gt;</p>
 <h2><%=h @topic.title %></h2>
-
-<% if admin? %><%= link_to "Endre beskrivelse", edit_topic_path(@topic) %><% end %>
+<p><%= feed_link "Følg med på nye foredrag", topic_talks_path(@topic, :format => :rss) %></p>
+<p><% if admin? %><%= link_to "Endre beskrivelse", edit_topic_path(@topic) %><% end %></p>
 
 <div>
   <%=simple_format @topic.description %>
 </div>
 
-<h2>Foreslåtte lyntaler <%= feed_link "(rss)", topic_talks_path(@topic, :format => :rss) %></h2>
+<h3 id="talks">Foreslåtte lyntaler</h3>
 
 <%= render :partial => @topic.talks %>
 

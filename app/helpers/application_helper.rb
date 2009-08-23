@@ -1,20 +1,34 @@
 
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-  def page_menu_item(text, action)
-    if current_page?(:controller => 'pages', :action => action)
-      %Q{<li id="#{action}_menu" class="menu_current #{action}" title="#{text}"><span>#{text}</span></li>}
-    else
-      %Q{<li id="#{action}_menu" class="menu_link #{action}" title="#{text}"><span>#{ link_to text, :controller => 'pages', :action => action }</span></li>}
-    end
+  def page_id
+    controller.controller_name == 'pages' ? controller.action_name : controller.controller_name
   end
 
-  def menu_item(text, id, route)
-    if current_page?(route)
-      %Q{<li id="#{id}_menu" class="menu_current #{route[:controller]}" title="#{text}"><span>#{text}</span></li>}
-    else
-      %Q{<li id="#{id}_menu" class="menu_link #{route[:controller]}" title="#{text}"><span>#{ link_to text, route }</span></li>}
-    end
+  def controller_is?(matching_controllers)
+    matching_controllers = [matching_controllers] if matching_controllers.is_a? String
+    matching_controllers.include? controller.controller_name
+  end
+  
+  def page_menu_item(text, action)
+    menu_class = current_page?(:controller => 'pages', :action => action) ? "menu_current" : "menu_link"
+    %Q{<li id="#{action}_menu" class="#{menu_class} #{action}" title="#{text}">
+      <span>#{ link_to_unless_current text, :controller => 'pages', :action => action }</span></li>}
+  end
+  
+  def program_menu_item
+    menu_class = controller_is?(%w(talks topics)) ? "menu_current" : "menu_link"
+    %Q(<li id="program_menu" class="#{menu_class} topics" title="Program"
+      ><span>#{ link_to_unless_current "Program", topics_path }</span></li>)
+  end
+
+  def user_menu_item
+    menu_class = controller_is?(%w(users)) ? "menu_current" : "menu_link"
+    text = current_user ? "Min påmelding" : "Meld meg på!"
+    path = current_user ? current_users_path : new_user_path
+    %Q(<li id="users_menu" class="#{menu_class} users">
+        <span>#{link_to_unless_current text, path }</span>
+      </li>)
   end
 
   def feed_link(title, url)

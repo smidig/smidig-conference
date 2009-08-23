@@ -13,11 +13,12 @@ module TopicsHelper
     end
   end
   
-  def antall_flere_lyntaler(antall_flere)
+  def antall_flere_lyntaler(antall_flere, topic)
+    text = "#{antall_flere} lyntaler til"
     case antall_flere
       when -100..0 then return ""
-      when 1 then return "... og en lyntale til"
-      else return "... og #{antall_flere} flere lyntaler"
+      when 1 then return "... og #{link_to 'en lyntale til', topic_path(topic, :anchor => 'talks') }"
+      else return "... og #{link_to text, topic_path(topic, :anchor => 'talks')}"
     end    
   end
 end

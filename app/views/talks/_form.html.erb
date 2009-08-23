@@ -55,11 +55,17 @@
       <%= f.hidden_field :topic_id, :value => @talk.topic.id %>
     <% else %>
       <%= f.collection_select :topic_id, Topic.find(:all), :id, :title %>
+      <%= link_to image_tag("help.png"), "#", :onClick => "$('topic_help').toggle(); return false;"  %><br />
+      <div id="topic_help" style="display: none" class="help">
+        For å sikre en god miks av lyntaler, ønsker vi at du velger
+        det forhåndsdefinerte temaene som passer best til lyntalen din.
+        <a href="mailto:kontakt@smidig.no">Ta kontakt</a> dersom ingenting passer.
+      </div>
     <% end %>
   </p>
 
   <p>
-    <%= f.label :title, "Påstand" %><%= link_to image_tag("help.png"), "#", :onClick => "$('title_help').toggle()"  %><br />
+    <%= f.label :title, "Påstand" %><%= link_to image_tag("help.png"), "#", :onClick => "$('title_help').toggle(); return false;"  %><br />
     <div id="title_help" style="display: none" class="help">
       Vår erfaring fra Smidig 2007 og 2008 er at gode lyntaler tar utgangspunkt i en påstand
       (for eksempel: "gode lyntaler tar utgangspunkt i en påstand") og bruker foredraget på å
@@ -68,7 +74,7 @@
     <%= f.text_field :title %>
   </p>
   <p>
-    <%= f.label :description, "Argumentasjon" %><%= link_to image_tag("help.png"), "#", :onClick => "$('description_help').toggle()"  %><br />
+    <%= f.label :description, "Argumentasjon" %><%= link_to image_tag("help.png"), "#", :onClick => "$('description_help').toggle(); return false;"  %><br />
     <div id="description_help" style="display: none" class="help">
       Vår erfaring fra Smidig 2007 og 2008 er at gode lyntaler tar utgangspunkt i en påstand
       (for eksempel: "gode lyntaler tar utgangspunkt i en påstand") og bruker foredraget på å

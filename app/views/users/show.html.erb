@@ -39,8 +39,8 @@ Vi har registrert følgende informasjon om deg:
   </ul>
 <% end %>
 
-<% if @user.talks %>
-  <h2>Foreslåtte foredrag</h2>
+<% if @user.talks and !@user.talks.empty? %>
+  <h3>Foreslåtte foredrag</h3>
   
   <ul>
     <% for talk in @user.talks %>

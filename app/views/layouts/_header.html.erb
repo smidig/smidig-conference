@@ -1,0 +1,23 @@
+<div id="header">
+    <ul class="menu" id="user_nav">
+      <% unless current_user %>
+        <li id="logg_inn"><%= link_to "Logg inn", login_path %></li>
+      <% end %>
+    </ul>
+
+    <h1 id="site_title" title="Smidig 2009 hjem"><span><%= link_to_unless_current("Smidig 2009", { :controller => 'pages', :action => 'index' }) %></span></h1>
+
+    <ul class="menu" id="site_nav">
+        <%= program_menu_item %>
+      
+        <%= page_menu_item "Lyntaler", 'lyntaler' %>
+        <%= page_menu_item "Open Space", 'openspace' %>
+        <!--
+        <%= page_menu_item "Om konferansen", 'om_konferansen' %>
+        <%= page_menu_item "Spre ordet", 'spre_ordet' %>
+    	-->
+        <%= page_menu_item "Arrangørene", 'arrangoerene' %>
+        <li id="forum_menu" class="menu_link forum" title="Forum"><a href="http://forum.smidig.no">Forum</a></li>
+        <%= user_menu_item %>
+    </ul>
+</div>

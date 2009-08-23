@@ -34,39 +34,10 @@
   <%= current_page?(:controller => 'pages', :action => 'index') ? 'id="hjem"' : '' %>
 >
 
-<div id="header">
-    <ul class="menu" id="user_nav">
-      <% if current_user %>
-        <% unfinished do %>
-          <li id="logg_ut"><%= link_to "Logg ut", logout_path %></li>
-        <% end %>
-      <% else %>
-        <li id="logg_inn"><%= link_to "Logg inn", login_path %></li>
-      <% end %>
-    </ul>
-
-    <h1 id="site_title" title="Smidig 2009 hjem"><span><%= link_to_unless_current("Smidig 2009", { :controller => 'pages', :action => 'index' }) %></span></h1>
-
-    <ul class="menu" id="site_nav">
-        <%= menu_item "Program", 'program', :controller => 'topics', :action => 'index' %>
-        <%= page_menu_item "Lyntaler", 'lyntaler' %>
-        <%= page_menu_item "Open Space", 'openspace' %>
-        <!--
-        <%= page_menu_item "Om konferansen", 'om_konferansen' %>
-        <%= page_menu_item "Spre ordet", 'spre_ordet' %>
-    	-->
-        <%= page_menu_item "Arrangørene", 'arrangoerene' %>
-        <li id="forum_menu" class="menu_link forum" title="Forum"><a href="http://forum.smidig.no">Forum</a></li>
-        <% if current_user %>
-          <%= menu_item "Min påmelding", 'min_paamelding', :controller => 'users', :action => 'current' %>
-        <% else %>
-          <%= menu_item "Meld meg på!", 'paamelding', :controller => 'users', :action => 'new' %>
-        <% end %>
-    </ul>
-</div>
+<%= render :partial => 'layouts/header' %>
 
 
-<div class="floating_text_box folder" id="<%= controller.action_name %>">
+<div class="floating_text_box folder" id="<%= page_id %>">
 	<div class='content'>
 	    <div class='top'></div>
 	    <div class='background-color'>
@@ -95,31 +66,7 @@
     </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-<div id="sponsors">
-	<a href="http://www.agilealliance.org"><img src="/images/logos/agilealliance.jpg" alt="Agile Alliance"/></a>
-	<a href="http://www.avenir.no"><img src="/images/logos/avenir.gif" alt="Avenir"/></a>
-	<a href="http://www.bekk.no"><img src="/images/logos/bekk.gif" alt="Bekk"/></a>
-	<a href="http://www.bouvet.no"><img src="/images/logos/bouvet.gif" alt="Bouvet"/></a>
-	<a href="http://www.conax.no"><img src="/images/logos/conax.gif" alt="Conax"/></a>
-	<a href="http://www.computas.no"><img src="/images/logos/computas.gif" alt="Computas"/></a>
-	<a href="http://www.iterate.no"><img src="/images/logos/iterate.gif" alt="Iterate"/></a>
-	<a href="http://www.kantega.no"><img src="/images/logos/kantega.gif" alt="Kantega"/></a>
-	<a href="http://www.sintef.no"><img src="/images/logos/sintef.gif" alt="Sintef"/></a>
-  <a href="http://www.spk.no"><img src="/images/logos/spk.gif" alt="SPK"/></a>
-	<a href="http://www.steria.no"><img src="/images/logos/steria.gif" alt="Steria"/></a>
-	<a href="http://www.tandberg.no"><img src="/images/logos/tandberg.gif" alt="Tandberg"/></a>
-	<a href="http://www.zenior.no"><img src="/images/logos/zenior.gif" alt="Zenior"/></a>
-</div>
+<%= render :partial => "layouts/sponsors" %>
 
 
 <!-- START Disclaimer/Tracking Stuff -->

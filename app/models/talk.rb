@@ -16,8 +16,16 @@ class Talk < ActiveRecord::Base
     topic.title
   end
   
+  def describe_audience_level
+    case audience_level
+    when 'novice' then 'De som har hørt om smidig'
+    when 'intermediate' then 'De som har prøvd smidige metoder'
+    when 'expert' then 'De som bruker smidige metoder i dag'
+    else ''
+    end
+  end
+  
   def license
-    # "by#{allow_commercial_use ? '' : '-nc'}#{allow_derivatives.blank? ? '' : '-' + allow_derivatives}"
     "by"
   end
 end
