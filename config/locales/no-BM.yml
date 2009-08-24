@@ -25,6 +25,11 @@
         odd: "må være oddetall"
         even: "må være partall" 
         topic: "Tema"
+      models:
+        user:
+          attributes:
+            email:
+              taken: er registrert med et annet passord
     # Her legges attributter for Model < ActiveRecord::Base
     models:
       topic: "tema"
@@ -44,7 +49,7 @@
         accepted_guidelines: "Retningslinjer for lyntaler"
         accepted_cc_license: "Creative Commons lisens"
         speaker_name: "Foredragsholders navn"
-        speaker_email: "Foredragsholders email"
+        speaker_email: "Foredragsholders e-post"
         speaker_phone_number: "Foredragsholders telefonnummer"
         speaker_password: "Passord"
         speaker_password_confirmation: "Passordbekreftelse"
