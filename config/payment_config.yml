@@ -18,14 +18,14 @@ experimental:
 
 
 production: &production
-  early_bird: 1000
-  early_bird_dinner: 1500
+  early_bird: 1250
+  early_bird_dinner: 1750
   paypal_email: paypal@smidig.no
   paypal_url: "https://www.paypal.com/cgi-bin/webscr"
 
 staging:
-  early_bird: 10
-  early_bird_dinner: 15
+  early_bird: 12.50
+  early_bird_dinner: 17.50
   paypal_email: paypal@smidig.no
   paypal_url: "https://www.paypal.com/cgi-bin/webscr"
 
