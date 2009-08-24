@@ -4,7 +4,7 @@
   <% unless current_user %>
     <h3>Hvem er du?</h3>
     
-    <p>(Dersom du allerede har registrert deg, behøver du bare oppgi email og passord)</p>
+    <p>(Dersom du allerede har registrert deg, trenger du bare oppgi email og passord)</p>
     
     <% f.fields_for :speaker do |user_form| %>
       <p>
@@ -49,13 +49,13 @@
   <h3>Hva vil du snakke om?</h3>
 
   <p>
-    <%= f.label :topic_id, "Tema" %><br />
+    <%= f.label :topic_id, "Tema" %>:
     <% if @talk.topic %>
       <%= @talk.topic.title %>
       <%= f.hidden_field :topic_id, :value => @talk.topic.id %>
     <% else %>
       <%= f.collection_select :topic_id, Topic.find(:all), :id, :title %>
-      <%= link_to image_tag("help.png"), "#", :onClick => "$('topic_help').toggle(); return false;"  %>:
+      <%= link_to image_tag("help.png"), "#", :onClick => "$('topic_help').toggle(); return false;"  %>
       <div id="topic_help" style="display: none" class="help">
         For å sikre en god miks av lyntaler, ønsker vi at du velger
         det forhåndsdefinerte temaene som passer best til lyntalen din.
