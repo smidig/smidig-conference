@@ -28,11 +28,12 @@
   <p>
     <%= radio_button_tag 'ticket_type', 'uten_middag', false %>
     <%= label_tag 'ticket_type_uten_middag', 
-      "Jeg vil ha Early Bird til kroner 1000, men finanskrisen gjør at vi ikke har råd til middag" %><br />
+      "Jeg vil ha Early Bird til kroner 1250, men finanskrisen gjør at vi ikke har råd til middag" %><br />
     <%= radio_button_tag 'ticket_type', 'med_middag', true %>
     <%= label_tag 'ticket_type_med_middag', 
-      "Jeg vil ha Early Bird, til kroner 1000 og gleder meg til middagen til kroner 500, totalt kroner 1500!" %>
+      "Jeg vil ha Early Bird, til kroner 1250 og gleder meg til middagen til kroner 500, totalt kroner 1750!" %>
   </p>
+  <div class="detail">Prisene er inklusive mva</div>
   <p><%= f.submit "Til betaling >>>" %></p>
   </div>
 <% end %>

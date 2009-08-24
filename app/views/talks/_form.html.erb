@@ -55,7 +55,7 @@
       <%= f.hidden_field :topic_id, :value => @talk.topic.id %>
     <% else %>
       <%= f.collection_select :topic_id, Topic.find(:all), :id, :title %>
-      <%= link_to image_tag("help.png"), "#", :onClick => "$('topic_help').toggle(); return false;"  %><br />
+      <%= link_to image_tag("help.png"), "#", :onClick => "$('topic_help').toggle(); return false;"  %>:
       <div id="topic_help" style="display: none" class="help">
         For å sikre en god miks av lyntaler, ønsker vi at du velger
         det forhåndsdefinerte temaene som passer best til lyntalen din.
@@ -67,7 +67,7 @@
   <p>
     <%= f.label :title, "Påstand" %><%= link_to image_tag("help.png"), "#", :onClick => "$('title_help').toggle(); return false;"  %><br />
     <div id="title_help" style="display: none" class="help">
-      Vår erfaring fra Smidig 2007 og 2008 er at gode lyntaler tar utgangspunkt i en påstand
+      Dette er tittelen på foredraget ditt. Vår erfaring fra Smidig 2007 og Smidig 2008 er at gode lyntaler tar utgangspunkt i en påstand
       (for eksempel: "gode lyntaler tar utgangspunkt i en påstand") og bruker foredraget på å
       diskutere bakgrunnen og konsekvensen av denne påstanden.
     </div>
@@ -78,7 +78,7 @@
     <div id="description_help" style="display: none" class="help">
       Vår erfaring fra Smidig 2007 og 2008 er at gode lyntaler tar utgangspunkt i en påstand
       (for eksempel: "gode lyntaler tar utgangspunkt i en påstand") og bruker foredraget på å
-      diskutere bakgrunnen og konsekvensen av denne påstanden.
+      diskutere bakgrunnen og konsekvensen av denne påstanden. Dette kalles ofte også for abstract.
     </div>
     <%= f.text_area :description, :rows => 10 %>
   </p>
