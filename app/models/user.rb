@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   
   attr_accessible :name, :email, :password, :password_confirmation, :company,
   	:is_admin, :phone_number
-  
+
   accepts_nested_attributes_for :registration
   
   validates_format_of :phone_number, :with => /\A(\d{8}|\d{3} \d{2} ?\d{3}|\d{2} \d{2} \d{2} \d{2}|\(\+\d+\)[\d ]+)\Z/,
@@ -20,6 +20,18 @@ class User < ActiveRecord::Base
     
   validates_presence_of :name
   validates_uniqueness_of :email
+  
+  def user_status
+    if not talks.empty?
+      "Foredragsholder" + (registration && registration.paid? ? " *" : "")
+    elsif registration
+      (registration.paid? ? "Betalt " : "Ikke betalt ") + registration.price.to_s
+    elsif is_admin
+      "Administrator"
+    else
+      "Ukjent"
+    end
+  end
   
   def self.find_with_filter(filter)
     case filter
