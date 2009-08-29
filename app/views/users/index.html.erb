@@ -1,5 +1,19 @@
 <h2>Brukere</h2>
 
+
+<%=
+  x_labels = (0...@date_range.length).select { |i| i%10 == 0 }.collect { |i| @date_range[i].strftime("%d %b") }
+  line_chart_xy = GoogleChart::LineChart.new('600x300', "Users per day", false) do |lc|
+    lc.axis :y, :range => [0,@all_per_date.max]
+    lc.axis :x, :labels => x_labels
+    lc.data "Users per day", @all_per_date, '0000ff'
+    lc.data "Speakers per day", @speakers_per_date, '00ff00'
+    lc.data "Paid users per day", @paid_per_date, 'ff0000'
+  end
+  image_tag line_chart_xy.to_url
+%>
+            
+
 <ul>
   <li><%= link_to "Alle", :filter => 'all' %></li>
   <li><%= link_to "Foredragsholdere", :filter => 'speakers' %></li>

@@ -33,6 +33,8 @@ Rails::Initializer.run do |config|
   
   config.gem "authlogic"
   
+  config.gem "gchartrb", :lib => "google_chart"
+  
   #config.gem "authlogic-oid", :lib => "authlogic_openid"
 
   # Only load the plugins named here, in the order given. By default, all plugins 

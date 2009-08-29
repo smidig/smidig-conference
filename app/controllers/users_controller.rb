@@ -4,6 +4,12 @@ class UsersController < ApplicationController
   before_filter :require_admin_or_self, :only => [ :show, :edit, :update ]  
   
   def index
+    @date_range = (2.months.ago.to_date..Date.today).to_a
+
+    @all_per_date = total_by_date(User.find(:all), @date_range)
+    @speakers_per_date = total_by_date(User.find_with_filter("speakers"), @date_range)
+    @paid_per_date = total_by_date(User.find_with_filter("paid"), @date_range)    
+
     @users = User.find_with_filter(params[:filter])
   end
   
@@ -115,5 +121,16 @@ protected
       access_denied
     end
   end  
-
+  
+  def total_by_date(users, date_range)
+    users_by_date = users.group_by { |u| u.created_at.to_date }
+    per_date = []
+    total = 0
+    for day in date_range do
+      total += users_by_date[day].size if users_by_date[day]
+      per_date << total
+    end
+    per_date
+  end
+  
 end
