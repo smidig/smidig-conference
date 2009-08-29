@@ -62,7 +62,7 @@ namespace :capasit do
     cfg = YAML::load(File.open(File.join(File.dirname(__FILE__), '../../config/capasit.yml')))[environment].symbolize_keys
 
     desc "Updates the installed version on #{environment}"
-    task environment => "deploy:#{environment}:update"
+    task environment => "capasit:#{environment}:update"
 
     namespace environment do
       application = cfg[:application]

@@ -55,8 +55,7 @@ module ApplicationHelper
 		</div>
 	}
   end
-  
-  
+    
   def logged_in
     current_user
   end
