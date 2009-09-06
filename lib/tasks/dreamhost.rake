@@ -31,7 +31,7 @@ namespace :dreamhost do
   application = "smidig2009"
 
   svn_root = "http://svn.smidig.no/smidig2009/#{application}"
-  hostname = 'bubbleyum.dreamhost.com'
+  hostname = 'jazz.dreamhost.com'
   apps_path = "/home/smidig_no/apps"
   username = 'smidig_no'
   dbusername = username
