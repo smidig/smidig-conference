@@ -73,13 +73,6 @@ h1#site_title a {
 
 /* Menu Stuff */
 
-#program_menu {z-index:99;}
-#lyntaler_menu {z-index:98;}
-#openspace_menu {z-index:97;}
-#arrangoerene_menu {z-index:96;}
-#forum_menu {z-index:95;}
-#paamelding_menu {z-index:94;}
-
 ul.menu {
     float: right;
     white-space: nowrap;
@@ -117,20 +110,20 @@ ul#site_nav {
 
 ul#site_nav li {
 	height: 39px;
-    background:transparent url(/images/shadow.png) no-repeat center right;
+  background:transparent url(/images/shadow.png) no-repeat center right;
 	margin-right: -16px;
 	padding-right: 16px;
     }
-
-ul#site_nav li.menu_current {
-background-position: top right;
-    }
-
 
 ul#site_nav li a {
 	color: black;
 	text-decoration: none;
 	}
+
+
+ul#site_nav li.menu_current {
+background-position: top right;
+    }
 
 .menu_link a, .menu_current span {
 	display: block;
@@ -138,20 +131,41 @@ ul#site_nav li a {
 	padding: 12px 15px 12px 15px;
 	}
 
-.menu_link a {
-	}
-
 .menu_current {
 	z-index:100!important;
 	font-weight: bold;
 }
-.menu_current span {
 
+.menu_current span {
 	margin-top: -5px;
 	height: 21px;
 	padding-top: 17px
 	}
 
+
+
+#program_menu {z-index:99;}
+#om_konferansen_menu {z-index:98;}
+#spre_ordet_menu {z-index:97;}
+#arrangoerene_menu {z-index:96;}
+#forum_menu {z-index:95;}
+#paamelding_menu {z-index:94;}
+
+
+ul#site_nav li.topics *, #topics .background-color, #talks .background-color {background-color: #e0f0c6}
+ul#site_nav li.users *, #users .background-color {background-color: #ff7417;}
+ul#site_nav li.users *, #new .background-color, #current .background-color, #edit .background-color {background-color: #ff7417;}
+
+ul#site_nav li.om_konferansen *, #om_konferansen .background-color, #openspace .background-color, #lyntaler .background-color, #arrangoerene .background-color  {background-color: #bbdd88;}
+
+ul#site_nav li.spre_ordet *, #spre_ordet .background-color, #direkte_mail .background-color  {background-color: #aacc55;}
+
+ul#site_nav li.english *, #english .background-color  {background-color: #779933;}
+
+ul#site_nav li.forum * {background-color: #779933;}
+
+
+#hjem #index .background-color {background-color: #f4faea;}
 
 
 
@@ -522,20 +536,6 @@ width: 7em;
   font-size: 12px;
   list-style: square;
 }
-
-
-
-ul#site_nav li.topics *, #topics .background-color, #talks .background-color {background-color: #e0f0c6}
-ul#site_nav li.users *, #users .background-color {background-color: #ff7417;}
-
-ul#site_nav li.om_konferansen *, #om_konferansen .background-color  {background-color: #bbdd88;}
-ul#site_nav li.spre_ordet *, #spre_ordet .background-color  {background-color: #aacc55;}
-ul#site_nav li.lyntaler *, #lyntaler .background-color  {background-color: #bbdd88;}
-ul#site_nav li.openspace *, #openspace .background-color  {background-color: #aacc55;}
-ul#site_nav li.arrangoerene *, #arrangoerene .background-color  {background-color: #779933;}
-ul#site_nav li.forum * {background-color: #446622;}
-ul#site_nav li.users *, #new .background-color, #current .background-color, #edit .background-color {background-color: #ff7417;}
-#hjem #index .background-color {background-color: #f4faea;}
 
 .paper .color {background-color: white;}
 
