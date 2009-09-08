@@ -33,39 +33,39 @@
 <body
   <%= current_page?(:controller => 'pages', :action => 'index') ? 'id="hjem"' : '' %>
 >
+<div id="wrapper">
+    <%= render :partial => 'layouts/header' %>
 
-<%= render :partial => 'layouts/header' %>
 
-
-<div class="floating_text_box folder" id="<%= page_id %>">
-	<div class='content'>
-	    <div class='top'></div>
-	    <div class='background-color'>
-			<div class='floating_text_box paper'>
-	     		<div class='content'>
-				    <div class='top'></div>
-				    <div class='color'>
-						<div id="main">
-							<div id="notifications">
-								<p style="color: green"><%= flash[:notice] %></p>
-								<p style="color: yellow"><%= flash[:warn] %></p>
-								<p style="color: red"><%= flash[:error] %></p>
-							</div>
-							<%= yield  %>
-						</div>
-					</div>
-				</div>
-				<div class='bottom'>
-				    <div></div>
-				</div>
-			</div>
-		</div>
-	</div>
-    <div class='bottom'>
-	    <div></div>
+    <div class="floating_text_box folder" id="<%= page_id %>">
+        <div class='content'>
+            <div class='top'></div>
+            <div class='background-color'>
+                <div class='floating_text_box paper'>
+                    <div class='content'>
+                        <div class='top'></div>
+                        <div class='color'>
+                            <div id="main">
+                                <div id="notifications">
+                                    <p style="color: green"><%= flash[:notice] %></p>
+                                    <p style="color: yellow"><%= flash[:warn] %></p>
+                                    <p style="color: red"><%= flash[:error] %></p>
+                                </div>
+                                <%= yield  %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='bottom'>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='bottom'>
+            <div></div>
+        </div>
     </div>
 </div>
-
 <%= render :partial => "layouts/sponsors" %>
 
 

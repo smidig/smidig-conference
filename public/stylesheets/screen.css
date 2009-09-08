@@ -1,7 +1,7 @@
 #ielte6 {display: none}
 
 body {
-    background-color: #004000;
+
     color: black;
     font-family: Georgia, serif;
     margin: 0;
@@ -9,11 +9,14 @@ body {
     min-width: 712px;
     }
 
+
+#wrapper {
+    background-color: #004000;
+	}
+
 a:link {
     color: #C24C00;
     }
-
-
 
 a:visited {
     color: #c04d00;
@@ -39,6 +42,7 @@ img {
     width: 100%;
     position: relative;
     clear: both;
+    background-color: #004000;
     }
 
 /* Title Image Replacement */
@@ -289,7 +293,7 @@ ul#site_nav li.forum * {background-color: #779933;}
 
 h2, h3, h4 {
   color: #008800;
-	font-family: verdana, sans-serif;  
+	font-family: verdana, sans-serif;
 	margin-bottom: 0;
 }
 
@@ -438,15 +442,11 @@ h2 {
 
 
 #sponsors {
-	background: white;
-	margin-left:5em;
-	margin-right:5em;
-	padding: 0.5em;
-	padding-top: 2em;
-
+	background: white url(/images/cutout.png) top left repeat-x;
+	margin:0;
+	padding-top: 30px;
 	clear: both;
 	z-index:100;
-
 	line-height: 40px;
 	text-align: center;
 }
