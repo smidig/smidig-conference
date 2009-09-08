@@ -8,10 +8,10 @@ h1#site_title {
 	margin-top:0px
 }
 
-#site_nav {min-width:590px}
+#site_nav {min-width:523px;font-size:13px!important}
 
 #header {z-index:20}
-.folder {min-width:1089px;right:6px; top:-8px;
+.folder {right:6px; top:-8px;
 
 }
 html{float:left}
@@ -20,3 +20,10 @@ html{float:left}
 
 .note .content {padding-bottom:0px; zoom:1;}
 
+
+#user_nav, .folder {min-width:1056px;}
+
+
+
+
+body{position:relative; overflow:hidden;min-width:1100px}

@@ -37,7 +37,7 @@ img {
 #header {
     background-repeat: no-repeat;
     background-image: url(/images/logo.png);
-    background-position: left 80px;
+    background-position: left 45px;
     float: left;
     width: 100%;
     position: relative;
@@ -48,7 +48,7 @@ img {
 /* Title Image Replacement */
 
 h1#site_title {
-	margin: 80px 15px 10px 74px;
+	margin: 45px 15px 10px 74px;
 	position: relative;
 	overflow:hidden;
 	padding: 0;
@@ -95,7 +95,7 @@ ul.menu li {
 
 ul#user_nav {
     margin: 0px 30px;
-    height: 80px;
+    height: 45px;
     font-size: .9em;
 	}
 
@@ -157,8 +157,14 @@ background-position: top right;
 
 
 ul#site_nav li.topics *, #topics .background-color, #talks .background-color {background-color: #e0f0c6}
-ul#site_nav li.users *, #users .background-color {background-color: #ff7417;}
-ul#site_nav li.users *, #new .background-color, #current .background-color, #edit .background-color {background-color: #ff7417;}
+
+ul#site_nav li.users *,
+#users .background-color,
+ul#site_nav li.users *,
+#new .background-color,
+#current .background-color,
+#edit .background-color,
+#user_sessions .background-color {background-color: #ff7417;}
 
 ul#site_nav li.om_konferansen *, #om_konferansen .background-color, #openspace .background-color, #lyntaler .background-color, #arrangoerene .background-color  {background-color: #bbdd88;}
 
