@@ -584,3 +584,20 @@ li.detail          { margin-left:3em; font-size:smaller; list-style-type: none; 
 	width: 100%;
 	bottom: 0;
 }
+
+
+/* Program Stuff */
+
+#topics {border-collapse:collapse
+}
+
+#topics hr {display:none}
+#topics th {
+	text-align:left;
+	font-family:verdana, sans-serif;
+	padding: 2em 0 0 0;
+	}
+
+#topics td {
+
+padding: .5em 1em 1em 0}
