@@ -23,7 +23,7 @@ Vi har registrert følgende informasjon om deg:
 
 <%= link_to "Endre din registrering", edit_user_path(@user) %>
 
-
+<!--
 
 <% if @user.registration %>
   <h2>Betalingstatus</h2>
@@ -36,26 +36,26 @@ Vi har registrert følgende informasjon om deg:
   	  <% end %>
   	</li>
     <% if @user.registration.payment_notification != nil %>
-       	<li><strong>Transaksjonsid:</strong> <%=h @user.registration.payment_notification.transaction_id %> 
+       	<li><strong>Transaksjonsid:</strong> <%=h @user.registration.payment_notification.transaction_id %>
        	  <strong>Status:</strong> <%=h @user.registration.payment_notification.status %>
        	  <strong>Betalt:</strong> <%=h @user.registration.payment_notification.currency %> <%=h @user.registration.payment_notification.paid_amount %></li>
     <% end %>
   </ul>
-  
+
   <% if admin? %>
     <h3 style="color:red">Admin: Test utsendelse av betalingsbekreftelse</h3>
-    
+
     <% form_for(@user.registration) do |f| %>
       <%= f.submit "Send bekreftelse til bruker" %>
     <% end %>
-    
-  <% end %>
-  
-<% end %>
 
+  <% end %>
+
+<% end %>
+ -->
 <% if @user.talks and !@user.talks.empty? %>
   <h3>Foreslåtte foredrag</h3>
-  
+
   <ul>
     <% for talk in @user.talks %>
       <li><%= link_to talk.title, talk %></li>
