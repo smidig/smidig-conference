@@ -94,11 +94,11 @@ namespace :blixa do
         #connection.exec "svccfg import #{application_path}/tmp/smidig2009-#{environment}.smf.xml"
         connection.upload_text nginx_config(environment, application_path, port), "/opt/nginx/conf/sites/smidig2009-#{environment}.no.conf"
 
+        # TODO: db:create doesn't read the correct database configuration
         connection.rake ["rails:freeze:gems", "gems:unpack", "db:migrate"]
         
-        connection.exec "svcadm restart svc:/network/nginx:default"
-        # TODO: Must be done by root
-        connection.exec "svcadm restart svc:/network/mongrel/smidig2009:#{environment}"
+        connection.exec "sudo svcadm restart svc:/network/nginx:default"
+        connection.exec "sudo svcadm restart svc:/network/mongrel/smidig2009:#{environment}"
       end
       
       desc "Update the code in #{environment}. Add variable REVISION=... update to a given revision"
