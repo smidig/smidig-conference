@@ -3,7 +3,7 @@
 <p><%= link_to "Alle foredrag", topics_path %> &gt; <%= link_to "#{@talk.topic.title}", @talk.topic  %> &gt; </p>
 
 <h2><%=h @talk.title %> 
-  (<span class="topic"><%=h @talk.topic_name %></span><% unfinished do %>, <%= antall_stemmer(@talk.votes_count) %><% end %>)</h2>
+  <% unfinished do %>(<%= antall_stemmer(@talk.votes_count) %>)<% end %></h2>
 
 <h3><%= render :partial => @talk.speaker %></h3>
 
