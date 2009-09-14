@@ -50,7 +50,7 @@
 
   <p>
     <%= f.label :topic_id, "Tema" %>:
-    <% if @talk.topic %>
+    <% if @talk.new_record? and @talk.topic %>
       <%= @talk.topic.title %>
       <%= f.hidden_field :topic_id, :value => @talk.topic.id %>
     <% else %>
