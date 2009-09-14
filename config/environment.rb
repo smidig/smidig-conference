@@ -1,6 +1,6 @@
 # Be sure to restart your server when you modify this file
 
-tmp_environment = File.join(RAILS_ROOT, "tmp", "environment.rb")
+tmp_environment = File.join(File.dirname(__FILE__), '../tmp/environment.rb')
 File.exist?(tmp_environment) and load(tmp_environment)
 
 # Specifies gem version of Rails to use when vendor/rails is not present
