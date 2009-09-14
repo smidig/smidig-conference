@@ -60,26 +60,6 @@ class UsersController < ApplicationController
         @user_session = UserSession.new
         @user_session.email = @user.email
         @user_session.password = @user.password      
-        
-        @registration.save
-        
-        values = {
-          :business => PAYMENT_CONFIG[:paypal_email],
-          :cmd => '_cart',
-          :upload => '1',
-          :currency_code => 'NOK',
-          :notify_url => payment_notifications_url,
-          :return => user_url(@user),
-          :invoice => @registration.id,
-          :amount_1 => @registration.price,
-          :item_name_1 => @registration.description,
-          :item_number_1 => '1',
-          :quantity_1 => '1'
-        }
-        
-        @registration.payment_link = PAYMENT_CONFIG[:paypal_url] +"?"+values.map do
-          |k,v| "#{k}=#{CGI::escape(v.to_s)}"
-        end.join("&")
       
         @registration.save
         @user_session.save
@@ -91,7 +71,7 @@ class UsersController < ApplicationController
     if saved
       SmidigMailer.deliver_registration_confirmation(@user)
       
-      redirect_to @registration.payment_link     
+      redirect_to @registration.payment_url(payment_notifications_url, user_url(@user))
     else
        render :action => 'new'
     end

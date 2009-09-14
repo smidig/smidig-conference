@@ -1,19 +1,40 @@
 <% content_for :title, @user.name %>
 
-
-
-<!--
 <% if @user.registration && @user.registration.paid? %>
 
-Vi har mottatt bekreftelse fra PayPal, og dermed registrert din betaling i systemet. Vi sees på Smidig 2009!
+Vi har registrert bekreftelse på din betaling. Vi sees på Smidig 2009!
 
-<% elsif @user.registration %>
+<% elsif @user.registration and @user.talks.empty? %>
 
-  <p>Hei <%=h @user.name %>, og takk for påmeldingen til Smidig 2009. Vi venter på bekreftelse fra PayPal, dette tar vanligvis ikke mer enn noen sekunder. Om du laster denne siden på nytt kan betalingen allerede ha blitt registrert.</p>
-  <p>Dersom du ikke fikk gjennomført betalingen din første gang, kan du følge denne <%=link_to "linken til PayPal", @user.registration.payment_link %> for å prøve på nytt.</p>
-  <p>Fortsatt problemer? Send oss <a href="mailto:kontakt@smidig2009.no">en email</a></p>
+  <p>
+  	Hei <%=h @user.name %>, og takk for påmeldingen til Smidig 2009.
+  	Vi har enda ikke mottatt bekreftelse fra PayPal.
+  	Dette tar vanligvis ikke mer enn noen sekunder og om du laster denne
+  	siden på nytt kan betalingen allerede ha blitt registrert.
+	</p>
+  <p>
+  	Dersom du ikke fikk gjennomført betalingen din første gang, kan du følge denne 
+  	<%=link_to "linken til PayPal", @user.registration.payment_url(payment_notifications_url, user_url(@user)) %>
+  	for å prøve på nytt.
+	</p>
+	<% if @user.registration.created_at < 3.hours.ago %>
+  <p>
+  	Dersom du har betalt og ikke denne meldingen er her fortsatt etter en time, kan
+  	du ta det med ro med at du får være med på konferansen. Men vi må nok rette noen
+  	tekniske problemer. Send oss <a href="mailto:kontakt@smidig2009.no">en email</a>
+	</p>
+	<% end %>
+	
+	<% if admin? %>
+    <h3 style="color:red">Admin: Registrer betaling</h3>
+    
+    <p>
+    	<%= link_to "Oppdater registering manuelt", edit_registration_path(@user.registration) %>
+    </p>
+	<% end %>
 <% end %>
--->
+
+<h3>Brukerinformasjon</h3>
 
 Vi har registrert følgende informasjon om deg:
 
@@ -35,7 +56,7 @@ Vi har registrert følgende informasjon om deg:
   	<li><strong>Pris:</strong> <%=h @user.registration.price %></li>
   	<li><strong>Betalt:</strong> <%=h @user.registration.paid? ? "ja" : "nei" %>
   	  <% unless @user.registration.paid? %>
-  	  (<%= link_to "se status på PayPal", @user.registration.payment_link %>)
+  	  (<%= link_to "se status på PayPal", @user.registration.payment_url(payment_notifications_url, user_url(@user)) %>)
   	  <% end %>
   	</li>
     <% if @user.registration.payment_notification != nil %>

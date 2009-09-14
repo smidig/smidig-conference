@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090627130414) do
+ActiveRecord::Schema.define(:version => 20090914185046) do
 
   create_table "comments", :force => true do |t|
     t.integer  "talk_id"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20090627130414) do
     t.datetime "updated_at"
     t.integer  "paid_amount",     :limit => 10, :precision => 10, :scale => 0
     t.string   "currency"
+    t.string   "registered_by"
   end
 
   create_table "periods", :force => true do |t|
@@ -84,7 +85,6 @@ ActiveRecord::Schema.define(:version => 20090627130414) do
     t.boolean  "is_earlybird"
     t.boolean  "includes_dinner"
     t.string   "description"
-    t.string   "payment_link"
   end
 
   create_table "talks", :force => true do |t|

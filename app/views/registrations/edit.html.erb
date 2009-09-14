@@ -1,0 +1,27 @@
+<h3 style="color:red">Admin: Registrer betaling for <%= @registration.user.name %></h3>
+
+<p style="color:red">
+	Før du gjør dette, vær vennlig og dobbeltsjekk epostadressen. Noen brukere
+	registrerer seg med flere epostadresser, og det er viktig at du oppdaterer
+	den riktige adressen
+</p>
+
+<h3>Epost: <%= @registration.user.email %></h3>
+
+<% form_for(@registration) do |f| %>
+	<% f.fields_for :payment_notification do |payment_form| %>
+		<p>
+			<%= payment_form.label :transaction_id %>
+			<%= payment_form.text_field :transaction_id %>
+		</p>
+		<p>
+			<%= payment_form.label :paid_amount %>
+			<%= payment_form.text_field :paid_amount %>
+		</p>
+	<% end %>
+  <p>
+    <%= f.submit "Registrer betaling" %>
+  </p>
+<% end %>
+	
+	
