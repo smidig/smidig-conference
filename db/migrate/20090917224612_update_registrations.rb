@@ -17,8 +17,8 @@ class UpdateRegistrations < ActiveRecord::Migration
         registration.payment_reference = payment_notification.transaction_id
         registration.registration_complete = registration.paid_amount == registration.price
         registration.payment_complete_at = payment_notification.created_at
-        registration.save!
       end
+      registration.save!
     end
     
     for user in User.all
