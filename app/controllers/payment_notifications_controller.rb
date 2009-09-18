@@ -5,7 +5,7 @@ class PaymentNotificationsController < ApplicationController
     
     registration = Registration.find(params[:invoice])
     registration.payment_notification_params = params
-    registration.paid_amount = params[:mc_gross]
+    registration.paid_amount = params[:mc_gross].to_i
     registration.payment_reference = params[:txn_id]
     registration.payment_complete_at = Time.now
     registration.registration_complete = (registration.paid_amount == registration.price)

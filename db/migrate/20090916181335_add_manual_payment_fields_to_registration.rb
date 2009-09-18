@@ -3,7 +3,7 @@ class AddManualPaymentFieldsToRegistration < ActiveRecord::Migration
     add_column :registrations, :ticket_type, :text
     add_column :registrations, :payment_notification_params, :text
     add_column :registrations, :payment_complete_at, :datetime
-    add_column :registrations, :paid_amount, :text
+    add_column :registrations, :paid_amount, :decimal
     add_column :registrations, :payment_reference, :text
     add_column :registrations, :registration_complete, :boolean
     add_column :registrations, :manual_payment, :boolean

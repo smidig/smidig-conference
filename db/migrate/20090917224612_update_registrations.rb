@@ -13,7 +13,7 @@ class UpdateRegistrations < ActiveRecord::Migration
         (registration.user.is_admin ? "organizer" : !registration.user.talks.empty? ? "speaker" : registration.is_earlybird ? "early_bird" : "full_price")
       if payment_notification = registration.payment_notification
         registration.payment_notification_params = payment_notification.params
-        registration.paid_amount = payment_notification.paid_amount
+        registration.paid_amount = payment_notification.paid_amount.to_i
         registration.payment_reference = payment_notification.transaction_id
         registration.registration_complete = registration.paid_amount == registration.price
         registration.payment_complete_at = payment_notification.created_at
