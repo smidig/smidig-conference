@@ -1,27 +1,98 @@
-<h3 style="color:red">Admin: Registrer betaling for <%= @registration.user.name %></h3>
+<h2>Betalingsinformasjon for <%=h @registration.user.name %></h2>
 
-<p style="color:red">
-	Før du gjør dette, vær vennlig og dobbeltsjekk epostadressen. Noen brukere
-	registrerer seg med flere epostadresser, og det er viktig at du oppdaterer
-	den riktige adressen
-</p>
+<% if @registration.registration_complete %>
+  
+  Vi har registrert din betaling. Vi sees på Smidig 2009!
 
-<h3>Epost: <%= @registration.user.email %></h3>
+<% elsif @registration.free_ticket %>
 
-<% form_for(@registration) do |f| %>
-	<% f.fields_for :payment_notification do |payment_form| %>
-		<p>
-			<%= payment_form.label :transaction_id %>
-			<%= payment_form.text_field :transaction_id %>
-		</p>
-		<p>
-			<%= payment_form.label :paid_amount %>
-			<%= payment_form.text_field :paid_amount %>
-		</p>
-	<% end %>
-  <p>
-    <%= f.submit "Registrer betaling" %>
-  </p>
+  <% form_for @registration do |reg| %>
+    <% if @registration.user.talks.empty? %>
+      <p>
+      <%= reg.label :ticket_type, "Type billett" %><br>
+      <%= reg.select :ticket_type, [
+          ['Jeg ønsker å benytte en sponsors gratisbillett (angi firma)', 'sponsor'],
+          ['Jeg holder foredrag sammen med noen andre (angi foredrag)', 'speaker'],
+          ['Jeg ønsker å bidra som frivillig under konferansen', 'volunteer'], 
+          ['Jeg er med å arrangere konferansen', 'organizer']], :include_blank => true %>
+      </p>
+      <p>
+        <%= reg.label :invoice_description, "Kommentarer til registreringen" %><br/>
+        <%= reg.text_area :invoice_description, :rows => 4 %>
+      </p>
+    <% end %>
+    <p>
+      <%= reg.check_box :includes_dinner %>
+      <%= reg.label :includes_dinner,  "Jeg ønsker å delta på middagen" %>
+    </p>
+    <p><%= reg.submit "Oppdater din informasjon" %></p>        
+  <% end %>
+
+<% else %>
+
+  <% form_for @registration do |reg| %>
+    <p>
+      <%= reg.check_box :manual_payment %>
+      <%= reg.label :manual_payment,  "Jeg ønsker å få tilsendt faktura på kroner #{@registration.price}" %>
+    </p>
+    <div id="invoice_information">
+      <p>
+        <%= reg.label :invoice_address, "Fakturaadresse" %><br/>
+        <%= reg.text_area :invoice_address, :rows => 4 %>
+      </p>
+      <p>
+        <%= reg.label :invoice_description, "Kommentarer til fakturering" %><br/>
+        <%= reg.text_area :invoice_description, :rows => 4 %>
+      </p>
+    </div>
+    <p><%= reg.submit "Oppdater fakturainformasjon" %></p>        
+  <% end %>
 <% end %>
+
+<% if admin? %>
+
+  <h3 style="color:red">Admin: Registrer betaling for <%= @registration.user.name %></h3>
+
+  <p style="color:red">
+  	Før du gjør dette, vær vennlig og dobbeltsjekk epostadressen. Noen brukere
+  	registrerer seg med flere epostadresser, og det er viktig at du oppdaterer
+  	den riktige adressen
+  </p>
+
+  <h3>Epost: <%= @registration.user.email %></h3>
+
+
+  <h4>Oppdater betalingsinformasjon</h4>
+  
+  <% form_for @registration do |f| %>
+  	<p>
+  		<%= f.label :comments, "Kommentarer" %><br/>
+  		<%= f.text_area :comments, :rows => 5 %>
+  	</p>
+  	<p>
+  		<%= f.label :payment_reference, "Betalingsreferanse" %>
+  		<%= f.text_field :payment_reference %>
+  	</p>
+  	<p>
+  		<%= f.label :paid_amount, "Betalt beløp" %>
+  		<%= f.text_field :paid_amount %>
+  	</p>
+  	<p>
+  		<%= f.check_box :registration_complete %>
+  		<%= f.label :registration_complete,
+  		  case @registration.ticket_type
+  		    when "speaker" then "Foredraget er godkjent"
+  		    when "volunteer" then "Registreringen er bekreftet"
+  		    when "organizer" then "Registreringen er bekreftet"
+  		    when "early_bird" then "Betalingen er mottatt"
+  		    when "full_price" then "Betalingen er mottatt"
+  		    else "Registreringen er betalt/bekreftet"
+    		end
+  		%>
+  	</p>
+    <p>
+      <%= f.submit "Registrer betaling" %>
+    </p>
+  <% end %>
 	
-	
+<% end %>	

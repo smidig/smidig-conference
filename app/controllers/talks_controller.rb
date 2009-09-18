@@ -56,7 +56,12 @@ class TalksController < ApplicationController
 
     respond_to do |format|
       if @talk.speaker && @talk.save
-        flash[:notice] = 'Forslaget er publisert.'
+        unless @talk.speaker.registration
+          @talk.speaker.create_registration(:ticket_type => "speaker", 
+            :includes_dinner => params[:registration_includes_dinner])
+          @talk.speaker.registration.save!
+        end
+        flash[:notice] = "Forslaget er publisert"
         SmidigMailer.deliver_talk_confirmation(@talk, talk_url(@talk))
         format.html { redirect_to(@talk) }
         format.xml  { render :xml => @talk, :status => :created, :location => @talk }

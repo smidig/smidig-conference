@@ -35,11 +35,11 @@
         <%= user_form.text_field :phone_number %>
       </p>
       <p>
-        <%= radio_button_tag 'ticket_type', 'uten_middag', false %>
-        <%= label_tag 'ticket_type_uten_middag', 
+        <%= radio_button_tag 'registration_includes_dinner', 'false' %>
+        <%= label_tag 'registration_includes_dinner_false', 
           "Jeg vil ønsker ikke å delta på middagen" %><br />
-        <%= radio_button_tag 'ticket_type', 'med_middag', true %>
-        <%= label_tag 'ticket_type_med_middag', 
+        <%= radio_button_tag 'registration_includes_dinner', 'true', :value => true %>
+        <%= label_tag 'registration_includes_dinner_true', 
           "Jeg ønsker å delta på middagen" %>
       </p>
       <hr />
@@ -93,7 +93,7 @@
     </p>
     <p>
       <%= f.check_box :accepted_cc_license %>
-      <%= f.label :accepted_cc_license, "Jeg forstår at foredraget blir gjort tilgjengelig med en <a href='http://creativecommons.org/licenses/by/3.0/no/' target='_blank'>Creative Commons Navngivelse 3.0 Norge</a> lisens." %>
+      <%= f.label :accepted_cc_license, "Jeg forstår at foredraget blir gjort tilgjengelig med en <a href='http://creativecommons.org/licenses/by/3.0/no/' target='_blank'>Creative Commons Navngivelse 3.0 Norge</a> lisens og at teksten blir gjort tilgjengelig umiddelbart." %>
     </p>
   <% end %>
   <p>

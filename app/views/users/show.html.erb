@@ -1,39 +1,5 @@
 <% content_for :title, @user.name %>
 
-<% if @user.registration && @user.registration.paid? %>
-
-Vi har registrert bekreftelse på din betaling. Vi sees på Smidig 2009!
-
-<% elsif @user.registration and @user.talks.empty? %>
-
-  <p>
-  	Hei <%=h @user.name %>, og takk for påmeldingen til Smidig 2009.
-  	Vi har enda ikke mottatt bekreftelse fra PayPal.
-  	Dette tar vanligvis ikke mer enn noen sekunder og om du laster denne
-  	siden på nytt kan betalingen allerede ha blitt registrert.
-	</p>
-  <p>
-  	Dersom du ikke fikk gjennomført betalingen din første gang, kan du følge denne 
-  	<%=link_to "linken til PayPal", @user.registration.payment_url(payment_notifications_url, user_url(@user)) %>
-  	for å prøve på nytt.
-	</p>
-	<% if @user.registration.created_at < 3.hours.ago %>
-  <p>
-  	Dersom du har betalt og denne meldingen fortsatt er her etter en time, kan du ta det med ro.
-  	Du får fortsatt være med på konferansen, men vi må nok rette noen tekniske problemer.
-    Send oss <a href="mailto:kontakt@smidig2009.no">en email</a>
-	</p>
-	<% end %>
-	
-	<% if admin? %>
-    <h3 style="color:red">Admin: Registrer betaling</h3>
-    
-    <p>
-    	<%= link_to "Oppdater registering manuelt", edit_registration_path(@user.registration) %>
-    </p>
-	<% end %>
-<% end %>
-
 <h3>Brukerinformasjon</h3>
 
 Vi har registrert følgende informasjon om deg:
@@ -43,41 +9,16 @@ Vi har registrert følgende informasjon om deg:
   <li><strong>Firma:</strong> <%= @user.company %></li>
   <li><strong>E-post:</strong> <%= @user.email %></li>
   <li><strong>Telefonnummer:</strong> <%= @user.phone_number %></li>
+  <% if @user.registration %>
+    <li><strong>Billettype:</strong> <%= @user.registration.description %></li>
+    <li><strong>Deltar på konferansemiddag:</strong> <%= @user.registration.includes_dinner ? "Ja" : "Nei" %></li>
+    <li><strong>Pris:</strong> <%= @user.registration.price %></li>
+  <% end %>
 </ul>
 
 <%= link_to "Endre din registrering", edit_user_path(@user) %>
 
-<!--
-
-<% if @user.registration %>
-  <h2>Betalingstatus</h2>
-  <ul>
-  	<li><%=h @user.registration.description %></li>
-  	<li><strong>Pris:</strong> <%=h @user.registration.price %></li>
-  	<li><strong>Betalt:</strong> <%=h @user.registration.paid? ? "ja" : "nei" %>
-  	  <% unless @user.registration.paid? %>
-  	  (<%= link_to "se status på PayPal", @user.registration.payment_url(payment_notifications_url, user_url(@user)) %>)
-  	  <% end %>
-  	</li>
-    <% if @user.registration.payment_notification != nil %>
-       	<li><strong>Transaksjonsid:</strong> <%=h @user.registration.payment_notification.transaction_id %>
-       	  <strong>Status:</strong> <%=h @user.registration.payment_notification.status %>
-       	  <strong>Betalt:</strong> <%=h @user.registration.payment_notification.currency %> <%=h @user.registration.payment_notification.paid_amount %></li>
-    <% end %>
-  </ul>
-
-  <% if admin? %>
-    <h3 style="color:red">Admin: Test utsendelse av betalingsbekreftelse</h3>
-
-    <% form_for(@user.registration) do |f| %>
-      <%= f.submit "Send bekreftelse til bruker" %>
-    <% end %>
-
-  <% end %>
-
-<% end %>
- -->
-<% if @user.talks and !@user.talks.empty? %>
+<% unless @user.talks.blank? %>
   <h3>Foreslåtte foredrag</h3>
 
   <ul>
@@ -86,3 +27,8 @@ Vi har registrert følgende informasjon om deg:
     <% end %>
   </ul>
 <% end %>
+
+
+<h3>Deltagerinformasjon</h3>
+
+<%= render :partial => @user.registration %>

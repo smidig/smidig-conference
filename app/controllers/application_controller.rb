@@ -14,6 +14,14 @@ class ApplicationController < ActionController::Base
 
   private
   
+  def admin?
+    current_user and current_user.is_admin
+  end
+  
+  def personal_admin?
+    admin? and current_user.email != "admin@smidig.no"
+  end
+  
   def current_user
     return @current_user if defined?(@current_user)
     @current_user = current_user_session && current_user_session.record

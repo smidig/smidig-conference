@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090914185046) do
+ActiveRecord::Schema.define(:version => 20090917224612) do
 
   create_table "comments", :force => true do |t|
     t.integer  "talk_id"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(:version => 20090914185046) do
   create_table "registrations", :force => true do |t|
     t.integer  "user_id"
     t.text     "comments"
-    t.integer  "price",           :limit => 10, :precision => 10, :scale => 0
+    t.integer  "price",                       :limit => 10, :precision => 10, :scale => 0
     t.date     "invoiced_at"
     t.date     "paid_at"
     t.datetime "created_at"
@@ -85,6 +85,17 @@ ActiveRecord::Schema.define(:version => 20090914185046) do
     t.boolean  "is_earlybird"
     t.boolean  "includes_dinner"
     t.string   "description"
+    t.text     "ticket_type"
+    t.text     "payment_notification_params"
+    t.datetime "payment_complete_at"
+    t.text     "paid_amount"
+    t.text     "payment_reference"
+    t.boolean  "registration_complete"
+    t.boolean  "manual_payment"
+    t.text     "invoice_address"
+    t.text     "invoice_description"
+    t.boolean  "free_ticket"
+    t.string   "completed_by"
   end
 
   create_table "talks", :force => true do |t|
@@ -124,7 +135,6 @@ ActiveRecord::Schema.define(:version => 20090914185046) do
     t.string   "name"
     t.string   "company"
     t.string   "phone_number"
-    t.text     "billing_address"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"

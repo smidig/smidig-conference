@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
     
   has_many :comments
   
-  attr_accessible :name, :email, :password, :password_confirmation, :company,
-  	:is_admin, :phone_number
+  attr_protected :crypted_password, :password_salt, :persistence_token, :created_at, :updated_at,
+  	:login_count, :failed_login_count, :last_request_at, :current_login_at, :current_login_ip, :last_login_ip
 
   accepts_nested_attributes_for :registration
   
@@ -22,15 +22,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   
   def user_status
-    if not talks.empty?
-      "Foredragsholder" + (registration && registration.paid? ? " *" : "")
-    elsif registration
-      (registration.paid? ? "Betalt " : "Ikke betalt ") + registration.price.to_s
-    elsif is_admin
-      "Administrator"
-    else
-      "Ukjent"
-    end
+    registration ? registration.description : "Ukjent"
   end
   
   def self.find_with_filter(filter)

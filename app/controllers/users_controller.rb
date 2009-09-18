@@ -32,48 +32,39 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
-    @user.registration = Registration.new
+    @user.registration = Registration.new(:includes_dinner => true)
+    @user.registration.manual_payment = params[:manual_payment]
+    @user.registration.free_ticket = !params[:free_ticket].blank?
+    @user.registration.ticket_type = params[:free_ticket]
   end
 
   def create
-    @user = User.new(params[:user])
-    @registration = Registration.new
-    @registration.user = @user
-    
-    saved = false 
     User.transaction do
+      @user = User.new(params[:user])
       if @user.save
-        # find price based on options
-    
-        @registration.is_earlybird = true
-    
-        if params["ticket_type"] == "uten_middag"
-          @registration.includes_dinner = false
-          @registration.price = PAYMENT_CONFIG[:early_bird]
-          @registration.description = "Earlybird-billett til Smidig 2009 uten middag"
-        else
-          @registration.includes_dinner = true
-          @registration.price = PAYMENT_CONFIG[:early_bird_dinner]
-          @registration.description = "Earlybird-billett til Smidig 2009 inkludert middag"
+        puts @user.registration.inspect
+        if !@user.registration.save
+          raise @user.registration.errors.inspect
         end
-          
-        @user_session = UserSession.new
-        @user_session.email = @user.email
-        @user_session.password = @user.password      
-      
-        @registration.save
-        @user_session.save
-      
-        saved = true
+        UserSession.login(@user.email, @user.password)
+        if @user.registration.manual_payment
+          flash[:notice] = "Vi vil kontakte deg for å bekrefte detaljene"
+          SmidigMailer.deliver_manual_registration_confirmation(@user)
+          SmidigMailer.deliver_manual_registration_notification(@user)
+          redirect_to @user
+        elsif @user.registration.free_ticket
+          flash[:notice] = "Vi vil kontakte deg for å bekrefte detaljene"
+          SmidigMailer.deliver_free_registration_confirmation(@user)
+          SmidigMailer.deliver_free_registration_notification(@user)
+          redirect_to @user
+        else
+          SmidigMailer.deliver_registration_confirmation(@user)
+          redirect_to @user.registration.payment_url(payment_notifications_url, user_url(@user))
+        end
+      else
+        flash[:error] = "En feil har oppstått"
+        render :action => 'new'
       end
-    end
-
-    if saved
-      SmidigMailer.deliver_registration_confirmation(@user)
-      
-      redirect_to @registration.payment_url(payment_notifications_url, user_url(@user))
-    else
-       render :action => 'new'
     end
   end
   
@@ -122,7 +113,7 @@ protected
     total = 0
     for day in date_range do
       for user in users_by_date[day] || []
-        total += user.registration.price if user.registration && user.registration.paid?
+        total += user.registration.price || 0 if user.registration && user.registration.paid?
       end
       per_date << total
     end

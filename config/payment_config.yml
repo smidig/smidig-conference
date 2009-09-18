@@ -1,33 +1,48 @@
+free_prices: &free_prices
+  speaker: 0
+  organizer: 0
+  volunteer: 0
+  sponsor: 0
+
+prices: &prices
+  early_bird: 1250
+  full_price: 1950
+  dinner: 500
+  <<: *free_prices
+
+
+
 development: &development
-  early_bird: 1042
-  early_bird_dinner: 1542
+  prices:
+    <<: *prices
   paypal_email: experi_1243951372_biz@iterate.no
   paypal_url: "https://www.sandbox.paypal.com/cgi-bin/webscr"
 
 test:
-  early_bird: 1042
-  early_bird_dinner: 1542
+  prices:
+    <<: *prices
   paypal_email: paypal@smidig.no
   paypal_url: "https://www.paypal.com/cgi-bin/webscr"
 
 experimental:
-  early_bird: 1000
-  early_bird_dinner: 1500
+  prices:
+    <<: *prices
   paypal_email: experi_1243951372_biz@iterate.no
   paypal_url: "https://www.sandbox.paypal.com/cgi-bin/webscr"
 
 
 production: &production
-  early_bird: 1250
-  early_bird_dinner: 1750
+  prices:
+    <<: *prices
   paypal_email: paypal@smidig.no
   paypal_url: "https://www.paypal.com/cgi-bin/webscr"
 
 staging:
-  early_bird: 12.50
-  early_bird_dinner: 17.50
+  prices:
+    early_bird: 12.50
+    full_price: 19.50
+    <<: *free_prices
   paypal_email: paypal@smidig.no
   paypal_url: "https://www.paypal.com/cgi-bin/webscr"
 
-oc:
-  <<: *development
+  

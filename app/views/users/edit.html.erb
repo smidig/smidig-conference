@@ -21,6 +21,21 @@
     <%= f.label :phone_number, "Telefon" %><br />
     <%= f.text_field :phone_number %>
   </p>
+  <% if @user.registration %>
+    <h4>Betalingsinformasjon:</h4>
+    <% if @user.registration.free_ticket %>
+      <% f.fields_for :registration do |reg| %>
+        <p>
+          <%= reg.check_box :includes_dinner %>
+          <%= reg.label :includes_dinner,  "Jeg ønsker å delta på middagen" %>
+        </p>
+      <% end %>
+    <% else %>
+      <%= @user.registration.description %>
+    <% end %>
+  <% end %>
+
+  
   <p><%= f.submit "Oppdater detaljer" %></p>
 <% end %>
 

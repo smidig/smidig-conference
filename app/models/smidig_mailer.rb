@@ -9,6 +9,42 @@ class SmidigMailer < ActionMailer::Base
                :email => user.email
   end
 
+  def manual_registration_confirmation(user)
+    subject    "[Smidig 2009] Bruker #{user.email} er registrert"
+    recipients user.email
+    from       'Smidig 2009 <kontakt@smidig2009.no>'        
+    body       :name => user.name,
+               :email => user.email
+  end
+
+  def manual_registration_notification(user)
+    subject    "[Smidig 2009] Bruker #{user.email} har registrert seg med manuell betalingshåndtering"
+    recipients 'Smidig 2009 <kontakt@smidig2009.no>'
+    from       'Smidig 2009 <kontakt@smidig2009.no>'
+    reply_to    "#{user.name} <#{user.email}>"
+    body       :name => user.name,
+               :email => user.email,
+               :description => user.registration.description
+  end
+
+  def free_registration_confirmation(user)
+    subject    "[Smidig 2009] Bruker #{user.email} er registrert"
+    recipients user.email
+    from       'Smidig 2009 <kontakt@smidig2009.no>'        
+    body       :name => user.name,
+               :email => user.email
+  end
+
+  def free_registration_notification(user)
+    subject    "[Smidig 2009] Bruker #{user.email} har registrert seg som #{user.registration.description}"
+    recipients 'Smidig 2009 <kontakt@smidig2009.no>'
+    from       'Smidig 2009 <kontakt@smidig2009.no>'
+    reply_to    "#{user.name} <#{user.email}>"        
+    body       :name => user.name,
+               :email => user.email,
+               :description => user.registration.description
+  end
+
   def payment_confirmation(registration)
     subject    "[Smidig 2009] Betalingskvittering for #{registration.user.email}"
     recipients registration.user.email

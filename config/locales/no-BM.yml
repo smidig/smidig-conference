@@ -43,6 +43,10 @@
         password: "Passord"
         email: "e-post"
         phone_number: "Telefonnummer"
+        registration_ticket_type: Billettype
+        registration_invoice_address: Fakturaadresse
+      registration:
+        ticket_type: Billettype
       talk:
         title: "Påstand"
         description: "Argumentasjon"

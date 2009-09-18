@@ -1,0 +1,74 @@
+<h2>Brukere</h2>
+
+
+<%=
+  x_labels = (0...@date_range.length).select { |i| i%10 == 0 }.collect { |i| @date_range[i].strftime("%d %b") }
+  colors = %w(00ff00 0000ff ff0000 00ffff ffff00 ff00ff)
+  line_chart_xy = GoogleChart::LineChart.new('600x300', "Registrerte brukere", false) do |lc|
+    lc.axis :y, :range => [0,@all_per_date.max]
+    lc.axis :x, :labels => x_labels
+    lc.data "Totalt", @all_per_date, colors.pop
+    for ticket_type in @registrations_per_ticket_type_per_date.keys
+      lc.data ticket_type, @registrations_per_ticket_type_per_date[ticket_type], colors.pop
+    end
+  end
+  image_tag line_chart_xy.to_url
+%>
+
+<%=
+  x_labels = (0...@date_range.length).select { |i| i%10 == 0 }.collect { |i| @date_range[i].strftime("%d %b") }
+  line_chart_xy = GoogleChart::LineChart.new('600x150', "Innbetalt deltageravgift", false) do |lc|
+    lc.axis :y, :range => [0,@income_per_date.max]
+    lc.axis :x, :labels => x_labels
+    lc.data "Kroner", @income_per_date, '0000ff'
+  end
+  image_tag line_chart_xy.to_url
+%>
+
+
+<ul>
+  <li><%= link_to "Alle", :conditions => '' %></li>
+  <% for ticket_type in @ticket_types %>
+    <li><%= link_to ticket_type, :conditions => { :ticket_type => ticket_type }  %></li>
+  <% end %>
+  <li><%= link_to "Completed", :conditions => { :registration_complete => 1 }  %></li>
+  <li><%= link_to "Not completed", :conditions => { :registration_complete => 0 }  %></li>
+  <li><%= link_to "Dinner registrations", :conditions => { :includes_dinner => 1 }  %></li>
+</ul>
+
+<h3><%= @registrations.length %> brukere:</h3>
+
+<table>
+  <tr>
+    <th>Bruker</th>
+    <th>E-post</th>
+    <th>Påmeldt</th>
+    <th>Billett</th>
+    <th>Komplett?</th>
+  </tr>
+<% for registration in @registrations %>
+  <tr>
+    <% if registration.user %>
+      <td>
+        <%=link_to registration.user.name, registration.user %>
+        (<%=h registration.user.company %>)
+      </td>
+      <td>
+        <%=link_to registration.user.email, "mailto:#{registration.user.email}" %>
+      </td>
+    <% else %>
+      <td colspan="2">
+        MISSING USER
+      </td>
+    <% end %>
+    <td><%=h time_ago_in_words(registration.created_at) %> siden</td>
+    <td>
+      <%= registration.ticket_type %>
+    </td>
+    <td>
+      <%= registration.registration_complete %>
+    </td>
+  </tr>
+<% end %>
+</table>
+

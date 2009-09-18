@@ -4,6 +4,13 @@ class PaymentNotificationsController < ApplicationController
     PaymentNotification.create!(:params => params, :registration_id => params[:invoice], :status => params[:payment_status], :transaction_id => params[:txn_id], :paid_amount => params[:mc_gross], :currency => params[:mc_currency])
     
     registration = Registration.find(params[:invoice])
+    registration.payment_notification_params = params
+    registration.paid_amount = params[:mc_gross]
+    registration.payment_reference = params[:txn_id]
+    registration.payment_complete_at = Time.now
+    registration.registration_complete = (registration.paid_amount == registration.price)
+    registration.save
+    
     SmidigMailer.deliver_payment_confirmation(registration)
     
     render :nothing => true
