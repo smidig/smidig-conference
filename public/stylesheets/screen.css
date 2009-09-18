@@ -601,3 +601,5 @@ li.detail          { margin-left:3em; font-size:smaller; list-style-type: none; 
 #topics td {
 
 padding: .5em 1em 1em 0}
+
+p.last_comment { font-size: 11px; margin: 5px 0; padding: 0;}

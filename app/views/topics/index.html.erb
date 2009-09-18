@@ -1,6 +1,21 @@
 <% content_for :title, "Hva skjer på konferansen?" %>
 <h2>Hva skjer på konferansen?</h2>
 
+<% 
+@kommentarer = "<h3>Siste kommentarer</h3>"
+Comment.all.last(5).each do |c|
+  @kommentarer += %(
+    <p class="last_comment">
+      <a href="/talks/#{c.talk_id}">
+        #{c.description.first(30)}...
+      </a> 
+      by #{c.user.name}
+    </p>
+    )
+end
+%>
+<%= floating_text_box @kommentarer %>
+
 <%= feed_link "Følg med på nye forslag", talks_path(:format => :rss) %>
 
 <p>
@@ -17,6 +32,7 @@
   hvert enkelt foredrag blir også synlige.
 </p>
 
+<div style="clear:both"/>
 <h3>Temaer</h3>
 
 <table id="topics">
