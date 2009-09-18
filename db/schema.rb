@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(:version => 20090917224612) do
     t.text     "ticket_type"
     t.text     "payment_notification_params"
     t.datetime "payment_complete_at"
-    t.text     "paid_amount"
+    t.integer  "paid_amount",                 :limit => 10, :precision => 10, :scale => 0
     t.text     "payment_reference"
     t.boolean  "registration_complete"
     t.boolean  "manual_payment"

@@ -11,6 +11,7 @@ class UpdateRegistrations < ActiveRecord::Migration
         
       registration.ticket_type =
         (registration.user.is_admin ? "organizer" : !registration.user.talks.empty? ? "speaker" : registration.is_earlybird ? "early_bird" : "full_price")
+      registration.registration_complete = false
       if payment_notification = registration.payment_notification
         registration.payment_notification_params = payment_notification.params
         registration.paid_amount = payment_notification.paid_amount.to_i
@@ -24,10 +25,14 @@ class UpdateRegistrations < ActiveRecord::Migration
     for user in User.all
       unless user.registration
         if user.is_admin
-          user.create_registration(:ticket_type => "organizer", :created_at => user.created_at, :registration_complete => true)
-          user.save!
+          user.create_registration(:ticket_type => "organizer")
+          user.registration.created_at = user.created_at
+          user.registration.registration_complete = true
+          user.registration.save!
         elsif !user.talks.empty?
-          user.create_registration(:ticket_type => "speaker", :created_at => user.created_at, :registration_complete => false)
+          user.create_registration(:ticket_type => "speaker")
+          user.registration.created_at = user.created_at
+          user.registration.registration_complete = false
           user.save!
         else
           puts "Missing registration for #{user.name}"

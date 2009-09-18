@@ -45,28 +45,26 @@
     <th>Påmeldt</th>
     <th>Billett</th>
     <th>Komplett?</th>
+    <th>Betalt</th>
   </tr>
 <% for registration in @registrations %>
   <tr>
-    <% if registration.user %>
-      <td>
-        <%=link_to registration.user.name, registration.user %>
-        (<%=h registration.user.company %>)
-      </td>
-      <td>
-        <%=link_to registration.user.email, "mailto:#{registration.user.email}" %>
-      </td>
-    <% else %>
-      <td colspan="2">
-        MISSING USER
-      </td>
-    <% end %>
+    <td>
+      <%=link_to registration.user.name, registration.user %>
+      (<%=h registration.user.company %>)
+    </td>
+    <td>
+      <%=link_to registration.user.email, "mailto:#{registration.user.email}" %>
+    </td>
     <td><%=h time_ago_in_words(registration.created_at) %> siden</td>
     <td>
       <%= registration.ticket_type %>
     </td>
     <td>
       <%= registration.registration_complete %>
+    </td>
+    <td>
+      <%= registration.paid_amount %>
     </td>
   </tr>
 <% end %>

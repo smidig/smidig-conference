@@ -4,7 +4,6 @@ class RegistrationsController < ApplicationController
   before_filter :require_admin, :only => [:index]
   
   def index
-    params[:conditions][:registration_complete] = nil if params[:conditions] && params[:conditions][:registration_complete] && params[:conditions][:registration_complete] != "1"
     @registrations = Registration.find(:all, :conditions => params[:conditions], :include => :user)
     @ticket_types = @registrations.collect { |r| r.ticket_type }.uniq
 
