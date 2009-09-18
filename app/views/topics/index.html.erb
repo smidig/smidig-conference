@@ -1,6 +1,3 @@
-<% content_for :title, "Hva skjer på konferansen?" %>
-<h2>Hva skjer på konferansen?</h2>
-
 <% 
 @kommentarer = "<h3>Siste kommentarer</h3>"
 Comment.all.last(5).each do |c|
@@ -15,6 +12,10 @@ Comment.all.last(5).each do |c|
 end
 %>
 <%= floating_text_box @kommentarer %>
+
+<% content_for :title, "Hva skjer på konferansen?" %>
+<h2>Hva skjer på konferansen?</h2>
+
 
 <%= feed_link "Følg med på nye forslag", talks_path(:format => :rss) %>
 
