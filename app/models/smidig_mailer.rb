@@ -17,14 +17,15 @@ class SmidigMailer < ActionMailer::Base
                :email => user.email
   end
 
-  def manual_registration_notification(user)
+  def manual_registration_notification(user, user_url)
     subject    "[Smidig 2009] Bruker #{user.email} har registrert seg med manuell betalingshåndtering"
     recipients 'Smidig 2009 <kontakt@smidig2009.no>'
     from       'Smidig 2009 <kontakt@smidig2009.no>'
     reply_to    "#{user.name} <#{user.email}>"
     body       :name => user.name,
                :email => user.email,
-               :description => user.registration.description
+               :description => user.registration.description,
+               :user_url => user_url
   end
 
   def free_registration_confirmation(user)
@@ -35,14 +36,16 @@ class SmidigMailer < ActionMailer::Base
                :email => user.email
   end
 
-  def free_registration_notification(user)
+  def free_registration_notification(user, user_url)
     subject    "[Smidig 2009] Bruker #{user.email} har registrert seg som #{user.registration.description}"
     recipients 'Smidig 2009 <kontakt@smidig2009.no>'
     from       'Smidig 2009 <kontakt@smidig2009.no>'
     reply_to    "#{user.name} <#{user.email}>"        
     body       :name => user.name,
                :email => user.email,
-               :description => user.registration.description
+               :description => user.registration.description,
+               :user_url => user_url
+
   end
 
   def payment_confirmation(registration)

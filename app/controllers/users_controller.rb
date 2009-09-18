@@ -50,12 +50,12 @@ class UsersController < ApplicationController
         if @user.registration.manual_payment
           flash[:notice] = "Vi vil kontakte deg for å bekrefte detaljene"
           SmidigMailer.deliver_manual_registration_confirmation(@user)
-          SmidigMailer.deliver_manual_registration_notification(@user)
+          SmidigMailer.deliver_manual_registration_notification(@user, user_url(@user))
           redirect_to @user
         elsif @user.registration.free_ticket
           flash[:notice] = "Vi vil kontakte deg for å bekrefte detaljene"
           SmidigMailer.deliver_free_registration_confirmation(@user)
-          SmidigMailer.deliver_free_registration_notification(@user)
+          SmidigMailer.deliver_free_registration_notification(@user, user_url(@user))
           redirect_to @user
         else
           SmidigMailer.deliver_registration_confirmation(@user)
