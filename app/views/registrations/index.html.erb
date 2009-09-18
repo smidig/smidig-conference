@@ -34,6 +34,7 @@
   <li><%= link_to "Completed", :conditions => { :registration_complete => 1 }  %></li>
   <li><%= link_to "Not completed", :conditions => { :registration_complete => 0 }  %></li>
   <li><%= link_to "Dinner registrations", :conditions => { :includes_dinner => 1 }  %></li>
+  <li><%= link_to "Manuell faktura", :conditions => { :manual_payment => 1, :registration_complete => 0 }  %></li>
 </ul>
 
 <h3><%= @registrations.length %> brukere:</h3>
