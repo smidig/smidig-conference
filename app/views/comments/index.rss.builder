@@ -3,7 +3,8 @@ atom_feed do |feed|
   feed.updated(@comments.first.created_at) unless @comments.empty?
 
   for comment in @comments
-    feed.entry(comment) do |entry|
+    link = url_for(:controller => 'talks', :action => 'show', :id => comment.talk, :anchor => dom_id(comment), :only_path => false)
+    feed.entry(comment, :url => link) do |entry|
       entry.title(comment.title)
       entry.content(comment.description, :type => 'html')
 

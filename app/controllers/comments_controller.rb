@@ -12,6 +12,11 @@ class CommentsController < ApplicationController
       format.rss
     end
   end
+  
+  def show
+    @comment = Comment.find(params[:id])
+    redirect_to :controller => 'talks', :action => 'show', :id => @comment.talk, :anchor => dom_id(@comment)
+  end
 
   # GET /comments/1/edit
   def edit
