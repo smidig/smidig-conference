@@ -91,4 +91,8 @@ namespace :dreamhost do
       end
     end
   end
+  
+  desc "Upgrade all environments - use for really small changes"
+  task :all => ["dreamhost:experimental", "dreamhost:staging", "dreamhost:production"]
+  
 end
