@@ -53,10 +53,10 @@
       <p>
         <%= reg.radio_button 'includes_dinner', false %>
         <%= reg.label 'includes_dinner_false', 
-          "Jeg vil ha Early Bird til kroner 1950, men finanskrisen gjør at vi ikke har råd til middag" %><br />
+          "Jeg vil delta på konferansen til kroner 1950, men finanskrisen gjør at vi ikke har råd til middag" %><br />
         <%= reg.radio_button 'includes_dinner', true %>
         <%= reg.label 'includes_dinner_true', 
-          "Jeg vil ha Early Bird, til kroner 1950 og gleder meg til middagen 22. oktober til kroner 500, totalt kroner 2450!" %>
+          "Jeg vil delta på konferansen til kroner 1950 og gleder meg til middagen 22. oktober til kroner 500, totalt kroner 2450!" %>
       </p>
       <div class="detail">Prisene er inklusive mva</div>
       <% if @user.registration.manual_payment %>
