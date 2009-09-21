@@ -25,6 +25,12 @@ class User < ActiveRecord::Base
     registration ? registration.description : "Ukjent"
   end
   
+  def deliver_password_reset_instructions!
+    reset_perishable_token!
+    SmidigMailer.deliver_password_reset_instructions(self)
+  end
+  
+  
   def self.find_with_filter(filter)
     case filter
     when "all","", nil

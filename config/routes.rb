@@ -11,6 +11,7 @@ ActionController::Routing::Routes.draw do |map|
   map.signup 'signup', :controller => 'users', :action => 'new'
 
   map.resources :user_sessions
+  map.resources :password_resets
   map.resources :users, :collection => { :current => :get }
   map.resources :periods
   map.resources :votes

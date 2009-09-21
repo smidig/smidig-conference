@@ -1,5 +1,7 @@
 class SmidigMailer < ActionMailer::Base
   
+  default_url_options[:host] = "smidig2009.no"
+
 
   def registration_confirmation(user)
     subject    "[Smidig 2009] Bruker #{user.email} er registrert"
@@ -26,6 +28,14 @@ class SmidigMailer < ActionMailer::Base
                :email => user.email,
                :description => user.registration.description,
                :user_url => user_url
+  end
+  
+  def password_reset_instructions(user)
+    subject    "[Smidig 2009] Hvordan endre ditt passord"
+    recipients user.email
+    from       'Smidig 2009 <kontakt@smidig2009.no>'
+    body        :edit_password_reset_url => edit_password_reset_url(user.perishable_token)
+    
   end
 
   def free_registration_confirmation(user)
