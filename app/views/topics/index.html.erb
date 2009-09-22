@@ -1,15 +1,12 @@
 <% 
-@kommentarer = "<h3>Siste kommentarer</h3>"
-Comment.all.last(5).each do |c|
-  @kommentarer += %(
-    <p class="last_comment">
-      <a href="/talks/#{c.talk_id}">
-        #{c.description.first(30)}...
-      </a> 
-      by #{c.user.name}
-    </p>
-    )
-end
+@kommentarer = "<h3>Siste kommentarer</h3>" +
+  @last_comments.collect do |c|
+    %(
+      <p class="last_comment">#{ link_to c.description.first(30) + "...", c.talk, :anchor => dom_id(c) }
+        by #{c.user.name}
+      </p>
+      )
+    end.join
 %>
 <%= floating_text_box @kommentarer %>
 

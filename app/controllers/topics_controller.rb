@@ -7,6 +7,7 @@ class TopicsController < ApplicationController
   # GET /topics.xml
   def index
     @topics = Topic.find(:all, :include => :talks)
+    @last_comments = Comment.find(:all, :order => "created_at desc", :limit => 5)
 
     respond_to do |format|
       format.html # index.html.erb
