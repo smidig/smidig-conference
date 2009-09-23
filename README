@@ -50,10 +50,11 @@ rake dreamhost:staging
 (if database was changed) rake dreamhost:staging:migrate
 </code>
 
-== Setting up the staging environment from scratch
+== Deploying new version to all environment
+
+Use this if you only have minor changes:
 
 <code>
 svn commit
-rake dreamhost:staging:setup
-rake dreamhost:staging:migrate
+rake dreamhost:all
 </code>
