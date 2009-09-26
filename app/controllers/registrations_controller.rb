@@ -4,7 +4,7 @@ class RegistrationsController < ApplicationController
   before_filter :require_admin, :only => [:index]
   
   def index
-    @registrations = Registration.find(:all, :conditions => params[:conditions], :include => :user)
+    @registrations = Registration.find_by_params(params)
     @ticket_types = @registrations.collect { |r| r.ticket_type }.uniq
 
     @date_range = (2.months.ago.to_date..Date.today).to_a

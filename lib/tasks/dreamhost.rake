@@ -95,4 +95,9 @@ namespace :dreamhost do
   desc "Upgrade all environments - use for really small changes"
   task :all => ["dreamhost:experimental", "dreamhost:staging", "dreamhost:production"]
   
+  task :get_backup do
+    $stdout.puts "[#{username}@#{hostname}] scp backup/smidig2009_production/latest-dump.gz db/"
+    require 'net/scp'
+    Net::SCP.download!(hostname, username, "backup/smidig2009_production/latest-dump.gz", "db/")    
+  end
 end

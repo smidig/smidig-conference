@@ -25,6 +25,15 @@
   image_tag line_chart_xy.to_url
 %>
 
+<h3>Krever oppfølging</h3>
+
+<ul>
+  <li><%= link_to "Skal betale, har ikke blitt fakturert", :filter => 'skal_faktureres'%>. Disse må kontaktes for å høre om de vil forsøke å betale på nytt, motta faktura, eller ikke delta</li>
+  <li><%= link_to "Skal faktureres", :conditions => { :manual_payment => 1 }%>. Disse må legges i <%= link_to "faktureringsregnearket", "http://spreadsheets.google.com/ccc?key=0AgagkSyIhK7gdFl4WU1QbjFMd01XcHJocC1sMWJOeFE&hl=en"%>. Legg merke til at vi ikke har noen direkte avkrysning på hvem som har mottatt faktura. Vær årvåken mot dobbeltfakturering!</li>
+</ul>
+
+
+<h3>Andre søk</h3>
 
 <ul>
   <li><%= link_to "Alle", :conditions => '' %></li>
@@ -34,7 +43,6 @@
   <li><%= link_to "Completed", :conditions => { :registration_complete => 1 }  %></li>
   <li><%= link_to "Not completed", :conditions => { :registration_complete => 0 }  %></li>
   <li><%= link_to "Dinner registrations", :conditions => { :includes_dinner => 1 }  %></li>
-  <li><%= link_to "Manuell faktura", :conditions => { :manual_payment => 1, :registration_complete => 0 }  %></li>
 </ul>
 
 <h3><%= @registrations.length %> brukere:</h3>
