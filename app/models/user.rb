@@ -43,6 +43,8 @@ class User < ActiveRecord::Base
       return find(:all, :include => :registration).select { |u| u.registration and u.registration.paid? }
     when "unpaid"
       return find(:all, :include => :registration).select { |u| u.registration and not u.registration.paid? and u.talks.empty? }
+    when "volunteer"
+      return find(:all, :include => :registration).select { |u| u.registration and u.registration.ticket_type == "volunteer" }
     when "paying_speaker"
       return find(:all, :include => [:registration, :talks]).reject { |u| u.talks.empty? }.
         select { |u| u.registration and u.registration.paid? }
