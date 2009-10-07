@@ -13,7 +13,7 @@
   <% unfinished do %><%= render :partial => "talks/votes" %><% end %>
 <% end %>
 
-<% if current_user == @talk.speaker || current_user.is_admin? %>
+<% if current_user == @talk.speaker || admin? %>
   <% if @talk.slide.file? %>
     <h3>Presentasjonsfil</h3>
     <p><%= link_to 'Last ned', @talk.slide.url %>
