@@ -13,6 +13,14 @@
   <% unfinished do %><%= render :partial => "talks/votes" %><% end %>
 <% end %>
 
+<% if current_user == @talk.speaker || current_user.is_admin? %>
+  <% if @talk.slide.file? %>
+    <h3>Presentasjonsfil</h3>
+    <p><%= link_to 'Last ned', @talk.slide.url %>
+  <% else %>
+    <p><%= render :partial => "talks/upload_slide" %></p>
+  <% end %>
+<% end %>
 
 <div class="description">
   <%=simple_format @talk.description %>  
@@ -29,8 +37,6 @@
 
 <%= render :partial => "talks/video" %>
 <%= render :partial => "talks/slides" %>
-
-
 
 <h3>Kommentarer</h3>
 

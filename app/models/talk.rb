@@ -6,6 +6,8 @@ class Talk < ActiveRecord::Base
   has_many :comments, :order => "created_at", :include => :user
   has_many :votes, :include => :user
   
+  has_attached_file :slide
+  
   validates_acceptance_of :accepted_guidelines  
   validates_acceptance_of :accepted_cc_license
   validates_presence_of :topic, :title, :description

@@ -22,7 +22,7 @@ namespace :db do
       user.name    = Faker::Name.name
       user.company = Faker::Company.name
       user.phone_number = Faker::PhoneNumber.phone_number
-      user.billing_address = Faker::Address.secondary_address
+      #user.billing_address = Faker::Address.secondary_address
       user.created_at = Populator.value_in_range 3.months.ago..Time.now
       user.persistence_token = Faker::Lorem.words(1).to_s.capitalize
       user.crypted_password = Faker::Lorem.words(1).to_s.capitalize 

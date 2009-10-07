@@ -1,0 +1,6 @@
+<h3>Last opp presentasjon</h3>
+
+<% form_for(@talk, :html => { :multipart => true }) do |form| %>
+    <%= form.file_field :slide %>
+    <%= form.submit 'Last opp' %>
+<% end %>
