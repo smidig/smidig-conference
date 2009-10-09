@@ -51,16 +51,46 @@
 
 <% if admin? %>
 
-  <h3 style="color:red">Admin: Registrer betaling for <%= @registration.user.name %></h3>
+<div class="admin">
 
-  <p style="color:red">
+  <h3>Admin: Registrer betaling for <%= @registration.user.name %></h3>
+
+  <p>
   	Før du gjør dette, vær vennlig og dobbeltsjekk epostadressen. Noen brukere
   	registrerer seg med flere epostadresser, og det er viktig at du oppdaterer
   	den riktige adressen
   </p>
 
   <h3>Epost: <%= @registration.user.email %></h3>
-
+  
+  <% unless @registration.registration_complete %>
+    <h4>Oppdater billettinformasjon</h4>
+    
+    <% form_for @registration do |f| %>
+      <%= hidden_field_tag :ticket_change %>
+      <p>
+        <%= f.label :ticket_type, "Type billett" %><br>
+        <%= f.select :ticket_type, [
+            ['Early bird', 'early_bird'],
+            ['Full pris', 'full_price'],
+            ['Benytter en sponsors gratisbillett - gratis (angi firma)', 'sponsor'],
+            ['Holder foredrag - gratis', 'speaker'],
+            ['Bidrar som frivillig under konferansen - gratis', 'volunteer'], 
+            ['Er med å arrangere konferansen - gratis', 'organizer']] %>
+      </p>
+      <p>
+        <%= f.label :invoice_description, "Kommentarer til registreringen" %><br/>
+        <%= f.text_area :invoice_description, :rows => 4 %>
+      </p>
+      <p>
+        <%= f.check_box :includes_dinner %>
+        <%= f.label :includes_dinner,  "Deltar på middagen" %>
+      </p>
+      <p>
+        <%= f.submit "Endre billettinformasjon" %>
+      </p>
+    <% end %>
+  <% end %>
 
   <h4>Oppdater betalingsinformasjon</h4>
   
@@ -94,5 +124,6 @@
       <%= f.submit "Registrer betaling" %>
     </p>
   <% end %>
-	
+
+</div>	
 <% end %>	

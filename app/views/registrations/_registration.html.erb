@@ -29,32 +29,35 @@ Vi har registrert din betaling. Vi sees på Smidig 2009!
 <% else %>
 
   <p>
-  	Vi har enda ikke mottatt bekreftelse fra PayPal.
-  	Dette tar vanligvis ikke mer enn noen sekunder og om du laster denne
-  	siden på nytt kan betalingen allerede ha blitt registrert.
-	</p>
-
-  <p>
-  	Dersom du ikke fikk gjennomført betalingen din første gang, kan du følge denne 
-  	<%=link_to "linken til PayPal", registration.payment_url(payment_notifications_url, user_url(@user)) %>
-  	for å prøve på nytt.
+    Vi har ikke registrert deg som betalt enda. Dette kan skyldes
+    flere ting:
 	</p>
 	
-	<% if registration.created_at < 15.minutes.ago %>
-    <p>
-      Har du problemer med å få betaling med PayPal til å fungere? Vi kan sende
-      deg en manuell faktura. Registrer din fakturainformasjon her:
+	<ul>
+	  <li>
+	    Det er mulig du ikke har <%=link_to "utført betalingen",
+	      registration.payment_url(payment_notifications_url, user_url(@user)) %>.
+	  </li>
+	  <li>
+	    Det er mulig noe skjedde feil under betalingen.
+	    <%=link_to "Sjekk betalingsstatus",
+	      registration.payment_url(payment_notifications_url, user_url(@user)) %>.
+	  </li>	    
+  	<% if registration.created_at > 15.minutes.ago %>
+  	  <li>
+  	    Det kan ta litt tid før vi registrerer betalingen.
+      </li>
+    <% end %>
+    <li>Kan du ikke benytte PayPal? Vi kan sende en manuell faktura.
       <%= link_to "Endre fakturainformasjon", edit_registration_path(registration) %>
-    </p>
-  <% end %>
-    
-	<% if registration.created_at < 3.hours.ago %>
-  	Dersom du har betalt og denne meldingen fortsatt er her etter en time, kan du ta det med ro.
-  	Du får fortsatt være med på konferansen, men vi må nok rette noen tekniske problemer.
-    Send oss <a href="mailto:kontakt@smidig2009.no">en email</a>
-	</p>
-	<% end %>
-
+    </li>
+	  <% if registration.created_at < 3.hours.ago %>
+  	  <li>
+  	    Fortsatt problemer? Du kan ta det med ro, du får fortsatt være med på konferansen.
+  	    Send oss <a href="mailto:kontakt@smidig2009.no">en email</a> så ordner vi.
+  	  </li>
+	  <% end %>
+	</ul>
 
 <% end %>
 

@@ -13,9 +13,11 @@ class SmidigMailerTest < ActionMailer::TestCase
     @expected.body    = read_fixture('payment_confirmation')
 
     user = User.new :email => "oc+smidig2009@rynning.no", :name => "Ole Christian Rynning"
-    user.create_registration :user => user, :description => "Text", :price => 123.0
+    registration = user.create_registration :user => user,
+      :ticket_type => "full_price", :includes_dinner => true
+    registration.user = user
 
-    assert_equal @expected.body, SmidigMailer.create_payment_confirmation(user.registration).body
+    assert_equal @expected.body, SmidigMailer.create_payment_confirmation(registration).body
   end
 
   test "talk_confirmation" do

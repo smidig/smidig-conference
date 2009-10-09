@@ -25,10 +25,19 @@ class RegistrationsController < ApplicationController
   def update
     @registration = Registration.find(params[:id])
     if admin?
-      @registration.completed_by = current_user.email if admin? and @registration.registration_complete
-      @registration.registration_complete = params[:registration][:registration_complete]
-      @registration.payment_reference = params[:registration][:payment_reference]
-      @registration.paid_amount = params[:registration][:paid_amount]
+      if params[:ticket_change]
+        @registration.ticket_type = params[:registration][:ticket_type]
+        @registration.includes_dinner = params[:registration][:includes_dinner]
+        @registration.create_payment_info
+      else
+        @registration.completed_by = current_user.email if admin? and @registration.registration_complete
+        @registration.registration_complete = params[:registration][:registration_complete]
+        @registration.payment_reference = params[:registration][:payment_reference]
+        @registration.paid_amount = params[:registration][:paid_amount]
+        @registration.user.is_admin = 
+          (@registration.ticket_type == "organizer" && @registration.registration_complete)
+        @registration.user.save!
+      end
     end
 
     if @registration.update_attributes(params[:registration])

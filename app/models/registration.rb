@@ -22,7 +22,8 @@ class Registration < ActiveRecord::Base
   before_create :create_payment_info
   
   def description      
-    TICKET_TEXTS[self.ticket_type] + " " + (includes_dinner? ? 'inkludert middag' : 'uten middag') +
+    (TICKET_TEXTS[self.ticket_type] || ticket_type) + " " +
+      (includes_dinner? ? 'inkludert middag' : 'uten middag') +
       (registration_complete ? " (Betalt)" : "")
   end
   
@@ -75,12 +76,14 @@ class Registration < ActiveRecord::Base
     end
   end
 
-protected
   def create_payment_info
+    if paid?
+      raise "Kan ikke endre en utført betaling!"
+    end
     self.registration_complete = false
     self.price = PAYMENT_CONFIG[:prices][ticket_type].to_i
-    self.price += PAYMENT_CONFIG[:prices]["dinner"].to_i if includes_dinner && !free_ticket
     self.free_ticket = price == 0
+    self.price += PAYMENT_CONFIG[:prices]["dinner"].to_i if includes_dinner && !free_ticket
     return true
   end
 end

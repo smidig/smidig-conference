@@ -1,5 +1,6 @@
 class TalksController < ApplicationController
-  before_filter :require_user, :except => [ :index, :show, :new, :create ]
+  before_filter :require_user, :except => [ :index, :show ]
+  before_filter :require_admin, :only => [ :new, :create ]
   before_filter :is_admin_or_owner, :only => [ :edit, :update, :destroy ]
   
   # GET /talks

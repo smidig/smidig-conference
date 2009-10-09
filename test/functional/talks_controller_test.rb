@@ -46,9 +46,9 @@ class TalksControllerTest < ActionController::TestCase
     assert_redirected_to talk_path(assigns(:talk))
   end
   
-  def test_anybody_can_create_talks
+  def test_nobody_can_create_talks
     get :new
-    assert_response :success    
+    assert_response 302
   end
       
 end
