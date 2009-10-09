@@ -8,7 +8,7 @@ atom_feed do |feed|
       entry.content(simple_format(talk.description), :type => 'html')
 
       entry.author do |author|
-        author.name(talk.speaker.name)
+        author.name(talk.speaker_name)
       end
     end
   end
