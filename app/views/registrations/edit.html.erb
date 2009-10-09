@@ -1,4 +1,4 @@
-<h2>Betalingsinformasjon for <%=h @registration.user.name %></h2>
+<h2>Betalingsinformasjon for <%=h @registration.user.name %> (registrert <%= @registration.created_at.to_date %>)</h2>
 
 <% if @registration.registration_complete %>
   

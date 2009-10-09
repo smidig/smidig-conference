@@ -5,20 +5,18 @@
 <h2><%=h @talk.title %> 
   <% unfinished do %>(<%= antall_stemmer(@talk.votes_count) %>)<% end %></h2>
 
-<h3><%= render :partial => @talk.speaker %></h3>
+<h3><%= render :partial => @talk.users %></h3>
 
-<% if current_user == @talk.speaker %>
+<% if @talk.users.include?(current_user)|| admin? %>
   <p><%= link_to 'Rediger forslaget ditt', edit_talk_path(@talk) %></p>
-<% else %>
-  <% unfinished do %><%= render :partial => "talks/votes" %><% end %>
-<% end %>
 
-<% if current_user == @talk.speaker || admin? %>
   <% if @talk.slide.file? %>
     <p><%= link_to 'Last ned', @talk.slide.url %>
   <% end %>
   <h3>Last opp presentasjon</h3>
   <p><%= render :partial => "talks/upload_slide" %></p>
+<% else %>
+  <% unfinished do %><%= render :partial => "talks/votes" %><% end %>
 <% end %>
 
 <div class="description">

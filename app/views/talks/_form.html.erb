@@ -1,12 +1,12 @@
 <% form_for @talk do |f| %>
-  <%= f.error_messages %>
   
   <% unless current_user %>
     <h3>Hvem er du?</h3>
     
     <p>(Dersom du allerede har registrert deg, trenger du bare oppgi email og passord)</p>
     
-    <% f.fields_for :speaker do |user_form| %>
+    <% fields_for :user, @user do |user_form| %>
+      <%= user_form.error_messages %>
       <p>
         <%= user_form.label :email, "E-post"%><br />
         <%= user_form.text_field :email %>
@@ -48,6 +48,7 @@
   
   <h3>Hva vil du snakke om?</h3>
 
+  <%= f.error_messages %>
   <p>
     <%= f.label :topic_id, "Tema" %>:
     <% if @talk.new_record? and @talk.topic %>
@@ -89,7 +90,8 @@
   <% if @talk.new_record? %>
     <p>
       <%= f.check_box :accepted_guidelines %>
-      <%= f.label :accepted_guidelines, "Jeg kjenner til tidsbegrensningen og formatet for lyntaler på Smidig 2009 (#{link_to 'Om lyntaler', { :controller => 'pages', :action => 'lyntaler' }, :target => '_blank'})" %>
+      <%= f.label :accepted_guidelines, "Jeg kjenner til tidsbegrensningen og formatet for lyntaler på Smidig 2009 (#{
+          link_to 'Om lyntaler', { :controller => 'pages', :action => 'lyntaler' }, :target => '_blank'})" %>
     </p>
     <p>
       <%= f.check_box :accepted_cc_license %>

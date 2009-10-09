@@ -4,9 +4,10 @@ class User < ActiveRecord::Base
   acts_as_authentic
   has_one :registration
   has_many :votes
+  
+  has_many :speakers
+  has_many :talks, :through => :speakers
 
-  has_many :talks, :foreign_key => 'speaker_id'
-    
   has_many :comments
   
   attr_protected :crypted_password, :password_salt, :persistence_token, :created_at, :updated_at,

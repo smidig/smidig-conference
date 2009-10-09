@@ -24,7 +24,8 @@ class SmidigMailerTest < ActionMailer::TestCase
     @expected.body    = read_fixture('talk_confirmation')
 
     user = User.new :email => "oc+smidig2009@rynning.no", :name => "Ole Christian Rynning"
-    talk = Talk.new :speaker => user, :title => "A fine talk"
+    talk = Talk.new :title => "A fine talk"
+    talk.users << user
     talk_url = "http://smidig2009.no/talks/1234"
 
     assert_equal @expected.body, 
@@ -35,7 +36,8 @@ class SmidigMailerTest < ActionMailer::TestCase
     @expected.body    = read_fixture('comment_notification')
 
     user = User.new :email => "oc+smidig2009@rynning.no", :name => "Ole Christian Rynning"
-    talk = Talk.new :speaker => user, :title => "A fine talk"
+    talk = Talk.new :title => "A fine talk"
+    talk.users << user
     comment = Comment.new :talk => talk
     comment_url = "http://smidig2009.no/talks/1234#comment_1"
 

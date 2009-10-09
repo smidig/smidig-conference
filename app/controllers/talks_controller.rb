@@ -6,7 +6,7 @@ class TalksController < ApplicationController
   # GET /talks
   # GET /talks.xml
   def index
-    @talks = params[:topic_id] ? Topic.find(params[:topic_id]).talks : Talk.find(:all, :include => [:speaker, :topic])
+    @talks = params[:topic_id] ? Topic.find(params[:topic_id]).talks : Talk.find(:all, :include => [:users, :topic])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,7 +18,7 @@ class TalksController < ApplicationController
   # GET /talks/1
   # GET /talks/1.xml
   def show
-    @talk = Talk.find(params[:id], :include => [:speaker, :topic, :comments, :votes])
+    @talk = Talk.find(params[:id], :include => [:users, :topic, :comments, :votes])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -31,7 +31,7 @@ class TalksController < ApplicationController
   def new
     @talk = Talk.new
     @talk.topic = Topic.find(params[:topic_id]) if params[:topic_id]
-    @talk.speaker = current_user||User.new
+    @user = current_user||User.new
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @talk }
@@ -41,27 +41,40 @@ class TalksController < ApplicationController
   # GET /talks/1/edit
   def edit
     @talk = Talk.find(params[:id])
+    @user = User.new
   end
 
   # POST /talks
   # POST /talks.xml
   def create
     @talk = Talk.new(params[:talk])
-    @talk.speaker ||= current_user
-    @user_session = UserSession.new(params[:talk][:speaker_attributes])
-    if @user_session.save
-      @talk.speaker = current_user if current_user
-      flash[:warn] = 'Registreringen finnes allerede.'
-      flash[:registration_already_exists] = true
+
+    if current_user
+      @user = current_user
+    else
+      @user_session = UserSession.new(params[:user])
+      if @user_session.save
+        @user = current_user
+        flash[:warn] = 'Registreringen finnes allerede.'
+        flash[:registration_already_exists] = true
+      else
+        @user = User.new(params[:user])
+        @user.create_registration(:ticket_type => "speaker", 
+            :includes_dinner => params[:registration_includes_dinner])
+        if not @user.save and @user.registration.save
+          respond_to do |format|
+            format.html { render :action => "new" }
+            format.xml  { render :xml => @talk.errors, :status => :unprocessable_entity }
+          end
+          return
+        end
+      end
     end
+    
+    @talk.users << @user
 
     respond_to do |format|
-      if @talk.speaker && @talk.save
-        unless @talk.speaker.registration
-          @talk.speaker.create_registration(:ticket_type => "speaker", 
-            :includes_dinner => params[:registration_includes_dinner])
-          @talk.speaker.registration.save!
-        end
+      if @talk.save
         flash[:notice] = "Forslaget er publisert"
         SmidigMailer.deliver_talk_confirmation(@talk, talk_url(@talk))
         format.html { redirect_to(@talk) }
@@ -111,7 +124,7 @@ protected
 
   def is_admin_or_owner
     talk = Talk.find(params[:id])
-    unless current_user.is_admin? || talk.speaker == current_user
+    unless current_user.is_admin? || talk.users.include?(current_user)
       flash[:error] = "Du må være administrator eller eier for å endre siden."
       access_denied
     end

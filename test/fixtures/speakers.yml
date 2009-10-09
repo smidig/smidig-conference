@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+quentin_talks_at_one:
+  user: quentin
+  talk: one
+  
+god_talks_at_one:
+  user: god
+  talk: one
+  
+god_talks_at_two:
+  user: god
+  talk: two

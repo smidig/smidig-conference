@@ -2,7 +2,8 @@
   <div class="description"><%= h(topic.description) %></div>
   <div class="talks_submitted">
     <% for talk in topic.talks.reverse.first(4) %>
-      <li class="detail" id="<%= dom_id(talk) %>"><%= link_to talk.title, talk %> by <%=link_to_if admin?, h(talk.speaker.name), talk.speaker %></li>
+      <li class="detail" id="<%= dom_id(talk) %>"><%= link_to talk.title, talk %> by
+          <%=link_to_if admin?, h(talk.speaker_name), talk.users.first %></li>
     <% end %>
   </div>
   <li class="detail"><%= antall_flere_lyntaler(topic.talks.size-4, topic) %></li>

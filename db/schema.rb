@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091007145443) do
+ActiveRecord::Schema.define(:version => 20091009201549) do
 
   create_table "comments", :force => true do |t|
     t.integer  "talk_id"
@@ -98,8 +98,12 @@ ActiveRecord::Schema.define(:version => 20091007145443) do
     t.string   "completed_by"
   end
 
+  create_table "speakers", :force => true do |t|
+    t.integer "talk_id"
+    t.integer "user_id"
+  end
+
   create_table "talks", :force => true do |t|
-    t.integer  "speaker_id"
     t.integer  "topic_id"
     t.string   "title"
     t.text     "description"

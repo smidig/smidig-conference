@@ -9,7 +9,7 @@
 <div class="talk" id="<%= dom_id(talk) %>">
   <h3><%=link_to h(talk.title), talk %></h3>
   
-  <div class="speaker"><%=h talk.speaker.name %></div>
+  <div class="speaker"><%=h talk.speaker_name %></div>
   <div class="submitted_time">Foreslått for <%= time_ago_in_words(talk.created_at) %> siden</div>
   <div class="talk_topic"><%= link_to talk.topic.title, talk.topic %></div>
   

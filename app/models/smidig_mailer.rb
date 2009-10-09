@@ -69,19 +69,19 @@ class SmidigMailer < ActionMailer::Base
 
   def talk_confirmation(talk, talk_url)
     subject    "[Smidig 2009] Bekreftelse på foredrag #{talk.title}"
-    recipients talk.speaker.email
+    recipients talk.users.map &:email
     from       'Smidig 2009 <kontakt@smidig2009.no>'        
-    body       :speaker => talk.speaker.name,
-               :email => talk.speaker.email,
+    body       :speaker => talk.speaker_name,
+               :email => talk.users.map(&:email).join(", "),
                :talk => talk.title,
                :talk_url => talk_url
   end
 
   def comment_notification(comment, comment_url)
     subject    "[Smidig 2009] Kommentar til #{comment.talk.title}"
-    recipients comment.talk.speaker.email
+    recipients comment.talk.users.map &:email
     from       'Smidig 2009 <kontakt@smidig2009.no>'        
-    body       :speaker => comment.talk.speaker.name,
+    body       :speaker => comment.talk.speaker_name,
                :talk => comment.talk.title,
                :comment_url => comment_url
   end
