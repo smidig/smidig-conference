@@ -8,7 +8,6 @@ class Registration < ActiveRecord::Base
     "speaker" => "Foredragsholder på Smidig 2009"
   }
 
-
   attr_accessible :comments, :includes_dinner, :description,
     :ticket_type, :free_ticket,
     :manual_payment, :invoice_address, :invoice_description
@@ -84,6 +83,4 @@ protected
     self.free_ticket = price == 0
     return true
   end
-
-
 end

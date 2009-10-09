@@ -7,6 +7,8 @@ class Talk < ActiveRecord::Base
   has_many :votes, :include => :user
   
   has_attached_file :slide
+  validates_attachment_content_type :slide, :content_type => ['application/pdf', 'application/vnd.ms-powerpoint', 'application/ms-powerpoint', %r{application/vnd.openxmlformats-officedocument}, %r{application/vnd.oasis.opendocument}, 'application/zip', 'application/x-7z-compressed', 'application/x-gtar']
+  validates_attachment_size :slide, :less_than => 30.megabytes
   
   validates_acceptance_of :accepted_guidelines  
   validates_acceptance_of :accepted_cc_license

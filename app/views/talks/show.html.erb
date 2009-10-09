@@ -15,11 +15,10 @@
 
 <% if current_user == @talk.speaker || admin? %>
   <% if @talk.slide.file? %>
-    <h3>Presentasjonsfil</h3>
     <p><%= link_to 'Last ned', @talk.slide.url %>
-  <% else %>
-    <p><%= render :partial => "talks/upload_slide" %></p>
   <% end %>
+  <h3>Last opp presentasjon</h3>
+  <p><%= render :partial => "talks/upload_slide" %></p>
 <% end %>
 
 <div class="description">
