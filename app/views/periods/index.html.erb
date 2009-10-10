@@ -1,6 +1,10 @@
 <h1>Showing program</h1>
 
-<%= feed_link "All proposed talks", talks_path(:rss) %> 
+<%= feed_link "All proposed talks", talks_path(:rss) %>
+
+
+<%= form_tag make_program_periods_path if @edit %>
+
 
 <table border="">
   <tr>
@@ -19,3 +23,6 @@
   <% end %>
 </table>
 
+<%= submit_tag "Oppdater programmet" if @edit %>
+
+</form>

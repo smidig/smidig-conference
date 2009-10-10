@@ -13,7 +13,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :user_sessions
   map.resources :password_resets
   map.resources :users, :collection => { :current => :get }
-  map.resources :periods
+  map.resources :periods, :collection => { :make_program => :post }
   map.resources :votes
   map.resources :comments
 

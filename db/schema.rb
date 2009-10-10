@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091009201549) do
+ActiveRecord::Schema.define(:version => 20091009222157) do
 
   create_table "comments", :force => true do |t|
     t.integer  "talk_id"
@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(:version => 20091009201549) do
     t.string   "slide_content_type"
     t.integer  "slide_file_size"
     t.datetime "slide_updated_at"
+    t.integer  "period_id"
   end
 
   create_table "topics", :force => true do |t|

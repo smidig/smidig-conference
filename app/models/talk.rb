@@ -4,6 +4,7 @@ class Talk < ActiveRecord::Base
   has_many :speakers
   has_many :users, :through => :speakers
   belongs_to :topic
+  belongs_to :period
   has_many :comments, :order => "created_at", :include => :user
   has_many :votes, :include => :user
   
@@ -21,6 +22,14 @@ class Talk < ActiveRecord::Base
 
   def topic_name
     topic.title
+  end
+  
+  def option_text
+    %Q[#{id} - "#{trunc(title, 30)}" (#{trunc(speaker_name, 20)})]
+  end
+  
+  def trunc(text, length)
+    (text.length < length + 3) ? text : "#{text.first(length)}..."
   end
   
   def describe_audience_level

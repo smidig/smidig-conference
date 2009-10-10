@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_admin
-    unless current_user && current_user.is_admin
+    unless admin?
       store_location
       flash[:notice] = "Du må være administrator for å se siden."
       redirect_to new_user_session_url

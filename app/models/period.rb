@@ -1,3 +1,12 @@
 class Period < ActiveRecord::Base
-  belongs_to :topic
+  has_many :talks
+  
+  def talk_list
+    result = Array.new(4)
+    for talk in talks
+      result[talk.position] = talk if (0..3).include? talk.position
+    end
+    result
+  end
+  
 end
