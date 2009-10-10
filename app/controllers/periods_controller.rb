@@ -36,7 +36,7 @@ class PeriodsController < ApplicationController
     end
     
     Talk.transaction do      
-      for talk in Talk.all
+      for talk in Talk.all(:include => :topic)
         if talk_params[talk.id]
           talk.period_id = talk_params[talk.id][:period_id]
           talk.position = talk_params[talk.id][:position]
