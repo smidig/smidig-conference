@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091009222157) do
+ActiveRecord::Schema.define(:version => 20091011172413) do
 
   create_table "comments", :force => true do |t|
     t.integer  "talk_id"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20091009222157) do
     t.integer  "topic_offset"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title"
   end
 
   create_table "registrations", :force => true do |t|

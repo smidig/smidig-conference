@@ -14,7 +14,7 @@ class PeriodsController < ApplicationController
     @time_ids = @periods.collect { |p| p.time_id }.sort.uniq
     
     @edit = params[:edit] && admin?
-    @all_talks = Talk.all(:order => 'id', :include => :users) if @edit
+    @all_talks = Talk.all_approved if @edit
     
 
     respond_to do |format|
@@ -25,26 +25,38 @@ class PeriodsController < ApplicationController
   
   def make_program
     periods = params[:periods]
-    talk_params = {}    
-    periods.each_pair do
-      |period_id,period_params|
-      period_params[:position].each_pair do
-        |position,talk_id|
-        next if talk_id.blank?
-        talk_params[talk_id.to_i] = { :period_id => period_id.to_i, :position => position.to_i }
-      end
-    end
-    
+
+    dups = []
+    changed = []
+
     Talk.transaction do      
-      for talk in Talk.all(:include => :topic)
-        if talk_params[talk.id]
-          talk.period_id = talk_params[talk.id][:period_id]
-          talk.position = talk_params[talk.id][:position]
-        else
-          talk.period_id = nil
-          talk.position = nil
+      periods.each_pair do
+        |period_id,period_params|
+        positions = period_params[:positions]
+        positions.each_pair do
+          |position,period_properties|
+          new_talk = period_properties[:new_talk]
+          previous_talk = period_properties[:previous_talk]
+          Talk.update_all "period_id = null, position = null", [ "id = ?", previous_talk.to_i ] unless
+              new_talk == previous_talk || previous_talk.blank?
         end
-        talk.save!
+        positions.each_pair do
+          |position,period_properties|
+          new_talk = period_properties[:new_talk]
+          previous_talk = period_properties[:previous_talk]
+          Talk.update_all [ "period_id = ?, position = ?", period_id.to_i, position.to_i], [ "id = ?", new_talk.to_i ] unless
+            new_talk == previous_talk || new_talk.blank?
+          
+          dups << new_talk.to_i if (new_talk != previous_talk && changed.include?(new_talk.to_i))
+          changed << new_talk.to_i if (new_talk != previous_talk)
+        end
+        flash[:warn] = "Duplikate endringer" unless dups.empty?
+      end
+      periods.each_pair do
+        |period_id,period_params|
+        new_title = period_params[:new_title]
+        previous_title = period_params[:previous_title]
+        Period.update_all [ "title = ?", new_title ], [ "id = ?", period_id.to_i ] unless new_title == previous_title
       end
     end
     

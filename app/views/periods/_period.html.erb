@@ -1,13 +1,20 @@
 <% if @edit %>
+  <%= label_tag "periods[#{period.id}]new_title", "Tittel" %>
+  <%= text_field_tag "periods[#{period.id}]new_title", period.title %>
+  <%= hidden_field_tag "periods[#{period.id}]previous_title", period.title %>
+
   <% for position in 0..3 %>
       
   
   <%= 
-    select_tag "periods[#{period.id}]position[#{position}]", "<option></option>" + 
+    select_tag "periods[#{period.id}]positions[#{position}]new_talk", "<option></option>" + 
       options_from_collection_for_select(@all_talks, 'id', 'option_text', period.talk_list[position] && period.talk_list[position].id)  
   %>
+  
+  <%= hidden_field_tag "periods[#{period.id}]positions[#{position}]previous_talk", (period.talk_list[position] && period.talk_list[position].id) %>
     
   <% end %>
 <% else %>
+  <h3><%= period.title %></h3>
   <%= render :partial => period.talks %>
 <% end %>
