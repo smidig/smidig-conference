@@ -23,4 +23,4 @@ config.action_view.cache_template_loading            = true
 
 INCLUDE_UNFINISHED = false
 
-Rails::logger.level = Logger::INFO
+# Rails::logger.level = Logger::INFO
