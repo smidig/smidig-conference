@@ -11,9 +11,11 @@
   <p><%= link_to 'Rediger forslaget ditt', edit_talk_path(@talk) %></p>
 
   <% if @talk.slide.file? %>
+    <h3>Lysbilder til presentasjon</h3>
     <p><%= link_to 'Last ned', @talk.slide.url %>
+  <% else %>
+    <h3>Last opp presentasjon</h3>
   <% end %>
-  <h3>Last opp presentasjon</h3>
   <p><%= render :partial => "talks/upload_slide" %></p>
 <% else %>
   <% unfinished do %><%= render :partial => "talks/votes" %><% end %>
