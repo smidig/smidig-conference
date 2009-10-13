@@ -47,7 +47,7 @@ class Talk < ActiveRecord::Base
   
   def self.all_approved
     all(:order => 'id', :include => { :users => :registration }).select { 
-      |t| t.users.first.registration.ticket_type = "speaker"
+      |t| !t.users.first.nil? && t.users.first.registration.ticket_type = "speaker"
     }
   end
 end
