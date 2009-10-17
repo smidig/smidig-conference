@@ -1,5 +1,5 @@
 class Period < ActiveRecord::Base
-  has_many :talks
+  has_many :talks, :order => 'position'
   
   def talk_list
     result = Array.new(4)
