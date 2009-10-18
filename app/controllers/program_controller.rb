@@ -10,7 +10,7 @@ class ProgramController < ApplicationController
     @time_ids = @periods.collect { |p| p.time_id }.sort.uniq
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @periods }
+      format.xml
     end
   end
 
