@@ -55,17 +55,33 @@ class Registration < ActiveRecord::Base
     end.join("&")
   end
   
+  def status
+    paid? ? "Betalt" : (
+      registration_complete? ? "Godkjent" : (
+        manual_payment? && !invoiced ? "Skal faktureres" : (
+          manual_payment? ? "Har blitt fakturert" : "Må følges opp")))
+  end
+  
   def self.find_by_params(params)
     if params[:conditions]
       find(:all, :conditions => params[:conditions], :include => :user)
     elsif params[:filter]
       case params[:filter]
-      when "skal_faktureres"
+      when "skal_foelges_opp"
         return find(:all,
           :conditions => """
           (free_ticket = 0 or free_ticket is null) and
           (registration_complete = 0 or registration_complete is null) and
           (manual_payment = 0 or manual_payment is null)
+          """,
+          :include => :user)
+      when "skal_faktureres"
+        return find(:all,
+          :conditions => """
+          (free_ticket = 0 or free_ticket is null) and
+          (registration_complete = 0 or registration_complete is null) and
+          (manual_payment = 1) and
+          (invoiced = 0 or invoiced is null)
           """,
           :include => :user)
       else

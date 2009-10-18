@@ -28,8 +28,9 @@
 <h3>Krever oppfølging</h3>
 
 <ul>
-  <li><%= link_to "Skal betale, har ikke blitt fakturert", :filter => 'skal_faktureres'%>. Disse må kontaktes for å høre om de vil forsøke å betale på nytt, motta faktura, eller ikke delta</li>
-  <li><%= link_to "Skal faktureres", :conditions => { :manual_payment => 1 }%>. Disse må legges i <%= link_to "faktureringsregnearket", "http://spreadsheets.google.com/ccc?key=0AgagkSyIhK7gdFl4WU1QbjFMd01XcHJocC1sMWJOeFE&hl=en"%>. Legg merke til at vi ikke har noen direkte avkrysning på hvem som har mottatt faktura. Vær årvåken mot dobbeltfakturering!</li>
+  <li><%= link_to "Skal betale, har ikke blitt fulgt opp", :filter => 'skal_foelges_opp' %>. Disse må kontaktes for å høre om de vil forsøke å betale på nytt, motta faktura, eller ikke delta</li>
+  <li><%= link_to "Skal faktureres", :filter => 'skal_faktureres' %>. Disse må legges i <%= link_to "faktureringsregnearket", "http://spreadsheets.google.com/ccc?key=0AgagkSyIhK7gdFl4WU1QbjFMd01XcHJocC1sMWJOeFE&hl=en"%>. Vær årvåken mot dobbeltfakturering!</li>
+  <li><%= link_to "Har blitt fakturerert", :conditions => { :manual_payment => 1, :invoiced => 1 } %>. Disse har blitt lagt inn i <%= link_to "faktureringsregnearket", "http://spreadsheets.google.com/ccc?key=0AgagkSyIhK7gdFl4WU1QbjFMd01XcHJocC1sMWJOeFE&hl=en"%>.</li>
 </ul>
 
 
@@ -53,7 +54,7 @@
     <th>E-post</th>
     <th>Påmeldt</th>
     <th>Billett</th>
-    <th>Komplett?</th>
+    <th>Status</th>
     <th>Betalt</th>
   </tr>
 <% for registration in @registrations %>
@@ -70,7 +71,7 @@
       <%= registration.ticket_type %>
     </td>
     <td>
-      <%= registration.registration_complete %>
+      <%= registration.status %>
     </td>
     <td>
       <%= registration.paid_amount %>

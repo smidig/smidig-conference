@@ -45,6 +45,12 @@
         <%= reg.text_area :invoice_description, :rows => 4 %>
       </p>
     </div>
+    <% if admin? %>
+      <p class="admin">
+      <%= reg.check_box :invoiced %>
+      <%= reg.label :invoiced, "Har blitt fakturert "%>
+      </p>
+    <% end %>
     <p><%= reg.submit "Oppdater fakturainformasjon" %></p>        
   <% end %>
 <% end %>

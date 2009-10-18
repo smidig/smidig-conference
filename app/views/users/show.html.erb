@@ -14,6 +14,9 @@ Vi har registrert følgende informasjon om deg:
     <li><strong>Deltar på konferansemiddag:</strong> <%= @user.registration.includes_dinner ? "Ja" : "Nei" %></li>
     <li><strong>Pris:</strong> <%= @user.registration.price %></li>
   <% end %>
+  <% if admin? %>
+    <li class="admin"><strong>Status:</strong> <%= @user.registration.status%></li>
+  <% end %>
 </ul>
 
 <%= link_to "Endre din registrering", edit_user_path(@user) %>

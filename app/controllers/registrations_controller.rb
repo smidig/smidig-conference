@@ -34,6 +34,7 @@ class RegistrationsController < ApplicationController
         @registration.registration_complete = params[:registration][:registration_complete]
         @registration.payment_reference = params[:registration][:payment_reference]
         @registration.paid_amount = params[:registration][:paid_amount]
+        @registration.invoiced = params[:registration][:invoiced]
         @registration.user.is_admin = 
           (@registration.ticket_type == "organizer" && @registration.registration_complete)
         @registration.user.save!
