@@ -5,6 +5,6 @@
   <div class="speaker"><%= render :partial => talk.users %></div>
   <% unfinished do %>
     <div class="votes"><%= antall_stemmer(talk.votes_count) %></div>
+    <div class="submitted_time">Foreslått for <%= time_ago_in_words(talk.created_at) %> siden</div>
   <% end %>
-  <div class="submitted_time">Foreslått for <%= time_ago_in_words(talk.created_at) %> siden</div>
 </div>
