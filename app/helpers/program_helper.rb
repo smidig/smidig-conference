@@ -3,15 +3,15 @@ module ProgramHelper
     """
     <tr><td class='time'>#{timeslot}</td> 
         <td class='slot salA'>
-            <div class='event'>#{period_title(periods[0])}</div>
+            <div class='event'>#{periods[0].title}</div>
             <span class='location'>Sal A</span>
         </td>
         <td class='slot salB'>
-            <div class='event'>#{period_title(periods[1])}</div>
+            <div class='event'>#{periods[1].title}</div>
             <span class='location'>Sal B</span>
         </td>
         <td class='slot salC'>
-          <div class='event'>#{period_title(periods[2])}</div>
+          <div class='event'>#{periods[2].title}</div>
             <span class='location'>Sal C</span>
         </td>
     </tr> 
@@ -21,18 +21,11 @@ module ProgramHelper
   def timeslot_tr(timeslot, periods)
     """
     <tr><td class='time'>#{timeslot}</td> 
-        <td class='slot salA'><div class='event'>#{period_title(periods[0])}</div></td>
-        <td class='slot salB'><div class='event'>#{period_title(periods[1])}</div></td>
-        <td class='slot salC'><div class='event'>#{period_title(periods[2])}</div></td>
+        <td class='slot salA'><div class='event'>#{periods[0].title}</div></td>
+        <td class='slot salB'><div class='event'>#{periods[1].title}</div></td>
+        <td class='slot salC'><div class='event'>#{periods[2].title}</div></td>
     </tr> 
     """
-  end
-
-  
-  
-  
-  def period_title(period)
-    period.title.blank? ? 'Ikke navngitt' : period.title
   end
   
   def timeslot_talks_tr(periods)
