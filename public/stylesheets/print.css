@@ -1,6 +1,6 @@
 .second .content {margin-right: 0;}
 
-#header, .first, .third, .right {display: none!important}
+#header, .admin, .first, .third, .right {display: none!important}
 
 a {color:black;}
 
@@ -13,3 +13,4 @@ html, body, #wrapper, * html #wrapper {height: auto!important}
 img {
     border: 0;
     }
+ 
