@@ -47,6 +47,6 @@ module ProgramHelper
   end
   
   def period_talks(period)
-    "<ol>" + period.talks.collect { |t| "<li>#{link_to h(t.title), t}</li>" }.join + "</ol>"
+    "<ol>" + period.talks.collect { |t| "<li>#{link_to h(t.title), t} (#{t.speaker_name})</li>" }.join + "</ol>"
   end
 end

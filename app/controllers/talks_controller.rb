@@ -6,7 +6,7 @@ class TalksController < ApplicationController
   # GET /talks
   # GET /talks.xml
   def index
-    @talks = params[:topic_id] ? Topic.find(params[:topic_id]).talks : Talk.find(:all, :include => [:users, :topic])
+    @talks = params[:topic_id] ? Topic.find(params[:topic_id]).talks : Talk.all_approved
 
     respond_to do |format|
       format.html # index.html.erb
