@@ -1,0 +1,160 @@
+<%= content_for :title, "Program" %>
+<%= content_for :additional_css, stylesheet_link_tag('program', :media => "all") %>
+
+<% if admin? %>
+
+<div class="admin">
+  <h3>Admin</h3>
+  <%= link_to "Endre programmet", :controller => 'periods', :action => 'index', :edit => true %>
+</div>
+
+<% end %>
+  
+<h2>Program for Smidig 2009</h2> 
+
+<p>Under konferansen kan du følge med på oppdateringer <a href="http://twitter.com/smidig">på Twitter!</a></p> 
+
+<table class="schedule" summary="This table shows the schedule for the first day of the Smidig 2008 conference on October 22nd."> 
+  <caption>22. oktober</caption> 
+  <colgroup class="times"> 
+    <col /> 
+    </colgroup> 
+  <colgroup class="locations" span="3"> 
+    <col class="salA" /> 
+    <col class="salB" /> 
+    <col class="auditoriet" /> 
+  </colgroup>
+  <thead> 
+    <tr><th class="time">Tid</th> 
+        <th colspan="3" class="event"> 
+            <div class="event">Hva skjer?</div> 
+            <span class="location">Sted</span> 
+        </th> 
+    </tr> 
+  </thead>
+  <tfoot> 
+    <tr><th class="time">Tid</th> 
+        <th class="event" colspan="2">Hva skjer?</th> 
+        <th class="location">Sted</th> 
+    </tr> 
+  </tfoot>
+  <tbody>
+  <tr>
+    <td class="time">8:00</td> 
+    <td colspan="3" class="slot foaje"> 
+      <div class="event">Registrering og kaffe</div> 
+      <span class="location">Foajé</span> 
+    </td> 
+  </tr>
+  <%= timeslot_with_location_tr("9:00&nbsp;&#8209;&nbsp;9:45", @periods_by_time_and_scene[0]) %>
+  <%= timeslot_talks_tr(@periods_by_time_and_scene[0]) %>
+  <%= timeslot_tr("10:00&nbsp;&#8209;&nbsp;10:45", @periods_by_time_and_scene[1]) %>
+  <%= timeslot_talks_tr(@periods_by_time_and_scene[1]) %>
+  <%= timeslot_tr("11:00&nbsp;&#8209;&nbsp;11:45", @periods_by_time_and_scene[2]) %>
+  <%= timeslot_talks_tr(@periods_by_time_and_scene[2]) %>
+    <tr><td class="time">12:00&nbsp;&#8209;&nbsp;13:00</td> 
+        <td colspan="3" class="slot restaurant"> 
+            <div class="event">Lunsj</div><span class="location">Spiseriet Henrik og Spiseriet Møller</span> 
+        </td> 
+    </tr> 
+    <tr><td class="time">13:00&nbsp;&#8209;&nbsp;13:30</td> 
+        <td colspan="3" class="slot salAogB"> 
+            <div class="event">Oppsett av Open Space sesjoner</div><span class="location">Sal A</span> 
+        </td> 
+    </tr> 
+    <tr><td class="time">13:30&nbsp;&#8209;&nbsp;14:15</td> 
+        <td colspan="3" class="slot salAogB"> 
+            <div class="event">Open Space sesjoner</div><span class="location">Sal A+B+C</span> 
+        </td> 
+    </tr> 
+    <tr><td class="time">14:30&nbsp;&#8209;&nbsp;15:15</td> 
+        <td colspan="3" class="slot salAogB"> 
+            <div class="event">Open Space sesjoner</div><span class="location">Sal A+B+C</span> 
+        </td> 
+    </tr> 
+    <tr><td class="time">15:30&nbsp;&#8209;&nbsp;16:15</td> 
+        <td colspan="3" class="slot salAogB"> 
+            <div class="event">Open Space sesjoner</div><span class="location">Sal A+B+C</span> 
+        </td> 
+    </tr> 
+    <tr><td class="time">17:00</td> 
+        <td colspan="3" class="slot salAogB"> 
+          <div class="event">Aperitif</div><span class="location">Restaurant</span>
+        </td> 
+    </tr> 
+ 
+    <tr><td class="time">18:00</td> 
+        <td colspan="3" class="slot restaurant"> 
+            <div class="event">Middag</div><span class="location">Restaurant</span>
+        </td> 
+    </tr> 
+  </tbody> 
+</table>
+
+
+<table class="schedule" summary="This table shows the schedule for the second day of the Smidig 2009 conference on October 23rd."> 
+  <caption>22. oktober</caption> 
+  <colgroup class="times"> 
+    <col /> 
+    </colgroup> 
+  <colgroup class="locations" span="3"> 
+    <col class="salA" /> 
+    <col class="salB" /> 
+    <col class="auditoriet" /> 
+  </colgroup>
+  <thead> 
+    <tr><th class="time">Tid</th> 
+        <th colspan="3" class="event"> 
+            <div class="event">Hva skjer?</div> 
+            <span class="location">Sted</span> 
+        </th> 
+    </tr> 
+  </thead>
+  <tfoot> 
+    <tr><th class="time">Tid</th> 
+        <th class="event" colspan="2">Hva skjer?</th> 
+        <th class="location">Sted</th> 
+    </tr> 
+  </tfoot>
+  <tbody>
+  <tr>
+    <td class="time">8:00</td> 
+    <td colspan="3" class="slot foaje"> 
+      <div class="event">Registrering og kaffe</div> 
+      <span class="location">Foajé</span> 
+    </td> 
+  </tr>
+  <%= timeslot_with_location_tr("9:00&nbsp;&#8209;&nbsp;9:45", @periods_by_time_and_scene[3]) %>
+  <%= timeslot_talks_tr(@periods_by_time_and_scene[3]) %>
+  <%= timeslot_tr("10:00&nbsp;&#8209;&nbsp;10:45", @periods_by_time_and_scene[4]) %>
+  <%= timeslot_talks_tr(@periods_by_time_and_scene[4]) %>
+  <%= timeslot_tr("10:00&nbsp;&#8209;&nbsp;10:45", @periods_by_time_and_scene[5]) %>
+  <%= timeslot_talks_tr(@periods_by_time_and_scene[5]) %>
+  <tr><td class="time">12:00&nbsp;&#8209;&nbsp;13:00</td> 
+        <td colspan="3" class="slot restaurant"> 
+            <div class="event">Lunsj</div><span class="location">Spiseriet Henrik og Spiseriet Møller</span> 
+        </td> 
+    </tr> 
+    <tr><td class="time">13:00&nbsp;&#8209;&nbsp;13:30</td> 
+        <td colspan="3" class="slot salAogB"> 
+            <div class="event">Oppsett av Open Space sesjoner</div><span class="location">Sal A</span> 
+        </td> 
+    </tr> 
+    <tr><td class="time">13:30&nbsp;&#8209;&nbsp;14:15</td> 
+        <td colspan="3" class="slot salAogB"> 
+            <div class="event">Open Space sesjoner</div><span class="location">Sal A+B+C</span> 
+        </td> 
+    </tr> 
+    <tr><td class="time">14:30&nbsp;&#8209;&nbsp;15:15</td> 
+        <td colspan="3" class="slot salAogB"> 
+            <div class="event">Open Space sesjoner</div><span class="location">Sal A+B+C</span> 
+        </td> 
+    </tr> 
+    <tr><td class="time">15:30&nbsp;&#8209;&nbsp;16:15</td> 
+        <td colspan="3" class="slot salAogB"> 
+            <div class="event">Retrospektiv</div><span class="location">Sal A</span> 
+        </td> 
+    </tr> 
+  </tbody> 
+</table>
+

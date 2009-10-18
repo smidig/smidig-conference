@@ -17,9 +17,9 @@ module ApplicationHelper
   end
   
   def program_menu_item
-    menu_class = controller_is?(%w(talks topics periods)) ? "menu_current" : "menu_link"
+    menu_class = controller_is?(%w(talks topics periods program)) ? "menu_current" : "menu_link"
     %Q(<li id="program_menu" class="#{menu_class} topics" title="Program"
-      ><span>#{ link_to_unless_current "Program", periods_path }</span></li>)
+      ><span>#{ link_to_unless_current "Program", :controller => 'program', :action => 'index' }</span></li>)
   end
 
   def user_menu_item

@@ -157,7 +157,8 @@ background-position: top right;
 
 
 ul#site_nav li.topics *, #topics .background-color, #talks .background-color {background-color: #e0f0c6}
-ul#site_nav li.periods *, #periods .background-color, #talks .background-color {background-color: #e0f0c6}
+ul#site_nav li.periods *, #periods .background-color {background-color: #e0f0c6}
+ul#site_nav li.program *, #program .background-color {background-color: #e0f0c6}
 
 ul#site_nav li.users *,
 #users .background-color,
@@ -604,3 +605,4 @@ li.detail          { margin-left:3em; font-size:smaller; list-style-type: none; 
 padding: .5em 1em 1em 0}
 
 p.last_comment { font-size: 11px; margin: 5px 0; padding: 0;}
+

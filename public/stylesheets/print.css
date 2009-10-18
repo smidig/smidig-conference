@@ -1,0 +1,15 @@
+.second .content {margin-right: 0;}
+
+#header, .first, .third, .right {display: none!important}
+
+a {color:black;}
+
+.main, .left, .content, .second, #wrapper {overflow: visible!important}
+
+html, body, #wrapper, * html #wrapper {height: auto!important}
+
+#ielte6 {display: none}
+
+img {
+    border: 0;
+    }
