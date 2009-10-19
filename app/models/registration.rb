@@ -32,7 +32,7 @@ class Registration < ActiveRecord::Base
   end
   
   def paid?
-    payment_notification && payment_notification.status == "Completed"
+    paid_amount && paid_amount > 0
   end
   
   def payment_url(payment_notifications_url, return_url)
