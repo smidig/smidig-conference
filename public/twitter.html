@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+  <title>Smidig 2009 Akkurat nå</title>
+</head>
+<body>
+  <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+  <script>
+  new TWTR.Widget({
+    version: 2,
+    type: 'search',
+    search: '#smidig2009 OR #smidig',
+    interval: 6000,
+    title: '#smidig2009 akkurat nå',
+    subject: '',
+    width: 'auto',
+    height: 200,
+    theme: {
+      shell: {
+        background: '#004000',
+        color: '#ffffff'
+      },
+      tweets: {
+        background: '#ffffff',
+        color: '#000000',
+        links: '#c24e00'
+      }
+    },
+    features: {
+      scrollbar: false,
+      loop: true,
+      live: true,
+      hashtags: true,
+      timestamp: true,
+      avatars: true,
+      behavior: 'default'
+    }
+  }).render().start();
+  </script>
+</body>
+</html>
