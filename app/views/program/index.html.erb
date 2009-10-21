@@ -1,6 +1,10 @@
 <%= content_for :title, "Program" %>
 <%= content_for :additional_css, stylesheet_link_tag('program', :media => "all") %>
 
+<style type="text/css" media="print">
+  table th { border: none; }
+</style>
+
 <% if admin? %>
 
 <div class="admin">
@@ -54,38 +58,38 @@
   <%= timeslot_talks_tr(@periods_by_time_and_scene[2]) %>
     <tr><td class="time">12:00&nbsp;&#8209;&nbsp;13:00</td> 
         <td colspan="3" class="slot restaurant"> 
-            <div class="event">Lunsj</div><span class="location">Spiseriet Henrik og Spiseriet Møller</span> 
+            <div class="event">Lunsj</div><span class="location">Spiseriet Henrik</span> 
         </td> 
     </tr> 
     <tr><td class="time">13:00&nbsp;&#8209;&nbsp;13:30</td> 
         <td colspan="3" class="slot salAogB"> 
-            <div class="event">Oppsett av Open Space sesjoner</div><span class="location">Sal A</span> 
+            <div class="event">Oppsett av Open Space-sesjoner</div><span class="location">Sal A</span> 
         </td> 
     </tr> 
     <tr><td class="time">13:30&nbsp;&#8209;&nbsp;14:15</td> 
         <td colspan="3" class="slot salAogB"> 
-            <div class="event">Open Space sesjoner</div><span class="location">Sal A+B+C</span> 
+            <div class="event">Open space-sesjoner</div><span class="location">Sal A+B+C</span> 
         </td> 
     </tr> 
     <tr><td class="time">14:30&nbsp;&#8209;&nbsp;15:15</td> 
         <td colspan="3" class="slot salAogB"> 
-            <div class="event">Open Space sesjoner</div><span class="location">Sal A+B+C</span> 
+            <div class="event">Open space-sesjoner</div><span class="location">Sal A+B+C</span> 
         </td> 
     </tr> 
     <tr><td class="time">15:30&nbsp;&#8209;&nbsp;16:15</td> 
         <td colspan="3" class="slot salAogB"> 
-            <div class="event">Open Space sesjoner</div><span class="location">Sal A+B+C</span> 
+            <div class="event">Open space-sesjoner</div><span class="location">Sal A+B+C</span> 
         </td> 
     </tr> 
     <tr><td class="time">17:00</td> 
         <td colspan="3" class="slot salAogB"> 
-          <div class="event">Aperitif</div><span class="location">Restaurant</span>
+          <div class="event">Aperitif</div><span class="location">Samfunnssalen</span>
         </td> 
     </tr> 
  
     <tr><td class="time">18:00</td> 
         <td colspan="3" class="slot restaurant"> 
-            <div class="event">Middag</div><span class="location">Restaurant</span>
+            <div class="event">Middag</div><span class="location">Samfunnssalen</span>
         </td> 
     </tr> 
   </tbody> 
@@ -132,22 +136,22 @@
   <%= timeslot_talks_tr(@periods_by_time_and_scene[5]) %>
   <tr><td class="time">12:00&nbsp;&#8209;&nbsp;13:00</td> 
         <td colspan="3" class="slot restaurant"> 
-            <div class="event">Lunsj</div><span class="location">Spiseriet Henrik og Spiseriet Møller</span> 
+            <div class="event">Lunsj</div><span class="location">Spiseriet Henrik</span> 
         </td> 
     </tr> 
     <tr><td class="time">13:00&nbsp;&#8209;&nbsp;13:30</td> 
         <td colspan="3" class="slot salAogB"> 
-            <div class="event">Oppsett av Open Space sesjoner</div><span class="location">Sal A</span> 
+            <div class="event">Oppsett av Open Space-sesjoner</div><span class="location">Sal A</span> 
         </td> 
     </tr> 
     <tr><td class="time">13:30&nbsp;&#8209;&nbsp;14:15</td> 
         <td colspan="3" class="slot salAogB"> 
-            <div class="event">Open Space sesjoner</div><span class="location">Sal A+B+C</span> 
+            <div class="event">Open Space-sesjoner</div><span class="location">Sal A+B+C</span> 
         </td> 
     </tr> 
     <tr><td class="time">14:30&nbsp;&#8209;&nbsp;15:15</td> 
         <td colspan="3" class="slot salAogB"> 
-            <div class="event">Open Space sesjoner</div><span class="location">Sal A+B+C</span> 
+            <div class="event">Open Space-sesjoner</div><span class="location">Sal A+B+C</span> 
         </td> 
     </tr> 
     <tr><td class="time">15:30&nbsp;&#8209;&nbsp;16:15</td> 
