@@ -1,9 +1,6 @@
 <%= content_for :title, "Program" %>
 <%= content_for :additional_css, stylesheet_link_tag('program', :media => "all") %>
-
-<style type="text/css" media="print">
-  table th { border: none; }
-</style>
+<%= content_for :additional_css, stylesheet_link_tag('program-print', :media => "print") %>
 
 <% if admin? %>
 
