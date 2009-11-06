@@ -7,6 +7,11 @@
 
 <h3><%= render :partial => @talk.users %></h3>
 
+<% if @talk.slide.file? %>
+  <h3>Lysbilder til presentasjon</h3>
+  <p><%= link_to 'Last ned', @talk.slide.url %>
+<% end %>
+
 <% if @talk.users.include?(current_user)|| admin? %>
   <p><%= link_to 'Rediger forslaget ditt', edit_talk_path(@talk) %></p>
 
