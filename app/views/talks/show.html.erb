@@ -7,10 +7,6 @@
 
 <h3><%= render :partial => @talk.users %></h3>
 
-<% if @talk.slide.file? %>
-  <h3><%= link_to 'Last ned lysbilder til presentasjon', @talk.slide.url %></h3>  
-<% end %>
-
 <% if @talk.users.include?(current_user)|| admin? %>
   <p><%= link_to 'Rediger forslaget ditt', edit_talk_path(@talk) %></p>
 
@@ -28,10 +24,12 @@
 <div class="description">
   <%=simple_format @talk.description %>  
 </div>
-
 <p>
   <strong>Passer for:</strong>
   <%=h @talk.describe_audience_level %>
+  <% if @talk.slide.file? %>
+    <h3><%= link_to 'Last ned lysbilder til presentasjon', @talk.slide.url %></h3>  
+  <% end %>  
 </p>
 
 <%= link_to image_tag("http://i.creativecommons.org/l/#{@talk.license}/3.0/no/88x31.png", :border => 0),
