@@ -52,3 +52,21 @@ rake dreamhost:staging
 <code>
 rake dreamhost:all
 </code>
+
+== GIT (github)
+
+Først, lag deg github-konto, om du ikke har det (mulig du må legge inn rsa-nøkler? for å identifisere din maskin mot din github-konto, trenger kanskje å skrive mer om dette)
+
+Deretter, din første commit:
+<code>
+git clone git@github.com:smidig/smidig-conference.git
+cd smidig-conference
+mate README  (eller annen editor) og endre noe
+git status (viser at den er endret, men ikke lagt inn i det som skal committes)
+git add .
+git status (viser fremdeles at den er endret, men også lagt i 'listen' over det du skal committe lokalt)
+git commit -am "my first commit, added some text to README" (nå er det committet lokalt)
+git push (nå er det 'committed sentralt' til smidig på github)
+</code>
+
+Mulig du må være registrert som collaborator for å få til dette...  
