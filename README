@@ -1,6 +1,11 @@
-= Smidig 2009 Conference site
+= Smidig 2010 Conference site
 
 == Recommended tools
+
+=== OSX
+* Ruby 1.8.7
+* TextMate
+* git
 
 === Windows
 
@@ -8,7 +13,6 @@
 * "TortoiseSVN":http://tortoisesvn.net/downloads
 * "e TextEditor":http://www.e-texteditor.com/
 * "Subversion command line binaries":http://www.collab.net/downloads/subversion/
-
 
 == Getting started
 
@@ -29,32 +33,22 @@ http://localhost:3000
 
 == Checking in
 
-You need a user in the subversion repository.
-Use this procedure to create or change your password:
+You need to be a collaborator of the conference site, otherwise commit to your own fork, and make a pull request.
 
-<code>
-ssh to smidig_no@svn.smidig.no
-htpasswd ~/svn/smidig2009.passwd <your username>
-* Enter your desired password when prompted
-vim ~/svn/smidig2009.access
-* Add a line with "<your username> = rw"
-</code>
+== TODO
 
+Heroku?!
 
 == Deploying new version to staging environment
 
 <code>
 gem install net-ssh net-scp
-svn commit
 rake dreamhost:staging
 (if database was changed) rake dreamhost:staging:migrate
 </code>
 
 == Deploying new version to all environment
 
-Use this if you only have minor changes:
-
 <code>
-svn commit
 rake dreamhost:all
 </code>
