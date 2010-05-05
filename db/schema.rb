@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(:version => 20091018210337) do
     t.string   "transaction_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "paid_amount",     :limit => 10, :precision => 10, :scale => 0
+    t.decimal  "paid_amount"
     t.string   "currency"
     t.string   "registered_by"
   end
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(:version => 20091018210337) do
   create_table "registrations", :force => true do |t|
     t.integer  "user_id"
     t.text     "comments"
-    t.integer  "price",                       :limit => 10, :precision => 10, :scale => 0
+    t.decimal  "price"
     t.date     "invoiced_at"
     t.date     "paid_at"
     t.datetime "created_at"
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(:version => 20091018210337) do
     t.text     "ticket_type"
     t.text     "payment_notification_params"
     t.datetime "payment_complete_at"
-    t.integer  "paid_amount",                 :limit => 10, :precision => 10, :scale => 0
+    t.decimal  "paid_amount"
     t.text     "payment_reference"
     t.boolean  "registration_complete"
     t.boolean  "manual_payment"
