@@ -6,14 +6,15 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.xml
   def index
-    redirect_to :controller => :program 
-    # @topics = Topic.find(:all, :include => { :talks => :users })
-    # @last_comments = Comment.find(:all, :include => :user, :order => "created_at desc", :limit => 5)
-    # 
-    # respond_to do |format|
-    #   format.html # index.html.erb
-    #   format.xml  { render :xml => @topics }
-    # end
+    # Disable index by redirecting:
+    # redirect_to :controller => :program
+    @topics = Topic.find(:all, :include => { :talks => :users })
+    @last_comments = Comment.find(:all, :include => :user, :order => "created_at desc", :limit => 5)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @topics }
+    end
   end
 
   # GET /topics/1
