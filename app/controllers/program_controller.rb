@@ -1,4 +1,5 @@
 class ProgramController < ApplicationController
+
   def index
     @periods = Period.find(:all, :include => { :talks => :users })
     @periods_by_time_and_scene = Hash.new
