@@ -4,6 +4,8 @@
   
   Vi har registrert din betaling. Vi sees på Smidig 2010!
 
+  <%# TODO: Transfer ticket to <email>. %> 
+
 <% elsif @registration.free_ticket %>
 
   <% form_for @registration do |reg| %>
@@ -23,7 +25,7 @@
     <% end %>
     <p>
       <%= reg.check_box :includes_dinner %>
-      <%= reg.label :includes_dinner,  "Jeg ønsker å delta på middagen" %>
+      <%= reg.label :includes_dinner,  "Jeg ønsker å delta på middagen (det er inkludert i prisen)" %>
     </p>
     <p><%= reg.submit "Oppdater din informasjon" %></p>        
   <% end %>

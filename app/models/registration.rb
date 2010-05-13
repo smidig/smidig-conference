@@ -23,7 +23,7 @@ class Registration < ActiveRecord::Base
   
   def description      
     (TICKET_TEXTS[self.ticket_type] || ticket_type) + " " +
-      (includes_dinner? ? 'inkludert middag' : 'uten middag') +
+      (includes_dinner? ? 'deltar på middag' : 'uten middag') +
       (registration_complete ? " (Betalt)" : "")
   end
   
