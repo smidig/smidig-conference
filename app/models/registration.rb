@@ -1,11 +1,11 @@
 class Registration < ActiveRecord::Base
   TICKET_TEXTS = {
-    "early_bird" => "Earlybird-billett til Smidig 2009",
-    "full_price" => "Billett til Smidig 2009",
-    "sponsor" => "Sponsor Smidig 2009",
-    "volunteer" => "Frivillig på Smidig 2009",
-    "organizer" => "Arrangør på Smidig 2009",
-    "speaker" => "Foredragsholder på Smidig 2009"
+    "early_bird" => "Earlybird-billett til Smidig 2010",
+    "full_price" => "Billett til Smidig 2010",
+    "sponsor" => "Sponsor Smidig 2010",
+    "volunteer" => "Frivillig på Smidig 2010",
+    "organizer" => "Arrangør på Smidig 2010",
+    "speaker" => "Foredragsholder på Smidig 2010"
   }
 
   attr_accessible :comments, :includes_dinner, :description,

@@ -1,5 +1,5 @@
 atom_feed do |feed|
-  feed.title("Smidig 2009 talks")
+  feed.title("Smidig 2010 talks")
   feed.updated(@talks.first.created_at)
 
   for talk in @talks

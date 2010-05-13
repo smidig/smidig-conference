@@ -1,5 +1,5 @@
 atom_feed do |feed|
-  feed.title("Users registered for Smidig 2009")
+  feed.title("Users registered for Smidig 2010")
   feed.updated(@users.first.created_at)
 
   for user in @users
