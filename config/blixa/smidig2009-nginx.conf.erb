@@ -1,4 +1,4 @@
-upstream <%= environment %>_smidig2009 {
+upstream <%= environment %>_smidig2010 {
   <% for port_instance in port..(port+3) %>
       server 127.0.0.1:<%= port_instance %>;
   <% end %>
@@ -34,7 +34,7 @@ server {
             rewrite (.*) $1.html break;
         }
 
-        proxy_pass http://<%= environment %>_smidig2009;
+        proxy_pass http://<%= environment %>_smidig2010;
         include /opt/nginx/conf/proxy.conf;
         break;
     }

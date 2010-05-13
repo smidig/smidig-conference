@@ -1,6 +1,6 @@
 defaults: &defaults
-  application:    smidig2009
-  svn_root:       http://svn.smidig.no/smidig2009/smidig2009
+  application:    smidig2010
+  svn_root:       http://svn.smidig.no/smidig2010/smidig2010
   username:       smidig_no
   dbusername:     smidig_no
   adapter:        jdbcmysql

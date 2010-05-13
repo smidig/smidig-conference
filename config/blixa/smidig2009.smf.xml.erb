@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 <!DOCTYPE service_bundle SYSTEM '/usr/share/lib/xml/dtd/service_bundle.dtd.1'>
 <service_bundle type='manifest' name='export'>
-  <service name='network/mongrel/smidig2009' type='service' version='0'>
+  <service name='network/mongrel/smidig2010' type='service' version='0'>
     <dependency name='fs' grouping='require_all' restart_on='none' type='service'>
       <service_fmri value='svc:/system/filesystem/local'/>
     </dependency>
@@ -15,7 +15,7 @@
       <method_context/>
     </exec_method>
     <instance name='<%= environment %>' enabled='true'>
-      <method_context project=':default' resource_pool=':default' working_directory='/u/apps/smidig2009/<%= environment %>/smidig2009'>
+      <method_context project=':default' resource_pool=':default' working_directory='/u/apps/smidig2010/<%= environment %>/smidig2010'>
         <method_credential group='deploy' limit_privileges=':default' privileges=':default' supp_groups=':default' user='deploy'/>
         <method_environment>
           <envvar name='PATH' value='/local/bin:/usr/bin:/bin:/opt/csw/bin'/>
