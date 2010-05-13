@@ -28,10 +28,10 @@ end
 
 namespace :dreamhost do  
   # TODO What's the best place to get this from?
-  application = "smidig2009"
+  application = "smidig2010"
 
-  svn_root = "http://svn.smidig.no/smidig2009/#{application}"
-  hostname = 'smidig2009.no'
+  svn_root = "http://svn.smidig.no/smidig2010/#{application}"
+  hostname = 'smidig2010.no'
   apps_path = "/home/smidig_no/apps"
   username = 'smidig_no'
   dbusername = username
@@ -100,8 +100,8 @@ namespace :dreamhost do
   end
   
   task :get_backup do
-    $stdout.puts "[#{username}@#{hostname}] scp backup/smidig2009_production/latest-dump.gz db/"
+    $stdout.puts "[#{username}@#{hostname}] scp backup/smidig2010_production/latest-dump.gz db/"
     require 'net/scp'
-    Net::SCP.download!(hostname, username, "backup/smidig2009_production/latest-dump.gz", "db/")    
+    Net::SCP.download!(hostname, username, "backup/smidig2010_production/latest-dump.gz", "db/")
   end
 end

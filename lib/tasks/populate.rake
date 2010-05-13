@@ -34,7 +34,7 @@ namespace :db do
 	    :password => 'password', :password_confirmation => 'password'
     User.create! :name => "Bar", :company => "Bar Corp", :email => 'bar@test.com', :phone_number => "98057660",
 	    :password => 'password', :password_confirmation => 'password'
-    User.create! :name => "Smidig Admin", :company => "Smidig 2009", :email => 'admin@smidig.no', :phone_number => "98057660",
+    User.create! :name => "Smidig Admin", :company => "Smidig 2010", :email => 'admin@smidig.no', :phone_number => "98057660",
 	    :password => 'password', :password_confirmation => 'password',
 	    :is_admin => true
     

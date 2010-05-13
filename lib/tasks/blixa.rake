@@ -33,21 +33,21 @@ end
 
 def smf_config(environment)
   require 'erb'
-  ERB.new(File.read("config/blixa/smidig2009.smf.xml.erb")).result(binding)
+  ERB.new(File.read("config/blixa/smidig2010.smf.xml.erb")).result(binding)
 end
 
 def nginx_config(environment, application_path, port)
   require 'erb'
-  hostname = (environment == "production" ? "" : environment+".")  + "2.smidig2009.no"
-  ERB.new(File.read("config/blixa/smidig2009-nginx.conf.erb")).result(binding)
+  hostname = (environment == "production" ? "" : environment+".")  + "2.smidig2010.no"
+  ERB.new(File.read("config/blixa/smidig2010-nginx.conf.erb")).result(binding)
 end
 
 
 namespace :blixa do  
   # TODO What's the best place to get this from?
-  application = "smidig2009"
+  application = "smidig2010"
 
-  svn_root = "http://svn.smidig.no/smidig2009/#{application}"
+  svn_root = "http://svn.smidig.no/smidig2010/#{application}"
   hostname = 'blixa.arktekk.no'
   apps_path = "/u/apps"
   username = 'deploy'
@@ -89,16 +89,16 @@ namespace :blixa do
           connection.upload_text twitter_config(environment, 'smidig', $dbpassword), "tmp/twitter.yml"
         end
         
-        connection.upload_text smf_config(environment), "tmp/smidig2009-#{environment}.smf.xml"
+        connection.upload_text smf_config(environment), "tmp/smidig2010-#{environment}.smf.xml"
         # TODO: Must be done by root
-        #connection.exec "svccfg import #{application_path}/tmp/smidig2009-#{environment}.smf.xml"
-        connection.upload_text nginx_config(environment, application_path, port), "/opt/nginx/conf/sites/smidig2009-#{environment}.no.conf"
+        #connection.exec "svccfg import #{application_path}/tmp/smidig2010-#{environment}.smf.xml"
+        connection.upload_text nginx_config(environment, application_path, port), "/opt/nginx/conf/sites/smidig2010-#{environment}.no.conf"
 
         # TODO: db:create doesn't read the correct database configuration
         connection.rake ["rails:freeze:gems", "gems:unpack", "db:migrate"]
         
         connection.exec "sudo svcadm restart svc:/network/nginx:default"
-        connection.exec "sudo svcadm restart svc:/network/mongrel/smidig2009:#{environment}"
+        connection.exec "sudo svcadm restart svc:/network/mongrel/smidig2010:#{environment}"
       end
       
       desc "Update the code in #{environment}. Add variable REVISION=... update to a given revision"
@@ -107,7 +107,7 @@ namespace :blixa do
         connection.exec "/usr/bin/svn up --revision #{revision} #{application_path}"
         connection.exec %Q(cd #{application_path} && echo "`date` => `/usr/bin/svn info | grep Revision:`" >> log/deployment.log)
         connection.rake ["gems:unpack", "cache:expire_all"]
-        connection.exec "svcadm restart svc:/network/mongrel/smidig2009:#{environment}"
+        connection.exec "svcadm restart svc:/network/mongrel/smidig2010:#{environment}"
       end
       
       desc "Migrate the database in #{environment}. Add variable VERSION=... update to a given version"

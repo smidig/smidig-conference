@@ -96,7 +96,7 @@ namespace :capasit do
         connection.upload_text glassfish_config, "tmp/glassfish.yml"        
         connection.upload_text "RAILS_ENV='#{environment}'", "tmp/environment.rb"
         connection.rake ["rails:freeze:gems", "gems:unpack", "db:migrate"]
-        connection.exec "/usr/sbin/svcadm enable glassfish-gem:smidig2009_#{environment}" 
+        connection.exec "/usr/sbin/svcadm enable glassfish-gem:smidig2010_#{environment}"
       end
 
       desc "Update the code in #{environment}. Add variable REVISION=... update to a given revision"
@@ -105,12 +105,12 @@ namespace :capasit do
         connection.exec "svn up --revision #{revision} #{application_path}"
         connection.exec %Q(cd #{application_path} && echo "`date` => `svn info | grep Revision:`" >> log/deployment.log)
         connection.rake ["gems:unpack", "cache:expire_all"]
-        connection.exec "/usr/sbin/svcadm restart glassfish-gem:smidig2009_#{environment}" 
+        connection.exec "/usr/sbin/svcadm restart glassfish-gem:smidig2010_#{environment}"
       end
 
       desc "Disable #{environment}."
       server.remote_task :undeploy do |connection|
-        connection.exec "/usr/sbin/svcadm disable glassfish-gem:smidig2009_#{environment}"
+        connection.exec "/usr/sbin/svcadm disable glassfish-gem:smidig2010_#{environment}"
       end
 
       desc "Migrate the database in #{environment}. Add variable VERSION=... update to a given version"
