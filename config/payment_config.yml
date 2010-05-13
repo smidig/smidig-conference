@@ -7,7 +7,7 @@ free_prices: &free_prices
 prices: &prices
   early_bird: 1500
   full_price: 2200
-  dinner: 500
+  dinner: 0
   <<: *free_prices
 
 development: &development
