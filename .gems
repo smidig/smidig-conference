@@ -1,2 +1,3 @@
 authlogic --version "= 2.0.11"
 gchartrb
+rails --version "= 2.3.5"
