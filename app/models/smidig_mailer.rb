@@ -1,7 +1,7 @@
 class SmidigMailer < ActionMailer::Base
   
   default_url_options[:host] = "smidig2010.no"
-  FROM_EMAIL = 'Smidig 2010 <kontakt@smidig2010.no>'
+  FROM_EMAIL = 'Smidig 2010 <kontakt@smidig.no>'
   SUBJECT_PREFIX = "[Smidig 2010]"
 
 
