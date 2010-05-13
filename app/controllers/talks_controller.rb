@@ -29,15 +29,13 @@ class TalksController < ApplicationController
   # GET /talks/new
   # GET /talks/new.xml
   def new
-    redirect_to '/'
-# TODO: Talks are not yet opened
-#    @talk = Talk.new
-#    @talk.topic = Topic.find(params[:topic_id]) if params[:topic_id]
-#    @user = current_user||User.new
-#    respond_to do |format|
-#      format.html # new.html.erb
-#      format.xml  { render :xml => @talk }
-#    end
+    @talk = Talk.new
+    @talk.topic = Topic.find(params[:topic_id]) if params[:topic_id]
+    @user = current_user||User.new
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml { render :xml => @talk }
+    end
   end
 
   # GET /talks/1/edit
