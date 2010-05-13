@@ -47,10 +47,13 @@
       <span class="location">Foajé</span> 
     </td> 
   </tr>
+  <!-- Keynote -->
   <%= timeslot_with_location_tr("9:00&nbsp;&#8209;&nbsp;9:45", @periods_by_time_and_scene[0]) %>
   <%= timeslot_talks_tr(@periods_by_time_and_scene[0]) %>
+  <!-- Lightning talks -->
   <%= timeslot_tr("10:00&nbsp;&#8209;&nbsp;10:45", @periods_by_time_and_scene[1]) %>
   <%= timeslot_talks_tr(@periods_by_time_and_scene[1]) %>
+  <!-- Lightning talks -->
   <%= timeslot_tr("11:00&nbsp;&#8209;&nbsp;11:45", @periods_by_time_and_scene[2]) %>
   <%= timeslot_talks_tr(@periods_by_time_and_scene[2]) %>
     <tr><td class="time">12:00&nbsp;&#8209;&nbsp;13:00</td> 
