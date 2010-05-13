@@ -33,40 +33,43 @@ http://localhost:3000
 
 == Checking in
 
-You need to be a collaborator of the conference site, otherwise commit to your own fork, and make a pull request.
+You need to be a collaborator (at github.com) of the conference site, otherwise commit to your own fork, and make a pull request.
 
-== TODO
+== Deploying to Heroku
 
-Heroku?!
+# login as dev@smidig.no and add your user as a collaborator (at heroku.com)
 
-== Deploying new version to staging environment
-
+Setup:
 <code>
-gem install net-ssh net-scp
-rake dreamhost:staging
-(if database was changed) rake dreamhost:staging:migrate
+# Install the heroku gem
+$ gem i heroku
+# Install your SSH keys
+$ heroku keys:add path/to/public/ssh/key.pub (i.e. ~/.ssh/id_rsa.pub)
+$ cd smidig-conference
+$ git remote add heroku git@heroku.com:smidig2010.git
 </code>
 
-== Deploying new version to all environment
-
+Update (push):
 <code>
-rake dreamhost:all
+$ git push heroku master
 </code>
 
 == GIT (github)
 
-Først, lag deg github-konto, om du ikke har det (mulig du må legge inn rsa-nøkler? for å identifisere din maskin mot din github-konto, trenger kanskje å skrive mer om dette)
+Create a github user and add your public SSH-key (usually ~/.ssh/id_rsa.pub) to the github user.
 
-Deretter, din første commit:
+To commit directly to the repository, ask at dev@smidig.no for collaborator status.
+
+Otherwise; fork the project (http://github.com:smidig/smidig-conference - click the "fork project" button).
+
+For working on your fork (replace <username> with 'smidig' if you are allowed to work on the main project).
 <code>
-git clone git@github.com:smidig/smidig-conference.git
-cd smidig-conference
-mate README  (eller annen editor) og endre noe
-git status (viser at den er endret, men ikke lagt inn i det som skal committes)
-git add .
-git status (viser fremdeles at den er endret, men også lagt i 'listen' over det du skal committe lokalt)
-git commit -am "my first commit, added some text to README" (nå er det committet lokalt)
-git push (nå er det 'committed sentralt' til smidig på github)
+$ git clone git@github.com:<username>/smidig-conference.git
+$ cd smidig-conference
+$ mate README (or another editor, make a change)
+$ git status (shows what is changed, i.e. README should now be marked red (if you have colors))
+$ git add README (adds README file which should be changed now)
+git status (Will now show README as green - meaning it will be committed)
+git commit -am "My first commit, added some text to README" (Commit to your local repository)
+git push (Push local changes to the central (origin) repository to github.com/<username>/smidig-conference)
 </code>
-
-Mulig du må være registrert som collaborator for å få til dette...  
