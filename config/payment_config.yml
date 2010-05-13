@@ -5,12 +5,10 @@ free_prices: &free_prices
   sponsor: 0
 
 prices: &prices
-  early_bird: 1250
-  full_price: 1950
+  early_bird: 1500
+  full_price: 2200
   dinner: 500
   <<: *free_prices
-
-
 
 development: &development
   prices:
