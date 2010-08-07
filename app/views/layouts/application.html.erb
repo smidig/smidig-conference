@@ -16,7 +16,7 @@
   <%= auto_discovery_link_tag :rss, {:controller => 'comments', :talk_id => @talk, :format => :rss}, {:title => "Kommentarer for #{@talk.title}"} if @talk %>
 </head>
 <body
-<%= current_page?(:controller => 'pages', :action => 'index') ? 'id="hjem"' : '' %>
+<%= current_page?(:controller => 'info', :action => 'index') ? 'id="hjem"' : '' %>
 >
 
 <%= render :partial => 'layouts/header' %>

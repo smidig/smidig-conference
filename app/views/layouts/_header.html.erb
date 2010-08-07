@@ -1,13 +1,13 @@
 <div id="header">
-        <h1><a href="index.html"><img src="images/smidig-horizontal.png" alt="Smidig 2010" /></a></h1>
-        <div id="menu">
-            <ul>
-                <li id="melddegpaa"><a href="melddegpaa.html">meld deg på</a></li>
-                <li><a href="holdlyntale.html">hold lyntale</a></li>
-                <li class="active">les mer</li>
-                <li><a href="spreordet.html">spre ordet</a></li>
-                <li><a href="sponse.html">sponse</a></li>
-                <li><a href="diskuter.html">diskuter</a></li>
-            </ul>
-        </div>
-    </div>
+  <h1><a href="index.html"><img src="images/smidig-horizontal.png" alt="Smidig 2010"/></a></h1>
+
+  <div id="menu">
+    <ul>
+      <%= user_menu_item %>
+      <%= info_menu_item 'hold lyntale', 'lyntale' %>
+      <%= info_menu_item 'les mer', 'les_mer' %>
+      <%= info_menu_item 'spre ordet', 'spre_ordet' %>
+      <%= info_menu_item 'sponse', 'sponse' %>
+    </ul>
+  </div>
+</div>
