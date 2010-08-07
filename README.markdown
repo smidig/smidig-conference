@@ -61,6 +61,12 @@ Setup:
     $ git remote add production git@heroku.com:smidig2010.git
     $ git remote add staging git@heroku.com:stagingsmidig.git
 
+Fool around:
+   # remote console
+   $ heroku console --app stagingsmidig
+   # Pull data from the heroku app to your local db
+   $ heroku db:pull
+   
 Update (push):
 
     $ git push [production|staging|master]
