@@ -69,20 +69,11 @@ class Registration < ActiveRecord::Base
       case params[:filter]
       when "skal_foelges_opp"
         return find(:all,
-          :conditions => """
-          (free_ticket = 0 or free_ticket is null) and
-          (registration_complete = 0 or registration_complete is null) and
-          (manual_payment = 0 or manual_payment is null)
-          """,
+          :conditions => { :free_ticket => false , :registration_complete => false, :manual_payment => false},
           :include => :user)
       when "skal_faktureres"
         return find(:all,
-          :conditions => """
-          (free_ticket = 0 or free_ticket is null) and
-          (registration_complete = 0 or registration_complete is null) and
-          (manual_payment = 1) and
-          (invoiced = 0 or invoiced is null)
-          """,
+          :conditions => { :free_ticket => false , :registration_complete => false, :manual_payment => true, :invoiced => false},
           :include => :user)
       else
         return []
