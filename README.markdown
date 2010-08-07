@@ -64,12 +64,15 @@ Setup:
 Fool around:
    # remote console
    $ heroku console --app stagingsmidig
+   $ heroku console --app smidig2010
    # Pull data from the heroku app to your local db
-   $ heroku db:pull
+   $ heroku db:pull --app [stagingsmidig|smidig2010]
    
 Update (push):
 
     $ git push [production|staging|master]
+    #DB changes? remember to migrate the server
+    $ heroku rake db:migrate --app [stagingsmidig|smidig2010]
 
 ## GIT (github)
 
