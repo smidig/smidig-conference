@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100807161517) do
+ActiveRecord::Schema.define(:version => 20100807163239) do
 
   create_table "comments", :force => true do |t|
     t.integer  "talk_id"
@@ -141,18 +141,18 @@ ActiveRecord::Schema.define(:version => 20100807161517) do
 
   create_table "users", :force => true do |t|
     t.string   "openid_identifier"
-    t.string   "email",                             :null => false
-    t.string   "crypted_password",                  :null => false
-    t.string   "password_salt",                     :null => false
-    t.string   "persistence_token",                 :null => false
+    t.string   "email",                                      :null => false
+    t.string   "crypted_password",                           :null => false
+    t.string   "password_salt",                              :null => false
+    t.string   "persistence_token",                          :null => false
     t.string   "name"
     t.string   "company"
     t.string   "phone_number"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "login_count",        :default => 0, :null => false
-    t.integer  "failed_login_count", :default => 0, :null => false
+    t.integer  "login_count",                 :default => 0, :null => false
+    t.integer  "failed_login_count",          :default => 0, :null => false
     t.datetime "last_request_at"
     t.datetime "current_login_at"
     t.datetime "last_login_at"
@@ -160,6 +160,8 @@ ActiveRecord::Schema.define(:version => 20100807161517) do
     t.string   "last_login_ip"
     t.boolean  "is_admin"
     t.string   "perishable_token"
+    t.boolean  "accepted_privacy_guidelines"
+    t.boolean  "accept_promotional_email"
     t.string   "registration_ip"
   end
 

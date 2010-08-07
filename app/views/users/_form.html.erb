@@ -25,6 +25,18 @@
     <%= f.label :password_confirmation, "Bekreft passord"%><br />
     <%= f.password_field :password_confirmation %>
   </p>
+  <p>
+	<%= f.check_box 'accepted_privacy_guidelines' %>
+	<%= f.label 'accepted_privacy_guidelines', 
+	  "Jeg forstår at arrangørene vil sende meg informasjon per email (#{
+	  link_to 'Mer info', { :controller => 'info', :action => 'privacy' }, :target => '_blank'})" %>
+  </p>
+  <p>		  
+	<%= f.check_box 'accept_promotional_email' %>
+	<%= f.label 'accept_promotional_email', 
+	  "Jeg ønsker å motta informasjon om andre relevante arrangementer (#{
+	  link_to 'Mer info', { :controller => 'info', :action => 'privacy' }, :target => '_blank'})" %>
+  </p>
   <% f.fields_for :registration do |reg| %>
     <%= reg.hidden_field :free_ticket %>
     <%= reg.hidden_field :manual_payment %>
@@ -53,10 +65,10 @@
       <p>
         <%= reg.radio_button 'includes_dinner', false %>
         <%= reg.label 'includes_dinner_false', 
-          "Jeg vil delta på konferansen til kroner 1950, men finanskrisen gjør at vi ikke har råd til middag" %><br />
+          "Jeg ønsker ikke å delta på middagen" %><br />
         <%= reg.radio_button 'includes_dinner', true %>
         <%= reg.label 'includes_dinner_true', 
-          "Jeg vil delta på konferansen til kroner 1950 og gleder meg til middagen 22. oktober til kroner 500, totalt kroner 2450!" %>
+          "Jeg ønsker å delta på middagen" %>
       </p>
       <div class="detail">Prisene er inklusive mva</div>
       <% if @user.registration.manual_payment %>

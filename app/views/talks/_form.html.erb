@@ -42,6 +42,18 @@
         <%= label_tag 'registration_includes_dinner_true', 
           "Jeg ønsker å delta på middagen" %>
       </p>
+      <p>
+        <%= user_form.check_box 'accepted_privacy_guidelines' %>
+        <%= user_form.label 'accepted_privacy_guidelines', 
+          "Jeg forstår at arrangørene vil sende meg informasjon per email (#{
+          link_to 'Mer info', { :controller => 'info', :action => 'privacy' }, :target => '_blank'})" %>
+      </p>
+      <p>		  
+        <%= user_form.check_box 'accept_promotional_email' %>
+        <%= user_form.label 'accept_promotional_email', 
+          "Jeg ønsker å motta informasjon om andre relevante arrangementer (#{
+          link_to 'Mer info', { :controller => 'info', :action => 'privacy' }, :target => '_blank'})" %>
+      </p>
       <hr />
     <% end %>
   <% end %>
@@ -68,7 +80,7 @@
   <p>
     <%= f.label :title, "Påstand" %><%= link_to image_tag("help.png"), "#", :onClick => "$('title_help').toggle(); return false;"  %><br />
     <div id="title_help" style="display: none" class="help">
-      Dette er tittelen på foredraget ditt. Vår erfaring fra Smidig 2007 og Smidig 2008 er at gode lyntaler tar utgangspunkt i en påstand
+      Dette er tittelen på foredraget ditt. Vår erfaring fra Smidig 2007-2009 er at gode lyntaler tar utgangspunkt i en påstand
       (for eksempel: "gode lyntaler tar utgangspunkt i en påstand") og bruker foredraget på å
       diskutere bakgrunnen og konsekvensen av denne påstanden.
     </div>
@@ -77,15 +89,15 @@
   <p>
     <%= f.label :description, "Argumentasjon" %><%= link_to image_tag("help.png"), "#", :onClick => "$('description_help').toggle(); return false;"  %><br />
     <div id="description_help" style="display: none" class="help">
-      Vår erfaring fra Smidig 2007 og 2008 er at gode lyntaler tar utgangspunkt i en påstand
+      Vår erfaring fra Smidig 2007-2009 er at gode lyntaler tar utgangspunkt i en påstand
       (for eksempel: "gode lyntaler tar utgangspunkt i en påstand") og bruker foredraget på å
       diskutere bakgrunnen og konsekvensen av denne påstanden. Dette kalles ofte også for abstract.
     </div>
     <%= f.text_area :description, :rows => 10 %>
   </p>
   <p>
-    <%= f.label :audience_level, "Publikum bør..." %><br />
-    <%= f.select :audience_level,  [['... ha hørt om smidig', 'novice'], ['... ha benyttet smidige metoder', 'intermediate'], ['... benytte smidige metoder', 'expert']] %>
+    <%= f.label :audience_level, "Passer for publikum som..." %><br />
+    <%= f.select :audience_level,  [['... ikke har benyttet smidige metoder', 'novice'], ['... ikke bruker smidige metoder på sitt prosjekt', 'intermediate'], ['... benytter smidige metoder på sitt prosjekt', 'expert']] %>
   </p>
   <% if @talk.new_record? %>
     <p>
