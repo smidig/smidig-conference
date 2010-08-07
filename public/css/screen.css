@@ -195,3 +195,18 @@ h2 {
     font-style: italic;
     color: #666666;
 }
+
+#login {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-right: 5px;
+    padding: 2px;
+    width: 100px;
+    height: 20px;
+    display: inline;
+}
+
+#login p {
+    margin: 0;
+}
