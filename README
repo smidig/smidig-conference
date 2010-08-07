@@ -9,24 +9,48 @@
 
 === Windows
 
-* "Ruby installer":http://www.ruby-lang.org/en/downloads/
-* "TortoiseSVN":http://tortoisesvn.net/downloads
-* "e TextEditor":http://www.e-texteditor.com/
-* "Subversion command line binaries":http://www.collab.net/downloads/subversion/
+* "Pik Ruby version switcher":http://github.com/vertiginous/pik/downloads (Ruby command line)
+* "Msysgit":http://code.google.com/p/msysgit/downloads (Git command line)
+* "TortoiseGit":http://code.google.com/p/tortoisegit/downloads (Git Explorer integration)
+* "Notepad++":http://notepad-plus-plus.org/download (Text editor)
+* "Putty":http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html (SSH Client for Windows)
+
+==== Installing Ruby ====
+
+<code>
+Download and install pik from http://github.com/vertiginous/pik/downloads
+pik install ruby --version 1.8.7
+pik switch 1.8.7
+gem install rake
+</code>
+
+==== Setting up SSH certificates ====
+
+<code>
+Download and install Putty from http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
+Use PuTTYgen to generate a new keypair (you can usually leave the keyphrase empty)
+Save the private key to you home directory
+Copy the text of the public key into HOME/.ssh/id_rsa.pub
+Register your public key with Github at https://github.com/account#ssh_bucket (copy from the text field in PuTTYgen)
+Start Pageant
+Right-click on the Pageant icon in the System Tray and Add Key
+</code>
+
+You need to start Pageant before using git to push to Github or Heroku. You may want to add this as a Startup file.
+
 
 == Getting started
 
 <code>
 Check out the code from git://github.com/smidig/smidig-conference.git
 Install Ruby
-gem update --system
-gem install rails --version=2.3.8 
-gem install sqlite3-ruby
-ON WINDOWS: Grab sqlite DLL from http://www.sqlite.org/download.html and stuff it in c:\ruby\bin.
-rake gems:install
-rake db:populate (calls db:migrate)
-rake test
-ruby script/server
+$ gem install bundler
+$ bundle install
+ON WINDOWS: Also grab sqlite DLL from http://www.sqlite.org/download.html and stuff it in your path
+$ rake db:migrate (calls db:migrate)
+$ rake test
+# Start the server
+$ ruby script/server
 http://localhost:3000
 </code>
 
@@ -42,16 +66,17 @@ You need to be a collaborator (at github.com) of the conference site, otherwise 
 Setup:
 <code>
 # Install the heroku gem
-$ gem i heroku
-# Install your SSH keys
-$ heroku keys:add path/to/public/ssh/key.pub (i.e. ~/.ssh/id_rsa.pub)
+$ gem install heroku
+# Install your SSH keys (Uses ~/.ssh/id_rsa.pub)
+$ heroku keys:add
 $ cd smidig-conference
-$ git remote add heroku git@heroku.com:smidig2010.git
+$ git remote add production git@heroku.com:smidig2010.git
+$ git remote add staging git@heroku.com:stagingsmidig.git
 </code>
 
 Update (push):
 <code>
-$ git push heroku master
+$ git push [production|staging|master]
 </code>
 
 == GIT (github)
