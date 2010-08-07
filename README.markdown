@@ -37,11 +37,11 @@ You need to start Pageant before using git to push to Github or Heroku. You may 
     $ gem install bundler rake
     $ bundle install
     ON WINDOWS: Also grab sqlite DLL from http://www.sqlite.org/download.html and stuff it in your path
-    $ rake db:migrate (calls db:migrate)
+    $ rake db:migrate
     $ rake test
     # Start the server
     $ ruby script/server
-    http://localhost:3000
+    Go to http://localhost:3000
 
 ## Checking in
 
@@ -59,7 +59,7 @@ Setup:
     $ heroku keys:add
     $ cd smidig-conference
     $ git remote add production git@heroku.com:smidig2010.git
-    $ git remote add staging git@heroku.com:stagingsmidig.git
+	$ git remote add staging git@heroku.com:stagingsmidig.git
 
 Update (push):
 
