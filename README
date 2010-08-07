@@ -20,8 +20,8 @@
 Check out the code from git://github.com/smidig/smidig-conference.git
 Install Ruby
 gem update --system
-gem install rails --version=2.3.5 
-gem install sqlite3-ruby --version=1.2.5
+gem install rails --version=2.3.8 
+gem install sqlite3-ruby
 ON WINDOWS: Grab sqlite DLL from http://www.sqlite.org/download.html and stuff it in c:\ruby\bin.
 rake gems:install
 rake db:populate (calls db:migrate)
