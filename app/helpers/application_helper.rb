@@ -35,6 +35,13 @@ module ApplicationHelper
       </li>)
   end
 
+  def talk_menu_item(label)
+    active = controller_is?(%w(talks))
+    %Q(<li id="talks_menu" class="#{menu_class(active)} talks">
+       #{link_to_unless_current label, new_talk_path }
+      </li>)
+  end
+
   def feed_link(title, url)
     feed_icon_tag(title, url) + " " + link_to(title, url)
   end
