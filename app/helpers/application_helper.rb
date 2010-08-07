@@ -28,7 +28,7 @@ module ApplicationHelper
 
   def user_menu_item
     active = controller_is?(%w(users))
-    text = current_user ? "Min påmelding" : "Meld meg på!"
+    text = current_user ? "min påmelding" : "meld meg på!"
     path = current_user ? current_users_path : signup_path
     %Q(<li id="users_menu" class="#{menu_class(active)} users">
        #{link_to_unless_current text, path }

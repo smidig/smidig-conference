@@ -96,14 +96,13 @@
     <%= f.text_area :description, :rows => 10 %>
   </p>
   <p>
-    <%= f.label :audience_level, "Passer for publikum som..." %><br />
+    <%= f.label :audience_level, "Passer best for publikum som..." %><br />
     <%= f.select :audience_level,  [['... ikke har benyttet smidige metoder', 'novice'], ['... ikke bruker smidige metoder på sitt prosjekt', 'intermediate'], ['... benytter smidige metoder på sitt prosjekt', 'expert']] %>
   </p>
   <% if @talk.new_record? %>
     <p>
       <%= f.check_box :accepted_guidelines %>
-      <%= f.label :accepted_guidelines, "Jeg kjenner til tidsbegrensningen og formatet for lyntaler på Smidig 2010 (#{
-          link_to 'Om lyntaler', { :controller => 'info', :action => 'lyntaler' }, :target => '_blank'})" %>
+      <%= f.label :accepted_guidelines, "Jeg kjenner til tidsbegrensningen og formatet for lyntaler på Smidig 2010" %>
     </p>
     <p>
       <%= f.check_box :accepted_cc_license %>
