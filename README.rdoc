@@ -15,7 +15,7 @@
 * "Notepad++":http://notepad-plus-plus.org/download (Text editor)
 * "Putty":http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html (SSH Client for Windows)
 
-==== Installing Ruby ====
+==== Installing Ruby
 
 <code>
 Download and install pik from http://github.com/vertiginous/pik/downloads
@@ -24,7 +24,7 @@ pik switch 1.8.7
 gem install rake
 </code>
 
-==== Setting up SSH certificates ====
+==== Setting up SSH certificates
 
 <code>
 Download and install Putty from http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
