@@ -4,3 +4,6 @@ db/*.sqlite3
 .idea
 test/webrat*
 test/tmp/*
+.bundle
+
+
