@@ -2,7 +2,7 @@
 
 ## Recommended tools
 
-### OSX
+### OSX / Linux
 
 * Ruby 1.8.7
 * RubyMine, like IDEA for all you lame java developers ;) or TextMate
