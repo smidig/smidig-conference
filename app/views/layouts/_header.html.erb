@@ -1,10 +1,12 @@
 <div id="header">
-  <h1><a href="index.html"><img src="images/smidig-horizontal.png" alt="Smidig 2010"/></a></h1>
+  <h1>
+	<%= link_to_unless_current image_tag('smidig-horizontal.png', :alt => 'Smidig 2010'),
+		:controller => 'info', :action => 'index' %></h1>
   <div id="menu">
     <ul>
       <%= user_menu_item %>
-      <%= info_menu_item 'hold lyntale', 'lyntale' %>
-      <%= info_menu_item 'les mer', 'les_mer' %>
+      <%= talk_menu_item 'hold lyntale' %>
+      <%= info_menu_item 'les mer', 'om_konferansen' %>
       <%= info_menu_item 'spre ordet', 'spre_ordet' %>
       <%= info_menu_item 'sponse', 'sponse' %>
     </ul>

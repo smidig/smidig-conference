@@ -7,23 +7,22 @@
   <title>Smidig 2010</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <!--[if lt IE 7]>
-      <link rel="stylesheet" type="text/css" href="css/ltie7.css" />
+      <%= stylesheet_link_tag 'ielte6' %>
   <![endif]-->
-  <%= stylesheet_link_tag 'screen.css' %>
+  <%= stylesheet_link_tag 'screen' %>
 
   <%= auto_discovery_link_tag :rss, {:controller => 'talks', :format => :rss}, {:title => "Alle lyntaler"} %>
   <%= auto_discovery_link_tag :rss, {:controller => 'talks', :topic_id => @topic, :format => :rss}, {:title => "Lyntaler for #{@topic.title}"} if @topic %>
   <%= auto_discovery_link_tag :rss, {:controller => 'comments', :talk_id => @talk, :format => :rss}, {:title => "Kommentarer for #{@talk.title}"} if @talk %>
 </head>
-<body
-<%= current_page?(:controller => 'info', :action => 'index') ? 'id="hjem"' : '' %>
->
+<body <%= current_page?(:controller => 'info', :action => 'index') ? 'id="hjem"' : '' %> >
 
 <%= render :partial => 'layouts/header' %>
 
 
 <div id="main">
   <%= render :partial => 'layouts/sponsors' %>
+
 
   <div id="content">
     <div id="notifications">
@@ -40,7 +39,7 @@
 
 <div id="footer">
   <div>
-    <span class="contact"><a href="kontaktoss.html">Kontakt oss.</a></span>
+    <span class="contact"><%= link_to "Kontakt oss", :controller => 'info', :action => 'arrangoerene' %></span>
     <span class="license">All contents licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative
       Commons Attribution-ShareAlike 3.0 Unported License</a>.</span>
   </div>

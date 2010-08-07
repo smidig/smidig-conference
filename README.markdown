@@ -9,12 +9,19 @@
 * git
 
 ### Windows
-* "RubyInstaller": http://rubuinstaller.org	
+
+* "Pik Ruby version switcher":http://github.com/vertiginous/pik/downloads (Ruby command line)
 * "Msysgit":http://code.google.com/p/msysgit/downloads (Git command line)
 * "TortoiseGit":http://code.google.com/p/tortoisegit/downloads (Git Explorer integration)
 * "Notepad++":http://notepad-plus-plus.org/download (Text editor)
 * "Putty":http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html (SSH Client for Windows)
 
+#### Installing Ruby
+
+    Download and install pik from http://github.com/vertiginous/pik/downloads
+    pik install ruby --version 1.8.7
+    pik switch 1.8.7
+    gem install rake
 
 #### Setting up SSH certificates
 
@@ -33,8 +40,7 @@ You need to start Pageant before using git to push to Github or Heroku. You may 
 
     Check out the code from git://github.com/smidig/smidig-conference.git
     Install Ruby
-	$ gem update --system
-    $ gem install bundler rake
+    $ gem install bundler
     $ bundle install
     ON WINDOWS: Also grab sqlite DLL from http://www.sqlite.org/download.html and stuff it in your path
     $ rake db:migrate (calls db:migrate)
