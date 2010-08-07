@@ -2,7 +2,7 @@
 
 ## Recommended tools
 
-### OSX
+### OSX / Linux
 
 * Ruby 1.8.7
 * RubyMine, like IDEA for all you lame java developers ;) or TextMate
@@ -10,11 +10,11 @@
 
 ### Windows
 
-* "RubyInstaller": http://rubuinstaller.org	
-* "Msysgit":http://code.google.com/p/msysgit/downloads (Git command line)
-* "TortoiseGit":http://code.google.com/p/tortoisegit/downloads (Git Explorer integration)
-* "Notepad++":http://notepad-plus-plus.org/download (Text editor)
-* "Putty":http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html (SSH Client for Windows)
+* [RubyInstaller](http://rubuinstaller.org)
+* [Msysgit](http://rubuinstaller.org) (Git command line)
+* [TortoiseGit](http://code.google.com/p/tortoisegit/downloads) (Git Explorer integration)
+* [Notepad++](http://notepad-plus-plus.org/download) (Text editor)
+* [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) (SSH Client for Windows)
 
 #### Setting up SSH certificates
 
