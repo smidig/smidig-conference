@@ -41,6 +41,7 @@ class UsersController < ApplicationController
   def create
     User.transaction do
       @user = User.new(params[:user])
+      @user.registration_ip = request.remote_ip  #Store the ip address used at registration time, to send mails later (ask jhannes)
       if @user.save
         puts @user.registration.inspect
         if !@user.registration.save
