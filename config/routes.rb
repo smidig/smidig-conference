@@ -31,9 +31,12 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :topics do |topics|
     topics.resources :talks
   end
-  
+
+  # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
+  map.root :controller => "info"  #'/' resolves to info/index.html
+
   #map.root :controller => "contents", :action => "show", :id => 1
-  #map.root :controller => "pages", :action => 'index'
+  #map.root :controller => "info", :action => 'index'
 
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -66,8 +69,6 @@ ActionController::Routing::Routes.draw do |map|
   #     admin.resources :products
   #   end
 
-  # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  map.root :controller => "pages"
 
   # See how all your routes lay out with "rake routes"
 
