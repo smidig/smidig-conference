@@ -2,7 +2,6 @@
   <h1>
 	<%= link_to_unless_current image_tag('smidig-horizontal.png', :alt => 'Smidig 2010'),
 		:controller => 'info', :action => 'index' %></h1>
-
   <div id="menu">
     <ul>
       <%= user_menu_item %>
@@ -11,5 +10,13 @@
       <%= info_menu_item 'spre ordet', 'spre_ordet' %>
       <%= info_menu_item 'sponse', 'sponse' %>
     </ul>
+  </div>
+
+
+  <div id="login">
+      <p>
+        <%= link_to "logg inn", login_path unless current_user %>
+        <%= link_to "logg ut", logout_path if current_user %>
+    </p>
   </div>
 </div>
