@@ -1,6 +1,6 @@
 # Smidig 2010 Conference site
 
-## Recommended tools
+## Setting up your environment
 
 ### OSX / Linux
 
@@ -10,8 +10,10 @@
 
 ### Windows
 
-* [RubyInstaller](http://rubuinstaller.org)
-* [Msysgit](http://rubuinstaller.org) (Git command line)
+Install the following tools or the equivalent.
+
+* [RubyInstaller 1.8.7](http://rubyinstaller.org)
+* [Msysgit](http://code.google.com/p/msysgit/downloads) (Git command line)
 * [TortoiseGit](http://code.google.com/p/tortoisegit/downloads) (Git Explorer integration)
 * [Notepad++](http://notepad-plus-plus.org/download) (Text editor)
 * [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) (SSH Client for Windows)
@@ -31,10 +33,11 @@ You need to start Pageant before using git to push to Github or Heroku. You may 
 
 ## Getting started
 
-    Install Ruby
+    Add yourself as a collaborator to the project: Log in at github with the smidig user and add yourself to https://github.com/smidig/smidig-conference/edit#collab_bucket
     Check out the code: git clone git@github.com:smidig/smidig-conference.git
     $ gem update --system
-    $ gem install bundler rake
+    $ gem install bundler
+    $ gem install rails
     # In application directory
     $ bundle install
     ON WINDOWS: Also grab sqlite DLL from http://www.sqlite.org/download.html and stuff it in your path
@@ -63,6 +66,8 @@ Setup:
     $ git remote add staging git@heroku.com:stagingsmidig.git
 
 Fool around:
+
+   $ gem install taps
    # remote console
    $ heroku console --app stagingsmidig
    $ heroku console --app smidig2010
