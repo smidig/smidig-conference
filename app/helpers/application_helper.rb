@@ -9,7 +9,7 @@ module ApplicationHelper
     matching_controllers = [matching_controllers] if matching_controllers.is_a? String
     matching_controllers.include? controller.controller_name
   end
-  
+
   def info_menu_item(text, action)
     active = current_page?(:controller => 'info', :action => action)
     %Q{<li id="#{action}_menu" class="#{menu_class(active)} #{action}" title="#{text}">
@@ -17,9 +17,9 @@ module ApplicationHelper
   end
 
   def menu_class(active)
-    active ? "active" : "inactive"    
+    active ? "active" : "inactive"
   end
-  
+
   def program_menu_item
     active = controller_is?(%w(talks topics periods program))
     %Q(<li id="program_menu" class="#{menu_class(active)} topics" title="Program"
@@ -28,7 +28,7 @@ module ApplicationHelper
 
   def user_menu_item
     active = controller_is?(%w(users))
-    text = current_user ? "min påmelding" : "meld meg på!"
+    text = current_user ? "min påmelding" : "meld deg på!"
     path = current_user ? current_users_path : signup_path
     %Q(<li id="users_menu" class="#{menu_class(active)} users">
        #{link_to_unless_current text, path }
@@ -42,6 +42,15 @@ module ApplicationHelper
       </li>)
   end
 
+  def login_menu_item
+    text = current_user ? "logg ut" : "logg inn"
+    path = current_user ? logout_path : login_path
+    active = current_page?(path)
+    %Q(<li id="login_menu" class="#{menu_class(active)} login">
+       #{link_to_unless_current text, path }
+      </li>)
+  end
+
   def feed_link(title, url)
     feed_icon_tag(title, url) + " " + link_to(title, url)
   end
@@ -50,7 +59,7 @@ module ApplicationHelper
     (@feed_icons ||= []) << { :url => url, :title => title }
     link_to image_tag('icon_feed.png', :size => '14x14', :alt => "Subscribe to #{title}"), url
   end
-  
+
   def floating_text_box(text)
 	%Q{
 		<div class='floating_text_box note'>
@@ -66,15 +75,15 @@ module ApplicationHelper
 		</div>
 	}
   end
-    
+
   def logged_in
     current_user
   end
-  
+
   def admin?
     current_user and current_user.is_admin
   end
-  
+
   # Don't include the following in production or staging
   def unfinished
     yield unless (RAILS_ENV == 'production' || RAILS_ENV == 'staging')

@@ -1,13 +1,27 @@
+@font-face {
+	font-family: 'LeagueGothicRegular';
+	src: url('League_Gothic-webfont.eot');
+	src: local('☺'), url('League_Gothic-webfont.woff') format('woff'), url('League_Gothic-webfont.ttf') format('truetype'), url('League_Gothic-webfont.svg#webfontzy1Bzklb') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'RalewayThin';
+	src: url('raleway_thin-webfont.eot');
+	src: local('☺'), url('raleway_thin-webfont.woff') format('woff'), url('raleway_thin-webfont.ttf') format('truetype'), url('raleway_thin-webfont.svg#webfontuFJwwJ5I') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-}
+	min-width: 960px;
+	}
 
-body {
-    background: white url(../images/2010-vertical.png) 0px 100px no-repeat;
-}
 
 /*Opera Fix*/
 body:before {
@@ -22,14 +36,13 @@ img {
     border: 0;
 }
 
-
 a:link {
-    color: #cc0000;
+    color: #ff0000;
     text-decoration: none;
 }
 
 a:visited {
-    color: #aaaaaa;
+    color: #880000;
     text-decoration: none;
 }
 
@@ -42,22 +55,30 @@ a:active {
 }
 
 #wrapper {
+    background: transparent url(../images/2010-vertical.png) -20px 175px no-repeat;
     min-height: 100%;
     border-style: solid;
     border-color: #cc0000;
     border-width: 0 0 0 20px;
+	position: relative;
+	z-index: 200;
 }
 
+
+
 #header {
-    margin-right: 350px;
-    min-width: 895px;
+    min-width: 760px;
     overflow: hidden;
+	height: 150px;
+	position: absolute;
+	left: -20px;
+	right: 0;
 }
 
 h1 {
-    background-color: #cc0000;
+	background-color: #cc0000;
     margin: 0px;
-    padding: 20px 20px 20px 0px;
+    padding: 20px;
     float: left;
 }
 
@@ -65,20 +86,64 @@ h1 img {
     width: 180px;
 }
 
-h2 {
-    margin: 45px 0 0 0;
-    padding: 0;
+/*
+h1 {
+	font-family: "LeagueGothicRegular";
+    margin:0 ;
+	font-size: 95px;
+	text-transform: uppercase;
+	font-weight: normal;
+	color: black;
 }
+
+#smidig {
+	background-color: #cc0000;
+	display: inline-block;
+	padding: 10px 20px 20px 0;
+	width: 200px;
+	margin-right: 50px;
+	text-align: right;
+	height: 100px;
+	color: white;
+}*/
+
+
+h2 {
+	font-family: "LeagueGothicRegular";
+    margin: 1em 0 0 0;
+    padding: 0 0 0 0px;
+	font-size: 2.5em;
+	text-transform: uppercase;
+	font-weight: normal;
+	display: inline;
+}
+
+
+h2.page_title {
+	margin-top: 0;
+}
+
+
+
+h3 {
+	font-family: "LeagueGothicRegular";
+	font-size: 1.5em;
+	padding: 0;
+	margin:  0 ;
+	font-weight: normal;
+}
+
+
 
 
 #logos {
     float: right;
     width: 300px;
-    padding: 25px;
+    padding: 0 25px;
 }
 
 #logos img {
-    padding: 23px;
+    padding: 0 25px 50px 25px;
     border: 0;
 }
 
@@ -87,30 +152,77 @@ h2 {
     overflow:hidden;
 	padding-bottom: 25px;
     margin-left: 250px;
-    min-width: 1045px;
+	padding-top: 153px;
 }
+
+#hjem #wrapper {
+	border: 0;
+	padding-left: 20px;
+	background-position: 0 175px
+}
+
+#hjem #header {
+	left: 0
+}
+
+
+#hjem h2 {
+	border: 0px solid #cc0000;
+	border-bottom-width: 10px;
+	font-size: 2,5em;
+	padding-left: 25px
+}
+
+
+.timeline {
+    padding: 25px 50px 25px 25px;
+	font-size: 1.2em
+
+}
+
+#hjem h3 {
+	font-size: 1.5em;
+}
+
+#hjem #main {
+    border-style: solid;
+    border-color: #cc0000;
+    border-width: 0 0 0 20px;
+	margin-left: 180px;
+	padding-left: 0px;
+	padding-bottom: 0px
+}
+
+
+#hjem #content {
+
+	padding-bottom: 0px
+}
+
+
+
 
 #content {
     text-align:justify;
     margin-right: 350px;
-    padding-right: 50px;
     position: relative;
-    z-index: 100
+    z-index: 100;
+    line-height: 1.6em;
+	font-size: .85em;
+	padding-bottom: 25px
 }
 
-#content p {
-    line-height: 1.45em;
-}
+
 
 #footer {
     position: relative;
 	margin-top: -260px;
-    margin-right: 400px;
-    margin-left: 20px;
+    margin-right: 350px;
+    margin-left: 0px;
 	height: 260px;
 	clear:both;
-    min-width: 915px;
-    background: white url(../images/bg.png) no-repeat top right;
+    background: transparent url(../images/bg.png) no-repeat top right;
+	min-width: 610px;
 }
 
 #footer div {
@@ -122,26 +234,25 @@ h2 {
     left: 0px;
     right: 0px;
     background-color: #f6f6f6;
-
+	z-index: 4000;
 }
 
-#footer .license {
+
+
+#footer .sidene {
     float: left;
 }
 
-#footer .contact {
-    float: left;
-    display: block;
-    width: 240px;
+#footer .arrangoerene {
+    float: right;
 }
+
 
 /* Menu Stuff */
 
 #menu {
-    min-width: 695px;
+    min-width: 860px;
     overflow: hidden;
-    margin-left: 200px;
-    font-size: 16px;
 }
 
 #menu * {
@@ -154,12 +265,13 @@ h2 {
 	display:block;
 	float:left;
     position: relative;
+
 }
 
 #menu a {
     display: block;
     color: black;
-    padding: 20px 0px 0px 50px;
+    padding: 10px 0px 0px 50px;
 }
 
 #menu li.active {
@@ -168,7 +280,7 @@ h2 {
     border-style: solid;
     border-color: #cc0000;
     border-width: 2px 0 0 0;
-    padding: 17px 0px 0px 0px;
+    padding: 7px 0px 0px 0px;
     margin-left: 50px;
 }
 
@@ -181,20 +293,45 @@ h2 {
     color: #ffcc00;
 }
 
-.quote {
+#menu li#users_menu a, #menu li#users_menu.active  {
+	color: white;
+	font-weight: bold;
+	background-color: #cc0000;
+	width: 200px;
+	text-align: right;
+	padding-right: 20px;
+	background-color: #cc0000;
+	padding-left: 0;
+	padding-top: 10px;
+	margin-left: 0px;
+	border: 0;
+	background-image: url(../images/arrow.png);
+	background-repeat: no-repeat;
+	background-position: -25px 10px;
+}
+
+
+#menu li#users_menu a:hover  {
+	color: #ffcc00
+}
+
+
+
+
+
+#content .quote {
     float: right;
-    width: 30%;
-    margin: .5em 0 .5em 1em;
+    width: 40%;
+    margin: 1em 0 .5em 1em;
     padding: .5em 0;
-    font-size: 1.5em;
     border-width: 2px 0 0 0;
     text-align: left;
     border-color: #cc0000;
     border-style: solid;
-    font-weight: 100;
-    font-style: italic;
-    color: #666666;
+	font-family: 'RalewayThin', sans-serif;
+	font-size: 1.3em;
 }
+
 
 #login {
     position: absolute;
@@ -209,4 +346,10 @@ h2 {
 
 #login p {
     margin: 0;
+}
+
+
+#mail a {
+	color: black;
+	text-decoration: none;
 }

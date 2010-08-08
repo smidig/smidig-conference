@@ -17,12 +17,12 @@
 </head>
 <body <%= current_page?(:controller => 'info', :action => 'index') ? 'id="hjem"' : '' %> >
 
-<%= render :partial => 'layouts/header' %>
+<div id="wrapper">
 
+<%= render :partial => 'layouts/header' %>
 
 <div id="main">
   <%= render :partial => 'layouts/sponsors' %>
-
 
   <div id="content">
     <div id="notifications">
@@ -36,12 +36,10 @@
   </div>
 </div>
 </div>
-
 <div id="footer">
   <div>
-    <span class="contact"><%= link_to "Kontakt oss", :controller => 'info', :action => 'arrangoerene' %></span>
-    <span class="license">All contents licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative
-      Commons Attribution-ShareAlike 3.0 Unported License</a>.</span>
+    <span class="arrangoerene"><%= link_to "Kontakt oss.", :controller => 'info', :action => 'arrangoerene' %></span>
+    <span class="sidene"><%= link_to "Om sidene.", :controller => 'info', :action => 'sidene' %></span>
   </div>
 </div>
 

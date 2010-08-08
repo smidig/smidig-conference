@@ -1,22 +1,17 @@
 <div id="header">
-  <h1>
-	<%= link_to_unless_current image_tag('smidig-horizontal.png', :alt => 'Smidig 2010'),
-		:controller => 'info', :action => 'index' %></h1>
   <div id="menu">
     <ul>
       <%= user_menu_item %>
       <%= talk_menu_item 'hold lyntale' %>
       <%= info_menu_item 'les mer', 'om_konferansen' %>
       <%= info_menu_item 'spre ordet', 'spre_ordet' %>
-      <%= info_menu_item 'sponse', 'sponse' %>
+      <%= info_menu_item 'sponse', 'sponsor' %>
+      <%= login_menu_item %>
     </ul>
   </div>
 
-
-  <div id="login">
-      <p>
-        <%= link_to "logg inn", login_path unless current_user %>
-        <%= link_to "logg ut", logout_path if current_user %>
-    </p>
-  </div>
+  <h1>
+	<%= link_to_unless_current image_tag('smidig-horizontal2.png', :alt => 'Smidig 2010'),
+		:controller => 'info', :action => 'index' %>
+  </h1>
 </div>
