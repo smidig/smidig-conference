@@ -31,10 +31,11 @@ You need to start Pageant before using git to push to Github or Heroku. You may 
 
 ## Getting started
 
-    Check out the code from git://github.com/smidig/smidig-conference.git
     Install Ruby
+    Check out the code: git clone git@github.com:smidig/smidig-conference.git
     $ gem update --system
     $ gem install bundler rake
+    # In application directory
     $ bundle install
     ON WINDOWS: Also grab sqlite DLL from http://www.sqlite.org/download.html and stuff it in your path
     $ rake db:migrate
