@@ -129,7 +129,7 @@ h3 {
 	font-family: "LeagueGothicRegular";
 	font-size: 1.5em;
 	padding: 0;
-	margin:  0 ;
+	margin: 0;
 	font-weight: normal;
 }
 
@@ -307,7 +307,7 @@ h3 {
 	border: 0;
 	background-image: url(../images/arrow.png);
 	background-repeat: no-repeat;
-	background-position: -25px 10px;
+	background-position: -35px 10px;
 }
 
 
