@@ -9,18 +9,8 @@
 
 <p>
 
-<h2>Foreslåtte foredrag<%= feed_link "Abonner", talks_path(:format => :rss) %></h2>
+<h3>Foreslåtte lyntaler<%= feed_link "Følg med på alle nye foredrag", talks_path(:format => :rss) %></h3>
 
-<% for talk in @talks %>
-
-<div class="talk" id="<%= dom_id(talk) %>">
-  <h3><%=link_to h(talk.title), talk %></h3>
-  <div class="speaker"><%=h talk.speaker_name %></div>
-  <div class="talk_description"><%=simple_format talk.description %></div>
-  <div class="time_and_category">Foreslått for <%= time_ago_in_words(talk.created_at) %> siden i <%= link_to talk.topic.title, talk.topic %></div>
-</div>
-
-<% end %>
-
+<%= render :partial => @talks %>
 
 <p>Savner du noe du ikke ser her? <%= link_to 'Foreslå lyntale selv!', new_talk_path %></p>

@@ -1,16 +1,13 @@
 <% content_for :title, h(@topic.title) %>
-<p><%= link_to "Alle temaer", topics_path %> &gt;</p>
-<h2><%=h @topic.title %><%= feed_link "Følg med på nye foredrag", topic_talks_path(@topic, :format => :rss) %></h2>
+<div id="breadcrumbs"><%= link_to "Alle temaer", talks_path %> &gt;</div>
+<h2 class="page_title"><%=h @topic.title %></h2>
 
 <p><% if admin? %><%= link_to "Endre beskrivelse", edit_topic_path(@topic) %><% end %></p>
 
-<div>
-  <%=simple_format @topic.description %>
-</div>
+<div><%=simple_format @topic.description %></div>
 
-<h3 id="talks">Foreslåtte lyntaler</h3>
+<h3 id="talks">Foreslåtte lyntaler<%= feed_link "Følg med på nye foredrag i denne kategotien", topic_talks_path(@topic, :format => :rss) %></h3>
 
 <%= render :partial => @topic.talks %>
 
-<h3><%#= link_to "Foreslå en lyntale", new_topic_talk_path(@topic) %></h3>
-
+<p>Savner du noe du ikke ser her? <%= link_to 'Foreslå lyntale selv!', new_talk_path %></p>

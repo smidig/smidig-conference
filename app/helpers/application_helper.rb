@@ -52,7 +52,7 @@ module ApplicationHelper
   end
 
   def feed_link(title, url)
-    %Q(<span class="feed" title="Abonner">
+    %Q(<span class="feed" title="#{title}">
        #{feed_icon_tag(title, url)}
       </span>)
 

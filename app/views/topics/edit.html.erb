@@ -1,4 +1,4 @@
-<h1>Endre <%=h @topic.title %></h1>
+<h2 class="page_title">Endre <%=h @topic.title %></h2>
 
 <% form_for(@topic) do |f| %>
   <%= f.error_messages %>
@@ -15,5 +15,3 @@
     <%= f.submit "Legg til" %>
   </p>
 <% end %>
-
-<%= link_to 'Avbryt', @topic %>

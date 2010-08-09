@@ -1,9 +1,10 @@
 <div id="<%= dom_id(comment) %>" class="comment">
-<h3><%=
+<h4><%=
   link_to_unless current_page?(:controller => 'talks', :action => "show", :id => comment.talk),
     comment.title,
-    :controller => "talks", :action => "show", :id => comment.talk, :anchor => dom_id(comment) %></h3>
+    :controller => "talks", :action => "show", :id => comment.talk, :anchor => dom_id(comment) %></h4>
+<div><%=simple_format comment.description %></div>
+
 <div class="detail">Skrevet av <%= link_to_if admin?, h(comment.user.name), comment.user %>, for <%= time_ago_in_words comment.created_at %> siden</div>
 
-<div><%=simple_format comment.description %></div>
 </div>

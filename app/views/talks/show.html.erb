@@ -1,5 +1,5 @@
 <% content_for :title, h(@talk.title) %>
-<div id="breadcrumbs"><%= link_to "Alle foredrag", topics_path %> &gt; <%= link_to "#{@talk.topic.title}", @talk.topic  %></div>
+<div id="breadcrumbs"><%= link_to "Alle foredrag", talks_path %> &gt; <%= link_to "#{@talk.topic.title}", @talk.topic  %> &gt;</div>
 <h2 class="page_title"><%=h @talk.title %>
   <% unfinished do %>(<%= antall_stemmer(@talk.votes_count) %>)<% end %></h2>
 
@@ -30,7 +30,7 @@
   <% end %>
 </p>
 
-<%= link_to image_tag("http://i.creativecommons.org/l/#{@talk.license}/3.0/no/88x31.png", :border => 0),
+<%= link_to image_tag("#{@talk.license}.png", :title => 'Foredraget deles under en Creative Commons Navngivelse lisens.'),
    "http://creativecommons.org/licenses/#{@talk.license}/3.0/no/", :rel => 'license' %>
 
 

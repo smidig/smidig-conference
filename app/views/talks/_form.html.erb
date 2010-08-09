@@ -1,10 +1,10 @@
 <% form_for @talk do |f| %>
-  
+
   <% unless current_user %>
     <h3>Hvem er du?</h3>
-    
+
     <p>(Dersom du allerede har registrert deg, trenger du bare oppgi email og passord)</p>
-    
+
     <% fields_for :user, @user do |user_form| %>
       <%= user_form.error_messages %>
       <p>
@@ -26,7 +26,7 @@
         <%= user_form.label :name, "Navn"%><br />
         <%= user_form.text_field :name %>
       </p>
-      <p>                                                   
+      <p>
         <%= user_form.label :company, "Firma"%><br />
         <%= user_form.text_field :company %>
       </p>
@@ -36,28 +36,28 @@
       </p>
       <p>
         <%= radio_button_tag 'registration_includes_dinner', 'false' %>
-        <%= label_tag 'registration_includes_dinner_false', 
+        <%= label_tag 'registration_includes_dinner_false',
           "Jeg vil ønsker ikke å delta på middagen" %><br />
         <%= radio_button_tag 'registration_includes_dinner', 'true', :value => true %>
-        <%= label_tag 'registration_includes_dinner_true', 
+        <%= label_tag 'registration_includes_dinner_true',
           "Jeg ønsker å delta på middagen" %>
       </p>
       <p>
         <%= user_form.check_box 'accepted_privacy_guidelines' %>
-        <%= user_form.label 'accepted_privacy_guidelines', 
+        <%= user_form.label 'accepted_privacy_guidelines',
           "Jeg forstår at arrangørene vil sende meg informasjon per email (#{
           link_to 'Mer info', { :controller => 'info', :action => 'privacy' }, :target => '_blank'})" %>
       </p>
-      <p>		  
+      <p>
         <%= user_form.check_box 'accept_promotional_email' %>
-        <%= user_form.label 'accept_promotional_email', 
+        <%= user_form.label 'accept_promotional_email',
           "Jeg ønsker å motta informasjon om andre relevante arrangementer (#{
           link_to 'Mer info', { :controller => 'info', :action => 'privacy' }, :target => '_blank'})" %>
       </p>
       <hr />
     <% end %>
   <% end %>
-  
+
   <h3>Hva vil du snakke om?</h3>
 
   <%= f.error_messages %>
@@ -69,7 +69,7 @@
     <% else %>
       <%= f.collection_select :topic_id, Topic.find(:all), :id, :title %>
       <%= link_to image_tag("help.png"), "#", :onClick => "$('topic_help').toggle(); return false;"  %>
-      <div id="topic_help" style="display: none" class="help">
+      <div id="topic_help" class="help"  style="display: none" class="help">
         For å sikre en god miks av lyntaler, ønsker vi at du velger
         det forhåndsdefinerte temaene som passer best til lyntalen din.
         <a href="mailto:kontakt@smidig.no">Ta kontakt</a> dersom ingenting passer.
@@ -79,7 +79,7 @@
 
   <p>
     <%= f.label :title, "Påstand" %><%= link_to image_tag("help.png"), "#", :onClick => "$('title_help').toggle(); return false;"  %><br />
-    <div id="title_help" style="display: none" class="help">
+    <div id="title_help" class="help" style="display: none" class="help">
       Dette er tittelen på foredraget ditt. Vår erfaring fra Smidig 2007-2009 er at gode lyntaler tar utgangspunkt i en påstand
       (for eksempel: "gode lyntaler tar utgangspunkt i en påstand") og bruker foredraget på å
       diskutere bakgrunnen og konsekvensen av denne påstanden.
@@ -88,7 +88,7 @@
   </p>
   <p>
     <%= f.label :description, "Argumentasjon" %><%= link_to image_tag("help.png"), "#", :onClick => "$('description_help').toggle(); return false;"  %><br />
-    <div id="description_help" style="display: none" class="help">
+    <div id="description_help" class="help"  style="display: none" class="help">
       Vår erfaring fra Smidig 2007-2009 er at gode lyntaler tar utgangspunkt i en påstand
       (for eksempel: "gode lyntaler tar utgangspunkt i en påstand") og bruker foredraget på å
       diskutere bakgrunnen og konsekvensen av denne påstanden. Dette kalles ofte også for abstract.

@@ -127,9 +127,17 @@ h2.page_title {
 
 h3 {
 	font-family: "LeagueGothicRegular";
+	font-size: 2em;
+	padding: 0;
+	margin: 1em 0 0 0;
+	font-weight: normal;
+}
+
+h4 {
+	font-family: "LeagueGothicRegular";
 	font-size: 1.75em;
 	padding: 0;
-	margin:  0 ;
+	margin: 0;
 	font-weight: normal;
 }
 
@@ -183,6 +191,7 @@ h3 {
 
 #hjem h3 {
 	font-size: 1.5em;
+	margin: 0
 }
 
 #hjem #main {
@@ -362,12 +371,6 @@ h3 {
 	text-decoration: none;
 }
 
-.feed {
-}
-
-.feed img {
-}
-
 /* Talk Formatting */
 
 div.talk {
@@ -375,8 +378,9 @@ div.talk {
 
 }
 
-div.time_and_category {
+div.time_and_category, .detail {
 	font-style: italic;
+	font-size: .85em
 }
 
 #breadcrumbs {
@@ -397,4 +401,48 @@ div.time_and_category {
 #hjem #notifications {
 	left: 25px;
 
+}
+
+.help {
+	font-size: .85em;
+	margin: 1em 5em;
+}
+
+.passer_for {
+	text-transform: lowercase;
+}
+
+.comment {
+	margin: 1em 0 2em 0
+}
+
+#loginform {
+	display: inline;
+	background: pink;
+	overflow: hidden;
+}
+
+#loginform .email span, #loginform .password span {
+	display: inline-block;
+	width: 5em;
+}
+
+#loginform .button, .forgot_password {
+	margin-left: 5em;
+}
+
+.forgot_password {
+	margin-top: .5em
+}
+
+
+
+
+.submitted_time .user {
+	display: inline;
+}
+
+
+.submitted_time {
+	font-size: .85em;
 }
