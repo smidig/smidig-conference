@@ -406,6 +406,7 @@ div.time_and_category, .detail {
 .help {
 	font-size: .85em;
 	margin: 1em 5em;
+	line-height: normal;
 }
 
 .passer_for {

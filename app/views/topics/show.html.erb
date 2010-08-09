@@ -6,7 +6,7 @@
 
 <div><%=simple_format @topic.description %></div>
 
-<h3 id="talks">Foreslåtte lyntaler<%= feed_link "Følg med på nye foredrag i denne kategotien", topic_talks_path(@topic, :format => :rss) %></h3>
+<h2 id="talks">Foreslåtte lyntaler<%= feed_link "Følg med på nye foredrag i denne kategotien", topic_talks_path(@topic, :format => :rss) %></h2>
 
 <%= render :partial => @topic.talks %>
 
