@@ -1,20 +1,13 @@
 <div class="talk" id="<%= dom_id(talk) %>">
   <h4><%= link_to talk.title, talk %> (<%= antall_stemmer(talk.votes_count) %>)</h4>
-  <%= link_to image_tag("icon_slides.gif"), "http://slideshare.net/#{talk.slideshare_url}" if talk.slideshare_url %>
-  <%= link_to(image_tag("icon_video.gif", :border=>0),  "http://smidig2007.confreaks.com/#{talk.video_url}.html") if talk.video_url %>
 
-
-
-  <div class="speaker"></div>
  <% unfinished do %>
-
-
-    <div class="submitted_time">Foreslått av <%= render :partial => talk.users %>
-
-    <%= "i #{link_to(talk.topic.title, talk.topic)}" unless current_page?(talk.topic) %>
-
-
-    for <%= time_ago_in_words(talk.created_at) %> siden.</div>
-
+    <%= link_to image_tag("icon_slides.gif"), "http://slideshare.net/#{talk.slideshare_url}" if talk.slideshare_url %>
+    <%= link_to(image_tag("icon_video.gif", :border=>0),  "http://smidig2007.confreaks.com/#{talk.video_url}.html") if talk.video_url %>
   <% end %>
+
+    <div class="submitted_time">
+        Foreslått av <%= render :partial => talk.users %> <%= "i #{link_to(talk.topic.title, talk.topic)}" unless current_page?(talk.topic) %> for <%= time_ago_in_words(talk.created_at) %> siden.
+    </div>
+
 </div>
