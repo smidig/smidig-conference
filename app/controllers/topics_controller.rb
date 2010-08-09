@@ -1,8 +1,8 @@
 class TopicsController < ApplicationController
-  before_filter :require_user, :only => [ :new, :create ]  
+  before_filter :require_user, :only => [ :new, :create ]
   before_filter :require_admin, :only => [ :edit, :update, :destroy ]
   # Anybody can see :index & :show
-    
+
   # GET /topics
   # GET /topics.xml
   def index
@@ -89,5 +89,5 @@ class TopicsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-    
+
 end

@@ -1,4 +1,4 @@
-<% 
+<%
 @kommentarer = "<h3>Siste kommentarer</h3>" +
   @last_comments.collect do |c|
     %(
@@ -8,7 +8,8 @@
       )
     end.join
 %>
-<%= floating_text_box @kommentarer %>
+
+<div class="quote"><%= @kommentarer %></div>
 
 <% content_for :title, "Hva skjer på konferansen?" %>
 <h2>Hva skjer på konferansen?</h2>

@@ -1,8 +1,6 @@
 <% content_for :title, h(@talk.title) %>
-
-<p><%= link_to "Alle foredrag", topics_path %> &gt; <%= link_to "#{@talk.topic.title}", @talk.topic  %> &gt; </p>
-
-<h2><%=h @talk.title %> 
+<div id="breadcrumbs"><%= link_to "Alle foredrag", topics_path %> &gt; <%= link_to "#{@talk.topic.title}", @talk.topic  %></div>
+<h2 class="page_title"><%=h @talk.title %>
   <% unfinished do %>(<%= antall_stemmer(@talk.votes_count) %>)<% end %></h2>
 
 <h3><%= render :partial => @talk.users %></h3>
@@ -22,14 +20,14 @@
 <% end %>
 
 <div class="description">
-  <%=simple_format @talk.description %>  
+  <%=simple_format @talk.description %>
 </div>
 <p>
   <strong>Passer for:</strong>
   <%=h @talk.describe_audience_level %>
   <% if @talk.slide.file? %>
-    <h3><%= link_to 'Last ned lysbilder til presentasjon', @talk.slide.url %></h3>  
-  <% end %>  
+    <h3><%= link_to 'Last ned lysbilder til presentasjon', @talk.slide.url %></h3>
+  <% end %>
 </p>
 
 <%= link_to image_tag("http://i.creativecommons.org/l/#{@talk.license}/3.0/no/88x31.png", :border => 0),
@@ -39,9 +37,7 @@
 <%= render :partial => "talks/video" %>
 <%= render :partial => "talks/slides" %>
 
-<h3>Kommentarer</h3>
-
-<%= feed_link "Følg med på kommentarer til #{@talk.title}", talk_comments_path(@talk, :format => :rss) %>
+<h3>Kommentarer<%= feed_link "Følg med på kommentarer til #{@talk.title}", talk_comments_path(@talk, :format => :rss) %></h3>
 
 <div id="comments">
   <%= render :partial => @talk.comments %>
@@ -51,6 +47,7 @@
 <h3 id="new_comment">Skriv en ny kommentar:</h3>
 <%= render :partial => "comments/new" %>
 <% else %>
+
 <h3><%= link_to "Logg inn for å skrive en ny kommentar", new_user_session_url(:save => true) %></h3>
 <% end %>
 

@@ -1,8 +1,7 @@
 <% content_for :title, h(@topic.title) %>
-
 <p><%= link_to "Alle temaer", topics_path %> &gt;</p>
-<h2><%=h @topic.title %></h2>
-<p><%= feed_link "Følg med på nye foredrag", topic_talks_path(@topic, :format => :rss) %></p>
+<h2><%=h @topic.title %><%= feed_link "Følg med på nye foredrag", topic_talks_path(@topic, :format => :rss) %></h2>
+
 <p><% if admin? %><%= link_to "Endre beskrivelse", edit_topic_path(@topic) %><% end %></p>
 
 <div>

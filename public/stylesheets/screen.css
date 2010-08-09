@@ -111,13 +111,13 @@ h1 {
 h2 {
 	font-family: "LeagueGothicRegular";
     margin: 1em 0 0 0;
-    padding: 0 0 0 0px;
+    padding: 0;
 	font-size: 2.5em;
 	text-transform: uppercase;
 	font-weight: normal;
-	display: inline;
+	overflow: hidden;
+	line-height: normal;
 }
-
 
 h2.page_title {
 	margin-top: 0;
@@ -167,9 +167,10 @@ h3 {
 
 
 #hjem h2 {
+	display: inline;
 	border: 0px solid #cc0000;
 	border-bottom-width: 10px;
-	font-size: 2,5em;
+	font-size: 2.5em;
 	padding-left: 25px
 }
 
@@ -365,8 +366,6 @@ h3 {
 }
 
 .feed img {
-	vertical-align: top;
-
 }
 
 /* Talk Formatting */
@@ -378,5 +377,24 @@ div.talk {
 
 div.time_and_category {
 	font-style: italic;
+}
+
+#breadcrumbs {
+	height: 25px;
+	position: absolute;
+	left: 0px;
+	top: -30px;
+}
+
+#notifications {
+	height: 25px;
+	position: absolute;
+	left: 0px;
+	top: -60px;
+
+}
+
+#hjem #notifications {
+	left: 25px;
 
 }

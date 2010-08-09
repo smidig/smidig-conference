@@ -65,19 +65,7 @@ module ApplicationHelper
   end
 
   def floating_text_box(text)
-	%Q{
-		<div class='floating_text_box note'>
-		  <div class='content'>
-		    <div class='top'></div>
-		    <div class='background-color'>
-		    #{text}
-		    </div>
-		  </div>
-		  <div class='bottom'>
-		    <div></div>
-		  </div>
-		</div>
-	}
+	%Q{	<p class="quote">#{text}</p> }
   end
 
   def logged_in

@@ -1,4 +1,14 @@
 <% content_for :title, "Foreslåtte foredrag" %>
+<h2 class="page_title">Har du noe på hjertet?</h2>
+
+<p><strong><%= link_to 'Foreslå en lyntale!', new_talk_path %></strong>  Smidig-konferansen er en konferanse for og av fagmiljøet selv.  Det er din kunnskap og erfaringer som gjør konferansen til det den er.  Siste frist for å levere inn forslag er 1. november.</p>
+
+<p>Alle lyntaler skal relatere seg til en forhåndsdefinert kategori for å sikre en god miks med foredrag som interesserer alle. <a href="http://forum.smidig.no/forums/11">Vær med å diskutere kategoriene på forumet</a>.</p>
+
+<p>For å oppfordre til diskusjon, blir forslagene til foredrag synlige så snart de blir registrert. Både arrangørene og andres kommentarer til hvert enkelt foredrag blir også synlige.</p>
+
+<p>
+
 <h2>Foreslåtte foredrag<%= feed_link "Abonner", talks_path(:format => :rss) %></h2>
 
 <% for talk in @talks %>
@@ -13,4 +23,4 @@
 <% end %>
 
 
-<p>Savner du noe du ikke ser her?  <%=link_to "Foreslå lyntale selv!", new_talk_path %></p>
+<p>Savner du noe du ikke ser her? <%= link_to 'Foreslå lyntale selv!', new_talk_path %></p>
