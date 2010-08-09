@@ -38,7 +38,7 @@ module ApplicationHelper
   def talk_menu_item(label)
     active = controller_is?(%w(talks))
     %Q(<li id="talks_menu" class="#{menu_class(active)} talks">
-       #{link_to_unless_current label, new_talk_path }
+       #{ link_to_unless_current "lyntaler", :controller => 'talks', :action => 'index' }
       </li>)
   end
 
@@ -52,7 +52,11 @@ module ApplicationHelper
   end
 
   def feed_link(title, url)
-    feed_icon_tag(title, url) + " " + link_to(title, url)
+    %Q(<span class="feed" title="Abonner">
+       #{feed_icon_tag(title, url)}
+      </span>)
+
+
   end
 
   def feed_icon_tag(title, url)

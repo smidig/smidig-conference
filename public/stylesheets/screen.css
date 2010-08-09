@@ -127,7 +127,7 @@ h2.page_title {
 
 h3 {
 	font-family: "LeagueGothicRegular";
-	font-size: 1.5em;
+	font-size: 1.75em;
 	padding: 0;
 	margin:  0 ;
 	font-weight: normal;
@@ -291,9 +291,6 @@ h3 {
     margin-left: 0px;
 }
 
-
-
-
 #menu a:hover {
     text-decoration: none;
     color: #cc0000;
@@ -362,4 +359,24 @@ h3 {
 #mail a {
 	color: black;
 	text-decoration: none;
+}
+
+.feed {
+}
+
+.feed img {
+	vertical-align: top;
+
+}
+
+/* Talk Formatting */
+
+div.talk {
+	margin: 1em 0 2em 0
+
+}
+
+div.time_and_category {
+	font-style: italic;
+
 }
