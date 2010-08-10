@@ -448,3 +448,13 @@ div.time_and_category, .detail {
 .submitted_time {
 	font-size: .85em;
 }
+
+
+
+div.errorExplanation li {
+    color: red;
+}
+div.fieldWithErrors input {
+    border: 1px solid red;
+    margin:0;
+}
