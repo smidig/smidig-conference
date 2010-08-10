@@ -61,7 +61,7 @@
         <p><%= f.submit "Registrer deg" %></p>
       </p>
     <% else %>
-      <%= reg.hidden_field :ticket_type, :value => 'full_price' %>
+      <%= reg.hidden_field :ticket_type, :value => 'early_bird' %>
       <p>
         <%= reg.radio_button 'includes_dinner', false %>
         <%= reg.label 'includes_dinner_false',

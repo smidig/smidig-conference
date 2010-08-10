@@ -5,8 +5,8 @@ free_prices: &free_prices
   sponsor: 0
 
 prices: &prices
-  early_bird: 1500
-  full_price: 2200
+  early_bird: 1875
+  full_price: 2750
   dinner: 0
   <<: *free_prices
 
@@ -37,8 +37,8 @@ production: &production
 
 staging:
   prices:
-    early_bird: 12.50
-    full_price: 19.50
+    early_bird: 10
+    full_price: 15
     <<: *free_prices
   paypal_email: paypal@smidig.no
   paypal_url: "https://www.paypal.com/cgi-bin/webscr"
