@@ -5,7 +5,7 @@
     <%= f.label :name, "Navn"%><br />
     <%= f.text_field :name %>
   </p>
-  <p>                                                   
+  <p>
     <%= f.label :company, "Firma"%><br />
     <%= f.text_field :company %>
   </p>
@@ -27,13 +27,13 @@
   </p>
   <p>
 	<%= f.check_box 'accepted_privacy_guidelines' %>
-	<%= f.label 'accepted_privacy_guidelines', 
+	<%= f.label 'accepted_privacy_guidelines',
 	  "Jeg forstår at arrangørene vil sende meg informasjon per email (#{
 	  link_to 'Mer info', { :controller => 'info', :action => 'privacy' }, :target => '_blank'})" %>
   </p>
-  <p>		  
-	<%= f.check_box 'accept_promotional_email' %>
-	<%= f.label 'accept_promotional_email', 
+  <p>
+	<%= f.check_box 'accept_optional_email' %>
+	<%= f.label 'accept_optional_email',
 	  "Jeg ønsker å motta informasjon om andre relevante arrangementer (#{
 	  link_to 'Mer info', { :controller => 'info', :action => 'privacy' }, :target => '_blank'})" %>
   </p>
@@ -46,7 +46,7 @@
         <%= reg.select :ticket_type, [
             ['Jeg ønsker å benytte en sponsors gratisbillett (angi firma)', 'sponsor'],
             ['Jeg holder foredrag sammen med noen andre (angi foredrag)', 'speaker'],
-            ['Jeg ønsker å bidra som frivillig under konferansen', 'volunteer'], 
+            ['Jeg ønsker å bidra som frivillig under konferansen', 'volunteer'],
             ['Jeg er med å arrangere konferansen', 'organizer']], :include_blank => true %>
       </p>
       <p>
@@ -58,16 +58,16 @@
         <%= reg.label :includes_dinner,  "Jeg ønsker å delta på middagen" %>
       </p>
       <p>
-        <p><%= f.submit "Registrer deg" %></p>        
+        <p><%= f.submit "Registrer deg" %></p>
       </p>
     <% else %>
       <%= reg.hidden_field :ticket_type, :value => 'full_price' %>
       <p>
         <%= reg.radio_button 'includes_dinner', false %>
-        <%= reg.label 'includes_dinner_false', 
+        <%= reg.label 'includes_dinner_false',
           "Jeg ønsker ikke å delta på middagen" %><br />
         <%= reg.radio_button 'includes_dinner', true %>
-        <%= reg.label 'includes_dinner_true', 
+        <%= reg.label 'includes_dinner_true',
           "Jeg ønsker å delta på middagen" %>
       </p>
       <div class="detail">Prisene er inklusive mva</div>
