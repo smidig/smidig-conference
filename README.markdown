@@ -18,6 +18,17 @@ Install the following tools or the equivalent.
 * [Notepad++](http://notepad-plus-plus.org/download) (Text editor)
 * [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) (SSH Client for Windows)
 
+#### Configure line endings
+
+Because Windows has its own line endings (CRLF \r\n) as opposed to Unix / Linux (LF), it is advised
+to align these line endings on commits, so that all line endings in GitHub are LF only.
+
+Windows users can do so either with:
+<code>git config --global core.autocrlf true</code> if they prefer Windows file endings locally. Or
+with <code>git config --global core.autocrlf input</code> if they prefer to keep whatever they 
+checkout (both will save to repo with LF-endings).
+
+
 #### Setting up SSH certificates
 
     Download and install Putty from http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
