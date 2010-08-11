@@ -78,18 +78,26 @@ Setup:
 
 Fool around:
 
-   $ gem install taps
-   # remote console
-   $ heroku console --app stagingsmidig
-   $ heroku console --app smidig2010
-   # Pull data from the heroku app to your local db
-   $ heroku db:pull --app [stagingsmidig|smidig2010]
+    $ gem install taps
+    # remote console
+    $ heroku console --app stagingsmidig
+    $ heroku console --app smidig2010
+    # Pull data from the heroku app to your local db
+    $ heroku db:pull --app [stagingsmidig|smidig2010]
 
 Update (push):
 
     $ git push [production|staging|master]
     #DB changes? remember to migrate the server
     $ heroku rake db:migrate --app [stagingsmidig|smidig2010]
+
+Heroku app-owner privileges:
+
+    For å switche mellom dine heroku-identiteter (som 'oma', eller 'tech@tindetech.no') kan du følge dennne
+    http://www.aeonscope.net/2010/02/22/managing-multiple-heroku-accounts/
+    for å kunne bruke det på kommandolinjen.
+    Det meste (unntatt app create) kan styres ved å logge inn som app-owner på heroku.com
+
 
 ## GIT (github)
 
