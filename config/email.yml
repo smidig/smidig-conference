@@ -5,17 +5,17 @@ development:
   :user_name: 
   :password: 
 production:
-  :address: smtp.dreamhost.com
+  :address: smtp.sendgrid.net
   :port: 25
   :authentication: plain
-  :user_name: smidig_no
-  :password: pass
-production:
-  :address: smtp.dreamhost.com
+  :user_name: ivarconr@smidig.no
+  :password: smidig_pass
+staging:
+  :address: smtp.sendgrid.net
   :port: 25
   :authentication: plain
-  :user_name: smidig_no
-  :password: pass
+  :user_name: ivarconr@smidig.no
+  :password: smidig_pass
 oc:
   :address: localhost
   :port: 25
