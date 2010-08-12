@@ -1,13 +1,4 @@
 class SmidigMailer < ActionMailer::Base
-  ActionMailer::Base.smtp_settings = {
-  :address        => "smtp.sendgrid.net",
-  :port           => "25",
-  :authentication => :plain,
-  :user_name      => "ivarconr@smidig.no",
-  :password       => "smidig_pass",
-  :domain         => "smidig.no",
-  }
-
   
   default_url_options[:host] = "smidig2010.no"
   FROM_EMAIL = 'Smidig 2010 <kontakt@smidig.no>'
