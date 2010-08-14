@@ -63,7 +63,7 @@ class UsersController < ApplicationController
           redirect_to @user.registration.payment_url(payment_notifications_url, user_url(@user))
         end
       else
-        flash[:error] = "En feil har oppstått"
+        flash[:error] = "En feil har oppstått, se veiledningen under "
         render :action => 'new'
       end
     end
