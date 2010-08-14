@@ -162,7 +162,7 @@ h4 {
     margin-left: 250px;
 	padding-top: 153px;
 }
-
+/*
 #hjem #wrapper {
 	border: 0;
 	padding-left: 20px;
@@ -181,6 +181,7 @@ h4 {
 	font-size: 2.5em;
 	padding-left: 25px
 }
+*/
 
 
 .timeline {
@@ -193,7 +194,7 @@ h4 {
 	font-size: 1.5em;
 	margin: 0
 }
-
+/*
 #hjem #main {
     border-style: solid;
     border-color: #cc0000;
@@ -208,7 +209,7 @@ h4 {
 
 	padding-bottom: 0px
 }
-
+*/
 
 
 
@@ -457,4 +458,40 @@ div.errorExplanation li {
 div.fieldWithErrors input {
     border: 1px solid red;
     margin:0;
+}
+
+#table {
+    height: 210px;
+}
+
+
+#table .column {
+    width:50%;
+    position:relative;
+}
+
+#table a.column {
+    color: black;
+    display: block;
+}
+
+#table a.column:hover {
+    color: #C00;
+    text-decoration:none;
+}
+
+#table .column .timeline {
+    padding: 10px 50px 10px 10px;	    
+}
+
+.right {
+    float:right;
+}
+
+.left {
+    float: left;
+}
+
+.clear {
+    clear:both;
 }
