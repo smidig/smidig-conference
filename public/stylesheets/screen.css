@@ -19,7 +19,7 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-	min-width: 960px;
+	min-width: 980px;
 	}
 
 
@@ -64,8 +64,6 @@ a:active {
 	z-index: 200;
 }
 
-
-
 #header {
     min-width: 760px;
     overflow: hidden;
@@ -73,6 +71,11 @@ a:active {
 	position: absolute;
 	left: -20px;
 	right: 0;
+}
+
+h1, h2, h3, h4 {
+	font-family: "LeagueGothicRegular";
+	font-weight: normal;
 }
 
 h1 {
@@ -86,35 +89,11 @@ h1 img {
     width: 180px;
 }
 
-/*
-h1 {
-	font-family: "LeagueGothicRegular";
-    margin:0 ;
-	font-size: 95px;
-	text-transform: uppercase;
-	font-weight: normal;
-	color: black;
-}
-
-#smidig {
-	background-color: #cc0000;
-	display: inline-block;
-	padding: 10px 20px 20px 0;
-	width: 200px;
-	margin-right: 50px;
-	text-align: right;
-	height: 100px;
-	color: white;
-}*/
-
-
 h2 {
-	font-family: "LeagueGothicRegular";
     margin: 1em 0 0 0;
     padding: 0;
 	font-size: 2.5em;
 	text-transform: uppercase;
-	font-weight: normal;
 	overflow: hidden;
 	line-height: normal;
 }
@@ -123,26 +102,17 @@ h2.page_title {
 	margin-top: 0;
 }
 
-
-
 h3 {
-	font-family: "LeagueGothicRegular";
 	font-size: 2em;
 	padding: 0;
 	margin: 1em 0 0 0;
-	font-weight: normal;
 }
 
 h4 {
-	font-family: "LeagueGothicRegular";
 	font-size: 1.75em;
 	padding: 0;
 	margin: 0;
-	font-weight: normal;
 }
-
-
-
 
 #logos {
     float: right;
@@ -162,68 +132,16 @@ h4 {
     margin-left: 250px;
 	padding-top: 153px;
 }
-/*
-#hjem #wrapper {
-	border: 0;
-	padding-left: 20px;
-	background-position: 0 175px
-}
-
-#hjem #header {
-	left: 0
-}
-
-
-#hjem h2 {
-	display: inline;
-	border: 0px solid #cc0000;
-	border-bottom-width: 10px;
-	font-size: 2.5em;
-	padding-left: 25px
-}
-*/
-
-
-.timeline {
-    padding: 25px 50px 25px 25px;
-	font-size: 1.2em
-
-}
-
-#hjem h3 {
-	font-size: 1.5em;
-	margin: 0
-}
-/*
-#hjem #main {
-    border-style: solid;
-    border-color: #cc0000;
-    border-width: 0 0 0 20px;
-	margin-left: 180px;
-	padding-left: 0px;
-	padding-bottom: 0px
-}
-
-
-#hjem #content {
-
-	padding-bottom: 0px
-}
-*/
-
-
 
 #content {
     text-align:justify;
-    margin-right: 350px;
     position: relative;
     z-index: 100;
     line-height: 1.6em;
 	font-size: .85em;
-	padding-bottom: 25px
+	padding-bottom: 25px;
+	overflow: hidden
 }
-
-
 
 #footer {
     position: relative;
@@ -248,8 +166,6 @@ h4 {
 	z-index: 4000;
 }
 
-
-
 #footer .sidene {
     float: left;
 }
@@ -257,7 +173,6 @@ h4 {
 #footer .arrangoerene {
     float: right;
 }
-
 
 /* Menu Stuff */
 
@@ -314,28 +229,18 @@ h4 {
 #menu li#users_menu a, #menu li#users_menu.active  {
 	color: white;
 	font-weight: bold;
-	background-color: #cc0000;
 	width: 200px;
 	text-align: right;
-	padding-right: 20px;
-	background-color: #cc0000;
-	padding-left: 0;
-	padding-top: 10px;
+	padding: 10px 20px 0px 0px;
 	margin-left: 0px;
 	border: 0;
-	background-image: url(../images/arrow.png);
-	background-repeat: no-repeat;
-	background-position: -35px 10px;
+	background: #cc0000 url(../images/arrow.png) no-repeat -35px 10px;
 }
 
 
 #menu li#users_menu a:hover  {
 	color: #ffcc00
 }
-
-
-
-
 
 #content .quote {
     float: right;
@@ -421,7 +326,6 @@ div.time_and_category, .detail {
 
 #loginform {
 	display: inline;
-	background: pink;
 	overflow: hidden;
 }
 
@@ -438,13 +342,9 @@ div.time_and_category, .detail {
 	margin-top: .5em
 }
 
-
-
-
 .submitted_time .user {
 	display: inline;
 }
-
 
 .submitted_time {
 	font-size: .85em;
@@ -460,38 +360,28 @@ div.fieldWithErrors input {
     margin:0;
 }
 
-#table {
-    height: 210px;
+/* Front page stuff */
+
+.chunk {
+	overflow: hidden;
 }
 
-
-#table .column {
-    width:50%;
-    position:relative;
+.signup, .lyntale {
+	width: 47%;
+	float: left;
 }
 
-#table a.column {
-    color: black;
-    display: block;
+.lyntale {
+	float: right
 }
 
-#table a.column:hover {
-    color: #C00;
-    text-decoration:none;
+.tidligere{
+	clear: both;
 }
 
-#table .column .timeline {
-    padding: 10px 50px 10px 10px;	    
+#hjem #content {
 }
 
-.right {
-    float:right;
-}
-
-.left {
-    float: left;
-}
-
-.clear {
-    clear:both;
+#fronthead * {
+	margin: 0;padding: 0;
 }

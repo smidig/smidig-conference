@@ -1,32 +1,25 @@
 <% content_for :title, "Smidig 2010 - 16. og 17. november - Radisson Blu" %>
-
-<h2 class="page_title">Norges største smidige konferanse</h2>
-<h3>16. - 17. november</h3>
-<div class="timeline">
-   <p>
-     Opplev vårt unike format, med over 70 lyntaler og 100 diskusjonsgrupper! Smidigkonferansen er den årlige nasjonale hendelsen som samler mennesker fra alle typer roller
-     i IT-bransjen; prosjektledere, produkteiere, utviklere, bedriftsledere og testere, for å ta noen eksempler.
-     <%= link_to 'Les mer om konferansen', :controller => 'info', :action => 'om_konferansen' %>
-   </p>
-</div>
-             
-<div id="table">
-  <a class="column left" href="signup" title="Meld deg på nå">
-    <h2>Meld deg på nå</h2>
-     <div class="timeline">
-          <p>Early-bird billetter kjøpes til 1875,- frem til 15. september.  Etterpå gjelder ordinærpris av 2750,-.</p>
-      </div>
- </a>
- <a class="column right" href="/talks" title="Holde lyntale">
-    <h2>Holde lyntale?</h2>
-    <div class="timeline">
-        <p>Det er din kunnskap og erfaringer som gjør konferansen til det den er. Siste frist for å levere inn forslag er 1. november. </p>
-    </div>
-  </a>
-  <div class="clear"></div>
+<div id="fronthead">
+    <h2 class="page_title">Norges største smidige konferanse</h2>
+    <h3>16. - 17. november på SAS-hotellet, Oslo</h3>
 </div>
 
-<h2>Godbiter fra tidligere år</h2>
-<div class="timeline">
+<div class="chunk general">
+    <p>Opplev vårt unike format, med over 70 lyntaler og 100 diskusjonsgrupper! Smidigkonferansen er den årlige nasjonale hendelsen som samler mennesker fra alle typer roller i IT-bransjen; prosjektledere, produkteiere, utviklere, bedriftsledere og testere, for å ta noen eksempler. <%= link_to 'Les mer om konferansen', :controller => 'info', :action => 'om_konferansen' %></p>
+</div>
+
+<div class="chunk signup">
+<h2><a href="signup" title="Meld deg på nå">Meld deg på</a></h2>
+  <p>Early-bird billetter kjøpes til 1875,- frem til 15. september.  Etterpå gjelder ordinærpris av 2750,-.</p>
+</div>
+
+
+<div class="chunk lyntale">
+    <h2><a href="/talks" title="Holde lyntale">Hold lyntale</a></h2>
+    <p>Det er din kunnskap og erfaringer som gjør konferansen til det den er. Siste frist for å levere inn forslag er 1. november.</p>
+</div>
+
+<div class="chunk tidligere">
+    <h2>Godbiter fra tidligere år</h2>
     <p>Se videoene fra <a href='http://smidig2007.confreaks.com'>2007</a>, <a href='http://smidig2008.confreaks.com'>2008</a> og <a href='http://tcs.java.no/'>2009</a> for en smakebit på hva du kan oppleve.</p>
 </div>
