@@ -80,4 +80,11 @@ module ApplicationHelper
   def unfinished
     yield unless (RAILS_ENV == 'production' || RAILS_ENV == 'staging')
   end
+
+  def mailingliste_url
+    "http://groups.google.com/group/smidigkonferansen"
+  end
+  def twitter_url
+    "http://twitter.com/smidig"
+  end
 end

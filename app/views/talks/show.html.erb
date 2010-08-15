@@ -14,21 +14,27 @@
   <% else %>
     <h3>Last opp presentasjon</h3>
   <% end %>
-  <p><%= render :partial => "talks/upload_slide" %></p>
+  <p>Opplasting av lyntaler vil bli tilgjengeliggjort senere. Frem til da, jobb videre med presentasjonen!
+    Skriv en god beskrivelse her og få tips og kommentarer. Når vi åpner for opplastning, vil vi opplyse om dette her, på <%= link_to "twitter", twitter_url %>
+    og <%= link_to "mailinglista", mailingliste_url %>.
+  </p>
+    <!-- render :partial => "talks/upload_slide" -->
 <% else %>
   <% unfinished do %><%= render :partial => "talks/votes" %><% end %>
 <% end %>
 
 <div class="description">
+  <h4>Beskrivelse</h4>
   <%=simple_format @talk.description %>
 </div>
+
 <p>
   <strong>Passer for:</strong>
   <%=h @talk.describe_audience_level %>
+</p>
   <% if @talk.slide.file? %>
     <h3><%= link_to 'Last ned lysbilder til presentasjon', @talk.slide.url %></h3>
   <% end %>
-</p>
 
 <%= link_to image_tag("#{@talk.license}.png", :title => 'Foredraget deles under en Creative Commons Navngivelse lisens.'),
    "http://creativecommons.org/licenses/#{@talk.license}/3.0/no/", :rel => 'license' %>
