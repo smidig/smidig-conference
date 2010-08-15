@@ -1,3 +1,9 @@
+fieldset {
+    border: 0;
+    margin: -10px  0px 16px 0px;
+    padding: 0;
+}
+
 @font-face {
 	font-family: 'LeagueGothicRegular';
 	src: url('League_Gothic-webfont.eot');
