@@ -36,14 +36,16 @@ class Registration < ActiveRecord::Base
   end
   
   def payment_url(payment_notifications_url, return_url)
-  	values = {
+    invoice_start = 1000 if Rails.env == "production"
+    invoice_start ||= 0
+    values = {
       :business => PAYMENT_CONFIG[:paypal_email],
       :cmd => '_cart',
       :upload => '1',
       :currency_code => 'NOK',
       :notify_url => payment_notifications_url,
       :return => return_url,
-      :invoice => id,
+      :invoice => id + invoice_start,
       :amount_1 => price,
       :item_name_1 => description,
       :item_number_1 => '1',
