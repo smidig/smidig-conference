@@ -98,6 +98,10 @@ Heroku app-owner privileges:
     for å kunne bruke det på kommandolinjen.
     Det meste (unntatt app create) kan styres ved å logge inn som app-owner på heroku.com
 
+Heroku SendGrid:
+    For å sjekke user/pass:
+    heroku config --long --app smidig2010
+
 
 ## GIT (github)
 
