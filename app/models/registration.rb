@@ -35,7 +35,7 @@ class Registration < ActiveRecord::Base
     paid_amount && paid_amount > 0
   end
   def self.find_by_invoice(id)
-    Registration.find(id - self.invoice_prefix)
+    Registration.find(id.to_i - self.invoice_prefix)
   end
   def self.invoice_prefix
     invoice_start = 1000 if Rails.env == "production"
