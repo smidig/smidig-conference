@@ -3,7 +3,7 @@ class PaymentNotificationsController < ApplicationController
   def create
     PaymentNotification.create!(:params => params, :registration_id => params[:invoice], :status => params[:payment_status], :transaction_id => params[:txn_id], :paid_amount => params[:mc_gross], :currency => params[:mc_currency])
     
-    registration = Registration.find(params[:invoice])
+    registration = Registration.find_by_invoice(params[:invoice])
     registration.payment_notification_params = params
     registration.paid_amount = params[:mc_gross].to_i
     registration.payment_reference = params[:txn_id]

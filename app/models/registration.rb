@@ -34,10 +34,15 @@ class Registration < ActiveRecord::Base
   def paid?
     paid_amount && paid_amount > 0
   end
-  
-  def payment_url(payment_notifications_url, return_url)
+  def self.find_by_invoice(id)
+    Registration.find(id - self.invoice_prefix)
+  end
+  def self.invoice_prefix
     invoice_start = 1000 if Rails.env == "production"
     invoice_start ||= 0
+    invoice_start
+  end
+  def payment_url(payment_notifications_url, return_url)
     values = {
       :business => PAYMENT_CONFIG[:paypal_email],
       :cmd => '_cart',
@@ -45,7 +50,7 @@ class Registration < ActiveRecord::Base
       :currency_code => 'NOK',
       :notify_url => payment_notifications_url,
       :return => return_url,
-      :invoice => id + invoice_start,
+      :invoice => id + Registration.invoice_prefix,
       :amount_1 => price,
       :item_name_1 => description,
       :item_number_1 => '1',
