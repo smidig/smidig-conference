@@ -1,90 +1,79 @@
 <% form_for @user do |f| %>
   <%= f.error_messages %>
-  <div>
-  <p>
-    <%= f.label :name, "Navn"%><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :company, "Firma"%><br />
-    <%= f.text_field :company %>
-  </p>
-  <p>
-    <%= f.label :email, "E-post"%><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :phone_number, "Telefon"%><br />
-    <%= f.text_field :phone_number %>
-  </p>
-  <p>
-    <%= f.label :password, "Passord"%><br />
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation, "Bekreft passord"%><br />
-    <%= f.password_field :password_confirmation %>
-  </p>
-  <p>
-	<%= f.check_box 'accepted_privacy_guidelines' %>
-	<%= f.label 'accepted_privacy_guidelines',
-	  "Jeg forstår at arrangørene vil sende meg informasjon per email (#{
-	  link_to 'Mer info', { :controller => 'info', :action => 'privacy' }, :target => '_blank'})" %>
-  </p>
-  <p>
-	<%= f.check_box 'accept_optional_email' %>
-	<%= f.label 'accept_optional_email',
-	  "Jeg ønsker å motta informasjon om andre relevante arrangementer (#{
-	  link_to 'Mer info', { :controller => 'info', :action => 'privacy' }, :target => '_blank'})" %>
-  </p>
-  <% f.fields_for :registration do |reg| %>
-    <%= reg.hidden_field :free_ticket %>
-    <%= reg.hidden_field :manual_payment %>
-    <% if @user.registration.free_ticket %>
-      <p>
-        <%= reg.label :ticket_type, "Type billett" %><br>
-        <%= reg.select :ticket_type, [
-            ['Jeg ønsker å benytte en sponsors gratisbillett (angi firma)', 'sponsor'],
-            ['Jeg holder foredrag sammen med noen andre (angi foredrag)', 'speaker'],
-            ['Jeg ønsker å bidra som frivillig under konferansen', 'volunteer'],
-            ['Jeg er med å arrangere konferansen', 'organizer']], :include_blank => true %>
-      </p>
-      <p>
-        <%= reg.label :invoice_description, "Kommentarer til registreringen" %><br/>
-        <%= reg.text_area :invoice_description, :rows => 4 %>
-      </p>
-      <p>
-        <%= reg.check_box :includes_dinner, :checked => true %>
-        <%= reg.label :includes_dinner,  "Jeg ønsker å delta på middagen" %>
-      </p>
-      <p>
-        <p><%= f.submit "Registrer deg" %></p>
-      </p>
-    <% else %>
-      <%= reg.hidden_field :ticket_type, :value => 'early_bird' %>
-      <p>
-        <%= reg.radio_button 'includes_dinner', false %>
-        <%= reg.label 'includes_dinner_false',
-          "Jeg ønsker ikke å delta på middagen" %><br />
-        <%= reg.radio_button 'includes_dinner', true %>
-        <%= reg.label 'includes_dinner_true',
-          "Jeg ønsker å delta på middagen" %>
-      </p>
-      <div class="detail">Prisene er inklusive mva</div>
-      <% if @user.registration.manual_payment %>
-        <p>
-          <%= reg.label :invoice_address, "Fakturaadresse" %><br/>
-          <%= reg.text_area :invoice_address, :rows => 4 %>
-        </p>
-        <p>
-          <%= reg.label :invoice_description, "Kommentarer til fakturering" %><br/>
-          <%= reg.text_area :invoice_description, :rows => 4 %>
-        </p>
-        <p><%= f.submit "Registrer deg" %></p>
-      <% else %>
-        <p><%= f.submit "Til betaling >>>" %></p>
+<div id="registration_form">
+
+    <fieldset id="personal_details">
+      <div class="field name">
+        <%= f.label :name, "Navn"%>
+        <%= f.text_field :name %>
+      </div>
+      <div class="field firma">
+        <%= f.label :company, "Firma (valgfritt)"%>
+        <%= f.text_field :company %>
+      </div>
+      <div class="field epost">
+        <%= f.label :email, "E-post"%>
+        <%= f.text_field :email %>
+      </div>
+      <div class="field telefon">
+        <%= f.label :phone_number, "Telefon"%>
+        <%= f.text_field :phone_number %>
+      </div>
+      <div class="field passord">
+        <%= f.label :password, "Passord"%>
+        <%= f.password_field :password %>
+      </div>
+      <div class="field bekreft">
+        <%= f.label :password_confirmation, "Bekreft passord"%>
+        <%= f.password_field :password_confirmation %>
+      </div>
+    </fieldset>
+
+    <fieldset id="registration_details">
+      <% f.fields_for :registration do |reg| %>
+        <%= reg.hidden_field :free_ticket %>
+        <%= reg.hidden_field :manual_payment %>
+
+
+        <% if @user.registration.free_ticket %>
+          <div class="field type">
+            <%= reg.label :ticket_type, "Type billett" %>
+            <%= reg.select :ticket_type, [
+                ['Jeg ønsker å benytte en sponsors gratisbillett (angi firma)', 'sponsor'],
+                ['Jeg holder foredrag sammen med noen andre (angi foredrag)', 'speaker'],
+                ['Jeg ønsker å bidra som frivillig under konferansen', 'volunteer'],
+                ['Jeg er med å arrangere konferansen', 'organizer']], :include_blank => true %>
+          </div>
+          <div class="field kommentarer">
+            <%= reg.label :invoice_description, "Kommentarer til registreringen" %>
+            <%= reg.text_area :invoice_description, :rows => 4 %>
+          </div>
+          <%= render :partial => 'confirmations', :locals => { :reg => reg, :f => f } %>
+          <div class="field buttons"><%= f.submit "Registrer deg" %></div>
+        <% else %>
+          <%= reg.hidden_field :ticket_type, :value => 'early_bird' %>
+          <% if @user.registration.manual_payment %>
+            <div class="field adresse">
+              <%= reg.label :invoice_address, "Fakturaadresse" %>
+              <%= reg.text_area :invoice_address, :rows => 4 %>
+            </div>
+            <div class="field kommentarer">
+              <%= reg.label :invoice_description, "Kommentarer til fakturering" %>
+              <%= reg.text_area :invoice_description, :rows => 4 %>
+            </div>
+            <%= render :partial => 'confirmations', :locals => { :reg => reg, :f => f } %>
+            <div class="field buttons"><%= f.submit "Registrer deg" %></div>
+          <% else %>
+            <%= render :partial => 'confirmations', :locals => { :reg => reg, :f => f } %>
+
+            <div class="field buttons">
+                <div><%= f.submit "Meld på og foreslå lyntale.",:name => "speaker" %></div>
+                <div><%= f.submit "Meld på og betal." %></div>
+            </div>
+          <% end %>
+        <% end %>
       <% end %>
-    <% end %>
-  <% end %>
-  </div>
+    </fieldset>
+
+</div>
 <% end %>

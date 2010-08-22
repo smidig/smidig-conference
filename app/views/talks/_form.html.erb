@@ -1,115 +1,65 @@
 <% form_for @talk do |f| %>
 
-  <% unless current_user %>
-    <h3>Hvem er du?</h3>
-
-    <p>(Dersom du allerede har registrert deg, trenger du bare oppgi email og passord)</p>
-
-    <% fields_for :user, @user do |user_form| %>
-      <%= user_form.error_messages %>
-      <p>
-        <%= user_form.label :email, "E-post"%><br />
-        <%= user_form.text_field :email %>
-        (blir aldri delt med andre)
-      </p>
-      <p>
-        <%= user_form.label :password, "Passord"%><br />
-        <%= user_form.password_field :password %>
-      </p>
-      <hr />
-      (Bare dersom du ikke har registrert deg)
-      <p>
-        <%= user_form.label :password_confirmation, "Bekreft passord"%><br />
-        <%= user_form.password_field :password_confirmation %>
-      </p>
-      <p>
-        <%= user_form.label :name, "Navn"%><br />
-        <%= user_form.text_field :name %>
-      </p>
-      <p>
-        <%= user_form.label :company, "Firma"%><br />
-        <%= user_form.text_field :company %>
-      </p>
-      <p>
-        <%= user_form.label :phone_number, "Telefon"%><br />
-        <%= user_form.text_field :phone_number %>
-      </p>
-      <p>
-        <%= radio_button_tag 'registration_includes_dinner', 'false' %>
-        <%= label_tag 'registration_includes_dinner_false',
-          "Jeg ønsker ikke å delta på middagen" %><br />
-        <%= radio_button_tag 'registration_includes_dinner', 'true', :value => true %>
-        <%= label_tag 'registration_includes_dinner_true',
-          "Jeg ønsker å delta på middagen" %>
-      </p>
-      <p>
-        <%= user_form.check_box 'accepted_privacy_guidelines' %>
-        <%= user_form.label 'accepted_privacy_guidelines',
-          "Jeg forstår at arrangørene vil sende meg informasjon per email (#{
-          link_to 'Mer info', { :controller => 'info', :action => 'privacy' }, :target => '_blank'})" %>
-      </p>
-      <p>
-        <%= user_form.check_box 'accept_optional_email' %>
-        <%= user_form.label 'accept_optional_email',
-          "Jeg ønsker å motta informasjon om andre relevante arrangementer (#{
-          link_to 'Mer info', { :controller => 'info', :action => 'privacy' }, :target => '_blank'})" %>
-      </p>
-      <hr />
-    <% end %>
-  <% end %>
-
   <h3>Hva vil du snakke om?</h3>
 
+<fieldset id="talk_details">
+
   <%= f.error_messages %>
-  <p>
-    <%= f.label :topic_id, "Tema" %>:
+
+  <div class="field tema">
+    <%= f.label :topic_id, "Tema" %>
+    <% help_tooltip() do %>
+        <p>For å sikre en god miks av lyntaler, ønsker vi at du velger det forhåndsdefinerte temaene som passer best til lyntalen din. <a href="mailto:kontakt@smidig.no">Ta kontakt</a> dersom ingenting passer.</p>
+    <% end %>
     <% if @talk.new_record? and @talk.topic %>
       <%= @talk.topic.title %>
       <%= f.hidden_field :topic_id, :value => @talk.topic.id %>
     <% else %>
       <%= f.collection_select :topic_id, Topic.find(:all), :id, :title %>
-      <%= link_to image_tag("help.png"), "#", :onClick => "$('topic_help').toggle(); return false;"  %>
-      <div id="topic_help" class="help"  style="display: none" class="help">
-        For å sikre en god miks av lyntaler, ønsker vi at du velger
-        det forhåndsdefinerte temaene som passer best til lyntalen din.
-        <a href="mailto:kontakt@smidig.no">Ta kontakt</a> dersom ingenting passer.
-      </div>
     <% end %>
-  </p>
+    </div>
 
-  <p>
-    <%= f.label :title, "Påstand" %><%= link_to image_tag("help.png"), "#", :onClick => "$('title_help').toggle(); return false;"  %><br />
-    <div id="title_help" class="help" style="display: none" class="help">
-      Dette er tittelen på foredraget ditt. Vår erfaring fra Smidig 2007-2009 er at gode lyntaler tar utgangspunkt i en påstand
-      (for eksempel: "gode lyntaler tar utgangspunkt i en påstand") og bruker foredraget på å
-      diskutere bakgrunnen og konsekvensen av denne påstanden.
-    </div>
+  <div class="field paastand">
+    <%= f.label :title, "Påstand" %>
+    <% help_tooltip() do %>
+        <p>Dette er tittelen på foredraget ditt. Vår erfaring fra Smidig 2007-2009 er at gode lyntaler tar utgangspunkt i en påstand (for eksempel: "gode lyntaler tar utgangspunkt i en påstand") og bruker foredraget på å diskutere bakgrunnen og konsekvensen av denne påstanden.</p>
+    <% end %>
     <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :description, "Argumentasjon" %><%= link_to image_tag("help.png"), "#", :onClick => "$('description_help').toggle(); return false;"  %><br />
-    <div id="description_help" class="help"  style="display: none" class="help">
-      Vår erfaring fra Smidig 2007-2009 er at gode lyntaler tar utgangspunkt i en påstand
-      (for eksempel: "gode lyntaler tar utgangspunkt i en påstand") og bruker foredraget på å
-      diskutere bakgrunnen og konsekvensen av denne påstanden. Dette kalles ofte også for abstract.
     </div>
+
+  <div class="field argumentasjon">
+    <%= f.label :description, "Argumentasjon" %>
+    <% help_tooltip() do %>
+        <p>Vår erfaring fra Smidig 2007-2009 er at gode lyntaler tar utgangspunkt i en påstand (for eksempel: "gode lyntaler tar utgangspunkt i en påstand") og bruker foredraget på å diskutere bakgrunnen og konsekvensen av denne påstanden. Dette kalles ofte også for abstract.</p>
+    <% end %>
     <%= f.text_area :description, :rows => 10 %>
-  </p>
-  <p>
-    <%= f.label :audience_level, "Passer best for publikum som..." %><br />
+  </div>
+
+  <div class="field publikum">
+    <%= f.label :audience_level, "Passer best for publikum som..." %>
     <%= f.select :audience_level,  [['... ikke har benyttet smidige metoder', 'novice'], ['... ikke bruker smidige metoder på sitt prosjekt', 'intermediate'], ['... benytter smidige metoder på sitt prosjekt', 'expert']] %>
-  </p>
+  </div>
+</fieldset>
+
+<fieldset class="confirmations">
   <% if @talk.new_record? %>
-    <p>
+    <div class="field format">
       <%= f.check_box :accepted_guidelines %>
       <%= f.label :accepted_guidelines, "Jeg kjenner til tidsbegrensningen og formatet for lyntaler på Smidig 2010" %>
-    </p>
-    <p>
+    </div>
+    <div class="field cc">
       <%= f.check_box :accepted_cc_license %>
-      <%= f.label :accepted_cc_license, "Jeg forstår at foredraget blir gjort tilgjengelig med en <a href='http://creativecommons.org/licenses/by/3.0/no/' target='_blank'>Creative Commons Navngivelse 3.0 Norge</a> lisens og at teksten blir gjort tilgjengelig umiddelbart." %>
-    </p>
+      <%= f.label :accepted_cc_license, "Jeg forstår at foredraget blir gjort tilgjengelig med en <a href='http://creativecommons.org/licenses/by/3.0/no/' rel='external'>Creative Commons Navngivelse 3.0 Norge</a> lisens og at teksten blir gjort tilgjengelig umiddelbart." %>
+    </div>
   <% end %>
-  <p>
+</fieldset>
+
+
+
+<div class="field buttons">
     <%= f.submit "Publiser forslaget" %>
-  </p>
+</div>
+
+
+
 <% end %>

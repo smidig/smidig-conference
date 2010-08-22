@@ -1,0 +1,26 @@
+<fieldset id="confirmations">
+
+    <div>
+        <%= reg.check_box :includes_dinner, :checked => true %>
+        <%= reg.label :includes_dinner,  "Jeg ønsker å delta på middagen" %>
+    </div>
+
+    <div>
+        <%= f.check_box 'accepted_privacy_guidelines' %>
+        <%= f.label 'accepted_privacy_guidelines',
+          "Jeg forstår at arrangørene vil sende meg informasjon per email." %>
+        <% help_tooltip() do %>
+            <p>Vi vil kun bruke din epostadresse til å sende deg viktig informasjon om konferansen: en registreringsbekreftelse, en påminnelse om konferansen når datoen nærmer seg, og en oppsummering om hvor du kan finne videoer, bilder og mer informasjon fra konferansen.  Du vil motta informasjon om konferansen så lenge du er påmeldt. Dersom du melder deg av konferansen vil du ikke lenger motta informasjon om konferansen.</p>
+        <% end %>
+    </div>
+
+    <div>
+        <%= f.check_box 'accept_optional_email' %>
+        <%= f.label 'accept_optional_email',
+        "Jeg ønsker å motta informasjon om andre relevante arrangementer." %>
+        <% help_tooltip() do %>
+            <p>.... relevante konferanser og møter i relevante faggrupper.  Du kan når som helst reservere deg mot informasjon om andre relevante arrangementer ved å <a href="/users/current">redigere profilen din</a> eller klikke på "avmelde"-lenken i selve eposten.</p>
+        <% end %>
+    </div>
+
+</fieldset>

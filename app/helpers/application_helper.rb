@@ -13,7 +13,7 @@ module ApplicationHelper
   def info_menu_item(text, action)
     active = current_page?(:controller => 'info', :action => action)
     %Q{<li id="#{action}_menu" class="#{menu_class(active)} #{action}" title="#{text}">
-      #{ link_to_unless_current text, :controller => 'info', :action => action }</li>}
+      #{ link_to_unless_current text, :controller => 'info', :action => action }</li>}.html_safe
   end
 
   def menu_class(active)
@@ -29,9 +29,9 @@ module ApplicationHelper
   def user_menu_item
     active = controller_is?(%w(users))
     text = current_user ? "min påmelding" : "meld deg på!"
-    path = current_user ? current_users_path : signup_path
+    path = current_user ? current_users_path : new_user_path
     %Q(<li id="users_menu" class="#{menu_class(active)} users">
-       #{link_to_unless_current text, path }
+       #{active ? text : link_to(text, path) }
       </li>)
   end
 
@@ -87,4 +87,15 @@ module ApplicationHelper
   def twitter_url
     "http://twitter.com/smidig"
   end
+
+  def help_tooltip(&block)
+    concat('<div class="tooltip"><img src="/images/help.png" alt="Mer informasjon" />')
+    concat('<div class="box help"><div class="inner"><div class="content">')
+    concat(capture(&block))
+    concat('</div></div></div></div>')
+  end
+
+
+
+
 end

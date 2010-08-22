@@ -1,8 +1,8 @@
 class TalksController < ApplicationController
-  before_filter :require_user, :except => [ :index, :show, :new, :create ]
+  before_filter :require_user, :except => [ :index, :show ]
   #before_filter :require_admin, :only => [ :new, :create ]
   before_filter :is_admin_or_owner, :only => [ :edit, :update, :destroy ]
-  
+
   # GET /talks
   # GET /talks.xml
   def index
@@ -59,7 +59,7 @@ class TalksController < ApplicationController
         flash[:registration_already_exists] = true
       else
         @user = User.new(params[:user])
-        @user.create_registration(:ticket_type => "speaker", 
+        @user.create_registration(:ticket_type => "speaker",
             :includes_dinner => params[:registration_includes_dinner])
         if not @user.save and @user.registration.save
           respond_to do |format|
@@ -70,7 +70,7 @@ class TalksController < ApplicationController
         end
       end
     end
-    
+
     @talk.users << @user
 
     respond_to do |format|
@@ -90,7 +90,7 @@ class TalksController < ApplicationController
   # PUT /talks/1.xml
   def update
     @talk = current_user.is_admin ? Talk.find(params[:id]) : current_user.talks.find(params[:id])
-    
+
     respond_to do |format|
       if @talk.update_attributes(params[:talk])
         flash[:notice] = 'Forslaget er endret.'
@@ -114,7 +114,7 @@ class TalksController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+
 protected
   def login_required
     return unless current_user
@@ -128,6 +128,6 @@ protected
       flash[:error] = "Du må være administrator eller eier for å endre siden."
       access_denied
     end
-  end  
-  
+  end
+
 end

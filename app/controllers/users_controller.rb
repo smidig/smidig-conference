@@ -1,26 +1,26 @@
 class UsersController < ApplicationController
   before_filter :require_user, :except => [ :new, :create ]
-  before_filter :require_admin, :only => [ :index ]  
-  before_filter :require_admin_or_self, :only => [ :show, :edit, :update ]  
-  
+  before_filter :require_admin, :only => [ :index ]
+  before_filter :require_admin_or_self, :only => [ :show, :edit, :update ]
+
   def index
     @date_range = (2.months.ago.to_date..Date.today).to_a
 
     paid_users = User.find_with_filter("paid")
     @all_per_date = total_by_date(User.find(:all), @date_range)
     @speakers_per_date = total_by_date(User.find_with_filter("speakers"), @date_range)
-    @paid_per_date = total_by_date(paid_users, @date_range)    
-    
+    @paid_per_date = total_by_date(paid_users, @date_range)
+
     @income_per_date = total_price_per_date(paid_users, @date_range)
 
     @users = User.find_with_filter(params[:filter])
   end
-  
+
   def current
     @user = current_user
     render "show"
   end
-  
+
   def show
     @user = User.find(params[:id])
 
@@ -29,8 +29,13 @@ class UsersController < ApplicationController
       format.xml  { render :xml => @user }
     end
   end
-  
+
   def new
+    if current_user
+      redirect_to current_users_url
+      return
+    end
+
     @user = User.new
     @user.registration = Registration.new(:includes_dinner => true)
     @user.registration.manual_payment = params[:manual_payment]
@@ -39,8 +44,14 @@ class UsersController < ApplicationController
   end
 
   def create
+    if current_user
+      redirect_to current_users_url
+      return
+    end
+
     User.transaction do
       @user = User.new(params[:user])
+      @user.registration.ticket_type = "speaker" if params[:speaker]
       @user.registration_ip = request.remote_ip  #Store the ip address used at registration time, to send mails later (ask jhannes)
       if @user.save
         puts @user.registration.inspect
@@ -53,6 +64,11 @@ class UsersController < ApplicationController
           SmidigMailer.deliver_manual_registration_confirmation(@user)
           SmidigMailer.deliver_manual_registration_notification(@user, user_url(@user))
           redirect_to @user
+        elsif @user.registration.speaker?
+          flash[:notice] = "Registrer detaljene for din lyntale"
+          SmidigMailer.deliver_manual_registration_confirmation(@user)
+          SmidigMailer.deliver_manual_registration_notification(@user, user_url(@user))
+          redirect_to new_talk_url
         elsif @user.registration.free_ticket
           flash[:notice] = "Vi vil kontakte deg for å bekrefte detaljene"
           SmidigMailer.deliver_free_registration_confirmation(@user)
@@ -63,12 +79,12 @@ class UsersController < ApplicationController
           redirect_to @user.registration.payment_url(payment_notifications_url, user_url(@user))
         end
       else
-        flash[:error] = "En feil har oppstått, se veiledningen under "
+        flash[:error] = "En feil har oppstått, se veiledningen under."
         render :action => 'new'
       end
     end
   end
-  
+
   def edit
     @user = User.find(params[:id])
   end
@@ -77,9 +93,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     update_user
   end
-  
+
 protected
-  
+
   def update_user
     if @user.update_attributes(params[:user])
       flash[:notice] = "Oppdaterte profil."
@@ -95,8 +111,8 @@ protected
       flash[:error] = "Du har ikke lov å se andre brukeres informasjon."
       access_denied
     end
-  end  
-  
+  end
+
   def total_by_date(users, date_range)
     users_by_date = users.group_by { |u| u.created_at.to_date }
     per_date = []
@@ -120,5 +136,5 @@ protected
     end
     per_date
   end
-  
+
 end

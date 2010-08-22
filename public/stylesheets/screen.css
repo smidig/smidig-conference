@@ -237,7 +237,7 @@ h2.page_title {
 
 fieldset {
     border: 0;
-    margin: -10px  0px 16px 0px;
+    margin: 0 0 1em 0;
     padding: 0;
 }
 
@@ -287,7 +287,7 @@ div.time_and_category, .detail {
 	width: 5em;
 }
 
-#loginform .button, .forgot_password {
+#loginform .button, .forgot_password, .meld_deg_paa {
 	margin-left: 5em;
 }
 
@@ -332,25 +332,31 @@ div.time_and_category, .detail {
 
 
 
-#talk_details  {
+/* Form Formatting */
+
+#talk_details, #registration_details  {
 	padding-right: 7px;
+	text-align: left;
 }
 
-#talk_details input, #talk_details select, #talk_details textarea {
-	display: block;
+#talk_details input,
+#talk_details select,
+#registration_details .kommentarer label,
+#registration_details .type label  {
+	display: block
 }
 
-#talk_details textarea, #talk_details .paastand input {
+#talk_details textarea,
+#registration_details textarea,
+#talk_details .paastand input {
 	width: 100%;
-	margin: 0
+	margin: 0;
 }
 
-
-
-
-
-#personal_details .field, .info.field, #talk_details .field {
-	padding: .75em 0;
+#personal_details div.field,
+#talk_details div.field,
+#registration_details div.field, #loginform .field  {
+	padding: .25em 0;
 }
 
 #new_talk .format *, #new_talk .cc * {
@@ -366,7 +372,6 @@ div.time_and_category, .detail {
 	width: auto;
 }
 
-
 #personal_details label {
 	display: inline-block;
 	width: 9em;
@@ -375,8 +380,9 @@ div.time_and_category, .detail {
 #personal_details .privacy {
 	padding-bottom: 0;
 }
+
 #personal_details .optional {
 	padding-top: 0;
 }
 
-.checkboxes {padding: .75em 0}
+.confirmations, #registration_details {padding: .75em 0}

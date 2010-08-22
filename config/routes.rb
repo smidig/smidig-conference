@@ -3,12 +3,11 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :contents do |contents|
     contents.resources :content_revisions
-  end 
+  end
 
   map.login 'login', :controller => "user_sessions", :action => "new"
   map.logout 'logout', :controller => "user_sessions", :action => "logout"
   map.register 'register', :controller => 'users', :action => 'create'
-  map.signup 'signup', :controller => 'users', :action => 'new'
 
   map.resources :user_sessions
   map.resources :password_resets
@@ -56,7 +55,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Sample resource route with sub-resources:
   #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
-  
+
   # Sample resource route with more complex sub-resources
   #   map.resources :products do |products|
   #     products.resources :comments
