@@ -1,8 +1,5 @@
-fieldset {
-    border: 0;
-    margin: -10px  0px 16px 0px;
-    padding: 0;
-}
+/* Aesthetics */
+/* This stuff can probably be changed without messing up the layout. */
 
 @font-face {
 	font-family: 'LeagueGothicRegular';
@@ -18,24 +15,6 @@ fieldset {
 	src: local('☺'), url('raleway_thin-webfont.woff') format('woff'), url('raleway_thin-webfont.ttf') format('truetype'), url('raleway_thin-webfont.svg#webfontuFJwwJ5I') format('svg');
 	font-weight: normal;
 	font-style: normal;
-}
-
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-	min-width: 980px;
-	}
-
-
-/*Opera Fix*/
-body:before {
-	content:"";
-	height:100%;
-	float:left;
-	width:0;
-	margin-top:-32767px;/
 }
 
 img {
@@ -56,8 +35,85 @@ a:hover {
     text-decoration: underline;
 }
 
-a:active {
+a:active, #menu a:active, #menu li#users_menu a:hover {
     color: #ffcc00;
+}
+
+h1, h2, h3, h4 {
+	font-family: "LeagueGothicRegular";
+	font-weight: normal;
+}
+
+h1 {
+	background-color: #cc0000;
+}
+
+h2 {
+    margin: 1em 0 0 0;
+    padding: 0;
+	font-size: 2.5em;
+	text-transform: uppercase;
+	overflow: hidden;
+	line-height: normal;
+}
+
+h3 {
+	font-size: 2em;
+	padding: 0;
+	margin: 1em 0 0 0;
+}
+
+h4 {
+	font-size: 1.75em;
+	padding: 0;
+	margin: 0;
+}
+
+#wrapper,
+#content .quote,
+#menu li.active,
+#menu a:hover {
+    border-style: solid;
+    border-color: #cc0000;
+}
+
+#wrapper {
+    border-width: 0 0 0 20px;
+}
+
+#content .quote {
+	font-family: 'RalewayThin', sans-serif;
+	font-size: 1.3em;
+    border-width: 2px 0 0 0;
+}
+
+div.errorExplanation li {
+    color: red;
+}
+div.fieldWithErrors input {
+    border: 1px solid red;
+    margin:0;
+}
+
+/* Layout */
+/* Mess with this at your own risk. */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+	min-width: 980px;
+	}
+
+
+/*Opera Fix*/
+body:before {
+	content:"";
+	height:100%;
+	float:left;
+	width:0;
+	margin-top:-32767px;/
 }
 
 #wrapper {
@@ -79,13 +135,7 @@ a:active {
 	right: 0;
 }
 
-h1, h2, h3, h4 {
-	font-family: "LeagueGothicRegular";
-	font-weight: normal;
-}
-
 h1 {
-	background-color: #cc0000;
     margin: 0px;
     padding: 20px;
     float: left;
@@ -95,29 +145,13 @@ h1 img {
     width: 180px;
 }
 
-h2 {
-    margin: 1em 0 0 0;
-    padding: 0;
-	font-size: 2.5em;
-	text-transform: uppercase;
-	overflow: hidden;
-	line-height: normal;
-}
-
 h2.page_title {
 	margin-top: 0;
 }
 
-h3 {
-	font-size: 2em;
-	padding: 0;
-	margin: 1em 0 0 0;
-}
-
-h4 {
-	font-size: 1.75em;
-	padding: 0;
-	margin: 0;
+#menu {
+    min-width: 860px;
+    overflow: hidden;
 }
 
 #logos_space {
@@ -143,7 +177,6 @@ h4 {
 #main {
     overflow:hidden;
 	padding-bottom: 25px;
-    margin-left: 250px;
 	padding-top: 153px;
 }
 
@@ -154,7 +187,8 @@ h4 {
     line-height: 1.6em;
 	font-size: .85em;
 	padding-bottom: 25px;
-	overflow: hidden
+    padding-left: 250px;
+	margin-right: 350px;
 }
 
 #footer {
@@ -188,88 +222,6 @@ h4 {
     float: right;
 }
 
-/* Menu Stuff */
-
-#menu {
-    min-width: 860px;
-    overflow: hidden;
-}
-
-#menu * {
-    margin: 0;
-    padding: 0;
-    white-space: nowrap;
-}
-
-#menu li {
-	display:block;
-	float:left;
-    position: relative;
-}
-
-#menu a {
-    display: block;
-    color: black;
-    padding: 10px 0px 0px 50px;
-}
-
-#menu li.active {
-    font-weight: bold;
-    color: #cc0000;
-    border-style: solid;
-    border-color: #cc0000;
-    border-width: 2px 0 0 0;
-    padding: 7px 0px 0px 0px;
-    margin-left: 50px;
-}
-
-#menu li.active a {
-    font-weight: bold;
-    color: #cc0000;
-    border: 0;
-    padding: 0px;
-    margin-left: 0px;
-}
-
-#menu a:hover {
-    text-decoration: none;
-    color: #cc0000;
-}
-
-#menu a:active {
-    color: #ffcc00;
-}
-
-#menu li#users_menu a, #menu li#users_menu.active  {
-	color: white;
-	font-weight: bold;
-	width: 200px;
-	text-align: right;
-	padding: 10px 20px 0px 0px;
-	margin-left: 0px;
-	border: 0;
-	background: #cc0000 url(../images/arrow.png) no-repeat -35px 10px;
-}
-
-
-#menu li#users_menu a:hover  {
-	color: #ffcc00
-}
-
-#content .quote {
-    float: right;
-    width: 40%;
-    margin: 1em 0 .5em 1em;
-    padding: .5em 0;
-    border-width: 2px 0 0 0;
-    text-align: left;
-    border-color: #cc0000;
-    border-style: solid;
-	font-family: 'RalewayThin', sans-serif;
-	font-size: 1.3em;
-}
-
-
 #login {
     position: absolute;
     right: 0;
@@ -291,7 +243,19 @@ h4 {
 	text-decoration: none;
 }
 
-/* Talk Formatting */
+fieldset {
+    border: 0;
+    margin: 0 0 1em 0;
+    padding: 0;
+}
+
+#content .quote {
+    float: right;
+    width: 40%;
+    margin: 1em 0 .5em 1em;
+    padding: .5em 0;
+    text-align: left;
+}
 
 div.talk {
 	margin: 1em 0 2em 0
@@ -306,32 +270,15 @@ div.time_and_category, .detail {
 #breadcrumbs {
 	height: 25px;
 	position: absolute;
-	left: 0px;
+	left: 250px;
 	top: -30px;
 }
 
 #notifications {
 	height: 25px;
 	position: absolute;
-	left: 0px;
+	left: 250px;
 	top: -60px;
-
-}
-
-#hjem #notifications {
-	left: 25px;
-
-}
-
-.help {
-	font-size: .85em;
-	margin: 0 5em 1em 5em;
-	line-height: normal;
-	text-align: left
-}
-
-.passer_for {
-	text-transform: lowercase;
 }
 
 .comment {
@@ -348,7 +295,7 @@ div.time_and_category, .detail {
 	width: 5em;
 }
 
-#loginform .button, .forgot_password {
+#loginform .button, .forgot_password, .meld_deg_paa {
 	margin-left: 5em;
 }
 
@@ -364,38 +311,86 @@ div.time_and_category, .detail {
 	font-size: .85em;
 }
 
-
-
-div.errorExplanation li {
-    color: red;
-}
-div.fieldWithErrors input {
-    border: 1px solid red;
-    margin:0;
+.passer_for {
+	text-transform: lowercase;
 }
 
-/* Front page stuff */
 
-.chunk {
+/* Front page layout */
+
+.row {
 	overflow: hidden;
 }
 
-.signup, .lyntale {
+.signup, .lyntale, .hvaskjer, .tidligere {
 	width: 47%;
 	float: left;
 }
 
-.lyntale {
-	float: right
-}
-
-.tidligere{
-	clear: both;
-}
-
-#hjem #content {
+.lyntale, .tidligere {
+	float: right;
 }
 
 #fronthead * {
-	margin: 0;padding: 0;
+    margin:0;
+	padding: 0;
 }
+
+
+
+
+
+/* Form Formatting */
+
+#talk_details, #registration_details  {
+	padding-right: 7px;
+	text-align: left;
+}
+
+#talk_details input,
+#talk_details select,
+#registration_details .kommentarer label,
+#registration_details .type label  {
+	display: block
+}
+
+#talk_details textarea,
+#registration_details textarea,
+#talk_details .paastand input {
+	width: 100%;
+	margin: 0;
+}
+
+#personal_details div.field,
+#talk_details div.field,
+#registration_details div.field, #loginform .field  {
+	padding: .25em 0;
+}
+
+#new_talk .format *, #new_talk .cc * {
+	display: inline
+}
+
+.radios{
+	margin-left: 10em;
+}
+
+#personal_details .radios label {
+	display: inline;
+	width: auto;
+}
+
+#personal_details label {
+	display: inline-block;
+	width: 9em;
+}
+
+#personal_details .privacy {
+	padding-bottom: 0;
+}
+
+#personal_details .optional {
+	padding-top: 0;
+}
+
+.confirmations, #registration_details {padding: .75em 0}

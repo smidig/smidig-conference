@@ -1,26 +1,33 @@
 <% content_for :title, @user.name %>
-
-<p>Oppdater din informasjon.</p>
+<h2 class="page_title">Endre din registrering</h2>
 
 <% form_for @user do |f| %>
   <%= f.error_messages %>
 
-  <p>                                                   
-    <%= f.label :name, "Navn" %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>                                                   
-    <%= f.label :company, "Firma" %><br />
-    <%= f.text_field :company %>
-  </p>
-  <p>
-    <%= f.label :email, "E-post" %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :phone_number, "Telefon" %><br />
-    <%= f.text_field :phone_number %>
-  </p>
+    <fieldset id="personal_details">
+      <div class="name field">
+        <%= f.label :name, "Navn"%>
+        <%= f.text_field :name %>
+      </div>
+      <div class="firma field">
+        <%= f.label :company, "Firma (valgfritt)"%>
+        <%= f.text_field :company %>
+      </div>
+      <div class="epost field">
+        <%= f.label :email, "E-post"%>
+        <%= f.text_field :email %>
+      </div>
+      <div class="telefon field">
+        <%= f.label :phone_number, "Telefon"%>
+        <%= f.text_field :phone_number %>
+      </div>
+
+</fieldset>
+
+
+
+
+
   <% if @user.registration %>
     <h4>Betalingsinformasjon:</h4>
     <% if @user.registration.free_ticket %>
@@ -35,7 +42,7 @@
     <% end %>
   <% end %>
 
-  
+
   <p><%= f.submit "Oppdater detaljer" %></p>
 <% end %>
 

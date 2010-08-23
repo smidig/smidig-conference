@@ -15,27 +15,30 @@ class Registration < ActiveRecord::Base
   default_scope :order => 'created_at desc'
   belongs_to :user
   has_one :payment_notification
-  
+
   validates_presence_of :ticket_type
   # validates_presence_of :invoice_address, :if => Proc.new { |reg| reg.manual_payment }
-  
+
   before_create :create_payment_info
-  
-  def description      
+
+  def description
     (TICKET_TEXTS[self.ticket_type] || ticket_type) + " " +
-      (includes_dinner? ? 'deltar på middag' : 'uten middag') +
       (registration_complete ? " (Betalt)" : "")
   end
-  
+
+  def speaker?
+    ticket_type == "speaker"
+  end
+
   def free_ticket
     %w(sponsor volunteer organizer speaker).include? ticket_type
   end
-  
+
   def paid?
     paid_amount && paid_amount > 0
   end
   def self.find_by_invoice(id)
-    Registration.find(id - self.invoice_prefix)
+    Registration.find(id.to_i - self.invoice_prefix)
   end
   def self.invoice_prefix
     invoice_start = 1000 if Rails.env == "production"
@@ -56,19 +59,19 @@ class Registration < ActiveRecord::Base
       :item_number_1 => '1',
       :quantity_1 => '1'
     }
-        
+
     PAYMENT_CONFIG[:paypal_url] +"?"+values.map do
           |k,v| "#{k}=#{CGI::escape(v.to_s)}"
     end.join("&")
   end
-  
+
   def status
     paid? ? "Betalt" : (
       registration_complete? ? "Godkjent" : (
         manual_payment? && !invoiced ? "Skal faktureres" : (
           manual_payment? ? "Har blitt fakturert" : "Må følges opp")))
   end
-  
+
   def self.find_by_params(params)
     if params[:conditions]
       find(:all, :conditions => params[:conditions], :include => :user)
@@ -97,7 +100,6 @@ class Registration < ActiveRecord::Base
     self.registration_complete = false
     self.price = PAYMENT_CONFIG[:prices][ticket_type].to_i
     self.free_ticket = price == 0
-    self.price += PAYMENT_CONFIG[:prices]["dinner"].to_i if includes_dinner && !free_ticket
     return true
   end
 end

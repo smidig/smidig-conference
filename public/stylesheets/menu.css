@@ -1,0 +1,64 @@
+#menu * {
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+}
+
+#menu li {
+	display:block;
+	float:left;
+    position: relative;
+	margin-left: 50px
+}
+
+#menu li.active a,
+#menu li#users_menu a,
+#menu li#users_menu.active,
+#menu li#users_menu {
+	margin-left: 0px;
+}
+
+#menu li.active,
+#menu li.active a,
+#menu a:hover {
+    color: #cc0000;
+}
+
+#menu li.active,
+#menu li.active a,
+#menu li#users_menu a,
+#menu li#users_menu.active {
+	font-weight: bold;
+}
+
+
+#menu a {
+    display: block;
+    color: black;
+    padding: 10px 0px 0px 0px;
+    text-decoration: none;
+}
+
+#menu li.active,
+#menu a:hover  {
+    border-width: 2px 0 0 0;
+    padding: 8px 0px 0px 0px;
+}
+
+#menu li.active a,
+#menu li#users_menu a,
+#menu li#users_menu.active {
+    border: 0;
+}
+
+#menu li.active a {
+    padding: 0;
+}
+
+#menu li#users_menu a, #menu li#users_menu.active {
+	color: white;
+	width: 200px;
+	text-align: right;
+	padding: 10px 20px 0px 0px;
+	background: #cc0000 url(../images/arrow.png) no-repeat -35px 10px;
+}

@@ -4,33 +4,31 @@
     <h3>16. - 17. november på SAS-hotellet, Oslo</h3>
 </div>
 
-<div class="chunk general">
+<div class="chunk general row one">
     <p>Opplev vårt unike format, med over 70 lyntaler og 100 diskusjonsgrupper! Smidigkonferansen er den årlige nasjonale hendelsen som samler mennesker fra alle typer roller i IT-bransjen; prosjektledere, produkteiere, utviklere, bedriftsledere og testere, for å ta noen eksempler. <%= link_to 'Les mer om konferansen', :controller => 'info', :action => 'om_konferansen' %></p>
 </div>
 
+
+<div class="row two">
 <div class="chunk signup">
-<h2><a href="signup" title="Meld deg på nå">Meld deg på</a></h2>
+<h2><%= link_to "Meld deg på", new_user_path %></h2>
   <p>Early-bird billetter kjøpes til 1875,- frem til 15. september.  Etterpå gjelder ordinærpris av 2750,-.</p>
 </div>
 
 
 <div class="chunk lyntale">
-    <h2><a href="/talks" title="Holde lyntale">Hold lyntale</a></h2>
+        <h2><a href="/talks/new" title="Holde lyntale">Hold lyntale</a></h2>
     <p>Det er din kunnskap og erfaringer som gjør konferansen til det den er. Siste frist for å levere inn forslag er 1. november.</p>
 </div>
-
-<div class="chunk signup">
-    <h2>Følg med på hva som skjer</h2>
-    <p>Hold deg oppdatert, følg @smidig på <%= link_to "twitter", twitter_url %> og still spørsmål, eller kom med forslag ved å melde deg inn i <%= link_to "mailinglisten", mailingliste_url %>: </p>
-   <form action="http://groups.google.no/group/smidigkonferansen/boxsubscribe">
-                <fieldset>
-                    <input type="text" name="email" id="email" />
-                    <input type="submit" name="sub" value="Go!" />
-                </fieldset>
-            </form>
+</div>
+<div class="row three">
+    <div class="chunk hvaskjer">
+        <h2>Følg med</h2>
+        <p>Følg @smidig på <%= link_to "twitter", twitter_url %> og still spørsmål, eller kom med forslag ved å melde deg inn i <%= link_to "mailinglisten", mailingliste_url %>.</p>
 </div>
 
-<div class="chunk lyntale">
-    <h2>Godbiter fra tidligere år</h2>
+    <div class="chunk tidligere">
+        <h2>Gamle godbiter</h2>
     <p>Se videoene fra <a href='http://smidig2007.confreaks.com'>2007</a>, <a href='http://smidig2008.confreaks.com'>2008</a> og <a href='http://tcs.java.no/'>2009</a> for en smakebit på hva du kan oppleve.</p>
+    </div>
 </div>
