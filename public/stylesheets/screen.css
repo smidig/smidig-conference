@@ -90,10 +90,55 @@ h4 {
 div.errorExplanation li {
     color: red;
 }
-div.fieldWithErrors input {
-    border: 1px solid red;
-    margin:0;
+
+div.fieldWithErrors, #railserrordisplaysux {
+	display: inline;
+	overflow: hidden;
 }
+
+div.fieldWithErrors input {
+	border: 1px solid red;
+	margin: 0;
+}
+
+
+#railserrordisplaysux, #railserrordisplaysux * {
+	line-height: 2px;
+	font-size: 12px;
+}
+
+
+
+#railserrordisplaysux div.fieldWithErrors  {
+	border: 1px solid red;
+	padding: 0 1px;
+	margin: 0 2px 0 2px;
+}
+
+#railserrordisplaysux div.fieldWithErrors input  {
+	vertical-align: -2px;
+	border: 0;
+ }
+
+#railserrordisplaysux div.fieldWithErrors:first-child  {
+	border: 0;
+	margin: 0;
+	padding: 0;
+ }
+
+
+/*
+
+
+
+div.fieldWithErrors:first-child {
+	background-image: url(../images/exclamation.png);
+	background-repeat: no-repeat;
+	background-position: top left;
+	padding-left: 18px;
+	margin-left: -18px;
+}
+*/
 
 /* Layout */
 /* Mess with this at your own risk. */
@@ -145,6 +190,10 @@ h1 img {
     width: 180px;
 }
 
+h1 span {
+	display: none;
+}
+
 h2.page_title {
 	margin-top: 0;
 }
@@ -154,18 +203,10 @@ h2.page_title {
     overflow: hidden;
 }
 
-#logos_space {
+#logos {
     float: right;
     width: 300px;
-    padding: 0 25px;
-}
-
-#logos {
-    position: absolute;
-    top: 50px;
-    right: 0px;
-    width: 300px;
-    padding: 0 25px;
+    padding: 25px;
 }
 
 #logos img {

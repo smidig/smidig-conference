@@ -1,4 +1,4 @@
-"no-BM":        
+"no-BM":
   activerecord:
     errors:
       template:
@@ -23,7 +23,7 @@
         less_than: "må være mindre enn {{count}}"
         less_than_or_equal_to: "må være mindre enn eller lik {{count}}"
         odd: "må være oddetall"
-        even: "må være partall" 
+        even: "må være partall"
         topic: "Tema"
       models:
         user:
@@ -36,15 +36,16 @@
       talk: "lyntale"
       bruker: "registrering"
       comment: "kommentar"
-    attributes:          
+    attributes:
       user:
         name: "Navn"
         password_confirmation: "Passordbekreftelse"
         password: "Passord"
-        email: "e-post"
+        email: "E-post"
         phone_number: "Telefonnummer"
         registration_ticket_type: Billettype
         registration_invoice_address: Fakturaadresse
+        accepted_privacy_guidelines: ""
       registration:
         ticket_type: Billettype
       talk:
@@ -63,7 +64,7 @@
       comment:
         title: "Overskrift"
         description: "Kommentar"
-        
+
   authlogic:
     error_messages:
       login_blank: må oppgis

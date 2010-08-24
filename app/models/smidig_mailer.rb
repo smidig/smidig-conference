@@ -1,5 +1,5 @@
 class SmidigMailer < ActionMailer::Base
-  
+
   default_url_options[:host] = "smidig2010.no"
   FROM_EMAIL = 'Smidig 2010 <kontakt@smidig.no>'
   SUBJECT_PREFIX = "[Smidig 2010]"
@@ -31,13 +31,31 @@ class SmidigMailer < ActionMailer::Base
                :description => user.registration.description,
                :user_url => user_url
   end
-  
+
+  def speaker_registration_confirmation(user)
+    subject    "#{SUBJECT_PREFIX} Bruker #{user.email} er registrert"
+    recipients user.email
+    from       FROM_EMAIL
+    body       :name => user.name,
+               :email => user.email
+  end
+
+  def speaker_registration_notification(user, user_url)
+    subject    "#{SUBJECT_PREFIX} Bruker #{user.email} har registrert seg som foredragsholder."
+    recipients FROM_EMAIL
+    from       FROM_EMAIL
+    reply_to    "#{user.name} <#{user.email}>"
+    body       :name => user.name,
+               :email => user.email,
+               :user_url => user_url
+  end
+
   def password_reset_instructions(user)
     subject    "#{SUBJECT_PREFIX} Hvordan endre ditt passord"
     recipients user.email
     from       FROM_EMAIL
     body       :edit_password_reset_url => edit_password_reset_url(user.perishable_token)
-    
+
   end
 
   def free_registration_confirmation(user)
@@ -52,7 +70,7 @@ class SmidigMailer < ActionMailer::Base
     subject    "#{SUBJECT_PREFIX} Bruker #{user.email} har registrert seg som #{user.registration.description}"
     recipients FROM_EMAIL
     from       FROM_EMAIL
-    reply_to    "#{user.name} <#{user.email}>"        
+    reply_to    "#{user.name} <#{user.email}>"
     body       :name => user.name,
                :email => user.email,
                :description => user.registration.description,

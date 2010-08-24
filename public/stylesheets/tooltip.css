@@ -17,20 +17,19 @@
 	color: black;
 	height: 0px;
 	margin: 0
-
 }
 
 
 .tooltip:hover div.box div.inner  {
 	position: relative;
 	left: -235px;
-	top: -2em;
+	top: -5em;
 	margin-right: -235px;
 	width: 100%;
 	padding-right: 235px;
 	height: 2em;
 	font-size: .85em;
-	background: transparent url(/images/transparent.png) top left no-repeat
+	background: transparent url(/images/transparent.png) top left no-repeat;
 	}
 
 

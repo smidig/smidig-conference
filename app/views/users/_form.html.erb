@@ -67,7 +67,7 @@
             <%= render :partial => 'confirmations', :locals => { :reg => reg, :f => f } %>
 
             <div class="field buttons">
-                <div><%= f.submit "Meld på og foreslå lyntale.",:name => "speaker" %></div>
+                <div><%= f.submit "Meld på og foreslå lyntale.",:name => "speaker", :id => "lyntale_submit" %></div>
                 <div><%= f.submit "Meld på og betal." %></div>
             </div>
           <% end %>

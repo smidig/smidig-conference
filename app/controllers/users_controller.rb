@@ -51,10 +51,10 @@ class UsersController < ApplicationController
 
     User.transaction do
       @user = User.new(params[:user])
-      @user.registration.ticket_type = "speaker" if params[:speaker]
       @user.registration_ip = request.remote_ip  #Store the ip address used at registration time, to send mails later (ask jhannes)
-      if @user.save
-        puts @user.registration.inspect
+      if @user.valid?
+        @user.registration.ticket_type = "speaker" if params[:speaker]
+        @user.save
         if !@user.registration.save
           raise @user.registration.errors.inspect
         end
@@ -66,8 +66,8 @@ class UsersController < ApplicationController
           redirect_to @user
         elsif @user.registration.speaker?
           flash[:notice] = "Registrer detaljene for din lyntale"
-          SmidigMailer.deliver_manual_registration_confirmation(@user)
-          SmidigMailer.deliver_manual_registration_notification(@user, user_url(@user))
+          SmidigMailer.deliver_speaker_registration_confirmation(@user)
+          SmidigMailer.deliver_speaker_registration_notification(@user, user_url(@user))
           redirect_to new_talk_url
         elsif @user.registration.free_ticket
           flash[:notice] = "Vi vil kontakte deg for å bekrefte detaljene"
@@ -80,7 +80,7 @@ class UsersController < ApplicationController
         end
       else
         flash[:error] = "En feil har oppstått, se veiledningen under."
-        render :action => 'new'
+            render :action => 'new'
       end
     end
   end

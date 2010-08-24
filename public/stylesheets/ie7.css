@@ -1,0 +1,55 @@
+div.fieldWithErrors:first-child {
+	float: left;
+}
+
+div.fieldWithErrors {
+	margin-left: 2px
+}
+
+#railserrordisplaysux {
+	border: 0;
+	padding: 0px;
+	margin: 0 0 0 -2px;
+}
+
+#railserrordisplaysux div.fieldWithErrors:first-child  {
+	border: 1px solid red;
+	padding: 0;
+	margin: 0;
+}
+
+#railserrordisplaysux div.fieldWithErrors * {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+
+
+
+
+
+/*
+
+
+#confirmations div.fieldWithErrors {
+}
+
+#confirmations div.fieldWithErrors:first-child {
+	background-image: url(../images/exclamation.png);
+	background-repeat: no-repeat;
+	background-position: top left;
+	width: 18px;
+	overflow: visible;
+	display: visible;
+}
+
+
+
+#confirmations div.fieldWithErrors input {
+}
+
+
+
+
+*/
