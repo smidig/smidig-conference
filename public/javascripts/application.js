@@ -9,4 +9,13 @@ function externalLinks() {
  }   
 }   
 
-window.onload = externalLinks;
+function logosShuffle() {
+  $('#logos').shuffle();
+}
+
+function onApplicationLoad() {
+  externalLinks();
+  logosShuffle();
+}
+
+window.onload = onApplicationLoad;
