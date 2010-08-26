@@ -209,8 +209,8 @@ h2.page_title {
     padding: 25px;
 }
 
-#logos img {
-    padding: 0 25px 50px 25px;
+#logos a img {
+    padding: 0 22px 50px 22px;
     border: 0;
 }
 
