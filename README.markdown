@@ -44,7 +44,7 @@ You need to start Pageant before using git to push to Github or Heroku. You may 
 
 ## Getting started
 
-    Add yourself as a collaborator to the project: Log in at github with the smidig user and add yourself to https://github.com/smidig/smidig-conference/edit#collab_bucket
+    You need to be added as a collaborator on the project. Talk to Ole-Morten.
     Check out the code: git clone git@github.com:smidig/smidig-conference.git
     $ gem update --system
     $ gem install bundler
