@@ -94,6 +94,8 @@ class UsersController < ApplicationController
     update_user
   end
 
+  def chat
+  end
 protected
 
   def update_user
