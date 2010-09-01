@@ -1,5 +1,5 @@
 <div class="talk" id="<%= dom_id(talk) %>">
-  <h4><%= link_to talk.title, talk %> (<%= antall_stemmer(talk.votes_count) %>)</h4>
+  <h4><%= link_to talk.title, talk %> <%= "(#{antall_stemmer(talk.votes_count)})" if talk.votes_count > 0 %></h4>
 
  <% unfinished do %>
     <%= link_to image_tag("icon_slides.gif"), "http://slideshare.net/#{talk.slideshare_url}" if talk.slideshare_url %>
