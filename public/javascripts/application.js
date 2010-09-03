@@ -15,7 +15,7 @@ function logosShuffle() {
 
 function onApplicationLoad() {
   externalLinks();
-  logosShuffle();
+  //logosShuffle();
 }
 
 window.onload = onApplicationLoad;
