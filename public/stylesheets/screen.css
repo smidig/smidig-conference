@@ -435,3 +435,35 @@ div.time_and_category, .detail {
 }
 
 .confirmations, #registration_details {padding: .75em 0}
+
+
+/* Arrangørene */
+.person {
+  opacity: 0.5;
+  margin-top: 5px;
+}
+.person img {
+  float: left;
+  margin-right: 10px;
+  border: 1px dashed gray;
+  width: 100px;
+  height: 100px;
+}
+.person div.info {
+}
+.person div.info div.name {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 0px;
+  
+}
+.person div.info div.company {
+  color: gray;
+  font-size: 0.9em;
+  
+}
+.person div.info div.cite {
+  margin-top: 0;
+  font-style: italic;
+  
+}

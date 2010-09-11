@@ -18,3 +18,18 @@ function onApplicationLoad() {
 }
 
 window.onload = onApplicationLoad;
+
+$(document).ready(function() {
+	$("div.person").mouseenter(function(element){
+	  $(element.currentTarget).animate({ 
+	    opacity: 1.0
+	  }, 800 );
+	});
+	
+	$("div.person").mouseleave(function(element){
+	  $(element.currentTarget).animate({ 
+	    opacity: 0.5
+	  }, 800 );
+	});
+
+});
