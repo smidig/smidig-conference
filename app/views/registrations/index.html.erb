@@ -60,18 +60,18 @@
 <% for registration in @registrations %>
   <tr>
     <td>
-      <%=link_to registration.user.name, registration.user %>
+      <%=h link_to registration.user.name, registration.user %>
       (<%=h registration.user.company %>)
     </td>
     <td>
-      <%=link_to registration.user.email, "mailto:#{registration.user.email}" %>
+      <%=h link_to registration.user.email, "mailto:#{registration.user.email}" %>
     </td>
-    <td><%=h time_ago_in_words(registration.created_at) %> siden</td>
+    <td><%= time_ago_in_words(registration.created_at) %> siden</td>
     <td>
-      <%= registration.ticket_type %>
+      <%=h registration.ticket_type %>
     </td>
     <td>
-      <%= registration.status %>
+      <%=h registration.status %>
     </td>
     <td>
       <%= registration.paid_amount %>

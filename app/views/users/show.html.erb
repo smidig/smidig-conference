@@ -4,12 +4,12 @@
 Vi har registrert følgende informasjon om deg:
 
 <ul>
-  <li><strong>Navn:</strong> <%= @user.name %></li>
-  <li><strong>Firma:</strong> <%= @user.company %></li>
-  <li><strong>E-post:</strong> <%= @user.email %></li>
-  <li><strong>Telefonnummer:</strong> <%= @user.phone_number %></li>
+  <li><strong>Navn:</strong> <%=h @user.name %></li>
+  <li><strong>Firma:</strong> <%=h @user.company %></li>
+  <li><strong>E-post:</strong> <%=h @user.email %></li>
+  <li><strong>Telefonnummer:</strong> <%=h @user.phone_number %></li>
   <% if @user.registration %>
-    <li><strong>Billettype:</strong> <%= @user.registration.description %></li>
+    <li><strong>Billettype:</strong> <%=h @user.registration.description %></li>
     <li><strong>Deltar på konferansemiddag:</strong> <%= @user.registration.includes_dinner ? "Ja" : "Nei" %></li>
     <li><strong>Pris:</strong> <%= @user.registration.price %></li>
   <% end %>
