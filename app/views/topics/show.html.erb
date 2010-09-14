@@ -4,7 +4,7 @@
 
 <p><% if admin? %><%= link_to "Endre beskrivelse", edit_topic_path(@topic) %><% end %></p>
 
-<div><%=simple_format @topic.description %></div>
+<div><%=simple_format h(@topic.description) %></div>
 
 <h2 id="talks">Foreslåtte lyntaler<%= feed_link "Følg med på nye foredrag i denne kategotien", topic_talks_path(@topic, :format => :rss) %></h2>
 

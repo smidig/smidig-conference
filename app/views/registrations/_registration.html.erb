@@ -19,10 +19,10 @@ Vi har registrert din betaling. Vi sees på Smidig 2010!
   </p>
   
   <h4>Fakturaadresse</h4>    
-  <%=simple_format registration.invoice_address %>
+  <%=simple_format h(registration.invoice_address) %>
   
   <h4>Beskrivelse</h4>    
-  <%=simple_format registration.invoice_description %>
+  <%=simple_format h(registration.invoice_description) %>
 
   <%= link_to "Endre fakturainformasjon", edit_registration_path(registration) %>
 
