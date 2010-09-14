@@ -67,8 +67,12 @@
             <%= render :partial => 'confirmations', :locals => { :reg => reg, :f => f } %>
 
             <div class="field buttons">
-                <div><%= f.submit "Meld på og foreslå lyntale.",:name => "speaker", :id => "lyntale_submit" %></div>
-                <div><%= f.submit "Meld på og betal." %></div>
+                <div><%= f.submit "Meld på som lyntaler og foreslå lyntale.",:name => "speaker", :id => "lyntale_submit" %> 
+					 <% help_tooltip() do %>
+				            <p>Du foreslår lyntale, med en kort beskrivelse, i neste steg. Blir du valgt ut som lyntaler, blir du belønnet med kostnadsfri inngang. Skulle du mot formodning ikke bli det, vil prisen på registreringstidspunktet gjelde.</p>
+				        <% end %>
+				</div>
+                <div><%= f.submit "Meld på som deltaker og betal." %> Dette er standardvalget.</div>
             </div>
           <% end %>
         <% end %>
