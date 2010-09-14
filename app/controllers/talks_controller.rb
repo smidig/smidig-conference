@@ -1,5 +1,5 @@
 class TalksController < ApplicationController
-  before_filter :require_user, :except => [ :index, :show ]
+  before_filter :require_user, :except => [ :index, :show, :new ]
   #before_filter :require_admin, :only => [ :new, :create ]
   before_filter :is_admin_or_owner, :only => [ :edit, :update, :destroy ]
 
@@ -29,12 +29,16 @@ class TalksController < ApplicationController
   # GET /talks/new
   # GET /talks/new.xml
   def new
-    @talk = Talk.new
-    @talk.topic = Topic.find(params[:topic_id]) if params[:topic_id]
-    @user = current_user||User.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml { render :xml => @talk }
+    if current_user 
+      @talk = Talk.new
+      @talk.topic = Topic.find(params[:topic_id]) if params[:topic_id]
+      @user = current_user
+      respond_to do |format|
+        format.html # new.html.erb
+        format.xml { render :xml => @talk }
+      end
+    else
+      redirect_to new_user_path
     end
   end
 
