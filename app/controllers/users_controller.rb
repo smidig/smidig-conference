@@ -51,6 +51,7 @@ class UsersController < ApplicationController
 
     User.transaction do
       @user = User.new(params[:user])
+      @user.email.strip! if @user.email.present?
       @user.registration_ip = request.remote_ip  #Store the ip address used at registration time, to send mails later (ask jhannes)
       if @user.valid?
         @user.registration.ticket_type = "speaker" if params[:speaker]
