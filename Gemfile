@@ -11,4 +11,5 @@ group :plugins do
   gem 'gchartrb'
 end
 gem 'faker', :group => 'development'
-gem 'populator', :group => 'development'
+
+gem 'heroku_s3_backup' #db backup to S3
