@@ -59,7 +59,7 @@
   </tr>
 <% for registration in @registrations %>
 	<% if registration.user.nil? %>
-	   BAD DATA FOR THIS REGISTRATION. <%= registration.inspect %>
+	   BAD DATA for this regisration with id <%= registration.id %>
 		<% next %>
   	<% end %>
 <tr>
