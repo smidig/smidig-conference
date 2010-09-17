@@ -25,7 +25,7 @@ Vi har registrert følgende informasjon om deg:
 
   <ul>
     <% for talk in @user.talks %>
-      <li><%= link_to talk.title, talk %></li>
+      <li><%= link_to h(talk.title), talk %></li>
     <% end %>
   </ul>
 <% end %>
