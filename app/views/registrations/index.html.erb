@@ -58,8 +58,13 @@
     <th>Betalt</th>
   </tr>
 <% for registration in @registrations %>
-  <tr>
+	<% if registration.user.nil? %>
+	   BAD DATA FOR THIS REGISTRATION. <%= registration.inspect %>
+		<% next %>
+  	<% end %>
+<tr>
     <td>
+
       <%=h link_to registration.user.name, registration.user %>
       (<%=h registration.user.company %>)
     </td>
