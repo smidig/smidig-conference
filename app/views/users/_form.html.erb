@@ -51,7 +51,7 @@
           <%= render :partial => 'confirmations', :locals => { :reg => reg, :f => f } %>
           <div class="field buttons"><%= f.submit "Registrer deg" %></div>
         <% else %>
-          <%= reg.hidden_field :ticket_type, :value => 'early_bird' %>
+          <%= reg.hidden_field :ticket_type, :value => 'full_price' %>
           <% if @user.registration.manual_payment %>
             <div class="field adresse">
               <%= reg.label :invoice_address, "Fakturaadresse" %>
