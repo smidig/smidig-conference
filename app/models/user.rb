@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   validates_length_of :phone_number, :in => 8..30
 
   validates_presence_of :name
+  validates_presence_of :company
   validates_uniqueness_of :email
   validates_each :accepted_privacy_guidelines do |record, attr, value|
     record.errors.add attr, 'Du må godta at vi sender deg epost om konferansen.' if value == false
