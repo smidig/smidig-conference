@@ -42,6 +42,7 @@
         password_confirmation: "Passordbekreftelse"
         password: "Passord"
         email: "E-post"
+        company: "Firma"
         phone_number: "Telefonnummer"
         registration_ticket_type: Billettype
         registration_invoice_address: Fakturaadresse
