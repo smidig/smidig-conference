@@ -49,6 +49,17 @@ class RegistrationsController < ApplicationController
       render :action => "edit"
 	  end
   end
+  
+  def delete
+    reg = Registration.find(params[:id])
+    reg.user.talks.delete
+    reg.user.delete
+    reg.delete
+    
+    flash[:notice] = "Slettet bruker #{reg.user.name}"
+    
+    redirect_to :action => 'index'
+  end
 
 protected
   def require_admin_or_owner
