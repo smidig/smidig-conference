@@ -1,0 +1,12 @@
+<h2>Sletting av brukeren <%=@registration.user.name%></h2>
+  
+<p>
+  Sletting er en ikke-reverserbar operasjon på dette systemet. Dersom du er sikker på at du vil slette <%=@registration.user.name%>, skriv
+  inn de tre første bokstavene i navnet i tekstboksen under.
+</p>
+
+<% form_tag("/registrations/delete/#{@registration.id}", :method => :post) do -%> 
+  <%= hidden_field_tag 'name', @registration.user.name %>
+  <%= text_field_tag "confirmation" %> 
+  <%= submit_tag 'Slett bruker'%>
+<% end -%>

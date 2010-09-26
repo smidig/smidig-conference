@@ -31,5 +31,12 @@ class RegistrationsControllerTest < ActionController::TestCase
     
     assert_not_nil flash[:error]
   end
+  
+  def test_should_not_delete_talks_that_have_several_speakers_when_deleting_one_user
+    login_as :god
+    assert_no_difference('Talk.count') do
+      delete :delete, :id => registrations(:one).id, :name => "John H. Example", :confirmation => "joh"
+    end
+  end
   	
 end
