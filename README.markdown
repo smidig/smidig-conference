@@ -48,7 +48,7 @@ You need to start Pageant before using git to push to Github or Heroku. You may 
     Check out the code: git clone git@github.com:smidig/smidig-conference.git
     $ gem update --system
     $ gem install bundler
-    $ gem install rails
+    $ gem install rails --version 2.3.8
     # In application directory
     $ bundle install
     ON WINDOWS: Also grab sqlite DLL from http://www.sqlite.org/download.html and stuff it in your path
