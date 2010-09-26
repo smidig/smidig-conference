@@ -83,7 +83,7 @@
       <%= registration.paid_amount %>
     </td>
     <td>
-      <%= link_to_unless(registration.paid?, 'Slett bruker', :action => 'delete', :id => registration.id) %>
+      <%= link_to_unless(registration.paid?, 'Slett bruker', :action => 'confirm_delete', :id => registration.id) %>
     </td>
   </tr>
 <% end %>

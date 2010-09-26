@@ -1,7 +1,7 @@
 class RegistrationsController < ApplicationController
   before_filter :require_user
   before_filter :require_admin_or_owner, :except => [:index]
-  before_filter :require_admin, :only => [:index]
+  before_filter :require_admin, :only => [:index, :delete, :confirm_delete]
   
   def index
     @registrations = Registration.find_by_params(params)
@@ -51,14 +51,23 @@ class RegistrationsController < ApplicationController
   end
   
   def delete
-    reg = Registration.find(params[:id])
-    reg.user.talks.delete
-    reg.user.delete
-    reg.delete
+    @registration = Registration.find(params[:id])
     
-    flash[:notice] = "Slettet bruker #{reg.user.name}"
+    if params[:name][0..2].downcase == params[:confirmation][0..2].downcase
+      @registration.user.talks.delete
+      @registration.user.delete
+      @registration.delete
     
-    redirect_to :action => 'index'
+      flash[:notice] = "Slettet bruker #{@registration.user.name}"
+      redirect_to :action => 'index'
+    else
+      flash[:error] = "Feil bokstaver - prøv igjen"
+      render :action => "confirm_delete"
+    end
+  end
+  
+  def confirm_delete
+    @registration = reg = Registration.find(params[:id])
   end
 
 protected
