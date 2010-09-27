@@ -3,15 +3,14 @@
 
 <p><strong><%= link_to 'Foreslå en lyntale!', new_talk_path %></strong>  Smidig-konferansen er en konferanse for og av fagmiljøet selv.  Det er din kunnskap og dine erfaringer som gjør konferansen til det den er.  Siste frist for å levere inn forslag er 1. november.</p>
 
-<p>Alle lyntaler skal relatere seg til en forhåndsdefinert kategori for å sikre en god miks med foredrag som interesserer alle. Vær med å disuktere kategoriene på mailinglisten <%= link_to "smidigkonferansen", mailingliste_url %>.
+<p>Alle lyntaler skal relatere seg til en forhåndsdefinert kategori for å sikre en god miks med foredrag som interesserer alle. Vær med å diskutere kategoriene på mailinglisten <%= link_to "smidigkonferansen", mailingliste_url %>.
   Du kan også hente inspirasjon fra diskusjoner på forumet om kategoriene: <a href="http://forum.smidig.no/forums/11">smidigforumet </a>
   </p>
 
 <p>For å oppfordre til diskusjon, blir forslagene til foredrag synlige så snart de blir registrert. Både arrangørene og andres kommentarer til hvert enkelt foredrag blir også synlige.</p>
 
-<p><a href="../info/til_lyntalere">Informasjon om hva slags opplegg vi har rundt lyntalene på Smidig 2010, samt noen generelle tips.</a>
+<p><a href="../info/til_lyntalere">Informasjon om hva slags opplegg vi har rundt lyntalene på Smidig 2010, samt noen generelle tips.</a></p>
 
-<p></p>
 <h2>Foreslåtte lyntaler<%= feed_link "Følg med på alle nye foredrag", talks_path(:format => :rss) %></h2>
 
 <%= render :partial => @talks %>
