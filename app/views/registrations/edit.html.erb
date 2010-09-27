@@ -1,10 +1,10 @@
 <h2>Betalingsinformasjon for <%=h @registration.user.name %> (registrert <%= @registration.created_at.to_date %>)</h2>
 
 <% if @registration.registration_complete %>
-  
+
   Vi har registrert din betaling. Vi sees på Smidig 2010!
 
-  <%# TODO: Transfer ticket to <email>. %> 
+  <%# TODO: Transfer ticket to <email>. %>
 
 <% elsif @registration.free_ticket %>
 
@@ -15,7 +15,8 @@
       <%= reg.select :ticket_type, [
           ['Jeg ønsker å benytte en sponsors gratisbillett (angi firma)', 'sponsor'],
           ['Jeg holder foredrag sammen med noen andre (angi foredrag)', 'speaker'],
-          ['Jeg ønsker å bidra som frivillig under konferansen', 'volunteer'], 
+          ['Jeg ønsker å bidra som frivillig under konferansen', 'volunteer'],
+          ['Jeg er student', 'student'],
           ['Jeg er med å arrangere konferansen', 'organizer']], :include_blank => true %>
       </p>
       <p>
@@ -27,7 +28,7 @@
       <%= reg.check_box :includes_dinner %>
       <%= reg.label :includes_dinner,  "Jeg ønsker å delta på middagen (det er inkludert i prisen)" %>
     </p>
-    <p><%= reg.submit "Oppdater din informasjon" %></p>        
+    <p><%= reg.submit "Oppdater din informasjon" %></p>
   <% end %>
 
 <% else %>
@@ -53,7 +54,7 @@
       <%= reg.label :invoiced, "Har blitt fakturert "%>
       </p>
     <% end %>
-    <p><%= reg.submit "Oppdater fakturainformasjon" %></p>        
+    <p><%= reg.submit "Oppdater fakturainformasjon" %></p>
   <% end %>
 <% end %>
 
@@ -70,10 +71,10 @@
   </p>
 
   <h3>Epost: <%= @registration.user.email %></h3>
-  
+
   <% unless @registration.registration_complete %>
     <h4>Oppdater billettinformasjon</h4>
-    
+
     <% form_for @registration do |f| %>
       <%= hidden_field_tag :ticket_change %>
       <p>
@@ -83,7 +84,8 @@
             ['Full pris', 'full_price'],
             ['Benytter en sponsors gratisbillett - gratis (angi firma)', 'sponsor'],
             ['Holder foredrag - gratis', 'speaker'],
-            ['Bidrar som frivillig under konferansen - gratis', 'volunteer'], 
+            ['Bidrar som frivillig under konferansen - gratis', 'volunteer'],
+            ['Er student', 'student'],
             ['Er med å arrangere konferansen - gratis', 'organizer']] %>
       </p>
       <p>
@@ -101,7 +103,7 @@
   <% end %>
 
   <h4>Oppdater betalingsinformasjon</h4>
-  
+
   <% form_for @registration do |f| %>
   	<p>
   		<%= f.label :comments, "Kommentarer" %><br/>
@@ -133,5 +135,5 @@
     </p>
   <% end %>
 
-</div>	
-<% end %>	
+</div>
+<% end %>

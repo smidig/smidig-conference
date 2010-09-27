@@ -42,6 +42,7 @@
                 ['Jeg ønsker å benytte en sponsors gratisbillett (angi firma)', 'sponsor'],
                 ['Jeg holder foredrag sammen med noen andre (angi foredrag)', 'speaker'],
                 ['Jeg ønsker å bidra som frivillig under konferansen', 'volunteer'],
+                ['Jeg er student', 'student'],
                 ['Jeg er med å arrangere konferansen', 'organizer']], :include_blank => true %>
           </div>
           <div class="field kommentarer">
@@ -67,7 +68,7 @@
             <%= render :partial => 'confirmations', :locals => { :reg => reg, :f => f } %>
 
             <div class="field buttons">
-                <div><%= f.submit "Meld på som lyntaler og foreslå lyntale.",:name => "speaker", :id => "lyntale_submit" %> 
+                <div><%= f.submit "Meld på som lyntaler og foreslå lyntale.",:name => "speaker", :id => "lyntale_submit" %>
 					 <% help_tooltip() do %>
 				            <p>Du foreslår lyntale, med en kort beskrivelse, i neste steg. Blir du valgt ut som lyntaler, blir du belønnet med kostnadsfri inngang. Skulle du mot formodning ikke bli det, vil prisen på registreringstidspunktet gjelde.</p>
 				        <% end %>

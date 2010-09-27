@@ -7,6 +7,7 @@ free_prices: &free_prices
 prices: &prices
   early_bird: 1875
   full_price: 2750
+  student: 500
   dinner: 0
   <<: *free_prices
 
@@ -39,8 +40,9 @@ staging:
   prices:
     early_bird: 10
     full_price: 15
+    student: 1
     <<: *free_prices
   paypal_email: paypal@smidig.no
   paypal_url: "https://www.paypal.com/cgi-bin/webscr"
 
-  
+

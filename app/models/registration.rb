@@ -4,6 +4,7 @@ class Registration < ActiveRecord::Base
     "full_price" => "Billett til Smidig 2010",
     "sponsor" => "Sponsor Smidig 2010",
     "volunteer" => "Frivillig på Smidig 2010",
+    "student" => "Student på Smidig 2010",
     "organizer" => "Arrangør på Smidig 2010",
     "speaker" => "Foredragsholder på Smidig 2010"
   }
