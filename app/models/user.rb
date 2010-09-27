@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :registration
 
-  validates_format_of :phone_number, :with => /\A(\d{8}|\d{3} \d{2} ?\d{3}|\d{2} \d{2} \d{2} \d{2}|\(\+\d+\)[\d ]+)\Z/,
+  validates_format_of :phone_number, :with => /\A(\s*(\(\+\s*\d{2}\))?\s*(\d\s*){8})\Z/,
     :message => "må være på formen 99999999 eller (+99) 999999...", :allow_nil => true
   validates_length_of :phone_number, :in => 8..30
 
