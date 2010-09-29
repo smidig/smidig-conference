@@ -43,7 +43,7 @@
 <%= render :partial => "talks/video" %>
 <%= render :partial => "talks/slides" %>
 
-<h3>Kommentarer<%= feed_link "Følg med på kommentarer til #{@talk.title}", talk_comments_path(@talk, :format => :rss) %></h3>
+<h3>Kommentarer<%= feed_link "Følg med på kommentarer til #{@talk.title}", talk_comments_path(@talk, :format => :rss) %></h3><a name="comments"></a>
 
 <div id="comments">
   <%= render :partial => @talk.comments %>

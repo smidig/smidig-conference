@@ -7,7 +7,7 @@
   <% end %>
 
     <div class="submitted_time">
-        Foreslått av <%= render :partial => talk.users %> for <%= time_ago_in_words(talk.created_at) %> siden.
+        Foreslått av <%= render :partial => talk.users %> for <%= time_ago_in_words(talk.created_at) %> siden. <%=link_to "#{talk.comments.size} kommentar(er).", talk_path(talk, :anchor => "comments") %>
     </div>
 
 </div>
