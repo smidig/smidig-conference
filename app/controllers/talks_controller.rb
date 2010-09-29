@@ -6,7 +6,7 @@ class TalksController < ApplicationController
   # GET /talks
   # GET /talks.xml
   def index
-    @talks = params[:topic_id] ? Topic.find(params[:topic_id]).talks : Talk.all_approved
+    @talks = Talk.all_pending_and_approved
 
     respond_to do |format|
       format.html # index.html.erb
@@ -31,7 +31,6 @@ class TalksController < ApplicationController
   def new
     if current_user 
       @talk = Talk.new
-      @talk.topic = Topic.find(params[:topic_id]) if params[:topic_id]
       @user = current_user
       respond_to do |format|
         format.html # new.html.erb

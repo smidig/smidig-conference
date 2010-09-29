@@ -1,7 +1,6 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  topic: one
   title: MyString
   description: MyText
   slideshare_url: MyString
@@ -15,7 +14,6 @@ one:
   audience_level: MyString
 
 two:
-  topic: one
   title: MyString
   description: MyText
   slideshare_url: MyString

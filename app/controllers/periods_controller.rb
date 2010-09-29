@@ -14,7 +14,7 @@ class PeriodsController < ApplicationController
     @time_ids = @periods.collect { |p| p.time_id }.sort.uniq
     
     @edit = params[:edit] && admin?
-    @all_talks = Talk.all_approved if @edit
+    @all_talks = Talk.all_pending_and_approved if @edit
     
 
     respond_to do |format|
