@@ -3,7 +3,7 @@ class Talk < ActiveRecord::Base
 
   has_many :speakers
   has_many :users, :through => :speakers
-  belongs_to :topic
+  # belongs_to :topic
   belongs_to :period
   has_many :comments, :order => "created_at", :include => :user
   has_many :votes, :include => :user
@@ -14,7 +14,7 @@ class Talk < ActiveRecord::Base
 
   validates_acceptance_of :accepted_guidelines
   validates_acceptance_of :accepted_cc_license
-  validates_presence_of :topic, :title, :description
+  # validates_presence_of :topic, :title, :description
 
   def speaker_name
     users.map(&:name).join(", ");

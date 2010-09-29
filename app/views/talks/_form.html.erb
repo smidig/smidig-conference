@@ -6,19 +6,6 @@
 
   <%= f.error_messages %>
 
-  <div class="field tema">
-    <%= f.label :topic_id, "Tema" %>
-    <% help_tooltip() do %>
-        <p>For å sikre en god miks av lyntaler, ønsker vi at du velger det forhåndsdefinerte temaene som passer best til lyntalen din. <a href="mailto:kontakt@smidig.no">Ta kontakt</a> dersom ingenting passer.</p>
-    <% end %>
-    <% if @talk.new_record? and @talk.topic %>
-      <%= @talk.topic.title %>
-      <%= f.hidden_field :topic_id, :value => @talk.topic.id %>
-    <% else %>
-      <%= f.collection_select :topic_id, Topic.find(:all), :id, :title %>
-    <% end %>
-    </div>
-
   <div class="field paastand">
     <%= f.label :title, "Påstand" %>
     <% help_tooltip() do %>

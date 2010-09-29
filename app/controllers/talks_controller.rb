@@ -18,7 +18,7 @@ class TalksController < ApplicationController
   # GET /talks/1
   # GET /talks/1.xml
   def show
-    @talk = Talk.find(params[:id], :include => [:users, :topic, :comments, :votes])
+    @talk = Talk.find(params[:id], :include => [:users, :comments, :votes])
 
     respond_to do |format|
       format.html # show.html.erb
