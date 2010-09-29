@@ -19,7 +19,7 @@ config.action_mailer.raise_delivery_errors = false
 
 config.after_initialize do
   Bullet.enable = true
-  Bullet.alert = true
+  Bullet.alert = false
   Bullet.bullet_logger = true
   Bullet.console = false
   Bullet.growl = false

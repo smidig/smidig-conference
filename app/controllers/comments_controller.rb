@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
   end
   
   def show
-    @comment = Comment.find(params[:id])
+    @comment = Comment.find(params[:id], :include => [:talk])
     redirect_to :controller => 'talks', :action => 'show', :id => @comment.talk, :anchor => dom_id(@comment)
   end
 
