@@ -17,6 +17,7 @@ end
 
 group :test do
   gem 'shoulda'
+  #gem 'factory_girl'
 end
 
 gem 'heroku_s3_backup' #db backup to S3

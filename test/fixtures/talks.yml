@@ -12,6 +12,7 @@ one:
   yellow_votes: 1
   green_votes: 1
   audience_level: MyString
+  comments_count: 1
 
 two:
   title: MyString
@@ -25,3 +26,4 @@ two:
   yellow_votes: 1
   green_votes: 1
   audience_level: MyString
+  comments_count: 1

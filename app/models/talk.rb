@@ -18,6 +18,7 @@ class Talk < ActiveRecord::Base
     users.map(&:name).join(", ");
   end
 
+
   def option_text
     %Q[#{id} - "#{trunc(title, 30)}" (#{trunc(speaker_name, 20)})]
   end

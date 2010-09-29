@@ -4,13 +4,13 @@ require 'test_helper'
 require 'action_view/helpers/record_identification_helper'
 
 class CommentsControllerTest < ActionController::TestCase
-  include ActionView::Helpers::RecordIdentificationHelper	
-  
+  include ActionView::Helpers::RecordIdentificationHelper
+
   def setup
     login_as('quentin')
-    @talk = Talk.find(:first) 
+    @talk = Talk.find(:first)
   end
-  
+
   def test_should_get_index
     get :index
     assert_response :success
@@ -18,10 +18,12 @@ class CommentsControllerTest < ActionController::TestCase
   end
 
   def test_should_create_comment
-    assert_difference('Comment.count') do
-      post :create, :comment => { :title => 'foo', :description => 'bar' }, :talk_id => @talk.id
+    talk_id = @talk.id
+    assert_difference("Talk.find(#{talk_id}).comments_count", difference = 1) do
+      assert_difference('Comment.count') do
+        post :create, :comment => {:title => 'foo', :description => 'bar'}, :talk_id => talk_id
+      end
     end
-
     assert_redirected_to talk_path(assigns(:talk), :anchor => dom_id(assigns(:comment)))
   end
 
