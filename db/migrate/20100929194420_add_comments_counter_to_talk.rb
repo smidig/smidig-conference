@@ -3,9 +3,12 @@ class AddCommentsCounterToTalk < ActiveRecord::Migration
     add_column :talks, :comments_count, :integer
 
     Talk.all.each do |talk|
-      talk.comments_count = talk.comments.size
-      puts "adding comment count #{talk.comments_count} to #{talk.title}"
-      talk.save!
+      Talk.update_counters(talk.id, :comments_count =>talk.comments.size)
+    end
+
+    #Visual confirmation
+    Talk.all.each do |talk|
+      puts "added comment count #{talk.comments_count} to #{talk.title}"
     end
   end
 
