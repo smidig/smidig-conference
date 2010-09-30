@@ -7,7 +7,7 @@
   <% end %>
 
     <div class="submitted_time">
-      <%=link_to "#{talk.comments_count} kommentar(er).", talk_path(talk, :anchor => "comments") %>
+      <%=link_to "#{talk.comments_count or 0} kommentar(er).", talk_path(talk, :anchor => "comments") %>
       Foreslått av <%= render :partial => talk.users %> for <%= time_ago_in_words(talk.created_at) %> siden. 
 
     </div>
