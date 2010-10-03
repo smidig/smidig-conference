@@ -52,6 +52,7 @@ You need to start Pageant before using git to push to Github or Heroku. You may 
     # In application directory
     $ bundle install
     ON WINDOWS: Also grab sqlite DLL from http://www.sqlite.org/download.html and stuff it in your path
+    ON UBUNTU: sudo aptitude install libsqlite3-dev
     $ rake db:migrate
     $ rake test
     # Start the server
