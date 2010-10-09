@@ -17,7 +17,7 @@ config.action_controller.perform_caching             = false
 config.action_mailer.perform_deliveries = false
 config.action_mailer.raise_delivery_errors = false
 
-config.after_initialize do
+skip=true or config.after_initialize do
   Bullet.enable = true
   Bullet.alert = false
   Bullet.bullet_logger = true
