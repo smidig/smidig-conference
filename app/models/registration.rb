@@ -86,6 +86,8 @@ class Registration < ActiveRecord::Base
         return find(:all,
           :conditions => { :free_ticket => false , :registration_complete => false, :manual_payment => true, :invoiced => false},
           :include => :user)
+      when "dinner"
+        return find(:all, :conditions => "includes_dinner = 1")
       else
         return []
       end
