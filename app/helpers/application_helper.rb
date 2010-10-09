@@ -26,11 +26,21 @@ module ApplicationHelper
       >#{ link_to_unless_current "Program", :controller => 'program', :action => 'index' }</li>)
   end
 
-  def user_menu_item
+  def user_menu_item_new
     active = controller_is?(%w(users))
-    text = current_user ? "min påmelding" : "meld deg på!"
-    path = current_user ? current_users_path : new_user_path
-    %Q(<li id="users_menu" class="#{menu_class(active)} users">
+    text = "meld deg på!"
+    path = new_user_path
+    %Q(<li id="users_menu" class="users">
+       #{link_to(text, path) }
+      </li>)
+  end
+
+
+  def user_menu_item_current
+    active = controller_is?(%w(users))
+    text =  "min påmelding"
+    path = current_users_path
+    %Q(<li class="#{menu_class(active)} users">
        #{active ? text : link_to(text, path) }
       </li>)
   end

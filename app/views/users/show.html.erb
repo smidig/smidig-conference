@@ -1,5 +1,7 @@
 <% content_for :title, @user.name %>
+
 <h2 class="page_title">Brukerinformasjon</h2>
+Du er logget inn, <%=link_to_unless_current "logg ut", logout_path %>.<br /><br />
 
 Vi har registrert følgende informasjon om deg:
 

@@ -18,6 +18,8 @@ GEM
     gchartrb (0.8)
     heroku_s3_backup (0.0.1)
       right_aws (~> 1.10)
+    mocha (0.9.8)
+      rake
     rack (1.1.0)
     rails (2.3.8)
       actionmailer (= 2.3.8)
@@ -42,6 +44,7 @@ DEPENDENCIES
   faker
   gchartrb
   heroku_s3_backup
+  mocha
   rails (= 2.3.8)
   shoulda
   sqlite3-ruby

@@ -106,4 +106,11 @@ class SmidigMailer < ActionMailer::Base
                :comment_url => comment_url
   end
 
+  def error_mail(title, body)
+    subject    title
+    recipients "dev@smidig.no"
+    from       FROM_EMAIL
+    body       body
+  end
+
 end
