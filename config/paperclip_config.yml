@@ -1,8 +1,7 @@
 s3: &s3
   storage: s3
   s3_credentials: <%= Rails.root %>/config/s3.yml
-  path: ':id/:filename'
-
+  path: ':id-:filename'
 
 test:
   storage: filesystem
