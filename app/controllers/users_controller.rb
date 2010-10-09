@@ -49,11 +49,19 @@ class UsersController < ApplicationController
       return
     end
 
+
+
     User.transaction do
       @user = User.new(params[:user])
       @user.email.strip! if @user.email.present?
       @user.registration_ip = request.remote_ip  #Store the ip address used at registration time, to send mails later (ask jhannes)
-      if @user.valid?
+
+      if User.count >= 500
+        flash[:error] = "Vi har nådd maksgrensen for påmeldinger, vennligst send oss mail på kontakt@smidig.no så ser vi hva vi får gjort"
+        logger.error("Hard limit for number of users (500) has been reached. Please take action.")
+        SmidigMailer.deliver_error_mail("Error on smidig2010.no", "Hard limit for number of users (500) has been reached. Please take action.")
+        render :action => 'new'
+      elsif @user.valid?
         @user.registration.ticket_type = "speaker" if params[:speaker]
         @user.save
         if !@user.registration.save
@@ -81,7 +89,7 @@ class UsersController < ApplicationController
         end
       else
         flash[:error] = "En feil har oppstått, se veiledningen under."
-            render :action => 'new'
+        render :action => 'new'
       end
     end
   end
