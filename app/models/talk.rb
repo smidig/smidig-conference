@@ -6,6 +6,7 @@ class Talk < ActiveRecord::Base
   belongs_to :period
   has_many :comments, :order => "created_at", :include => :user
   has_many :votes, :include => :user
+  has_and_belongs_to_many :tags
 
   has_attached_file :slide
   #validates_attachment_content_type :slide, :content_type => ['application/pdf', 'application/vnd.ms-powerpoint', 'application/ms-powerpoint', %r{application/vnd.openxmlformats-officedocument}, %r{application/vnd.oasis.opendocument}, 'application/zip', 'application/x-7z-compressed', 'application/x-gtar']
