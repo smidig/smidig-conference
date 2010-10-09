@@ -43,7 +43,7 @@
 
 
 
-<fieldset class="tags" style="border: 1px solid black;padding:5px;">
+<fieldset id="tag_list" class="tags" style="border: 1px solid black;padding:5px;">
   <legend>Tags</legend>
   <% @tags.each do |tag| %>
       <input type="checkbox"
@@ -53,8 +53,14 @@
              <% if @talk.tags.include? tag%>checked="checked"<%end%> />
       <%=h tag.title %>
   <% end %>
-  <br />
-  <%= link_to 'Opprett en ny tag', new_tag_path %>
+  <br /><br />
+  Foreslå en ny tag:<br />
+  <input type="text" size="30" name="tag[title]" id="tag_title">
+  <input type="button" value="Legg til" />
+
+
+
+  <!--<%= link_to 'Opprett en ny tag', new_tag_path %>-->
 </fieldset>
 
 

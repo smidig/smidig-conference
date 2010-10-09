@@ -24,10 +24,9 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       if @tag.save
-        flash[:notice] = 'Opprettet tag.'
-        format.html { redirect_to(@tag) }
+        format.text {render :text => "success"}
       else
-        format.html { render :action => "new" }
+        format.text {render :text => "error"}
       end
     end
   end
