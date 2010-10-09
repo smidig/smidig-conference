@@ -10,8 +10,7 @@ RAILS_GEM_VERSION = '2.3.8' #unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
-  INCLUDE_UNFINISHED = !(RAILS_ENV == 'production' || RAILS_ENV == 'staging')
-  
+
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.
