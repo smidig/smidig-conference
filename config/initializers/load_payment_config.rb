@@ -1,6 +1,2 @@
-local_payment_config = File.join(File.dirname(__FILE__), '../../tmp/payment_config.yml')
-default_payment_config = File.join(File.dirname(__FILE__), '../../config/payment_config.yml')
+PAYMENT_CONFIG = YAML.load(ERB.new(File.read("#{Rails.root}/config/payment_config.yml")).result)[Rails.env].symbolize_keys
 
-config = File.read(File.exists?(local_payment_config) ? local_payment_config : default_payment_config)
-
-PAYMENT_CONFIG = YAML.load(config)[RAILS_ENV].symbolize_keys

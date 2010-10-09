@@ -1,0 +1,21 @@
+s3: &s3
+  storage: s3
+  s3_credentials: <%= Rails.root %>/config/s3.yml
+  path: ':id/:filename'
+
+
+test:
+  storage: filesystem
+
+development:
+  <%= ENV["USE_S3"] ? "<<: *s3" : "storage: filesystem" %>
+
+staging:
+  <<: *s3
+
+production:
+  <<: *s3
+
+
+
+

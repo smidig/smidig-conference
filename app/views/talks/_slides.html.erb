@@ -1,14 +1,2 @@
-<% unless @talk.slideshare_url.blank? %>
-<div style="width:425px;text-align:left" id="__ss_617194">
-  <object style="margin:0px" width="425" height="355">
-    <param name="movie" value="http://static.slideshare.net/swf/ssplayer2.swf?doc=<%= @talk.slideshare_url %>" />
-    <param name="allowFullScreen" value="true"/>
-    <param name="allowScriptAccess" value="always"/>
-    <embed src="http://static.slideshare.net/swf/ssplayer2.swf?doc=<%= @talk.slideshare_url %>" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="355">
-      
-    </embed>
 
-  </object>
-</div>
-
-<% end %>
+<%= link_to @talk.slide.name, @talk.slide.url.gsub(' ', '%20')  if @talk.slide.file? %>

@@ -4,6 +4,8 @@
 source :gemcutter
 gem 'rails', '= 2.3.8'
 gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'paperclip', '~>2.3.4'
+gem 'aws-s3', '~>0.6.2'
 
 group :plugins do
   gem 'authlogic', '2.0.11'
