@@ -4,20 +4,26 @@
   <tr>
     <th>Foredragsholder</th>
     <th>Foredragstittel</th>
+    <th>Status</th>
+    <th>&nbsp;</th>
     <th>&nbsp;</th>
   </tr>
 <% for talk in @talks %>
 <tr>
     <td>
-        <% for speaker in talk.users %>
-            <%=link_to h(speaker.name), speaker %>
-        <% end %>
+      <%= talk.speaker_name %>
     </td>
     <td>
       <%= link_to h(talk.title), talk %>
     </td>
     <td>
-        
+        <%= talk.acceptance_status %>
+    </td>
+    <td>
+        <%= link_to_if talk.acceptance_status == 'pending', 'Aksepter', :action => 'accept', :id => talk.id %>
+    </td>
+    <td>
+        <%= link_to_if talk.acceptance_status == 'pending', 'Refuser', :action => 'refuse', :id => talk.id %>
     </td>
   </tr>
 <% end %>

@@ -9,7 +9,7 @@ class PasswordResetsController < ApplicationController
     @user = User.find_by_email(params[:email])
     if @user
       @user.deliver_password_reset_instructions!
-      flash[:notice] = "Vi har sent instruksjoner for å endre passord til den angitte emailadressen. Følg instruksjonene for å endre passordet"
+      flash[:notice] = "Vi har sendt instruksjoner for å endre passord til den angitte emailadressen. Følg instruksjonene for å endre passordet."
       redirect_to root_url
     else
       flash[:error] = "Det finnes ingen bruker med den adressen"

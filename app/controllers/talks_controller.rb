@@ -118,6 +118,8 @@ class TalksController < ApplicationController
     end
   end
 
+  
+
 protected
   def login_required
     return unless current_user
