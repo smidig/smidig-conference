@@ -1,0 +1,24 @@
+<h2>Akseptering av foredrag</h2>
+
+<table>
+  <tr>
+    <th>Foredragsholder</th>
+    <th>Foredragstittel</th>
+    <th>&nbsp;</th>
+  </tr>
+<% for talk in @talks %>
+<tr>
+    <td>
+        <% for speaker in talk.users %>
+            <%=link_to h(speaker.name), speaker %>
+        <% end %>
+    </td>
+    <td>
+      <%= link_to h(talk.title), talk %>
+    </td>
+    <td>
+        
+    </td>
+  </tr>
+<% end %>
+</table>
