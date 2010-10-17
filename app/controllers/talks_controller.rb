@@ -50,7 +50,7 @@ class TalksController < ApplicationController
   # POST /talks
   # POST /talks.xml
   def create
-    @talk = Talk.new(params[:talk])
+    @talk = Talk.new(params[:talk].merge({ :acceptance_status => "pending" }))
 
     if current_user
       @user = current_user
