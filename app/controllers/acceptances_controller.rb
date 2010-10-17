@@ -4,6 +4,14 @@ class AcceptancesController < ApplicationController
 
   def index
     @talks = Talk.all_with_speakers
+
+    num_accepted = Talk.count(:conditions => "acceptance_status = 'accepted'")
+    num_refused = Talk.count(:conditions => "acceptance_status = 'refused'")
+    num_pending = Talk.count(:conditions => "acceptance_status = 'pending'")
+    @types = { :accepted => num_accepted,
+               :refused => num_refused,
+               :pending => num_pending
+             }
   end
 
   def accept
