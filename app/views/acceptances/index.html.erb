@@ -17,7 +17,7 @@
 <% for talk in @talks %>
 <tr>
     <td>
-      <%= talk.speaker_name %>
+      <%= h(talk.speaker_name) %>
     </td>
     <td>
       <%= link_to h(talk.title), talk %>
