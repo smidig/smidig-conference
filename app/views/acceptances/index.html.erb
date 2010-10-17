@@ -13,6 +13,7 @@
     <th>Status</th>
     <th>&nbsp;</th>
     <th>&nbsp;</th>
+    <th>&nbsp;</th>
   </tr>
 <% for talk in @talks %>
 <tr>
@@ -30,6 +31,9 @@
     </td>
     <td>
         <%= link_to_unless talk.acceptance_status == 'refused', 'Refuser', :action => 'refuse', :id => talk.id %>
+    </td>
+    <td>
+        <%= link_to_unless talk.acceptance_status == 'pending', 'Avvent', :action => 'await', :id => talk.id %>
     </td>
   </tr>
 <% end %>

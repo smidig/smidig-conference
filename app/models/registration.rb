@@ -35,6 +35,10 @@ class Registration < ActiveRecord::Base
     %w(sponsor volunteer organizer speaker).include? ticket_type
   end
 
+  def special_ticket?
+    %w(sponsor volunteer organizer).include? ticket_type
+  end
+
   def paid?
     paid_amount && paid_amount > 0
   end

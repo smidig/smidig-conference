@@ -59,3 +59,18 @@ four:
   audience_level: MyString
   comments_count: 1
   acceptance_status: pending
+
+five:
+  title: MyString
+  description: MyText
+  slideshare_url: MyString
+  presenting_naked: false
+  video_url: MyString
+  position: 1
+  submitted: false
+  red_votes: 1
+  yellow_votes: 1
+  green_votes: 1
+  audience_level: MyString
+  comments_count: 1
+  acceptance_status: pending

@@ -26,6 +26,12 @@ class AcceptancesControllerTest < ActionController::TestCase
     end
   end
 
+  def test_accept_of_user_with_completed_registration_will_not_alter_ticket_type
+    @talk = talks(:five)
+    get :accept, :id => @talk.id
+    assert_equal "sponsor", Registration.find(@talk.users[0].registration.id).ticket_type
+  end
+
   def test_refuse_should_set_talk_as_refused
     get :refuse, :id => @talk.id
     assert_equal "refused", Talk.find(@talk.id).acceptance_status
@@ -40,5 +46,24 @@ class AcceptancesControllerTest < ActionController::TestCase
     @talk = talks(:four)
     get :refuse, :id => @talk.id
     assert_equal "speaker", Registration.find(@talk.users[0].registration.id).ticket_type
+  end
+
+  def test_refusal_of_user_with_special_ticket_will_not_alter_ticket_type
+    @talk = talks(:five)
+    get :refuse, :id => @talk.id
+    assert_equal "sponsor", Registration.find(@talk.users[0].registration.id).ticket_type
+  end
+
+  def test_await_rolls_back_ticket_type_for_normal_users
+    @talk = talks(:one)
+    get :await, :id => @talk.id
+    assert_equal "speaker", Registration.find(@talk.users[0].registration.id).ticket_type
+    assert_equal false, Registration.find(@talk.users[0].registration.id).registration_complete
+  end
+
+  def test_await_does_not_roll_back_ticket_type_for_special_users
+    @talk = talks(:five)
+    get :await, :id => @talk.id
+    assert_equal "sponsor", Registration.find(@talk.users[0].registration.id).ticket_type
   end
 end
