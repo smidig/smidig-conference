@@ -7,22 +7,34 @@ class AcceptancesController < ApplicationController
   end
 
   def accept
-    set_new_status_and_go_to_acceptances("accepted")
-  end
-
-  def refuse
-    set_new_status_and_go_to_acceptances("refused")
-  end
-
-protected
-  def set_new_status_and_go_to_acceptances(status)
-    @talk = Talk.find(params[:id])
-    @talk.acceptance_status = status
-
+    @talk = Talk.find(params[:id], :include => [{:users => :registration}])
+    @talk.acceptance_status = "accepted"
     @talk.save
 
+    for speaker in @talk.users
+      speaker.registration.registration_complete = true
+      speaker.registration.completed_by = current_user.email if admin?
+      speaker.registration.save
+    end
+
+    flash[:notice] = "#{@talk.speaker_name}s foredrag '#{@talk.title}' godkjent."
     redirect_to :controller => :acceptances
   end
 
+  def refuse
+    @talk = Talk.find(params[:id])
+    @talk.acceptance_status = "refused"
+    @talk.save
+
+    for speaker in @talk.users
+      if speaker.all_talks_refused?
+        speaker.update_to_paying_user
+        speaker.registration.save
+      end
+    end
+
+    flash[:notice] = "#{@talk.speaker_name}s foredrag '#{@talk.title}' refusert."
+    redirect_to :controller => :acceptances
+  end
 
 end

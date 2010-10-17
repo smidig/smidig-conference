@@ -20,10 +20,10 @@
         <%= talk.acceptance_status %>
     </td>
     <td>
-        <%= link_to_if talk.acceptance_status == 'pending', 'Aksepter', :action => 'accept', :id => talk.id %>
+        <%= link_to_unless talk.acceptance_status == 'accepted', 'Aksepter', :action => 'accept', :id => talk.id %>
     </td>
     <td>
-        <%= link_to_if talk.acceptance_status == 'pending', 'Refuser', :action => 'refuse', :id => talk.id %>
+        <%= link_to_unless talk.acceptance_status == 'refused', 'Refuser', :action => 'refuse', :id => talk.id %>
     </td>
   </tr>
 <% end %>

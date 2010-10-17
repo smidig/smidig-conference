@@ -11,3 +11,11 @@ god_talks_at_one:
 god_talks_at_two:
   user: god
   talk: two
+
+test_talks_at_three:
+  user: test
+  talk: three
+
+god_talks_at_four:
+  user: god
+  talk: four
