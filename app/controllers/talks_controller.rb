@@ -69,7 +69,7 @@ class TalksController < ApplicationController
   def create
     @talk = Talk.new(params[:talk].merge({ :acceptance_status => "pending" }))
     @talk = Talk.new(params[:talk])
-    @talk.tags = Tag.find(params[:tag_ids]) if params[:tag_ids]
+    @tags = Tag.find(:all)
 
     # Tag handeling
     tag_names = []
