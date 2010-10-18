@@ -1,3 +1,20 @@
+<!--<link href="/stylesheets/tag-it/reset.css" rel="stylesheet" type="text/css" />-->
+<link href="/stylesheets/tag-it/master.css" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/tag-it/jquery-ui/jquery.ui.autocomplete.custom.css" rel="stylesheet" type="text/css"  />
+<script src="/javascripts/jquery-ui/jquery-ui-1.8.core-and-interactions.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/jquery-ui/jquery-ui-1.8.autocomplete.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/tag-it.js" type="text/javascript" charset="utf-8"></script>
+<script>
+$(document).ready(function(){
+		var availableTags = [];
+		<% @tags.each do |tag| %>
+		availableTags.push("<%=h tag.title %>");
+		<% end %>
+	$("#mytags").tagit({availableTags: availableTags});
+	});
+</script>
+
+
 <% form_for @talk do |f| %>
 
   <h3>Hva vil du snakke om?</h3>
@@ -41,29 +58,15 @@
   <% end %>
 </fieldset>
 
+<div class="tag">
+	Her kan du tagge din tale. Allerede eksisterende tags vil bli foreslått mens du skriver!
+	<div class="line">
+		<label for="tags">Tags</label>
+		<ul id="mytags"></ul>
+	</div>
+</div>
 
-
-<fieldset id="tag_list" class="tags" style="border: 1px solid black;padding:5px;">
-  <legend>Tags</legend>
-  <% @tags.each do |tag| %>
-      <input type="checkbox"
-             name="tag_ids[]"
-             value="<%=h tag.id %>"
-             id="<%=h tag.id %>"
-             <% if @talk.tags.include? tag%>checked="checked"<%end%> />
-      <%=h tag.title %>
-  <% end %>
-  <br /><br />
-  Foreslå en ny tag:<br />
-  <input type="text" size="30" name="tag[title]" id="tag_title">
-  <input type="button" value="Legg til" />
-
-
-
-  <!--<%= link_to 'Opprett en ny tag', new_tag_path %>-->
-</fieldset>
-
-
+<br><br>
 
 <div class="field buttons">
     <%= f.submit "Publiser forslaget" %>

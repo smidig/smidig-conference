@@ -96,12 +96,21 @@ class TalksController < ApplicationController
   # PUT /talks/1.xml
   def update
     @talk = current_user.is_admin ? Talk.find(params[:id]) : current_user.talks.find(params[:id])
-    @talk.tags = Tag.find(params[:tag_ids]) if params[:tag_ids]
+   
+    # Iterate over each tag from request 
+    params[:item][:tags].each { |title|
+	tag = Tag.find(:first, :conditions => "LOWER(title) like '#{title.downcase}'")
+	if(tag == nil) 
+          tag = Tag.new({:title => title})
+          tag.save!
+        end
+	puts tag[:title]
+        @talk.tags.push(tag)
+    }
+    
 
     respond_to do |format|
       if @talk.update_attributes(params[:talk])
-        puts "HELLO!!"
-        puts params[:tags]
         flash[:notice] = 'Forslaget er endret.'
         format.html { redirect_to(@talk) }
         format.xml  { head :ok }
