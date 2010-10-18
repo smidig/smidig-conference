@@ -6,11 +6,15 @@
 <script src="/javascripts/tag-it.js" type="text/javascript" charset="utf-8"></script>
 <script>
 $(document).ready(function(){
-		var availableTags = [];
-		<% @tags.each do |tag| %>
+	var availableTags = [];
+	var selectedTags = [];
+	<% @tags.each do |tag| %>
 		availableTags.push("<%=h tag.title %>");
-		<% end %>
-	$("#mytags").tagit({availableTags: availableTags});
+		<% if @talk.tags.include? tag%>
+			selectedTags.push("<%=h tag.title %>");
+		<%end%>
+	<% end %>
+	$("#mytags").tagit({availableTags: availableTags, selectedTags: selectedTags});
 	});
 </script>
 
@@ -59,9 +63,8 @@ $(document).ready(function(){
 </fieldset>
 
 <div class="tag">
-	Her kan du tagge din tale. Allerede eksisterende tags vil bli foreslått mens du skriver!
 	<div class="line">
-		<label for="tags">Tags</label>
+		<label for="tags">Her kan du tagge din tale. Allerede eksisterende tags vil bli foreslått mens du skriver, mens nye vil bli lagt til så snart du lagrer endringene. </label>
 		<ul id="mytags"></ul>
 	</div>
 </div>

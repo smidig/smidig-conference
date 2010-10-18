@@ -98,6 +98,7 @@ class TalksController < ApplicationController
     @talk = current_user.is_admin ? Talk.find(params[:id]) : current_user.talks.find(params[:id])
    
     # Iterate over each tag from request 
+    tags = []
     params[:item][:tags].each { |title|
 	tag = Tag.find(:first, :conditions => "LOWER(title) like '#{title.downcase}'")
 	if(tag == nil) 
@@ -105,8 +106,9 @@ class TalksController < ApplicationController
           tag.save!
         end
 	puts tag[:title]
-        @talk.tags.push(tag)
+        tags.push(tag)
     }
+    @talk.tags = tags
     
 
     respond_to do |format|

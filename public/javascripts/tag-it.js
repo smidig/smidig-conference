@@ -17,6 +17,12 @@
 		el.html (html_input_field);
 
 		tag_input		= el.children(".tagit-new").children(".tagit-input");
+		
+		//Add existing values. Added by ICO
+		$.each(options.selectedTags, function(index, tag) { 
+  			create_choice (tag);			
+		});
+			
 
 		$(this).click(function(e){
 			if (e.target.tagName == 'A') {
