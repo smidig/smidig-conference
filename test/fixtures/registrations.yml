@@ -5,11 +5,30 @@ one:
   comments: MyText
   price: 9.99
   invoiced_at: 2008-10-18
-  paid_at: 2008-10-18
+  ticket_type: early_bird
+  registration_complete: false
+  created_at: 2010-09-01
 
 two:
   user: god
   comments: MyText
   price: 19.99
   invoiced_at: 2008-10-18
-  paid_at: 2008-10-18
+  ticket_type: speaker
+  created_at: 2010-10-10
+
+three:
+  user: test
+  comments: MyText
+  price: 19.99
+  invoiced_at: 2008-10-18
+  ticket_type: speaker
+  created_at: 2010-10-10
+
+four:
+  user: sponsor
+  comments: MyText
+  price: 19.99
+  invoiced_at: 2008-10-18
+  ticket_type: sponsor
+  created_at: 2010-10-10

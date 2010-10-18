@@ -26,3 +26,10 @@ other:
   password_salt: <%= salt = Authlogic::Random.hex_token %>
   crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("test") %>
   persistence_token: <%= Authlogic::Random.hex_token %>
+
+sponsor:
+  email: sponsor@whatever.com
+  name: Sponsor Dude
+  password_salt: <%= salt = Authlogic::Random.hex_token %>
+  crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("test") %>
+  persistence_token: <%= Authlogic::Random.hex_token %>

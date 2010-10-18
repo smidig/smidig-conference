@@ -6,10 +6,13 @@ class Talk < ActiveRecord::Base
   belongs_to :period
   has_many :comments, :order => "created_at", :include => :user
   has_many :votes, :include => :user
+  has_and_belongs_to_many :tags
 
-  has_attached_file :slide
+  has_attached_file :slide, PAPERCLIP_CONFIG
+
   #validates_attachment_content_type :slide, :content_type => ['application/pdf', 'application/vnd.ms-powerpoint', 'application/ms-powerpoint', %r{application/vnd.openxmlformats-officedocument}, %r{application/vnd.oasis.opendocument}, 'application/zip', 'application/x-7z-compressed', 'application/x-gtar']
-  validates_attachment_size :slide, :less_than => 10.megabytes
+
+  validates_attachment_size :slide, :less_than => 20.megabytes
 
   validates_acceptance_of :accepted_guidelines
   validates_acceptance_of :accepted_cc_license
@@ -44,5 +47,9 @@ class Talk < ActiveRecord::Base
     all(:order => 'id desc', :include => { :users => :registration }).select {
       |t| !t.users.first.nil? && t.users.first.registration.ticket_type = "speaker"
     }
+  end
+
+  def self.all_with_speakers
+    with_exclusive_scope{ find(:all, :include => :users, :order => "users.name  ")}
   end
 end

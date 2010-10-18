@@ -31,6 +31,7 @@ class TalksController < ApplicationController
   def new
     if current_user 
       @talk = Talk.new
+      @tags = Tag.find(:all)
       @user = current_user
       respond_to do |format|
         format.html # new.html.erb
@@ -44,13 +45,16 @@ class TalksController < ApplicationController
   # GET /talks/1/edit
   def edit
     @talk = Talk.find(params[:id])
+    @tags = Tag.find(:all)
     @user = User.new
   end
 
   # POST /talks
   # POST /talks.xml
   def create
+    @talk = Talk.new(params[:talk].merge({ :acceptance_status => "pending" }))
     @talk = Talk.new(params[:talk])
+    @talk.tags = Tag.find(params[:tag_ids]) if params[:tag_ids]
 
     if current_user
       @user = current_user
@@ -93,9 +97,12 @@ class TalksController < ApplicationController
   # PUT /talks/1.xml
   def update
     @talk = current_user.is_admin ? Talk.find(params[:id]) : current_user.talks.find(params[:id])
+    @talk.tags = Tag.find(params[:tag_ids]) if params[:tag_ids]
 
     respond_to do |format|
       if @talk.update_attributes(params[:talk])
+        puts "HELLO!!"
+        puts params[:tags]
         flash[:notice] = 'Forslaget er endret.'
         format.html { redirect_to(@talk) }
         format.xml  { head :ok }

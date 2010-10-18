@@ -8,7 +8,7 @@
 <% if @talk.users.include?(current_user)|| admin? %>
   <p><%= link_to 'Rediger forslaget ditt', edit_talk_path(@talk) %></p>
 
-  <% if @talk.slide.file? %>
+  <% unless @talk.slide_file_name.nil? %>
     <h3>Lysbilder til presentasjon</h3>
     <p><%= link_to 'Last ned', @talk.slide.url %>
   <% else %>
@@ -32,9 +32,6 @@
   <strong>Passer for:</strong>
   <%=h @talk.describe_audience_level %>
 </p>
-  <% if @talk.slide.file? %>
-    <h3><%= link_to 'Last ned lysbilder til presentasjon', @talk.slide.url %></h3>
-  <% end %>
 
 <%= link_to image_tag("#{@talk.license}.png", :title => 'Foredraget deles under en Creative Commons Navngivelse-lisens.'),
    "http://creativecommons.org/licenses/#{@talk.license}/3.0/no/", :rel => 'license' %>

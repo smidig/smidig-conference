@@ -28,6 +28,11 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :registrations
 
+
+  map.resources :acceptances
+
+  map.resources :tags
+
   map.resources :topics do |topics|
     topics.resources :talks
   end

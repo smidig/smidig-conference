@@ -1,0 +1,40 @@
+<h2>Akseptering av foredrag</h2>
+
+<p>
+    Totalt antall innsendte foredrag: <%= @talks.size %><br><br>
+    <% @types.each_pair{ |key, value| %>
+        <img src="images/<%= key %>.gif" alt="<%=key %>" /> : <%= value  %> <br /> 
+    <% } %>
+</p>
+<table>
+  <tr>
+    <th>Foredragsholder</th>
+    <th>Foredragstittel</th>
+    <th>Status</th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+  </tr>
+<% for talk in @talks %>
+<tr>
+    <td>
+      <%= h(talk.speaker_name) %>
+    </td>
+    <td>
+      <%= link_to h(talk.title), talk %>
+    </td>
+    <td>
+        <img src="images/<%= talk.acceptance_status %>.gif" alt="<%= talk.acceptance_status %>" />
+    </td>
+    <td>
+        <%= link_to_unless talk.acceptance_status == 'accepted', 'Aksepter', :action => 'accept', :id => talk.id %>
+    </td>
+    <td>
+        <%= link_to_unless talk.acceptance_status == 'refused', 'Refuser', :action => 'refuse', :id => talk.id %>
+    </td>
+    <td>
+        <%= link_to_unless talk.acceptance_status == 'pending', 'Avvent', :action => 'await', :id => talk.id %>
+    </td>
+  </tr>
+<% end %>
+</table>

@@ -105,7 +105,13 @@ module ApplicationHelper
     concat('</div></div></div></div>')
   end
 
+  def self.early_bird_end_date
+    to_date "2010-09-16 23:59:59"
+  end
 
+  def self.to_date(a_string)
+    DateTime.strptime(a_string, "%Y-%m-%d %H:%M:%S").to_time
+  end
 
 
 end

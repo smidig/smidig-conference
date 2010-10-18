@@ -35,6 +35,10 @@ class Registration < ActiveRecord::Base
     %w(sponsor volunteer organizer speaker).include? ticket_type
   end
 
+  def special_ticket?
+    %w(sponsor volunteer organizer).include? ticket_type
+  end
+
   def paid?
     paid_amount && paid_amount > 0
   end
@@ -86,6 +90,8 @@ class Registration < ActiveRecord::Base
         return find(:all,
           :conditions => { :free_ticket => false , :registration_complete => false, :manual_payment => true, :invoiced => false},
           :include => :user)
+      when "dinner"
+        return find(:all, :conditions => "includes_dinner = 1")
       else
         return []
       end
