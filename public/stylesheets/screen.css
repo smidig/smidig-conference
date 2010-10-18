@@ -168,7 +168,7 @@ body:before {
     border-color: #cc0000;
     border-width: 0 0 0 20px;
 	position: relative;
-	z-index: 200;
+	z-index: 100;
 }
 
 #header {
@@ -224,7 +224,7 @@ h2.page_title {
 #content {
     text-align:justify;
     position: relative;
-    z-index: 100;
+    z-index: 99;
     line-height: 1.6em;
 	font-size: .85em;
 	padding-bottom: 25px;
