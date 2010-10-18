@@ -1,0 +1,25 @@
+#content {
+	width:600px;
+	margin:20px 0 20px 40px;
+}
+
+.myform {
+	padding:20px 0px;
+}
+.myform div.line {
+	clear:both;
+	min-height:50px;
+	margin-bottom:15px;
+}
+.myform label {
+	display:block;
+	font-weight:bold;
+	margin-bottom:5px;
+}
+
+ol, ul, li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
