@@ -143,7 +143,7 @@ ActiveRecord::Schema.define(:version => 20101016151852) do
     t.integer   "period_id"
     t.integer   "comments_count"
     t.string    "acceptance_status"
-    end
+  end
 
   create_table "talks_tags", :id => false, :force => true do |t|
     t.integer "talks_id"
