@@ -46,4 +46,9 @@ class Talk < ActiveRecord::Base
       |t| !t.users.first.nil? && t.users.first.registration.ticket_type = "speaker"
     }
   end
+  def self.all_pending_and_approved_tag(tag)
+    all(:order => 'id desc', :include => { :users => :registration }).select {
+      |t| !t.users.first.nil? && t.users.first.registration.ticket_type = "speaker"
+    }
+  end
 end

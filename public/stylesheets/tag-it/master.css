@@ -1,24 +1,3 @@
-@charset "UTF-8";
-
-/* base 
-html {
-   font-size: 62.5%;
-}
-a {
-	text-decoration:underline;
-}
-p {
-	margin-bottom:10px;
-	line-height:18px;
-}
-/* end of base 
-
-body, input, a {
-	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-	color: #333;
-	font-size:12px;
-}
-*/:
 #content {
 	width:600px;
 	margin:20px 0 20px 40px;
@@ -43,3 +22,4 @@ ol, ul, li {
 	margin: 0;
 	padding: 0;
 }
+

@@ -13,7 +13,7 @@
 		el.addClass("tagit");
 
 		// create the input field.
-		var html_input_field = "<li class=\"tagit-new\"><input class=\"tagit-input\" type=\"text\" /></li>\n";
+		var html_input_field = "<li class=\"tagit-new\"><input name=\"uncommited_tag\" class=\"tagit-input\" type=\"text\" /></li>\n";
 		el.html (html_input_field);
 
 		tag_input		= el.children(".tagit-new").children(".tagit-input");

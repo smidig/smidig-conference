@@ -15,6 +15,21 @@ class TalksController < ApplicationController
     end
   end
 
+  # GET /talks
+  # GET /talks.xml
+  def article_tags
+    puts params[:id]
+    tag = Tag.find(params[:id])
+    @talks = Talk.all_pending_and_approved_tag(tag)
+
+    respond_to do |format|
+      format.html #article_tags
+      format.xml  { render :xml => @talks }
+      format.rss
+    end
+  end
+
+
   # GET /talks/1
   # GET /talks/1.xml
   def show
@@ -53,7 +68,19 @@ class TalksController < ApplicationController
   # POST /talks.xml
   def create
     @talk = Talk.new(params[:talk])
-    @talk.tags = Tag.find(params[:tag_ids]) if params[:tag_ids]
+
+    # Tag handeling
+    tag_names = []
+    tags = []
+    if(params[:item] && params[:item][:tags])
+      tag_names = params[:item][:tags]
+      if(params[:uncommited_tag] && params[:uncommited_tag].chomp() != "")
+        tag_names.push(params[:uncommited_tag].chomp())
+      end
+    elsif(params[:uncommited_tag] && params[:uncommited_tag].chomp() != "")
+      tag_names.push(params[:uncommited_tag].chomp())
+    end
+    @talk.tags = Tag.create_and_return_tags(tag_names)
 
     if current_user
       @user = current_user
@@ -95,20 +122,21 @@ class TalksController < ApplicationController
   # PUT /talks/1
   # PUT /talks/1.xml
   def update
-    @talk = current_user.is_admin ? Talk.find(params[:id]) : current_user.talks.find(params[:id])
-   
-    # Iterate over each tag from request 
+    @talk = current_user.is_admin ? Talk.find(params[:id]) : current_user.talks.find(params[:id])    
+
+    # Tag handeling
+    tag_names = []
     tags = []
-    params[:item][:tags].each { |title|
-	tag = Tag.find(:first, :conditions => "LOWER(title) like '#{title.downcase}'")
-	if(tag == nil) 
-          tag = Tag.new({:title => title})
-          tag.save!
-        end
-	puts tag[:title]
-        tags.push(tag)
-    }
-    @talk.tags = tags
+    if(params[:item] && params[:item][:tags])
+      tag_names = params[:item][:tags]
+      if(params[:uncommited_tag] && params[:uncommited_tag].chomp() != "")
+        tag_names.push(params[:uncommited_tag].chomp())
+      end
+    elsif(params[:uncommited_tag] && params[:uncommited_tag].chomp() != "")
+      tag_names.push(params[:uncommited_tag].chomp())
+    end
+    @talk.tags = Tag.create_and_return_tags(tag_names)
+
     
 
     respond_to do |format|
