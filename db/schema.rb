@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101016151852) do
+ActiveRecord::Schema.define(:version => 20101023200858) do
 
   create_table "comments", :force => true do |t|
     t.integer   "talk_id"
@@ -107,6 +107,12 @@ ActiveRecord::Schema.define(:version => 20101016151852) do
     t.integer "user_id"
   end
 
+# Could not dump table "sqlite_stat1" because of following StandardError
+#   Unknown type '' for column 'tbl'
+
+# Could not dump table "sqlite_stat2" because of following StandardError
+#   Unknown type '' for column 'tbl'
+
   create_table "tags", :force => true do |t|
     t.string   "title"
     t.datetime "created_at"
@@ -143,11 +149,7 @@ ActiveRecord::Schema.define(:version => 20101016151852) do
     t.integer   "period_id"
     t.integer   "comments_count"
     t.string    "acceptance_status"
-  end
-
-  create_table "talks_tags", :id => false, :force => true do |t|
-    t.integer "talks_id"
-    t.integer "tags_id"
+    t.boolean   "email_sent",           :default => false
   end
 
   create_table "topics", :force => true do |t|
