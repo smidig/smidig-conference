@@ -11,6 +11,7 @@
     <th>Foredragsholder</th>
     <th>Foredragstittel</th>
     <th>Status</th>
+    <th>Mail sendt</th>
     <th>&nbsp;</th>
     <th>&nbsp;</th>
     <th>&nbsp;</th>
@@ -24,17 +25,26 @@
       <%= link_to h(talk.title), talk %>
     </td>
     <td>
-        <img src="images/<%= talk.acceptance_status %>.gif" alt="<%= talk.acceptance_status %>" />
+      <img src="images/<%= talk.acceptance_status %>.gif" alt="<%= talk.acceptance_status %>" />
     </td>
     <td>
+      <%=talk.email_sent ? "Ja" : "Nei"%>
+    </td>
+    <% if talk.email_sent%>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    <% else %>
+      <td>
         <%= link_to_unless talk.acceptance_status == 'accepted', 'Aksepter', :action => 'accept', :id => talk.id %>
-    </td>
-    <td>
+      </td>
+      <td>
         <%= link_to_unless talk.acceptance_status == 'refused', 'Refuser', :action => 'refuse', :id => talk.id %>
-    </td>
-    <td>
+      </td>
+      <td>
         <%= link_to_unless talk.acceptance_status == 'pending', 'Avvent', :action => 'await', :id => talk.id %>
-    </td>
+      </td>
+    <% end%>
   </tr>
 <% end %>
 </table>
