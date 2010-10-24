@@ -16,6 +16,12 @@ class AcceptancesController < ApplicationController
 
   def accept
     @talk = Talk.find(params[:id], :include => [{:users => :registration}])
+
+    if(@talk.email_is_sent?)
+      flash[:error] = "Kan ikke endre status på foredrag '#{@talk.title}', mail allerede sendt ut."
+      redirect_to :controller => :acceptances
+    end
+
     @talk.acceptance_status = "accepted"
     @talk.save
 
@@ -33,6 +39,12 @@ class AcceptancesController < ApplicationController
 
   def refuse
     @talk = Talk.find(params[:id])
+
+    if(@talk.email_is_sent?)
+      flash[:error] = "Kan ikke endre status på foredrag '#{@talk.title}', mail allerede sendt ut."
+      redirect_to :controller => :acceptances
+    end
+
     @talk.acceptance_status = "refused"
     @talk.save
 
@@ -49,6 +61,12 @@ class AcceptancesController < ApplicationController
 
   def await
     @talk = Talk.find(params[:id])
+
+    if(@talk.email_is_sent?)
+      flash[:error] = "Kan ikke endre status på foredrag '#{@talk.title}', mail allerede sendt ut."
+      redirect_to :controller => :acceptances
+    end
+
     @talk.acceptance_status = "pending"
     @talk.save
 
@@ -62,6 +80,32 @@ class AcceptancesController < ApplicationController
     end
 
     flash[:notice] = "#{@talk.speaker_name}s foredrag '#{@talk.title}' avventet."
+    redirect_to :controller => :acceptances
+  end
+
+  def send_mail
+    @talk = Talk.find(params[:id])
+
+    if @talk.email_sent
+      flash[:error] = "Kan ikke sende mail for foredrag '#{@talk.title}': Mail allerede sendt!"
+      redirect_to :controller => :acceptances
+      return
+    end
+
+    if @talk.acceptance_status == 'refused'
+      SmidigMailer.deliver_talk_refusation_confirmation(@talk)
+      @talk.email_sent = true
+    elsif @talk.acceptance_status == 'accepted'
+      SmidigMailer.deliver_talk_acceptance_confirmation(@talk)
+      @talk.email_sent = true
+    else
+      flash[:error] = "Kan ikke sende mail for foredrag '#{@talk.title}': Foredraget er ikke akseptert/refusert enda!"
+      redirect_to :controller => :acceptances
+      return
+    end
+
+    @talk.save
+    flash[:notice] = "Sendt mail om '#{@talk.title}'"
     redirect_to :controller => :acceptances
   end
 

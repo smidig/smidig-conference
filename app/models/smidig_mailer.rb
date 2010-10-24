@@ -106,6 +106,22 @@ class SmidigMailer < ActionMailer::Base
                :comment_url => comment_url
   end
 
+  def talk_acceptance_confirmation(talk)
+    subject    "Din lyntale #{talk.title} har blitt akseptert"
+    recipients talk.users.map &:email
+    from       FROM_EMAIL
+    body       :talk => talk.title,
+               :speaker => talk.speaker_name
+  end
+
+  def talk_refusation_confirmation(talk)
+    subject    "Din lyntale #{talk.title} har ikke kommet med"
+    recipients talk.users.map &:email
+    from       FROM_EMAIL
+    body       :talk => talk.title,
+               :speaker => talk.speaker_name
+  end
+
   def error_mail(title, body)
     subject    title
     recipients "dev@smidig.no"

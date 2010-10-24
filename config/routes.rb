@@ -28,7 +28,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :registrations
 
-
   map.resources :acceptances
 
   map.resources :tags

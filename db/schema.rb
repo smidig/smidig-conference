@@ -107,16 +107,10 @@ ActiveRecord::Schema.define(:version => 20101023200858) do
     t.integer "user_id"
   end
 
-# Could not dump table "sqlite_stat1" because of following StandardError
-#   Unknown type '' for column 'tbl'
-
-# Could not dump table "sqlite_stat2" because of following StandardError
-#   Unknown type '' for column 'tbl'
-
   create_table "tags", :force => true do |t|
-    t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "title"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "tags_talks", :id => false, :force => true do |t|

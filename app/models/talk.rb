@@ -58,4 +58,8 @@ class Talk < ActiveRecord::Base
   def self.all_with_speakers
     with_exclusive_scope{ find(:all, :include => :users, :order => "users.name ")}
   end
+
+  def email_is_sent?
+    email_sent 
+  end
 end
