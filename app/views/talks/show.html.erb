@@ -3,6 +3,10 @@
 <h2 class="page_title"><%=h @talk.title %>
   <% unfinished do %>(<%= antall_stemmer(@talk.votes_count) %>)<% end %></h2>
 
+<% if @talk.accepted?  %>
+<p><%= image_tag("approved_talk.png") %> godkjent</p>
+<% end  %>
+
 <div class="tags">
   <b>Tags:</b>
   <% @talk.tags.each do |tag| %>
