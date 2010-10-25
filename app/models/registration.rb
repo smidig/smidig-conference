@@ -4,7 +4,7 @@ class Registration < ActiveRecord::Base
     "full_price" => "Billett til Smidig 2010",
     "sponsor" => "Sponsor Smidig 2010",
     "volunteer" => "Frivillig på Smidig 2010",
-    "student" => "Student på Smidig 2010",
+    "student" => "Studentbillett til Smidig 2010",
     "organizer" => "Arrangør på Smidig 2010",
     "speaker" => "Foredragsholder på Smidig 2010"
   }
@@ -22,9 +22,16 @@ class Registration < ActiveRecord::Base
 
   before_create :create_payment_info
 
+  def ticket_description
+	TICKET_TEXTS[self.ticket_type] || ticket_type
+  end
+  
+  def ticket_price
+	PAYMENT_CONFIG[:prices][ticket_type].to_i
+  end
+  
   def description
-    (TICKET_TEXTS[self.ticket_type] || ticket_type) + " " +
-      (registration_complete ? " (Betalt)" : "")
+    ticket_description + " " + (registration_complete ? " (Betalt)" : "")
   end
 
   def speaker?
@@ -32,7 +39,11 @@ class Registration < ActiveRecord::Base
   end
 
   def free_ticket
-    %w(sponsor volunteer organizer speaker).include? ticket_type
+    ticket_price == 0
+  end
+  
+  def discounted_ticket?
+	%w(student).include? ticket_type
   end
 
   def special_ticket?
@@ -105,7 +116,7 @@ class Registration < ActiveRecord::Base
       raise "Kan ikke endre en utført betaling!"
     end
     self.registration_complete = false
-    self.price = PAYMENT_CONFIG[:prices][ticket_type].to_i
+    self.price = ticket_price
     self.free_ticket = price == 0
     return true
   end

@@ -2,7 +2,8 @@
 
 <% unless @user.registration.free_ticket %>
   <p>
-    Billetter koster 2750,- inklusive mva. for deltagere
+    <%= @user.registration.ticket_description %> koster
+	<%= @user.registration.ticket_price %>,- inklusive mva. for deltagere
     og 0,- for foredragsholdere (dersom foredraget ditt
     blir godkjent).
   </p>
