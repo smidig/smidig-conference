@@ -28,10 +28,11 @@ class UsersController < ApplicationController
     end
 
     @user = User.new
-    @user.registration = Registration.new(:includes_dinner => true)
+    @user.registration = Registration.new
     @user.registration.manual_payment = params[:manual_payment]
     @user.registration.free_ticket = !params[:free_ticket].blank?
-    @user.registration.ticket_type = params[:free_ticket]
+    @user.registration.ticket_type = params[:free_ticket] || params[:ticket_type] || 'full_price'
+	@user.registration.includes_dinner = @user.registration.discounted_ticket?
   end
 
   def create
