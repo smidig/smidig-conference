@@ -1,12 +1,14 @@
 <fieldset id="confirmations">
 
+	<% unless @user.registration.discounted_ticket? %>
     <div>
-        <%= reg.check_box :includes_dinner, :checked => true %>
+        <%= reg.check_box :includes_dinner %>
         <%= reg.label :includes_dinner,  "Jeg ønsker å delta på middagen" %>
         <% help_tooltip() do  %>
            <p> Middagen er inkludert i prisen og er en del av det sosiale aspektet til konferansen. Middagen er en ikke-ubetydelig kostnad for oss og vi setter stor pris på at du oppgir korrekt informasjon. Skulle du bestemme deg for å delta allikevel, kan du endre dette senere under "min påmelding". </p>
         <% end %>
     </div>
+	<% end %>
 
     <div>
         <div id="railserrordisplaysux">
