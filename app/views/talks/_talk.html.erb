@@ -1,5 +1,5 @@
 <div class="talk" id="<%= dom_id(talk) %>">
-  <h4><%= link_to h(talk.title), talk %> <%= "(#{antall_stemmer(talk.votes_count)})" if talk.votes_count > 0 %></h4>
+  <h4><%= link_to h(talk.title), talk %> <%= "(#{antall_stemmer(talk.votes_count)})" if talk.votes_count > 0 %><%= image_tag("icon_slides.gif") if admin? && talk.slide.file?%></h4>
 
   <div class="submitted_time">
     <%=link_to "#{talk.comments_count or 0} kommentar(er).", talk_path(talk, :anchor => "comments") %>
