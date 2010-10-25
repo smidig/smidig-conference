@@ -10,5 +10,30 @@ class TalkTest < ActiveSupport::TestCase
       talk = Talk.find(talk_id)
       assert_equal comments_count + 1, talk.comments_count
     end
+    should "be pending by default" do
+      assert Talk.first.pending?
+    end
+    should "be accepted" do
+      talk = Talk.first.accept!
+      assert talk.accepted?
+    end
+
+    should "be refused" do
+      talk = Talk.first.refuse!
+      assert talk.refused?
+    end
+
+    should "not be refused nor pending if accepted" do
+      talk = Talk.first.refuse!
+      talk.accept!
+      assert talk.accepted?
+      assert !talk.refused?
+      assert !talk.pending?
+    end
+
+    should "be able to regret" do
+      talk = Talk.first.regret!
+      assert talk.pending?
+    end
   end
 end

@@ -17,6 +17,14 @@ class Talk < ActiveRecord::Base
   validates_acceptance_of :accepted_guidelines
   validates_acceptance_of :accepted_cc_license
 
+  def accept!
+    self.acceptance_status = "accepted"
+    self
+  end
+  def accepted?
+    self.acceptance_status == "accepted"
+  end
+
   def speaker_name
     users.map(&:name).join(", ");
   end
@@ -62,4 +70,34 @@ class Talk < ActiveRecord::Base
   def email_is_sent?
     email_sent 
   end
+
+  def pending?
+    self.acceptance_status == "pending"
+  end
+ def refused?
+    self.acceptance_status == "refused"
+  end
+
+  def refuse!
+    self.acceptance_status = "refused"
+    self
+  end
+
+  def regret!
+    self.acceptance_status = "pending"
+    self
+  end
+
+  def self.count_accepted
+    self.count(:conditions => "acceptance_status = 'accepted'")
+  end
+
+  def self.count_refused
+    self.count(:conditions => "acceptance_status = 'refused'")
+  end
+
+  def self.count_pending
+    self.count(:conditions => "acceptance_status = 'pending'")
+  end
+
 end

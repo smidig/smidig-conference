@@ -37,13 +37,13 @@
       <td>&nbsp;</td>
     <% else %>
       <td>
-        <%= link_to_unless talk.acceptance_status == 'accepted', 'Aksepter', :action => 'accept', :id => talk.id %>
+        <%= link_to_unless talk.accepted?, 'Aksepter', :action => 'accept', :id => talk.id %>
       </td>
       <td>
-        <%= link_to_unless talk.acceptance_status == 'refused', 'Refuser', :action => 'refuse', :id => talk.id %>
+        <%= link_to_unless talk.refused?, 'Refuser', :action => 'refuse', :id => talk.id %>
       </td>
       <td>
-        <%= link_to_unless talk.acceptance_status == 'pending', 'Avvent', :action => 'await', :id => talk.id %>
+        <%= link_to_unless talk.pending?, 'Avvent', :action => 'await', :id => talk.id %>
       </td>
       <td>
         <%= link_to_unless talk.email_sent, 'Send mail', :action => 'send_mail', :id => talk.id %>

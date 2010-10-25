@@ -62,7 +62,7 @@ class User < ActiveRecord::Base
 
   def all_talks_refused?
     for talk in self.talks
-      if talk.acceptance_status != "refused"
+      unless talk.refused?
         return false
       end
     end

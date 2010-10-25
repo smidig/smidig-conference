@@ -16,7 +16,7 @@ class AcceptancesControllerTest < ActionController::TestCase
 
   def test_accept_should_set_talk_as_accepted
     get :accept, :id => @talk.id
-    assert_equal "accepted", Talk.find(@talk.id).acceptance_status
+    assert Talk.find(@talk.id).accepted?
   end
 
   def test_accept_should_set_all_speakers_registrations_as_completed
@@ -34,7 +34,7 @@ class AcceptancesControllerTest < ActionController::TestCase
 
   def test_refuse_should_set_talk_as_refused
     get :refuse, :id => @talk.id
-    assert_equal "refused", Talk.find(@talk.id).acceptance_status
+    assert Talk.find(@talk.id).refused?
   end
 
   def test_refuse_last_talk_sets_speakers_ticket_type_to_paying

@@ -5,9 +5,9 @@ class AcceptancesController < ApplicationController
   def index
     @talks = Talk.all_with_speakers
 
-    num_accepted = Talk.count(:conditions => "acceptance_status = 'accepted'")
-    num_refused = Talk.count(:conditions => "acceptance_status = 'refused'")
-    num_pending = Talk.count(:conditions => "acceptance_status = 'pending'")
+    num_accepted = Talk.count_accepted
+    num_refused = Talk.count_refused
+    num_pending = Talk.count_pending
     @types = {:accepted => num_accepted,
               :refused => num_refused,
               :pending => num_pending
@@ -22,7 +22,7 @@ class AcceptancesController < ApplicationController
       redirect_to :controller => :acceptances
     end
 
-    @talk.acceptance_status = "accepted"
+    @talk.accept!
     @talk.save
 
     for speaker in @talk.users
@@ -45,7 +45,7 @@ class AcceptancesController < ApplicationController
       redirect_to :controller => :acceptances
     end
 
-    @talk.acceptance_status = "refused"
+    @talk.refuse!
     @talk.save
 
     for speaker in @talk.users
@@ -67,7 +67,7 @@ class AcceptancesController < ApplicationController
       redirect_to :controller => :acceptances
     end
 
-    @talk.acceptance_status = "pending"
+    @talk.regret! #Set to pending :)
     @talk.save
 
     for speaker in @talk.users
@@ -92,10 +92,10 @@ class AcceptancesController < ApplicationController
       return
     end
 
-    if @talk.acceptance_status == 'refused'
+    if @talk.refused?
       SmidigMailer.deliver_talk_refusation_confirmation(@talk)
       @talk.email_sent = true
-    elsif @talk.acceptance_status == 'accepted'
+    elsif @talk.accepted?
       SmidigMailer.deliver_talk_acceptance_confirmation(@talk)
       @talk.email_sent = true
     else

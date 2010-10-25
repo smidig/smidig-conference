@@ -67,8 +67,9 @@ class TalksController < ApplicationController
   # POST /talks
   # POST /talks.xml
   def create
-    @talk = Talk.new(params[:talk].merge({ :acceptance_status => "pending" }))
-    @talk = Talk.new(params[:talk])
+    extended_params = params[:talk].merge!({ :acceptance_status => "pending" })
+    @talk = Talk.new(extended_params)
+
     @tags = Tag.find(:all)
 
     # Tag handeling

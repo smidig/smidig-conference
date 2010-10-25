@@ -4,16 +4,7 @@ class UsersController < ApplicationController
   before_filter :require_admin_or_self, :only => [ :show, :edit, :update ]
 
   def index
-    @date_range = (2.months.ago.to_date..Date.today).to_a
-
-    paid_users = User.find_with_filter("paid")
-    @all_per_date = total_by_date(User.find(:all), @date_range)
-    @speakers_per_date = total_by_date(User.find_with_filter("speakers"), @date_range)
-    @paid_per_date = total_by_date(paid_users, @date_range)
-
-    @income_per_date = total_price_per_date(paid_users, @date_range)
-
-    @users = User.find_with_filter(params[:filter])
+    redirect_to registrations_path
   end
 
   def current
