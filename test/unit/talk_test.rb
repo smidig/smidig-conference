@@ -32,8 +32,18 @@ class TalkTest < ActiveSupport::TestCase
     end
 
     should "be able to regret" do
-      talk = Talk.first.regret!
+      talk = talks(:one).regret!
       assert talk.pending?
     end
+
+    should "not list refused talks" do
+      refused = talks(:one).refuse!
+      talks(:two).accept!
+      not_refused = Talk.all_pending_and_approved
+      assert !not_refused.include?(refused)
+      assert not_refused.size > 0
+    end
   end
+
+
 end

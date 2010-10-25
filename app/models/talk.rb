@@ -17,14 +17,6 @@ class Talk < ActiveRecord::Base
   validates_acceptance_of :accepted_guidelines
   validates_acceptance_of :accepted_cc_license
 
-  def accept!
-    self.acceptance_status = "accepted"
-    self
-  end
-  def accepted?
-    self.acceptance_status == "accepted"
-  end
-
   def speaker_name
     users.map(&:name).join(", ");
   end
@@ -40,10 +32,14 @@ class Talk < ActiveRecord::Base
 
   def describe_audience_level
     case audience_level
-    when 'novice' then 'De som har hørt om smidig'
-    when 'intermediate' then 'De som har prøvd smidige metoder'
-    when 'expert' then 'De som bruker smidige metoder i dag'
-    else ''
+      when 'novice' then
+        'De som har hørt om smidig'
+      when 'intermediate' then
+        'De som har prøvd smidige metoder'
+      when 'expert' then
+        'De som bruker smidige metoder i dag'
+      else
+        ''
     end
   end
 
@@ -52,29 +48,40 @@ class Talk < ActiveRecord::Base
   end
 
   def self.all_pending_and_approved
-    all(:order => 'id desc', :include => { :users => :registration }).select {
-      |t| !t.users.first.nil? && t.users.first.registration.ticket_type = "speaker"
+    all(:order => 'id desc', :include => {:users => :registration}).select {
+            |t| !t.refused? && !t.users.first.nil? && t.users.first.registration.ticket_type = "speaker"
     }
   end
-  
+
   def self.all_pending_and_approved_tag(tag)
-    all(:order => 'id desc', :include => { :users => :registration }).select {
-      |t| !t.users.first.nil? && t.users.first.registration.ticket_type = "speaker"
+    all(:order => 'id desc', :include => {:users => :registration}).select {
+            |t| !t.users.first.nil? && t.users.first.registration.ticket_type = "speaker"
     }
   end
 
   def self.all_with_speakers
-    with_exclusive_scope{ find(:all, :include => :users, :order => "users.name ")}
+    with_exclusive_scope { find(:all, :include => :users, :order => "users.name ") }
   end
 
   def email_is_sent?
-    email_sent 
+    email_sent
+  end
+
+
+  def accept!
+    self.acceptance_status = "accepted"
+    self
+  end
+
+  def accepted?
+    self.acceptance_status == "accepted"
   end
 
   def pending?
     self.acceptance_status == "pending"
   end
- def refused?
+
+  def refused?
     self.acceptance_status == "refused"
   end
 
