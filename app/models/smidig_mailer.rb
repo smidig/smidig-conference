@@ -107,7 +107,7 @@ class SmidigMailer < ActionMailer::Base
   end
 
   def talk_acceptance_confirmation(talk)
-    subject    "Din lyntale #{talk.title} har blitt akseptert"
+    subject    "Din lyntale \"#{talk.title}\" har blitt akseptert"
     recipients talk.users.map &:email
     from       FROM_EMAIL
     body       :talk => talk.title,
@@ -115,7 +115,7 @@ class SmidigMailer < ActionMailer::Base
   end
 
   def talk_refusation_confirmation(talk)
-    subject    "Din lyntale #{talk.title} har ikke kommet med"
+    subject    "Din lyntale \"#{talk.title}\" har ikke kommet med"
     recipients talk.users.map &:email
     from       FROM_EMAIL
     body       :talk => talk.title,
