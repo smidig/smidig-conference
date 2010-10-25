@@ -466,3 +466,11 @@ div.time_and_category, .detail {
   margin-top: 0;
   font-style: italic;  
 }
+
+table.acceptance tr:hover {
+  background: #DFDFDF;
+}
+table.acceptance td {
+  text-align: left;
+}
+
