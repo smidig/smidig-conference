@@ -22,6 +22,12 @@ ActionController::Routing::Routes.draw do |map|
     talks.resources :votes
   end
 
+  map.namespace :statistics do |stat|
+	  stat.resources :users_by_company
+	  stat.resources :all_speakers_by_company
+	  stat.resources :all_accepted_speakers_by_company
+	end
+
   map.resources :message_deliveries
 
   map.resources :messages
