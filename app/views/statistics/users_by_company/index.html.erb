@@ -1,0 +1,9 @@
+<h2><%= @title %></h2>
+
+<p></p><strong>Totalt antall selskaper: <%= @companies.size %></strong></p>
+
+<ol>
+<% for company in @companies %>
+    <li><%= company.company.empty? ? "(ikke oppgitt)" : company.company %>: <%= company.num_of_participants %></li>
+<% end %>
+</ol>

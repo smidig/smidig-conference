@@ -1,0 +1,2 @@
+module Statistics::UsersByCompanyHelper
+end

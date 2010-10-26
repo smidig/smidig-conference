@@ -1,0 +1,7 @@
+<h2>Statistikk</h2>
+
+<ul>
+    <li><%=link_to "Antall deltakere pr selskap", :controller => "statistics/users_by_company" %></li>
+    <li><%=link_to "Antall innsendte foredragsholdere pr selskap", :controller => "statistics/users_by_company", :filter => 'speakers' %></li>
+    <li><%=link_to "Antall godkjente foredragsholdere pr selskap", :controller => "statistics/users_by_company", :filter => 'accepted' %></li>
+</ul>
