@@ -482,5 +482,6 @@ div.tags a, div.tags a.visited {
 }
 div.tags span.selected {
     color: #880000;
-    text-decoration: underline;
+    padding: 4px;
+    background: #E8E8E8;
 }
