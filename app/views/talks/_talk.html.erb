@@ -4,6 +4,11 @@
     <%= image_tag("icon_slides.gif") if admin? && talk.slide.file? %>
 
   </h4>
+  <div class="tags">
+  <% talk.tags.each do |tag| %>
+    <%= link_to tag.title, :controller=>"talks", :action=>"article_tags", :id=>tag.id %>
+  <% end %>
+  </div>
 
   <div class="submitted_time">
     <%=link_to "#{talk.comments_count or 0} kommentar(er).", talk_path(talk, :anchor => "comments") %>

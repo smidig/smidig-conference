@@ -10,7 +10,7 @@
 <div class="tags">
   <b>Tags:</b>
   <% @talk.tags.each do |tag| %>
-      <%=h tag.title %>
+      <%= link_to tag.title, :controller=>"talks", :action=>"article_tags", :id=>tag.id %>
   <% end %>
 </div>
 

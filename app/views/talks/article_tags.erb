@@ -1,1 +1,19 @@
-hello
+<%= link_to 'Tilbake til alle lyntaler', talks_path %>
+<br /><br />
+<div class="tags">
+<b>Tags</b><br />
+<% @tags.each do |tag| %>
+  <% if tag.id == @tag.id %>
+    <span class="selected"><%= tag.title %></span>
+  <% else %>
+    <%= link_to tag.title, :controller=>"talks", :action=>"article_tags", :id=>tag.id %>
+  <% end %>
+<% end %>
+</div>
+<br />
+<b>Lyntaler med tagget med "<%= @tag.title %>"</b><br />
+<%= render :partial => @talks %>
+
+<% if @talks.length == 0 %>
+Ingen lyntaler har denne taggen!
+<% end %>

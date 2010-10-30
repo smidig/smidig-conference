@@ -54,9 +54,16 @@ class Talk < ActiveRecord::Base
   end
 
   def self.all_pending_and_approved_tag(tag)
-    all(:order => 'id desc', :include => {:users => :registration}).select {
+    talks_tmp = all(:order => 'id desc', :include => {:users => :registration}).select {
             |t| !t.users.first.nil? && t.users.first.registration.ticket_type = "speaker"
     }
+    talks = []
+    talks_tmp.each do |talk|
+      if talk.tags.include? tag
+         talks.push talk
+      end
+    end  
+    talks
   end
 
   def self.all_with_speakers

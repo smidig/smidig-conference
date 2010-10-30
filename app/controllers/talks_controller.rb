@@ -19,8 +19,9 @@ class TalksController < ApplicationController
   # GET /talks.xml
   def article_tags
     puts params[:id]
-    tag = Tag.find(params[:id])
-    @talks = Talk.all_pending_and_approved_tag(tag)
+    @tags = Tag.find(:all, :order => :title)
+    @tag = Tag.find(params[:id])
+    @talks = Talk.all_pending_and_approved_tag(@tag)
 
     respond_to do |format|
       format.html #article_tags

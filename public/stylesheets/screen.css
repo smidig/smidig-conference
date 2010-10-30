@@ -474,3 +474,13 @@ table.acceptance td {
   text-align: left;
 }
 
+
+
+/** Tags **/
+div.tags a, div.tags a.visited {
+  color: #000;
+}
+div.tags span.selected {
+    color: #880000;
+    text-decoration: underline;
+}
