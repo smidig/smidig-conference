@@ -100,8 +100,11 @@ Heroku app-owner privileges:
     Det meste (unntatt app create) kan styres ved å logge inn som app-owner på heroku.com
 
 Heroku SendGrid:
-    For å sjekke user/pass:
-    heroku config --long --app smidig2010
+    # For å sjekke user/pass:
+    $ heroku config --long --app smidig2010
+
+Bundle without development or test gems. Set this once pr app
+    $ heroku config:add BUNDLE_WITHOUT="development test"
 
 
 ## GIT (github)
