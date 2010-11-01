@@ -482,7 +482,7 @@ div.tags a, div.tags a.visited {
 }
 div.tag_selector span.selected {
     /*color: #880000;*/
-    padding: 4px;
+    padding: 1px 4px;
     background: #C7D6FC;
     border: 1px solid silver;
     display: inline-block;
@@ -491,7 +491,7 @@ div.tag_selector span.selected {
 }
 div.tag_selector a, div.tag_selector a.visited {
     color: black;
-    padding: 4px;
+    padding: 1px 4px;
     background: #E8E8E8;
     border: 1px solid silver;
     display: inline-block;
