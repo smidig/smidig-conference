@@ -480,8 +480,20 @@ table.acceptance td {
 div.tags a, div.tags a.visited {
   color: #000;
 }
-div.tags span.selected {
-    color: #880000;
+div.tag_selector span.selected {
+    /*color: #880000;*/
+    padding: 4px;
+    background: #C7D6FC;
+    border: 1px solid silver;
+}
+div.tag_selector a, div.tag_selector a.visited {
+    color: black;
     padding: 4px;
     background: #E8E8E8;
+    border: 1px solid silver;
 }
+div.tag_selector a:hover {
+   text-decoration: none;
+   background: #F5F5CE
+}
+

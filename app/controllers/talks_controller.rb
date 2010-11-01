@@ -21,7 +21,7 @@ class TalksController < ApplicationController
     puts params[:id]
     @tags = Tag.find(:all, :order => :title)
     @tag = Tag.find(params[:id])
-    @talks = Talk.all_pending_and_approved_tag(@tag)
+    @talks = @tag.talks
 
     respond_to do |format|
       format.html #article_tags
