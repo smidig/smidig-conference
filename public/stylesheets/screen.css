@@ -485,12 +485,19 @@ div.tag_selector span.selected {
     padding: 4px;
     background: #C7D6FC;
     border: 1px solid silver;
+    display: inline-block;
+    float: left;
+    margin: 2px;
 }
 div.tag_selector a, div.tag_selector a.visited {
     color: black;
     padding: 4px;
     background: #E8E8E8;
     border: 1px solid silver;
+    display: inline-block;
+    float: left;
+    margin: 2px;
+
 }
 div.tag_selector a:hover {
    text-decoration: none;
