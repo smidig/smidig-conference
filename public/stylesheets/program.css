@@ -1,10 +1,21 @@
+/** Main style overrides **/
 #wrapper {
     background: none;
 }
 #content {
     padding-left: 20px;
+    margin-right: 200px;
 }
-
+#main {
+   padding-top: 15px;
+}
+#header h1 {
+   display: none;
+}
+#logos {
+   width: 150px;
+}
+/*** End overrides **/
 
 caption {
     font-size:1.5em;
