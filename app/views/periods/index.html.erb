@@ -17,7 +17,7 @@
   <% for time_id in @time_ids %>
     <tr>
       <td>
-        <%= @periods_by_time_and_scene[time_id][0].day %>
+        <% #= @periods_by_time_and_scene[time_id][0].day %>
         <%= @periods_by_time_and_scene[time_id][0].time_of_day %>
       </td>
       <td><%= render :partial => @periods_by_time_and_scene[time_id][0]  %></td>
