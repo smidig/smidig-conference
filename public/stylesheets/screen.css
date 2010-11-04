@@ -504,3 +504,21 @@ div.tag_selector a:hover {
    background: #F5F5CE
 }
 
+
+/*** PROGRAM ***/
+table.program h3, table.program h4 {
+  font-family: times;
+  font-size: 15px;
+  font-weight: bold
+
+}
+table.program td {
+  vertical-align: top;
+  text-align: left;
+
+}
+table.program h3 a:visited {
+  color: red;
+
+}
+

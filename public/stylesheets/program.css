@@ -1,0 +1,213 @@
+#wrapper {
+    background: none;
+}
+#content {
+    padding-left: 20px;
+}
+
+
+caption {
+    font-size:1.5em;
+    font-weight:700;
+    padding-bottom:1em;
+    text-align:left;
+    }
+colgroup.locations col {
+    position:relative;
+    width:33%;
+    }
+
+
+
+div.event {
+
+    float:left;
+
+    font-weight:700;
+
+    }
+
+
+
+table.legend {
+
+    font-family:verdana;
+
+    font-size:.75em;
+
+    margin-bottom:1em;
+
+    }
+
+
+
+table.legend td {
+
+    padding-right:2em;
+
+    }
+
+
+
+table.schedule {
+
+    border-collapse:collapse;
+
+    font-family:verdana;
+
+    font-size:.75em;
+
+    margin-bottom:6em;
+
+    width:100%;
+
+    }
+
+
+
+table.schedule .lyntaler,.categories {
+
+    margin-left:2em;
+
+    }
+
+
+
+table.schedule ol {
+
+    list-style-type:none;
+
+    margin:0;
+
+    padding:0;
+
+    text-align:left;
+
+    }
+
+
+
+table.schedule ol li {
+
+    margin:1em 0 1.5em 0;
+
+    }
+
+
+
+table.schedule td {
+
+    text-align:center;
+
+    vertical-align:top;
+
+    }
+
+
+
+table.schedule td div {
+
+    text-align:left;
+
+    }
+
+
+
+table.schedule td.time {
+
+    padding-top:2em;
+
+    text-align:left;
+
+    }
+
+
+
+table.schedule th,table.schedule td.time,table.schedule td.slot {
+
+    border-color:#ccc;
+
+    border-style:dashed;
+
+    border-width:0 0 1px;
+
+    padding-bottom:.5em;
+
+    vertical-align:bottom;
+
+    }
+
+
+
+table.schedule tfoot {
+
+  display:none;
+
+}
+
+
+
+table.schedule th {
+
+    font-weight:700;
+
+    text-align:left;
+
+    }
+
+
+
+th.location {
+
+    float:right;
+
+    font-style:normal;
+
+    text-align:right;
+
+    }
+
+    
+
+.lyntaler {margin-top: .25em;margin-bottom: .25em;}
+
+
+
+.salA,.salAogB,.restaurant,.foaje,th.event {
+
+    padding-left:2em!important;
+
+    }
+
+
+
+.salB,.salC {
+
+    padding-left:5.5em!important;
+
+    }
+
+    
+
+.location {
+
+    float:right;
+
+    font-family:georgia, serif;
+
+    font-style:italic;
+
+    }
+
+    
+
+table.schedule caption {
+    font-size:1.5em;
+    font-weight:700;
+    padding-bottom:1em;
+    text-align:left;
+    color: red;
+    font-family: verdana, sans-serif;
+}
+
+    

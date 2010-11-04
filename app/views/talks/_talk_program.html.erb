@@ -1,0 +1,14 @@
+<% talks.each do |talk| %>
+
+<div class="talk" id="<%= dom_id(talk) %>">
+  <h4><%= link_to h(talk.title), talk %>
+    <%= image_tag("icon_slides.gif") if admin? && talk.slide.file? %>
+  </h4>
+
+  <div class="submitted_time">
+   <%= render :partial => talk.users %> 
+  </div>
+
+</div>
+
+<% end %>

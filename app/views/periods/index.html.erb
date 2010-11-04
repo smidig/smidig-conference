@@ -1,14 +1,13 @@
 <%= content_for :title, "Program" %>
 
-<h1>Smidig 2010 program</h1>
-
+<h2 style="display:inline-block;">Smidig 2010 program</h2>
 <%= feed_link "All proposed talks", talks_path(:rss) %>
 
 
 <%= form_tag make_program_periods_path if @edit %>
 
 
-<table border="0">
+<table border="0" class="program">
   <tr>
     <th>Tidspunkt</th>
     <th>Scene A</th>

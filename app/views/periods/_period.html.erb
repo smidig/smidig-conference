@@ -1,4 +1,7 @@
 <% if @edit %>
+  <script>
+  $("#logos").hide();
+  </script>
   <%= label_tag "periods[#{period.id}]new_title", "Tittel" %>
   <%= text_field_tag "periods[#{period.id}]new_title", period.title %>
   <%= hidden_field_tag "periods[#{period.id}]previous_title", period.title %>
@@ -16,5 +19,5 @@
   <% end %>
 <% else %>
   <h3><%= period.title %></h3>
-  <%= render :partial => period.talks %>
+  <%= render :partial => "talks/talk_program", :locals => { :talks => period.talks } %>
 <% end %>
