@@ -7,6 +7,7 @@
   line_chart_xy = GoogleChart::LineChart.new('600x300', "Registrerte brukere", false) do |lc|
     lc.axis :y, :range => [0,@all_per_date.max]
     lc.axis :x, :labels => x_labels
+    lc.grid :y_step => 100.0/(@all_per_date.max / 50.0)
     lc.data "Totalt", @all_per_date, colors.pop
     for ticket_type in @registrations_per_ticket_type_per_date.keys
       lc.data ticket_type, @registrations_per_ticket_type_per_date[ticket_type], colors.pop
@@ -17,9 +18,10 @@
 
 <%=
   x_labels = (0...@date_range.length).select { |i| i%10 == 0 }.collect { |i| @date_range[i].strftime("%d %b") }
-  line_chart_xy = GoogleChart::LineChart.new('600x150', "Innbetalt deltageravgift", false) do |lc|
+  line_chart_xy = GoogleChart::LineChart.new('600x300', "Innbetalt deltageravgift", false) do |lc|
     lc.axis :y, :range => [0,@income_per_date.max]
     lc.axis :x, :labels => x_labels
+    lc.grid :y_step => 100.0/(@income_per_date.max / 50000.0)
     lc.data "Kroner", @income_per_date, '0000ff'
   end
   image_tag line_chart_xy.to_url
