@@ -41,8 +41,6 @@ class UsersController < ApplicationController
       return
     end
 
-
-
     User.transaction do
       @user = User.new(params[:user])
       @user.email.strip! if @user.email.present?
@@ -93,6 +91,20 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     update_user
+  end
+
+  def updated_dinner_attendance(dinner_status)
+    flash[:notice] = "Takk for at du oppdaterte din status. #{dinner_status}"
+    redirect_to current_users_path
+  end
+
+  def attending_dinner
+    current_user.attending_dinner!
+    updated_dinner_attendance("Du er påmeldt middagen.")
+  end
+  def not_attending_dinner
+    current_user.not_attending_dinner!
+    updated_dinner_attendance("Du er ikke satt opp til middag.")
   end
 
   def chat

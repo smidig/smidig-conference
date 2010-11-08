@@ -18,7 +18,7 @@ group :development do
 end
 
 group :test do
-  gem 'mocha'
+  gem 'mocha', :require => false #bug, need to be required at the bottom of test_helper
   gem 'shoulda'
   #gem 'factory_girl'
 end

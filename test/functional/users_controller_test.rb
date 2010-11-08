@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'shoulda'
 
 class UsersControllerTest < ActionController::TestCase
 
@@ -10,8 +9,14 @@ class UsersControllerTest < ActionController::TestCase
      "email"=>"test@mail.com"}
   end
 
+  def login_quentin
+    q = users(:quentin)
+    UserSession.create(q)
+    q
+  end
+
   context 'UsersController' do
-    should "UsersController should be able to create user" do
+    should "should be able to create user" do
       post :create, :user=> create_user_params()
       assert assign_to :user
       assert_nil flash[:notice]
@@ -21,6 +26,16 @@ class UsersControllerTest < ActionController::TestCase
       User.expects(:count).returns(500)
       post :create, :user=> create_user_params()
       assert flash[:error]
+    end
+    context "with existing user" do
+      should "be able to change dinner attendance" do
+        q = login_quentin
+        assert !q.attending_dinner?
+        get :attending_dinner, :id => q.id
+        assert flash[:notice]
+        assert_redirected_to current_users_path
+
+      end
     end
   end
 

@@ -1,6 +1,8 @@
 quentin:
   email: whatever@whatever.com
   name: Quentin
+  company: MyCo
+  phone_number: 99887766
   password_salt: <%= salt = Authlogic::Random.hex_token %>
   crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("quentin" + salt) %>
   persistence_token: <%= Authlogic::Random.hex_token %>

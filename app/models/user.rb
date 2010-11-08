@@ -26,6 +26,21 @@ class User < ActiveRecord::Base
     record.errors.add attr, 'Du må godta at vi sender deg epost om konferansen.' if value == false
   end
 
+  def attending_dinner?
+    self.registration ? self.registration.includes_dinner? : false
+  end
+
+  def attend_dinner(have_dinner)
+    self.registration.includes_dinner=have_dinner if self.registration
+    save!
+  end
+
+  def attending_dinner!
+    attend_dinner(true)
+  end
+  def not_attending_dinner!
+    attend_dinner(false)
+  end
   def user_status
     registration ? registration.description : "Ukjent"
   end

@@ -10,6 +10,9 @@ ActionController::Routing::Routes.draw do |map|
   map.register 'register', :controller => 'users', :action => 'create'
   map.chat 'chat', :controller => "users", :action => 'chat'
 
+  map.will_attend_dinner 'users/:id/kommer_til_middag', :controller => "users", :action => 'attending_dinner'
+  map.will_not_attend_dinner 'users/:id/kommer_ikke_til_middag', :controller => "users", :action => 'not_attending_dinner'
+
   map.resources :user_sessions
   map.resources :password_resets
   map.resources :users, :collection => { :current => :get }
