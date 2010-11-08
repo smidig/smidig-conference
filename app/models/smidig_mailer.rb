@@ -92,7 +92,7 @@ class SmidigMailer < ActionMailer::Base
     recipients talk.users.map &:email
     from       FROM_EMAIL
     body       :speaker => talk.speaker_name,
-               :email => talk.users.map(&:email).join(", "),
+               :email => talk.speaker_email,
                :talk => talk.title,
                :talk_url => talk_url
   end
@@ -120,6 +120,17 @@ class SmidigMailer < ActionMailer::Base
     from       FROM_EMAIL
     body       :talk => talk.title,
                :speaker => talk.speaker_name
+  end
+  
+  def upload_slides_notification(talk, edit_talk_url, new_password_reset_url)
+     subject   "Du kan nå laste opp slidene til ditt foredrag på Smidig 2010"
+    recipients talk.users.map &:email
+    from       FROM_EMAIL
+    body       :talk => talk.title,
+               :speaker_email => talk.speaker_email,
+               :speaker => talk.speaker_name,
+               :edit_talk_url => edit_talk_url,
+               :new_password_reset_url => new_password_reset_url
   end
 
   def error_mail(title, body)
