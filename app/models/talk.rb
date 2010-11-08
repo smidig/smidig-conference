@@ -20,6 +20,10 @@ class Talk < ActiveRecord::Base
   def speaker_name
     users.map(&:name).join(", ");
   end
+  
+  def speaker_email
+    users.map(&:email).join(", ");  
+  end
 
 
   def option_text
