@@ -6,6 +6,11 @@
 <head>
   <title>Smidig 2010</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+  <%= yield :additional_css %>
+
+  <%= stylesheet_link_tag 'print', :media => 'print' %>
+
   <!--[if lt IE 7]>
       <%= stylesheet_link_tag 'ielte6' %>
   <![endif]-->
