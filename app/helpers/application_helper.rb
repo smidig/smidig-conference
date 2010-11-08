@@ -20,10 +20,10 @@ module ApplicationHelper
     active ? "active" : "inactive"
   end
 
-  def program_menu_item
+  def program_menu_item(label = 'Program')
     active = controller_is?(%w(talks topics periods program))
-    %Q(<li id="program_menu" class="#{menu_class(active)} topics" title="Program"
-      >#{ link_to_unless_current "Program", :controller => 'program', :action => 'index' }</li>)
+    %Q(<li id="program_menu" class="#{menu_class(active)} topics" title="#{label}"
+      >#{ link_to_unless_current label, :controller => 'program', :action => 'index' }</li>)
   end
 
   def user_menu_item_new

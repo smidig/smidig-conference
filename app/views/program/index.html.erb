@@ -16,15 +16,15 @@
 
 <p>Under konferansen kan du følge med på oppdateringer <a href="http://twitter.com/smidig">på Twitter!</a></p> 
 
-<table class="schedule" summary="This table shows the schedule for the first day of the Smidig 2010 conference on October 22nd.">
+<table class="schedule" summary="This table shows the schedule for the first day of the Smidig 2010 conference on November 16th.">
   <caption>Tirsdag 16. november</caption>
   <colgroup class="times"> 
     <col /> 
     </colgroup> 
   <colgroup class="locations" span="3"> 
-    <col class="salA" /> 
-    <col class="salB" /> 
-    <col class="auditoriet" /> 
+    <col class="salStockholm" /> 
+    <col class="salKobenhavn" /> 
+    <col class="salHelsingfors" /> 
   </colgroup>
   <thead> 
     <tr><th class="time">Tid</th> 
@@ -52,7 +52,7 @@
     <td class="time">9:00</td> 
     <td colspan="3" class="slot foaje"> 
       <div class="event">Åpningstale</div> 
-      <span class="location">Sal A</span> 
+      <span class="location">Scandinaviasalen</span> 
     </td> 
   </tr>
   <!-- Keynote -->
@@ -66,53 +66,53 @@
   <%= timeslot_talks_tr(@periods_by_time_and_scene[2]) %>
     <tr><td class="time">12:00&nbsp;&#8209;&nbsp;13:00</td> 
         <td colspan="3" class="slot restaurant"> 
-            <div class="event">Lunsj</div><span class="location">Spiseriet Henrik</span> 
+            <div class="event">Lunsj</div><span class="location">Brasseriet</span> 
         </td> 
     </tr> 
     <tr><td class="time">13:00&nbsp;&#8209;&nbsp;13:30</td> 
-        <td colspan="3" class="slot salAogB"> 
-            <div class="event">Oppsett av Open Space-sesjoner</div><span class="location">Sal A</span> 
+        <td colspan="3" class="slot salStockholm"> 
+            <div class="event">Introduksjon til Open Space-sesjoner</div><span class="location">Scandinaviasalen</span> 
         </td> 
     </tr> 
     <tr><td class="time">13:30&nbsp;&#8209;&nbsp;14:15</td> 
-        <td colspan="3" class="slot salAogB"> 
-            <div class="event">Open space-sesjoner</div><span class="location">Sal A+B+C</span> 
+        <td colspan="3" class="slot salStockholm"> 
+            <div class="event">Open space-sesjoner</div><span class="location">Scandinaviasalen</span> 
         </td> 
     </tr> 
     <tr><td class="time">14:30&nbsp;&#8209;&nbsp;15:15</td> 
-        <td colspan="3" class="slot salAogB"> 
-            <div class="event">Open space-sesjoner</div><span class="location">Sal A+B+C</span> 
+        <td colspan="3" class="slot salStockholm"> 
+            <div class="event">Open space-sesjoner</div><span class="location">Scandinaviasalen</span> 
         </td> 
     </tr> 
     <tr><td class="time">15:30&nbsp;&#8209;&nbsp;16:15</td> 
-        <td colspan="3" class="slot salAogB"> 
-            <div class="event">Open space-sesjoner</div><span class="location">Sal A+B+C</span> 
+        <td colspan="3" class="slot salStockholm"> 
+            <div class="event">Open space-sesjoner</div><span class="location">Scandinaviasalen</span> 
         </td> 
     </tr> 
-    <tr><td class="time">17:00</td> 
-        <td colspan="3" class="slot salAogB"> 
-          <div class="event">Aperitif</div><span class="location">Samfunnssalen</span>
+    <tr><td class="time">16:30</td> 
+        <td colspan="3" class="slot restaurant"> 
+          <div class="event">Baren åpner</div>
         </td> 
     </tr> 
  
-    <tr><td class="time">18:00</td> 
+    <tr><td class="time">17:30</td> 
         <td colspan="3" class="slot restaurant"> 
-            <div class="event">Middag</div><span class="location">Samfunnssalen</span>
+            <div class="event">Middag</div><span class="location">Radisson BLU</span>
         </td> 
     </tr> 
   </tbody> 
 </table>
 
 
-<table class="schedule" summary="This table shows the schedule for the second day of the Smidig 2010 conference on October 23rd.">
+<table class="schedule" summary="This table shows the schedule for the second day of the Smidig 2010 conference on November 17th.">
   <caption>Onsdag 17. november</caption> 
   <colgroup class="times"> 
     <col /> 
     </colgroup> 
   <colgroup class="locations" span="3"> 
-    <col class="salA" /> 
-    <col class="salB" /> 
-    <col class="auditoriet" /> 
+    <col class="salStockholm" /> 
+    <col class="salKobenhavn" /> 
+    <col class="salHelsingfors" /> 
   </colgroup>
   <thead> 
     <tr><th class="time">Tid</th> 
@@ -130,17 +130,18 @@
   </tfoot>
   <tbody>
   <tr>
-    <td class="time">8:00</td> 
-    <td colspan="3" class="slot foaje"> 
-      <div class="event">Registrering og kaffe</div> 
-      <span class="location">Foajé</span> 
-    </td> 
+    <td class="time">9:00</td> 
+    <td class="slot salStockholm"> 
+      <div class="event"></div> 
+      <span class="location">Stockholmsalen</span> 
+    </td>
   </tr>
   <tr>
-    <td class="time">9:00</td> 
-    <td colspan="3" class="slot foaje"> 
-      <div class="event">En nyansatts inntreden på Pappverket: Et dystopisk teaterstykke</div> 
-      <span class="location">Sal A</span> 
+    <td/>
+    <td class="lyntaler salStockholm">
+      <ol>
+        <li>En nyansatts inntreden på Pappverket: Et dystopisk teaterstykke</li>
+      </ol>
     </td> 
   </tr>
   <%= timeslot_with_location_tr("9:15&nbsp;&#8209;&nbsp;10:00", @periods_by_time_and_scene[3]) %>
@@ -151,27 +152,27 @@
   <%= timeslot_talks_tr(@periods_by_time_and_scene[5]) %>
   <tr><td class="time">12:00&nbsp;&#8209;&nbsp;13:00</td> 
         <td colspan="3" class="slot restaurant"> 
-            <div class="event">Lunsj</div><span class="location">Spiseriet Henrik</span> 
+            <div class="event">Lunsj</div><span class="location">Brasseriet</span> 
         </td> 
     </tr> 
     <tr><td class="time">13:00&nbsp;&#8209;&nbsp;13:30</td> 
-        <td colspan="3" class="slot salAogB"> 
-            <div class="event">Oppsett av Open Space-sesjoner</div><span class="location">Sal A</span> 
+        <td colspan="3" class="slot salStockholm"> 
+            <div class="event">Introduksjon til Open Space-sesjoner</div><span class="location">Scandinaviasalen</span> 
         </td> 
     </tr> 
     <tr><td class="time">13:30&nbsp;&#8209;&nbsp;14:15</td> 
-        <td colspan="3" class="slot salAogB"> 
-            <div class="event">Open Space-sesjoner</div><span class="location">Sal A+B+C</span> 
+        <td colspan="3" class="slot salStockholm"> 
+            <div class="event">Open Space-sesjoner</div><span class="location">Scandinaviasalen</span> 
         </td> 
     </tr> 
     <tr><td class="time">14:30&nbsp;&#8209;&nbsp;15:15</td> 
-        <td colspan="3" class="slot salAogB"> 
-            <div class="event">Open Space-sesjoner</div><span class="location">Sal A+B+C</span> 
+        <td colspan="3" class="slot salStockholm"> 
+            <div class="event">Open Space-sesjoner</div><span class="location">Scandinaviasalen</span> 
         </td> 
     </tr> 
     <tr><td class="time">15:30&nbsp;&#8209;&nbsp;16:15</td> 
-        <td colspan="3" class="slot salAogB"> 
-            <div class="event">Paneldebatt</div><span class="location">Sal A</span> 
+        <td colspan="3" class="slot salStockholm"> 
+            <div class="event">Paneldebatt</div><span class="location">Scandinaviasalen</span> 
         </td> 
     </tr> 
   </tbody> 

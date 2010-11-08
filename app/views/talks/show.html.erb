@@ -25,13 +25,10 @@
   <% else %>
     <h3>Last opp presentasjon</h3>
   <% end %>
-  <p>Opplasting av lyntaler vil bli tilgjengeliggjort senere. Frem til da, jobb videre med presentasjonen!
-    Skriv en god beskrivelse her og få tips og kommentarer. Når vi åpner for opplastning, vil vi opplyse om dette her, på <%= link_to "twitter", twitter_url %>
-    og <%= link_to "mailinglista", mailingliste_url %>.
-  </p>
-    <!-- render :partial => "talks/upload_slide" -->
-<% else %>
-  <% unfinished do %><%= render :partial => "talks/votes" %><% end %>
+    <%= render :partial => "talks/upload_slide" %>
+
+<hr/>
+    
 <% end %>
 
 <div class="description">
