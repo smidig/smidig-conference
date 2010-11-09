@@ -31,7 +31,7 @@ class UsersControllerTest < ActionController::TestCase
       should "be able to change dinner attendance" do
         q = login_quentin
         assert !q.attending_dinner?
-        get :attending_dinner, :id => q.id
+        get :attending_dinner
         assert flash[:notice]
         assert_redirected_to current_users_path
 

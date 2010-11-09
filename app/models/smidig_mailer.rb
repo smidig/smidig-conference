@@ -121,7 +121,7 @@ class SmidigMailer < ActionMailer::Base
     body       :talk => talk.title,
                :speaker => talk.speaker_name
   end
-  
+
   def upload_slides_notification(talk, edit_talk_url, new_password_reset_url)
      subject   "Du kan nå laste opp slidene til ditt foredrag på Smidig 2010"
     recipients talk.users.map &:email
@@ -131,6 +131,15 @@ class SmidigMailer < ActionMailer::Base
                :speaker => talk.speaker_name,
                :edit_talk_url => edit_talk_url,
                :new_password_reset_url => new_password_reset_url
+  end
+
+  def update_dinner_attendance_status(name, email, attending_dinner_url, not_attending_dinner_url)
+    subject   "Kan du bekrefte din status på konferansemiddagen"
+    recipients email
+    from       FROM_EMAIL
+    body       :name => name,
+               :attending_dinner_url => attending_dinner_url,
+               :not_attending_dinner_url => not_attending_dinner_url
   end
 
   def error_mail(title, body)
