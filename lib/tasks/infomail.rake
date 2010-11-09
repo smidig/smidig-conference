@@ -1,9 +1,7 @@
-
 namespace :infomail do
 
   desc "Send out request for speakers to upload slides"
-  task :upload_slides_notification do
-    require File.expand_path(File.dirname(__FILE__) + "/../../config/environment")
+  task :upload_slides_notification => :environment do
     include ActionController::UrlWriter
     default_url_options[:host] = 'smidig2010.no'
 
@@ -17,10 +15,10 @@ namespace :infomail do
   end
 
   desc "Send out request for dinner attendance update"
-  task :update_dinner_attendance_mail do
-    require File.expand_path(File.dirname(__FILE__) + "/../../config/environment")
+  task :update_dinner_attendance_mail => :environment do
     include ActionController::UrlWriter
     default_url_options[:host] = 'smidig2010.no'
+
     puts "Sending #{User.count} mails requesting to update dinner attendance"
     User.all.each do |user|
       next unless user.email == 'ole.morten.amundsen@gmail.com'
@@ -28,8 +26,6 @@ namespace :infomail do
       SmidigMailer.deliver_update_dinner_attendance_status(user.name, user.email, attending_dinner_url, not_attending_dinner_url)
     end
     puts "Sent all #{User.count} mails"
-
-
   end
-
 end
+
