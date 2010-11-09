@@ -1,4 +1,3 @@
-
 namespace :infomail do
   task :setup_mail_settings => :environment do
     include ActionController::UrlWriter
@@ -12,7 +11,6 @@ namespace :infomail do
   task :unready_email do
     raise "This email is not ready to be sent yet!"
   end
-
 
   desc "Send out request for speakers to upload slides"
   task :upload_slides_notification => :unready_email do
@@ -36,5 +34,5 @@ namespace :infomail do
     end
     puts "Sent all #{User.count} mails"
   end
-
 end
+
