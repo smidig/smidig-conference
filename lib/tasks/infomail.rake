@@ -13,7 +13,7 @@ namespace :infomail do
   end
 
   desc "Send out request for speakers to upload slides"
-  task :upload_slides_notification => :mail_settings do
+  task :upload_slides_notification => :sent_email do
     talks = Talk.all(:conditions => {:acceptance_status => 'accepted'})
     for talk in talks
       #next unless talk.speaker_email == 'jb@steria.no'
