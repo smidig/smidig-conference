@@ -14,13 +14,15 @@ namespace :infomail do
 
   desc "Send out request for speakers to upload slides"
   task :upload_slides_notification => :mail_settings do
-    for talk in Talk.all(:conditions => {:acceptance_status => 'accepted'})
-      next unless talk.speaker_email == 'jb@steria.no'
+    talks = Talk.all(:conditions => {:acceptance_status => 'accepted'})
+    for talk in talks
+      #next unless talk.speaker_email == 'jb@steria.no'
 
-      puts "Mailing: #{talk.title}"
+      print "Mailing: #{talk.speaker_email} #{talk.title}....."
       SmidigMailer.deliver_upload_slides_notification(talk, edit_talk_url(talk), new_password_reset_url)
-      puts "Mailed: #{talk.speaker_email} #{talk.title}"
+      puts " done"
     end
+    puts "Sent all #{talks.count} mails"
   end
 
   desc "Send out request for dinner attendance update"
