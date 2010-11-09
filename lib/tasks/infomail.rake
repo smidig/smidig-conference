@@ -1,5 +1,5 @@
 namespace :infomail do
-  task :setup_mail_settings => :environment do
+  task :mail_settings => :environment do
     include ActionController::UrlWriter
     default_url_options[:host] = 'smidig2010.no'
   end
@@ -13,7 +13,7 @@ namespace :infomail do
   end
 
   desc "Send out request for speakers to upload slides"
-  task :upload_slides_notification => :unready_email do
+  task :upload_slides_notification => :mail_settings do
     for talk in Talk.all(:conditions => {:acceptance_status => 'accepted'})
       next unless talk.speaker_email == 'jb@steria.no'
 
@@ -24,7 +24,7 @@ namespace :infomail do
   end
 
   desc "Send out request for dinner attendance update"
-  task :update_dinner_attendance_mail => :setup_mail_settings do
+  task :update_dinner_attendance_mail => :mail_settings do
     count = User.count
     puts "Sending #{count} mails requesting to update dinner attendance"
     User.all.each do |user|
