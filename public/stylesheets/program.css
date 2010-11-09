@@ -184,7 +184,7 @@ th.location {
 
 
 
-.salStockholm,.salScandinavia,.restaurant,.foaje,th.event {
+.salHelsingfors,.salScandinavia,.restaurant,.foaje,th.event {
 
     padding-left:2em!important;
 
@@ -192,7 +192,7 @@ th.location {
 
 
 
-.salKobenhavn,.salHelsingfors {
+.salOslo,.salStockholm {
 
     padding-left:5.5em!important;
 
