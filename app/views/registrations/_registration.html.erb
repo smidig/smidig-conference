@@ -68,4 +68,7 @@ Vi har registrert din betaling. Vi sees på Smidig 2010!
   <p>
   	<%= link_to "Oppdater registering manuelt", edit_registration_path(@user.registration) %>
   </p>
+  <p>
+  	<%= link_to "Skriv ut navnelapp", nametag_path(@user.registration, :format=> 'pdf') %>
+  </p>
 <% end %>

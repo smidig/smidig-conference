@@ -19,6 +19,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :periods, :collection => { :make_program => :post }
   map.resources :votes
   map.resources :comments
+  map.resources :nametags
 
   map.resources :talks do |talks|
     talks.resources :comments
