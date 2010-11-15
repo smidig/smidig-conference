@@ -3,7 +3,7 @@ def find_period(periods, scene, time)
 end
 
 
-TALKS_DIR = "#{Rails.root}/Lyntaler"
+TALKS_DIR = File.expand_path("~/Documents/My Dropbox/Smidig2010/Lyntaler")
 
 namespace :sort_slides do
   task :sort_slides => :environment do
