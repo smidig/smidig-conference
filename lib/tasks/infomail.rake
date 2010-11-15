@@ -30,7 +30,7 @@ namespace :infomail do
     count = User.count
     puts "Sending #{count} mails requesting to update dinner attendance"
     User.all.each do |user|
-      #next unless user.email == 'ole.morten.amundsen@gmail.com'
+      next unless user.email == 'ole.morten.amundsen@gmail.com'
 
       puts "Mailing to #{user.email}"
       SmidigMailer.deliver_update_dinner_attendance_status(user.name, user.email, attending_dinner_url, not_attending_dinner_url)
@@ -42,6 +42,7 @@ namespace :infomail do
   task :welcome_to_the_conference => :mail_settings do
     users = User.all
     for user in users
+      next unless user.email == 'ole.morten.amundsen@gmail.com'
       next if not user.registration.registration_complete?
       #next unless user.email == 'jb@steria.no'
       

@@ -143,7 +143,7 @@ class SmidigMailer < ActionMailer::Base
   end
 
   def welcome_email(user)
-    subject   "Velkommen til Smidig 2010 på Radission Scandinavia hotell Oslo på tirsdag"
+    subject   "Velkommen til Smidig 2010 på Radisson Scandinavia Blu Hotel Oslo, Holbergs plass, i morgen, tirsdag 16.nov"
     recipients user.email
     from       FROM_EMAIL
     body       :user => user
