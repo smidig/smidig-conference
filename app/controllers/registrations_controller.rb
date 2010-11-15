@@ -15,6 +15,20 @@ class RegistrationsController < ApplicationController
     
     @income_per_date = total_price_per_date(@registrations, @date_range)
   end
+
+  def phone_list
+    @registrations = Registration.find_by_params(params)
+    @ticket_types = @registrations.collect { |r| r.ticket_type }.uniq
+
+    first_registration = @registrations.min {|x,y| x.created_at.to_date <=> y.created_at.to_date}
+    @date_range = (first_registration.created_at.to_date-1..Date.today).to_a
+    @all_per_date = total_by_date(@registrations, @date_range)
+    @registrations_per_ticket_type_per_date = per_ticket_type_by_date(@registrations, @date_range)
+    @paid_per_date = total_by_date(@registrations, @date_range)    
+    
+    @income_per_date = total_price_per_date(@registrations, @date_range)
+  end
+	
   
   def edit
   	@registration = Registration.find(params[:id])
