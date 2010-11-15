@@ -26,7 +26,7 @@ namespace :infomail do
   end
 
   desc "Send out request for dinner attendance update"
-  task :update_dinner_attendance_mail => :mail_settings do
+  task :update_dinner_attendance_mail => :sent_email do
     count = User.count
     puts "Sending #{count} mails requesting to update dinner attendance"
     User.all.each do |user|
@@ -37,5 +37,20 @@ namespace :infomail do
     end
     puts "Sent all #{count} mails"
   end
+
+  desc "Send out information before the conference starts"
+  task :welcome_to_the_conference => :mail_settings do
+    users = User.all
+    for user in users
+      next if not user.registration.registration_complete?
+      #next unless user.email == 'jb@steria.no'
+      
+      print "Mailing: #{user.email}..."
+      SmidigMailer.deliver_welcome_email(user)
+      puts " done"
+    end
+    puts "Sent all #{users.count} mails"
+  end
+  
 end
 

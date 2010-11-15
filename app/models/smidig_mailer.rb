@@ -142,6 +142,13 @@ class SmidigMailer < ActionMailer::Base
                :not_attending_dinner_url => not_attending_dinner_url
   end
 
+  def welcome_email(user)
+    subject   "Velkommen til Smidig 2010 på Radission Scandinavia hotell Oslo på tirsdag"
+    recipients user.email
+    from       FROM_EMAIL
+    body       :user => user
+  end
+
   def error_mail(title, body)
     subject    title
     recipients "dev@smidig.no"
