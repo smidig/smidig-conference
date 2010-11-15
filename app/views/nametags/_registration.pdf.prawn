@@ -1,4 +1,5 @@
-
+require 'prawn/layout'
+require 'prawn/format'
 
 
 p_pdf.font_families.update(
@@ -9,7 +10,7 @@ p_pdf.font_families.update(
 p_pdf.font 'Blackout'
 p_pdf.fill_color 'f0f0f0'
 p_pdf.text '2010',
-    :at => [0,-30],
+    :at => [20,-10],
     :overflow => :truncate,
     :size => 160
 
@@ -22,48 +23,39 @@ company = registration.user.company
 
 if (registration.ticket_type == 'organizer' || registration.ticket_type == 'volunteer') and company.downcase == 'cisco'
   p_pdf.text 'Filmcrew',
-      :at => [169,0],
+      :at => [189,20],
       :size => 36
 
 elsif registration.ticket_type == 'organizer'
   p_pdf.text 'Arrangør',
-      :at => [170,0],
+      :at => [190,20],
       :size => 36
 
 
 elsif registration.ticket_type == 'volunteer'
   p_pdf.text 'Frivillig',
-      :at => [183,0],
+      :at => [203,20],
       :size => 36
 end
 
-p_pdf.fill_color 'aa0000'
-p_pdf.cell [0,380],
-    :font_size => 48,
-    :text => name,
-    :width => 257,
-    :padding => 0,
-    :border_width => 50,
-    :border_style => :no_bottom,
-    :border_color => 'aa0000',
-    :background_color => 'aa0000'
-
-
 p_pdf.fill_color 'ffffff'
-p_pdf.cell [-20,373],
-    :font_size => 48,
-    :text => name,
+p_pdf.table [[name]],
+    :font_size  => 48,
+    :horizontal_padding => 20,
+    :vertical_padding => 50,
     :width => 297,
-    :padding => 20,
-    :border_width => 0
+    :border_width => 0,
+    :position => :left,
+    :row_colors  => ['aa0000']
 
+
+
+p_pdf.move_up 30
 p_pdf.fill_color '000000'
-
-p_pdf.move_up 12
-
-p_pdf.text company,
-    :size => 20
-
-
-
-
+p_pdf.table [[company]],
+    :font_size  => 20,
+    :horizontal_padding => 20,
+    :width => 297,
+    :border_width => 0,
+    :position => :left,
+    :row_colors  => ['ffffff']

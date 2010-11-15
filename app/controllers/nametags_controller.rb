@@ -8,7 +8,7 @@ class NametagsController < ApplicationController
     prawnto :prawn => {
         :page_layout => :portrait,
         :page_size => 'A6',
-        :margin=>20 }
+        :margin=>0 }
   end
 
   def show
@@ -17,7 +17,7 @@ class NametagsController < ApplicationController
     prawnto :prawn => {
           :page_layout => :portrait,
           :page_size => 'A6',
-          :margin=>20 }
+          :margin => 0 }
   end
 
 end
