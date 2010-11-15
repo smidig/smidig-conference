@@ -18,6 +18,7 @@ module ProgramHelper
     """
   end
 
+
   def timeslot_tr(timeslot, periods)
     """
     <tr><td class='time'>#{timeslot}</td> 
@@ -28,6 +29,17 @@ module ProgramHelper
     """
   end
   
+  def timeslot_talks_phone_tr(periods)
+    """
+  <tr>
+    <td></td>
+    <td class='lyntaler salHelsingfors'>#{ period_talks_phone(periods[0])}</td>
+    <td class='lyntaler salStockholm'>#{ period_talks_phone(periods[1])}</td>
+    <td class='lyntaler salOslo'>#{ period_talks_phone(periods[2])}</td>
+  </tr>
+    """
+  end
+
   def timeslot_talks_tr(periods)
     """
   <tr>
@@ -38,6 +50,12 @@ module ProgramHelper
   </tr>
     """
   end
+
+
+  def period_talks_phone(period)
+    "<ol>" + period.talks.collect { |t| "<li>#{t.speaker_name} - #{t.users.first.phone_number}</li>" }.join + "</ol>"
+  end
+
   
   def period_talks(period)
     "<ol>" + period.talks.collect { |t| "<li>#{link_to h(t.title), t} (#{t.speaker_name})</li>" }.join + "</ol>"
