@@ -1,3 +1,7 @@
+require 'prawn/layout'
+require 'prawn/format'
+
+
 p_pdf.font_families.update(
     "League Gothic" => { :normal => "#{Rails.root}/public/stylesheets/League_Gothic-webfont.ttf" },
     "Blackout" => { :normal => "#{Rails.root}/public/stylesheets/Blackout-Midnight-webfont.ttf" }
@@ -6,9 +10,9 @@ p_pdf.font_families.update(
 p_pdf.font 'Blackout'
 p_pdf.fill_color 'f0f0f0'
 p_pdf.text '2010',
-    :at => [20,-20],
+    :at => [20,-10],
     :overflow => :truncate,
-    :size => 240
+    :size => 160
 
 p_pdf.font 'League Gothic'
 p_pdf.fill_color 'cc0000'
@@ -19,25 +23,39 @@ company = registration.user.company
 
 if (registration.ticket_type == 'organizer' || registration.ticket_type == 'volunteer') and company.downcase == 'cisco'
   p_pdf.text 'Filmcrew',
-      :at => [315,20],
+      :at => [189,20],
       :size => 36
 
 elsif registration.ticket_type == 'organizer'
   p_pdf.text 'Arrangør',
-      :at => [315,20],
+      :at => [190,20],
       :size => 36
+
 
 elsif registration.ticket_type == 'volunteer'
   p_pdf.text 'Frivillig',
-      :at => [320,20],
+      :at => [203,20],
       :size => 36
 end
 
-p_pdf.fill_color '000000'
-p_pdf.text name,
-    :size => (name.length <= 20) ? 60 : 44,
-    :at => [20,230]
+p_pdf.fill_color 'ffffff'
+p_pdf.table [[name]],
+    :font_size  => 48,
+    :horizontal_padding => 20,
+    :vertical_padding => 50,
+    :width => 297,
+    :border_width => 0,
+    :position => :left,
+    :row_colors  => ['aa0000']
 
-p_pdf.text company,
-    :size => 36,
-    :at => [20,190]
+
+
+p_pdf.move_up 30
+p_pdf.fill_color '000000'
+p_pdf.table [[company]],
+    :font_size  => 20,
+    :horizontal_padding => 20,
+    :width => 297,
+    :border_width => 0,
+    :position => :left,
+    :row_colors  => ['ffffff']
