@@ -42,7 +42,7 @@ namespace :infomail do
   task :welcome_to_the_conference => :mail_settings do
     users = User.all
     for user in users
-      next unless user.email == 'ole.morten.amundsen@gmail.com'
+      #next unless user.email == 'ole.morten.amundsen@gmail.com'
       next if not user.registration.registration_complete?
       #next unless user.email == 'jb@steria.no'
       
