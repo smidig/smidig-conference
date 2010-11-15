@@ -1,7 +1,7 @@
 class RegistrationsController < ApplicationController
   before_filter :require_user
   before_filter :require_admin_or_owner, :except => [:index]
-  before_filter :require_admin, :only => [:index, :delete, :confirm_delete]
+  before_filter :require_admin, :only => [:index, :delete, :confirm_delete, :phone_list]
   
   def index
     @registrations = Registration.find_by_params(params)
