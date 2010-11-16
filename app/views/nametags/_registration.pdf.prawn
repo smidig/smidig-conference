@@ -25,16 +25,18 @@ if (registration.ticket_type == 'organizer' || registration.ticket_type == 'volu
   p_pdf.text 'Filmcrew',
       :at => [189,20],
       :size => 36
-
 elsif registration.ticket_type == 'organizer'
   p_pdf.text 'Arrangør',
       :at => [190,20],
       :size => 36
-
-
 elsif registration.ticket_type == 'volunteer'
   p_pdf.text 'Frivillig',
       :at => [203,20],
+      :size => 36
+elsif registration.ticket_type == 'guest'
+  p_pdf.fill_color '0000cc'
+  p_pdf.text 'Begrenset tilgang',
+      :at => [100,20],
       :size => 36
 end
 
