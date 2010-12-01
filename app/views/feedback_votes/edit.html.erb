@@ -1,0 +1,24 @@
+<h1>Editing feedback_vote</h1>
+
+<% form_for(@feedback_vote) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :talk %><br />
+    <%= f.text_field :talk %>
+  </p>
+  <p>
+    <%= f.label :feedback %><br />
+    <%= f.text_field :feedback %>
+  </p>
+  <p>
+    <%= f.label :comment %><br />
+    <%= f.text_field :comment %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @feedback_vote %> |
+<%= link_to 'Back', feedback_votes_path %>

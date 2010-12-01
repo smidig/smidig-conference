@@ -1,0 +1,18 @@
+<p>
+  <b>Talk:</b>
+  <%=h @feedback_vote.talk %>
+</p>
+
+<p>
+  <b>Feedback:</b>
+  <%=h @feedback_vote.feedback %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%=h @feedback_vote.comment %>
+</p>
+
+
+<%= link_to 'Edit', edit_feedback_vote_path(@feedback_vote) %> |
+<%= link_to 'Back', feedback_votes_path %>

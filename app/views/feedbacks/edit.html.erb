@@ -1,0 +1,16 @@
+<h1>Editing feedback</h1>
+
+<% form_for(@feedback) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :day %><br />
+    <%= f.text_field :day %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @feedback %> |
+<%= link_to 'Back', feedbacks_path %>

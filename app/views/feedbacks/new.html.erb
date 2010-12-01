@@ -1,0 +1,38 @@
+<%= content_for :title, "Registrer feedback-skjema" %>
+
+<h2 style="display:inline-block;">Feedback</h2>
+
+
+
+
+<% form_for @feedback do |f| %>
+    <table border="1" cellspacing="0" class="program">
+        <%= f.hidden_field :day %>
+        <% for feedback_vote in @feedback.feedback_votes %>
+            <tr>
+                <% fields_for "feedback[feedback_vote_attributes]", feedback_vote do |vote_form| %>
+                    <td>
+                        <%= feedback_vote.alternatives[0].title %>
+                        <%= vote_form.radio_button(:vote, feedback_vote.alternatives[0].id)  %>
+                    </td>
+                    <td>
+                        <%= feedback_vote.alternatives[1].title %>
+                        <%= vote_form.radio_button(:vote, feedback_vote.alternatives[1].id)  %>
+                    </td>
+                    <td>
+                        <%= feedback_vote.alternatives[2].title %>
+                        <%= vote_form.radio_button(:vote, feedback_vote.alternatives[2].id)  %>
+                    </td>
+                    <td>
+                        <%= vote_form.text_field :vote, :size => 1 %>
+                    </td>
+                    <td>
+                        <%= vote_form.text_field :comment %>
+                    </td>
+                <% end %>
+            </tr>
+        <% end %>
+
+    </table>
+    <%= submit_tag "Do stuff" %>
+<% end %>
