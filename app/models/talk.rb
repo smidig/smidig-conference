@@ -70,6 +70,10 @@ class Talk < ActiveRecord::Base
     talks
   end
 
+  def self.all_accepted
+    all(:include => :period, :conditions => "acceptance_status = 'accepted'")
+  end
+
   def self.all_with_speakers
     with_exclusive_scope { find(:all, :include => :users, :order => "users.name ") }
   end

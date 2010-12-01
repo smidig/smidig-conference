@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :feedback_votes
+
+  map.resources :feedbacks
+
   map.resources :payment_notifications
 
   map.resources :contents do |contents|
