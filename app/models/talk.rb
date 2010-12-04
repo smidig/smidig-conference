@@ -112,7 +112,7 @@ class Talk < ActiveRecord::Base
 
   def self.add_feedback(talk_id, sum, num)
     talk = Talk.find(talk_id, :include => :users)
-    puts "Gir stemmer til talken til " + self.speaker_name
+    puts "Gir stemmer til talken til " + talk.speaker_name
     talk.sum_of_votes = sum
     talk.num_of_votes = num
 
