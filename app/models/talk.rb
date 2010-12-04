@@ -110,6 +110,15 @@ class Talk < ActiveRecord::Base
     self
   end
 
+  def self.add_feedback(talk_id, sum, num)
+    talk = Talk.find(talk_id, :include => :users)
+    puts "Gir stemmer til talken til " + self.speaker_name
+    talk.sum_of_votes = sum
+    talk.num_of_votes = num
+
+    talk.save
+  end
+
   def self.count_accepted
     self.count(:conditions => "acceptance_status = 'accepted'")
   end

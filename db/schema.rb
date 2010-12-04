@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101130231110) do
+ActiveRecord::Schema.define(:version => 20101204202257) do
 
   create_table "comments", :force => true do |t|
     t.integer   "talk_id"
@@ -132,31 +132,29 @@ ActiveRecord::Schema.define(:version => 20101130231110) do
   end
 
   create_table "talks", :force => true do |t|
-    t.integer   "topic_id"
-    t.string    "title"
-    t.text      "description"
-    t.string    "slideshare_url"
-    t.boolean   "presenting_naked"
-    t.string    "video_url"
-    t.integer   "position"
-    t.boolean   "submitted"
-    t.integer   "red_votes"
-    t.integer   "yellow_votes"
-    t.integer   "green_votes"
-    t.string    "audience_level"
-    t.integer   "votes_count",          :default => 0
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.boolean   "allow_commercial_use"
-    t.string    "allow_derivatives"
-    t.string    "slide_file_name"
-    t.string    "slide_content_type"
-    t.integer   "slide_file_size"
-    t.timestamp "slide_updated_at"
-    t.integer   "period_id"
-    t.integer   "comments_count"
-    t.string    "acceptance_status"
-    t.boolean   "email_sent",           :default => false
+    t.integer  "topic_id"
+    t.string   "title"
+    t.text     "description"
+    t.boolean  "presenting_naked"
+    t.string   "video_url"
+    t.integer  "position"
+    t.boolean  "submitted"
+    t.string   "audience_level"
+    t.integer  "votes_count",          :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "allow_commercial_use"
+    t.string   "allow_derivatives"
+    t.string   "slide_file_name"
+    t.string   "slide_content_type"
+    t.integer  "slide_file_size"
+    t.datetime "slide_updated_at"
+    t.integer  "period_id"
+    t.integer  "comments_count"
+    t.string   "acceptance_status"
+    t.boolean  "email_sent",           :default => false
+    t.integer  "sum_of_votes"
+    t.integer  "num_of_votes"
   end
 
   create_table "topics", :force => true do |t|

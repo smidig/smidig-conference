@@ -12,15 +12,15 @@
             <tr>
                 <% fields_for "feedback[feedback_vote_attributes]", feedback_vote do |vote_form| %>
                     <td>
-                        <%= feedback_vote.alternatives[0].title %>
+                        <%= link_to feedback_vote.alternatives[0].title, feedback_vote.alternatives[0] %>
                         <%= vote_form.radio_button(:vote, feedback_vote.alternatives[0].id)  %>
                     </td>
                     <td>
-                        <%= feedback_vote.alternatives[1].title %>
+                        <%= link_to feedback_vote.alternatives[1].title, feedback_vote.alternatives[1] %>
                         <%= vote_form.radio_button(:vote, feedback_vote.alternatives[1].id)  %>
                     </td>
                     <td>
-                        <%= feedback_vote.alternatives[2].title %>
+                        <%= link_to feedback_vote.alternatives[2].title, feedback_vote.alternatives[2] %>
                         <%= vote_form.radio_button(:vote, feedback_vote.alternatives[2].id)  %>
                     </td>
                     <td>
