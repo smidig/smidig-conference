@@ -11,6 +11,18 @@ namespace :infomail do
   task :unready_email do
     raise "This email is not ready to be sent yet!"
   end
+  
+  desc "Send out information about a related event"
+  task :send_promo_mail => :mail_settings do
+    users = User.all.select { |u| u.accept_optional_email? }
+    for user in users
+      next unless user.email == 'jb@steria.no'
+      print "Mailing: #{user.email}..."
+      SmidigMailer.deliver_promo_email(user)
+      puts " done"
+    end
+    puts "Sent all #{users.count} mails"    
+  end
 
   desc "Send out request for speakers to upload slides"
   task :upload_slides_notification => :sent_email do
@@ -39,7 +51,7 @@ namespace :infomail do
   end
 
   desc "Send out information before the conference starts"
-  task :welcome_to_the_conference => :mail_settings do
+  task :welcome_to_the_conference => :sent_email do
     users = User.all
     for user in users
       #next unless user.email == 'ole.morten.amundsen@gmail.com'

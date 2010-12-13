@@ -148,6 +148,13 @@ class SmidigMailer < ActionMailer::Base
     from       FROM_EMAIL
     body       :user => user
   end
+  
+  def promo_email(user)
+    subject    "Agile Coach Camp i Norge"
+    recipients user.email
+    from       FROM_EMAIL
+    body       :user => user
+  end
 
   def error_mail(title, body)
     subject    title
