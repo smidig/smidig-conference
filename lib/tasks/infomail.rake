@@ -13,7 +13,7 @@ namespace :infomail do
   end
   
   desc "Send out information about a related event"
-  task :send_promo_mail => :mail_settings do
+  task :send_promo_mail => :sent_email do
     users = User.all.select { |u| u.accept_optional_email? }
     for user in users
       #next unless user.email == 'jb@steria.no'
