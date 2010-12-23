@@ -7,6 +7,7 @@ class Talk < ActiveRecord::Base
   has_many :comments, :order => "created_at", :include => :user
   has_many :votes, :include => :user
   has_and_belongs_to_many :tags
+  has_many :feedback_comments
 
   has_attached_file :slide, PAPERCLIP_CONFIG
 
@@ -110,6 +111,10 @@ class Talk < ActiveRecord::Base
     self
   end
 
+  def average_feedback_score
+    self.sum_of_votes.to_f / self.num_of_votes.to_f
+  end
+
   def self.add_feedback(talk_id, sum, num)
     talk = Talk.find(talk_id, :include => :users)
     puts "Gir stemmer til talken til " + talk.speaker_name
@@ -117,6 +122,13 @@ class Talk < ActiveRecord::Base
     talk.num_of_votes = num
 
     talk.save
+  end
+
+  def self.add_comment(talk_id, comment)
+    comm = FeedbackComment.new
+    comm.comment = comment
+    comm.talk = Talk.find(talk_id)
+    comm.save!
   end
 
   def self.count_accepted

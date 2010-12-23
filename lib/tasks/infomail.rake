@@ -3,15 +3,15 @@ namespace :infomail do
     include ActionController::UrlWriter
     default_url_options[:host] = 'smidig2010.no'
   end
-  
+
   task :sent_email do
     raise "This email has already been sent!"
   end
-  
+
   task :unready_email do
     raise "This email is not ready to be sent yet!"
   end
-  
+
   desc "Send out information about a related event"
   task :send_promo_mail => :sent_email do
     users = User.all.select { |u| u.accept_optional_email? }
@@ -21,7 +21,7 @@ namespace :infomail do
       SmidigMailer.deliver_promo_email(user)
       puts " done"
     end
-    puts "Sent all #{users.count} mails"    
+    puts "Sent all #{users.count} mails"
   end
 
   desc "Send out request for speakers to upload slides"
@@ -57,13 +57,30 @@ namespace :infomail do
       #next unless user.email == 'ole.morten.amundsen@gmail.com'
       next if not user.registration.registration_complete?
       #next unless user.email == 'jb@steria.no'
-      
+
       print "Mailing: #{user.email}..."
       SmidigMailer.deliver_welcome_email(user)
       puts " done"
     end
     puts "Sent all #{users.count} mails"
   end
-  
+
+
+  desc "Send out feedback mails to speakers"
+  task :feedback_mail => :unready_email do
+    talks = Talk.all(:include => [:users, :feedback_comments], :conditions => "acceptance_status = 'accepted'")
+    averages = talks.map { |talk| (talk.average_feedback_score) }
+    calc = DecileCalculator.new(averages)
+
+    for talk in talks
+      next unless talk.users[0].email == 'karianne.berg@gmail.com'
+
+      puts "Mailing: #{talk.speaker_name}..."
+
+      group = calc.find_group(talk.average_feedback_score)
+      SmidigMailer.deliver_feedback_email(talk, group)
+    end
+  end
+
 end
 

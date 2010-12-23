@@ -6,161 +6,169 @@ class SmidigMailer < ActionMailer::Base
 
 
   def registration_confirmation(user)
-    subject    "#{SUBJECT_PREFIX} Bruker #{user.email} er registrert"
+    subject "#{SUBJECT_PREFIX} Bruker #{user.email} er registrert"
     recipients user.email
-    from       FROM_EMAIL
-    body       :name => user.name,
-               :email => user.email
+    from FROM_EMAIL
+    body :name => user.name,
+         :email => user.email
   end
 
   def manual_registration_confirmation(user)
-    subject    "#{SUBJECT_PREFIX} Bruker #{user.email} er registrert"
+    subject "#{SUBJECT_PREFIX} Bruker #{user.email} er registrert"
     recipients user.email
-    from       FROM_EMAIL
-    body       :name => user.name,
-               :email => user.email
+    from FROM_EMAIL
+    body :name => user.name,
+         :email => user.email
   end
 
   def manual_registration_notification(user, user_url)
-    subject    "#{SUBJECT_PREFIX} Bruker #{user.email} har registrert seg med manuell betalingshåndtering"
+    subject "#{SUBJECT_PREFIX} Bruker #{user.email} har registrert seg med manuell betalingshåndtering"
     recipients FROM_EMAIL
-    from       FROM_EMAIL
-    reply_to    "#{user.name} <#{user.email}>"
-    body       :name => user.name,
-               :email => user.email,
-               :description => user.registration.description,
-               :user_url => user_url
+    from FROM_EMAIL
+    reply_to "#{user.name} <#{user.email}>"
+    body :name => user.name,
+         :email => user.email,
+         :description => user.registration.description,
+         :user_url => user_url
   end
 
   def speaker_registration_confirmation(user)
-    subject    "#{SUBJECT_PREFIX} Bruker #{user.email} er registrert"
+    subject "#{SUBJECT_PREFIX} Bruker #{user.email} er registrert"
     recipients user.email
-    from       FROM_EMAIL
-    body       :name => user.name,
-               :email => user.email
+    from FROM_EMAIL
+    body :name => user.name,
+         :email => user.email
   end
 
   def speaker_registration_notification(user, user_url)
-    subject    "#{SUBJECT_PREFIX} Bruker #{user.email} har registrert seg som foredragsholder."
+    subject "#{SUBJECT_PREFIX} Bruker #{user.email} har registrert seg som foredragsholder."
     recipients FROM_EMAIL
-    from       FROM_EMAIL
-    reply_to    "#{user.name} <#{user.email}>"
-    body       :name => user.name,
-               :email => user.email,
-               :user_url => user_url
+    from FROM_EMAIL
+    reply_to "#{user.name} <#{user.email}>"
+    body :name => user.name,
+         :email => user.email,
+         :user_url => user_url
   end
 
   def password_reset_instructions(user)
-    subject    "#{SUBJECT_PREFIX} Hvordan endre ditt passord"
+    subject "#{SUBJECT_PREFIX} Hvordan endre ditt passord"
     recipients user.email
-    from       FROM_EMAIL
-    body       :edit_password_reset_url => edit_password_reset_url(user.perishable_token)
+    from FROM_EMAIL
+    body :edit_password_reset_url => edit_password_reset_url(user.perishable_token)
 
   end
 
   def free_registration_confirmation(user)
-    subject    "#{SUBJECT_PREFIX} Bruker #{user.email} er registrert"
+    subject "#{SUBJECT_PREFIX} Bruker #{user.email} er registrert"
     recipients user.email
-    from       FROM_EMAIL
-    body       :name => user.name,
-               :email => user.email
+    from FROM_EMAIL
+    body :name => user.name,
+         :email => user.email
   end
 
   def free_registration_notification(user, user_url)
-    subject    "#{SUBJECT_PREFIX} Bruker #{user.email} har registrert seg som #{user.registration.description}"
+    subject "#{SUBJECT_PREFIX} Bruker #{user.email} har registrert seg som #{user.registration.description}"
     recipients FROM_EMAIL
-    from       FROM_EMAIL
-    reply_to    "#{user.name} <#{user.email}>"
-    body       :name => user.name,
-               :email => user.email,
-               :description => user.registration.description,
-               :user_url => user_url
+    from FROM_EMAIL
+    reply_to "#{user.name} <#{user.email}>"
+    body :name => user.name,
+         :email => user.email,
+         :description => user.registration.description,
+         :user_url => user_url
 
   end
 
   def payment_confirmation(registration)
-    subject    "#{SUBJECT_PREFIX} Betalingskvittering for #{registration.user.email}"
+    subject "#{SUBJECT_PREFIX} Betalingskvittering for #{registration.user.email}"
     recipients registration.user.email
-    from       FROM_EMAIL
-    body       :name => registration.user.name,
-               :payment_text => registration.description,
-               :amount => registration.price
+    from FROM_EMAIL
+    body :name => registration.user.name,
+         :payment_text => registration.description,
+         :amount => registration.price
   end
 
   def talk_confirmation(talk, talk_url)
-    subject    "#{SUBJECT_PREFIX} Bekreftelse på foredrag #{talk.title}"
+    subject "#{SUBJECT_PREFIX} Bekreftelse på foredrag #{talk.title}"
     recipients talk.users.map &:email
-    from       FROM_EMAIL
-    body       :speaker => talk.speaker_name,
-               :email => talk.speaker_email,
-               :talk => talk.title,
-               :talk_url => talk_url
+    from FROM_EMAIL
+    body :speaker => talk.speaker_name,
+         :email => talk.speaker_email,
+         :talk => talk.title,
+         :talk_url => talk_url
   end
 
   def comment_notification(comment, comment_url)
-    subject    "#{SUBJECT_PREFIX} Kommentar til #{comment.talk.title}"
+    subject "#{SUBJECT_PREFIX} Kommentar til #{comment.talk.title}"
     recipients comment.talk.users.map &:email
-    from       FROM_EMAIL
-    body       :speaker => comment.talk.speaker_name,
-               :talk => comment.talk.title,
-               :comment_url => comment_url
+    from FROM_EMAIL
+    body :speaker => comment.talk.speaker_name,
+         :talk => comment.talk.title,
+         :comment_url => comment_url
   end
 
   def talk_acceptance_confirmation(talk)
-    subject    "Din lyntale \"#{talk.title}\" har blitt akseptert"
+    subject "Din lyntale \"#{talk.title}\" har blitt akseptert"
     recipients talk.users.map &:email
-    from       FROM_EMAIL
-    body       :talk => talk.title,
-               :speaker => talk.speaker_name
+    from FROM_EMAIL
+    body :talk => talk.title,
+         :speaker => talk.speaker_name
   end
 
   def talk_refusation_confirmation(talk)
-    subject    "Din lyntale \"#{talk.title}\" har ikke kommet med"
+    subject "Din lyntale \"#{talk.title}\" har ikke kommet med"
     recipients talk.users.map &:email
-    from       FROM_EMAIL
-    body       :talk => talk.title,
-               :speaker => talk.speaker_name
+    from FROM_EMAIL
+    body :talk => talk.title,
+         :speaker => talk.speaker_name
   end
 
   def upload_slides_notification(talk, edit_talk_url, new_password_reset_url)
-     subject   "Du kan nå laste opp slidene til ditt foredrag på Smidig 2010"
+    subject "Du kan nå laste opp slidene til ditt foredrag på Smidig 2010"
     recipients talk.users.map &:email
-    from       FROM_EMAIL
-    body       :talk => talk.title,
-               :speaker_email => talk.speaker_email,
-               :speaker => talk.speaker_name,
-               :edit_talk_url => edit_talk_url,
-               :new_password_reset_url => new_password_reset_url
+    from FROM_EMAIL
+    body :talk => talk.title,
+         :speaker_email => talk.speaker_email,
+         :speaker => talk.speaker_name,
+         :edit_talk_url => edit_talk_url,
+         :new_password_reset_url => new_password_reset_url
   end
 
   def update_dinner_attendance_status(name, email, attending_dinner_url, not_attending_dinner_url)
-    subject   "Kan du bekrefte din status på konferansemiddagen"
+    subject "Kan du bekrefte din status på konferansemiddagen"
     recipients email
-    from       FROM_EMAIL
-    body       :name => name,
-               :attending_dinner_url => attending_dinner_url,
-               :not_attending_dinner_url => not_attending_dinner_url
+    from FROM_EMAIL
+    body :name => name,
+         :attending_dinner_url => attending_dinner_url,
+         :not_attending_dinner_url => not_attending_dinner_url
   end
 
   def welcome_email(user)
-    subject   "Velkommen til Smidig 2010 på Radisson Scandinavia Blu Hotel Oslo, Holbergs plass, i morgen, tirsdag 16.nov"
+    subject "Velkommen til Smidig 2010 på Radisson Scandinavia Blu Hotel Oslo, Holbergs plass, i morgen, tirsdag 16.nov"
     recipients user.email
-    from       FROM_EMAIL
-    body       :user => user
+    from FROM_EMAIL
+    body :user => user
   end
-  
+
   def promo_email(user)
-    subject    "Agile Coach Camp i Norge"
+    subject "Agile Coach Camp i Norge"
     recipients user.email
-    from       FROM_EMAIL
-    body       :user => user
+    from FROM_EMAIL
+    body :user => user
   end
 
   def error_mail(title, body)
-    subject    title
+    subject title
     recipients "dev@smidig.no"
-    from       FROM_EMAIL
-    body       body
+    from FROM_EMAIL
+    body body
+  end
+
+  def feedback_email(talk, group)
+    subject "Tilbakemelding på din lyntale på Smidig 2010"
+    recipients talk.users.map &:email
+    from FROM_EMAIL
+    body :talk => talk,
+         :group => group
   end
 
 end

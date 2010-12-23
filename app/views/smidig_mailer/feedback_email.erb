@@ -1,0 +1,49 @@
+Hei <%= @talk.speaker_name %>,
+
+Som du sikkert har fått med deg, hadde vi også i år tilbakemeldinger fra deltakerne
+på Smidig 2010. I år hadde vi også et såpass differensiert tilbakemeldingssystem at vi
+mener at det kan gi deltakerne våre verdifull informasjon de kan ta med seg videre i
+senere foredrag. Deltakerne fikk mulighet til å gi hvert foredrag en karakter med
+ett av fem forskjellige smilefjes, fra "veldig sur" til "veldig blid". Vi har i
+gjennomsnittstallene under oversatt smilefjesene til en tallbasert skala fra 1-5, der
+1 representerer "veldig sur" og 5 representerer "veldig blid".
+
+Ditt foredrag fikk til sammen <%= @talk.num_of_votes %> tilbakemeldinger. Gjennomsnittet
+av tilbakemeldingene du fikk var <%= @talk.sum_of_votes / @talk.num_of_votes  %>. For at
+du skal få et inntrykk av hvordan du ligger an i forhold til de andre, har vi også delt
+opp foredragene i fire grupper, basert på de gjennomsnittlige tilbakemeldingene.
+Gruppe 1: 10% med høyest snitt på tilbakemeldinger (over 9. decil)
+Gruppe 2: 20% med nest høyest snitt på tilbakemeldinger (mellom 7. og 9. decil)
+Gruppe 3: 30% med nest lavest snitt på tilbakemeldinger (mellom 4. og 7. decil)
+Gruppe 4: 40% med lavest snitt på tilbakemeldinger (under 4. decil)
+
+Ditt foredrag er i gruppe <%= @group %>.
+
+<% if(@talk.feedback_comments) %>
+Du fikk også følgende kommentarer fra deltakerne på presentasjonen din:
+<% for comment in @talk.feedback_comments %>
+  * <%= comment %>
+<% end %>
+<% end %>
+
+Vi hadde et utrolig høyt nivå på foredrag i år, noe tilbakemeldingene også gjenspeiler.
+Tilbakemeldingene fra deltakerne er verdifull informasjon du kan bruke til å forbedre
+deg. Bruk dem! Kommentarer og score blir ikke publisert, de er for deg alene.
+
+Vi håper at du vil sende inn forslag til lyntale også neste år!
+
+Med smidig hilsen
+  Arrangørene av Smidig 2010
+
+---
+
+Disclaimer: Gjennomsnittstall, spesielt på et såpass lite datagrunnlag som vårt, er i
+beste fall en indikasjon på kvaliteten på foredraget ditt. I vårt spørreskjema skilte vi
+heller ikke mellom kvaliteten på innholdet og kvaliteten på måten temaet ble presentert
+på. Vi har heller ikke tatt hensyn til outliers, forskjellen på snitt-tilbakemeldinger
+mellom konferansedagene (0,19 prosentpoeng) eller forskjellen på snitt-tilbakemeldinger
+for de 25% med færrest tilbakemeldinger vs resten (0,24 prosentpoeng). En
+gjennomsnittsverdi forutsetter dessuten at en 4-tilbakemelding ("blidt smilefjes") er
+dobbelt så god som en 2-tilbakemelding ("surt smilefjes"), noe som ikke nødvendigvis er
+tilfelle for de som har gitt tilbakemeldinger. Se derfor på tallene som en pekepinn,
+ikke et fasitsvar!
