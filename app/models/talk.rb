@@ -112,7 +112,8 @@ class Talk < ActiveRecord::Base
   end
 
   def average_feedback_score
-    self.sum_of_votes.to_f / self.num_of_votes.to_f
+    score = self.sum_of_votes.to_f / self.num_of_votes.to_f
+    "%.2f" % score
   end
 
   def self.add_feedback(talk_id, sum, num)
