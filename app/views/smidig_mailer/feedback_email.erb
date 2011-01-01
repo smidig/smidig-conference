@@ -22,7 +22,7 @@ Ditt foredrag er i gruppe <%= @group %>.
 <% if(@talk.feedback_comments) %>
 Du fikk også følgende kommentarer fra deltakerne på presentasjonen din:
 <% for comment in @talk.feedback_comments %>
-  * <%= comment %>
+  * <%= comment.comment %>
 <% end %>
 <% end %>
 
