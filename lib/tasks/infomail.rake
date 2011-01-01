@@ -70,7 +70,7 @@ namespace :infomail do
   task :feedback_mail => :unready_email do
     talks = Talk.all(:include => [:users, :feedback_comments], :conditions => "acceptance_status = 'accepted'")
     averages = talks.map { |talk| (talk.average_feedback_score) }
-    calc = DecileCalculator.new(averages)
+    calc = PercentileCalculator.new(averages)
 
     for talk in talks
       next unless talk.users[0].email == 'karianne.berg@gmail.com'

@@ -1,19 +1,19 @@
-class DecileCalculator
+class PercentileCalculator
 
   def initialize(values)
     @values = values.sort
 
-    @ninth_decile = calculate(90)
+    @eightisixth_percentile = calculate(86)
     @seventh_decile = calculate(70)
-    @fifth_decile = calculate(40)
+    @forth_decile = calculate(40)
   end
 
   def find_group(value)
-    if value >= @ninth_decile
+    if value >= @eightisixth_percentile
       return 1
     elsif value >= @seventh_decile
       return 2
-    elsif value >= @fifth_decile
+    elsif value >= @forth_decile
       return 3
     else
       return 4
