@@ -73,7 +73,7 @@ namespace :infomail do
     calc = PercentileCalculator.new(averages)
 
     for talk in talks
-      next unless talk.users[0].email == 'karianne.berg@gmail.com'
+      #next unless talk.users[0].email == 'karianne.berg@gmail.com'
 
       puts "Mailing: #{talk.speaker_name}..."
 
