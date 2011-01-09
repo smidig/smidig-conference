@@ -67,7 +67,7 @@ namespace :infomail do
 
 
   desc "Send out feedback mails to speakers"
-  task :feedback_mail => :mail_settings do
+  task :feedback_mail => :sent_email do
     talks = Talk.all(:include => [:users, :feedback_comments], :conditions => "acceptance_status = 'accepted'")
     averages = talks.map { |talk| (talk.average_feedback_score) }
     calc = PercentileCalculator.new(averages)
