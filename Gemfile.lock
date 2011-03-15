@@ -32,10 +32,10 @@ GEM
       activerecord
       activesupport
     prawn (0.6.3)
-      prawn-core (>= 0.6.3, < 0.7)
-      prawn-format (>= 0.2.3, < 0.3)
-      prawn-layout (>= 0.3.2, < 0.4)
-      prawn-security (>= 0.1.1, < 0.2)
+      prawn-core (< 0.7, >= 0.6.3)
+      prawn-format (< 0.3, >= 0.2.3)
+      prawn-layout (< 0.4, >= 0.3.2)
+      prawn-security (< 0.2, >= 0.1.1)
     prawn-core (0.6.3)
     prawn-format (0.2.3)
       prawn-core
@@ -62,11 +62,12 @@ GEM
     shoulda (2.11.3)
     sinatra (1.0)
       rack (>= 1.0)
+    sqlite3-ruby (1.3.2)
     sqlite3-ruby (1.3.2-x86-mingw32)
     taps (0.3.14)
-      json_pure (>= 1.2.0, < 1.5.0)
+      json_pure (< 1.5.0, >= 1.2.0)
       rack (>= 1.0.1)
-      rest-client (>= 1.4.0, < 1.7.0)
+      rest-client (< 1.7.0, >= 1.4.0)
       sequel (~> 3.17.0)
       sinatra (~> 1.0.0)
       sqlite3-ruby (~> 1.2)
@@ -74,6 +75,7 @@ GEM
     xml-simple (1.0.12)
 
 PLATFORMS
+  ruby
   x86-mingw32
 
 DEPENDENCIES

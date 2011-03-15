@@ -3,6 +3,9 @@
 
 require(File.join(File.dirname(__FILE__), 'config', 'boot'))
 
+# Required for thread handling ActiveSupport::Dependencies::Mutex
+require 'thread'
+
 require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'
