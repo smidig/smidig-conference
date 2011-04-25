@@ -36,10 +36,6 @@ ActionController::Routing::Routes.draw do |map|
 	  stat.resources :all_accepted_speakers_by_company
 	end
 
-  map.resources :message_deliveries
-
-  map.resources :messages
-
   map.resources :registrations, :collection => { :phone_list => :get }
 
   map.resources :acceptances
