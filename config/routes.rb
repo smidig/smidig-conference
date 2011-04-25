@@ -1,96 +1,63 @@
-ActionController::Routing::Routes.draw do |map|
-  map.resources :feedback_votes
-
-  map.resources :feedbacks
-
-  map.resources :payment_notifications
-
-  map.resources :contents do |contents|
-    contents.resources :content_revisions
+SmidigConference::Application.routes.draw do
+  resources :feedback_votes
+  resources :feedbacks
+  resources :payment_notifications
+  resources :contents do
+      resources :content_revisions
   end
 
-  map.login 'login', :controller => "user_sessions", :action => "new"
-  map.logout 'logout', :controller => "user_sessions", :action => "logout"
-  map.register 'register', :controller => 'users', :action => 'create'
-  map.chat 'chat', :controller => "users", :action => 'chat'
-
-  map.attending_dinner 'users/current/attending_dinner', :controller => "users", :action => 'attending_dinner'
-  map.not_attending_dinner 'users/current/not_attending_dinner', :controller => "users", :action => 'not_attending_dinner'
-
-  map.resources :user_sessions
-  map.resources :password_resets
-  map.resources :users, :collection => { :current => :get }
-  map.resources :periods, :collection => { :make_program => :post }
-  map.resources :votes
-  map.resources :comments
-  map.resources :nametags
-
-  map.resources :talks do |talks|
-    talks.resources :comments
-    talks.resources :votes
+  match 'login' => 'user_sessions#new', :as => :login
+  match 'logout' => 'user_sessions#logout', :as => :logout
+  match 'register' => 'users#create', :as => :register
+  match 'chat' => 'users#chat', :as => :chat
+  match 'users/current/attending_dinner' => 'users#attending_dinner', :as => :attending_dinner
+  match 'users/current/not_attending_dinner' => 'users#not_attending_dinner', :as => :not_attending_dinner
+  resources :user_sessions
+  resources :password_resets
+  resources :users do
+    collection do
+      get :current
+    end
   end
 
-  map.namespace :statistics do |stat|
-	  stat.resources :users_by_company
-	  stat.resources :all_speakers_by_company
-	  stat.resources :all_accepted_speakers_by_company
-	end
-
-  map.resources :registrations, :collection => { :phone_list => :get }
-
-  map.resources :acceptances
-
-  map.resources :tags
-
-  map.resources :topics do |topics|
-    topics.resources :talks
+  resources :periods do
+    collection do
+  post :make_program
+  end
+  
+  
   end
 
-  # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  map.root :controller => "info"  #'/' resolves to info/index.html
+  resources :votes
+  resources :comments
+  resources :nametags
+  resources :talks do
+    resources :comments
+    resources :votes
+  end
 
-  #map.root :controller => "contents", :action => "show", :id => 1
-  #map.root :controller => "info", :action => 'index'
+  namespace :statistics do
+      resources :users_by_company
+      resources :all_speakers_by_company
+      resources :all_accepted_speakers_by_company
+  end
 
-  # The priority is based upon order of creation: first created -> highest priority.
+  resources :message_deliveries
+  resources :messages
+  resources :registrations do
+    collection do
+      get :phone_list
+    end
+  end
 
-  # Sample of regular route:
-  #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
-  # Keep in mind you can assign values other than :controller and :action
+  resources :acceptances
+  resources :tags
+  resources :topics do
+      resources :talks
+  end
 
-  # Sample of named route:
-  #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   map.resources :products
-
-  # Sample resource route with options:
-  #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
-
-  # Sample resource route with sub-resources:
-  #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
-
-  # Sample resource route with more complex sub-resources
-  #   map.resources :products do |products|
-  #     products.resources :comments
-  #     products.resources :sales, :collection => { :recent => :get }
-  #   end
-
-  # Sample resource route within a namespace:
-  #   map.namespace :admin do |admin|
-  #     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
-  #     admin.resources :products
-  #   end
-
-
-  # See how all your routes lay out with "rake routes"
-
-  # Install the default routes as the lowest priority.
-  # Note: These default routes make all actions in every controller accessible via GET requests. You should
-  # consider removing the them or commenting them out if you're using named routes and resources.
-  map.connect ':controller/:action.:format'
-  map.connect ':controller.:format'
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  match '/' => 'info#index', :as => 'root'
+  match ':controller/:action.:format' => '#index'
+  match ':controller.:format' => '#index'
+  match '/:controller(/:action(/:id))'
 end
