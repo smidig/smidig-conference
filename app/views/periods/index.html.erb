@@ -20,9 +20,9 @@
         <% #= @periods_by_time_and_scene[time_id][0].day %>
         <%= @periods_by_time_and_scene[time_id][0].time_of_day %>
       </td>
-      <td><%= render :partial => @periods_by_time_and_scene[time_id][0]  %></td>
-      <td><%= render :partial => @periods_by_time_and_scene[time_id][1]  %></td>
-      <td><%= render :partial => @periods_by_time_and_scene[time_id][2]  %></td>
+      <% for scene in [0,1,2] %>
+        <td><%= render :partial => @periods_by_time_and_scene[time_id][scene] if @periods_by_time_and_scene[time_id][scene]  %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
