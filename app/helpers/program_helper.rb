@@ -15,7 +15,7 @@ module ProgramHelper
             <span class='location'>Oslosalen</span>
         </td>
     </tr> 
-    """
+    """.html_safe
   end
 
 
@@ -26,7 +26,7 @@ module ProgramHelper
         <td class='slot salStockholm'><div class='event'>#{periods[1].title}</div></td>
         <td class='slot salOslo'><div class='event'>#{periods[2].title}</div></td>
     </tr> 
-    """
+    """.html_safe
   end
   
   def timeslot_talks_phone_tr(periods)
@@ -37,7 +37,7 @@ module ProgramHelper
     <td class='lyntaler salStockholm'>#{ period_talks_phone(periods[1])}</td>
     <td class='lyntaler salOslo'>#{ period_talks_phone(periods[2])}</td>
   </tr>
-    """
+    """.html_safe
   end
 
   def timeslot_talks_tr(periods)
@@ -48,7 +48,7 @@ module ProgramHelper
     <td class='lyntaler salStockholm'>#{ period_talks(periods[1])}</td>
     <td class='lyntaler salOslo'>#{ period_talks(periods[2])}</td>
   </tr>
-    """
+    """.html_safe
   end
 
 
