@@ -88,7 +88,7 @@ module ApplicationHelper
 
   # Don't include the following in production or staging
   def unfinished
-    yield unless (RAILS_ENV == 'production' || RAILS_ENV == 'staging')
+    yield unless (Rails.env == 'production' || Rails.env == 'staging')
   end
 
   def mailingliste_url

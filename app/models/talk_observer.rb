@@ -1,8 +1,8 @@
 class TalkObserver < ActiveRecord::Observer
   def after_create(talk)
     # Twitter
-    if RAILS_ENV == 'experimental'
-      cfg = YAML::load(File.open(File.join(File.dirname(__FILE__), '../../tmp/twitter.yml')))['production'].symbolize_keys
+    if Rails.env == 'experimental'
+      cfg = YAML::load(Rails.root.join("tmp", "twitter.yml"))['production'].symbolize_keys
       puts "Auth: #{cfg[:username]} #{cfg[:password]}"
       auth = Twitter::HTTPAuth.new(username, password)
       base = Twitter::Base.new(auth)

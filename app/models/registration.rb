@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class Registration < ActiveRecord::Base
   TICKET_TEXTS = {
     "early_bird" => "Earlybird-billett til Smidig 2010",

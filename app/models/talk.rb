@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class Talk < ActiveRecord::Base
   default_scope :order => 'created_at desc'
 
