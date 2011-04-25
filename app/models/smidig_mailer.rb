@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class SmidigMailer < ActionMailer::Base
 
   default_url_options[:host] = "smidig2010.no"

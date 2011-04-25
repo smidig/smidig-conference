@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class RegistrationsController < ApplicationController
   before_filter :require_user
   before_filter :require_admin_or_owner, :except => [:index]

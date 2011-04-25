@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class PasswordResetsController < ApplicationController
   
   before_filter :load_user_using_perishable_token, :only => [:edit, :update]

@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class TalksController < ApplicationController
   before_filter :require_user, :except => [ :index, :show, :new, :article_tags ]
   #before_filter :require_admin, :only => [ :new, :create ]

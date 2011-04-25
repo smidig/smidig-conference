@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 module TopicsHelper
   def show_program_for_topic(topic, topic_offset)
     @topic = topic
