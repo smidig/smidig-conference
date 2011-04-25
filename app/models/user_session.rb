@@ -5,4 +5,9 @@ class UserSession < Authlogic::Session::Base
     user_session.password = password      
     user_session.save
   end
+
+  # http://www.dixis.com/?p=352
+  def to_key
+    new_record? ? nil : [ self.send(self.class.primary_key) ]
+  end
 end
