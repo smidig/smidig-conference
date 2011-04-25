@@ -1,5 +1,5 @@
-<% form_for @user do |f| %>
-  <%= f.error_messages %>
+<%= form_for @user do |f| %>
+  <%= render "shared/error_messages", :target => @user %>
 <div id="registration_form">
 
     <fieldset id="personal_details">
@@ -26,11 +26,9 @@
       <div class="field bekreft">
         <%= f.label :password_confirmation, "Bekreft passord"%>
         <%= f.password_field :password_confirmation %>
-      </div>
-    </fieldset>
 
     <fieldset id="registration_details">
-      <% f.fields_for :registration do |reg| %>
+      <%= f.fields_for :registration do |reg| %>
         <%= reg.hidden_field :free_ticket %>
         <%= reg.hidden_field :manual_payment %>
 

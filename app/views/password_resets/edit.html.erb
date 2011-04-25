@@ -6,7 +6,7 @@
 </p>
 
 <% form_for @user, :url => password_reset_path, :method => :put do |f| %>
-  <%= f.error_messages %>
+  <%= render 'shared/error_messages', :target => @user %>
   <p>
     <%= f.label :password, "Angi ditt nye passord:" %>
     <%= f.password_field :password %>
