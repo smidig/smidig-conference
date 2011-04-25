@@ -10,8 +10,6 @@ class ApplicationController < ActionController::Base
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => '94cfd79349d51c387abaa8e52ad96b1f' 
 
-  filter_parameter_logging :password, :password_confirmation
-
   helper_method :current_user_session, :current_user, :access_denied
 
   private
