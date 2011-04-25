@@ -128,7 +128,7 @@ class TalksController < ApplicationController
   # PUT /talks/1
   # PUT /talks/1.xml
   def update
-    @talk = current_user.is_admin ? Talk.find(params[:id]) : current_user.talks.find(params[:id])    
+    @talk = current_user.is_admin ? Talk.find(params[:id], :readonly => false) : current_user.talks.find(params[:id], :readonly => false)    
 
     # Tag handeling
     tag_names = []
