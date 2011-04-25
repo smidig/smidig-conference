@@ -6,7 +6,7 @@ class SmidigMailerTest < ActionMailer::TestCase
 
     user = User.new :email => "oc+smidig2010@rynning.no", :name => "Ole Christian Rynning"
 
-    assert_equal @expected.body, SmidigMailer.create_registration_confirmation(user).body
+    assert_equal @expected.body.encoded, SmidigMailer.registration_confirmation(user).body.encoded
   end
 
   test "payment_confirmation" do
@@ -17,7 +17,7 @@ class SmidigMailerTest < ActionMailer::TestCase
       :ticket_type => "full_price", :includes_dinner => true
     registration.user = user
 
-    assert_equal @expected.body, SmidigMailer.create_payment_confirmation(registration).body
+    assert_equal @expected.body.encoded, SmidigMailer.payment_confirmation(registration).body.encoded
   end
 
   test "talk_confirmation" do
@@ -28,8 +28,8 @@ class SmidigMailerTest < ActionMailer::TestCase
     talk.users << user
     talk_url = "http://smidig2010.no/talks/1234"
 
-    assert_equal @expected.body, 
-      SmidigMailer.create_talk_confirmation(talk, talk_url).body
+    assert_equal @expected.body.encoded, 
+      SmidigMailer.talk_confirmation(talk, talk_url).body.encoded
   end
 
   test "comment_notification" do
@@ -41,7 +41,7 @@ class SmidigMailerTest < ActionMailer::TestCase
     comment = Comment.new :talk => talk
     comment_url = "http://smidig2010.no/talks/1234#comment_1"
 
-    assert_equal @expected.body, SmidigMailer.create_comment_notification(comment, comment_url).body
+    assert_equal @expected.body.encoded, SmidigMailer.comment_notification(comment, comment_url).body.encoded
   end
 
 end
