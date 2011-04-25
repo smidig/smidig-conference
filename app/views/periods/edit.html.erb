@@ -1,7 +1,7 @@
 <h2>Editing period</h2>
 
-<% form_for(@period) do |f| %>
-  <%= f.error_messages %>
+<%= form_for(@period) do |f| %>
+  <%= render "shared/error_messages", :target => @period %>
 
   <p>
     <%= f.label :time_id %><br />

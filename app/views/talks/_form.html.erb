@@ -37,7 +37,7 @@ $(document).ready(function(){
 
   <div class="field argumentasjon">
     <%= f.label :description, "Argumentasjon" %>
-    <% help_tooltip() do %>
+    <%= help_tooltip() do %>
         <p>Vår erfaring fra Smidig 2007-2009 er at gode lyntaler tar utgangspunkt i en påstand (for eksempel: "gode lyntaler tar utgangspunkt i en påstand") og bruker foredraget på å diskutere bakgrunnen og konsekvensen av denne påstanden. Dette kalles ofte også for abstract.</p>
     <% end %>
     <%= f.text_area :description, :rows => 10 %>
