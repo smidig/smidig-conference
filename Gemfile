@@ -6,7 +6,7 @@ gem 'rails', '= 3.0.7'
 gem 'paperclip', '~>2.3.4'
 gem 'aws-s3', :require=>'aws/s3'
 
-gem 'authlogic'
+gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
 gem 'gchartrb'
 gem 'prawn', '= 0.6.3'
 gem 'prawnto'
