@@ -11,7 +11,7 @@ class PaymentNotificationsController < ApplicationController
     
     PaymentNotification.create!(:params => params, :registration => registration, :status => params[:payment_status], :transaction_id => params[:txn_id], :paid_amount => params[:mc_gross], :currency => params[:mc_currency])
     
-    SmidigMailer.deliver_payment_confirmation(registration)
+    SmidigMailer.payment_confirmation(registration).deliver
     
     render :nothing => true
   end

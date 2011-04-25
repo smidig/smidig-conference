@@ -95,10 +95,10 @@ class AcceptancesController < ApplicationController
     end
 
     if @talk.refused?
-      SmidigMailer.deliver_talk_refusation_confirmation(@talk)
+      SmidigMailer.talk_refusation_confirmation(@talk).deliver
       @talk.email_sent = true
     elsif @talk.accepted?
-      SmidigMailer.deliver_talk_acceptance_confirmation(@talk)
+      SmidigMailer.talk_acceptance_confirmation(@talk).deliver
       @talk.email_sent = true
     else
       flash[:error] = "Kan ikke sende mail for foredrag '#{@talk.title}': Foredraget er ikke akseptert/refusert enda!"
