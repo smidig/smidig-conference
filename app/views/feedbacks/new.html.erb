@@ -5,12 +5,12 @@
 
 
 
-<% form_for @feedback do |f| %>
+<%= form_for @feedback do |f| %>
     <table border="1" cellspacing="0" class="program">
         <%= f.hidden_field :day %>
         <% for feedback_vote in @feedback.feedback_votes %>
             <tr>
-                <% fields_for "feedback[feedback_vote_attributes]", feedback_vote do |vote_form| %>
+                <%= fields_for "feedback[feedback_vote_attributes]", feedback_vote do |vote_form| %>
                     <td>
                         <%= link_to feedback_vote.alternatives[0].title, feedback_vote.alternatives[0] %>
                         <%= vote_form.radio_button(:vote, feedback_vote.alternatives[0].id)  %>

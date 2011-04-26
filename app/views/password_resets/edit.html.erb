@@ -5,7 +5,7 @@
   Hei, <%= @user.email %>. Angi ditt nye passord.
 </p>
 
-<% form_for @user, :url => password_reset_path, :method => :put do |f| %>
+<%= form_for @user, :url => password_reset_path, :method => :put do |f| %>
   <%= render 'shared/error_messages', :target => @user %>
   <p>
     <%= f.label :password, "Angi ditt nye passord:" %>

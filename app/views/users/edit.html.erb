@@ -3,7 +3,7 @@
 
       <%= @user.registration && @user.registration.description %>
 
-<% form_for @user do |f| %>
+<%= form_for @user do |f| %>
   <%= f.error_messages %>
 
     <fieldset id="personal_details">
@@ -26,7 +26,7 @@
 
     </fieldset>
 
-    <% f.fields_for :registration do |reg| %>
+    <%= f.fields_for :registration do |reg| %>
       <p>
         <%= reg.check_box :includes_dinner %>
         <%= reg.label :includes_dinner,  "Jeg ønsker å delta på middagen" %>
