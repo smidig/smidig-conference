@@ -6,4 +6,4 @@ test/webrat*
 test/tmp/*
 .bundle
 public/system
-
+.rvmrc
