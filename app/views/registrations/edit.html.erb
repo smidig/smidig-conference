@@ -8,7 +8,7 @@
 
 <% elsif @registration.free_ticket %>
 
-  <% form_for @registration do |reg| %>
+  <%= form_for @registration do |reg| %>
     <% if @registration.user.talks.empty? %>
       <p>
       <%= reg.label :ticket_type, "Type billett" %><br>
@@ -33,7 +33,7 @@
 
 <% else %>
 
-  <% form_for @registration do |reg| %>
+  <%= form_for @registration do |reg| %>
     <p>
       <%= reg.check_box :manual_payment %>
       <%= reg.label :manual_payment,  "Jeg ønsker å få tilsendt faktura på kroner #{@registration.price}" %>
@@ -75,7 +75,7 @@
   <% unless @registration.registration_complete %>
     <h4>Oppdater billettinformasjon</h4>
 
-    <% form_for @registration do |f| %>
+    <%= form_for @registration do |f| %>
       <%= hidden_field_tag :ticket_change %>
       <p>
         <%= f.label :ticket_type, "Type billett" %><br>
@@ -105,7 +105,7 @@
 
   <h4>Oppdater betalingsinformasjon</h4>
 
-  <% form_for @registration do |f| %>
+  <%= form_for @registration do |f| %>
   	<p>
   		<%= f.label :comments, "Kommentarer" %><br/>
   		<%= f.text_area :comments, :rows => 5 %>

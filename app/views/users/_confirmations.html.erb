@@ -4,7 +4,7 @@
     <div>
         <%= reg.check_box :includes_dinner %>
         <%= reg.label :includes_dinner,  "Jeg ønsker å delta på middagen" %>
-        <% help_tooltip() do  %>
+        <%= help_tooltip() do  %>
            <p> Middagen er inkludert i prisen og er en del av det sosiale aspektet til konferansen. Middagen er en ikke-ubetydelig kostnad for oss og vi setter stor pris på at du oppgir korrekt informasjon. Skulle du bestemme deg for å delta allikevel, kan du endre dette senere under "min påmelding". </p>
         <% end %>
     </div>
@@ -16,7 +16,7 @@
         </div>
         <%= f.label 'accepted_privacy_guidelines',
           "Jeg forstår at arrangørene vil sende meg informasjon per email." %>
-        <% help_tooltip() do %>
+        <%= help_tooltip() do %>
             <p>Eksempler: Bekreftelse om påmelding, bekreftelse av lyntaleforslag, påminnelse om konferansen når datoen nærmer seg, en oppsummering om hvor du kan finne videoer, bilder og mer.  Dersom du melder deg av konferansen vil du ikke lenger motta disse epostene.</p>
         <% end %>
     </div>
@@ -25,7 +25,7 @@
             <%= f.check_box 'accept_optional_email' %>
         <%= f.label 'accept_optional_email',
         "Jeg ønsker å motta informasjon om andre relevante arrangementer." %>
-        <% help_tooltip() do %>
+        <%= help_tooltip() do %>
             <p>Eksempler: Relevante konferanser og møter i relevante faggrupper.  Du kan når som helst reservere deg mot disse epostene ved å <a href="/users/current">redigere profilen din</a> eller klikke på "avmelde"-lenken i selve eposten.</p>
         <% end %>
     </div>

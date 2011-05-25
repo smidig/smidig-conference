@@ -19,17 +19,17 @@ $(document).ready(function(){
 </script>
 
 
-<% form_for @talk do |f| %>
+<%= form_for @talk do |f| %>
 
   <h3>Hva vil du snakke om?</h3>
 
 <fieldset id="talk_details">
 
-  <%= f.error_messages %>
+  <%= render "shared/error_messages", :target => @talk %>
 
   <div class="field paastand">
     <%= f.label :title, "Påstand" %>
-    <% help_tooltip() do %>
+    <%= help_tooltip() do %>
         <p>Dette er tittelen på foredraget ditt. Vår erfaring fra Smidig 2007-2009 er at gode lyntaler tar utgangspunkt i en påstand (for eksempel: "gode lyntaler tar utgangspunkt i en påstand") og bruker foredraget på å diskutere bakgrunnen og konsekvensen av denne påstanden.</p>
     <% end %>
     <%= f.text_field :title %>
@@ -37,7 +37,7 @@ $(document).ready(function(){
 
   <div class="field argumentasjon">
     <%= f.label :description, "Argumentasjon" %>
-    <% help_tooltip() do %>
+    <%= help_tooltip() do %>
         <p>Vår erfaring fra Smidig 2007-2009 er at gode lyntaler tar utgangspunkt i en påstand (for eksempel: "gode lyntaler tar utgangspunkt i en påstand") og bruker foredraget på å diskutere bakgrunnen og konsekvensen av denne påstanden. Dette kalles ofte også for abstract.</p>
     <% end %>
     <%= f.text_area :description, :rows => 10 %>
@@ -57,7 +57,7 @@ $(document).ready(function(){
     </div>
     <div class="field cc">
       <%= f.check_box :accepted_cc_license %>
-      <%= f.label :accepted_cc_license, "Jeg forstår at foredraget blir gjort tilgjengelig med en <a href='http://creativecommons.org/licenses/by/3.0/no/' rel='external'>Creative Commons Navngivelse 3.0 Norge</a> lisens og at teksten blir gjort tilgjengelig umiddelbart." %>
+      <%= f.label :accepted_cc_license, "Jeg forstår at foredraget blir gjort tilgjengelig med en <a href='http://creativecommons.org/licenses/by/3.0/no/' rel='external'>Creative Commons Navngivelse 3.0 Norge</a> lisens og at teksten blir gjort tilgjengelig umiddelbart.".html_safe %>
     </div>
   <% end %>
 </fieldset>

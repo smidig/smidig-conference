@@ -24,7 +24,7 @@ module ApplicationHelper
   def program_menu_item(label = 'Program')
     active = controller_is?(%w(talks topics periods program))
     %Q(<li id="program_menu" class="#{menu_class(active)} topics" title="#{label}"
-      >#{ link_to_unless_current label, :controller => 'program', :action => 'index' }</li>)
+      >#{ link_to_unless_current label, :controller => 'program', :action => 'index' }</li>).html_safe
   end
 
   def user_menu_item_new
@@ -33,7 +33,7 @@ module ApplicationHelper
     path = new_user_path
     %Q(<li id="users_menu" class="users">
        #{link_to(text, path) }
-      </li>)
+      </li>).html_safe
   end
 
 
@@ -43,14 +43,14 @@ module ApplicationHelper
     path = current_users_path
     %Q(<li class="#{menu_class(active)} users">
        #{active ? text : link_to(text, path) }
-      </li>)
+      </li>).html_safe
   end
 
   def talk_menu_item(label)
     active = controller_is?(%w(talks))
     %Q(<li id="talks_menu" class="#{menu_class(active)} talks">
        #{ link_to_unless_current "lyntaler", :controller => 'talks', :action => 'index' }
-      </li>)
+      </li>).html_safe
   end
 
   def login_menu_item
@@ -59,15 +59,13 @@ module ApplicationHelper
     active = current_page?(path)
     %Q(<li id="login_menu" class="#{menu_class(active)} login">
        #{link_to_unless_current text, path }
-      </li>)
+      </li>).html_safe
   end
 
   def feed_link(title, url)
     %Q(<span class="feed" title="#{title}">
        #{feed_icon_tag(title, url)}
-      </span>)
-
-
+      </span>).html_safe
   end
 
   def feed_icon_tag(title, url)
@@ -76,7 +74,7 @@ module ApplicationHelper
   end
 
   def floating_text_box(text)
-	%Q{	<p class="quote">#{text}</p> }
+	%Q{	<p class="quote">#{text}</p> }.html_safe
   end
 
   def logged_in
@@ -100,10 +98,10 @@ module ApplicationHelper
   end
 
   def help_tooltip(&block)
-    concat('<div class="tooltip"><img src="/images/help.png" alt="Mer informasjon" />')
-    concat('<div class="box help"><div class="inner"><div class="content">')
-    concat(capture(&block))
-    concat('</div></div></div></div>')
+    ('<div class="tooltip"><img src="/images/help.png" alt="Mer informasjon" />' +
+    '<div class="box help"><div class="inner"><div class="content">' +
+    capture(&block) +
+    '</div></div></div></div>').html_safe
   end
 
   def self.early_bird_end_date

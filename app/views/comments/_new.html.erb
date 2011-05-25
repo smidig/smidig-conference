@@ -1,5 +1,5 @@
-<% form_for :comment, :url => talk_comments_path(@talk, :anchor => 'new_comment') do |f| %>
-  <%= f.error_messages %>
+<%= form_for :comment, :url => talk_comments_path(@talk, :anchor => 'new_comment') do |f| %>
+  <%= render "shared/error_messages", :target => @comment %>
   <p><%= f.label :title, "Overskrift" %> <%= f.text_field :title %></p>
   <p><%= f.text_area :description, :rows => 5 %></p>
   <p><%= f.submit "Registrer kommentar" %></p>	

@@ -51,7 +51,7 @@ class UsersController < ApplicationController
       if User.count >= 500
         flash[:error] = "Vi har nådd maksgrensen for påmeldinger, vennligst send oss mail på kontakt@smidig.no så ser vi hva vi får gjort"
         logger.error("Hard limit for number of users (500) has been reached. Please take action.")
-        SmidigMailer.deliver_error_mail("Error on smidig2010.no", "Hard limit for number of users (500) has been reached. Please take action.")
+        SmidigMailer.error_mail("Error on smidig2010.no", "Hard limit for number of users (500) has been reached. Please take action.").deliver
         render :action => 'new'
       elsif @user.valid?
         @user.registration.ticket_type = "speaker" if params[:speaker]
@@ -62,21 +62,21 @@ class UsersController < ApplicationController
         UserSession.login(@user.email, @user.password)
         if @user.registration.manual_payment
           flash[:notice] = "Vi vil kontakte deg for å bekrefte detaljene"
-          SmidigMailer.deliver_manual_registration_confirmation(@user)
-          SmidigMailer.deliver_manual_registration_notification(@user, user_url(@user))
+          SmidigMailer.manual_registration_confirmation(@user).deliver
+          SmidigMailer.manual_registration_notification(@user, user_url(@user)).deliver
           redirect_to @user
         elsif @user.registration.speaker?
           flash[:notice] = "Registrer detaljene for din lyntale"
-          SmidigMailer.deliver_speaker_registration_confirmation(@user)
-          SmidigMailer.deliver_speaker_registration_notification(@user, user_url(@user))
+          SmidigMailer.speaker_registration_confirmation(@user).deliver
+          SmidigMailer.speaker_registration_notification(@user, user_url(@user)).deliver
           redirect_to new_talk_url
         elsif @user.registration.free_ticket
           flash[:notice] = "Vi vil kontakte deg for å bekrefte detaljene"
-          SmidigMailer.deliver_free_registration_confirmation(@user)
-          SmidigMailer.deliver_free_registration_notification(@user, user_url(@user))
+          SmidigMailer.free_registration_confirmation(@user).deliver
+          SmidigMailer.free_registration_notification(@user, user_url(@user)).deliver
           redirect_to @user
         else
-          SmidigMailer.deliver_registration_confirmation(@user)
+          SmidigMailer.registration_confirmation(@user).deliver
           redirect_to @user.registration.payment_url(payment_notifications_url, user_url(@user))
         end
       else

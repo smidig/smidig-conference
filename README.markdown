@@ -113,10 +113,6 @@ Create a github user and add your public SSH-key (usually ~/.ssh/id_rsa.pub) to 
 
 To commit directly to the repository, ask at dev@smidig.no for collaborator status.
 
-Otherwise; fork the project (http://github.com:smidig/smidig-conference - click the "fork project" button).
-
-For working on your fork (replace <username> with 'smidig' if you are allowed to work on the main project).
-
     $ git clone git@github.com:<username>/smidig-conference.git
     $ cd smidig-conference
     $ mate README (or another editor, make a change)

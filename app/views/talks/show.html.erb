@@ -1,7 +1,6 @@
 <% content_for :title, h(@talk.title) %>
 <div id="breadcrumbs"><%= link_to "Tilbake til liste over foredrag", talks_path %></div>
-<h2 class="page_title"><%=h @talk.title %>
-  <% unfinished do %>(<%= antall_stemmer(@talk.votes_count) %>)<% end %></h2>
+<h2 class="page_title"><%=h @talk.title %></h2>
 
 <% if @talk.accepted?  %>
 <p><%= image_tag("approved_talk.png") %> godkjent</p>

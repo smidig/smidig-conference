@@ -115,7 +115,7 @@ class TalksController < ApplicationController
     respond_to do |format|
       if @talk.save
         flash[:notice] = "Forslaget er publisert"
-        SmidigMailer.deliver_talk_confirmation(@talk, talk_url(@talk))
+        SmidigMailer.talk_confirmation(@talk, talk_url(@talk)).deliver
         format.html { redirect_to(@talk) }
         format.xml  { render :xml => @talk, :status => :created, :location => @talk }
       else
@@ -128,7 +128,7 @@ class TalksController < ApplicationController
   # PUT /talks/1
   # PUT /talks/1.xml
   def update
-    @talk = current_user.is_admin ? Talk.find(params[:id]) : current_user.talks.find(params[:id])    
+    @talk = current_user.is_admin ? Talk.find(params[:id], :readonly => false) : current_user.talks.find(params[:id], :readonly => false)    
 
     # Tag handeling
     tag_names = []
