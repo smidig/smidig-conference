@@ -13,10 +13,9 @@ namespace :infomail do
   end
 
   desc "Send out information about a related event"
-  task :send_promo_mail => :sent_email do
+  task :send_promo_mail => :unready_email do
     users = User.all.select { |u| u.accept_optional_email? }
     for user in users
-      #next unless user.email == 'jb@steria.no'
       print "Mailing: #{user.email}..."
       SmidigMailer.deliver_promo_email(user)
       puts " done"
