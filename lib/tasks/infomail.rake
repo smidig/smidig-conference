@@ -17,7 +17,7 @@ namespace :infomail do
     users = User.all.select { |u| u.accept_optional_email? }
     for user in users
       print "Maybe mailing: #{user.email}..."
-      next unless talk.speaker_email == 'jb@steria.no'
+      next unless user.email == 'jb@steria.no'
       print "Mailing: #{user.email}..."
       SmidigMailer.promo_email(user).deliver
       puts " done"
