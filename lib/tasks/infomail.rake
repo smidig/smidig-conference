@@ -13,7 +13,7 @@ namespace :infomail do
   end
 
   desc "Send out information about a related event"
-  task :send_promo_mail => :sent_email do
+  task :send_promo_mail => :mail_settings do
     users = User.all.select { |u| u.accept_optional_email? }
     for user in users
       print "Mailing: #{user.email}..."
