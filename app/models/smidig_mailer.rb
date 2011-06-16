@@ -10,7 +10,6 @@ class SmidigMailer < ActionMailer::Base
 
   def promo_email(user)
     @name = user.name
-    @email = user.email
     mail(:to => user.email,
          :subject => "Agile Lean Europe unconference i Berlin 7-9. september")
   end
