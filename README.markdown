@@ -4,7 +4,7 @@
 
 ### OSX / Linux
 
-* Ruby 1.8.7
+* Ruby 1.9.2
 * RubyMine, like IDEA for all you lame java developers ;) or TextMate or, according to Bodil, Emacs
 * git
 
@@ -12,7 +12,7 @@
 
 Install the following tools or the equivalent.
 
-* [RubyInstaller 1.8.7](http://rubyinstaller.org)
+* [RubyInstaller 1.9.2](http://rubyinstaller.org)
 * [Msysgit](http://code.google.com/p/msysgit/downloads) (Git command line)
 * [TortoiseGit](http://code.google.com/p/tortoisegit/downloads) (Git Explorer integration)
 * [Notepad++](http://notepad-plus-plus.org/download) (Text editor)
