@@ -1,5 +1,4 @@
-<div id="header">
-  <div id="menu">
+<nav>
     <ul>
       <%= user_menu_item_new %>
       <%= program_menu_item 'program' %>
@@ -8,10 +7,4 @@
       <%= info_menu_item 'sponse', 'sponsor' %>
       <%= user_menu_item_current %>
     </ul>
-  </div>
-
-  <h1>
-	<%= link_to_unless_current image_tag('smidig-horizontal2.png', :alt => 'Smidig 2010'),
-		:controller => 'info', :action => 'index' %><span>Smidig 2010</span>
-  </h1>
-</div>
+</nav>
