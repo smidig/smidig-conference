@@ -20,7 +20,11 @@ Vi har registrert følgende informasjon om deg:
   <% end %>
 </ul>
 
-<%= link_to "Endre din registrering", edit_user_path(@user) %>
+Handlinger:
+<ul>
+  <li><%= link_to "Endre din registrering", edit_user_path(@user) %> </li>
+  <li><%= link_to "Reset passord", :controller => "password_resets", :action => "new", :email => @user.email %> </li>
+</ul>
 
 <% unless @user.talks.blank? %>
   <h3>Foreslåtte foredrag</h3>

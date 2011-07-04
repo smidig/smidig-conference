@@ -12,7 +12,8 @@ body:before {
 #wrapper {
     min-height: 100%;
     background-color: #110039;
-	margin-right: 200px
+	margin-right: 200px;
+    overflow: hidden;
 }
 
 #main {

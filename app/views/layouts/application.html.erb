@@ -4,10 +4,13 @@
 <head>
     <meta charset="utf-8" />
 
-    <title>Smidig 2011: 14. - 15. november på Radisson SAS Plaza Hotel, Oslo</title>
+	<title>
+  	  <%= content_for?(:title) ? yield(:title) : "Smidig 2011: 14. - 15. november på Radisson SAS Plaza Hotel, Oslo" %>
+    </title>
 
     <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen,projection,tv" />
     <link rel="stylesheet" href="stylesheets/fonts.css" type="text/css" />
+    <link rel="stylesheet" href="stylesheets/menu.css" type="text/css" />
 
 <!--[if !IE 7]>
 	<style type="text/css">
@@ -24,8 +27,12 @@
 
     <div id="main">
 
+        <%= render :partial => 'layouts/menu' %>
+
         <div id="header">
 
+
+            
             <h1><span>Smidig</span> <span>2011</span></h1>
 
             <div id="purpose">
