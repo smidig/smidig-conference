@@ -1,6 +1,3 @@
-#Kjør ruby versjon 1.8.7 !
-#gem install bundler
-
 source :gemcutter
 gem 'rails', '= 3.0.7'
 gem 'paperclip', '~>2.3.4'

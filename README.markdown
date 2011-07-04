@@ -5,10 +5,10 @@
 ### OSX / Linux
 
 * Ruby 1.8.7
-* RubyMine, like IDEA for all you lame java developers ;) or TextMate
+* RubyMine, like IDEA for all you lame java developers ;) or TextMate or, according to Bodil, Emacs
 * git
 
-### Windows
+## Windows
 
 Install the following tools or the equivalent.
 
@@ -20,13 +20,10 @@ Install the following tools or the equivalent.
 
 #### Configure line endings
 
-Because Windows has its own line endings (CRLF \r\n) as opposed to Unix / Linux (LF), it is advised
-to align these line endings on commits, so that all line endings in GitHub are LF only.
+Because Windows has its own line endings (CRLF \r\n) as opposed to Unix / Linux (LF), it is advised to align these line endings on commits, so that all line endings in GitHub are LF only.
 
-Windows users can do so either with:
-<code>git config --global core.autocrlf true</code> if they prefer Windows file endings locally. Or
-with <code>git config --global core.autocrlf input</code> if they prefer to keep whatever they 
-checkout (both will save to repo with LF-endings).
+Windows users should <code>git config --global core.autocrlf false</code> and edit files
+using Unix-style line endings.
 
 
 #### Setting up SSH certificates
@@ -48,15 +45,15 @@ You need to start Pageant before using git to push to Github or Heroku. You may 
     Check out the code: git clone git@github.com:smidig/smidig-conference.git
     $ gem update --system
     $ gem install bundler
-    $ gem install rails --version 2.3.8
+    $ gem install rails
     # In application directory
     $ bundle install
     ON WINDOWS: Also grab sqlite DLL from http://www.sqlite.org/download.html and stuff it in your path
-    ON UBUNTU: sudo aptitude install libsqlite3-dev
+    ON UBUNTU: sudo apt-get install libsqlite3-dev
     $ rake db:migrate
     $ rake test
     # Start the server
-    $ ruby script/server
+    $ rails server
     Go to http://localhost:3000
 
 ## Checking in
@@ -74,7 +71,7 @@ Setup:
     # Install your SSH keys (Uses ~/.ssh/id_rsa.pub)
     $ heroku keys:add
     $ cd smidig-conference
-    $ git remote add production git@heroku.com:smidig2010.git
+    $ git remote add production git@heroku.com:smidig2011.git
     $ git remote add staging git@heroku.com:stagingsmidig.git
 
 Fool around:
@@ -82,15 +79,15 @@ Fool around:
     $ gem install taps
     # remote console
     $ heroku console --app stagingsmidig
-    $ heroku console --app smidig2010
+    $ heroku console --app smidig2011
     # Pull data from the heroku app to your local db
-    $ heroku db:pull --app [stagingsmidig|smidig2010]
+    $ heroku db:pull --app [stagingsmidig|smidig2011]
 
 Update (push):
 
     $ git push [production|staging|master]
     #DB changes? remember to migrate the server
-    $ heroku rake db:migrate --app [stagingsmidig|smidig2010]
+    $ heroku rake db:migrate --app [stagingsmidig|smidig2011]
 
 Heroku app-owner privileges:
 
@@ -101,7 +98,7 @@ Heroku app-owner privileges:
 
 Heroku SendGrid:
     # For å sjekke user/pass:
-    $ heroku config --long --app smidig2010
+    $ heroku config --long --app smidig2011
 
 Bundle without development or test gems. Set this once pr app
     $ heroku config:add BUNDLE_WITHOUT="development test"

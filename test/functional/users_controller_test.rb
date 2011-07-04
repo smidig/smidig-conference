@@ -18,7 +18,7 @@ class UsersControllerTest < ActionController::TestCase
   context 'UsersController' do
     should "should be able to create user" do
       post :create, :user=> create_user_params()
-      assert assign_to :user
+      assert assign_to(:user)
       assert_nil flash[:notice]
       assert_nil flash[:error]
     end
