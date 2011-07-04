@@ -4,7 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 
 <head>
-  <title>Smidig 2010</title>
+  <title>
+  	<%= content_for?(:title) ? yield(:title) : "Smidig 2011" %>
+  </title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
   <%= yield :additional_css %>
