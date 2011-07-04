@@ -77,7 +77,7 @@ class UsersController < ApplicationController
           redirect_to @user
         else
           SmidigMailer.registration_confirmation(@user).deliver
-          redirect_to @user.registration.payment_url(payment_notifications_url, user_url(@user))
+          redirect_to @user.registration.payment_url(payment_notifications_url, registration_complete_url)
         end
       else
         flash[:error] = "En feil har oppstått, se veiledningen under."

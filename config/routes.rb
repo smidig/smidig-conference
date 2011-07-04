@@ -10,6 +10,7 @@ SmidigConference::Application.routes.draw do
   match 'logout' => 'user_sessions#logout', :as => :logout
   match 'register' => 'users#create', :as => :register
   match 'chat' => 'users#chat', :as => :chat
+  match 'users/registration_complete' => 'users#current', :as => 'registration_complete'
   match 'users/current/attending_dinner' => 'users#attending_dinner', :as => :attending_dinner
   match 'users/current/not_attending_dinner' => 'users#not_attending_dinner', :as => :not_attending_dinner
   resources :user_sessions
