@@ -7,3 +7,5 @@ test/tmp/*
 .bundle
 public/system
 .rvmrc
+.project
+.buildpath
