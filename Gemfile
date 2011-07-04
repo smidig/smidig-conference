@@ -1,3 +1,4 @@
+gem "rake", "0.8.7"
 source :gemcutter
 gem 'rails', '= 3.0.7'
 gem 'paperclip', '~>2.3.4'
