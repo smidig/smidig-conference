@@ -35,11 +35,6 @@
   <%=simple_format h(@talk.description) %>
 </div>
 
-<p>
-  <strong>Passer for:</strong>
-  <%=h @talk.describe_audience_level %>
-</p>
-
 <%= link_to image_tag("#{@talk.license}.png", :title => 'Foredraget deles under en Creative Commons Navngivelse-lisens.'),
    "http://creativecommons.org/licenses/#{@talk.license}/3.0/no/", :rel => 'license' %>
 
