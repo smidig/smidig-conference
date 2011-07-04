@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="utf-8" />
+
+    <title>Smidig 2011: 14. - 15. november på Radisson SAS Plaza Hotel, Oslo</title>
+
+    <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen,projection,tv" />
+    <link rel="stylesheet" href="stylesheets/fonts.css" type="text/css" />
+
+
+<!--[if !IE 7]>
+	<style type="text/css">
+		#wrap {display:table;height:100%}
+	</style>
+<![endif]-->
+
+
+
+
+<style>
+
+
+
+
+
+
+
+</style>
+
+</head>
+
+<body>
+
+<div id="logos">
+    <a href="http://acando.no" tabindex="-1">
+        <img src="images/logos/acando.gif" width="100" height="28" alt="Acando" />
+    </a>
+
+    <a href="http://accenture.no" tabindex="-1">
+        <img src="images/logos/accenture.png" width="100" height="46" alt="Accenture" />
+    </a>
+
+    <div> 
+    <span style="padding-left: 12px">
+    <a href="http://www.agile42.com" tabindex="-1">
+        <img src="images/logos/agile42.png" width="67" height="64" alt="Agile 42" />
+    </a>
+    </span>
+    </div>
+
+    <a href="http://www.bekk.no" tabindex="-1">
+        <img src="images/logos/bekk.gif" width="100" height="24" alt="BEKK" />
+    </a>
+
+    <a href="http://www.bouvet.no" tabindex="-1">
+        <img src="images/logos/bouvet.gif" width="100" height="20" alt="Bouvet" />
+    </a>
+
+    <a href="http://www.iteraconsulting.no" tabindex="-1">
+        <img src="images/logos/itera_consulting.png" width="100" height="29" alt="Itera Consulting" />
+    </a>
+    
+    <a href="http://www.kantega.no" tabindex="-1">
+        <img src="images/logos/kantega.png" width="100" height="25" alt="Kantega" />
+    </a>
+    
+    <a href="http://www.skalar.no" tabindex="-1">
+        <img src="images/logos/skalar.png" width="100" height="39" alt="Skalar" />
+    </a>
+
+    <a href="http://www.spk.no" tabindex="-1">
+        <img src="images/logos/spk.png" width="100" height="23" alt="Statens Pensjonskasse" />
+    </a>
+
+    <a href="http://www.steria.no" tabindex="-1">
+        <img src="images/logos/steria.gif" width="100" height="19" title="Steria" alt="Steria" />
+    </a>
+
+    <a href="http://www.slf.dep.no" tabindex="-1">
+        <img src="images/logos/slf.png" width="100" height="23" title="Statens landbruksforvaltning" alt="Statens landbruksforvaltning" />
+    </a>
+</div>
+
+<!-- <script type="text/javascript">//<![CDATA[ logosShuffle(); //]]></script> -->
+<div id="wrapper">
+
+    <div id="main">
+
+        <div id="header">
+
+            <h1><span>Smidig</span> <span>2011</span></h1>
+
+            <div id="purpose">
+                <p>Smidig er en familie av metodikker for IT-utvikling. Hovedkjennetegn er kontinuerlig forbedring, hyppige leveranser, endringsdyktighet og fokus på individer og samspill.</p>
+
+                <p>Vi tror at IT-prosjekter i Norge kan lære mye av <a href="http://agilemanifesto.org">prinsippene bak smidig utvikling</a>. Derfor arrangerer frivillige entusiaster for 5. år på rad Smidig-konferansen for å dele erfaringer og bidra til å øke kunnskapen om smidige metoder i Oslo og Norge.</p>
+            </div>
+        </div>
+
+
+        <div id="dateandtime">
+            <h2 class="calendar"><a href="https://www.google.com/calendar/event?action=TEMPLATE&amp;tmeid=ZW5uazNjdWs4NWVqYjdnYWhoYTNxcDQ1b2cgc21pZGlnLm5vX2E5NWZ1dm9yMTNoMHE1amZhYzNucjZzZGU4QGc&amp;tmsrc=smidig.no_a95fuvor13h0q5jfac3nr6sde8%40group.calendar.google.com">14. - 15. november</a></h2>
+
+            <h2 class="map"><a href="http://maps.google.com/maps/ms?ie=UTF8&amp;hl=en&amp;msa=0&amp;msid=211805042755998411288.0004a3bc215ae34daa02d&amp;ll=59.911944,10.755701&amp;spn=0.015146,0.030384&amp;z=15">Radisson Blu Plaza Hotel, Oslo</a></h2>
+        </div>
+
+        <div id="content">
+            <div id="sponse">
+                <h3><a class="epost" href="mailto:kontakt@smidig.no">Bli med å sponse konferansen.</a></h3>
+                <p>Send et sterkt signal om at din bedrift stiller seg bak bevegelsen for smidige metoder og støtter opp under det frivillige initiativet som er drivkraften bak Smidig-konferansene.</p>
+            </div>
+
+            <div id="deltakerliste">
+                <h3><a href="http://groups.google.com/group/smidigkonferansen">Meld deg på mailinglista.</a></h3>
+                <p>Still spørsmål, bli informert, bli inspirert og bidra til å bedre vår forståelse av smidig og hva som fungerer.</p>
+            </div>
+
+            <div id="links">
+                <h3><a href="http://streaming.java.no/tcs/#page:recordingList&amp;pageNumber:1&amp;category:B0C04952-0661-46CE-9848-983834DF160D">Se video fra fjorårets konferanse.</a></h3>
+                <p>Lyst til å oppleve på forskudd litt av det du kan forvente på konferansen i år?</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div id="footer">
+    <div id="socialcluster"><a class="epost" href="mailto:kontakt@smidig.no">Send oss en epost.</a><a class="facebook" href="http://www.facebook.com/pages/Smidig-konferansen/102562453136427">Besøk oss på Facebook.</a><a class="twitter" href="http://twitter.com/#!/smidig">Følg oss på Twitter.</a><a class="linkedin" href="http://www.linkedin.com/groups?mostPopular=&amp;gid=963587">Besøk vår gruppe på LinkedIn.</a></div>
+</div>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2694058-6']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body>
+
+</html>
+
+
+
+
