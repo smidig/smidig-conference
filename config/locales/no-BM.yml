@@ -90,7 +90,7 @@
     abbr_day_names: [Søn, Man, Tir, Ons, Tor, Fre, Lør]
     month_names: [~, Januar, Februar, Mars, April, Mai, Juni, Juli, August, September, Oktober, November, Desember]
     abbr_month_names: [~, jan, feb, mar, apr, mai, jun, jul, aug, sep, okt, nov, des]
-    order: [ :day, :month, :year ]
+    order: [ day, month, year ]
 
   time:
     formats:
