@@ -1,61 +1,66 @@
-#menu * {
+nav {
+    overflow: hidden;
+    margin-bottom: 75px;
+}
+
+nav * {
     margin: 0;
     padding: 0;
     white-space: nowrap;
 }
 
-#menu li {
+nav li {
 	display:block;
-	float:left;
+	float:right;
     position: relative;
 	margin-left: 50px
 }
 
-#menu li.active a,
-#menu li#users_menu a,
-#menu li#users_menu.active,
-#menu li#users_menu {
+nav li.active a,
+nav li#users_menu a,
+nav li#users_menu.active,
+nav li#users_menu {
 	margin-left: 0px;
 }
 
-#menu li.active,
-#menu li.active a,
-#menu a:hover {
+nav li.active,
+nav li.active a,
+nav a:hover {
     color: #cc0000;
 }
 
-#menu li.active,
-#menu li.active a,
-#menu li#users_menu a,
-#menu li#users_menu.active {
+nav li.active,
+nav li.active a,
+nav li#users_menu a,
+nav li#users_menu.active {
 	font-weight: bold;
 }
 
 
-#menu a {
+nav a {
     display: block;
     color: black;
     padding: 10px 0px 0px 0px;
     text-decoration: none;
 }
 
-#menu li.active,
-#menu a:hover  {
+nav li.active,
+nav a:hover  {
     border-width: 2px 0 0 0;
     padding: 8px 0px 0px 0px;
 }
 
-#menu li.active a,
-#menu li#users_menu a,
-#menu li#users_menu.active {
+nav li.active a,
+nav li#users_menu a,
+nav li#users_menu.active {
     border: 0;
 }
 
-#menu li.active a {
+nav li.active a {
     padding: 0;
 }
 
-#menu li#users_menu a, #menu li#users_menu.active {
+nav li#users_menu a, nav li#users_menu.active {
 	color: white;
 	width: 200px;
 	text-align: right;

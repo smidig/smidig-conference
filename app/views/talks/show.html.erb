@@ -13,7 +13,7 @@
   <% end %>
 </div>
 
-<h3><%= render :partial => @talk.users %></h3>
+<h3><%= @talk.speaker_name %></h3>
 
 <% if @talk.users.include?(current_user)|| admin? %>
   <p><%= link_to 'Rediger forslaget ditt', edit_talk_path(@talk) %></p>
@@ -34,11 +34,6 @@
   <h4>Beskrivelse</h4>
   <%=simple_format h(@talk.description) %>
 </div>
-
-<p>
-  <strong>Passer for:</strong>
-  <%=h @talk.describe_audience_level %>
-</p>
 
 <%= link_to image_tag("#{@talk.license}.png", :title => 'Foredraget deles under en Creative Commons Navngivelse-lisens.'),
    "http://creativecommons.org/licenses/#{@talk.license}/3.0/no/", :rel => 'license' %>

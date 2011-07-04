@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
     registration ? registration.description : "Ukjent"
   end
 
-  def password_reset_instructions
+  def password_reset_instructions!
     reset_perishable_token!
     SmidigMailer.password_reset_instructions(self)
   end

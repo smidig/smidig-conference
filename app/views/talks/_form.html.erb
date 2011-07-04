@@ -42,11 +42,6 @@ $(document).ready(function(){
     <% end %>
     <%= f.text_area :description, :rows => 10 %>
   </div>
-
-  <div class="field publikum">
-    <%= f.label :audience_level, "Passer best for publikum som..." %>
-    <%= f.select :audience_level,  [['... ikke har benyttet smidige metoder', 'novice'], ['... ikke bruker smidige metoder på sitt prosjekt', 'intermediate'], ['... benytter smidige metoder på sitt prosjekt', 'expert']] %>
-  </div>
 </fieldset>
 
 <fieldset class="confirmations">
