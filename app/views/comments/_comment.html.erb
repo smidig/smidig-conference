@@ -5,6 +5,6 @@
     :controller => "talks", :action => "show", :id => comment.talk, :anchor => dom_id(comment) %></h4>
 <div><%= simple_format h(comment.description) %></div>
 
-<div class="detail">Skrevet av <%= link_to_if admin?, h(comment.user.name), h(comment.user) %>, for <%= time_ago_in_words comment.created_at %> siden</div>
+<div class="detail">Skrevet av <%= link_to_if admin?, h(comment.user_name), h(comment.user) %>, for <%= time_ago_in_words comment.created_at %> siden</div>
 
 </div>

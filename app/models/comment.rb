@@ -4,4 +4,8 @@ class Comment < ActiveRecord::Base
   validates_presence_of :title, :description
 
   default_scope :order => 'created_at desc', :limit => 100, :include => [:talk, :user]
+  
+  def user_name
+    user && user.name
+  end
 end
