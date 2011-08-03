@@ -10,8 +10,7 @@ class UsersController < ApplicationController
   end
 
   def current
-    @user = current_user
-    render "show"
+    redirect_to user_path(current_user)
   end
 
   def show
@@ -87,6 +86,10 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if params[:id] == "current"
+      redirect_to edit_user_path(current_user)
+      return
+    end
     @user = User.find(params[:id])
   end
 
@@ -109,6 +112,7 @@ protected
   end
 
   def require_admin_or_self
+    return if params[:id] == "current"
     user = User.find(params[:id])
     unless (current_user.is_admin? || user == current_user)
       flash[:error] = "Du har ikke lov å se andre brukeres informasjon."
