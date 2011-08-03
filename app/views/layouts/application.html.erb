@@ -8,9 +8,9 @@
   	  <%= content_for?(:title) ? yield(:title) : "Smidig 2011: 14. - 15. november på Radisson SAS Plaza Hotel, Oslo" %>
     </title>
 
-    <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen,projection,tv" />
-    <link rel="stylesheet" href="stylesheets/fonts.css" type="text/css" />
-    <link rel="stylesheet" href="stylesheets/menu.css" type="text/css" />
+    <%= stylesheet_link_tag 'screen', :media => "screen,projection,tv" %>
+    <%= stylesheet_link_tag 'fonts' %>
+    <%= stylesheet_link_tag 'menu' %>
 
 <!--[if !IE 7]>
 	<style type="text/css">
