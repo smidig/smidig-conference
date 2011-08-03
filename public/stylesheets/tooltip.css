@@ -22,7 +22,7 @@
 
 .tooltip:hover div.box div.inner  {
 	position: relative;
-	left: -235px;
+	left: 500px;
 	top: -5em;
 	margin-right: -235px;
 	width: 100%;

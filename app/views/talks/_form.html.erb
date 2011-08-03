@@ -1,9 +1,8 @@
-<!--<link href="/stylesheets/tag-it/reset.css" rel="stylesheet" type="text/css" />-->
-<link href="/stylesheets/tag-it/master.css" rel="stylesheet" type="text/css" />
-<link href="/stylesheets/tag-it/jquery-ui/jquery.ui.autocomplete.custom.css" rel="stylesheet" type="text/css"  />
-<script src="/javascripts/jquery-ui/jquery-ui-1.8.core-and-interactions.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="/javascripts/jquery-ui/jquery-ui-1.8.autocomplete.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="/javascripts/tag-it.js" type="text/javascript" charset="utf-8"></script>
+<%= stylesheet_link_tag "tag-it/master.css" %>
+<%= stylesheet_link_tag "tag-it/jquery-ui/jquery.ui.autocomplete.custom.css" %>
+<%= javascript_include_tag "jquery-ui/jquery-ui-1.8.core-and-interactions.min.js", :charset => "utf-8" %>
+<%= javascript_include_tag "jquery-ui/jquery-ui-1.8.autocomplete.min.js", :charset => "utf-8" %>
+<%= javascript_include_tag "tag-it.js", :charset => "utf-8" %>
 <script>
 $(document).ready(function(){
 	var availableTags = [];

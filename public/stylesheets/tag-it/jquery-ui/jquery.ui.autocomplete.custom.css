@@ -1,5 +1,5 @@
 .ui-autocomplete {
-	background-color: #eee;
+	background-color: #2452A8;
 	position: absolute;
 	cursor: default;
 }
@@ -37,7 +37,7 @@ ul.tagit li {
 	margin:2px 5px 2px 0;
 }
 ul.tagit li.tagit-choice {
-	background-color:#DEE7F8;
+	background-color:#2452A8;
 	border:1px solid #CAD8F3;
 	padding:2px 4px 3px;
 }
