@@ -61,6 +61,10 @@ module ApplicationHelper
        #{link_to_unless_current text, path }
       </li>).html_safe
   end
+  
+  def sponsor(name, logo, url)
+    link_to image_tag( 'logos/' + logo, :alt => name), url, :tabindex =>  -1
+  end
 
   def feed_link(title, url)
     %Q(<span class="feed" title="#{title}">
