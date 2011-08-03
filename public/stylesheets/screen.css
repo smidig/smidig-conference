@@ -381,3 +381,18 @@ table.acceptance tr:hover {
 table.acceptance td {
   text-align: left;
 }
+
+
+.field_with_errors {
+	display: inline;
+	overflow: hidden;
+}
+
+#railserrordisplaysux {
+	display: inline;
+	overflow: hidden;
+}
+
+.field_with_errors label {
+	border: 1px solid red;
+}
