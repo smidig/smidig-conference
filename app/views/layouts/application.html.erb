@@ -11,6 +11,7 @@
     <%= stylesheet_link_tag 'screen', :media => "screen,projection,tv" %>
     <%= stylesheet_link_tag 'fonts' %>
     <%= stylesheet_link_tag 'menu' %>
+    <%= stylesheet_link_tag 'tooltip' %>
 
 <!--[if !IE 7]>
 	<style type="text/css">
@@ -26,19 +27,6 @@
 <div id="wrapper">
 
     <div id="main">
-
-        <div id="header">
-
-
-            
-            <h1><span>Smidig</span> <span>2011</span></h1>
-
-            <div id="purpose">
-                <p>Smidig er en familie av metodikker for IT-utvikling. Hovedkjennetegn er kontinuerlig forbedring, hyppige leveranser, endringsdyktighet og fokus på individer og samspill.</p>
-
-                <p>Vi tror at IT-prosjekter i Norge kan lære mye av <a href="http://agilemanifesto.org">prinsippene bak smidig utvikling</a>. Derfor arrangerer frivillige entusiaster for 5. år på rad Smidig-konferansen for å dele erfaringer og bidra til å øke kunnskapen om smidige metoder i Oslo og Norge.</p>
-            </div>
-        </div>
 
         <%= yield %>
     
