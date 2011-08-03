@@ -67,7 +67,7 @@
 
             <div class="field buttons">
               <div><%= f.submit "Meld på som lyntaler og foreslå lyntale.",:name => "speaker", :id => "lyntale_submit" %>
-              <% help_tooltip() do %>
+              <%= help_tooltip() do %>
                 <p>Foreslå lyntale med en kort beskrivelse i neste steg. Blir foredraget antatt, er hele konferansen gratis. Blir foredraget avslått, kan du kjøpe billett til prisen når du registrerte deg.</p>
                 </div>
               <% end %>

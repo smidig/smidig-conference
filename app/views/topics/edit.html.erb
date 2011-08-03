@@ -1,7 +1,7 @@
 <h2 class="page_title">Endre <%=h @topic.title %></h2>
 
 <%= form_for(@topic) do |f| %>
-  <%= f.error_messages %>
+  <%= render "shared/error_messages", :target => @topic %>
 
   <p>
     <%= f.label :title, "Tittel" %><br />
