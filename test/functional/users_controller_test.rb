@@ -27,16 +27,6 @@ class UsersControllerTest < ActionController::TestCase
       post :create, :user=> create_user_params()
       assert flash[:error]
     end
-    context "with existing user" do
-      should "be able to change dinner attendance" do
-        q = login_quentin
-        assert !q.attending_dinner?
-        get :attending_dinner
-        assert flash[:notice]
-        assert_redirected_to current_users_path
-
-      end
-    end
   end
 
 

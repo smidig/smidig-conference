@@ -9,7 +9,7 @@ p_pdf.font_families.update(
 
 p_pdf.font 'Blackout'
 p_pdf.fill_color 'f0f0f0'
-p_pdf.text '2010',
+p_pdf.text '2011',
     :at => [20,-10],
     :overflow => :truncate,
     :size => 160

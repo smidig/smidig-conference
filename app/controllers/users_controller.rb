@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     @user.registration.manual_payment = params[:manual_payment]
     @user.registration.free_ticket = !params[:free_ticket].blank?
     @user.registration.ticket_type = params[:free_ticket] || params[:ticket_type] || 'full_price'
-	@user.registration.includes_dinner = @user.registration.discounted_ticket?
+    @user.registration.includes_dinner = @user.registration.discounted_ticket?
   end
 
   def create
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
       if User.count >= 500
         flash[:error] = "Vi har nådd maksgrensen for påmeldinger, vennligst send oss mail på kontakt@smidig.no så ser vi hva vi får gjort"
         logger.error("Hard limit for number of users (500) has been reached. Please take action.")
-        SmidigMailer.error_mail("Error on smidig2010.no", "Hard limit for number of users (500) has been reached. Please take action.").deliver
+        SmidigMailer.error_mail("Error on smidig2011.no", "Hard limit for number of users (500) has been reached. Please take action.").deliver
         render :action => 'new'
       elsif @user.valid?
         @user.registration.ticket_type = "speaker" if params[:speaker]
@@ -93,20 +93,6 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     update_user
-  end
-
-  def updated_dinner_attendance(dinner_status)
-    flash[:notice] = "Takk for at du oppdaterte din status. #{dinner_status}"
-    redirect_to current_users_path
-  end
-
-  def attending_dinner
-    current_user.attending_dinner!
-    updated_dinner_attendance("Du er påmeldt middagen.")
-  end
-  def not_attending_dinner
-    current_user.not_attending_dinner!
-    updated_dinner_attendance("Du er ikke satt opp til middag.")
   end
 
   def chat
