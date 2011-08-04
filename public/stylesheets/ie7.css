@@ -23,33 +23,3 @@ div.fieldWithErrors {
 	margin: 0;
 	padding: 0;
 }
-
-
-
-
-
-
-/*
-
-
-#confirmations div.fieldWithErrors {
-}
-
-#confirmations div.fieldWithErrors:first-child {
-	background-image: url(../images/exclamation.png);
-	background-repeat: no-repeat;
-	background-position: top left;
-	width: 18px;
-	overflow: visible;
-	display: visible;
-}
-
-
-
-#confirmations div.fieldWithErrors input {
-}
-
-
-
-
-*/
