@@ -27,11 +27,15 @@ module ApplicationHelper
       >#{ link_to_unless_current label, :controller => 'program', :action => 'index' }</li>).html_safe
   end
 
+  def user_menu_item
+	current_user ? user_menu_item_current : user_menu_item_new
+  end
+  
   def user_menu_item_new
     active = controller_is?(%w(users))
     text = "meld deg på!"
     path = new_user_path
-    %Q(<li id="users_menu" class="users">
+    %Q(<li class="#{menu_class(active)} users">
        #{link_to(text, path) }
       </li>).html_safe
   end

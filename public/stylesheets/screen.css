@@ -17,8 +17,12 @@ body:before {
 
 #main {
     overflow:auto;
-	padding: 50px 50px 0px 50px;
+	padding: 0px 50px 0px 50px;
     overflow: hidden;
+}
+
+#frontpage_header {
+	padding-top: 50px;
 }
 
 #footer {

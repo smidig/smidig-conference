@@ -1,7 +1,6 @@
-<div id="header">
-  <h1><span>Smidig 2011</span></h1>
-  <div><h2 class="page_title">Påmelding til Smidig 2011</h2></div>
-</div>
+<% content_for :title, "Påmelding til Smidig 2011" %>
+
+<div class="login">Er du allerede påmeldt ennå? <%= link_to "Logg inn", new_user_session_path %></div>
 
 <% unless @user.registration.free_ticket %>
   <p>

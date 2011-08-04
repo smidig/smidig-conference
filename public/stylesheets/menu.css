@@ -1,11 +1,11 @@
 nav {
     overflow: hidden;
-    margin-bottom: 75px;
+	margin-bottom: 0px;
 }
 
-nav * {
-    margin: 0;
-    padding: 0;
+nav ul {
+    margin-right: 50px;
+	margin-bottom: 0px;
     white-space: nowrap;
 }
 
@@ -26,7 +26,7 @@ nav li#users_menu {
 nav li.active,
 nav li.active a,
 nav a:hover {
-    color: #cc0000;
+    color: #cccccc;
 }
 
 nav li.active,
@@ -39,7 +39,6 @@ nav li#users_menu.active {
 
 nav a {
     display: block;
-    color: black;
     padding: 10px 0px 0px 0px;
     text-decoration: none;
 }
@@ -47,7 +46,7 @@ nav a {
 nav li.active,
 nav a:hover  {
     border-width: 2px 0 0 0;
-    padding: 8px 0px 0px 0px;
+    padding: 10px 0px 0px 0px;
 }
 
 nav li.active a,
@@ -65,5 +64,5 @@ nav li#users_menu a, nav li#users_menu.active {
 	width: 200px;
 	text-align: right;
 	padding: 10px 20px 0px 0px;
-	background: #cc0000 url(../images/arrow.png) no-repeat -35px 10px;
+	background: #cccccc url(../images/arrow.png) no-repeat -35px 10px;
 }

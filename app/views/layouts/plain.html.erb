@@ -28,7 +28,7 @@
 <%= render :partial => 'layouts/sponsors' %>
 
 <div id="wrapper">
-	<%= render :partial => 'layouts/menu' %>
+    <%= render :partial => 'layouts/menu' %>
 
     <div id="main">
         <div id="notifications">
@@ -36,11 +36,6 @@
           <p style="color: orange"><%= flash[:warn] %></p>
           <p style="color: red"><%= flash[:error] %></p>
         </div>
-		<div id="header">
-		  <h1><span><%= link_to "Smidig 2011", root_url %></span></h1>
-		  <div><h2 class="page_title"><%= yield :title %></h2></div>
-		</div>
-
         <%= yield %>
     
     </div>

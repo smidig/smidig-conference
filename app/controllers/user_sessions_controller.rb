@@ -12,7 +12,7 @@ class UserSessionsController < ApplicationController
       flash[:notice] = "Velkommen tilbake!"
       redirect_back_or_default root_url
     else
-      flash[:error] = "Login incorrect."
+      flash[:error] = "Feil brukernavn eller passord"
       redirect_to :action => 'new'
     end
   end

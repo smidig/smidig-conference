@@ -6,6 +6,10 @@ class InfoController < ApplicationController
   def applyCacheControl
     response.headers['Cache-Control'] = 'public, max-age=3600'
   end
+  
+  def index
+	render "index", :layout => "plain"
+  end
 
   # Page cache for all views.
   # See http://www.railsenvy.com/2007/2/28/rails-caching-tutorial for details
