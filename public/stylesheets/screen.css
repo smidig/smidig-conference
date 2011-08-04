@@ -290,13 +290,23 @@ h1, h2 {
 }
 
 /* Form Formatting */
-
-#new_talk fieldset, #new_user fieldset {
-	border-style: none;	
+#loginform .field  {
+	padding: .25em 0;
 }
 
-.talk_details, .registration_details  {
-	padding-right: 7px;
+#new_talk fieldset, 
+#new_user fieldset {
+    border-style: none;	
+}
+
+#new_talk .format *, 
+#new_talk .cc * {
+	display: inline
+}
+
+.talk_details, 
+.registration_details  {
+    padding-right: 7px;
 	text-align: left;
 }
 
@@ -314,17 +324,13 @@ h1, h2 {
 	margin: 0;
 }
 
-.personal_details div.field,
 .talk_details div.field,
-.registration_details div.field, #loginform .field  {
+.personal_details div.field,
+.registration_details div.field {
 	padding: .25em 0;
 }
 
-#new_talk .format *, #new_talk .cc * {
-	display: inline
-}
-
-.radios{
+.radios {
 	margin-left: 10em;
 }
 
@@ -346,7 +352,10 @@ h1, h2 {
 	padding-top: 0;
 }
 
-.confirmations, .registration_details {padding: .75em 0}
+.confirmations, 
+.registration_details {
+    padding: .75em 0
+}
 
 .confirmations label {
   width: 100%;
