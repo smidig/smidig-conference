@@ -362,6 +362,10 @@ h1, h2 {
   display: inline;
 }
 
+#mytags {
+    border-style: none;
+}
+
 /* Arrangørene */
 .person {
   margin-top: 5px;
