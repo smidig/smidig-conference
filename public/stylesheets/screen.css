@@ -295,27 +295,27 @@ h1, h2 {
 	border-style: none;	
 }
 
-#talk_details, .registration_details  {
+.talk_details, .registration_details  {
 	padding-right: 7px;
 	text-align: left;
 }
 
-#talk_details input,
-#talk_details select,
+.talk_details input,
+.talk_details select,
 .registration_details .kommentarer label,
 .registration_details .type label  {
 	display: block
 }
 
-#talk_details textarea,
+.talk_details textarea,
 .registration_details textarea,
-#talk_details .paastand input {
+.talk_details .paastand input {
 	width: 100%;
 	margin: 0;
 }
 
 .personal_details div.field,
-#talk_details div.field,
+.talk_details div.field,
 .registration_details div.field, #loginform .field  {
 	padding: .25em 0;
 }
