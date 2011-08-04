@@ -291,6 +291,10 @@ h1, h2 {
 
 /* Form Formatting */
 
+#new_talk fieldset, #new_user fieldset {
+	border-style: none;	
+}
+
 #talk_details, .registration_details  {
 	padding-right: 7px;
 	text-align: left;
