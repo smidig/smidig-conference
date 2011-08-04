@@ -2,7 +2,7 @@
   <%= render "shared/error_messages", :target => @user %>
 <div id="registration_form">
 
-    <fieldset id="personal_details">
+    <fieldset class="personal_details">
       <div class="field name">
         <%= f.label :name, "Navn"%>
         <%= f.text_field :name %>
@@ -27,7 +27,7 @@
         <%= f.label :password_confirmation, "Bekreft passord"%>
         <%= f.password_field :password_confirmation %>
 
-    <fieldset id="registration_details">
+    <fieldset class="registration_details">
       <%= f.fields_for :registration do |reg| %>
         <%= reg.hidden_field :free_ticket %>
         <%= reg.hidden_field :manual_payment %>

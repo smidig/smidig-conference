@@ -291,28 +291,28 @@ h1, h2 {
 
 /* Form Formatting */
 
-#talk_details, #registration_details  {
+#talk_details, .registration_details  {
 	padding-right: 7px;
 	text-align: left;
 }
 
 #talk_details input,
 #talk_details select,
-#registration_details .kommentarer label,
-#registration_details .type label  {
+.registration_details .kommentarer label,
+.registration_details .type label  {
 	display: block
 }
 
 #talk_details textarea,
-#registration_details textarea,
+.registration_details textarea,
 #talk_details .paastand input {
 	width: 100%;
 	margin: 0;
 }
 
-#personal_details div.field,
+.personal_details div.field,
 #talk_details div.field,
-#registration_details div.field, #loginform .field  {
+.registration_details div.field, #loginform .field  {
 	padding: .25em 0;
 }
 
@@ -324,27 +324,27 @@ h1, h2 {
 	margin-left: 10em;
 }
 
-#personal_details .radios label {
+.personal_details .radios label {
 	display: inline;
 	width: auto;
 }
 
-#personal_details label {
+.personal_details label {
 	display: inline-block;
 	width: 9em;
 }
 
-#personal_details .privacy {
+.personal_details .privacy {
 	padding-bottom: 0;
 }
 
-#personal_details .optional {
+.personal_details .optional {
 	padding-top: 0;
 }
 
-.confirmations, #registration_details {padding: .75em 0}
+.confirmations, .registration_details {padding: .75em 0}
 
-#confirmations label {
+.confirmations label {
   width: 100%;
   display: inline;
 }
