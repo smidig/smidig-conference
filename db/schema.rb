@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101207212428) do
+ActiveRecord::Schema.define(:version => 20110810205201) do
 
   create_table "comments", :force => true do |t|
     t.integer  "talk_id"
@@ -121,6 +121,13 @@ ActiveRecord::Schema.define(:version => 20101207212428) do
     t.integer "tag_id"
   end
 
+  create_table "talk_types", :force => true do |t|
+    t.string   "name"
+    t.string   "duration"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "talks", :force => true do |t|
     t.integer  "topic_id"
     t.string   "title"
@@ -145,6 +152,7 @@ ActiveRecord::Schema.define(:version => 20101207212428) do
     t.boolean  "email_sent",           :default => false
     t.integer  "sum_of_votes"
     t.integer  "num_of_votes"
+    t.integer  "talk_type_id"
   end
 
   create_table "topics", :force => true do |t|

@@ -25,6 +25,11 @@ $(document).ready(function(){
 <fieldset class="talk_details">
 
   <%= render "shared/error_messages", :target => @talk %>
+  
+  <div class="field type">
+    <%= f.label :type, "Type of talk" %>
+    <%= f.collection_select :talk_type_id, @types, :id, :name_and_duration %>
+  </div>
 
   <div class="field paastand">
     <%= f.label :title, "Påstand" %>

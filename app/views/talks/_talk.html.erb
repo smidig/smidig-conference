@@ -4,6 +4,10 @@
     <%= image_tag("icon_slides.gif") if admin? && talk.slide.file? %>
 
   </h4>
+  <div class="talk_type">
+    <b><%= talk.talk_type.name_and_duration %></b>
+  </div>
+
   <div class="tags">
   <% talk.tags.each do |tag| %>
     <%= link_to tag.title, :controller=>"talks", :action=>"article_tags", :id=>tag.id %>

@@ -2,6 +2,10 @@
 <div id="breadcrumbs"><%= link_to "Tilbake til liste over foredrag", talks_path %></div>
 <h2 class="page_title"><%=h @talk.title %></h2>
 
+<div class="talk_type">
+  <b><%= @talk.talk_type.name_and_duration %></b>
+</div>
+
 <% if @talk.accepted?  %>
 <p><%= image_tag("approved_talk.png") %> godkjent</p>
 <% end  %>

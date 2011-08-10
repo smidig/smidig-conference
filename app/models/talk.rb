@@ -10,6 +10,7 @@ class Talk < ActiveRecord::Base
   has_many :votes, :include => :user
   has_and_belongs_to_many :tags
   has_many :feedback_comments
+  belongs_to :talk_type
 
   has_attached_file :slide, PAPERCLIP_CONFIG
 

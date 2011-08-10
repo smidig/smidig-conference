@@ -51,6 +51,7 @@ class TalksController < ApplicationController
       @talk = Talk.new
       @tags = Tag.find(:all)
       @user = current_user
+      @types = TalkType.all
       respond_to do |format|
         format.html # new.html.erb
         format.xml { render :xml => @talk }
@@ -65,6 +66,7 @@ class TalksController < ApplicationController
     @talk = Talk.find(params[:id])
     @tags = Tag.find(:all)
     @user = User.new
+    @types = TalkType.all
   end
 
   # POST /talks
@@ -72,9 +74,9 @@ class TalksController < ApplicationController
   def create
     extended_params = params[:talk].merge!({ :acceptance_status => "pending" })
     @talk = Talk.new(extended_params)
-
     @tags = Tag.find(:all)
-
+    @types = TalkType.all
+    
     # Tag handeling
     tag_names = []
     tags = []
@@ -129,7 +131,8 @@ class TalksController < ApplicationController
   # PUT /talks/1.xml
   def update
     @talk = current_user.is_admin ? Talk.find(params[:id], :readonly => false) : current_user.talks.find(params[:id], :readonly => false)    
-
+    @types = TalkType.all
+    
     # Tag handeling
     tag_names = []
     tags = []
@@ -167,7 +170,7 @@ class TalksController < ApplicationController
     end
   end
 
-protected
+  protected
   def login_required
     return unless current_user
     flash[:error] = "Vennligst logg inn"
