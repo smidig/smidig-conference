@@ -455,3 +455,7 @@ ul.talks li:nth-child(odd) {
     margin-right: 0.6em;
     white-space: nowrap;
 }
+
+span.user {
+    font-weight: bold;
+}
