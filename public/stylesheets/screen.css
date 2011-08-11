@@ -304,7 +304,9 @@ h3 {
 }
 
 #new_talk fieldset, 
-#new_user fieldset {
+#new_user fieldset,
+.edit_talk fieldset,
+.edit_user fieldset {
     border-style: none;	
 }
 
