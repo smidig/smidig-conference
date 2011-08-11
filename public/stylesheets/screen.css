@@ -417,6 +417,14 @@ table.acceptance td {
 	overflow: hidden;
 }
 
+.field_with_errors input {
+	background-color: #faa;
+	
+}
 .field_with_errors label {
-	border: 1px solid red;
+	border-bottom: 1px dotted red;
+}
+
+input {
+  border: 1px solid silver;
 }
