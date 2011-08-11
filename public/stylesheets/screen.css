@@ -12,7 +12,7 @@ body:before {
 #wrapper {
     min-height: 100%;
     background-color: #110039;
-	margin-right: 200px;
+	margin-right: 350px;
 }
 
 #main {
@@ -279,7 +279,7 @@ h1, h2 {
 
 #logos {
     float: right;
-    width: 150px;
+    width: 300px;
     padding: 25px;
 
 }
@@ -294,17 +294,17 @@ h1, h2 {
 	padding: .25em 0;
 }
 
-#new_talk fieldset, 
+#new_talk fieldset,
 #new_user fieldset {
-    border-style: none;	
+    border-style: none;
 }
 
-#new_talk .format *, 
+#new_talk .format *,
 #new_talk .cc * {
 	display: inline
 }
 
-.talk_details, 
+.talk_details,
 .registration_details  {
     padding-right: 7px;
 	text-align: left;
@@ -352,7 +352,7 @@ h1, h2 {
 	padding-top: 0;
 }
 
-.confirmations, 
+.confirmations,
 .registration_details {
     padding: .75em 0
 }
@@ -383,17 +383,17 @@ h1, h2 {
   font-weight: bold;
   font-size: 1.2em;
   margin-bottom: 0px;
-  
+
 }
 
 .person div.info div.company {
   color: gray;
-  font-size: 0.9em;  
+  font-size: 0.9em;
 }
 
 .person div.info div.cite {
   margin-top: 0;
-  font-style: italic;  
+  font-style: italic;
 }
 
 table.acceptance tr:hover {
