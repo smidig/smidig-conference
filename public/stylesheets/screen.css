@@ -135,11 +135,20 @@ a:active {
 
 
 
-h1, h2 {
+h1, h2, h3 {
     font-family: 'LeagueGothicRegular';
     text-transform: uppercase;
     white-space: nowrap;
     overflow: hidden;
+    font-weight: normal;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.5em;
 }
 
 #header h1 {
@@ -454,4 +463,8 @@ ul.talks li:nth-child(odd) {
 .tag_selector a, .tag_selector span.selected {
     margin-right: 0.6em;
     white-space: nowrap;
+}
+
+span.user {
+    font-weight: bold;
 }
