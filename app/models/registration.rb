@@ -55,14 +55,20 @@ class Registration < ActiveRecord::Base
   def paid?
     paid_amount && paid_amount > 0
   end
-  def self.find_by_invoice(id)
-    Registration.find(id.to_i - self.invoice_prefix)
+
+  def self.find_by_invoice(invoice_id)
+    if invoice_id =~ /^2011t?-(\d+)$/
+	  Registration.find($1.to_i)
+	else
+	  raise "Invalid invoice_id #{invoice_id}"
+	end
   end
-  def self.invoice_prefix
-    invoice_start = "2011-" if Rails.env == "production"
-    invoice_start ||= "2011s-"
-    invoice_start
+
+  def invoice_id
+    return "2011-#{id}" if Rails.env == "production"
+	return "2011t-#{id}"
   end
+  
   def payment_url(payment_notifications_url, return_url)
     values = {
       :business => PAYMENT_CONFIG[:paypal_email],
@@ -71,7 +77,7 @@ class Registration < ActiveRecord::Base
       :currency_code => 'NOK',
       :notify_url => payment_notifications_url,
       :return => return_url,
-      :invoice => Registration.invoice_prefix + id.to_s,
+      :invoice => invoice_id,
       :amount_1 => price,
       :item_name_1 => description,
       :item_number_1 => '1',
