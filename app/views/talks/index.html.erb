@@ -14,6 +14,8 @@ Smidig-konferansen er en konferanse for og av fagmiljøet selv.  Det er din kunn
 
 <h2>Foreslåtte lyntaler<%= feed_link "Følg med på alle nye foredrag", talks_path(:format => :rss) %></h2>
 
+<ul class="talks">
 <%= render :partial => @talks %>
+</ul>
 
 <p>Savner du noe du ikke ser her? <%= link_to 'Foreslå lyntale selv!', new_talk_path %></p>

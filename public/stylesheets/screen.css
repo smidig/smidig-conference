@@ -428,3 +428,25 @@ table.acceptance td {
 input {
   border: 1px solid silver;
 }
+
+ul.talks {
+    padding-left: 0;
+}
+
+ul.talks li {
+    list-style: none;
+    padding: 0.5em;
+}
+
+ul.talks div.title {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+ul.talks div.tags a {
+    margin-left: 0.6em;
+}
+
+ul.talks li:nth-child(odd) {
+    background: #16004a;
+}
