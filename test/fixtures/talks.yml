@@ -10,6 +10,7 @@ one:
   audience_level: MyString
   comments_count: 1
   acceptance_status: refused
+  talk_type: lyntale
 
 two:
   title: MyString
@@ -21,6 +22,7 @@ two:
   audience_level: MyString
   comments_count: 1
   acceptance_status: accepted
+  talk_type: lyntale
 
 three:
   title: MyString
@@ -32,6 +34,7 @@ three:
   audience_level: MyString
   comments_count: 1
   acceptance_status: pending
+  talk_type: lyntale
 
 four:
   title: MyString
@@ -43,6 +46,7 @@ four:
   audience_level: MyString
   comments_count: 1
   acceptance_status: pending
+  talk_type: lyntale
 
 five:
   title: MyString
@@ -54,3 +58,4 @@ five:
   audience_level: MyString
   comments_count: 1
   acceptance_status: pending
+  talk_type: lyntale
