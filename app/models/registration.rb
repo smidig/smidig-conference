@@ -59,8 +59,8 @@ class Registration < ActiveRecord::Base
     Registration.find(id.to_i - self.invoice_prefix)
   end
   def self.invoice_prefix
-    invoice_start = 1000 if Rails.env == "production"
-    invoice_start ||= 0
+    invoice_start = "2011-" if Rails.env == "production"
+    invoice_start ||= "2011s-"
     invoice_start
   end
   def payment_url(payment_notifications_url, return_url)
@@ -71,7 +71,7 @@ class Registration < ActiveRecord::Base
       :currency_code => 'NOK',
       :notify_url => payment_notifications_url,
       :return => return_url,
-      :invoice => id + Registration.invoice_prefix,
+      :invoice => Registration.invoice_prefix + id.to_s,
       :amount_1 => price,
       :item_name_1 => description,
       :item_number_1 => '1',
