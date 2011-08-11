@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class DynamicPaymentUrl < ActiveRecord::Migration
   def self.up
     remove_column :registrations, :payment_link

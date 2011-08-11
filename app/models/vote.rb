@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Vote < ActiveRecord::Base
   belongs_to :user
   belongs_to :talk, :counter_cache => true

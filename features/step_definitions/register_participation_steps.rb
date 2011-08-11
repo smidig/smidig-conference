@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Given /^the following register_participations:$/ do |register_participations|
   RegisterParticipation.create!(register_participations.hashes)
 end

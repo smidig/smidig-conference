@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddPeriodIdToTalk < ActiveRecord::Migration
   def self.up
     add_column :talks, :period_id, :integer

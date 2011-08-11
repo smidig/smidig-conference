@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module ProgramHelper
   def timeslot_with_location_tr(timeslot, periods)
     """

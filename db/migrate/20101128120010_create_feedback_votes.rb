@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateFeedbackVotes < ActiveRecord::Migration
   def self.up
     create_table :feedback_votes do |t|

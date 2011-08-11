@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddMailSentToTalks < ActiveRecord::Migration
   def self.up
     add_column :talks, :email_sent, :boolean, :default => false

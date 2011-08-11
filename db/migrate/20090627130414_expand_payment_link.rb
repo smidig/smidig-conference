@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ExpandPaymentLink < ActiveRecord::Migration
   def self.up
     change_column :registrations, :payment_link, :string, :length => 2000

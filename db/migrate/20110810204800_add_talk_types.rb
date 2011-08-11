@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddTalkTypes < ActiveRecord::Migration
   def self.up
     lightning_talk = TalkType.new

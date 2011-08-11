@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddMultispeakerTalks < ActiveRecord::Migration
   def self.up
     Speaker.create! :user_id => 305, :talk_id => 82

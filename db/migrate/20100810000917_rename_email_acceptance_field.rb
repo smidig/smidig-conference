@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RenameEmailAcceptanceField < ActiveRecord::Migration
   def self.up
     add_column :users, :accept_optional_email, :boolean

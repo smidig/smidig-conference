@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class SetAllTalkAcceptanceStatusToPending < ActiveRecord::Migration
   def self.up
     Talk.all.each do |talk|

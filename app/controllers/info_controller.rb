@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # Controller for displaying static html pages
 # See http://railscasts.com/episodes/117-semi-static-pages for details
 class InfoController < ApplicationController

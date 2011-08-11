@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddEmailAcceptanceToUser < ActiveRecord::Migration
   def self.up
     add_column :users, :accepted_privacy_guidelines, :boolean

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class FeedbacksController < ApplicationController
   # GET /feedbacks
   # GET /feedbacks.xml

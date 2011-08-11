@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 SmidigConference::Application.routes.draw do
   resources :feedback_votes
   resources :feedbacks

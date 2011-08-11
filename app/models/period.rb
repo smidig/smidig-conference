@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Period < ActiveRecord::Base
   has_many :talks, :order => 'position'
   

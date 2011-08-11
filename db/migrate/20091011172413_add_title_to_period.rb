@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddTitleToPeriod < ActiveRecord::Migration
   def self.up
     add_column :periods, :title, :string

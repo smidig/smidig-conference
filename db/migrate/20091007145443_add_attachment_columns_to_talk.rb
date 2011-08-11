@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddAttachmentColumnsToTalk < ActiveRecord::Migration
   def self.up
     add_column :talks, :slide_file_name,    :string

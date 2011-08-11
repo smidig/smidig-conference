@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class TopicsController < ApplicationController
   before_filter :require_user, :only => [ :new, :create ]
   before_filter :require_admin, :only => [ :edit, :update, :destroy ]

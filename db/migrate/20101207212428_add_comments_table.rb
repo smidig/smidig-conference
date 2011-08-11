@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddCommentsTable < ActiveRecord::Migration
   def self.up
     create_table :feedback_comments do |t|

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UpdateRegistrations < ActiveRecord::Migration
   def self.up
     for registration in Registration.all

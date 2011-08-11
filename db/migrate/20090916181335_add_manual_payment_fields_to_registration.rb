@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddManualPaymentFieldsToRegistration < ActiveRecord::Migration
   def self.up
     add_column :registrations, :ticket_type, :text

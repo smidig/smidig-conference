@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RemoveUnusedTalkColumns < ActiveRecord::Migration
   def self.up
     remove_column :talks, :slideshare_url

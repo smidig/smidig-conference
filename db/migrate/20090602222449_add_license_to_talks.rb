@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddLicenseToTalks < ActiveRecord::Migration
   def self.up
     add_column :talks, :allow_commercial_use, :boolean

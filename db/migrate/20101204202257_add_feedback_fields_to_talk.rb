@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddFeedbackFieldsToTalk < ActiveRecord::Migration
   def self.up
     add_column :talks, :sum_of_votes, :integer

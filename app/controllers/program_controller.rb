@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ProgramController < ApplicationController
 
   before_filter :require_admin, :only => [ :phone_list ]

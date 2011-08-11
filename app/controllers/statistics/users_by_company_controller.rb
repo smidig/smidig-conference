@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Statistics::UsersByCompanyController < ApplicationController
 
   before_filter :require_admin

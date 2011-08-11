@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UserSession < Authlogic::Session::Base
   def self.login(username, password)
     user_session = UserSession.new

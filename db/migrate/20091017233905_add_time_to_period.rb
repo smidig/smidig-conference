@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddTimeToPeriod < ActiveRecord::Migration
   def self.up
     add_column :periods, :time_of_day, :string

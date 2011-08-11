@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddTypeToTalk < ActiveRecord::Migration
   def self.up
     add_column :talks, :talk_type_id, :integer

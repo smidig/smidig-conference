@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddNewWorkshopTypes < ActiveRecord::Migration
   def self.up
     TalkType.where(:name => "Workshop").first.destroy

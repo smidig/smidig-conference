@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddDinnerAndEarlyBirdToRegistrations < ActiveRecord::Migration
   def self.up
     add_column :registrations, :is_earlybird, :boolean

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UserSessionsController < ApplicationController
   before_filter :require_user, :only => [:restricted, :destroy, :logout]
 

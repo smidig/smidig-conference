@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module TalksHelper
   def antall_stemmer(antall)
     case antall 

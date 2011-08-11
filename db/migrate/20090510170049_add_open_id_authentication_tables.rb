@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddOpenIdAuthenticationTables < ActiveRecord::Migration
   def self.up
     create_table :open_id_authentication_associations, :force => true do |t|

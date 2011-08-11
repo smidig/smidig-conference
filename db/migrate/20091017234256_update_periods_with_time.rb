@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UpdatePeriodsWithTime < ActiveRecord::Migration
   def self.up
     Period.update_all "time_of_day = '9:00-9:45', day = 'torsdag'", :time_id => 0

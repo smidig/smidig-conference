@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Feedback < ActiveRecord::Base
   has_many :feedback_votes
 

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class DropTalkSpeaker < ActiveRecord::Migration
   def self.up
     remove_column :talks, :speaker_id

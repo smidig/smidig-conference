@@ -1,4 +1,4 @@
-# encoding: UTF-8
+# -*- encoding : utf-8 -*-
 
 class UsersController < ApplicationController
   before_filter :require_user, :except => [ :new, :create ]

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 begin
   # Set up load paths for the locked set of pre-resolved gems.
   require File.expand_path('../../.bundle/environment', __FILE__)

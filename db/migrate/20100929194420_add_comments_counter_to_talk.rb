@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddCommentsCounterToTalk < ActiveRecord::Migration
   def self.up
     add_column :talks, :comments_count, :integer

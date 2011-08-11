@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class FeedbackVotesController < ApplicationController
   # GET /feedback_votes
   # GET /feedback_votes.xml

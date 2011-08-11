@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class EditDayNamesInPeriods < ActiveRecord::Migration
   def self.up
     Period.all.each do |period|
