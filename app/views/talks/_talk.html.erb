@@ -1,14 +1,13 @@
-<div class="talk" id="<%= dom_id(talk) %>">
-  <h4><%= image_tag("approved_talk.png") if talk.accepted? %> <%= link_to h(talk.title), talk %>
+<li id="<%= dom_id(talk) %>">
+  <div class="title"><%= image_tag("approved_talk.png") if talk.accepted? %> <%= link_to h(talk.title), talk %>
     <%= "(#{antall_stemmer(talk.votes_count)})" if talk.votes_count > 0 %>
     <%= image_tag("icon_slides.gif") if admin? && talk.slide.file? %>
-
-  </h4>
+  </div>
   <div class="talk_type">
     <b><%= talk.talk_type.name_and_duration %></b>
   </div>
 
-  <div class="tags">
+  <div class="tags"><%= talk.tags.length == 0 ? "" : "Tags:" %>
   <% talk.tags.each do |tag| %>
     <%= link_to tag.title, :controller=>"talks", :action=>"article_tags", :id=>tag.id %>
   <% end %>
@@ -19,4 +18,4 @@
     Foreslått av <%= render :partial => talk.users %> for <%= time_ago_in_words(talk.created_at) %> siden.
   </div>
 
-</div>
+</li>
