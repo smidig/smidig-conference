@@ -27,7 +27,7 @@ $(document).ready(function(){
   <%= render "shared/error_messages", :target => @talk %>
   
   <div class="field type">
-    <%= f.label :type, "Type of talk" %>
+    <%= f.label :type, "Type foredrag" %>
     <%= f.collection_select :talk_type_id, @types, :id, :name_and_duration %>
   </div>
 

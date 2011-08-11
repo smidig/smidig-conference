@@ -430,6 +430,10 @@ table.acceptance td {
 	background-color: #faa;	
 }
 
+.field_with_errors textarea {
+	background-color: #faa;	
+}
+
 .field_with_errors label {
 	border-bottom: 1px dotted red;
 }
