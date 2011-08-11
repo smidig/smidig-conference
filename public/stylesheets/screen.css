@@ -450,3 +450,8 @@ ul.talks div.tags a {
 ul.talks li:nth-child(odd) {
     background: #16004a;
 }
+
+.tag_selector a, .tag_selector span.selected {
+    margin-right: 0.6em;
+    white-space: nowrap;
+}

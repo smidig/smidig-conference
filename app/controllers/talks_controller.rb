@@ -21,7 +21,7 @@ class TalksController < ApplicationController
   # GET /talks.xml
   def article_tags
     puts params[:id]
-    @tags = Tag.find(:all, :order => :title)
+    @tags = Tag.find(:all, :order => "LOWER(title)")
     @tag = Tag.find(params[:id])
     @talks = @tag.talks
 
