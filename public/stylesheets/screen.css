@@ -135,11 +135,20 @@ a:active {
 
 
 
-h1, h2 {
+h1, h2, h3 {
     font-family: 'LeagueGothicRegular';
     text-transform: uppercase;
     white-space: nowrap;
     overflow: hidden;
+    font-weight: normal;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.5em;
 }
 
 #header h1 {
