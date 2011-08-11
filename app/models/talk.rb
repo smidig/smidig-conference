@@ -148,4 +148,7 @@ class Talk < ActiveRecord::Base
     self.count(:conditions => "acceptance_status = 'pending'")
   end
 
+  def description_and_type
+    "#{description}\n#{talk_type.name_and_duration}"
+  end
 end

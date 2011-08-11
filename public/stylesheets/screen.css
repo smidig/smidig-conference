@@ -1,5 +1,5 @@
-html, body {height: 100%; min-width: 960px;
-}
+html, body {height: 100%; min-width: 960px;}
+
 
 body:before {
 	content:"";
@@ -12,7 +12,7 @@ body:before {
 #wrapper {
     min-height: 100%;
     background-color: #110039;
-	margin-right: 200px;
+	margin-right: 350px;
 }
 
 #main {
@@ -288,7 +288,7 @@ h3 {
 
 #logos {
     float: right;
-    width: 150px;
+    width: 300px;
     padding: 25px;
 
 }
@@ -304,16 +304,18 @@ h3 {
 }
 
 #new_talk fieldset, 
-#new_user fieldset {
+#new_user fieldset,
+.edit_talk fieldset,
+.edit_user fieldset {
     border-style: none;	
 }
 
-#new_talk .format *, 
+#new_talk .format *,
 #new_talk .cc * {
 	display: inline
 }
 
-.talk_details, 
+.talk_details,
 .registration_details  {
     padding-right: 7px;
 	text-align: left;
@@ -364,7 +366,7 @@ input#talk_slide {
 	padding-top: 0;
 }
 
-.confirmations, 
+.confirmations,
 .registration_details {
     padding: .75em 0
 }
@@ -395,17 +397,17 @@ input#talk_slide {
   font-weight: bold;
   font-size: 1.2em;
   margin-bottom: 0px;
-  
+
 }
 
 .person div.info div.company {
   color: gray;
-  font-size: 0.9em;  
+  font-size: 0.9em;
 }
 
 .person div.info div.cite {
   margin-top: 0;
-  font-style: italic;  
+  font-style: italic;
 }
 
 table.acceptance tr:hover {
