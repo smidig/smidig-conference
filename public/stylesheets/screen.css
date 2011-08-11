@@ -1,5 +1,5 @@
-html, body {height: 100%; min-width: 960px;
-}
+html, body {height: 100%; min-width: 960px;}
+
 
 body:before {
 	content:"";
