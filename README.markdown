@@ -4,6 +4,8 @@
 
 ### OSX / Linux
 
+* [2011 Rubyist’s guide to a Mac OS X development environment](http://robots.thoughtbot.com/post/8700977975/2011-rubyists-guide-to-a-mac-os-x-development)
+
 * Ruby 1.9.2
 * RubyMine, like IDEA for all you lame java developers ;) or TextMate or, according to Bodil, Emacs
 * git
