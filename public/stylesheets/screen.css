@@ -102,26 +102,22 @@ a:active {
     background-image: url(../images/epost-sm-b.png);
 }
 
-
-
-
 #frontpage_header, #header {
     position: relative;
     width: 100%;
 }
 
-
 #frontpage_header div, #header div {
-  font-size: 1.2em;
-  line-height: 1.4em;
-  border-style: solid;
-  border-color: white;
-  border-width: 0 0 0 2px;
-  padding-left: 25px;
-  margin-left: 250px;
-	position: absolute;
-	bottom: 0;
-	left: 0;
+    font-size: 1.2em;
+    line-height: 1.4em;
+    border-style: solid;
+    border-color: white;
+    border-width: 0 0 0 2px;
+    padding-left: 25px;
+    margin-left: 250px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
 #frontpage_header div p, #header div p {
@@ -133,6 +129,52 @@ a:active {
     margin-top: 0;
 }
 
+
+#header {
+    height: 70px;
+}
+
+#header h1, #header h2 {
+    line-height: 70px;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    float: left;
+}
+
+
+#header h1 {
+    font-size: 60px;
+    padding-right: 25px;
+    border-right: 2px solid white;
+    margin-right: 25px;
+}
+
+
+
+/*
+#header {
+    background: red;
+
+}
+
+#header h1 {
+    background: orange;
+}
+
+#header div {
+    background: yellow;
+}
+
+#header span {
+    background: green;
+}
+
+#header a {
+    background: blue;
+}
+*/
 
 
 h1, h2, h3 {
@@ -151,19 +193,6 @@ h3 {
     font-size: 1.5em;
 }
 
-#header h1 {
-    font-size: 60px;
-    font-weight: normal;
-
-	  margin: 0;
-    padding-right: 25px;
-	  padding-bottom: 7px;
-
-    border-style: solid;
-    border-color: white;
-    border-width: 0 2px 0 0;
-    width: 225px;
-}
 
 #frontpage_header h1 {
     line-height: 90px;
@@ -303,11 +332,11 @@ h3 {
 	padding: .25em 0;
 }
 
-#new_talk fieldset, 
+#new_talk fieldset,
 #new_user fieldset,
 .edit_talk fieldset,
 .edit_user fieldset {
-    border-style: none;	
+    border-style: none;
 }
 
 #new_talk .format *,
@@ -429,11 +458,11 @@ table.acceptance td {
 }
 
 .field_with_errors input {
-	background-color: #faa;	
+	background-color: #faa;
 }
 
 .field_with_errors textarea {
-	background-color: #faa;	
+	background-color: #faa;
 }
 
 .field_with_errors label {
