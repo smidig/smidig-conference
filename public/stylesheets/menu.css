@@ -5,15 +5,19 @@ nav {
 
 nav ul {
     margin-right: 50px;
-	margin-bottom: 0px;
     white-space: nowrap;
+    overflow: hidden;
 }
 
 nav li {
 	display:block;
 	float:right;
     position: relative;
-	margin-left: 50px
+	margin-right: 50px
+}
+
+nav li:first-child {
+    margin-right: 0;
 }
 
 nav li.active a,
