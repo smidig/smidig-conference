@@ -2,11 +2,11 @@
 <%= form_for @user_session, :url => { :action => 'create' } do |f| %>
 	<div id="loginform" class="form">
 	  <div class="field email">
-	    <span><%= f.label :'e-post' %></span>
+	    <span><%= f.label :email, "E-post" %></span>
 	    <%= f.text_field :email %>
 	  </div>
 	  <div class="field password">
-	    <span><%= f.label :passord %></span>
+	    <span><%= f.label :password, "Passord" %></span>
 	    <%= f.password_field :password %>
 	  </div>
 	  <div class="field button">
