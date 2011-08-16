@@ -27,7 +27,7 @@ $(document).ready(function(){
   <%= render "shared/error_messages", :target => @talk %>
   
   <div class="field type">
-    <%= f.label :type, "Type foredrag" %>
+    <%= f.label :talk_type_id, "Type foredrag" %>
     <%= f.collection_select :talk_type_id, @types, :id, :name_and_duration %>
   </div>
 
@@ -63,7 +63,7 @@ $(document).ready(function(){
 
 <div class="tag">
 	<div class="line">
-		<label for="tags">Her kan du tagge din tale. Allerede eksisterende tags vil bli foreslått mens du skriver, mens nye vil bli lagt til så snart du lagrer endringene. </label>
+		<label>Her kan du tagge din tale. Allerede eksisterende tags vil bli foreslått mens du skriver, mens nye vil bli lagt til så snart du lagrer endringene. </label>
 		<ul id="mytags"></ul>
 	</div>
 </div>
