@@ -19,3 +19,7 @@ function onApplicationLoad() {
 }
 
 window.onload = onApplicationLoad;
+
+$(function() {
+	$(".tooltip").click(function() { $(this).find(".help").toggle(); });
+});

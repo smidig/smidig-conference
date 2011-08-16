@@ -9,41 +9,9 @@
 .tooltip div.box {
 	display: none;
 	overflow: hidden;
-}
-
-.tooltip:hover div.box  {
-	display: block;
-	overflow: visible;
-	color: black;
-	height: 0px;
-	margin: 0
-}
-
-
-.tooltip:hover div.box div.inner  {
-	position: relative;
-	left: 500px;
-	top: -5em;
-	margin-right: -235px;
-	width: 100%;
-	padding-right: 235px;
-	height: 2em;
-	font-size: .85em;
-	background: transparent url(/images/transparent.png) top left no-repeat;
-	}
-
-
-.tooltip:hover div.box div.inner div.content  {
-	background: white;
-	border-radius: 11px 11px;
-	-moz-border-radius: 11px;
-	-webkit-border-radius: 11px;
-	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
-	-webkit-box-shadow: 4px 4px rgba(0, 0, 0, 0.1);
-	-moz-box-shadow: 4px 4px rgba(0, 0, 0, 0.1);
-	padding: .5em 1.5em;
-	width: 175px;
-	border: 1px solid #aaaaaa;
+    margin: 25px;
+    padding-left: 25px;
+    border-left: 2px solid white;
 }
 
 .tooltip img {
