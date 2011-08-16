@@ -1,25 +1,27 @@
-html, body {height: 100%; min-width: 960px;}
-
-
-body:before {
-	content:"";
-	height:100%;
-	float:left;
-	width:0;
-	margin-top:-32767px;
+html, body {
+    height: 100%;
+    min-width: 960px;
+    background-color: #110039;
+    margin: 0;
+    padding: 0;
 }
 
 #wrapper {
     min-height: 100%;
-    background-color: #110039;
-	margin-right: 350px;
+    border-right: 350px solid white;
 }
 
 #main {
-    overflow:auto;
-	padding: 0px 50px 0px 50px;
-    overflow: hidden;
+    overflow: auto;
+	padding: 0px 50px 35px 50px;
 }
+
+#logos {
+    background-color: white;
+    z-index: 100;
+    padding: 25px 25px 0;
+}
+
 
 #frontpage_header {
 	padding-top: 50px;
@@ -27,14 +29,15 @@ body:before {
 
 #footer {
     position: relative;
-	margin-top: -35px;
-	height: 35px;
+	margin-top: -80px;
+    height: 35px;
 	clear:both;
+    overflow: visible;
 }
 
 
+
 body {
-    background-color: #fff;
     padding: 0;
     margin: 0;
     font-family: "TitilliumText22LRegular";
@@ -69,11 +72,11 @@ a:active {
 
 
 
-
-
-
 #socialcluster {
-    margin: 0 25px;
+    background-color: white;
+    width: 279px;
+    float: right;
+    padding: 25px 46px 25px 25px;
     text-align: right;
 }
 
@@ -150,32 +153,6 @@ a:active {
     border-right: 2px solid white;
     margin-right: 25px;
 }
-
-
-
-/*
-#header {
-    background: red;
-
-}
-
-#header h1 {
-    background: orange;
-}
-
-#header div {
-    background: yellow;
-}
-
-#header span {
-    background: green;
-}
-
-#header a {
-    background: blue;
-}
-*/
-
 
 h1, h2, h3 {
     font-family: 'LeagueGothicRegular';
@@ -318,14 +295,20 @@ h3 {
 #logos {
     float: right;
     width: 300px;
-    padding: 25px;
-
 }
 
 #logos a img {
-    padding: 0 22px 50px 22px;
     border: 0;
 }
+
+#logos a {
+    margin: 25px;
+    display: inline-block;
+    float: left
+}
+
+
+
 
 /* Form Formatting */
 #loginform .field  {
@@ -503,3 +486,13 @@ ul.talks li:nth-child(odd) {
 span.user {
     font-weight: bold;
 }
+
+/*Opera Fix*/
+body:before {/* thanks to Maleika (Kohoutec)*/
+content:"";
+height:100%;
+float:left;
+width:0;
+margin-top:-32767px;/* thank you Erik J - negate effect of float*/
+}
+

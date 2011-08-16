@@ -13,11 +13,8 @@
     <%= stylesheet_link_tag 'menu' %>
     <%= stylesheet_link_tag 'tooltip' %>
 
-<!--[if !IE 7]>
-	<style type="text/css">
-		#wrap {display:table;height:100%}
-	</style>
-<![endif]-->
+
+
   <!-- JavaScript -->
   <%= javascript_include_tag 'jquery-1.4.2.min' %>
   <%= javascript_include_tag 'application' %>
@@ -32,9 +29,9 @@
 <%= render :partial => 'layouts/sponsors' %>
 
 <div id="wrapper">
-    <%= render :partial => 'layouts/menu' %>
 
     <div id="main">
+    <%= render :partial => 'layouts/menu' %>
         <div id="notifications">
           <p style="color: green"><%= flash[:notice] %></p>
           <p style="color: orange"><%= flash[:warn] %></p>

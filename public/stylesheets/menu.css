@@ -4,9 +4,10 @@ nav {
 }
 
 nav ul {
-    margin-right: 50px;
     white-space: nowrap;
     overflow: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 nav li {

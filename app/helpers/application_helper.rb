@@ -30,7 +30,7 @@ module ApplicationHelper
   def user_menu_item
 	current_user ? user_menu_item_current : user_menu_item_new
   end
-  
+
   def user_menu_item_new
     active = controller_is?(%w(users))
     text = "meld deg på!"
@@ -65,7 +65,7 @@ module ApplicationHelper
        #{link_to_unless_current text, path }
       </li>).html_safe
   end
-  
+
   def sponsor(name, logo, url)
     link_to image_tag( 'logos/' + logo, :alt => name), url, :tabindex =>  -1
   end

@@ -1,7 +1,8 @@
 <%= form_for @user do |f| %>
   <%= render "shared/error_messages", :target => @user %>
-<div id="registration_form">
 
+
+  <div id="registration_form">
     <fieldset class="personal_details">
       <div class="field name">
         <%= f.label :name, "Navn"%>
@@ -26,6 +27,8 @@
       <div class="field bekreft">
         <%= f.label :password_confirmation, "Bekreft passord"%>
         <%= f.password_field :password_confirmation %> *
+      </div>
+    </fieldset>
 
     <fieldset class="registration_details">
       <%= f.fields_for :registration do |reg| %>
@@ -61,22 +64,23 @@
               <%= reg.text_area :invoice_description, :rows => 4 %>
             </div>
             <%= render :partial => 'confirmations', :locals => { :reg => reg, :f => f } %>
-            <div class="field buttons"><%= f.submit "Registrer deg" %></div>
+            <div class="field buttons">
+              <%= f.submit "Registrer deg" %>
+            </div>
           <% else %>
             <%= render :partial => 'confirmations', :locals => { :reg => reg, :f => f } %>
-
             <div class="field buttons">
-              <div><%= f.submit "Meld på som lyntaler og foreslå lyntale.",:name => "speaker", :id => "lyntale_submit" %>
-              <%= help_tooltip() do %>
-                <p>Foreslå lyntale med en kort beskrivelse i neste steg. Blir foredraget antatt, er hele konferansen gratis. Blir foredraget avslått, kan du kjøpe billett til prisen når du registrerte deg.</p>
-                </div>
-              <% end %>
+              <div>
+                <%= f.submit "Meld på som lyntaler og foreslå lyntale.",:name => "speaker", :id => "lyntale_submit" %>
+                <%= help_tooltip() do %>
+                  <p>Foreslå lyntale med en kort beskrivelse i neste steg. Blir foredraget antatt, er hele konferansen gratis. Blir foredraget avslått, kan du kjøpe billett til prisen når du registrerte deg.</p>
+                <% end %>
+              </div>
               <div><%= f.submit "Meld på som deltaker og betal." %></div>
             </div>
           <% end %>
         <% end %>
       <% end %>
     </fieldset>
-
 </div>
 <% end %>
