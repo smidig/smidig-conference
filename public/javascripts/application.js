@@ -10,7 +10,7 @@ function externalLinks() {
 }   
 
 function logosShuffle() {
-  $('#logos').shuffle();
+  $('#logos div').shuffle();
 }
 
 function onApplicationLoad() {
