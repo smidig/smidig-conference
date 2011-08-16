@@ -1,11 +1,11 @@
 <% content_for :title, "Påmelding til Smidig 2011" %>
 
-<div class="login">Er du allerede påmeldt ennå? <%= link_to "Logg inn", new_user_session_path %></div>
+<p class="login">Er du allerede påmeldt? <%= link_to "Logg inn", new_user_session_path %></p>
 
 <% unless @user.registration.free_ticket %>
   <p>
     <%= @user.registration.ticket_description %> koster
-	<%= @user.registration.ticket_price %>,- inklusive mva. for deltagere
+    <%= @user.registration.ticket_price %>,- inklusive mva. for deltagere
     og 0,- for foredragsholdere (dersom foredraget ditt
     blir godkjent).
   </p>
