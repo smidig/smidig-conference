@@ -13,16 +13,16 @@ html, body {
 
 #main {
     overflow: auto;
-	padding: 0px 50px 35px 50px;
+    padding: 0px 50px 35px 50px;
     position: relative;
 
 }
 
 #footer {
     position: relative;
-	margin-top: -80px;
+    margin-top: -80px;
     height: 35px;
-	clear:both;
+    clear:both;
     overflow: visible;
 }
 
@@ -33,7 +33,7 @@ body {
     margin: 0;
     font-family: "TitilliumText22LRegular";
     color: #eee;
-	font-size: .9em
+    font-size: .9em
 }
 
 a:link {
@@ -98,7 +98,7 @@ a:active {
 
 
 #frontpage_header {
-	padding-top: 50px;
+    padding-top: 50px;
     display: table-row;
     border: 1px solid red;
     height: auto;
@@ -299,7 +299,7 @@ h3 {
 
 #content #links {
     background-image: url(../images/back.png);
-	margin-bottom: 25px
+    margin-bottom: 25px
 }
 
 #content p {
@@ -329,7 +329,7 @@ h3 {
 
 /* Form Formatting */
 #loginform .field  {
-	padding: .25em 0;
+    padding: .25em 0;
 }
 
 #new_talk fieldset,
@@ -341,27 +341,27 @@ h3 {
 
 #new_talk .format *,
 #new_talk .cc * {
-	display: inline
+    display: inline
 }
 
 .talk_details,
 .registration_details  {
     padding-right: 7px;
-	text-align: left;
+    text-align: left;
 }
 
 .talk_details input,
 .talk_details select,
 .registration_details .kommentarer label,
 .registration_details .type label  {
-	display: block
+    display: block
 }
 
 .talk_details textarea,
 .registration_details textarea,
 .talk_details .paastand input {
-	width: 100%;
-	margin: 0;
+    width: 100%;
+    margin: 0;
 }
 input#talk_slide {
   color: silver;
@@ -370,29 +370,29 @@ input#talk_slide {
 .talk_details div.field,
 .personal_details div.field,
 .registration_details div.field {
-	padding: .25em 0;
+    padding: .25em 0;
 }
 
 .radios {
-	margin-left: 10em;
+    margin-left: 10em;
 }
 
 .personal_details .radios label {
-	display: inline;
-	width: auto;
+    display: inline;
+    width: auto;
 }
 
 .personal_details label {
-	display: inline-block;
-	width: 9em;
+    display: inline-block;
+    width: 9em;
 }
 
 .personal_details .privacy {
-	padding-bottom: 0;
+    padding-bottom: 0;
 }
 
 .personal_details .optional {
-	padding-top: 0;
+    padding-top: 0;
 }
 
 .confirmations,
@@ -448,25 +448,25 @@ table.acceptance td {
 
 
 .field_with_errors {
-	display: inline;
-	overflow: hidden;
+    display: inline;
+    overflow: hidden;
 }
 
 #railserrordisplaysux {
-	display: inline;
-	overflow: hidden;
+    display: inline;
+    overflow: hidden;
 }
 
 .field_with_errors input {
-	background-color: #faa;
+    background-color: #faa;
 }
 
 .field_with_errors textarea {
-	background-color: #faa;
+    background-color: #faa;
 }
 
 .field_with_errors label {
-	border-bottom: 1px dotted red;
+    border-bottom: 1px dotted red;
 }
 
 input {
