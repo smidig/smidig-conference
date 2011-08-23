@@ -48,6 +48,9 @@ SmidigConference::Application.routes.draw do
     collection do
       get :phone_list
     end
+    member do
+      get :receipt
+    end
   end
 
   resources :acceptances

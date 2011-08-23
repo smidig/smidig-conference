@@ -82,9 +82,14 @@ class RegistrationsController < ApplicationController
       render :action => "confirm_delete"
     end
   end
-  
+
   def confirm_delete
     @registration = reg = Registration.find(params[:id])
+  end
+
+  # GET /registrations/:id/receipt
+  def receipt
+    render :layout => false
   end
 
 protected
@@ -118,7 +123,7 @@ protected
       return false
     end
   end
-  
+
   def per_ticket_type_by_date(registrations, date_range)
     registrations_by_ticket_type = registrations.group_by { |u| u.ticket_type }
     result = {}
