@@ -14,10 +14,17 @@ god:
   crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("god" + salt) %>
   persistence_token: <%= Authlogic::Random.hex_token %>
   is_admin: true
-    
-test:
-  email: test@whatever.com
-  name: Test
+
+singletalk:
+  email: sindre@example.com
+  name: Sindre Single Registered Talk
+  password_salt: <%= salt = Authlogic::Random.hex_token %>
+  crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("test") %>
+  persistence_token: <%= Authlogic::Random.hex_token %>
+
+paid_participant:
+  email: beate@example.com
+  name: Beate Betalt
   password_salt: <%= salt = Authlogic::Random.hex_token %>
   crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("test") %>
   persistence_token: <%= Authlogic::Random.hex_token %>

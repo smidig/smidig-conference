@@ -3,17 +3,17 @@
 quentin_talks_at_one:
   user: quentin
   talk: one
-  
+
 god_talks_at_one:
   user: god
   talk: one
-  
+
 god_talks_at_two:
   user: god
   talk: two
 
-test_talks_at_three:
-  user: test
+single_talks_at_three:
+  user: singletalk
   talk: three
 
 god_talks_at_four:

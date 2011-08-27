@@ -19,10 +19,7 @@ class AcceptancesController < ApplicationController
   def accept
     @talk = Talk.find(params[:id], :include => [{:users => :registration}])
 
-    if(@talk.email_is_sent?)
-      flash[:error] = "Kan ikke endre status på foredrag '#{@talk.title}', mail allerede sendt ut."
-      redirect_to :controller => :acceptances
-    end
+    return if email_already_sent?
 
     @talk.accept!
     @talk.save
@@ -41,15 +38,10 @@ class AcceptancesController < ApplicationController
 
   def refuse
     @talk = Talk.find(params[:id])
-
-    if(@talk.email_is_sent?)
-      flash[:error] = "Kan ikke endre status på foredrag '#{@talk.title}', mail allerede sendt ut."
-      redirect_to :controller => :acceptances
-    end
+    return if email_already_sent?
 
     @talk.refuse!
     @talk.save
-
     for speaker in @talk.users
       if (speaker.all_talks_refused? && !speaker.registration.special_ticket?)
         speaker.update_to_paying_user
@@ -64,10 +56,7 @@ class AcceptancesController < ApplicationController
   def await
     @talk = Talk.find(params[:id])
 
-    if(@talk.email_is_sent?)
-      flash[:error] = "Kan ikke endre status på foredrag '#{@talk.title}', mail allerede sendt ut."
-      redirect_to :controller => :acceptances
-    end
+    return if email_already_sent?
 
     @talk.regret! #Set to pending :)
     @talk.save
@@ -88,11 +77,7 @@ class AcceptancesController < ApplicationController
   def send_mail
     @talk = Talk.find(params[:id])
 
-    if @talk.email_sent
-      flash[:error] = "Kan ikke sende mail for foredrag '#{@talk.title}': Mail allerede sendt!"
-      redirect_to :controller => :acceptances
-      return
-    end
+    return if email_already_sent?
 
     if @talk.refused?
       SmidigMailer.talk_refusation_confirmation(@talk).deliver
@@ -109,6 +94,17 @@ class AcceptancesController < ApplicationController
     @talk.save
     flash[:notice] = "Sendt mail om '#{@talk.title}'"
     redirect_to :controller => :acceptances
+  end
+
+
+  protected
+  def email_already_sent?
+    if @talk.email_is_sent?
+      msg = "Kan ikke endre status på foredrag '#{@talk.title}', mail allerede sendt ut."
+      flash[:error] = msg
+      logger.warn(msg)
+      redirect_to :controller => :acceptances
+    end
   end
 
 end
