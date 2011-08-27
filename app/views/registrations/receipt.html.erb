@@ -2,36 +2,46 @@
 <html lang="no">
 
 <head>
-	<meta charset="utf-8" />
+  <meta charset="utf-8" />
 
-	<title>
-  	  <%= content_for?(:title) ? yield(:title) : "Kvittering" %>
+  <title>
+      <%= content_for?(:title) ? yield(:title) : "Kvittering" %>
     </title>
 </head>
 <body>
 <p>
+
 KJØPSINFORMASJON
 <br/>
-Navn: OLE MORTEN AMUNDSEN
+
+Navn: <%= @u.name %>
+
+<% if false %>
+  <br/>
+  Adresse: <%= @u.address %>
+<% end %>
 <br/>
-Adresse: ETTERSTADGATA 16, 0658
+Firma: <%= @u.company %>
 <br/>
-Referansenr: 102332379
+Referansenr: <%= @r.invoice_id %>
 <br/>
-Betalingsform: VISA ############6290
+Betalingsform: Paypal (deres ref <%= @r.payment_reference %>)
 <br/>
-Produktinformasjon: Konferansedeltaker, early-bird
+Betalingsdato: <%= @r.payment_complete_at %>
 <br/>
-Smidigkonferansen 14.-15.november
+<br/>
+Produktinformasjon: Konferansedeltakelse
+<br/>
+SMIDIGKONFERANSEN 14.-15.NOVEMBER
 <br/>
 Radisson BLU Plaza Hotel Oslo
 <br/>
 
 <br/>
-Total Pris: 1875.00
+Total Pris: <%= @r.price.to_i %>.00
 <br/>
-Mva: 25.00% Gr.lag: 1500.00 Mva kr: 375.00
+Mva: 25.00% Gr.lag: <%= @r.price_ex_mva.to_i %>.00 Mva kr: <%= @r.price_mva %>.00
 <br/>
-Smidigkonferansen (forening) Org nr. 993169919 MVA 
+Smidigkonferansen (forening) Org nr. 993169919 MVA
 </p>
 </body>

@@ -84,12 +84,19 @@ class RegistrationsController < ApplicationController
   end
 
   def confirm_delete
-    @registration = reg = Registration.find(params[:id])
+    @registration = Registration.find(params[:id])
   end
 
   # GET /registrations/:id/receipt
   def receipt
-    render :layout => false
+    @r = Registration.find(params[:id])
+    @u = @r.user
+    if @r.registration_complete?
+      render :layout => false
+    else
+      flash[:error] = "Kan ikke vise kvittering - Du har ikke betalt"
+      redirect_back_or_default root_url
+    end
   end
 
 protected

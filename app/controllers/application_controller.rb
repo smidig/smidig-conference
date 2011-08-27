@@ -8,25 +8,25 @@ class ApplicationController < ActionController::Base
 
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
-  protect_from_forgery # :secret => '94cfd79349d51c387abaa8e52ad96b1f' 
+  protect_from_forgery # :secret => '94cfd79349d51c387abaa8e52ad96b1f'
 
   helper_method :current_user_session, :current_user, :access_denied
 
   private
-  
+
   def admin?
     current_user and current_user.is_admin
   end
-  
+
   def personal_admin?
     admin? and current_user.email != "admin@smidig.no"
   end
-  
+
   def current_user
     return @current_user if defined?(@current_user)
     @current_user = current_user_session && current_user_session.record
   end
-  
+
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find
@@ -62,7 +62,7 @@ class ApplicationController < ActionController::Base
   def store_location
     session[:return_to] = request.fullpath
   end
-  
+
   def store_referer
     session[:return_to] = request.env["HTTP_REFERER"]
   end
@@ -76,6 +76,7 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.html do
         if current_user
+          logger.warn "user #{current_user.id} tried to access illegal resource. request was #{request.url}.\nrequest.inspect returns #{request.inspect}"
           redirect_to root_path
         else
           redirect_to new_user_session_path

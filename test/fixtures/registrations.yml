@@ -3,7 +3,7 @@
 one:
   user: quentin
   comments: MyText
-  price: 9.99
+  price: 1875
   invoiced_at: 2011-10-18
   ticket_type: early_bird
   registration_complete: false

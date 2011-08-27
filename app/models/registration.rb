@@ -25,15 +25,23 @@ class Registration < ActiveRecord::Base
   before_create :create_payment_info
 
   def ticket_description
-	TICKET_TEXTS[self.ticket_type] || ticket_type
+  TICKET_TEXTS[self.ticket_type] || ticket_type
   end
-  
+
   def ticket_price
-	PAYMENT_CONFIG[:prices][ticket_type].to_i
+  PAYMENT_CONFIG[:prices][ticket_type].to_i
   end
-  
+
+  def price_mva
+    (self.price - price_ex_mva).to_i
+  end
+
+  def price_ex_mva
+    self.price/1.25
+  end
+
   def description
-    ticket_description + " " + (registration_complete ? " (Betalt)" : "")
+    ticket_description + (registration_complete ? " (Betalt)" : "")
   end
 
   def speaker?
@@ -43,9 +51,9 @@ class Registration < ActiveRecord::Base
   def free_ticket
     ticket_price == 0
   end
-  
+
   def discounted_ticket?
-	%w(student).include? ticket_type
+  %w(student).include? ticket_type
   end
 
   def special_ticket?
@@ -58,17 +66,17 @@ class Registration < ActiveRecord::Base
 
   def self.find_by_invoice(invoice_id)
     if invoice_id =~ /^2011t?-(\d+)$/
-	  Registration.find($1.to_i)
-	else
-	  raise "Invalid invoice_id #{invoice_id}"
-	end
+    Registration.find($1.to_i)
+  else
+    raise "Invalid invoice_id #{invoice_id}"
+  end
   end
 
   def invoice_id
     return "2011-#{id}" if Rails.env == "production"
-	return "2011t-#{id}"
+    return "2011t-#{id}"
   end
-  
+
   def payment_url(payment_notifications_url, return_url)
     values = {
       :business => PAYMENT_CONFIG[:paypal_email],

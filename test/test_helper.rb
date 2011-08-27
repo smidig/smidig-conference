@@ -8,15 +8,16 @@ class ActionController::TestCase
   setup :activate_authlogic
   # AuthLogic helper...
 
-  def login_as(u)    
-    UserSession.create(users(u))
-  end  
+  def login_as(u)
+    UserSession.create(users(u)).record
+  end
   def logout
     UserSession.find.destroy if UserSession.find
   end
+
 end
 
-class ActiveSupport::TestCase  
+class ActiveSupport::TestCase
   # Transactional fixtures accelerate your tests by wrapping each test method
   # in a transaction that's rolled back on completion.  This ensures that the
   # test database remains unchanged so your fixtures don't have to be reloaded
@@ -30,7 +31,7 @@ class ActiveSupport::TestCase
   # don't care one way or the other, switching from MyISAM to InnoDB tables
   # is recommended.
   #
-  # The only drawback to using transactional fixtures is when you actually 
+  # The only drawback to using transactional fixtures is when you actually
   # need to test transactions.  Since your test is bracketed by a transaction,
   # any transactions started in your code will be automatically rolled back.
   self.use_transactional_fixtures = true

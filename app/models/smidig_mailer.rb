@@ -24,7 +24,7 @@ class SmidigMailer < ActionMailer::Base
   def manual_registration_confirmation(user)
     @name = user.name
     @email = user.email
-    mail(:to => user.email, 
+    mail(:to => user.email,
          :subject => "#{SUBJECT_PREFIX} Bruker #{user.email} er registrert")
   end
 
@@ -33,15 +33,15 @@ class SmidigMailer < ActionMailer::Base
     @email = user.email
     @description = user.registration.description
     @user_url = user_url
-    mail(:to => FROM_EMAIL, :reply_to => "#{user.name} <#{user.email}>", 
-	 :subject => "#{SUBJECT_PREFIX} Bruker #{user.email} har registrert seg med manuell betalingshåndtering")
+    mail(:to => FROM_EMAIL, :reply_to => "#{user.name} <#{user.email}>",
+   :subject => "#{SUBJECT_PREFIX} Bruker #{user.email} har registrert seg med manuell betalingshåndtering")
   end
 
   def speaker_registration_confirmation(user)
     @name = user.name
     @email = user.email
-    mail(:to => @email, 
-	:subject => "#{SUBJECT_PREFIX} Bruker #{user.email} er registrert")
+    mail(:to => @email,
+  :subject => "#{SUBJECT_PREFIX} Bruker #{user.email} er registrert")
   end
 
   def speaker_registration_notification(user, user_url)
@@ -55,14 +55,14 @@ class SmidigMailer < ActionMailer::Base
   def password_reset_instructions(user)
     @edit_password_reset_url = edit_password_reset_url(user.perishable_token)
     mail(:to => user.email,
-	 :subject => "#{SUBJECT_PREFIX} Hvordan endre ditt passord")
+   :subject => "#{SUBJECT_PREFIX} Hvordan endre ditt passord")
   end
 
   def free_registration_confirmation(user)
     @name = user.name
     @email = user.email
-    mail(:to => user.email, 
-	 :subject => "#{SUBJECT_PREFIX} Bruker #{user.email} er registrert")
+    mail(:to => user.email,
+   :subject => "#{SUBJECT_PREFIX} Bruker #{user.email} er registrert")
   end
 
   def free_registration_notification(user, user_url)
@@ -71,15 +71,16 @@ class SmidigMailer < ActionMailer::Base
     @description = user.registration.description,
     @user_url = user_url
     mail(:to => FROM_EMAIL, :reply_to => "#{user.name} <#{user.email}>",
-	 :subject => "#{SUBJECT_PREFIX} Bruker #{user.email} har registrert seg som #{user.registration.description}")
+   :subject => "#{SUBJECT_PREFIX} Bruker #{user.email} har registrert seg som #{user.registration.description}")
   end
 
   def payment_confirmation(registration)
     @name = registration.user.name
     @payment_text = registration.description
-    @amount = registration.price
+    @amount = registration.price.to_i
+    @mva = registration.price_mva
     mail(:to => registration.user.email,
-	 :subject => "#{SUBJECT_PREFIX} Betalingskvittering for #{registration.user.email}")
+   :subject => "#{SUBJECT_PREFIX} Betalingskvittering for #{registration.user.email}")
   end
 
   def talk_confirmation(talk, talk_url)
@@ -96,7 +97,7 @@ class SmidigMailer < ActionMailer::Base
     @talk = comment.talk.title
     @comment_url = comment_url
     mail(:to => comment.talk.speaker_email,
-	 :subject => "#{SUBJECT_PREFIX} Kommentar til #{comment.talk.title}")
+   :subject => "#{SUBJECT_PREFIX} Kommentar til #{comment.talk.title}")
   end
 
   def talk_acceptance_confirmation(talk)
@@ -120,7 +121,7 @@ class SmidigMailer < ActionMailer::Base
     @edit_talk_url = edit_talk_url
     @new_password_reset_url = new_password_reset_url
     mail(:to => talk.speaker_email,
-	 :subject => "Du kan nå laste opp slidene til ditt foredrag på Smidig 2011")
+   :subject => "Du kan nå laste opp slidene til ditt foredrag på Smidig 2011")
   end
 
   def error_mail(title, body)

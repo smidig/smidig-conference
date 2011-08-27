@@ -1,5 +1,5 @@
 <% if registration.free_ticket %>
-  
+
   <% if not registration.registration_complete %>
     <p>
       Du vil få beskjed når registreringen din blir godkjent minimum to uker før konferanse.
@@ -10,18 +10,18 @@
 
 <% elsif registration.registration_complete %>
 
-Vi har registrert din betaling. Vi sees på Smidig 2011!
+Vi har registrert din betaling. Se din <%= link_to "kvittering", receipt_registration_path(registration) %>. Vi sees på Smidig 2011!
 
 <% elsif registration.manual_payment %>
 
   <p>
     Vi sender faktura til følgende adresse. Denne siden vil oppdateres når vi registrerer betalingen.
   </p>
-  
-  <h4>Fakturaadresse</h4>    
+
+  <h4>Fakturaadresse</h4>
   <%=simple_format h(registration.invoice_address) %>
-  
-  <h4>Beskrivelse</h4>    
+
+  <h4>Beskrivelse</h4>
   <%=simple_format h(registration.invoice_description) %>
 
   <%= link_to "Endre fakturainformasjon", edit_registration_path(registration) %>
@@ -31,44 +31,44 @@ Vi har registrert din betaling. Vi sees på Smidig 2011!
   <p>
     Vi har ikke registrert deg som betalt enda. Dette kan skyldes
     flere ting:
-	</p>
-	
-	<ul>
-	  <li>
-	    Det er mulig du ikke har <%=link_to "utført betalingen",
-	      registration.payment_url(payment_notifications_url, user_url(@user)) %>.
-	  </li>
-	  <li>
-	    Det er mulig noe skjedde feil under betalingen.
-	    <%=link_to "Sjekk betalingsstatus",
-	      registration.payment_url(payment_notifications_url, user_url(@user)) %>.
-	  </li>	    
-  	<% if registration.created_at > 15.minutes.ago %>
-  	  <li>
-  	    Det kan ta litt tid før vi registrerer betalingen.
+  </p>
+
+  <ul>
+    <li>
+      Det er mulig du ikke har <%=link_to "utført betalingen",
+        registration.payment_url(payment_notifications_url, user_url(@user)) %>.
+    </li>
+    <li>
+      Det er mulig noe skjedde feil under betalingen.
+      <%=link_to "Sjekk betalingsstatus",
+        registration.payment_url(payment_notifications_url, user_url(@user)) %>.
+    </li>
+    <% if registration.created_at > 15.minutes.ago %>
+      <li>
+        Det kan ta litt tid før vi registrerer betalingen.
       </li>
     <% end %>
     <li>Kan du ikke benytte PayPal? Vi kan sende en manuell faktura.
       <%= link_to "Endre fakturainformasjon", edit_registration_path(registration) %>
     </li>
-	  <% if registration.created_at < 3.hours.ago %>
-  	  <li>
-  	    Fortsatt problemer? Du kan ta det med ro, du får fortsatt være med på konferansen.
-  	    Send oss <a href="mailto:kontakt@smidig.no">en email</a> så ordner vi.
-  	  </li>
-	  <% end %>
-	</ul>
+    <% if registration.created_at < 3.hours.ago %>
+      <li>
+        Fortsatt problemer? Du kan ta det med ro, du får fortsatt være med på konferansen.
+        Send oss <a href="mailto:kontakt@smidig.no">en email</a> så ordner vi.
+      </li>
+    <% end %>
+  </ul>
 
 <% end %>
 
-	
+
 <% if admin? %>
   <h3 style="color:red">Admin: Registrer betaling</h3>
-  
+
   <p>
-  	<%= link_to "Oppdater registering manuelt", edit_registration_path(@user.registration) %>
+    <%= link_to "Oppdater registering manuelt", edit_registration_path(@user.registration) %>
   </p>
   <p>
-  	<%= link_to "Skriv ut navnelapp", nametag_path(@user.registration, :format=> 'pdf') %>
+    <%= link_to "Skriv ut navnelapp", nametag_path(@user.registration, :format=> 'pdf') %>
   </p>
 <% end %>

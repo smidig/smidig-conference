@@ -13,7 +13,8 @@ Vi har registrert følgende informasjon om deg:
   <% if @user.registration %>
     <li><strong>Billettype:</strong> <%=h @user.registration.description %></li>
     <li><strong>Deltar på konferansemiddag:</strong> <%= @user.registration.includes_dinner ? "Ja" : "Nei" %></li>
-    <li><strong>Pris:</strong> <%= @user.registration.price %></li>
+    <li><strong>Pris:</strong> <%= @user.registration.price %> </li>
+    <li><%= link_to "Kvittering", receipt_registration_path(@user.registration) %> </li>
   <% end %>
   <% if admin? %>
     <li class="admin"><strong>Status:</strong> <%= @user.registration.status%></li>
