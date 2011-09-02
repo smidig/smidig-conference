@@ -5,16 +5,16 @@
 <%= javascript_include_tag "tag-it.js", :charset => "utf-8" %>
 <script>
 $(document).ready(function(){
-	var availableTags = [];
-	var selectedTags = [];
-	<% @tags.each do |tag| %>
-		availableTags.push("<%=h tag.title %>");
-		<% if @talk.tags.include? tag%>
-			selectedTags.push("<%=h tag.title %>");
-		<%end%>
-	<% end %>
-	$("#mytags").tagit({availableTags: availableTags, selectedTags: selectedTags});
-	});
+  var availableTags = [];
+  var selectedTags = [];
+  <% @tags.each do |tag| %>
+    availableTags.push("<%=h tag.title %>");
+    <% if @talk.tags.include? tag%>
+      selectedTags.push("<%=h tag.title %>");
+    <%end%>
+  <% end %>
+  $("#mytags").tagit({availableTags: availableTags, selectedTags: selectedTags});
+  });
 </script>
 
 
@@ -25,7 +25,7 @@ $(document).ready(function(){
 <fieldset class="talk_details">
 
   <%= render "shared/error_messages", :target => @talk %>
-  
+
   <div class="field type">
     <%= f.label :talk_type_id, "Type foredrag" %>
     <%= f.collection_select :talk_type_id, @types, :id, :name_and_duration %>
@@ -52,7 +52,7 @@ $(document).ready(function(){
   <% if @talk.new_record? %>
     <div class="field format">
       <%= f.check_box :accepted_guidelines %>
-      <%= f.label :accepted_guidelines, "Jeg kjenner til tidsbegrensningen og formatet for lyntaler på Smidig 2011" %>
+      <%= f.label :accepted_guidelines, "Jeg kjenner til tidsbegrensningen og formatet for lyntaler/workshops på Smidig 2011" %>
     </div>
     <div class="field cc">
       <%= f.check_box :accepted_cc_license %>
@@ -62,10 +62,10 @@ $(document).ready(function(){
 </fieldset>
 
 <div class="tag">
-	<div class="line">
-		<label>Her kan du tagge din tale. Allerede eksisterende tags vil bli foreslått mens du skriver, mens nye vil bli lagt til så snart du lagrer endringene. </label>
-		<ul id="mytags"></ul>
-	</div>
+  <div class="line">
+    <label>Her kan du tagge din tale eller workshop. Allerede eksisterende tags vil bli foreslått mens du skriver, mens nye vil bli lagt til så snart du lagrer endringene. </label>
+    <ul id="mytags"></ul>
+  </div>
 </div>
 
 <br><br>
