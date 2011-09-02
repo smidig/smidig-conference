@@ -24,14 +24,14 @@
 
   <% unless @talk.slide_file_name.nil? %>
     <h3>Lysbilder til presentasjon</h3>
-    <p><%= link_to "#{image_tag("icon_slides.gif")} Last ned", @talk.slide.url %></p>
+    <p><%= link_to "#{image_tag("icon_slides.gif")} Last ned".html_safe, @talk.slide.url %></p>
   <% else %>
     <h3>Last opp presentasjon</h3>
   <% end %>
     <%= render :partial => "talks/upload_slide" %>
 
 <hr/>
-    
+
 <% end %>
 
 <div class="description">
