@@ -53,7 +53,7 @@ module ApplicationHelper
   def talk_menu_item(label)
     active = controller_is?(%w(talks))
     %Q(<li id="talks_menu" class="#{menu_class(active)} talks">
-       #{ link_to_unless_current "lyntaler", :controller => 'talks', :action => 'index' }
+       #{ link_to_unless_current "bidrag", :controller => 'talks', :action => 'index' }
       </li>).html_safe
   end
 

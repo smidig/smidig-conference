@@ -65,7 +65,7 @@ class UsersController < ApplicationController
           SmidigMailer.manual_registration_notification(@user, user_url(@user)).deliver
           redirect_to @user
         elsif @user.registration.speaker?
-          flash[:notice] = "Registrer detaljene for din lyntale"
+          flash[:notice] = "Registrer detaljene for ditt bidrag"
           SmidigMailer.speaker_registration_confirmation(@user).deliver
           SmidigMailer.speaker_registration_notification(@user, user_url(@user)).deliver
           redirect_to new_talk_url

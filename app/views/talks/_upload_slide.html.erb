@@ -1,7 +1,7 @@
 <%= form_for(@talk, :html => { :multipart => true }) do |form| %>
     <%= form.file_field :slide %>
     <%= form.submit 'Last opp' %>  <br />
-  Kun én presentasjonsfil pr lyntale
+  Kun én presentasjonsfil pr foredrag
   <%= help_tooltip() do %>
         <p>Laster du opp ny, vil den erstatte den gamle.</p>
   <% end %>
