@@ -1,4 +1,4 @@
-<li id="<%= dom_id(talk) %>" class="<%= talk.talk_type.name %>">
+<li id="<%= dom_id(talk) %>" class="Alle <%= talk.talk_type.name %>">
   <div class="title"><%= image_tag("approved_talk.png") if talk.accepted? %> <%= link_to h(talk.title), talk %>
     <%= "(#{antall_stemmer(talk.votes_count)})" if talk.votes_count > 0 %>
     <%= image_tag("icon_slides.gif") if admin? && talk.slide.file? %>

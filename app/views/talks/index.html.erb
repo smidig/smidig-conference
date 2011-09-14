@@ -27,15 +27,11 @@ Smidig-konferansen er en konferanse for og av fagmiljøet selv.  Det er din kunn
   <% end %>
   $("#show_types").change(function() {
     var selection = $(this).val();
-    $("ul.talks > li").each(function() {
-      var clazz = $(this).attr("class");
-      if (selection === "Alle") {
-        $(this).show();
-      } else if (selection === clazz) {
-        $(this).show();
-      } else {
-        $(this).hide();
-      }
+    $("ul.talks > li:not([class~="+selection+"])").each(function() {
+      $(this).hide();
+    });
+    $("ul.talks > li[class~="+selection+"]").each(function() {
+      $(this).show();
     }); 
   });
 </script>
