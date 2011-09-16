@@ -36,13 +36,10 @@ Smidig-konferansen er en konferanse for og av fagmiljøet selv.  Det er din kunn
     $("ul.talks > li").each(function() {
       var accepted = $(this).hasClass("accepted");
       var shown_type = $(this).hasClass(selection);
-      if (!shown_type) {
+      if (!shown_type || (show_accepted && !accepted)) {
         $(this).hide();
       } else {
         $(this).show();
-      }
-      if (show_accepted && !accepted) {
-        $(this).hide();
       }
     });
   }
