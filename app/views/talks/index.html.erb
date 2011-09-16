@@ -14,25 +14,38 @@ Smidig-konferansen er en konferanse for og av fagmiljøet selv.  Det er din kunn
 
 <h2>Foreslåtte bidrag<%= feed_link "Følg med på alle nye foredrag", talks_path(:format => :rss) %></h2>
 
-<select id="show_types">
-  <option value="Alle">Alle</option>
-  <option value="Lyntale">Lyntale</option>
-  <option value="Tordentale">Tordentale</option>
-  <option value="workshop">Workshop</option>
-</select>
+<div class="filters">
+  <select id="show_types">
+    <option value="Alle">Alle</option>
+    <option value="Lyntale">Lyntale</option>
+    <option value="Tordentale">Tordentale</option>
+    <option value="workshop">Workshop</option>
+  </select>
+  <div><input type="checkbox" id="show_accepted" /> Vis bare godkjente</div>
+</div>
 <ul class="talks">
 <%= render :partial => @talks %>
 </ul>
 
-<p>Savner du noe du ikke ser her? <%= link_to 'Foreslå noe selv!', new_talk_path %></p>
+<p>Savner du noe du ikke ser her? <%= link_to "Foreslå noe selv!", new_talk_path %></p>
 <script>
-  $("#show_types").change(function() {
-    var selection = $(this).val();
-    $("ul.talks > li:not([class~="+selection+"])").each(function() {
-      $(this).hide();
+  $("#show_accepted").removeAttr("checked");
+  filter_change = function() {
+    var show_accepted = $("#show_accepted").attr("checked");
+    var selection = $("#show_types").val();
+    $("ul.talks > li").each(function() {
+      var accepted = $(this).hasClass("accepted");
+      var shown_type = $(this).hasClass(selection);
+      if (!shown_type) {
+        $(this).hide();
+      } else {
+        $(this).show();
+      }
+      if (show_accepted && !accepted) {
+        $(this).hide();
+      }
     });
-    $("ul.talks > li[class~="+selection+"]").each(function() {
-      $(this).show();
-    }); 
-  });
+  }
+  $("#show_accepted").change(filter_change);
+  $("#show_types").change(filter_change);
 </script>
