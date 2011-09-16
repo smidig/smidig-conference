@@ -494,6 +494,9 @@ ul.talks div.tags a {
 ul.talks li:nth-child(odd) {
     background: #16004a;
 }
+div#comments .admin {
+  background-color: #29194D;
+}
 
 .tag_selector a, .tag_selector span.selected {
     margin-right: 0.6em;
