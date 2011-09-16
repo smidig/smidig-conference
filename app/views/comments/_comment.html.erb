@@ -3,7 +3,7 @@
   link_to_unless current_page?(:controller => 'talks', :action => "show", :id => comment.talk),
     h(comment.title),
     :controller => "talks", :action => "show", :id => comment.talk, :anchor => dom_id(comment) %>
-  <%= if (comment.user.is_admin) then "(Administrator)" end %>
+  <%= image_tag("adium.png") if comment.user.is_admin %>
 </h4>
 <div><%= simple_format h(comment.description) %></div>
 
