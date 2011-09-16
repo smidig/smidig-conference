@@ -9,7 +9,6 @@ class TalksController < ApplicationController
   # GET /talks.xml
   def index
     @talks = Talk.all_pending_and_approved
-    @types = TalkType.all
 
     respond_to do |format|
       format.html # index.html.erb
