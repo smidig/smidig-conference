@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class InvitationMailer < ActionMailer::Base
 
   def invitation_mail(email)
