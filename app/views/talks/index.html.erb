@@ -16,9 +16,9 @@ Smidig-konferansen er en konferanse for og av fagmiljøet selv.  Det er din kunn
 
 <div class="filters">
   <select id="show_types">
-    <option value="Alle">Alle</option>
-    <option value="Lyntale">Lyntale</option>
-    <option value="Tordentale">Tordentale</option>
+    <option value="alle">Alle</option>
+    <option value="lyntale">Lyntale</option>
+    <option value="tordentale">Tordentale</option>
     <option value="workshop">Workshop</option>
   </select>
   <div><input type="checkbox" id="show_accepted" /> Vis bare godkjente</div>
@@ -30,6 +30,7 @@ Smidig-konferansen er en konferanse for og av fagmiljøet selv.  Det er din kunn
 <p>Savner du noe du ikke ser her? <%= link_to "Foreslå noe selv!", new_talk_path %></p>
 <script>
   $("#show_accepted").removeAttr("checked");
+  $("#show_types").val("alle");
   filter_change = function() {
     var show_accepted = $("#show_accepted").attr("checked");
     var selection = $("#show_types").val();
