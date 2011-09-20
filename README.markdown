@@ -93,7 +93,7 @@ Update (push):
 
 Heroku app-owner privileges:
 
-    For å switche mellom dine heroku-identiteter (som 'oma', eller 'tech@tindetech.no') kan du følge dennne
+    For å switche mellom dine heroku-identiteter (som 'oma', eller 'smidig') kan du følge dennne
     http://www.aeonscope.net/2010/02/22/managing-multiple-heroku-accounts/
     for å kunne bruke det på kommandolinjen.
     Det meste (unntatt app create) kan styres ved å logge inn som app-owner på heroku.com
