@@ -12,10 +12,9 @@ html, body {
 }
 
 #main {
-    overflow: auto;
+    overflow: hidden;
     padding: 0px 50px 35px 50px;
     position: relative;
-
 }
 
 #footer {
@@ -200,7 +199,6 @@ a:active {
 h1, h2, h3 {
     font-family: 'LeagueGothicRegular';
     text-transform: uppercase;
-    white-space: nowrap;
     overflow: hidden;
     font-weight: normal;
 }
@@ -212,6 +210,12 @@ h2 {
 h3 {
     font-size: 1.5em;
 }
+
+#dateandtime h2 {
+    white-space: nowrap;
+
+}
+
 
 
 
