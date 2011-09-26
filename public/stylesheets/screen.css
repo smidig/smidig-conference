@@ -483,21 +483,23 @@ ul.talks {
 
 ul.talks li {
     list-style: none;
-    padding: 0.5em;
+    padding: 0.5em 0;
+    border-bottom: 5px solid #16004a;
+}
+
+ul.talks li:last-child {
+    border-bottom: none;
 }
 
 ul.talks div.title {
     font-weight: bold;
-    font-size: 1.1em;
+    font-size: 1.3em;
 }
 
 ul.talks div.tags a {
     margin-left: 0.6em;
 }
 
-ul.talks li:nth-child(odd) {
-    background: #16004a;
-}
 div#comments .admin {
   background-color: #29194D;
 }
