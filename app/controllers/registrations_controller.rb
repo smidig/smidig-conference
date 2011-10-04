@@ -22,6 +22,10 @@ class RegistrationsController < ApplicationController
   def invoiced
     @registrations = Registration.invoiced
   end
+  
+  def speakers
+    @registrations = Registration.speakers
+  end
 
   def phone_list
     @registrations = Registration.find_by_params(params)

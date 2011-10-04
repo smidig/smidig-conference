@@ -1,0 +1,52 @@
+<h3><%= @registrations.length %> foredragsholdere:</h3>
+
+<%= render :partial => 'registration_list', :locals => { 
+          :registrations => @registrations.select { |r| r.user.talks.blank? },
+          :description => "uten foredrag" } %>
+
+<h3><%= @registrations.length %> foredragsholdere:</h3>
+
+<% if @registrations.present? %>
+  <table>
+    <tr>
+      <th>Bruker</th>
+      <th>E-post</th>
+      <th>Påmeldt</th>
+      <th>Billett</th>
+      <th>Godkjent</th>
+      <th>&nbsp;</th>
+    </tr>
+  <% for registration in @registrations %>
+    <tr>
+      <td>
+        <%=link_to h(registration.user.name), registration.user %>
+      </td>
+      <td>&nbsp;</td>
+      <td><%= time_ago_in_words(registration.created_at) %> siden</td>
+      <td>
+        <%=h registration.ticket_type %>
+      </td>
+      <td>
+        <%= registration.registration_complete? ? "ja" : "" %>
+      </td>
+      <td>
+        <%= registration.paid_amount %>
+      </td>
+      <td>
+        <%= link_to_unless(registration.paid?, 'Slett bruker', :action => 'confirm_delete', :id => registration.id) %>
+      </td>
+    </tr>
+    <% for talk in registration.user.talks %>
+      <tr>
+        <td>&nbsp;</td>
+        <td>
+          <%= link_to talk.title, talk_url(talk) %>
+        </td>
+        <td>&nbsp;</td>
+        <td><%= talk.acceptance_status %></td>
+      </tr>
+    <% end %>
+  <% end %>
+  </table>
+
+<% end %>

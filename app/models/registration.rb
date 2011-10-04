@@ -25,6 +25,7 @@ class Registration < ActiveRecord::Base
   before_create :create_payment_info
   
   scope :invoiced, where(:manual_payment => true)
+  scope :speakers, where(:ticket_type => "speaker")
 
   def ticket_description
     TICKET_TEXTS[self.ticket_type] || ticket_type
