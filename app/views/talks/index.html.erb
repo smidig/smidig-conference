@@ -11,7 +11,10 @@
 
 <p><a href="../info/til_lyntalere">Informasjon om hva slags opplegg vi har rundt lyntaler, tordentaler og workshops på Smidig 2011, samt noen generelle tips.</a></p>
 
-<h2>Foreslåtte bidrag<%= feed_link "Følg med på alle nye foredrag", talks_path(:format => :rss) %></h2>
+<p>
+  <h2 class="talks_header">Foreslåtte bidrag<%= feed_link "Følg med på alle nye foredrag", talks_path(:format => :rss) %></h2>
+  (Du kan også se alle <%= link_to "kommentarer", comments_url%><%= feed_link "Følg med på alle commentarer", comments_path(:format => :rss) %>)
+</p>
 
 <div class="filters">
   <select id="show_types">
@@ -22,6 +25,7 @@
   </select>
   <label><input type="checkbox" id="show_accepted" /> Vis bare godkjente</label>
 </div>
+
 <ul class="talks">
 <%= render :partial => @talks %>
 </ul>
