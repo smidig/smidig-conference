@@ -6,7 +6,7 @@ class CreateInvoices < ActiveRecord::Migration
       t.string :contact_email
       t.string :contact_person
       t.string :street_address
-      t.integer :post_code
+      t.string :post_code
 
       t.timestamps
     end

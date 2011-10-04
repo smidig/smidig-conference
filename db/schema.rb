@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20111004172632) do
     t.string   "contact_email"
     t.string   "contact_person"
     t.string   "street_address"
-    t.integer  "post_code"
+    t.string   "post_code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

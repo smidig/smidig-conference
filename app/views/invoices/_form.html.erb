@@ -36,5 +36,14 @@
       <%= f.submit %>
     </div>
 
+    <ul>
+      <% @invoice.users.each do |user| %>
+        <li>
+          <div><%= user.name %></div>
+          <input type="checkbox" name="deleted_users[]" value="<%= user.id %>"/>
+        </li>
+      <% end %>
+    </ul>
+
   </fieldset>
 <% end %>

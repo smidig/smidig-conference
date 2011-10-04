@@ -45,9 +45,12 @@ class InvoicesController < ApplicationController
 
   def update
     @invoice = Invoice.find(params[:id])
-
     respond_to do |format|
-      if @invoice.update_attributes(params[:invoice])
+      @invoice.update_attributes(params[:invoice])
+      for user in params[:deleted_users] || []
+        @invoice.users.delete(@invoice.users.find(user.to_i))
+      end
+      if @invoice.save
         format.html { redirect_to(@invoice, :notice => 'Invoice was successfully updated.') }
       else
         format.html { render :action => "edit" }
