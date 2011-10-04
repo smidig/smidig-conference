@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Company name:</b>
+  <%= @invoice.company_name %>
+</p>
+
+<p>
+  <b>Contact email:</b>
+  <%= @invoice.contact_email %>
+</p>
+
+<p>
+  <b>Contact person:</b>
+  <%= @invoice.contact_person %>
+</p>
+
+<p>
+  <b>Street address:</b>
+  <%= @invoice.street_address %>
+</p>
+
+<p>
+  <b>Post code:</b>
+  <%= @invoice.post_code %>
+</p>
+
+
+<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+<%= link_to 'Back', invoices_path %>

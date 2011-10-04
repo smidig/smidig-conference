@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
 
   has_many :comments
 
+  belongs_to :invoice
+
   attr_protected :crypted_password, :password_salt, :persistence_token, :created_at, :updated_at,
                  :login_count, :failed_login_count, :last_request_at, :current_login_at, :current_login_ip, :last_login_ip
 

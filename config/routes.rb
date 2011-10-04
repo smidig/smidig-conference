@@ -1,5 +1,7 @@
 # -*- encoding : utf-8 -*-
 SmidigConference::Application.routes.draw do
+
+  resources :invoices
   resources :feedback_votes
   resources :feedbacks
   resources :payment_notifications
