@@ -4,18 +4,15 @@
     <%= image_tag("icon_slides.gif") if admin? && talk.slide.file? %>
   </div>
   <div class="talk_type">
-    <b><%= talk.talk_type.name_and_duration %></b>
+    <b><%= talk.talk_type.name %></b> foreslått av <%= render :partial => talk.users %>
+    <span class="tags"><%= talk.tags.length == 0 ? "" : "i kategoriene:" %>
+    <% talk.tags.each do |tag| %>
+      <%= link_to tag.title, :controller=>"talks", :action=>"article_tags", :id=>tag.id %>
+    <% end %>
+    </span>
   </div>
 
-  <div class="tags"><%= talk.tags.length == 0 ? "" : "Tags:" %>
-  <% talk.tags.each do |tag| %>
-    <%= link_to tag.title, :controller=>"talks", :action=>"article_tags", :id=>tag.id %>
-  <% end %>
-  </div>
-
-  <div class="submitted_time">
-    <%=link_to "#{talk.comments_count or 0} kommentar(er).", talk_path(talk, :anchor => "comments") %>
-    Foreslått av <%= render :partial => talk.users %> for <%= time_ago_in_words(talk.created_at) %> siden.
-  </div>
-
+    <span class="submitted_time">
+      <%=link_to "#{talk.comments_count or "Ingen"} kommentarer", talk_path(talk, :anchor => "comments") %>
+    </span>
 </li>
