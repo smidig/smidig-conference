@@ -23,13 +23,15 @@ class Registration < ActiveRecord::Base
   # validates_presence_of :invoice_address, :if => Proc.new { |reg| reg.manual_payment }
 
   before_create :create_payment_info
+  
+  scope :invoiced, where(:manual_payment => true)
 
   def ticket_description
-  TICKET_TEXTS[self.ticket_type] || ticket_type
+    TICKET_TEXTS[self.ticket_type] || ticket_type
   end
 
   def ticket_price
-  PAYMENT_CONFIG[:prices][ticket_type].to_i
+    PAYMENT_CONFIG[:prices][ticket_type].to_i
   end
 
   def price_mva
@@ -53,7 +55,7 @@ class Registration < ActiveRecord::Base
   end
 
   def discounted_ticket?
-  %w(student).include? ticket_type
+    %w(student).include? ticket_type
   end
 
   def special_ticket?
@@ -66,10 +68,10 @@ class Registration < ActiveRecord::Base
 
   def self.find_by_invoice(invoice_id)
     if invoice_id =~ /^2011t?-(\d+)$/
-    Registration.find($1.to_i)
-  else
-    raise "Invalid invoice_id #{invoice_id}"
-  end
+      Registration.find($1.to_i)
+    else
+      raise "Invalid invoice_id #{invoice_id}"
+    end
   end
 
   def invoice_id

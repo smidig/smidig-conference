@@ -1,0 +1,18 @@
+<h2>Brukere</h2>
+
+<p><%= link_to "Alle brukere", registrations_path %></p>
+
+<%= render :partial => 'registration_list', :locals => { 
+          :registrations => @registrations.select { |r| not r.invoiced and not r.registration_complete },
+          :description => "brukere har ikke blitt fakturert" } %>
+
+<%= render :partial => 'registration_list', :locals => { 
+          :registrations => @registrations.select { |r| r.invoiced and not r.registration_complete },
+          :description => "brukere har ikke betalt" } %>
+
+<%= render :partial => 'registration_list', :locals => { 
+          :registrations => @registrations.select { |r| r.registration_complete },
+          :description => "brukere har betalt" } %>
+
+
+

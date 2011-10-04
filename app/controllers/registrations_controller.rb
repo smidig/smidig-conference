@@ -10,12 +10,16 @@ class RegistrationsController < ApplicationController
     @ticket_types = @registrations.collect { |r| r.ticket_type }.uniq
 
     first_registration = @registrations.min {|x,y| x.created_at.to_date <=> y.created_at.to_date}
-    @date_range = (first_registration.created_at.to_date-1..Date.today).to_a
+    @date_range = first_registration ? (first_registration.created_at.to_date-1..Date.today).to_a : []
     @all_per_date = total_by_date(@registrations, @date_range)
     @registrations_per_ticket_type_per_date = per_ticket_type_by_date(@registrations, @date_range)
     @paid_per_date = total_by_date(@registrations, @date_range)
 
     @income_per_date = total_price_per_date(@registrations, @date_range)
+  end
+  
+  def invoiced
+    @registrations = Registration.invoiced
   end
 
   def phone_list

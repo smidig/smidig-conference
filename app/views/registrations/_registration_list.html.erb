@@ -1,0 +1,38 @@
+<h3><%= registrations.length %> <%= description %>:</h3>
+
+<table>
+  <tr>
+    <th>Bruker</th>
+    <th>E-post</th>
+    <th>Påmeldt</th>
+    <th>Billett</th>
+    <th>Status</th>
+    <th>Betalt</th>
+    <th>&nbsp;</th>
+  </tr>
+<% for registration in registrations %>
+  <tr>
+    <td>
+      <%=link_to h(registration.user.name), registration.user %>
+      (<%=h registration.user.company %>)
+    </td>
+    <td>
+      <%= link_to h(registration.user.email), "mailto:#{h(registration.user.email)}" %>
+    </td>
+    <td><%= time_ago_in_words(registration.created_at) %> siden</td>
+    <td>
+      <%=h registration.ticket_type %>
+    </td>
+    <td>
+      <%=h registration.status %>
+    </td>
+    <td>
+      <%= registration.paid_amount %>
+    </td>
+    <td>
+      <%= link_to_unless(registration.paid?, 'Slett bruker', :action => 'confirm_delete', :id => registration.id) %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
