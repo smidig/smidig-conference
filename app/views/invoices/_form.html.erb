@@ -1,7 +1,6 @@
 <%= form_for @invoice do |f| %>
 
   <fieldset class="invoice_details">
-
     <% if @invoice.errors.any? %>
       <div id="error_explanation">
         <ul>
@@ -32,18 +31,25 @@
       <%= f.label :post_code %><br />
       <%= f.text_field :post_code %>
     </div>
+
+
+    <table id="users">
+      <tr>
+        <th>Navn</th>
+        <th>Mail</th>
+        <th>Telefonnummer</th>
+      </tr>
+      <%= render :partial => "user", :collection => @invoice.users %>
+    </table>
+
+	<p><%= link_to_function "Ny bruker",
+		"$('#users').append('#{escape_javascript(render(:partial => "user", :object => User.new))}')"
+	 %></p>
+
+
     <div class="actions">
       <%= f.submit %>
     </div>
-
-    <ul>
-      <% @invoice.users.each do |user| %>
-        <li>
-          <div><%= user.name %></div>
-          <input type="checkbox" name="deleted_users[]" value="<%= user.id %>"/>
-        </li>
-      <% end %>
-    </ul>
 
   </fieldset>
 <% end %>

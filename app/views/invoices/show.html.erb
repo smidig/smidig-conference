@@ -25,6 +25,14 @@
   <%= @invoice.post_code %>
 </p>
 
+<h3>Brukere</h3>
+
+<ul>
+  <% for user in @invoice.users %>
+  	<li><%= link_to user.name, user %></li>
+ <% end %>
+</ul>
+
 
 <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
 <%= link_to 'Back', invoices_path %>

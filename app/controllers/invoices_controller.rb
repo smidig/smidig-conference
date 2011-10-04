@@ -21,6 +21,7 @@ class InvoicesController < ApplicationController
 
   def new
     @invoice = Invoice.new
+    3.times { @invoice.users.build }
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,6 +45,7 @@ class InvoicesController < ApplicationController
   end
 
   def update
+    params[:invoice][:existing_user_attributes] ||= {}
     @invoice = Invoice.find(params[:id])
     respond_to do |format|
       @invoice.update_attributes(params[:invoice])
