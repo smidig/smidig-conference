@@ -1,8 +1,7 @@
 <% content_for :title, "Foreslåtte foredrag" %>
 <h2 class="page_title">Har du noe på hjertet?</h2>
 <%= link_to 'Foreslå en lyntale, tordentale eller en workshop!', new_talk_path %>
-<p>
-Smidig-konferansen er en konferanse for og av fagmiljøet selv.  Det er din kunnskap og dine erfaringer som gjør konferansen til det den er.  Siste frist for å levere inn forslag er 1. november.</p>
+<p>Smidig-konferansen er en konferanse for og av fagmiljøet selv.  Det er din kunnskap og dine erfaringer som gjør konferansen til det den er.  Siste frist for å levere inn forslag er 1. november.</p>
 
 <p>Alle bidrag skal relatere seg til en forhåndsdefinert kategori for å sikre en god miks med foredrag som interesserer alle. Vær med å diskutere kategoriene på mailinglisten <%= link_to "smidigkonferansen", mailingliste_url %>.
   Du kan også hente inspirasjon fra diskusjoner på forumet om kategoriene: <a href="http://forum.smidig.no/forums/11">smidigforumet </a>
@@ -21,13 +20,13 @@ Smidig-konferansen er en konferanse for og av fagmiljøet selv.  Det er din kunn
     <option value="tordentale">Tordentale</option>
     <option value="workshop">Workshop</option>
   </select>
-  <div><input type="checkbox" id="show_accepted" /> Vis bare godkjente</div>
+  <label><input type="checkbox" id="show_accepted" /> Vis bare godkjente</label>
 </div>
 <ul class="talks">
 <%= render :partial => @talks %>
 </ul>
 
-<p>Savner du noe du ikke ser her? <%= link_to "Foreslå noe selv!", new_talk_path %></p>
+<p>Savner du noe? <%= link_to "Foreslå det selv!", new_talk_path %></p>
 <script>
   $("#show_accepted").removeAttr("checked");
   $("#show_types").val("alle");
