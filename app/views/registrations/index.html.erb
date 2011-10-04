@@ -2,37 +2,40 @@
 
 
 <%=
-  x_labels = (0...@date_range.length).select { |i| i%10 == 0 }.collect { |i| @date_range[i].strftime("%d %b") }
-  colors = %w(00ff00 0000ff ff0000 00ffff ffff00 ff00ff)
-  line_chart_xy = GoogleChart::LineChart.new('600x300', "Registrerte brukere", false) do |lc|
-    lc.axis :y, :range => [0,@all_per_date.max]
-    lc.axis :x, :labels => x_labels
-    lc.grid :y_step => 100.0/(@all_per_date.max / 50.0)
-    lc.data "Totalt", @all_per_date, colors.pop
-    for ticket_type in @registrations_per_ticket_type_per_date.keys
-      lc.data ticket_type, @registrations_per_ticket_type_per_date[ticket_type], colors.pop
+  if @registrations.present?
+    x_labels = (0...@date_range.length).select { |i| i%10 == 0 }.collect { |i| @date_range[i].strftime("%d %b") }
+    colors = %w(00ff00 0000ff ff0000 00ffff ffff00 ff00ff)
+    line_chart_xy = GoogleChart::LineChart.new('600x300', "Registrerte brukere", false) do |lc|
+      lc.axis :y, :range => [0,@all_per_date.max]
+      lc.axis :x, :labels => x_labels
+      lc.grid :y_step => 100.0/(@all_per_date.max / 50.0)
+      lc.data "Totalt", @all_per_date, colors.pop
+      for ticket_type in @registrations_per_ticket_type_per_date.keys
+        lc.data ticket_type, @registrations_per_ticket_type_per_date[ticket_type], colors.pop
+      end
     end
+    image_tag line_chart_xy.to_url
   end
-  image_tag line_chart_xy.to_url
 %>
 
 <%=
-  x_labels = (0...@date_range.length).select { |i| i%10 == 0 }.collect { |i| @date_range[i].strftime("%d %b") }
-  line_chart_xy = GoogleChart::LineChart.new('600x300', "Innbetalt deltageravgift", false) do |lc|
-    lc.axis :y, :range => [0,@income_per_date.max]
-    lc.axis :x, :labels => x_labels
-    lc.grid :y_step => 100.0/(@income_per_date.max / 50000.0)
-    lc.data "Kroner", @income_per_date, '0000ff'
+  if @registrations.present?
+    x_labels = (0...@date_range.length).select { |i| i%10 == 0 }.collect { |i| @date_range[i].strftime("%d %b") }
+    line_chart_xy = GoogleChart::LineChart.new('600x300', "Innbetalt deltageravgift", false) do |lc|
+      lc.axis :y, :range => [0,@income_per_date.max]
+      lc.axis :x, :labels => x_labels
+      lc.grid :y_step => 100.0/(@income_per_date.max / 50000.0)
+      lc.data "Kroner", @income_per_date, '0000ff'
+    end
+    image_tag line_chart_xy.to_url if @registrations.present?
   end
-  image_tag line_chart_xy.to_url
 %>
 
-<h3>Krever oppfølging</h3>
+<h3>Oppfølging:</h3>
 
 <ul>
-  <li><%= link_to "Skal betale, har ikke blitt fulgt opp", :filter => 'skal_foelges_opp' %>. Disse må kontaktes for å høre om de vil forsøke å betale på nytt, motta faktura, eller ikke delta</li>
-  <li><%= link_to "Skal faktureres", :filter => 'skal_faktureres' %>. Disse må legges i <%= link_to "faktureringsregnearket", "https://spreadsheets.google.com/ccc?key=0AhricdnsaMlJdGEzNVZWX0Q1V041LTdOYjVCWW5fVFE&hl=en"%>. Vær årvåken mot dobbeltfakturering!</li>
-  <li><%= link_to "Har blitt fakturerert", :conditions => { :manual_payment => 1, :invoiced => 1 } %>. Disse har blitt lagt inn i <%= link_to "faktureringsregnearket", "https://spreadsheets.google.com/ccc?key=0AhricdnsaMlJdGEzNVZWX0Q1V041LTdOYjVCWW5fVFE&hl=en"%>.</li>
+  <li><%= link_to "Manuelle registreringer", invoiced_registrations_path %></li>
+  <li><%= link_to "Foredragsholdere", speakers_registrations_path %></li>
 </ul>
 
 
@@ -41,53 +44,13 @@
 <ul>
   <li><%= link_to "Alle", :conditions => '' %></li>
   <% for ticket_type in @ticket_types %>
-    <li><%= link_to ticket_type, :conditions => { :ticket_type => ticket_type }  %></li>
+    <li><%= link_to ticket_type, :conditions => @conditions.merge({ :ticket_type => ticket_type })  %></li>
   <% end %>
-  <li><%= link_to "Completed", :conditions => { :registration_complete => 1 }  %></li>
-  <li><%= link_to "Not completed", :conditions => { :registration_complete => 0 }  %></li>
-  <li><%= link_to "Dinner registrations", :conditions => { :includes_dinner => 1 }  %></li>
+  <li><%= link_to "Completed", :conditions => @conditions.merge({ :registration_complete => 1 })  %></li>
+  <li><%= link_to "Not completed", :conditions => @conditions.merge({ :registration_complete => 0 })  %></li>
+  <li><%= link_to "Dinner registrations", :conditions => @conditions.merge({ :includes_dinner => 1 })  %></li>
 </ul>
 
-<h3><%= @registrations.length %> brukere:</h3>
-
-<table>
-  <tr>
-    <th>Bruker</th>
-    <th>E-post</th>
-    <th>Påmeldt</th>
-    <th>Billett</th>
-    <th>Status</th>
-    <th>Betalt</th>
-    <th>&nbsp;</th>
-  </tr>
-<% for registration in @registrations %>
-	<% if registration.user.nil? %>
-	   BAD DATA for this registration with id <%= registration.id %> at <%= registration.updated_at %> 
-		<% next %>
-  	<% end %>
-<tr>
-    <td>
-
-      <%=link_to h(registration.user.name), registration.user %>
-      (<%=h registration.user.company %>)
-    </td>
-    <td>
-      <%= link_to h(registration.user.email), "mailto:#{h(registration.user.email)}" %>
-    </td>
-    <td><%= time_ago_in_words(registration.created_at) %> siden</td>
-    <td>
-      <%=h registration.ticket_type %>
-    </td>
-    <td>
-      <%=h registration.status %>
-    </td>
-    <td>
-      <%= registration.paid_amount %>
-    </td>
-    <td>
-      <%= link_to_unless(registration.paid?, 'Slett bruker', :action => 'confirm_delete', :id => registration.id) %>
-    </td>
-  </tr>
-<% end %>
-</table>
-
+<%= render :partial => 'registration_list', :locals => { 
+          :registrations => @registrations,
+          :description => "brukere" } %>

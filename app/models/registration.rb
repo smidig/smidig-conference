@@ -19,6 +19,10 @@ class Registration < ActiveRecord::Base
   validates_presence_of :ticket_type
   # validates_presence_of :invoice_address, :if => Proc.new { |reg| reg.manual_payment }
   before_create :create_payment_info
+  
+  scope :invoiced, where(:manual_payment => true)
+  scope :speakers, where(:ticket_type => "speaker")
+
   def ticket_description
     TICKET_TEXTS[self.ticket_type] || ticket_type
   end
@@ -41,7 +45,7 @@ class Registration < ActiveRecord::Base
     ticket_price == 0
   end
   def discounted_ticket?
-  %w(student).include? ticket_type
+    %w(student).include? ticket_type
   end
   def special_ticket?
     %w(sponsor volunteer organizer).include? ticket_type
@@ -51,10 +55,10 @@ class Registration < ActiveRecord::Base
   end
   def self.find_by_invoice(invoice_id)
     if invoice_id =~ /^2011t?-(\d+)$/
-    Registration.find($1.to_i)
-  else
-    raise "Invalid invoice_id #{invoice_id}"
-  end
+      Registration.find($1.to_i)
+    else
+      raise "Invalid invoice_id #{invoice_id}"
+    end
   end
   def invoice_id
     return "2011-#{id}" if Rails.env == "production"
@@ -87,21 +91,6 @@ class Registration < ActiveRecord::Base
   def self.find_by_params(params)
     if params[:conditions]
       find(:all, :conditions => params[:conditions], :include => :user)
-    elsif params[:filter]
-      case params[:filter]
-      when "skal_foelges_opp"
-        return find(:all,
-          :conditions => { :free_ticket => false , :registration_complete => false, :manual_payment => false},
-          :include => :user)
-      when "skal_faktureres"
-        return find(:all,
-          :conditions => { :free_ticket => false , :registration_complete => false, :manual_payment => true, :invoiced => false},
-          :include => :user)
-      when "dinner"
-        return find(:all, :conditions => "includes_dinner = 1")
-      else
-        return []
-      end
     else
       find(:all, :include => :user)
     end

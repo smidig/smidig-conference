@@ -24,10 +24,8 @@ SmidigConference::Application.routes.draw do
 
   resources :periods do
     collection do
-  post :make_program
-  end
-  
-  
+      post :make_program
+    end
   end
 
   resources :votes
@@ -39,9 +37,9 @@ SmidigConference::Application.routes.draw do
   end
 
   namespace :statistics do
-      resources :users_by_company
-      resources :all_speakers_by_company
-      resources :all_accepted_speakers_by_company
+    resources :users_by_company
+    resources :all_speakers_by_company
+    resources :all_accepted_speakers_by_company
   end
 
   resources :message_deliveries
@@ -49,6 +47,8 @@ SmidigConference::Application.routes.draw do
   resources :registrations do
     collection do
       get :phone_list
+      get :invoiced
+      get :speakers
     end
     member do
       get :receipt
