@@ -348,12 +348,15 @@ h3 {
     display: inline
 }
 
+.invoice_details,
 .talk_details,
 .registration_details  {
     padding-right: 7px;
     text-align: left;
 }
 
+.invoice_details input,
+.invoice_details select,
 .talk_details input,
 .talk_details select,
 .registration_details .kommentarer label,
@@ -371,6 +374,7 @@ input#talk_slide {
   color: silver;
 }
 
+.invoice_details div.field,
 .talk_details div.field,
 .personal_details div.field,
 .registration_details div.field {
