@@ -6,6 +6,7 @@ class RegistrationsController < ApplicationController
   before_filter :require_admin, :only => [:index, :delete, :confirm_delete, :phone_list]
 
   def index
+    @conditions = params[:conditions] || {}
     @registrations = Registration.find_by_params(params)
     @ticket_types = @registrations.collect { |r| r.ticket_type }.uniq
 

@@ -41,11 +41,11 @@
 <ul>
   <li><%= link_to "Alle", :conditions => '' %></li>
   <% for ticket_type in @ticket_types %>
-    <li><%= link_to ticket_type, :conditions => { :ticket_type => ticket_type }  %></li>
+    <li><%= link_to ticket_type, :conditions => @conditions.merge({ :ticket_type => ticket_type })  %></li>
   <% end %>
-  <li><%= link_to "Completed", :conditions => { :registration_complete => 1 }  %></li>
-  <li><%= link_to "Not completed", :conditions => { :registration_complete => 0 }  %></li>
-  <li><%= link_to "Dinner registrations", :conditions => { :includes_dinner => 1 }  %></li>
+  <li><%= link_to "Completed", :conditions => @conditions.merge({ :registration_complete => 1 })  %></li>
+  <li><%= link_to "Not completed", :conditions => @conditions.merge({ :registration_complete => 0 })  %></li>
+  <li><%= link_to "Dinner registrations", :conditions => @conditions.merge({ :includes_dinner => 1 })  %></li>
 </ul>
 
 <%= render :partial => 'registration_list', :locals => { 

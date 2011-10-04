@@ -109,21 +109,6 @@ class Registration < ActiveRecord::Base
   def self.find_by_params(params)
     if params[:conditions]
       find(:all, :conditions => params[:conditions], :include => :user)
-    elsif params[:filter]
-      case params[:filter]
-      when "skal_foelges_opp"
-        return find(:all,
-          :conditions => { :free_ticket => false , :registration_complete => false, :manual_payment => false},
-          :include => :user)
-      when "skal_faktureres"
-        return find(:all,
-          :conditions => { :free_ticket => false , :registration_complete => false, :manual_payment => true, :invoiced => false},
-          :include => :user)
-      when "dinner"
-        return find(:all, :conditions => "includes_dinner = 1")
-      else
-        return []
-      end
     else
       find(:all, :include => :user)
     end
