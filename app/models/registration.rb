@@ -20,6 +20,7 @@ class Registration < ActiveRecord::Base
   # validates_presence_of :invoice_address, :if => Proc.new { |reg| reg.manual_payment }
   before_create :create_payment_info
   
+  scope :paying, where("price > 0")
   scope :invoiced, where(:manual_payment => true)
   scope :speakers, where(:ticket_type => "speaker")
 

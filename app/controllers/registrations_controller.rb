@@ -20,7 +20,7 @@ class RegistrationsController < ApplicationController
   end
   
   def invoiced
-    @registrations = Registration.invoiced
+    @registrations = Registration.paying
   end
   
   def speakers
