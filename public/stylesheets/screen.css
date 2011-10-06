@@ -312,6 +312,10 @@ h3 {
     background-image: url(../images/back.png);
 }
 
+#content .signup{
+    background-image: url(../images/arrow_right.png);
+}
+
 #content p {
     margin: 0;
     padding: 0;
