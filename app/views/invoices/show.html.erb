@@ -7,12 +7,12 @@
 
 <p>
   <b>Contact email:</b>
-  <%= @invoice.contact_email %>
+  <%= @invoice.contact_user.email %>
 </p>
 
 <p>
   <b>Contact person:</b>
-  <%= @invoice.contact_person %>
+  <%= @invoice.contact_user.name %>
 </p>
 
 <p>
@@ -28,8 +28,8 @@
 <h3>Brukere</h3>
 
 <ul>
-  <% for user in @invoice.users %>
-  	<li><%= link_to user.name, user %></li>
+  <% for registration in @invoice.registrations %>
+  	<li><%= link_to registration.user.name, registration.user %></li>
  <% end %>
 </ul>
 

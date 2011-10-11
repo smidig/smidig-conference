@@ -11,27 +11,53 @@
       </div>
     <% end %>
 
-    <div class="field">
-      <%= f.label :company_name %><br />
-      <%= f.text_field :company_name %>
-    </div>
-    <div class="field">
-      <%= f.label :contact_email %><br />
-      <%= f.text_field :contact_email %>
-    </div>
-    <div class="field">
-      <%= f.label :contact_person %><br />
-      <%= f.text_field :contact_person %>
-    </div>
-    <div class="field">
-      <%= f.label :street_address %><br />
-      <%= f.text_field :street_address %>
-    </div>
-    <div class="field">
-      <%= f.label :post_code %><br />
-      <%= f.text_field :post_code %>
-    </div>
-
+    <fieldset>
+      <legend>Fakturaadresse</legend>
+      <div class="field">
+        <%= f.label :company_name, "Firma" %><br />
+        <%= f.text_field :company_name %>
+      </div>
+      <div class="field">
+        <%= f.label :street_address, "Adresse" %><br />
+        <%= f.text_field :street_address %>
+      </div>
+      <div class="field">
+        <%= f.label :post_code, "Postnr" %><br />
+        <%= f.text_field :post_code %>
+      </div>
+    </fieldset>
+    <% if @invoice.new_record? %>
+      <%= f.fields_for "contact_user_attributes", @invoice.contact_user do |contact| %>
+        <fieldset>
+          <legend>Kontaktperson</legend>
+          <div class="field">
+            <%= contact.label :name %><br />
+            <%= contact.text_field :name %>
+         </div>
+         <div class="field">
+            <%= contact.label :email %><br />
+            <%= contact.text_field :email %>
+         </div>
+         <div class="field">
+           <%= contact.label :phone_number %><br />
+           <%= contact.text_field :phone_number %>
+         </div>
+         <div class="field">
+           <%= contact.label :password %><br />
+           <%= contact.password_field :password %>
+         </div>
+         <div class="field">
+           <%= contact.label :password_confirmation, "Bekreft passord" %><br />
+           <%= contact.password_field :password_confirmation %>
+         </div>
+       </fieldset>
+      <% end %>
+    <% else %>
+        <div class="field">
+	  <label>Kontaktperson:</label><br/>
+          <%= link_to @invoice.contact_user.name, @invoice.contact_user %>
+        </div>
+    <% end %>
 
     <table id="users">
       <tr>
@@ -39,11 +65,11 @@
         <th>Mail</th>
         <th>Telefonnummer</th>
       </tr>
-      <%= render :partial => "user", :collection => @invoice.users %>
+      <%= render :partial => "registration", :collection => @invoice.registrations %>
     </table>
 
 	<p><%= link_to_function "Ny bruker",
-		"$('#users').append('#{escape_javascript(render(:partial => "user", :object => User.new))}')"
+		"$('#users').append('#{escape_javascript(render(:partial => "registration", :object => Registration.new(:user => User.new)))}')"
 	 %></p>
 
 

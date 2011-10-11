@@ -15,8 +15,8 @@
 <% @invoices.each do |invoice| %>
   <tr>
     <td><%= invoice.company_name %></td>
-    <td><%= invoice.contact_email %></td>
-    <td><%= invoice.contact_person %></td>
+    <td><%= invoice.contact_user.email %></td>
+    <td><%= invoice.contact_user.name %></td>
     <td><%= invoice.street_address %></td>
     <td><%= invoice.post_code %></td>
     <td><%= link_to 'Show', invoice %></td>

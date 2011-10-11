@@ -15,9 +15,11 @@ Vi har registrert følgende informasjon om deg:
     <li><strong>Deltar på konferansemiddag:</strong> <%= @user.registration.includes_dinner ? "Ja" : "Nei" %></li>
     <li><strong>Pris:</strong> <%= @user.registration.price %> </li>
     <li><%= link_to "Kvittering", receipt_registration_path(@user.registration) %> </li>
-  <% end %>
-  <% if admin? %>
-    <li class="admin"><strong>Status:</strong> <%= @user.registration.status%></li>
+    <% if admin? %>
+      <li class="admin"><strong>Status:</strong> <%= @user.registration.status%></li>
+    <% end %>
+  <% else %>
+    <li><strong>Billettype:</strong> <em>Deltar ikke på konferansen</em></li>
   <% end %>
 </ul>
 
@@ -39,4 +41,4 @@ Handlinger:
 
 <p><%= link_to "Foreslå nytt foredrag", new_talk_path %></p>
 
-<%= render :partial => @user.registration %>
+<%= render :partial => @user.registration if @user.registration %>

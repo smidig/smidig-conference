@@ -1,5 +1,5 @@
 <tr>
-  <%= fields_for_user(user) do |user_form| %>
+  <%= fields_for_user(user.user) do |user_form| %>
     <td><%= user_form.text_field :name %></td>
     <td><%= user_form.text_field :email %></td>
     <td><%= user_form.text_field :phone_number %></td>
