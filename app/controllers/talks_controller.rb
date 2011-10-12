@@ -10,6 +10,8 @@ class TalksController < ApplicationController
   def index
     @talks = Talk.all_pending_and_approved
 
+    @talks_sorted = @talks.sort_by { |x| [x.accepted? ? 0 : 1, -x.id] }
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @talks }
