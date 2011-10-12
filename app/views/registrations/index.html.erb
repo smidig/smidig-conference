@@ -42,7 +42,7 @@
 <h3>Andre søk</h3>
 
 <ul>
-  <li><%= link_to "Alle", :conditions => '' %></li>
+  <li><%= link_to "Alle", :conditions => [] %></li>
   <% for ticket_type in @ticket_types %>
     <li><%= link_to ticket_type, :conditions => @conditions.merge({ :ticket_type => ticket_type })  %></li>
   <% end %>
