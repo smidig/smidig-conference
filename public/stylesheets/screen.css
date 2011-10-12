@@ -527,6 +527,14 @@ span.user {
     font-weight: bold;
 }
 
+/*Logos on sponsor-page*/
+ul.smidig-logos {
+  list-style: none;
+}
+ul.smidig-logos li {
+  padding: 1em 0;
+}
+
 /*Opera Fix*/
 body:before {/* thanks to Maleika (Kohoutec)*/
 content:"";
