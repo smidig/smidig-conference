@@ -27,6 +27,7 @@ html, body {
 
 
 
+
 body {
     padding: 0;
     margin: 0;
@@ -201,6 +202,7 @@ h1, h2, h3 {
     text-transform: uppercase;
     overflow: hidden;
     font-weight: normal;
+    text-shadow: #110039 1px 1px 1px;
 }
 
 h2 {
