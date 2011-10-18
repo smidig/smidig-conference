@@ -25,6 +25,7 @@ class RegistrationsController < ApplicationController
   
   def speakers
     @registrations = Registration.speakers
+    @talks = Talk.all
   end
 
   def phone_list
