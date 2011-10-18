@@ -19,20 +19,11 @@
         <div id="content">
             <div class="signup">
                 <h3><%= link_to "Meld deg på", new_user_path %></h3>
-                <p>Meld deg som deltager på <strong>innen 14. oktober</strong> og dra fordel av den lave early bird prisen, kun kr 1875.</p>
+                <p><%= link_to "Meld deg som deltager", new_user_path %> på <strong>innen 14. oktober</strong> og dra fordel av den lave early bird prisen, kun kr 1875.</p>
+                <p style="margin-top: 0.5em">Smidig 2011 søker ditt bidrag. Har du oppdaget noe nytt eller har du en nyttig erfaring å dele? <%= link_to "Send oss ditt forslag!", new_talk_path %></p>
             </div>
 
-            <div class="share">
-                <h3><%= link_to "Foreslå lyntale, tordentale eller workshop", new_talk_path %></h3>
-                <p>Smidig 2011 søker ditt bidrag. Har du oppdaget noe nytt eller har du en nyttig erfaring å dele? Send oss ditt forslag!</p>
-            </div>
-
-            <div class="info">
-                <h3><%= link_to "Informasjon om våre formater", :controller => "info", :action => "til_lyntalere" %></h3>
-                <p>Ved årets konferanse inntroduserer vi tordentaler og workshops, og holder selvsagt på lyntaler og open&nbsp;spaces.</p>
-            </div>
-
-            <div class="deltakerliste">
+             <div class="faq">
                 <h3><%= link_to "FAQ", :controller => "info", :action => "faq" %></h3>
                 <p>Har du noen spørsmål eller er du bare nysgjerrig? Ta en titt på våre ofte besvarte spørsmål.</p>
             </div>
@@ -42,6 +33,29 @@
                 <p>Lyst til å oppleve på forskudd litt av det du kan forvente på konferansen i år?</p>
             </div>
             
-            
-
         </div>
+
+        <div id="twitterfeed">
+          <style>
+            #twitterfeed { margin-left: 251px; border-left: 2px solid white; padding-left: 14px; }
+            #twitterfeed h3 { font-size: 2.5em !important; }
+            #twitterfeed .twtr-tweet-text p, .twtr-join-conv { font-size: 14px; font-family: TitilliumText22LRegular; }
+            #twitter-icon { float: left; margin-left: -56px; }
+          </style>
+          <img id="twitter-icon" alt="" src="images/deltakerliste.png"/>
+          <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+          <script>
+            new TWTR.Widget({
+              title: 'Nyheter fra Smidigkonferansen',
+              version: 2, type: 'list', rpp: 20, interval: 30000, width: 450, height: 170,
+              theme: {
+                shell: {background: '#110039', color: '#eee'},
+                tweets: {background: '99', color: '14', links: '81'}
+              },
+              features: {scrollbar: true, loop: false, live: true, behavior: 'all'}
+            }).render().setList('smidig', 'smidig').start();
+          </script>
+          <script type="text/javascript"></script>
+        </div>
+
+

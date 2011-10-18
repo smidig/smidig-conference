@@ -299,6 +299,11 @@ h3 {
     background-image: url(../images/deltakerliste.png);
 }
 
+#content .faq {
+    background-image: url(../images/faq.png);
+    background-position: 12px 0;
+}
+
 #content .sponse {
     background-image: url(../images/sponse.png);
 }
