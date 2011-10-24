@@ -89,7 +89,7 @@ class SmidigMailer < ActionMailer::Base
     @talk = talk.title
     @talk_url = talk_url
     mail(:to => talk.speaker_email,
-         :subject => "#{SUBJECT_PREFIX} Bekreftelse på foredrag #{talk.title}")
+         :subject => "#{SUBJECT_PREFIX} Bekreftelse på ditt bidrag #{talk.title}")
   end
 
   def comment_notification(comment, comment_url)
@@ -121,7 +121,7 @@ class SmidigMailer < ActionMailer::Base
     @edit_talk_url = edit_talk_url
     @new_password_reset_url = new_password_reset_url
     mail(:to => talk.speaker_email,
-   :subject => "Du kan nå laste opp slidene til ditt foredrag på Smidig 2011")
+   :subject => "Du kan nå laste opp slidene til ditt bidrag på Smidig 2011")
   end
 
   def error_mail(title, body)
