@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 
 class Talk < ActiveRecord::Base
-  default_scope :order => 'created_at desc'
+  default_scope :order => 'acceptance_changed_at desc, created_at desc'
 
   has_many :speakers
   has_many :users, :through => :speakers
@@ -94,6 +94,7 @@ class Talk < ActiveRecord::Base
 
   def accept!
     self.acceptance_status = "accepted"
+    self.acceptance_changed_at = Time.now
     self
   end
 
@@ -111,6 +112,7 @@ class Talk < ActiveRecord::Base
 
   def refuse!
     self.acceptance_status = "refused"
+    self.acceptance_changed_at = Time.now
     self
   end
 

@@ -4,10 +4,9 @@
 
 <% unless @user.registration.free_ticket %>
   <p>
-    Meld deg på innen <strong>14. oktober</strong> for å få 
-    <%= @user.registration.ticket_description %> pris på billetten: Kun
+    <%= @user.registration.ticket_description %> koster
     <%= @user.registration.ticket_price %>,- inklusive mva. for deltagere
-    og 0,- for foredragsholdere (dersom foredraget ditt
+    og 0,- for bidragsytere (dersom bidraget ditt
     blir godkjent).
   </p>
 <% end %>

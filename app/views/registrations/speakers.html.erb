@@ -50,3 +50,13 @@
   </table>
 
 <% end %>
+
+<%= render :partial => 'talk_list', :locals => { 
+          :talks => @talks.select { |t| t.accepted? },
+          :description => "godkjente foredrag" } %>
+<%= render :partial => 'talk_list', :locals => { 
+          :talks => @talks.select { |t| t.pending? },
+          :description => "foredrag venter" } %>
+<%= render :partial => 'talk_list', :locals => { 
+          :talks => @talks.select { |t| t.refused? },
+          :description => "avviste foredrag" } %>

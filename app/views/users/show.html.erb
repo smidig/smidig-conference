@@ -30,7 +30,7 @@ Handlinger:
 </ul>
 
 <% unless @user.talks.blank? %>
-  <h3>Foreslåtte foredrag</h3>
+  <h3>Innsendte forslag</h3>
 
   <ul>
     <% for talk in @user.talks %>
@@ -39,6 +39,6 @@ Handlinger:
   </ul>
 <% end %>
 
-<p><%= link_to "Foreslå nytt foredrag", new_talk_path %></p>
+<p><%= link_to "Send inn bidrag", new_talk_path %></p>
 
 <%= render :partial => @user.registration if @user.registration %>
