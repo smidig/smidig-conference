@@ -5,6 +5,7 @@ class NametagsController < ApplicationController
 
   def index
     @registrations = Registration.all
+    @registrations.sort! { |a, b| a.user.name <=> b.user.name }
 
     prawnto :prawn => {
         :page_layout => :portrait,
