@@ -48,6 +48,14 @@ table.schedule ol li {
   margin:1em 0 1.5em 0;
 }
 
+table.schedule ol li.lyntale {
+}
+
+table.schedule ol li.tordentale {
+  border-style: solid;
+  border-width: 0.1em;
+}
+
 table.schedule td {
   text-align:center;
   vertical-align:top;
