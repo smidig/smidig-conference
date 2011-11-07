@@ -15,7 +15,7 @@ p_pdf.text '2011',
     :size => 160
 
 p_pdf.font 'League Gothic'
-p_pdf.fill_color 'cc0000'
+p_pdf.fill_color '110039'
 
 name = registration.user.name
 company = registration.user.company
@@ -40,7 +40,7 @@ elsif registration.ticket_type == 'guest'
       :size => 36
 end
 
-p_pdf.fill_color 'ffffff'
+p_pdf.fill_color 'B1E038'
 p_pdf.table [[name]],
     :font_size  => 48,
     :horizontal_padding => 20,
@@ -48,7 +48,7 @@ p_pdf.table [[name]],
     :width => 297,
     :border_width => 0,
     :position => :left,
-    :row_colors  => ['aa0000']
+    :row_colors  => ['110039']
 
 
 
