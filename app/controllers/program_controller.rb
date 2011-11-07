@@ -1,7 +1,8 @@
 # -*- encoding : utf-8 -*-
 class ProgramController < ApplicationController
 
-  before_filter :require_admin, :only => [ :phone_list ]
+#  before_filter :require_admin, :only => [ :phone_list ]
+  before_filter :require_admin
 
   def index
     @periods = Period.find(:all, :include => { :talks => :users })
