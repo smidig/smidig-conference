@@ -8,7 +8,7 @@ xml.Conference do |conf|
         session.Title(talk.title)
         session.RecordingAlias(talk.id)
         session.Time("#{period.day} #{period.time_of_day}")
-        session.Room case period.scene_id; when 0: "Helsingforssalen"; when 1: "Stockholmsalen"; when 2: "Oslosalen"; else "" end
+        session.Room case period.scene_id; when 0: "Olympia"; when 1: "Kunst"; when 2: "Film"; else "" end
         session.Speaker(talk.speaker_name)
       end
     end

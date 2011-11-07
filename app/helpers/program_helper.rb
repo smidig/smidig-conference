@@ -3,17 +3,17 @@ module ProgramHelper
   def timeslot_with_location_tr(timeslot, periods)
     """
     <tr><td class='time'>#{timeslot}</td> 
-        <td class='slot salHelsingfors'>
+        <td class='slot salOlympia'>
             <div class='event'>#{periods[0].title}</div>
-            <span class='location'>Helsingforssalen</span>
+            <span class='location'>Olympia</span>
         </td>
-        <td class='slot salStockholm'>
+        <td class='slot salFilm'>
             <div class='event'>#{periods[1].title}</div>
-            <span class='location'>Stockholmsalen</span>
+            <span class='location'>Film</span>
         </td>
-        <td class='slot salOslo'>
+        <td class='slot salKunst'>
           <div class='event'>#{periods[2].title}</div>
-            <span class='location'>Oslosalen</span>
+            <span class='location'>Kunst</span>
         </td>
     </tr> 
     """.html_safe
@@ -23,9 +23,9 @@ module ProgramHelper
   def timeslot_tr(timeslot, periods)
     """
     <tr><td class='time'>#{timeslot}</td> 
-        <td class='slot salHelsingfors'><div class='event'>#{periods[0].title}</div></td>
-        <td class='slot salStockholm'><div class='event'>#{periods[1].title}</div></td>
-        <td class='slot salOslo'><div class='event'>#{periods[2].title}</div></td>
+        <td class='slot salOlympia'><div class='event'>#{periods[0].title}</div></td>
+        <td class='slot salFilm'><div class='event'>#{periods[1].title}</div></td>
+        <td class='slot salKunst'><div class='event'>#{periods[2].title}</div></td>
     </tr> 
     """.html_safe
   end
@@ -34,9 +34,9 @@ module ProgramHelper
     """
   <tr>
     <td></td>
-    <td class='lyntaler salHelsingfors'>#{ period_talks_phone(periods[0])}</td>
-    <td class='lyntaler salStockholm'>#{ period_talks_phone(periods[1])}</td>
-    <td class='lyntaler salOslo'>#{ period_talks_phone(periods[2])}</td>
+    <td class='lyntaler salOlympia'>#{ period_talks_phone(periods[0])}</td>
+    <td class='lyntaler salFilm'>#{ period_talks_phone(periods[1])}</td>
+    <td class='lyntaler salKunst'>#{ period_talks_phone(periods[2])}</td>
   </tr>
     """.html_safe
   end
@@ -45,9 +45,9 @@ module ProgramHelper
     """
   <tr>
     <td></td>
-    <td class='lyntaler salHelsingfors'>#{ period_talks(periods[0])}</td>
-    <td class='lyntaler salStockholm'>#{ period_talks(periods[1])}</td>
-    <td class='lyntaler salOslo'>#{ period_talks(periods[2])}</td>
+    <td class='lyntaler salOlympia'>#{ period_talks(periods[0])}</td>
+    <td class='lyntaler salFilm'>#{ period_talks(periods[1])}</td>
+    <td class='lyntaler salKunst'>#{ period_talks(periods[2])}</td>
   </tr>
     """.html_safe
   end
