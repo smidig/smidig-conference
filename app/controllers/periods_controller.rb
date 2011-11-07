@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 class PeriodsController < ApplicationController
-  before_filter :require_admin, :except => [ :index, :show ]
+ # before_filter :require_admin, :except => [ :index, :show ]
+  before_filter :require_admin
   
   # GET /periods
   # GET /periods.xml
