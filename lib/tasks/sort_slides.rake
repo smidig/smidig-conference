@@ -10,7 +10,7 @@ namespace :sort_slides do
 	require 'ftools'
 
 	periods = Period.find(:all, :include => { :talks => :users })
-	scenes = %w(Helsingforssalen Stockholmsalen Oslosalen)
+	scenes = %w(Olympia Kunst Film)
 	times = %w(nov16-09 nov16-10 nov16-11 nov17-09 nov17-10 nov17-11)
 	
 	(0..2).each do |scene|
