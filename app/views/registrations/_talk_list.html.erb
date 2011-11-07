@@ -1,0 +1,21 @@
+<h3><%= talks.length %> <%= description %></h3>
+  <table>
+    <tr>
+      <th>Tittel</th>
+      <th>Foredragsholder</th>
+      <th>Type</th>
+      <th>Registrert</th>
+      <th>Behandlet</th>
+    </tr>
+  <% for talk in talks %>
+    <tr>
+      <td>
+        <%=link_to h(talk.title), talk %>
+      </td>
+      <td><%= link_to h(talk.speaker_name), talk.users.first %></td>
+      <td><%= talk.talk_type.name %></td>
+      <td><%= time_ago_in_words(talk.created_at) %> siden</td>
+      <td><%= "#{time_ago_in_words(talk.acceptance_changed_at)} siden" if talk.acceptance_changed_at %></td>
+    </tr>
+  <% end %>
+</table>
