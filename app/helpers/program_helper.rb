@@ -54,11 +54,11 @@ module ProgramHelper
 
 
   def period_talks_phone(period)
-    "<ol>" + period.talks.collect { |t| "<li>#{t.speaker_name} - #{t.users.first.phone_number}</li>" }.join + "</ol>"
+    "<ol>" + period.talks.sort_by(&:position).collect { |t| "<li>#{t.speaker_name} - #{t.users.first.phone_number}</li>" }.join + "</ol>"
   end
 
   
   def period_talks(period)
-    "<ol>" + period.talks.collect { |t| "<li class='#{t.talk_type.name.downcase}'>#{link_to h(t.title), t} (#{t.speaker_name})</li>" }.join + "</ol>"
+    "<ol>" + period.talks.sort_by(&:position).collect { |t| "<li class='#{t.talk_type.name.downcase}'>#{link_to h(t.title), t} (#{t.speaker_name})</li>" }.join + "</ol>"
   end
 end
