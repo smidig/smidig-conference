@@ -106,9 +106,12 @@ th.location {
 }
 
 .location {
-  float:right;
   font-family:georgia, serif;
   font-style:italic;
+}
+
+.right {
+  float:right;
 }
 
 table.schedule caption {
