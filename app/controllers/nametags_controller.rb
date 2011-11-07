@@ -5,6 +5,7 @@ class NametagsController < ApplicationController
 
   def index
     @registrations = Registration.all
+    @registrations += @registrations if params.has_key? "double"
     @registrations.sort! { |a, b| a.user.name <=> b.user.name }
 
     prawnto :prawn => {
