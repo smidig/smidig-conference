@@ -52,8 +52,6 @@ table.schedule ol li.lyntale {
 }
 
 table.schedule ol li.tordentale {
-  border-style: solid;
-  border-width: 0.1em;
 }
 
 table.schedule td {
@@ -98,8 +96,7 @@ th.location {
   margin-bottom: .25em;
 }
 
-.salHelsingfors,.salScandinavia,
-.restaurant,.foaje,th.event {
+.salOlympia,.restaurant,.foaje,th.event {
   padding-left:2em!important;
 }
 
