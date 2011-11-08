@@ -73,6 +73,6 @@ module ProgramHelper
   end  
 
   def period_workshops(workshop)
-    "#{workshop.title}"
+    "#{link_to h(workshop.title), workshop}<br /> #{workshop.speaker_name} <br />LINKENKOMMERHER"
   end
 end
