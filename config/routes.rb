@@ -34,6 +34,7 @@ SmidigConference::Application.routes.draw do
   resources :talks do
     resources :comments
     resources :votes
+    resources :workshop_participant, :only => [:index, :create, :destroy]
   end
 
   namespace :statistics do
