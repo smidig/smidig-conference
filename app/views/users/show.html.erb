@@ -23,6 +23,13 @@ Vi har registrert følgende informasjon om deg:
   <% end %>
 </ul>
 
+Du er påmeldt disse workshops:
+<ul>
+<% for w in @wps %>
+ <li><%= link_to h(w.talk.title), w.talk %>&nbsp;(<!--%= link_to "Avmelding", :controller => :workshop_participant, :method => :delete, :action => :destroy, :talk_id => w.talk.id, :id => w.id %-->)</li>
+<% end %> 
+</ul>
+
 Handlinger:
 <ul>
   <li><%= link_to "Endre din registrering", edit_user_path(@user) %> </li>

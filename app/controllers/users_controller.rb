@@ -16,6 +16,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
+    @wps = WorkshopParticipant.find(:all, :conditions => { :user_id => @user.id })   
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }
