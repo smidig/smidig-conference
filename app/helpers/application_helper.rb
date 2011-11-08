@@ -28,16 +28,20 @@ module ApplicationHelper
   end
 
   def user_menu_item
-	current_user ? user_menu_item_current : user_menu_item_new
+    current_user ? user_menu_item_current : user_menu_item_new
   end
 
   def user_menu_item_new
     active = controller_is?(%w(users))
-    text = "meld deg på!"
-    path = new_user_path
-    %Q(<li class="#{menu_class(active)} users">
-       #{link_to(text, path) }
-      </li>).html_safe
+
+    menu_items = ""
+    [ {:key => 'login', :text => "logg inn",     :path => login_path},
+      {:key => 'users', :text => "meld deg på!", :path => new_user_path}].each do |m|
+      menu_items += %Q(<li class="#{menu_class(active)} #{m[:key]}">
+       #{link_to(m[:text], m[:path]) }
+       </li>)
+    end
+   menu_items.html_safe
   end
 
 
@@ -82,7 +86,7 @@ module ApplicationHelper
   end
 
   def floating_text_box(text)
-	%Q{	<p class="quote">#{text}</p> }.html_safe
+  %Q{  <p class="quote">#{text}</p> }.html_safe
   end
 
   def logged_in
