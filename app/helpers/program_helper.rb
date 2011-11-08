@@ -58,6 +58,7 @@ module ProgramHelper
     <td></td>
     <td class='lyntaler salOlympia'>#{ period_workshops(workshops[0])}</td>
     <td class='lyntaler salOlympia'>#{ period_workshops(workshops[1])}</td>
+    <td>&nbsp;</tid>
   </tr>
     """.html_safe
   end
