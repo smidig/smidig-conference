@@ -61,6 +61,13 @@ module ApplicationHelper
       </li>).html_safe
   end
 
+  def program_menu_item(label)
+    active = controller_is?(%w(program))
+    %Q(<li id="program_menu" class="#{menu_class(active)} program">
+       #{ link_to_unless_current "program", :controller => 'program', :action => 'index' }
+      </li>).html_safe
+  end
+
   def login_menu_item
     text = current_user ? "logg ut" : "logg inn"
     path = current_user ? logout_path : login_path
