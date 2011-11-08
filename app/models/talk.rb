@@ -6,6 +6,7 @@ class Talk < ActiveRecord::Base
   scope :workshops, joins(:talk_type).where(:talk_types => {:name => ['Kort workshop','Lang workshop']})
 
   has_many :speakers
+  has_many :workshop_participants
   has_many :users, :through => :speakers
   belongs_to :period
   has_many :comments, :order => "created_at", :include => :user
