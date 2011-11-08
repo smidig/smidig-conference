@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   has_many :speakers
   has_many :talks, :through => :speakers
 
+  has_many :workshop_participants
+  has_many :workshops, :through => :workshop_participants, :source => :talk
+
   has_many :comments
 
   belongs_to :invoice

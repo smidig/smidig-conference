@@ -59,3 +59,39 @@ five:
   comments_count: 1
   acceptance_status: pending
   talk_type: lyntale
+
+workshop_by_god:
+  title: MyString
+  description: MyText
+  presenting_naked: false
+  video_url: MyString
+  position: 1
+  submitted: true
+  audience_level: MyString
+  comments_count: 1
+  acceptance_status: accepted
+  talk_type: workshop
+
+workshop_by_god_with_quentin:
+  title: MyString
+  description: MyText
+  presenting_naked: false
+  video_url: MyString
+  position: 1
+  submitted: true
+  audience_level: MyString
+  comments_count: 1
+  acceptance_status: accepted
+  talk_type: workshop
+
+workshop_by_quentin:
+  title: MyString
+  description: MyText
+  presenting_naked: false
+  video_url: MyString
+  position: 1
+  submitted: true
+  audience_level: MyString
+  comments_count: 1
+  acceptance_status: pending
+  talk_type: workshop

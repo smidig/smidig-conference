@@ -1,3 +1,6 @@
 lyntale:
   name: Lyntale
   duration: 10 minutter
+workshop:
+  name: Lang workshop
+  duration: 45 minutter
