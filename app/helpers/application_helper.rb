@@ -32,12 +32,10 @@ module ApplicationHelper
   end
 
   def user_menu_item_new
-    active = controller_is?(%w(users))
-
     menu_items = ""
-    [ {:key => 'login', :text => "logg inn",     :path => login_path},
-      {:key => 'users', :text => "meld deg på!", :path => new_user_path}].each do |m|
-      menu_items += %Q(<li class="#{menu_class(active)} #{m[:key]}">
+    [ {:key => 'login', :text => "logg inn",     :path => login_path,    :active => false},
+      {:key => 'users', :text => "meld deg på!", :path => new_user_path, :active => controller_is?(%w(users))}].each do |m|
+      menu_items += %Q(<li class="#{menu_class(m[:active])} #{m[:key]}">
        #{link_to(m[:text], m[:path]) }
        </li>)
     end
