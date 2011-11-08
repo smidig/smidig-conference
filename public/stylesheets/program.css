@@ -70,7 +70,7 @@ table.schedule td.time {
 
 table.schedule th,table.schedule td.time,table.schedule td.slot {
   border-color:#ccc;
-  border-style:dashed;
+  border-style:solid;
   border-width:0 0 1px;
   padding-bottom:.5em;
   vertical-align:bottom;
