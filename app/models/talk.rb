@@ -3,6 +3,8 @@
 class Talk < ActiveRecord::Base
   default_scope :order => 'acceptance_changed_at desc, created_at desc'
 
+  scope :workshops, joins(:talk_type).where(:talk_types => {:name => ['Kort workshop','Lang workshop']})
+
   has_many :speakers
   has_many :users, :through => :speakers
   belongs_to :period
