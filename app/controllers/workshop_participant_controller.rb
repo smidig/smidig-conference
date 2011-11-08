@@ -6,12 +6,15 @@ class WorkshopParticipantController < ApplicationController
   # GET /workshop_participants
   # GET /workshop_participants.xml
   def index
-    # TODO owner check
-    # ... current_user.is_admin? or  @talk.speaker_ids.includes?(current_user.id)
-    @participants = @talk.workshop_participants
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @participants }
+    if @talk.speaker_ids.include?(current_user.id) || current_user.is_admin?
+      @participants = @talk.workshop_participants.collect {|p| p.user }
+      respond_to do |format|
+        format.html # index.html.erb
+        format.xml  { render :xml => @participants }
+      end
+    else
+      flash[:error] = "Access Denied"
+      redirect_to new_user_path
     end
   end
   
@@ -38,15 +41,18 @@ class WorkshopParticipantController < ApplicationController
   # DELETE /workshop_participants.xml
   def destroy
     @wsp = WorkshopParticipant.find(params[:id])
-    # TODO current user check
-    # unless current_user.is_admin? or @wsp.user_id == current_user.id
-    #    -> no way, punk
-    if @wsp.destroy
-      flash[:notice] = "Du er ikke med lengre i workshoppen"
-    end
-    respond_to do |format|
-      format.html { redirect_to(@talk) }
-      format.xml  { head :ok }
+
+    if @wsp.user_id == current_user.id || current_user.is_admin?
+      if @wsp.destroy
+        flash[:notice] = "Du er ikke med lengre i workshoppen"
+      end
+      respond_to do |format|
+        format.html { redirect_to(@talk) }
+        format.xml  { head :ok }
+      end
+    else
+      flash[:error] = "Access Denied"
+      redirect_to new_user_path
     end
   end
 
