@@ -3,21 +3,20 @@ def find_period(periods, scene, time)
 end
 
 
-TALKS_DIR = File.expand_path("~/Documents/My Dropbox/Smidig2010/Lyntaler")
+TALKS_DIR = File.expand_path("~/Dropbox/Smidig2011/smidig2011-slides-production")
 
 namespace :sort_slides do
   task :sort_slides => :environment do
-	require 'ftools'
+	require 'fileutils'
 
 	periods = Period.find(:all, :include => { :talks => :users })
 	scenes = %w(Olympia Kunst Film)
-	times = %w(nov16-09 nov16-10 nov16-11 nov17-09 nov17-10 nov17-11)
+	times = %w(nov14-09 nov14-10 nov14-11 nov15-09 nov15-10 nov15-11)
 	
 	(0..2).each do |scene|
 		(0..5).each do |time|
 			slot_dir = "#{TALKS_DIR}/#{scenes[scene]}/#{times[time]}"
-			File.makedirs(slot_dir)
-			
+			FileUtils.mkdir_p(slot_dir)
 			period = find_period(periods, scene, time)
 			for talk in period.talks
 				FileUtils.mv Dir.glob("#{TALKS_DIR}/#{talk.id}-*"), slot_dir, 
