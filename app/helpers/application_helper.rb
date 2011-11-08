@@ -62,7 +62,7 @@ module ApplicationHelper
   end
 
   def program_menu_item(label)
-    active = controller_is?(%w(program))
+    active = controller_is?(%w(program)) || controller_is?(%w(talks))
     %Q(<li id="program_menu" class="#{menu_class(active)} program">
        #{ link_to_unless_current "program", :controller => 'program', :action => 'index' }
       </li>).html_safe

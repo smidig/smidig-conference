@@ -55,6 +55,8 @@ SmidigConference::Application.routes.draw do
     end
   end
 
+  resources :program
+
   resources :acceptances
   resources :tags
   resources :topics do
