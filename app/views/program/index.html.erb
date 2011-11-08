@@ -4,24 +4,41 @@
 <%= stylesheet_link_tag "program" %>
 <script type="text/javascript">
 $(document).ready(function() {
+  $('a.button:first').addClass('selected');
   $('#talk_program_button').click(function() {
-    $('#talk_program').show().addClass("selected");
-    $('#ws_program').hide().removeClass("selected");
+    $('a.button.selected').removeClass('selected');
+    $(this).addClass('selected');
+    $('#talk_program').show();
+    $('#ws_program').hide();
   });
   $('#ws_program_button').click(function() {
-    $('#ws_program').show().addClass("selected");
-    $('#talk_program').hide().removeClass("selected");
+    $('a.button.selected').removeClass('selected');
+    $(this).addClass('selected');
+    $('#ws_program').show();
+    $('#talk_program').hide();
   });
 });
 </script>
 <style>
 a.button {
+ color: #B1E038;
+ font-size: 15px;
+ font-weight: bold;
+ padding:5px 5px 0 5px;
+ border-radius:5px 5px 0 0;
  background: none;
  pointer: pointer;
 }
 a.button.selected {
+ color: black;
  background: silver;
 }
+
+div.program {
+ padding: 5px;
+ border-top: 1px solid silver;
+}
+
 </style>
 
 <% if admin? %>
@@ -44,9 +61,9 @@ a.button.selected {
 <a class="button" id="talk_program_button">Foredrag</a> - <a class="button" id="ws_program_button">Workshops</a>
 </div>
 
-<div id="ws_program" style="display:none;">
+<div class="program" id="ws_program" style="display:none;">
   <%= render :partial => 'workshops' %>
 </div>
-<div id="talk_program">
+<div class="program" id="talk_program">
   <%= render :partial => 'talks' %>
 </div>
