@@ -2,6 +2,27 @@
 <%= content_for :additional_css, stylesheet_link_tag('program', :media => "all") %>
 <%= content_for :additional_css, stylesheet_link_tag('program-print', :media => "print") %>
 <%= stylesheet_link_tag "program" %>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#talk_program_button').click(function() {
+    $('#talk_program').show().addClass("selected");
+    $('#ws_program').hide().removeClass("selected");
+  });
+  $('#ws_program_button').click(function() {
+    $('#ws_program').show().addClass("selected");
+    $('#talk_program').hide().removeClass("selected");
+  });
+});
+</script>
+<style>
+a.button {
+ background: none;
+ pointer: pointer;
+}
+a.button.selected {
+ background: silver;
+}
+</style>
 
 <% if admin? %>
 
@@ -19,5 +40,13 @@
 
 </div>
 
-<%= render :partial => 'workshops' %>
-<%= render :partial => 'talks' %>
+<div>
+<a class="button" id="talk_program_button">Foredrag</a> - <a class="button" id="ws_program_button">Workshops</a>
+</div>
+
+<div id="ws_program" style="display:none;">
+  <%= render :partial => 'workshops' %>
+</div>
+<div id="talk_program">
+  <%= render :partial => 'talks' %>
+</div>
