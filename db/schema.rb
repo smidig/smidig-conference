@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111018192023) do
+ActiveRecord::Schema.define(:version => 20111108164422) do
 
   create_table "comments", :force => true do |t|
     t.integer   "talk_id"
@@ -179,7 +179,7 @@ ActiveRecord::Schema.define(:version => 20111018192023) do
     t.integer   "sum_of_votes"
     t.integer   "num_of_votes"
     t.integer   "talk_type_id"
-    t.datetime  "acceptance_changed_at"
+    t.timestamp "acceptance_changed_at"
   end
 
   create_table "topics", :force => true do |t|
@@ -224,6 +224,13 @@ ActiveRecord::Schema.define(:version => 20111018192023) do
     t.integer   "user_id"
     t.timestamp "created_at"
     t.timestamp "updated_at"
+  end
+
+  create_table "workshop_participants", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "talk_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

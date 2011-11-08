@@ -73,6 +73,6 @@ module ProgramHelper
   end  
 
   def period_workshops(workshop)
-    "#{link_to h(workshop.title), workshop}<br /> #{workshop.speaker_name} <br />LINKENKOMMERHER"
+    "#{link_to h(workshop.title), workshop}<br /> #{workshop.speaker_name} <br />#{button_to 'Meld på', :controller => :workshop_participant, :action => :create, :method => :post, :talk_id => workshop}"
   end
 end

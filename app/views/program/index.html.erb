@@ -3,8 +3,14 @@
 <%= content_for :additional_css, stylesheet_link_tag('program-print', :media => "print") %>
 <%= stylesheet_link_tag "program" %>
 <script type="text/javascript">
+var selected = <%= "'#{@selected}'" %>;
 $(document).ready(function() {
-  $('a.button:first').addClass('selected');
+  if (selected === 'ws') {
+    $('a.button.selected').removeClass('selected');
+    $('#ws_program_button').addClass('selected'); 
+    $('#ws_program').show();
+    $('#talk_program').hide(); 
+  }
   $('#talk_program_button').click(function() {
     $('a.button.selected').removeClass('selected');
     $(this).addClass('selected');
@@ -27,7 +33,10 @@ a.button {
  padding:5px 5px 0 5px;
  border-radius:5px 5px 0 0;
  background: none;
- pointer: pointer;
+}
+a.button:hover {
+ text-decoration:none;
+ cursor:pointer;
 }
 a.button.selected {
  color: black;
@@ -36,7 +45,7 @@ a.button.selected {
 
 div.program {
  padding: 5px;
- border-top: 1px solid silver;
+ border-top: 5px solid silver;
 }
 
 </style>
@@ -58,7 +67,7 @@ div.program {
 </div>
 
 <div>
-<a class="button" id="talk_program_button">Foredrag</a> - <a class="button" id="ws_program_button">Workshops</a>
+<a class="button selected" id="talk_program_button">Foredrag</a>&nbsp;<a class="button" id="ws_program_button">Workshops</a>
 </div>
 
 <div class="program" id="ws_program" style="display:none;">

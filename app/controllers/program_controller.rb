@@ -21,6 +21,8 @@ class ProgramController < ApplicationController
     @w[4] = [Talk.find(43), Talk.find(36)]
     @w[5] = [Talk.find(24), Talk.find(82)]
 
+    @selected = params[:selected]
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml

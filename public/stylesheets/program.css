@@ -59,10 +59,6 @@ table.schedule td {
   vertical-align:top;
 }
 
-table.schedule td div {
-  text-align:left;
-}
-
 table.schedule td.time {
   padding-top:2em;
   text-align:left;
@@ -119,6 +115,9 @@ table.schedule caption {
   font-weight:700;
   padding-bottom:1em;
   text-align:left;
-  color: red;
   font-family: verdana, sans-serif;
+}
+
+.button_to {
+  padding: 5px 0;
 }
