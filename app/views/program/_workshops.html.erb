@@ -1,0 +1,177 @@
+<table class="schedule" summary="This table shows the schedule for the first day of the Smidig 2011 conference on November 14th.">
+  <caption>Mandag 14. november</caption>
+  <colgroup class="times"> 
+    <col /> 
+  </colgroup> 
+  <colgroup class="locations" span="3"> 
+    <col class="salOlympia" /> 
+    <col class="salKunst" /> 
+    <col class="salFilm" /> 
+  </colgroup>
+  <thead> 
+    <tr>
+      <th class="time">Tid</th> 
+      <th colspan="3" class="event"> 
+        <div class="event">Hva skjer?</div> 
+        <span class="location right">Sted</span> 
+      </th> 
+    </tr> 
+  </thead>
+  <tfoot> 
+    <tr>
+      <th class="time">Tid</th> 
+      <th class="event" colspan="2">Hva skjer?</th> 
+      <th class="location right">Sted</th> 
+    </tr> 
+  </tfoot>
+  <tbody>
+    <tr>
+      <td class="time">08:00&nbsp;&#8209;&nbsp;09:00</td> 
+      <td colspan="3" class="slot foaje"> 
+        <div class="event">Registrering og kaffe</div> 
+        <span class="location right">Foajé</span> 
+      </td> 
+    </tr>
+    <tr>
+      <td class="time">09:00&nbsp;&#8209;&nbsp;09:15</td>
+      <td colspan="3" class="slot foaje"> 
+        <div class="event">Åpningstale</div> 
+        <span class="location right">Olympia</span> 
+      </td> 
+    </tr>
+    <!-- Keynote -->
+    <tr>
+      <td class="time">09:15&nbsp;&#8209;&nbsp;10:00</td>
+      <td colspan="3" class="slot foaje">
+        <div class="event">Keynote: Bjarte Bogsnes</div>
+        <span class="location right">Olympia</span>
+      </td>
+    </tr>
+    <!-- Lightning talks -->
+    <!--%= timeslot_with_location_tr("10:15&nbsp;&#8209;&nbsp;11:00", @w[0]) %-->
+    <%= timeslot_workshops_tr(@w[0]) %>
+    <!-- Lightning talks -->
+    <tr>
+      <td class="time">12:00&nbsp;&#8209;&nbsp;13:15</td> 
+      <td colspan="3" class="slot restaurant"> 
+        <div class="event">Lunsj</div><span class="location right">Restauranten</span> 
+      </td> 
+    </tr> 
+    <!--%= timeslot_with_location_tr("11:15&nbsp;&#8209;&nbsp;12:00", @periods_by_time_and_scene[1]) %-->
+    <%= timeslot_workshops_tr(@w[1]) %>
+    <!-- Lightning talks -->
+    <!--%= timeslot_with_location_tr("13:15&nbsp;&#8209;&nbsp;14:00", @periods_by_time_and_scene[2]) %-->
+    <%= timeslot_workshops_tr(@w[2]) %>
+    <tr>
+      <td class="time">14:15&nbsp;&#8209;&nbsp;14:45</td> 
+      <td colspan="3" class="slot salOlympia"> 
+        <div class="event">Planlegging av Open Space</div><span class="location right">Olympia</span> 
+      </td> 
+    </tr> 
+    <tr>
+      <td class="time">14:45&nbsp;&#8209;&nbsp;15:30</td> 
+      <td colspan="3" class="slot salOlympia"> 
+        <div class="event">Open Space sesjon</div><span class="location right">Olympia</span> 
+      </td> 
+    </tr> 
+    <tr>
+      <td class="time">15:30&nbsp;&#8209;&nbsp;16:15</td> 
+      <td colspan="3" class="slot salOlympia"> 
+        <div class="event">Open Space sesjon</div><span class="location right">Olympia</span> 
+      </td> 
+    </tr> 
+    <tr>
+      <td class="time">16:15&nbsp;&#8209;&nbsp;17:00</td> 
+      <td colspan="3" class="slot salOlympia"> 
+        <div class="event">Open Space sesjon</div><span class="location right">Olympia</span> 
+      </td> 
+    </tr> 
+    <tr>
+      <td class="time">16:00</td> 
+      <td colspan="3" class="slot restaurant"> 
+        <div class="event">Baren åpner</div>
+      </td> 
+    </tr> 
+    <tr>
+      <td class="time">17:30</td> 
+      <td colspan="3" class="slot restaurant"> 
+        <div class="event">Middag</div><span class="location right">Restauranten</span>
+      </td> 
+    </tr> 
+  </tbody> 
+</table>
+
+<table class="schedule" summary="This table shows the schedule for the second day of the Smidig 2011 conference on November 15th.">
+  <caption>Tirsdag 15. november</caption> 
+  <colgroup class="times"> 
+    <col /> 
+  </colgroup> 
+  <colgroup class="locations" span="3"> 
+    <col class="salOlympia" /> 
+    <col class="salKunst" /> 
+    <col class="salFilm" /> 
+  </colgroup>
+  <thead> 
+    <tr>
+      <th class="time">Tid</th> 
+      <th colspan="3" class="event"> 
+        <div class="event">Hva skjer?</div> 
+        <span class="location right">Sted</span> 
+      </th> 
+    </tr> 
+  </thead>
+  <tfoot> 
+    <tr>
+      <th class="time">Tid</th> 
+      <th class="event" colspan="2">Hva skjer?</th> 
+      <th class="location right">Sted</th> 
+    </tr> 
+  </tfoot>
+  <tbody>
+    <tr>
+      <td class="time">08:00&nbsp;&#8209;&nbsp;09:15</td> 
+      <td colspan="3" class="slot foaje"> 
+        <div class="event">Kaffe</div> 
+        <span class="location right">Foajé</span> 
+      </td> 
+    </tr>
+    <!--%= timeslot_with_location_tr("09:15&nbsp;&#8209;&nbsp;10:00", @periods_by_time_and_scene[3]) %-->
+    <%= timeslot_workshops_tr(@w[3]) %>
+    <tr>
+      <td class="time">12:00&nbsp;&#8209;&nbsp;13:15</td> 
+      <td colspan="3" class="slot restaurant"> 
+        <div class="event">Lunsj</div>
+        <span class="location right">Restauranten</span> 
+      </td> 
+    </tr> 
+
+    <!--%= timeslot_with_location_tr("10:15&nbsp;&#8209;&nbsp;11:00", @periods_by_time_and_scene[4]) %-->
+    <%= timeslot_workshops_tr(@w[4]) %>
+    <!--%= timeslot_with_location_tr("11:15&nbsp;&#8209;&nbsp;12:00", @periods_by_time_and_scene[5]) %-->
+    <%= timeslot_workshops_tr(@w[5]) %>
+    <tr>
+      <td class="time">13:15&nbsp;&#8209;&nbsp;13:45</td> 
+      <td colspan="3" class="slot salOlympia"> 
+        <div class="event">Planlegging av Open Space</div><span class="location right">Olympia</span> 
+      </td> 
+    </tr>    <tr>
+      <td class="time">13:45&nbsp;&#8209;&nbsp;14:30</td> 
+      <td colspan="3" class="slot salOlympia"> 
+        <div class="event">Open Space sesjon</div><span class="location right">Olympia</span> 
+      </td> 
+    </tr> 
+    <tr>
+      <td class="time">14:30&nbsp;&#8209;&nbsp;15:15</td> 
+      <td colspan="3" class="slot salOlympia"> 
+        <div class="event">Open Space sesjon</div><span class="location right">Olympia</span> 
+      </td> 
+    </tr> 
+    <tr>
+      <td class="time">15:30&nbsp;&#8209;&nbsp;16:15</td> 
+      <td colspan="3" class="slot salOlympia"> 
+        <div class="event">Keynote: Jurgen Appelo</div><span class="location right">Olympia</span> 
+      </td> 
+    </tr> 
+  </tbody> 
+</table>
+
