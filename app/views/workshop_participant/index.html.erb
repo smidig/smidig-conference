@@ -1,9 +1,15 @@
-<h1>Participants</h1>
+<h1>
+    Workshop: <%=h @talk.title %>
+</h1>
 
-<ol>
-    <% @participants.each do |participant| %>
-        <li>
-            <%=h participant.name %>
-        </li>
-    <% end %>
-</ol>
+<% if @participants.count > 0 %>
+    <ol>
+        <% @participants.each do |participant| %>
+            <li>
+                <%=h participant.name %>
+            </li>
+        <% end %>
+    </ol>
+<% else %>
+    none, yet.
+<% end %>
