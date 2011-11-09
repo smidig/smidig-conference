@@ -43,7 +43,9 @@
   <div>
     <%= workshop_participation_link(@talk, current_user) %>
     <% if @talk.users.include?(current_user)|| admin? %>
-      link to /talks/x/workshop_participant
+      <div>
+        <%= conditional_link_to_participant_list(@talk) %>
+      <div>
     <% end %>
   </div>
 <% end %>
