@@ -23,12 +23,14 @@ Vi har registrert følgende informasjon om deg:
   <% end %>
 </ul>
 
-Du er påmeldt disse workshops:
-<ul>
-<% for w in @wps %>
- <li><%= link_to h(w.talk.title), w.talk %>&nbsp;(<!--%= link_to "Avmelding", :controller => :workshop_participant, :method => :delete, :action => :destroy, :talk_id => w.talk.id, :id => w.id %-->)</li>
+<% unless @user.workshops.empty? %>
+  Du er påmeldt disse workshops:
+  <ul>
+  <% for workshop in @user.workshops %>
+    <li><%= link_to h(workshop.title), workshop %>&nbsp;(<%= workshop_participation_link(workshop, @user) %>)</li>
+  <% end %> 
+  </ul>
 <% end %> 
-</ul>
 
 Handlinger:
 <ul>

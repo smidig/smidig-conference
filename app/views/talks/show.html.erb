@@ -39,6 +39,15 @@
   <%=simple_format h(@talk.description) %>
 </div>
 
+<% if @talk.workshop? %>
+  <div>
+    <%= workshop_participation_link(@talk, current_user) %>
+    <% if @talk.users.include?(current_user)|| admin? %>
+      link to /talks/x/workshop_participant
+    <% end %>
+  </div>
+<% end %>
+
 <%= link_to image_tag("#{@talk.license}.png", :title => 'Foredraget deles under en Creative Commons Navngivelse-lisens.'),
    "http://creativecommons.org/licenses/#{@talk.license}/3.0/no/", :rel => 'license' %>
 
