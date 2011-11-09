@@ -25,30 +25,6 @@ $(document).ready(function() {
   });
 });
 </script>
-<style>
-a.button {
- color: #B1E038;
- font-size: 15px;
- font-weight: bold;
- padding:5px 5px 0 5px;
- border-radius:5px 5px 0 0;
- background: none;
-}
-a.button:hover {
- text-decoration:none;
- cursor:pointer;
-}
-a.button.selected {
- color: black;
- background: silver;
-}
-
-div.program {
- padding: 5px;
- border-top: 5px solid silver;
-}
-
-</style>
 
 <% if admin? %>
 
@@ -64,7 +40,7 @@ div.program {
 </div>
 
 <div>
-<a class="button selected" id="talk_program_button">Foredrag</a>&nbsp;<a class="button" id="ws_program_button">Workshops</a>
+<a class="button selected" id="talk_program_button">Foredrag</a><a class="button" id="ws_program_button">Workshops</a>
 </div>
 
 <div class="program" id="ws_program" style="display:none;">

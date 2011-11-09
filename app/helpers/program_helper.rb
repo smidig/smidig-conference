@@ -56,8 +56,14 @@ module ProgramHelper
     """
   <tr>
     <td></td>
-    <td class='lyntaler salOlympia'>#{ period_workshops(workshops[0])}</td>
-    <td class='lyntaler salOlympia'>#{ period_workshops(workshops[1])}</td>
+    <td class='lyntaler workshop salOlympia'>#{ period_workshops(workshops[0])}</td>
+    <td class='lyntaler workshop salOlympia'>#{ period_workshops(workshops[1])}</td>
+    <td>&nbsp;</tid>
+  </tr>
+  <tr>
+    <td></td>
+    <td class='lyntaler workshop salOlympia'>#{ workshop_participation_link(workshops[0], current_user)}</td>
+    <td class='lyntaler workshop salOlympia'>#{ workshop_participation_link(workshops[1], current_user)}</td>
     <td>&nbsp;</tid>
   </tr>
     """.html_safe
@@ -75,11 +81,7 @@ module ProgramHelper
 
 
   def period_workshops(workshop)
-    content = "#{link_to h(workshop.title), workshop}<br /> #{workshop.speaker_name} <br />"
-    if (admin?)
-      content += "#{workshop_participation_link(workshop, current_user)}"
-    end
-    content
+    "#{link_to h(workshop.title), workshop}<br /> #{workshop.speaker_name}"
   end
   
 end
