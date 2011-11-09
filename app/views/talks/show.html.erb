@@ -39,23 +39,23 @@
   <%=simple_format h(@talk.description) %>
 </div>
 
-<% if @talk.workshop? %>
-  <div>
-    <%= workshop_participation_link(@talk, current_user) %>
-    <% if @talk.users.include?(current_user)|| admin? %>
-      <div>
-        <%= conditional_link_to_participant_list(@talk) %>
-      <div>
-    <% end %>
-  </div>
-<% end %>
-
 <%= link_to image_tag("#{@talk.license}.png", :title => 'Foredraget deles under en Creative Commons Navngivelse-lisens.'),
    "http://creativecommons.org/licenses/#{@talk.license}/3.0/no/", :rel => 'license' %>
 
 
 <%= render :partial => "talks/video" %>
 <%= render :partial => "talks/slides" %>
+
+<% if @talk.workshop? %>
+  <div class="workshop-details">
+    <%= workshop_participation_link(@talk, current_user) %>
+    <% if @talk.users.include?(current_user)|| admin? %>
+        <p class="workshop-details-admin">
+          <%= conditional_link_to_participant_list(@talk) %>
+        </p>
+    <% end %>
+  </div>
+<% end %>
 
 <h3>Kommentarer<%= feed_link "Følg med på kommentarer til #{@talk.title}", talk_comments_path(@talk, :format => :rss) %></h3><a name="comments"></a>
 

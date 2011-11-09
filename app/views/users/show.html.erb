@@ -27,7 +27,7 @@ Vi har registrert følgende informasjon om deg:
   Du er påmeldt disse workshops:
   <ul>
   <% for workshop in @user.workshops %>
-    <li><%= link_to h(workshop.title), workshop %>&nbsp;(<%= workshop_participation_link(workshop, @user) %>)</li>
+    <li><%= link_to h(workshop.title), workshop %></li>
   <% end %> 
   </ul>
 <% end %> 
