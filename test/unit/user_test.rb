@@ -20,8 +20,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   def test_user_with_one_refused_talk_has_all_talks_refused
-    quentin = users(:quentin)
-    assert quentin.all_talks_refused?
+    jinx = users(:jinx)
+    assert jinx.all_talks_refused?
   end
 
   def test_early_user_gets_set_to_early_bird

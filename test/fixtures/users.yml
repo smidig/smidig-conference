@@ -22,6 +22,13 @@ singletalk:
   crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("test") %>
   persistence_token: <%= Authlogic::Random.hex_token %>
 
+jinx:
+  email: jinx@example.com
+  name: Jinx All Rejected
+  password_salt: <%= salt = Authlogic::Random.hex_token %>
+  crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("test") %>
+  persistence_token: <%= Authlogic::Random.hex_token %>
+
 paid_participant:
   email: beate@example.com
   name: Beate Betalt
