@@ -73,12 +73,13 @@ module ProgramHelper
     "<ol>" + period.talks.sort_by(&:position).collect { |t| "<li class='#{t.talk_type.name.downcase}'>#{link_to h(t.title), t} (#{t.speaker_name})<br />#{t.talk_type.duration}</li>" }.join + "</ol>"
   end  
 
-#COMMENT IN TO ENABLE WORKSHOP REGISTRATION
-#  def period_workshops(workshop)
-#    "#{link_to h(workshop.title), workshop}<br /> #{workshop.speaker_name} <br />#{workshop_participation_link(workshop, current_user)}"
-#  end
-  
+
   def period_workshops(workshop)
-    "#{link_to h(workshop.title), workshop}<br /> #{workshop.speaker_name}"
+    content = "#{link_to h(workshop.title), workshop}<br /> #{workshop.speaker_name} <br />"
+    if (admin?)
+      content += "#{workshop_participation_link(workshop, current_user)}"
+    end
+    content
   end
+  
 end
