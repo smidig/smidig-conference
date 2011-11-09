@@ -7,6 +7,7 @@ class Talk < ActiveRecord::Base
 
   has_many :speakers
   has_many :workshop_participants
+  has_many :participants, :through => :workshop_participants, :source => :user
   has_many :users, :through => :speakers
   belongs_to :period
   has_many :comments, :order => "created_at", :include => :user
@@ -61,6 +62,18 @@ class Talk < ActiveRecord::Base
 
   def license
     "by"
+  end
+
+  def workshop?
+    !talk_type.nil? && talk_type.name.include?('workshop')
+  end
+
+  def participant?(user)
+    participant_ids.include?(user.id)
+  end
+
+  def complete?
+    participant_ids.count >= WorkshopParticipant.max_participants_per_workshop
   end
 
   def self.all_pending_and_approved
