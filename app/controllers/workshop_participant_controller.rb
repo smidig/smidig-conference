@@ -21,11 +21,14 @@ class WorkshopParticipantController < ApplicationController
   # POST /workshop_participants
   # POST /workshop_participants.xml
   def create
-    # TODO if full check
     @wsp = WorkshopParticipant.new(:user => current_user, :talk => @talk)
 
     respond_to do |format|
-      if @wsp.save
+      if @talk.complete?
+        flash[:error] = "Workshoppen er full"
+        format.html { redirect_to(@talk) }
+        format.xml { render :xml => @wsp, :status => :unprocessable_entity }
+      elsif @wsp.save
         flash[:notice] = "Du er med i workshoppen"
         format.html { redirect_to(@talk) }
         format.xml { render :xml => @wsp }
@@ -59,6 +62,5 @@ class WorkshopParticipantController < ApplicationController
   protected
   def load_talk
     @talk = Talk.workshops.joins(:speakers).find(params[:talk_id])
-    # TODO what about not acceptance_status?
   end
 end
