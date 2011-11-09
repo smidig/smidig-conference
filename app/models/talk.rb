@@ -26,15 +26,15 @@ class Talk < ActiveRecord::Base
   validates_acceptance_of :accepted_cc_license
 
   def speaker_name
-    users.map(&:name).join(", ");
+    users.map(&:name).join(", ")
   end
 
   def speaker_company
-    users.map(&:company).join(", ");
+    users.map(&:company).join(", ")
   end
-  
+
   def speaker_email
-    users.map(&:email).join(", ");  
+    users.map(&:email).join(", ")
   end
 
 
@@ -78,7 +78,7 @@ class Talk < ActiveRecord::Base
       if talk.tags.include? tag
          talks.push talk
       end
-    end  
+    end
     talks
   end
 
