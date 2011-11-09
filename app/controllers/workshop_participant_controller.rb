@@ -6,7 +6,7 @@ class WorkshopParticipantController < ApplicationController
   # GET /workshop_participants
   # GET /workshop_participants.xml
   def index
-    if @talk.speaker_ids.include?(current_user.id) || current_user.is_admin?
+    if @talk.user_ids.include?(current_user.id) || current_user.is_admin?
       @participants = @talk.workshop_participants.collect {|p| p.user }
       respond_to do |format|
         format.html # index.html.erb
@@ -17,7 +17,7 @@ class WorkshopParticipantController < ApplicationController
       redirect_to new_user_path
     end
   end
-  
+
   # POST /workshop_participants
   # POST /workshop_participants.xml
   def create
@@ -58,7 +58,7 @@ class WorkshopParticipantController < ApplicationController
 
   protected
   def load_talk
-    @talk = Talk.workshops.find(params[:talk_id])
+    @talk = Talk.workshops.joins(:speakers).find(params[:talk_id])
     # TODO what about not acceptance_status?
   end
 end
