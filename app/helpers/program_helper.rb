@@ -88,7 +88,7 @@ module ProgramHelper
   end
   
   def period_talks(period)
-    "<ol>" + period.talks.sort_by(&:position).collect { |t| "<li class='#{t.talk_type.name.downcase}'>#{abbr_for_talk(talk_type.name.downcase)}#{link_to h(t.title), t} (#{t.speaker_name})<br />#{t.talk_type.duration}</li>" }.join + "</ol>"
+    "<ol>" + period.talks.sort_by(&:position).collect { |t| "<li class='#{t.talk_type.name.downcase}'>#{abbr_for_talk(t.talk_type.name.downcase)}#{link_to h(t.title), t} (#{t.speaker_name})<br />#{t.talk_type.duration}</li>" }.join + "</ol>"
   end  
 
 
