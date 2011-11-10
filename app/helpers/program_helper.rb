@@ -61,7 +61,7 @@ module ProgramHelper
     <td>&nbsp;</tid>
   </tr>
     """.html_safe
-    if (workshop_enabled?)
+    if (logged_in && workshop_enabled?)
       html += """
     <tr>
       <td></td>
