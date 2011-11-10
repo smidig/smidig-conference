@@ -61,7 +61,7 @@ module ProgramHelper
     <td>&nbsp;</tid>
   </tr>
     """.html_safe
-    if (admin?)
+    if (workshop_enabled?)
       html += """
     <tr>
       <td></td>
