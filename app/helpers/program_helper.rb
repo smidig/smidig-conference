@@ -61,7 +61,7 @@ module ProgramHelper
     <td>&nbsp;</tid>
   </tr>
     """.html_safe
-    if (logged_in)
+    if (admin?)
       html += """
     <tr>
       <td></td>
