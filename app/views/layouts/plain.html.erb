@@ -32,11 +32,13 @@
 
     <div id="main">
     <%= render :partial => 'layouts/menu' %>
-        <div id="notifications">
-          <p style="color: green"><%= flash[:notice] %></p>
-          <p style="color: orange"><%= flash[:warn] %></p>
-          <p style="color: red"><%= flash[:error] %></p>
-        </div>
+        <% unless flash.empty? %>
+          <div id="notifications">
+            <p style="color: green"><%= flash[:notice] %></p>
+            <p style="color: orange"><%= flash[:warn] %></p>
+            <p style="color: red"><%= flash[:error] %></p>
+          </div>
+        <% end %>
         <%= yield %>
     
     </div>

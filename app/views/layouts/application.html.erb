@@ -34,11 +34,13 @@
 
     <div id="main">
 	<%= render :partial => 'layouts/menu' %>
-        <div id="notifications">
-          <p style="color: green"><%= flash[:notice] %></p>
-          <p style="color: orange"><%= flash[:warn] %></p>
-          <p style="color: red"><%= flash[:error] %></p>
-        </div>
+        <% unless flash.empty? %>
+          <div id="notifications">
+            <p style="color: green"><%= flash[:notice] %></p>
+            <p style="color: orange"><%= flash[:warn] %></p>
+            <p style="color: red"><%= flash[:error] %></p>
+          </div>
+        <% end %>
 		<div id="header">
 		  <h1><%= link_to "Smidig 2011", root_url %></h1>
 		  <h2 class="page_title"><%= yield :title %></h2>

@@ -48,11 +48,16 @@
 
 <% if @talk.workshop? %>
   <div class="workshop-details">
+    <h3>Påmelding</h3>
+
+    <% unless @talk.complete? %>
+      <p>Bare <%= @talk.free_places %> plasser igjen!</p>
+    <% end %>
+
     <%= workshop_participation_link(@talk, current_user) %>
+
     <% if @talk.users.include?(current_user)|| admin? %>
-        <p class="workshop-details-admin">
-          <%= conditional_link_to_participant_list(@talk) %>
-        </p>
+        <p><%= conditional_link_to_participant_list(@talk) %></p>
     <% end %>
   </div>
 <% end %>

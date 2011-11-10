@@ -109,19 +109,13 @@ table.schedule caption {
 }
 
 .workshop {
-  padding:1em 0 1.5em;
+  padding:1em 0 0.5em;
 }
 
-.button_to {
-  padding:1em 0 0;
-}
-
-.button_to input {
-  cursor:pointer;
-  background-color:transparent;
-  color:#b1e038;
-  font-weight:bold;
-  border:1px solid #b1e038;
+.workshop-full {
+  display:block;
+  padding:2px;
+  margin-bottom:2px;
 }
 
 

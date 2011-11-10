@@ -62,8 +62,8 @@ module ProgramHelper
   </tr>
   <tr>
     <td></td>
-    <td class='lyntaler workshop salOlympia'>#{ workshop_participation_link(workshops[0], current_user)}</td>
-    <td class='lyntaler workshop salOlympia'>#{ workshop_participation_link(workshops[1], current_user)}</td>
+    <td class='lyntaler workshop salOlympia'>#{ workshop_participation_link(workshops[0], current_user)}#{ workshop_stats(workshops[0]) if admin?}</td>
+    <td class='lyntaler workshop salOlympia'>#{ workshop_participation_link(workshops[1], current_user)}#{ workshop_stats(workshops[1]) if admin?}</td>
     <td>&nbsp;</tid>
   </tr>
     """.html_safe
