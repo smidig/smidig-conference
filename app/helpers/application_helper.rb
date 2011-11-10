@@ -103,10 +103,7 @@ module ApplicationHelper
   end
 
   def workshop_enabled?
-    #Sorry for this, I hate date APIs, google is not helping and I assume noone wants to sign up after conference
-    #Time did not seem to have after or before methods and we go live from 11-11-11 @ 12:00
-    t = Time.now
-    t.day > 10 and t.hour > 11
+    Time.now > Time.new(2011,11,11,12,0,0)
   end
 
   # Don't include the following in production or staging
