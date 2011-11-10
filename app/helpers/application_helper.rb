@@ -103,7 +103,8 @@ module ApplicationHelper
   end
 
   def workshop_enabled?
-    Time.now > Time.new(2011,11,11,12,0,0)
+#    Time.now > Time.new(2011,11,11,12,0,0)
+    false
   end
 
   # Don't include the following in production or staging
