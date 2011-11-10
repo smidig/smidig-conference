@@ -59,7 +59,7 @@
       <p>Ingen plasser igjen.</p>
     <% end %>
 
-  <% if workshop_enabled? %>
+  <% if logged_in && workshop_enabled? %>
     <%= workshop_participation_link(@talk, current_user) %>
 
     <% if @talk.users.include?(current_user)|| admin? %>
