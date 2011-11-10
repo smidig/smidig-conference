@@ -6,9 +6,6 @@
 <script type="text/javascript">
 var selected = <%= "'#{@selected}'" %>;
 $(document).ready(function() {
-  if (selected === 'ws' || window.location.hash === '#ws') {
-    selectTab('ws');
-  }
   var selectTab = function(tab) {
     if(tab === 'ws' || tab==='#ws') {
       $('a.button.selected').removeClass('selected');
@@ -25,6 +22,9 @@ $(document).ready(function() {
   $(window).hashchange(function() {
     selectTab(window.location.hash);
   });
+  if (selected === 'ws' || window.location.hash === '#ws') {
+    selectTab('ws');
+  }
 });
 </script>
 
