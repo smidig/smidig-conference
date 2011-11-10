@@ -63,14 +63,13 @@ class TalkTest < ActiveSupport::TestCase
     end
 
     should "be not complete" do
-      WorkshopParticipant.stubs(:max_participants_per_workshop).returns(20)
       workshop  = talks(:workshop_by_god_with_quentin)
       assert !workshop.complete?
     end
 
     should "be complete" do
-      WorkshopParticipant.stubs(:max_participants_per_workshop).returns(1)
       workshop  = talks(:workshop_by_god_with_quentin)
+      workshop.max_participants = 1
       assert workshop.complete?
     end
   end
