@@ -118,6 +118,10 @@ table.schedule caption {
   margin-bottom:2px;
 }
 
+abbr {
+  font-weight: bold;
+  color: #B1E038;
+}
 
 a.button {
   color: #B1E038;

@@ -79,9 +79,16 @@ module ProgramHelper
     "<ol>" + period.talks.sort_by(&:position).collect { |t| "<li>#{t.speaker_name} - #{t.users.first.phone_number}</li>" }.join + "</ol>"
   end
 
+  def abbr_for_talk(talk_type)
+    if(talk_type == "tordentale")
+      '<abbr title="Tordentale">T</abbr> '
+    else
+      ""
+    end
+  end
   
   def period_talks(period)
-    "<ol>" + period.talks.sort_by(&:position).collect { |t| "<li class='#{t.talk_type.name.downcase}'>#{link_to h(t.title), t} (#{t.speaker_name})<br />#{t.talk_type.duration}</li>" }.join + "</ol>"
+    "<ol>" + period.talks.sort_by(&:position).collect { |t| "<li class='#{t.talk_type.name.downcase}'>#{abbr_for_talk(talk_type.name.downcase)}#{link_to h(t.title), t} (#{t.speaker_name})<br />#{t.talk_type.duration}</li>" }.join + "</ol>"
   end  
 
 
