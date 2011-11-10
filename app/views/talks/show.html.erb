@@ -46,19 +46,26 @@
 <%= render :partial => "talks/video" %>
 <%= render :partial => "talks/slides" %>
 
-<% if @talk.workshop? %>
+<% if  @talk.workshop? %>
   <div class="workshop-details">
     <h3>Påmelding</h3>
 
-    <% unless @talk.complete? %>
-      <p>Bare <%= @talk.free_places %> plasser igjen!</p>
+    <% if !@talk.complete? %>
+      <p>
+        Bare <%= @talk.free_places %> plasser igjen!
+        <%= link_to "Logg inn for å melde deg på.", new_user_session_url(:save => true)  unless logged_in %>
+      </p>
+    <% elsif !logged_in %>
+      <p>Ingen plasser igjen.</p>
     <% end %>
 
+  <% if logged_in %>
     <%= workshop_participation_link(@talk, current_user) %>
 
     <% if @talk.users.include?(current_user)|| admin? %>
         <p><%= conditional_link_to_participant_list(@talk) %></p>
     <% end %>
+  <% end %>
   </div>
 <% end %>
 

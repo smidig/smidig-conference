@@ -53,20 +53,25 @@ module ProgramHelper
   end  
 
   def timeslot_workshops_tr(workshops)
-    """
+    html = """
   <tr>
     <td></td>
     <td class='lyntaler workshop salOlympia'>#{ period_workshops(workshops[0])}</td>
     <td class='lyntaler workshop salOlympia'>#{ period_workshops(workshops[1])}</td>
     <td>&nbsp;</tid>
   </tr>
-  <tr>
-    <td></td>
-    <td class='lyntaler workshop salOlympia'>#{ workshop_participation_link(workshops[0], current_user)}#{ workshop_stats(workshops[0]) if admin?}</td>
-    <td class='lyntaler workshop salOlympia'>#{ workshop_participation_link(workshops[1], current_user)}#{ workshop_stats(workshops[1]) if admin?}</td>
-    <td>&nbsp;</tid>
-  </tr>
     """.html_safe
+    if (logged_in)
+      html += """
+    <tr>
+      <td></td>
+      <td class='lyntaler workshop salOlympia'>#{ workshop_participation_link(workshops[0], current_user)}#{ workshop_stats(workshops[0]) if admin?}</td>
+      <td class='lyntaler workshop salOlympia'>#{ workshop_participation_link(workshops[1], current_user)}#{ workshop_stats(workshops[1]) if admin?}</td>
+      <td>&nbsp;</tid>
+    </tr>
+      """.html_safe
+    end
+    html
   end
 
 
