@@ -73,11 +73,11 @@ class Talk < ActiveRecord::Base
   end
 
   def complete?
-    participant_ids.count >= max_participants
+    participant_ids.count >= max_participants.to_i
   end
 
   def free_places
-    max_participants - participant_ids.count 
+    max_participants.to_i - participant_ids.count 
   end
 
   def self.all_pending_and_approved
