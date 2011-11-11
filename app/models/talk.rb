@@ -80,6 +80,10 @@ class Talk < ActiveRecord::Base
     max_participants.to_i - participant_ids.count 
   end
 
+  def max_participants
+    24
+  end
+
   def self.all_pending_and_approved
     all(:order => 'id desc', :include => {:users => :registration}).select {
             |t| !t.refused? && !t.users.first.nil? && t.users.first.registration.ticket_type = "speaker"

@@ -102,11 +102,6 @@ module ApplicationHelper
     current_user and current_user.is_admin
   end
 
-  def workshop_enabled?
-#    Time.now > Time.new(2011,11,11,12,0,0)
-    false
-  end
-
   # Don't include the following in production or staging
   def unfinished
     yield unless (Rails.env == 'production' || Rails.env == 'staging')
