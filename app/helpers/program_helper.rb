@@ -53,13 +53,25 @@ module ProgramHelper
   end  
 
   def timeslot_workshops_tr(workshops)
-    """
+    html = """
   <tr>
     <td></td>
-    <td class='lyntaler salOlympia'>#{ period_workshops(workshops[0])}</td>
-    <td class='lyntaler salOlympia'>#{ period_workshops(workshops[1])}</td>
+    <td class='lyntaler workshop salOlympia'>#{ period_workshops(workshops[0])}</td>
+    <td class='lyntaler workshop salOlympia'>#{ period_workshops(workshops[1])}</td>
+    <td>&nbsp;</tid>
   </tr>
     """.html_safe
+    if (logged_in)
+      html += """
+    <tr>
+      <td></td>
+      <td class='lyntaler workshop salOlympia'>#{ workshop_participation_link(workshops[0], current_user)}#{ workshop_stats(workshops[0]) if admin?}</td>
+      <td class='lyntaler workshop salOlympia'>#{ workshop_participation_link(workshops[1], current_user)}#{ workshop_stats(workshops[1]) if admin?}</td>
+      <td>&nbsp;</tid>
+    </tr>
+      """.html_safe
+    end
+    html
   end
 
 
@@ -67,12 +79,21 @@ module ProgramHelper
     "<ol>" + period.talks.sort_by(&:position).collect { |t| "<li>#{t.speaker_name} - #{t.users.first.phone_number}</li>" }.join + "</ol>"
   end
 
+  def abbr_for_talk(talk_type)
+    if(talk_type == "tordentale")
+      '<abbr title="Tordentale">(T)</abbr> '
+    else
+      ""
+    end
+  end
   
   def period_talks(period)
-    "<ol>" + period.talks.sort_by(&:position).collect { |t| "<li class='#{t.talk_type.name.downcase}'>#{link_to h(t.title), t} (#{t.speaker_name})<br />#{t.talk_type.duration}</li>" }.join + "</ol>"
+    "<ol>" + period.talks.sort_by(&:position).collect { |t| "<li class='#{t.talk_type.name.downcase}'>#{abbr_for_talk(t.talk_type.name.downcase)}#{link_to h(t.title), t} (#{t.speaker_name})<br />#{t.talk_type.duration}</li>" }.join + "</ol>"
   end  
 
+
   def period_workshops(workshop)
-    "#{link_to h(workshop.title), workshop}<br /> #{workshop.speaker_name} <br />#{button_to 'Meld på', :controller => :workshop_participant, :action => :create, :method => :post, :talk_id => workshop}"
+    "#{link_to h(workshop.title), workshop}<br /> #{workshop.speaker_name}"
   end
+  
 end

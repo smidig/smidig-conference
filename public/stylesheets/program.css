@@ -1,6 +1,4 @@
 caption {
-  font-size:1.5em;
-  font-weight:700;
   padding-bottom:1em;
   text-align:left;
 }
@@ -16,8 +14,6 @@ div.event {
 }
 
 table.legend {
-  font-family:verdana;
-  font-size:.75em;
   margin-bottom:1em;
 }
 
@@ -27,8 +23,6 @@ table.legend td {
 
 table.schedule {
   border-collapse:collapse;
-  font-family:verdana;
-  font-size:.75em;
   margin-bottom:6em;
   width:100%;
 }
@@ -102,7 +96,6 @@ th.location {
 }
 
 .location {
-  font-family:georgia, serif;
   font-style:italic;
 }
 
@@ -111,13 +104,45 @@ th.location {
 }
 
 table.schedule caption {
-  font-size:1.5em;
-  font-weight:700;
   padding-bottom:1em;
   text-align:left;
-  font-family: verdana, sans-serif;
 }
 
-.button_to {
-  padding: 5px 0;
+.workshop {
+  padding:1em 0 0.5em;
 }
+
+.workshop-full {
+  display:block;
+  padding:2px;
+  margin-bottom:2px;
+}
+
+abbr {
+  font-weight: bold;
+  color: #B1E038;
+}
+
+a.button {
+  color: #B1E038;
+  font-size: 15px;
+  font-weight: bold;
+  padding:5px 5px 0 5px;
+  border-radius:5px 5px 0 0;
+  background: none;
+  margin-right:1em;
+}
+a.button:hover {
+  text-decoration:none;
+  cursor:pointer;
+}
+a.button.selected {
+  color: black;
+  background: silver;
+}
+
+div.program {
+  padding: 5px;
+  border-top: 5px solid silver;
+}
+

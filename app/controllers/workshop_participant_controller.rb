@@ -6,7 +6,7 @@ class WorkshopParticipantController < ApplicationController
   # GET /workshop_participants
   # GET /workshop_participants.xml
   def index
-    if @talk.speaker_ids.include?(current_user.id) || current_user.is_admin?
+    if @talk.user_ids.include?(current_user.id) || current_user.is_admin?
       @participants = @talk.workshop_participants.collect {|p| p.user }
       respond_to do |format|
         format.html # index.html.erb
@@ -17,15 +17,18 @@ class WorkshopParticipantController < ApplicationController
       redirect_to new_user_path
     end
   end
-  
+
   # POST /workshop_participants
   # POST /workshop_participants.xml
   def create
-    # TODO if full check
     @wsp = WorkshopParticipant.new(:user => current_user, :talk => @talk)
 
     respond_to do |format|
-      if @wsp.save
+      if @talk.complete?
+        flash[:error] = "Workshoppen er full"
+        format.html { redirect_to(@talk) }
+        format.xml { render :xml => @wsp, :status => :unprocessable_entity }
+      elsif @wsp.save
         flash[:notice] = "Du er med i workshoppen"
         format.html { redirect_to(@talk) }
         format.xml { render :xml => @wsp }
@@ -58,7 +61,6 @@ class WorkshopParticipantController < ApplicationController
 
   protected
   def load_talk
-    @talk = Talk.workshops.find(params[:talk_id])
-    # TODO what about not acceptance_status?
+    @talk = Talk.workshops.joins(:speakers).find(params[:talk_id])
   end
 end

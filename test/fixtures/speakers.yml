@@ -24,6 +24,10 @@ sponsor_talks_at_five:
   user: sponsor
   talk: five
 
+jinx_talks_at_refused:
+  user: jinx
+  talk: refused
+
 god_gives_workshop:
   user: god
   talk: workshop_by_god

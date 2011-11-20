@@ -31,6 +31,13 @@ $(document).ready(function(){
     <%= f.collection_select :talk_type_id, @types, :id, :name_and_duration %>
   </div>
 
+  <% if !@talk.new_record? && @talk.workshop? %>
+    <div class="field max_participants">
+      <%= f.label :max_participants, "Max. antal deltagere" %>
+      <%= f.text_field :max_participants, :size => 3 %>
+    </div>
+  <% end %>
+
   <div class="field paastand">
     <%= f.label :title, "Påstand" %>
     <%= help_tooltip() do %>

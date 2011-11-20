@@ -60,6 +60,18 @@ five:
   acceptance_status: pending
   talk_type: lyntale
 
+refused:
+  title: MyString
+  description: MyText
+  presenting_naked: false
+  video_url: MyString
+  position: 1
+  submitted: false
+  audience_level: MyString
+  comments_count: 1
+  acceptance_status: refused
+  talk_type: lyntale
+
 workshop_by_god:
   title: MyString
   description: MyText

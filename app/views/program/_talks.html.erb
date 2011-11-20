@@ -43,7 +43,10 @@
     <tr>
       <td class="time">09:15&nbsp;&#8209;&nbsp;10:00</td>
       <td colspan="3" class="slot foaje">
-        <div class="event">Keynote: Bjarte Bogsnes</div>
+        <div class="event">
+	  Keynote: Bjarte Bogsnes:
+	  <%= link_to "Beyond Budgeting - en styringsmodell som tar virkeligheten på alvor", {:controller => :info, :action => :keynote} %>
+	</div>
         <span class="location right">Olympia</span>
       </td>
     </tr>
@@ -169,7 +172,11 @@
     <tr>
       <td class="time">15:30&nbsp;&#8209;&nbsp;16:15</td> 
       <td colspan="3" class="slot salOlympia"> 
-        <div class="event">Keynote: Jurgen Appelo</div><span class="location right">Olympia</span> 
+        <div class="event">
+	  Keynote: Jurgen Appelo:
+	  <%= link_to "How to Change the World", {:controller => :info, :action => :keynote} %>
+	</div>
+	<span class="location right">Olympia</span> 
       </td> 
     </tr> 
   </tbody> 

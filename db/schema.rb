@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111108164422) do
+ActiveRecord::Schema.define(:version => 20111110000340) do
 
   create_table "comments", :force => true do |t|
     t.integer   "talk_id"
@@ -180,6 +180,7 @@ ActiveRecord::Schema.define(:version => 20111108164422) do
     t.integer   "num_of_votes"
     t.integer   "talk_type_id"
     t.timestamp "acceptance_changed_at"
+    t.integer   "max_participants",      :default => 20,    :null => false
   end
 
   create_table "topics", :force => true do |t|

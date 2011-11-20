@@ -2,53 +2,31 @@
 <%= content_for :additional_css, stylesheet_link_tag('program', :media => "all") %>
 <%= content_for :additional_css, stylesheet_link_tag('program-print', :media => "print") %>
 <%= stylesheet_link_tag "program" %>
+<%= javascript_include_tag  "jquery.ba-hashchange.min" %>
 <script type="text/javascript">
 var selected = <%= "'#{@selected}'" %>;
 $(document).ready(function() {
-  if (selected === 'ws') {
-    $('a.button.selected').removeClass('selected');
-    $('#ws_program_button').addClass('selected'); 
-    $('#ws_program').show();
-    $('#talk_program').hide(); 
+  var selectTab = function(tab) {
+    if(tab === 'ws' || tab==='#ws') {
+      $('a.button.selected').removeClass('selected');
+      $('#ws_program_button').addClass('selected');
+      $('#ws_program').show();
+      $('#talk_program').hide();
+    } else {
+      $('a.button.selected').removeClass('selected');
+      $('#talk_program_button').addClass('selected');
+      $('#talk_program').show();
+      $('#ws_program').hide();
+      }
+    }
+  $(window).hashchange(function() {
+    selectTab(window.location.hash);
+  });
+  if (selected === 'ws' || window.location.hash === '#ws') {
+    selectTab('ws');
   }
-  $('#talk_program_button').click(function() {
-    $('a.button.selected').removeClass('selected');
-    $(this).addClass('selected');
-    $('#talk_program').show();
-    $('#ws_program').hide();
-  });
-  $('#ws_program_button').click(function() {
-    $('a.button.selected').removeClass('selected');
-    $(this).addClass('selected');
-    $('#ws_program').show();
-    $('#talk_program').hide();
-  });
 });
 </script>
-<style>
-a.button {
- color: #B1E038;
- font-size: 15px;
- font-weight: bold;
- padding:5px 5px 0 5px;
- border-radius:5px 5px 0 0;
- background: none;
-}
-a.button:hover {
- text-decoration:none;
- cursor:pointer;
-}
-a.button.selected {
- color: black;
- background: silver;
-}
-
-div.program {
- padding: 5px;
- border-top: 5px solid silver;
-}
-
-</style>
 
 <% if admin? %>
 
@@ -60,14 +38,12 @@ div.program {
 <% end %>
   
 <div id="overskrift">
-  <h2>Program for <%= link_to "Smidig 2011", :controller => 'info' %></h2>
-
   <p>Under konferansen kan du følge med på oppdateringer <a href="http://twitter.com/smidig">på Twitter!</a></p> 
-
 </div>
 
 <div>
-<a class="button selected" id="talk_program_button">Foredrag</a>&nbsp;<a class="button" id="ws_program_button">Workshops</a>
+<a class="button selected" id="talk_program_button" href="#talk">Foredrag</a>
+<a class="button" id="ws_program_button" href="#ws">Workshops</a>
 </div>
 
 <div class="program" id="ws_program" style="display:none;">

@@ -1,6 +1,9 @@
-<h1>
-    Workshop: <%=h @talk.title %>
-</h1>
+<% content_for :title, "#{@talk.title}" %>
+
+<h3>Deltagere</h3>
+
+<%= @talk.talk_type.name %>:
+<%= link_to h(@talk.title), talk_path(@talk) %>
 
 <% if @participants.count > 0 %>
     <ol>
@@ -10,6 +13,8 @@
             </li>
         <% end %>
     </ol>
+
+    <p><%= @talk.free_places %> plasser igjen</p>
 <% else %>
-    none, yet.
+    Ingen deltagere har registrert seg ennå.
 <% end %>

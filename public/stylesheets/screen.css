@@ -145,6 +145,17 @@ a:active {
 }
 
 
+#notifications {
+  padding: 0.5em 1em;
+  margin-bottom: 1em;
+  background-color:#fff;
+}
+
+#notifications > p {
+  margin:0;
+  text-align:center;
+  font-size: 1.2em;
+}
 
 #header {
     position: relative;
@@ -178,6 +189,10 @@ a:active {
 
 #header {
     height: 70px;
+}
+
+#header ~ h3, #header ~ div {
+  clear:both;
 }
 
 #header h1, #header h2 {
@@ -497,6 +512,17 @@ table.acceptance td {
 input {
   border: 1px solid silver;
 }
+
+
+input.join-workshop, input.leave-workshop {
+  cursor:pointer;
+  background-color:transparent;
+  color:#b1e038;
+  border:1px solid #b1e038;
+  padding:1px;
+  margin-bottom:2px;
+}
+
 
 ul.talks {
     padding-left: 0;

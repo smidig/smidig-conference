@@ -7,6 +7,7 @@ class Talk < ActiveRecord::Base
 
   has_many :speakers
   has_many :workshop_participants
+  has_many :participants, :through => :workshop_participants, :source => :user
   has_many :users, :through => :speakers
   belongs_to :period
   has_many :comments, :order => "created_at", :include => :user
@@ -26,15 +27,15 @@ class Talk < ActiveRecord::Base
   validates_acceptance_of :accepted_cc_license
 
   def speaker_name
-    users.map(&:name).join(", ");
+    users.map(&:name).join(", ")
   end
 
   def speaker_company
-    users.map(&:company).join(", ");
+    users.map(&:company).join(", ")
   end
-  
+
   def speaker_email
-    users.map(&:email).join(", ");  
+    users.map(&:email).join(", ")
   end
 
 
@@ -63,6 +64,22 @@ class Talk < ActiveRecord::Base
     "by"
   end
 
+  def workshop?
+    !talk_type.nil? && talk_type.name.include?('workshop')
+  end
+
+  def participant?(user)
+    participant_ids.include?(user.id)
+  end
+
+  def complete?
+    participant_ids.count >= max_participants.to_i
+  end
+
+  def free_places
+    max_participants.to_i - participant_ids.count 
+  end
+
   def self.all_pending_and_approved
     all(:order => 'id desc', :include => {:users => :registration}).select {
             |t| !t.refused? && !t.users.first.nil? && t.users.first.registration.ticket_type = "speaker"
@@ -78,7 +95,7 @@ class Talk < ActiveRecord::Base
       if talk.tags.include? tag
          talks.push talk
       end
-    end  
+    end
     talks
   end
 

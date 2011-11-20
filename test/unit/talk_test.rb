@@ -44,7 +44,34 @@ class TalkTest < ActiveSupport::TestCase
       assert !not_refused.include?(refused)
       assert not_refused.size > 0
     end
+
+    should "not be workshops" do
+      assert !talks(:one).workshop?
+    end
   end
 
+  context "workshop" do
+    should "be workshop" do
+      workshop  = talks(:workshop_by_quentin)
+      assert workshop.workshop?
+    end
+
+    should "have participants" do
+      workshop  = talks(:workshop_by_god_with_quentin)
+      quentin = users(:quentin)
+      assert workshop.participant?(quentin)
+    end
+
+    should "be not complete" do
+      workshop  = talks(:workshop_by_god_with_quentin)
+      assert !workshop.complete?
+    end
+
+    should "be complete" do
+      workshop  = talks(:workshop_by_god_with_quentin)
+      workshop.max_participants = 1
+      assert workshop.complete?
+    end
+  end
 
 end
