@@ -4,37 +4,37 @@ one:
   user: quentin
   comments: MyText
   price: 1875
-  invoiced_at: 2011-10-18
+  invoiced_at: 2012-10-18
   ticket_type: early_bird
   registration_complete: false
-  created_at: 2011-09-01
+  created_at: 2012-09-01
 
 two:
   user: god
   comments: MyText
   price: 19.99
-  invoiced_at: 2011-10-18
+  invoiced_at: 2012-10-18
   ticket_type: speaker
-  created_at: 2011-10-10
+  created_at: 2012-10-10
 
 five_single:
   user: singletalk
   ticket_type: speaker
-  created_at: 2011-10-11
+  created_at: 2012-10-11
 
 three:
   user: paid_participant
   comments: what is comments?
   price: 2500
-  invoiced_at: 2011-10-18
+  invoiced_at: 2012-10-18
   ticket_type: full_price
   registration_complete: true
-  created_at: 2011-10-10
+  created_at: 2012-10-10
 
 four:
   user: sponsor
   comments: MyText
   price: 19.99
-  invoiced_at: 2011-10-18
+  invoiced_at: 2012-10-18
   ticket_type: sponsor
-  created_at: 2011-10-10
+  created_at: 2012-10-10

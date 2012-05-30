@@ -2,9 +2,9 @@
 
 class SmidigMailer < ActionMailer::Base
 
-  default_url_options[:host] = "smidig2011.no"
-  FROM_EMAIL = 'Smidig 2011 <kontakt@smidig.no>'
-  SUBJECT_PREFIX = "[Smidig 2011]"
+  default_url_options[:host] = "smidig2012.no"
+  FROM_EMAIL = 'Smidig 2012 <kontakt@smidig.no>'
+  SUBJECT_PREFIX = "[Smidig 2012]"
 
   default :from => FROM_EMAIL
 
@@ -121,7 +121,7 @@ class SmidigMailer < ActionMailer::Base
     @edit_talk_url = edit_talk_url
     @new_password_reset_url = new_password_reset_url
     mail(:to => talk.speaker_email,
-   :subject => "Du kan nå laste opp slidene til ditt bidrag på Smidig 2011")
+   :subject => "Du kan nå laste opp slidene til ditt bidrag på Smidig 2012")
   end
 
   def error_mail(title, body)

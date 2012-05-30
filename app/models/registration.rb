@@ -2,13 +2,13 @@
 
 class Registration < ActiveRecord::Base
   TICKET_TEXTS = {
-    "early_bird" => "Earlybird-billett til Smidig 2011",
-    "full_price" => "Billett til Smidig 2011",
-    "sponsor" => "Sponsor Smidig 2011",
-    "volunteer" => "Frivillig på Smidig 2011",
-    "student" => "Studentbillett til Smidig 2011",
-    "organizer" => "Arrangør på Smidig 2011",
-    "speaker" => "Foredragsholder på Smidig 2011"
+    "early_bird" => "Earlybird-billett til Smidig 2012",
+    "full_price" => "Billett til Smidig 2012",
+    "sponsor" => "Sponsor Smidig 2012",
+    "volunteer" => "Frivillig på Smidig 2012",
+    "student" => "Studentbillett til Smidig 2012",
+    "organizer" => "Arrangør på Smidig 2012",
+    "speaker" => "Foredragsholder på Smidig 2012"
   }
   attr_accessible :comments, :includes_dinner, :description,
     :ticket_type, :free_ticket,
@@ -55,15 +55,15 @@ class Registration < ActiveRecord::Base
     paid_amount && paid_amount > 0
   end
   def self.find_by_invoice(invoice_id)
-    if invoice_id =~ /^2011t?-(\d+)$/
+    if invoice_id =~ /^2012t?-(\d+)$/
       Registration.find($1.to_i)
     else
       raise "Invalid invoice_id #{invoice_id}"
     end
   end
   def invoice_id
-    return "2011-#{id}" if Rails.env == "production"
-    return "2011t-#{id}"
+    return "2012-#{id}" if Rails.env == "production"
+    return "2012t-#{id}"
   end
   def payment_url(payment_notifications_url, return_url)
     values = {

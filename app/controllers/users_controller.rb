@@ -52,7 +52,7 @@ class UsersController < ApplicationController
       if User.count >= 500
         flash[:error] = "Vi har nådd maksgrensen for påmeldinger, vennligst send oss mail på kontakt@smidig.no så ser vi hva vi får gjort"
         logger.error("Hard limit for number of users (500) has been reached. Please take action.")
-        SmidigMailer.error_mail("Error on smidig2011.no", "Hard limit for number of users (500) has been reached. Please take action.").deliver
+        SmidigMailer.error_mail("Error on smidig2012.no", "Hard limit for number of users (500) has been reached. Please take action.").deliver
         render :action => 'new'
       elsif @user.valid?
         @user.registration.ticket_type = "speaker" if params[:speaker]

@@ -27,7 +27,7 @@ class SmidigMailerTest < ActionMailer::TestCase
     user = User.new :email => "oc+smidig2011@rynning.no", :name => "Ole Christian Rynning"
     talk = Talk.new :title => "A fine talk"
     talk.users << user
-    talk_url = "http://smidig2011.no/talks/1234"
+    talk_url = "http://smidig2012.no/talks/1234"
 
     assert_equal @expected.body.encoded, 
       SmidigMailer.talk_confirmation(talk, talk_url).body.encoded
@@ -40,7 +40,7 @@ class SmidigMailerTest < ActionMailer::TestCase
     talk = Talk.new :title => "A fine talk"
     talk.users << user
     comment = Comment.new :talk => talk
-    comment_url = "http://smidig2011.no/talks/1234#comment_1"
+    comment_url = "http://smidig2012.no/talks/1234#comment_1"
 
     assert_equal @expected.body.encoded, SmidigMailer.comment_notification(comment, comment_url).body.encoded
   end

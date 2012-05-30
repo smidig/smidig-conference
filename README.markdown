@@ -4,7 +4,7 @@
 
 ### OSX / Linux
 
-* [2011 Rubyist’s guide to a Mac OS X development environment](http://robots.thoughtbot.com/post/8700977975/2011-rubyists-guide-to-a-mac-os-x-development)
+* [2012 Rubyist’s guide to a Mac OS X development environment](http://robots.thoughtbot.com/post/8700977975/2011-rubyists-guide-to-a-mac-os-x-development)
 
 * Ruby 1.9.2
 * RubyMine, like IDEA for all you lame java developers ;) or TextMate or, according to Bodil, Emacs
@@ -73,7 +73,7 @@ Setup:
     # Install your SSH keys (Uses ~/.ssh/id_rsa.pub)
     $ heroku keys:add
     $ cd smidig-conference
-    $ git remote add production git@heroku.com:smidig2011.git
+    $ git remote add production git@heroku.com:smidig2012.git
     $ git remote add staging git@heroku.com:stagingsmidig.git
 
 Fool around:
@@ -81,15 +81,15 @@ Fool around:
     $ gem install taps
     # remote console
     $ heroku console --app stagingsmidig
-    $ heroku console --app smidig2011
+    $ heroku console --app smidig2012
     # Pull data from the heroku app to your local db
-    $ heroku db:pull --app [stagingsmidig|smidig2011]
+    $ heroku db:pull --app [stagingsmidig|smidig2012]
 
 Update (push):
 
     $ git push [production|staging|master]
     #DB changes? remember to migrate the server
-    $ heroku rake db:migrate --app [stagingsmidig|smidig2011]
+    $ heroku rake db:migrate --app [stagingsmidig|smidig2012]
 
 Heroku app-owner privileges:
 
@@ -100,7 +100,7 @@ Heroku app-owner privileges:
 
 Heroku SendGrid:
     # For å sjekke user/pass:
-    $ heroku config --long --app smidig2011
+    $ heroku config --long --app smidig2012
 
 Bundle without development or test gems. Set this once pr app
     $ heroku config:add BUNDLE_WITHOUT="development test"
