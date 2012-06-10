@@ -28,12 +28,12 @@
 </head>
 
 <body>
-    <%= render :partial => 'layouts/sponsors' %>
+    <% #=render :partial => 'layouts/sponsors' %>
 
 <div id="wrapper">
 
     <div id="main">
-	<%= render :partial => 'layouts/menu' %>
+	   <%#= render :partial => 'layouts/menu' %>
         <% unless flash.empty? %>
           <div id="notifications">
             <p style="color: green"><%= flash[:notice] %></p>
@@ -53,7 +53,7 @@
 </div>
 
 <div id="footer">
-    <div id="socialcluster"><a class="epost" href="mailto:kontakt@smidig.no">Send oss en epost.</a><a class="facebook" href="http://www.facebook.com/pages/Smidig-konferansen/102562453136427">Besøk oss på Facebook.</a><a class="twitter" href="http://twitter.com/#!/smidig">Følg oss på Twitter.</a><a class="linkedin" href="http://www.linkedin.com/groups?mostPopular=&amp;gid=963587">Besøk vår gruppe på LinkedIn.</a></div>
+    <!--<div id="socialcluster"><a class="epost" href="mailto:kontakt@smidig.no">Send oss en epost.</a><a class="facebook" href="http://www.facebook.com/pages/Smidig-konferansen/102562453136427">Besøk oss på Facebook.</a><a class="twitter" href="http://twitter.com/#!/smidig">Følg oss på Twitter.</a><a class="linkedin" href="http://www.linkedin.com/groups?mostPopular=&amp;gid=963587">Besøk vår gruppe på LinkedIn.</a></div>-->
 </div>
 
 <%= render :partial => 'layouts/analytics' %>

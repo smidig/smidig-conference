@@ -64,7 +64,8 @@ SmidigConference::Application.routes.draw do
       resources :talks
   end
 
-  match '/' => 'info#index', :as => 'root'
+  #match '/' => 'info#index', :as => 'root'
+  match '/' => 'users#new', :as => 'root'
   match ':controller/:action.:format' => '#index'
   match ':controller.:format' => '#index'
   match '/:controller(/:action(/:id))'

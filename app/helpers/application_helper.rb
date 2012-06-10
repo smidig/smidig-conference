@@ -35,7 +35,6 @@ module ApplicationHelper
     %Q(<li class="#{menu_class(false)} login">#{link_to("logg inn", login_path) }</li>).html_safe
   end
 
-
   def user_menu_item_current
     active = controller_is?(%w(users))
     text =  "min påmelding"
