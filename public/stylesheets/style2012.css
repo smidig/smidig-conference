@@ -1,0 +1,10 @@
+input[type="submit"] {
+	font-size: 1em;
+	padding: 5px 10px;
+	margin: 5px;
+}
+
+#loginform label {
+	min-width: 100px;
+	display: inline-block;
+}

@@ -34,7 +34,7 @@ body {
     margin: 0;
     font-family: "TitilliumText22LRegular";
     color: #eee;
-    font-size: .9em
+    font-size: 16px;
 }
 
 a:link {
@@ -510,7 +510,7 @@ table.acceptance td {
     border-bottom: 1px dotted red;
 }
 
-input {
+input[type="text"], input[type="password"] {
   border: 1px solid silver;
 }
 
