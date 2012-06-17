@@ -7,210 +7,12 @@ html, body {
     padding: 0;
 }
 
-#wrapper {
-    min-height: 100%;
-    /*border-right: 350px solid white;*/
-}
-
-#main {
-    overflow: hidden;
-    padding: 0px 50px 35px 50px;
-    position: relative;
-}
-
-#footer {
-    position: relative;
-    margin-top: -80px;
-    height: 35px;
-    clear:both;
-    overflow: visible;
-}
-
-
-
-
 body {
     padding: 0;
     margin: 0;
     font-family: "TitilliumText22LRegular";
     color: #eee;
     font-size: 16px;
-}
-
-a:link {
-    text-decoration: none;
-    color: #b1e038;
-}
-
-a:visited {
-    color: #b1e038;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-a:active {
-    color: #fff;
-}
-
-
-
-
-
-
-
-
-
-
-
-#socialcluster {
-    background-color: white;
-    width: 279px;
-    float: right;
-    padding: 25px 46px 25px 25px;
-    text-align: right;
-}
-
-#socialcluster a {
-    display: inline-block;
-    width: 16px;
-    height: 0px;
-    margin: 4px;
-    overflow: hidden;
-    padding: 16px 0 0 0;
-}
-
-#socialcluster a.twitter {
-    background: url(../images/twitter-sm-b.png);
-}
-
-#socialcluster a.facebook {
-    background-image: url(../images/facebook-sm-b.png);
-}
-
-#socialcluster a.linkedin {
-    background-image: url(../images/linkedin-sm-b.png);
-}
-
-#socialcluster a.epost {
-    background-image: url(../images/epost-sm-b.png);
-}
-
-
-#frontpage_header {
-    padding-top: 50px;
-    display: table-row;
-    border: 1px solid red;
-    height: auto;
-    position: relative;
-    width: 100%;
-}
-
-#frontpage_header div {
-    border-style: solid;
-    border-color: white;
-    border-width: 0 0 0 2px;
-    padding-left: 25px;
-    margin-left: 250px;
-    display: table-cell;
-    vertical-align: bottom;
-}
-
-
-#frontpage_header h1 {
-    display: table-cell;
-    vertical-align: bottom;
-    line-height: 90px;
-    font-size: 110px;
-    font-weight: normal;
-    margin: 0;
-    padding-right: 25px;
-    padding-bottom: 7px;
-    width: 225px;
-    height: 186px;
-}
-
-#frontpage_header h1 span {
-    display: block;
-    overflow: visible;
-    text-align: right;
-    float: left;
-    width: 225px;
-    height: 83px;
-    clear: both;
-}
-
-#frontpage_header h1 span:first-child {
-    margin-bottom: 20px;
-}
-
-
-#notifications {
-  padding: 0.5em 1em;
-  margin-bottom: 1em;
-  background-color:#fff;
-}
-
-#notifications > p {
-  margin:0;
-  text-align:center;
-  font-size: 1.2em;
-}
-
-#header {
-    position: relative;
-    width: 100%;
-}
-
-#header div {
-    font-size: 1.2em;
-    line-height: 1.4em;
-    border-style: solid;
-    border-color: white;
-    border-width: 0 0 0 2px;
-    padding-left: 25px;
-    margin-left: 250px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-}
-
-#frontpage_header div p, #header div p {
-    font-size: 1.2em;
-    line-height: 1.4em;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-#frontpage_header div p:first-child, #header div p:first-child {
-    margin-top: 0;
-}
-
-
-#header {
-    height: 70px;
-}
-
-#header ~ h3, #header ~ div {
-  clear:both;
-}
-
-#header h1, #header h2 {
-    line-height: 70px;
-    font-weight: normal;
-    margin: 0;
-    padding: 0;
-    width: auto;
-    float: left;
-}
-
-
-#header h1 {
-    font-size: 60px;
-    padding-right: 25px;
-    border-right: 2px solid white;
-    margin-right: 25px;
 }
 
 h1, h2, h3 {
@@ -229,355 +31,49 @@ h3 {
     font-size: 1.5em;
 }
 
-#dateandtime h2 {
-    white-space: nowrap;
 
+#header {
+    background-color: #f00;
 }
 
-
-
-
-
-
-
-#dateandtime {
-    margin: 50px 0;clear:both
+#nav {
+    background-color: #0f0;
 }
 
-
-#dateandtime h2 {
-    margin: 0;
-    padding: 0;
-    font-size: 50px;
-    background-position: center right;
-    background-repeat: no-repeat;
-    text-align: right;
+#notifications {
+    background-color: #00f;
 }
-
-
-#dateandtime h2 a {
-    padding-right: 50px;
-    text-decoration: none;
-    font-weight: 100;
-}
-
-#dateandtime h2.calendar {
-    background-image: url(../images/calendar.png);
-}
-
-#dateandtime  h2.map {
-    background-image: url(../images/pin.png);
-}
-
-
 
 #content {
-    margin: 50px 0px 0px 210px;
-    position: relative;
+    background-color: #ff0;
 }
 
-#content div {
-    margin: 0 0 50px 0;
-    position: relative;
-    padding: 0 0 40px 65px;
-    background-repeat: no-repeat;
-    background-position: top left;
+#aside {
+    background-color: #fff;
 }
 
-
-
-#content h3 {
-    font-family: 'LeagueGothicRegular';
-    font-weight: 100;
-    font-size: 25px;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    bottom: 0px;
-    left: 40px;
-    width: 400px;
-    height: 100%;
-    border-style: solid;
-    border-color: #fff;
-    border-width: 0 0 0 2px;
-}
-
-#content h3 a {
-    text-align: left;
-    text-decoration: none;
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 23px;
-}
-
-#content .deltakerliste {
-    background-image: url(../images/deltakerliste.png);
-}
-
-#content .faq {
-    background-image: url(../images/faq.png);
-    background-position: 12px 0;
-}
-
-#content .sponse {
-    background-image: url(../images/sponse.png);
-}
-#content .info {
-    background-image: url(../images/info.png);
-}
-
-#content .share {
-    background-image: url(../images/share_24x24.png);
-}
-
-#content .links {
-    background-image: url(../images/back.png);
-}
-
-#content .signup{
-    background-image: url(../images/arrow_right.png);
-}
-
-#content p {
-    margin: 0;
-    padding: 0;
-}
-
-#logos {
-    background-color: white;
-    z-index: 100;
-    padding: 25px 25px 0;
-    float: right;
-    width: 300px;
-}
-
-#logos a img {
-    border: 0;
-}
-
-#logos a {
-    margin: 25px;
-    display: inline-block;
+#footer {
+    background-color: #0ff;
 }
 
 
+/* ============================== */
+/* ! Layout for desktop version   */
+/* ============================== */
 
+    body {
+        
+    }
+    
 
-/* Form Formatting */
-#loginform .field  {
-    padding: .25em 0;
-}
+/* ============================= */
+/* ! Layout for mobile version   */
+/* ============================= */
 
-#new_talk fieldset,
-#new_user fieldset,
-.edit_talk fieldset,
-.edit_user fieldset {
-    border-style: none;
-}
+@media handheld, only screen and (max-width: 767px) {
 
-#new_talk .format *,
-#new_talk .cc * {
-    display: inline
-}
+    body {
+        
+    }
 
-.invoice_details,
-.talk_details,
-.registration_details  {
-    padding-right: 7px;
-    text-align: left;
-}
-
-.invoice_details input,
-.invoice_details select,
-.talk_details input,
-.talk_details select,
-.registration_details .kommentarer label,
-.registration_details .type label  {
-    display: block
-}
-
-.talk_details textarea,
-.registration_details textarea,
-.talk_details .paastand input {
-    width: 100%;
-    margin: 0;
-}
-input#talk_slide {
-  color: silver;
-}
-
-.invoice_details div.field,
-.talk_details div.field,
-.personal_details div.field,
-.registration_details div.field {
-    padding: .25em 0;
-}
-
-.radios {
-    margin-left: 10em;
-}
-
-.personal_details .radios label {
-    display: inline;
-    width: auto;
-}
-
-.personal_details label {
-    display: inline-block;
-    width: 9em;
-}
-
-.personal_details .privacy {
-    padding-bottom: 0;
-}
-
-.personal_details .optional {
-    padding-top: 0;
-}
-
-.confirmations,
-.registration_details {
-    padding: .75em 0
-}
-
-.confirmations label {
-  width: 100%;
-  display: inline;
-}
-
-#mytags {
-    border-style: none;
-}
-
-/* Arrangørene */
-.person {
-  margin-top: 5px;
-}
-
-.person img {
-  float: left;
-  margin-right: 10px;
-  border: 1px solid gray;
-  width: 100px;
-  height: 100px;
-}
-
-.person div.info div.name {
-  font-weight: bold;
-  font-size: 1.2em;
-  margin-bottom: 0px;
-
-}
-
-.person div.info div.company {
-  color: gray;
-  font-size: 0.9em;
-}
-
-.person div.info div.cite {
-  margin-top: 0;
-  font-style: italic;
-}
-
-table.acceptance tr:hover {
-  background: #DFDFDF;
-}
-table.acceptance td {
-  text-align: left;
-}
-
-
-.field_with_errors {
-    display: inline;
-    overflow: hidden;
-}
-
-#railserrordisplaysux {
-    display: inline;
-    overflow: hidden;
-}
-
-.field_with_errors input {
-    background-color: #faa;
-}
-
-.field_with_errors textarea {
-    background-color: #faa;
-}
-
-.field_with_errors label {
-    border-bottom: 1px dotted red;
-}
-
-input[type="text"], input[type="password"] {
-  border: 1px solid silver;
-}
-
-
-input.join-workshop, input.leave-workshop {
-  cursor:pointer;
-  background-color:transparent;
-  color:#b1e038;
-  border:1px solid #b1e038;
-  padding:1px;
-  margin-bottom:2px;
-}
-
-
-ul.talks {
-    padding-left: 0;
-}
-
-ul.talks li {
-    list-style: none;
-    padding: 0.5em 0;
-    border-bottom: 5px solid #16004a;
-}
-
-ul.talks li:last-child {
-    border-bottom: none;
-}
-
-ul.talks div.title {
-    font-weight: bold;
-    font-size: 1.3em;
-}
-
-ul.talks div.tags a {
-    margin-left: 0.6em;
-}
-
-div#comments .admin {
-  background-color: #29194D;
-}
-
-.tag_selector a, .tag_selector span.selected {
-    margin-right: 0.6em;
-    white-space: nowrap;
-}
-
-span.user {
-    font-weight: bold;
-}
-
-/*Logos on sponsor-page*/
-ul.smidig-logos {
-  list-style: none;
-}
-ul.smidig-logos li {
-  padding: 1em 0;
-}
-
-/*Opera Fix*/
-body:before {/* thanks to Maleika (Kohoutec)*/
-content:"";
-height:100%;
-float:left;
-width:0;
-margin-top:-32767px;/* thank you Erik J - negate effect of float*/
-}
-
-h2.talks_header {
-  margin-bottom: 0;
 }

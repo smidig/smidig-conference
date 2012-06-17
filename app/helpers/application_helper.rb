@@ -68,7 +68,7 @@ module ApplicationHelper
   end
 
   def sponsor(name, logo, url)
-    link_to image_tag( 'logos/' + logo, :alt => name), url, :tabindex =>  -1
+    link_to image_tag( 'logos/' + logo, :alt => name), url, :tabindex =>  -1, :class => 'sponsor-link'
   end
 
   def feed_link(title, url)
@@ -107,10 +107,8 @@ module ApplicationHelper
   end
 
   def help_tooltip(&block)
-    ('<div class="tooltip"><img src="/images/help.png" alt="Mer informasjon" />' +
-    '<div class="box help"><div class="inner"><div class="content">' +
-    capture(&block) +
-    '</div></div></div></div>').html_safe
+    ('<a class="tooltip-link" data-tooltip="' +
+    capture(&block).strip! + '">?</a>').html_safe
   end
 
   def self.early_bird_end_date

@@ -1,6 +1,8 @@
 <% if target && target.errors.any? %>  
-<div id="errorExplanation">  
-  <h2><%=t("activerecord.errors.template.header", :count => target.errors.count, :model => target.class.model_name.human.downcase )%></h2>  
+<div class="error-explanation">  
+  <h3>
+  	<%=t("activerecord.errors.template.header", :count => target.errors.count, :model => target.class.model_name.human.downcase )%>
+  </h3>
   <ul>  
   <% target.errors.full_messages.each do |msg| %>  
     <li><%= msg %></li>  

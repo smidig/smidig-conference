@@ -1,38 +1,45 @@
-<div id="logos">
-  <div id="small_logos">
-    <%= sponsor 'Acando', 'acando.gif', 'http://acando.no' %>
-    <%= sponsor 'Accenture', 'accenture.png', 'http://accenture.no' %>
-    <%= sponsor 'Agile42', 'agile42.png', 'http://www.agile42.no' %>
-    <%= sponsor 'BEKK', 'bekk.gif', 'http://www.bekk.no' %>
-    <%= sponsor 'Bouvet', 'bouvet.gif', 'http://www.bouvet.no' %>
-    <%= sponsor 'Itera', 'itera.png', 'http://www.iteraconsulting.no' %>
-    <%= sponsor 'Kantega', 'kantega.png', 'http://www.kantega.no' %>
-    <%= sponsor 'Skalar', 'skalar.png', 'http://www.skalar.no' %>
-    <%= sponsor 'Statens pensjonskasse', 'spk.png', 'http://www.spk.no' %>
-    <%= sponsor 'Steria', 'steria.gif', 'http://www.steria.no' %>
-    <%= sponsor 'Nets', 'nets.gif', 'http://www.nets.no' %>
-    <%= sponsor 'Miles', 'miles.gif', 'http://www.miles.no' %>
-    <%= sponsor 'Zenior', 'zenior.png', 'http://zenior.no' %>
-    <%= sponsor 'Webstep', 'webstep.png', 'http://webstep.no' %>
-    <%= sponsor 'Computas', 'computas.png', 'http://computas.no' %>
-    <%= sponsor 'Cisco', 'cisco.png', 'http://www.cisco.com/web/NO/solutions/tele_index.html' %>
-    <%= sponsor 'Iterate', 'iterate.png', 'http://iterate.no' %>
-    <%= sponsor 'Finn', 'finn.png', 'http://finn.no' %>
-    <%= sponsor 'Metier', 'ITPP.png', 'http://www.smidigeprosjekter.no' %>
-    <%= sponsor 'Capgemini', 'capgemini.gif', 'http://www.no.capgemini.com/' %>
-    <%= sponsor 'Logica', 'logica.gif', 'http://logica.no/' %>
-    <%= sponsor 'Yahoo', 'yahoo.png', 'http://jobs.yahoo.no/' %>
-    <%= sponsor 'Conduct', 'conduct.png', 'http://conduct.no/' %>
-    <%= sponsor 'Skandiabanken', 'skandiabanken2.png', 'http://skandiabanken.no/' %>
-    <%= sponsor 'Arktekk', 'arktekk.png', 'http://arktekk.no/' %>
-    <%= sponsor 'Statkraft', 'statkraft.jpg', 'http://statkraft.no/' %>
-    <%= sponsor 'EDB Ergo Group', 'EDBErgoGroup_logo.png', 'http://www.edbergogroup.com/' %>
-    <%= sponsor 'Sherpa Consulting', 'sherpatypo_utag_rgb.png', 'http://www.sherpaconsulting.no/' %>
-    <%= sponsor 'Conax', 'conax.gif', 'http://www.conax.no/' %>
-    <%= sponsor 'Kodemaker', 'kodemaker.png', 'http://www.kodemaker.no/' %>
-  </div>
-  <div id="biglogos">
-    <%= sponsor 'Statens landbruksforvaltning', 'slf.png', 'http://www.slf.dep.no/' %>
-  </div>
-</div>
+<% sponsors = [
+    ['Acando', 'acando.gif', 'http://acando.no'],
+    ['Accenture', 'accenture.png', 'http://accenture.no'],
+    ['Agile42', 'agile42.png', 'http://www.agile42.no'],
+    ['BEKK', 'bekk.gif', 'http://www.bekk.no'],
+    ['Bouvet', 'bouvet.gif', 'http://www.bouvet.no'],
+    ['Itera', 'itera.png', 'http://www.iteraconsulting.no'],
+    ['Kantega', 'kantega.png', 'http://www.kantega.no'],
+    ['Skalar', 'skalar.png', 'http://www.skalar.no'],
+    ['Statens pensjonskasse', 'spk.png', 'http://www.spk.no'],
+    ['Steria', 'steria.gif', 'http://www.steria.no'],
+    ['Nets', 'nets.gif', 'http://www.nets.no'],
+    ['Miles', 'miles.gif', 'http://www.miles.no'],
+    ['Zenior', 'zenior.png', 'http://zenior.no'],
+    ['Webstep', 'webstep.png', 'http://webstep.no'],
+    ['Computas', 'computas.png', 'http://computas.no'],
+    ['Cisco', 'cisco.png', 'http://www.cisco.com/web/NO/solutions/tele_index.html'],
+    ['Iterate', 'iterate.png', 'http://iterate.no'],
+    ['Finn', 'finn.png', 'http://finn.no'],
+    ['Metier', 'ITPP.png', 'http://www.smidigeprosjekter.no'],
+    ['Capgemini', 'capgemini.gif', 'http://www.no.capgemini.com/'],
+    ['Logica', 'logica.gif', 'http://logica.no/'],
+    ['Yahoo', 'yahoo.png', 'http://jobs.yahoo.no/'],
+    ['Conduct', 'conduct.png', 'http://conduct.no/'],
+    ['Skandiabanken', 'skandiabanken2.png', 'http://skandiabanken.no/'],
+    ['Arktekk', 'arktekk.png', 'http://arktekk.no/'],
+    ['Statkraft', 'statkraft.jpg', 'http://statkraft.no/'],
+    ['EDB Ergo Group', 'EDBErgoGroup_logo.png', 'http://www.edbergogroup.com/'],
+    ['Sherpa Consulting', 'sherpatypo_utag_rgb.png', 'http://www.sherpaconsulting.no/'],
+    ['Conax', 'conax.gif', 'http://www.conax.no/'],
+    ['Kodemaker', 'kodemaker.png', 'http://www.kodemaker.no/'],
+    ['Statens landbruksforvaltning', 'slf.png', 'http://www.slf.dep.no/']
+] %>
 
+<% 
+sponsor_count = sponsors.size
+%>
+<ul class="sponsors clearfix">
+<%
+sponsors.sort_by{rand}.each_with_index do |sponsor, pos| %>
+    <li>
+        <%= sponsor sponsor[0], sponsor[1], sponsor[2] %>
+    </li>
+<% end %>
+</ul>

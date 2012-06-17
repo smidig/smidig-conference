@@ -1,63 +1,93 @@
 <!DOCTYPE html>
 <html lang="no">
-
-<head>
+  <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<title>
+  	<title>
   	  <%= content_for?(:title) ? yield(:title) : "Smidig 2012: 05. - 06. november på Radisson SAS Plaza Hotel Oslo" %>
     </title>
 
-    <%= stylesheet_link_tag 'screen', :media => "screen,projection,tv" %>
-    <%= stylesheet_link_tag 'fonts' %>
-    <%= stylesheet_link_tag 'menu' %>
-    <%= stylesheet_link_tag 'tooltip' %>
-    <%= stylesheet_link_tag 'style2012' %>
-
-<!--[if IE]>
-	<style type="text/css">
-        html, body { width:expression(document.body.clientWidth < 960? "960px": "auto" ); }
-    </style>
-<![endif]-->
-  <%= javascript_include_tag 'jquery-1.4.2.min' %>
-  <%= javascript_include_tag 'application' %>
-  <%= javascript_include_tag 'jquery.shuffle' %>
-  
-  <%= auto_discovery_link_tag :rss, {:controller => 'talks', :format => :rss}, {:title => "Alle lyntaler"} %>
-  <%= auto_discovery_link_tag :rss, {:controller => 'talks', :topic_id => @topic, :format => :rss}, {:title => "Lyntaler for #{@topic.title}"} if @topic %>
-  <%= auto_discovery_link_tag :rss, {:controller => 'comments', :talk_id => @talk, :format => :rss}, {:title => "Kommentarer for #{@talk.title}"} if @talk %>
-</head>
-
-<body>
-    <% #=render :partial => 'layouts/sponsors' %>
-
-<div id="wrapper">
-
-    <div id="main">
-	   <%#= render :partial => 'layouts/menu' %>
-        <% unless flash.empty? %>
-          <div id="notifications">
-            <p style="color: green"><%= flash[:notice] %></p>
-            <p style="color: orange"><%= flash[:warn] %></p>
-            <p style="color: red"><%= flash[:error] %></p>
-          </div>
-        <% end %>
-		<div id="header">
-		  <h1><%= link_to "Smidig 2012", root_url %></h1>
-		  <h2 class="page_title"><%= yield :title %></h2>
-		</div>
-
-        <%= yield %>
+    <!--[if lte IE 9]>
+      <link rel="stylesheet" href="<%= stylesheet_link_tag 'ie_1140' %>" type="text/css" media="screen" />
+    <![endif]-->
     
+    <%= stylesheet_link_tag '1140' %>
+    <%= stylesheet_link_tag 'media-queries' %>
+    <%= stylesheet_link_tag 'styles' %>
+    <%= stylesheet_link_tag 'tooltip' %>
+
+    <%= javascript_include_tag 'jquery-1.7.2.min' %>
+    <%= javascript_include_tag 'jquery.simpletip-1.3.1.min' %>
+    <%= javascript_include_tag 'css3-mediaqueries' %>
+    <%= javascript_include_tag 'application' %>    
+    
+    <%= auto_discovery_link_tag :rss, {:controller => 'talks', :format => :rss}, {:title => "Alle lyntaler"} %>
+    <%= auto_discovery_link_tag :rss, {:controller => 'talks', :topic_id => @topic, :format => :rss}, {:title => "Lyntaler for #{@topic.title}"} if @topic %>
+    <%= auto_discovery_link_tag :rss, {:controller => 'comments', :talk_id => @talk, :format => :rss}, {:title => "Kommentarer for #{@talk.title}"} if @talk %>
+  </head>
+
+  <body>
+
+
+  <div class="row main">
+    <div class="eightcol">
+      <div class="content">
+        <%= yield %>
+      </div>
     </div>
+    <aside class="fourcol last">
+      <%= render :partial => 'layouts/sponsors' %>
+    </aside>
+  </div>
 
-</div>
+<!--
+    <div class="container">
 
-<div id="footer">
-    <!--<div id="socialcluster"><a class="epost" href="mailto:kontakt@smidig.no">Send oss en epost.</a><a class="facebook" href="http://www.facebook.com/pages/Smidig-konferansen/102562453136427">Besøk oss på Facebook.</a><a class="twitter" href="http://twitter.com/#!/smidig">Følg oss på Twitter.</a><a class="linkedin" href="http://www.linkedin.com/groups?mostPopular=&amp;gid=963587">Besøk vår gruppe på LinkedIn.</a></div>-->
-</div>
+      
+      <header class="row" id="header">
+        <h1><%= link_to "Smidig 2012", root_url %></h1>
+      </header>
 
-<%= render :partial => 'layouts/analytics' %>
+      <nav class="row" id="nav">
+        <%#= render :partial => 'layouts/menu' %>
+      </nav>
 
-</body>
+      <% unless flash.empty? %>
+        <div class="container" id="notifications">
+          <% if flash[:notice] %>
+            <p class="notice"><%= flash[:notice] %></p>
+          <% end %>
+          <% if flash[:warn] %>
+            <p class="warn"><%= flash[:warn] %></p>
+          <% end %>
+          <% if flash[:error] %>
+            <p class="error"><%= flash[:error] %></p>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="row">
+            
+      </div>
+
+        <div class="fourcol">
+          <%= yield %>
+        </div>
+        <div class="fourcol">
+          <%= yield %>
+        </div>
+        <div class="fourcol last" id="aside">
+          <%= render :partial => 'layouts/sponsors' %>
+        </div>
+      </section>
+
+      <footer class="row" id="footer">
+
+      </footer>
+    </div>
+-->
+    <%= render :partial => 'layouts/analytics' %>
+
+  </body>
 </html>

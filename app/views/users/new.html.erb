@@ -1,7 +1,10 @@
 <% content_for :title, "Påmelding til Smidig 2012" %>
 
-<p class="login">Er du allerede påmeldt? <%= link_to "Logg inn", new_user_session_path %></p>
+<p class="notification login">
+	Er du allerede påmeldt? <%= link_to "Logg inn", new_user_session_path%>
+</p>
 
+<h2 class="page_title">Registrasjon</h2>
 <% unless @user.registration.free_ticket %>
   <p>
     <%= @user.registration.ticket_description %> koster

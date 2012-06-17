@@ -1,6 +1,5 @@
 <% content_for :title, "Endre ditt passord" %>
 <h2 class="page_title">Endre ditt passord?</h2>
-
 <p>
   For å endre ditt passord, må du angi din epost
   adresse, slik at vi kan sende deg en bekreftelsesmail.
@@ -14,7 +13,7 @@
     <%= text_field_tag :email, @email %>
   </p>
 	<p>
-		<%= submit_tag "Send link for å endre passord" %>
+		<%= submit_tag "Send link for å endre passord", :class => 'button' %>
 	</p>		  
 <% end %>
 
