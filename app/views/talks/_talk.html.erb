@@ -4,7 +4,7 @@
     <%= image_tag("icon_slides.gif") if admin? && talk.slide.file? %>
   </div>
   <div class="talk_type">
-    <b><%= talk.talk_type.name %></b> foreslått av <%= render :partial => talk.users %>
+    <%= talk.talk_type.name %> foreslått av <%= render :partial => talk.users %>
     <span class="tags"><%= talk.tags.length == 0 ? "" : "i kategoriene:" %>
     <% talk.tags.each do |tag| %>
       <%= link_to tag.title, :controller=>"talks", :action=>"article_tags", :id=>tag.id %>

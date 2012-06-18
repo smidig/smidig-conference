@@ -242,6 +242,7 @@ Rendered layouts/_sponsors.html.erb (4.7ms)
 	.comment .title {
 		font-weight: bolder;
 	}
+
 	.comment .description{
 		margin: 5px 0px;
 	}
@@ -257,6 +258,22 @@ Rendered layouts/_sponsors.html.erb (4.7ms)
 	}
 	.graphs img {
 		border: 1px solid black;
+	}
+
+	.talks li {
+		list-style: none;
+		border-bottom: 1px solid silver;
+		padding: 8px 4px;	
+	}
+	.talks li:hover {
+		background-color: #ebebeb;
+	}
+
+
+	.talks .title a {
+		color: black;
+		text-decoration: none;
+		font-weight: bolder;
 	}
 
 /* Mobile version */
