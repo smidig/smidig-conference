@@ -7,7 +7,19 @@ aside {
 
     body {
     	font-family: Verdana, Arial;
-    	font-size: 12px;
+    	font-size: 12px;1 +02001 +0200
+  Processing by PasswordResetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7CvxUEXG/QFVGSTzATfbRrw5YbtBQO2Gm5zSavkbgkQ=", "email"=>"ivarconr@gmail.com", "commit"=>"Send link for å endre passord"}
+  User Load (0.3ms)  SELECT "users".* FROM "users" WHERE "users"."email" = 'ivarconr@gmail.com' ORDER BY created_at desc LIMIT 1
+Rendered layouts/_sponsors.html.erb (4.2ms)
+Rendered layouts/_sponsors.html.erb (4.7ms)
+
+  Processing by PasswordResetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7CvxUEXG/QFVGSTzATfbRrw5YbtBQO2Gm5zSavkbgkQ=", "email"=>"ivarconr@gmail.com", "commit"=>"Send link for å endre passord"}
+  User Load (0.3ms)  SELECT "users".* FROM "users" WHERE "users"."email" = 'ivarconr@gmail.com' ORDER BY created_at desc LIMIT 1
+Rendered layouts/_sponsors.html.erb (4.2ms)
+Rendered layouts/_sponsors.html.erb (4.7ms)
+
     	line-height: 14px;
     }
     
@@ -41,6 +53,10 @@ aside {
 		border-radius: 3px;
 		border: 1px solid #ccc;
 		min-width: 60%;
+    }
+
+    input[type="checkbox"] {
+    	min-width: initial;
     }
 
     .checkbox-wrapper {
