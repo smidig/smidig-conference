@@ -5,7 +5,7 @@ Du er logget inn, <%=link_to_unless_current "logg ut", logout_path %>.<br /><br 
 
 Vi har registrert følgende informasjon om deg:
 
-<ul>
+<ul class="no-bullets">
   <li><strong>Navn:</strong> <%=h @user.name %></li>
   <li><strong>Firma:</strong> <%=h @user.company %></li>
   <li><strong>E-post:</strong> <%=h @user.email %></li>
@@ -32,24 +32,28 @@ Vi har registrert følgende informasjon om deg:
   </ul>
 <% end %> 
 
-Handlinger:
-<ul>
+<br />
+
+<h3>Handlinger:</h3>
+<ul class="no-bullets">
   <li><%= link_to "Endre din registrering", edit_user_path(@user) %> </li>
   <li><%= link_to "Reset passord", :controller => "password_resets", :action => "new", :email => @user.email %> </li>
 </ul>
 
+<br />
+
 <% unless @user.talks.blank? %>
   <h3>Innsendte forslag</h3>
 
-  <ul>
+  <ul class="no-bullets">
     <% for talk in @user.talks %>
       <li><%= link_to h(talk.title), talk %></li>
     <% end %>
   </ul>
 <% end %>
 
-<!--
+
 <p><%= link_to "Send inn bidrag", new_talk_path %></p>
--->
+<br />
 
 <%= render :partial => @user.registration if @user.registration %>

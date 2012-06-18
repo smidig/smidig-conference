@@ -1,11 +1,11 @@
 <h2>Brukere</h2>
 
-
+<div class="graphs">
 <%=
   if @registrations.present?
     x_labels = (0...@date_range.length).select { |i| i%10 == 0 }.collect { |i| @date_range[i].strftime("%d %b") }
     colors = %w(00ff00 0000ff ff0000 00ffff ffff00 ff00ff)
-    line_chart_xy = GoogleChart::LineChart.new('600x300', "Registrerte brukere", false) do |lc|
+    line_chart_xy = GoogleChart::LineChart.new('1000x300', "Registrerte brukere", false) do |lc|
       lc.axis :y, :range => [0,@all_per_date.max]
       lc.axis :x, :labels => x_labels
       lc.grid :y_step => 100.0/(@all_per_date.max / 50.0)
@@ -21,7 +21,7 @@
 <%=
   if @registrations.present?
     x_labels = (0...@date_range.length).select { |i| i%10 == 0 }.collect { |i| @date_range[i].strftime("%d %b") }
-    line_chart_xy = GoogleChart::LineChart.new('600x300', "Innbetalt deltageravgift", false) do |lc|
+    line_chart_xy = GoogleChart::LineChart.new('1000x300', "Innbetalt deltageravgift", false) do |lc|
       lc.axis :y, :range => [0,@income_per_date.max]
       lc.axis :x, :labels => x_labels
       lc.grid :y_step => 100.0/(@income_per_date.max / 50000.0)
@@ -30,10 +30,12 @@
     image_tag line_chart_xy.to_url if @registrations.present?
   end
 %>
+</div>
 
+<br />
 <h3>Oppfølging:</h3>
 
-<ul>
+<ul class="no-bullets">
   <li><%= link_to "Manuelle registreringer", invoiced_registrations_path %></li>
   <li><%= link_to "Foredragsholdere", speakers_registrations_path %></li>
   <li><%= link_to "Statistikk", :controller => "statistics" %></li>
@@ -41,10 +43,10 @@
   <li><%= link_to "Navneskilt", :controller => "nametags", :format => "pdf" %></li>
 </ul>
 
-
+<br />
 <h3>Andre søk</h3>
 
-<ul>
+<ul class="no-bullets">
   <li><%= link_to "Alle", :conditions => [] %></li>
   <% for ticket_type in @ticket_types %>
     <li><%= link_to ticket_type, :conditions => @conditions.merge({ :ticket_type => ticket_type })  %></li>
@@ -54,6 +56,17 @@
   <li><%= link_to "Dinner registrations", :conditions => @conditions.merge({ :includes_dinner => 1 })  %></li>
 </ul>
 
+<br />
+
 <%= render :partial => 'registration_list', :locals => { 
           :registrations => @registrations,
           :description => "brukere" } %>
+
+
+<script type="text/javascript">
+//Hack layout
+$(function() {
+ $("aside").remove();
+ $(".row .eightcol").css("width", "100%");
+});
+</script>

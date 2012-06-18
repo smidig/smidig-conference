@@ -204,6 +204,61 @@ Rendered layouts/_sponsors.html.erb (4.7ms)
 		display: block;
 	}
 
+	/*** APP specific ***/
+	.talk-details li {
+		list-style: none;
+		margin: 5px 0;
+	}
+
+	.talk-admin {
+		border: 1px solid #d1d1d1;
+		border-radius: 5px;
+		margin: 10px 0px;
+		padding: 5px;
+		background-color: #f3f3f3;
+	}
+
+	.talk-admin h3 {
+		color: black;
+	}
+
+	.talk-description {
+		margin-bottom: 5px;
+	}
+
+	.comments {
+		margin: 10px 0px;
+	}
+
+	.comment {
+		border-bottom: 1px solid silver;
+		padding: 5px;
+	}
+
+	.comment .name {
+		color: gray;
+	}
+
+	.comment .title {
+		font-weight: bolder;
+	}
+	.comment .description{
+		margin: 5px 0px;
+	}
+
+	.no-bullets li {
+		list-style: none;
+		margin: 5px 0;
+		padding-left: 10px;
+	}
+
+	.registrations {
+		width: 100%;
+	}
+	.graphs img {
+		border: 1px solid black;
+	}
+
 /* Mobile version */
 
 @media handheld, only screen and (max-width: 767px) {

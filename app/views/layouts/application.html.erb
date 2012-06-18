@@ -41,52 +41,6 @@
     </aside>
   </div>
 
-<!--
-    <div class="container">
-
-      
-      <header class="row" id="header">
-        <h1><%= link_to "Smidig 2012", root_url %></h1>
-      </header>
-
-      <nav class="row" id="nav">
-        <%#= render :partial => 'layouts/menu' %>
-      </nav>
-
-      <% unless flash.empty? %>
-        <div class="container" id="notifications">
-          <% if flash[:notice] %>
-            <p class="notice"><%= flash[:notice] %></p>
-          <% end %>
-          <% if flash[:warn] %>
-            <p class="warn"><%= flash[:warn] %></p>
-          <% end %>
-          <% if flash[:error] %>
-            <p class="error"><%= flash[:error] %></p>
-          <% end %>
-        </div>
-      <% end %>
-
-      <div class="row">
-            
-      </div>
-
-        <div class="fourcol">
-          <%= yield %>
-        </div>
-        <div class="fourcol">
-          <%= yield %>
-        </div>
-        <div class="fourcol last" id="aside">
-          <%= render :partial => 'layouts/sponsors' %>
-        </div>
-      </section>
-
-      <footer class="row" id="footer">
-
-      </footer>
-    </div>
--->
     <%= render :partial => 'layouts/analytics' %>
 
   </body>

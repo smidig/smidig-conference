@@ -1,41 +1,44 @@
 <% content_for :title, "#{@talk.title}" %>
-<!--div id="breadcrumbs"><%= link_to "Tilbake til liste over foredrag", talks_path %></div-->
-<div id="breadcrumbs"><%= link_to "Tilbake til programmet", program_index_path %></div>
-
-<div class="talk_type">
-  <b><%= @talk.talk_type.name_and_duration %></b>
-</div>
+<h1>Tittel: <%= @talk.title %></h1>
+<div id="breadcrumbs"><%= link_to "Tilbake til liste over foredrag", talks_path %></div>
+<!--<div id="breadcrumbs"><%= link_to "Tilbake til programmet", program_index_path %></div>-->
 
 <% if @talk.accepted?  %>
 <p><%= image_tag("approved_talk.png") %> godkjent</p>
 <% end  %>
 
-<div class="tags">
-  <b>Tags:</b>
-  <% @talk.tags.each do |tag| %>
-      <%= link_to tag.title, :controller=>"talks", :action=>"article_tags", :id=>tag.id %>
+
+<ul class="talk-details">
+  <li><b><%= @talk.talk_type.name_and_duration %></b></li>
+  <li>
+      <b>Tags:</b>
+      <% @talk.tags.each do |tag| %>
+          <%= link_to tag.title, :controller=>"talks", :action=>"article_tags", :id=>tag.id %>
+      <% end %>
+  </li>
+  <li><b>Foreslått av:</b><%= @talk.speaker_name %></li>
+
+</ul>
+
+  <% if @talk.users.include?(current_user)|| admin? %>
+    <div class="talk-admin">
+      <h3>Admin</h3>
+      <p><%= link_to 'Rediger forslaget ditt', edit_talk_path(@talk) %></p>
+      <% unless @talk.slide_file_name.nil? %>
+        <p>
+          <b>Lysbilder til presentasjon</b>
+          <%= link_to "#{image_tag("icon_slides.gif")} Last ned".html_safe, @talk.slide.url %>
+        </p>
+      <% else %>
+        <h3>Last opp presentasjon</h3>
+      <% end %>
+      <%= render :partial => "talks/upload_slide" %>
+    </div>
   <% end %>
-</div>
 
-<h3><%= @talk.speaker_name %></h3>
 
-<% if @talk.users.include?(current_user)|| admin? %>
-  <p><%= link_to 'Rediger forslaget ditt', edit_talk_path(@talk) %></p>
-
-  <% unless @talk.slide_file_name.nil? %>
-    <h3>Lysbilder til presentasjon</h3>
-    <p><%= link_to "#{image_tag("icon_slides.gif")} Last ned".html_safe, @talk.slide.url %></p>
-  <% else %>
-    <h3>Last opp presentasjon</h3>
-  <% end %>
-    <%= render :partial => "talks/upload_slide" %>
-
-<hr/>
-
-<% end %>
-
-<div class="description">
-  <h4>Beskrivelse</h4>
+<div class="talk-description">
+  <h3>Beskrivelse</h3>
   <%=simple_format h(@talk.description) %>
 </div>
 
@@ -69,9 +72,10 @@
   </div>
 <% end %>
 
+<br /><br />
 <h3>Kommentarer<%= feed_link "Følg med på kommentarer til #{@talk.title}", talk_comments_path(@talk, :format => :rss) %></h3><a name="comments"></a>
 
-<div id="comments">
+<div class="comments">
   <%= render :partial => @talk.comments %>
 </div>
 

@@ -1,12 +1,12 @@
 <div id="<%= dom_id(comment) %>" class="<%= (comment.user.is_admin? && 'comment admin') || 'comment' %>">
-<h4><%=
+<div class="title"><%=
   link_to_unless current_page?(:controller => 'talks', :action => "show", :id => comment.talk),
     h(comment.title),
     :controller => "talks", :action => "show", :id => comment.talk, :anchor => dom_id(comment) %>
   <%= image_tag("admin_comment.png") if comment.user.is_admin %>
-</h4>
-<div><%= simple_format h(comment.description) %></div>
+</div>
+<div class="description"><%= simple_format h(comment.description) %></div>
 
-<div class="detail">Skrevet av <%= link_to_if admin?, h(comment.user_name), h(comment.user) %>, for <%= time_ago_in_words comment.created_at %> siden</div>
+<div class="detail">Skrevet av <span class="name"><%= link_to_if admin?, h(comment.user_name), h(comment.user) %></span>, for <%= time_ago_in_words comment.created_at %> siden</div>
 
 </div>
