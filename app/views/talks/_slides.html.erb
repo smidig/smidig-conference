@@ -1,2 +1,2 @@
-
-<%= link_to @talk.slide.original_filename, @talk.slide.url.gsub(' ', '%20')  if @talk.slide.file? %>
+<%= image_tag("icon_file.png") if @talk.slide.file? %>
+<%= link_to @talk.slide.original_filename, @talk.slide.url.gsub(' ', '%20') if @talk.slide.file? %>

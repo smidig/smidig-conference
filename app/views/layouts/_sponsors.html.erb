@@ -32,12 +32,8 @@
     ['Statens landbruksforvaltning', 'slf.png', 'http://www.slf.dep.no/']
 ] %>
 
-<% 
-sponsor_count = sponsors.size
-%>
 <ul class="sponsors clearfix">
-<%
-sponsors.sort_by{rand}.each_with_index do |sponsor, pos| %>
+<% sponsors.sort_by{rand}.each do |sponsor| %>
     <li>
         <%= sponsor sponsor[0], sponsor[1], sponsor[2] %>
     </li>

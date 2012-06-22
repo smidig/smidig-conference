@@ -1,25 +1,25 @@
-
-aside {
-	background-color: #fff;
-}
-
 /* Desktop version */
+
+/* START TEMPORARY */
+
+	ul.tagit li.tagit-choice,
+	ul.tagit li.tagit-choice a.close {
+		color: #fff;
+	}
+
+	ul.tagit {
+		color: #fff;
+	}
+
+	.tooltip-link {
+		display: none;
+	}
+
+/* END TEMPORARY */
 
     body {
     	font-family: Verdana, Arial;
-    	font-size: 12px;1 +02001 +0200
-  Processing by PasswordResetsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7CvxUEXG/QFVGSTzATfbRrw5YbtBQO2Gm5zSavkbgkQ=", "email"=>"ivarconr@gmail.com", "commit"=>"Send link for å endre passord"}
-  User Load (0.3ms)  SELECT "users".* FROM "users" WHERE "users"."email" = 'ivarconr@gmail.com' ORDER BY created_at desc LIMIT 1
-Rendered layouts/_sponsors.html.erb (4.2ms)
-Rendered layouts/_sponsors.html.erb (4.7ms)
-
-  Processing by PasswordResetsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7CvxUEXG/QFVGSTzATfbRrw5YbtBQO2Gm5zSavkbgkQ=", "email"=>"ivarconr@gmail.com", "commit"=>"Send link for å endre passord"}
-  User Load (0.3ms)  SELECT "users".* FROM "users" WHERE "users"."email" = 'ivarconr@gmail.com' ORDER BY created_at desc LIMIT 1
-Rendered layouts/_sponsors.html.erb (4.2ms)
-Rendered layouts/_sponsors.html.erb (4.7ms)
-
+    	font-size: 12px;
     	line-height: 14px;
     }
     
@@ -35,6 +35,7 @@ Rendered layouts/_sponsors.html.erb (4.7ms)
 
     label,
     input,
+    select,
     textarea {
     	font-family: Verdana, Arial;
     	padding: 4px;
@@ -44,6 +45,7 @@ Rendered layouts/_sponsors.html.erb (4.7ms)
     label {
     	min-width: 20%;
     	display: inline-block;
+    	vertical-align: top;
     }
 
     input,
@@ -55,9 +57,14 @@ Rendered layouts/_sponsors.html.erb (4.7ms)
 		min-width: 60%;
     }
 
-    input[type="checkbox"] {
-    	min-width: initial;
+    .checkbox-wrapper input {
+    	min-width: 0;
+    	border: 0;
     }
+
+	.file-input {
+		border: 0px;
+	}
 
     .checkbox-wrapper {
     	display: block;
@@ -123,7 +130,7 @@ Rendered layouts/_sponsors.html.erb (4.7ms)
 		background-color: #efefef;
 	}
 
-	.content {
+	.content-wrapper {
 		width: 95%;
 		margin: 0 auto;		
 	}
@@ -131,6 +138,29 @@ Rendered layouts/_sponsors.html.erb (4.7ms)
 	.notification {
 		padding: 10px;
 		border-bottom: 2px dotted #ccc;
+	}
+
+	.item-list {
+		border-top: 1px solid #ccc;
+	}
+
+	.item-list h4 a {
+		font-weight: bold;
+		text-decoration: none;
+	}
+
+	.item-list li {
+		list-style: none;
+		border-bottom: 1px solid #ccc;
+		padding: 5px 0px 5px 5px;	
+	}
+
+	.item-list li:hover {
+		background-color: #ebebeb;
+	}
+
+	.item-list .content {
+		margin-bottom: 5px;
 	}
 
 	.related-links {
@@ -141,8 +171,17 @@ Rendered layouts/_sponsors.html.erb (4.7ms)
 		padding: 3px 0;
 	}
 
-	.tooltip-link {
-		font-weight: bold;	
+	.flash {
+
+	}
+
+	.flash.error {
+	  background-color: #1a82f7;
+	  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#1a82f7), to(#2F2727));
+	  background: -webkit-linear-gradient(top, #2F2727, #1a82f7);
+	  background: -moz-linear-gradient(top, #2F2727, #1a82f7);
+	  background: -ms-linear-gradient(top, #2F2727, #1a82f7);
+	  background: -o-linear-gradient(top, #2F2727, #1a82f7);
 	}
 
 	.error-explanation {
@@ -168,29 +207,56 @@ Rendered layouts/_sponsors.html.erb (4.7ms)
 
 	.page_title {
 		margin: 15px 0;
+		border-bottom: 1px solid #ccc;
+		padding-bottom: 15px;
 	}
 
-	aside {
+	.sub_info {
+		font-size: 12px;
+		float: right;
+		display: block;
+		min-width: 200px;
+		text-align: right;
+	}
+
+	.sub_info .rss {
+		padding-left: 18px;
+		background: transparent url('/images/icon_feed.png') no-repeat 0% 50%;
+	}
+
+	.sub_info .icon {
+		margin-right: 15px;
+	}
+
+	.section {
+		margin-bottom: 15px;
+	}
+
+	.aside {
+		background-color: #fff;
+	}
+
+	.aside ul {
 		border-left: 1px dotted #ccc;
 		border-right: 1px solid #ccc;
 	}
 
-	aside .sponsors {
+	.aside .sponsors {
 		list-style: none;
 	}
 
-	aside .sponsors li {
+	.aside .sponsors li {
 		height: 80px;
 		width: 50%;
 		float: left;
 	}
 
-	aside .sponsors .sponsor-link {
+	.aside .sponsors .sponsor-link {
 		padding: 20px;
 		display: inline-block;
 	}
 
-    aside .sponsors .sponsor-link img {
+    .aside .sponsors .sponsor-link img {
 		margin: 0 auto;
 		display: block;
     }
@@ -218,33 +284,9 @@ Rendered layouts/_sponsors.html.erb (4.7ms)
 		background-color: #f3f3f3;
 	}
 
-	.talk-admin h3 {
-		color: black;
-	}
-
-	.talk-description {
-		margin-bottom: 5px;
-	}
-
-	.comments {
-		margin: 10px 0px;
-	}
-
-	.comment {
-		border-bottom: 1px solid silver;
-		padding: 5px;
-	}
-
-	.comment .name {
-		color: gray;
-	}
-
-	.comment .title {
-		font-weight: bolder;
-	}
-
-	.comment .description{
-		margin: 5px 0px;
+	.edit_talk input,
+	.edit_talk label {
+		margin-bottom: 0;
 	}
 
 	.no-bullets li {
@@ -256,25 +298,11 @@ Rendered layouts/_sponsors.html.erb (4.7ms)
 	.registrations {
 		width: 100%;
 	}
+
 	.graphs img {
 		border: 1px solid black;
 	}
 
-	.talks li {
-		list-style: none;
-		border-bottom: 1px solid silver;
-		padding: 8px 4px;	
-	}
-	.talks li:hover {
-		background-color: #ebebeb;
-	}
-
-
-	.talks .title a {
-		color: black;
-		text-decoration: none;
-		font-weight: bolder;
-	}
 
 /* Mobile version */
 
@@ -284,18 +312,24 @@ Rendered layouts/_sponsors.html.erb (4.7ms)
         font-size: 14px;
     }
 
-	.content {
+	.content-wrapper {
 		width: 100%;
 	}
 
     input,
-    label {
+    label,
+    textarea {
     	display: block;
-    	margin-bottom: 0;
     	width: 98%;
     }
 
+    label {
+    	margin-bottom: 0;
+    }
+
     input,
+    select,
+    textarea,
     .checkbox-wrapper {
     	margin-bottom: 10px;
     }
@@ -312,14 +346,38 @@ Rendered layouts/_sponsors.html.erb (4.7ms)
 		display: inline;
 	}
 
-    aside {
+	input.button {
+		width: 100%;
+	}
+
+	.sub_info {
+		display: block;
+		width: 100%;
+		float: none;
+		text-align: left;
+	}
+
+	h2 .sub_info {
+		padding-top: 15px;
+	}
+
+	h3 .sub_info {
+		padding-top: 5px;
+	}
+
+	.aside {
+		padding-top: 15px;
     	margin-top: 20px;
     	border-top: 2px dotted #ccc;
+	}
+
+    .aside ul {
+    	
     	border-left: 0;
     	border-right: 0;
     }
 
-    aside .sponsors .sponsor-link {
+    .aside .sponsors .sponsor-link {
 		display: inline;
 		padding: 5px;
 	}

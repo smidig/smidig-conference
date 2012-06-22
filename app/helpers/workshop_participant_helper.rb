@@ -4,14 +4,14 @@ module WorkshopParticipantHelper
     if talk.participant?(user)
       wsp = talk.workshop_participants.where(:user_id => user.id).first
       button_to 'Annullere påmelding', talk_workshop_participant_path(talk, wsp),
-              :confirm => "Sure?", :method => :delete, :class => 'leave-workshop'
+              :confirm => "Sure?", :method => :delete, :class => 'button'
     elsif talk.complete?
       """
       <span class='workshop-full'>Ingen plasser igjen</span>
       """.html_safe
     else
       button_to 'Meld deg på', talk_workshop_participant_index_path(talk),
-              :method => :post, :class => 'join-workshop'
+              :method => :post, :class => 'button'
     end
   end
 

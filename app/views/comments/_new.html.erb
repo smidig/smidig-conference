@@ -1,11 +1,12 @@
 <%= form_for :comment, :url => talk_comments_path(@talk, :anchor => 'new_comment') do |f| %>
-  <%= render "shared/error_messages", :target => @comment %>
-  <p>
-  	<%= f.label :title, "Overskrift:" %> <br />
-  	<%= f.text_field :title %>
-  </p>
-  <p>
-  	<%= f.label :description, "Kommentar:" %> <br />
-  	<%= f.text_area :description, :rows => 5 %></p>
-  <p><%= f.submit "Registrer kommentar" %></p>	
+  	<%= render "shared/error_messages", :target => @comment %>
+	<div class="group">
+	  	<%= f.label :title, "Overskrift:" %>
+	  	<%= f.text_field :title %>
+	</div>
+	<div class="group">
+  		<%= f.label :description, "Kommentar:" %>
+  		<%= f.text_area :description, :rows => 5 %>
+	</div>
+	<%= f.submit "Registrer kommentar", :class => "button" %>
 <% end %>

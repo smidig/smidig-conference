@@ -1,56 +1,78 @@
 <% content_for :title, "#{@talk.title}" %>
-<h1>Tittel: <%= @talk.title %></h1>
-<div id="breadcrumbs"><%= link_to "Tilbake til liste over foredrag", talks_path %></div>
-<!--<div id="breadcrumbs"><%= link_to "Tilbake til programmet", program_index_path %></div>-->
 
-<% if @talk.accepted?  %>
-<p><%= image_tag("approved_talk.png") %> godkjent</p>
-<% end  %>
+<p class="notification">
+  <%= link_to "Tilbake til liste over foredrag", talks_path %>
+</p>
 
+<h2 class="page_title">
+  Tittel: <%= @talk.title %>
 
-<ul class="talk-details">
-  <li><b><%= @talk.talk_type.name_and_duration %></b></li>
+  <div class="sub_info">
+    <% if @talk.accepted?  %>
+        <%= image_tag("icon_ok.png", :alt => "Talen er godkjennt", :title => "Talen er godkjennt", :class => "icon") %>
+    <% else %>
+        <%= image_tag("icon_remove.png", :alt => "Talen er ikke godkjennt / venter på godkjenning", :title => "Talen er ikke godkjennt / venter på godkjenning", :class => "icon" ) %>
+    <% end  %>
+  </div>
+</h2>
+
+<% if @talk.users.include?(current_user)|| admin? %>
+  <div class="talk-admin section">
+    <ul class="related-links">
+      <li>
+        <%= link_to 'Rediger forslaget ditt', edit_talk_path(@talk) %>
+      </li>
+      <% if !@talk.slide_file_name.nil? %>
+        <li>
+          <%= link_to "Last ned presentasjon".html_safe, @talk.slide.url %>
+        </li>
+      <% end %>
+    </ul>
+    <%= render :partial => "talks/upload_slide" %>
+  </div>
+<% end %>
+
+<ul class="talk-details section">
+  <li>
+    <b><%= @talk.talk_type.name_and_duration %></b>
+  </li>
   <li>
       <b>Tags:</b>
       <% @talk.tags.each do |tag| %>
           <%= link_to tag.title, :controller=>"talks", :action=>"article_tags", :id=>tag.id %>
       <% end %>
   </li>
-  <li><b>Foreslått av:</b><%= @talk.speaker_name %></li>
-
+  <li>
+    <b>Foreslått av: </b>
+    <%= @talk.speaker_name %>
+  </li>
 </ul>
 
-  <% if @talk.users.include?(current_user)|| admin? %>
-    <div class="talk-admin">
-      <h3>Admin</h3>
-      <p><%= link_to 'Rediger forslaget ditt', edit_talk_path(@talk) %></p>
-      <% unless @talk.slide_file_name.nil? %>
-        <p>
-          <b>Lysbilder til presentasjon</b>
-          <%= link_to "#{image_tag("icon_slides.gif")} Last ned".html_safe, @talk.slide.url %>
-        </p>
-      <% else %>
-        <h3>Last opp presentasjon</h3>
-      <% end %>
-      <%= render :partial => "talks/upload_slide" %>
-    </div>
-  <% end %>
-
-
-<div class="talk-description">
+<div class="talk-description section ">
   <h3>Beskrivelse</h3>
   <%=simple_format h(@talk.description) %>
 </div>
 
-<%= link_to image_tag("#{@talk.license}.png", :title => 'Foredraget deles under en Creative Commons Navngivelse-lisens.'),
+<div class="talk-files section">
+  <h3>
+    Filer
+  </h3>
+  <p>
+    Foredraget deles under en <%= link_to "Creative Commons Navngivelse-lisens.",
    "http://creativecommons.org/licenses/#{@talk.license}/3.0/no/", :rel => 'license' %>
-
-
-<%= render :partial => "talks/video" %>
-<%= render :partial => "talks/slides" %>
+  </p>
+  <ul class="related-links">
+    <li>
+      <%= render :partial => "talks/slides" %>
+    </li>
+    <li>
+      <%= render :partial => "talks/video" %>
+    </li>
+  </ul>
+</div>
 
 <% if  @talk.workshop? %>
-  <div class="workshop-details">
+  <div class="workshop-details section">
     <h3>Påmelding</h3>
 
     <% if !@talk.complete? %>
@@ -72,19 +94,26 @@
   </div>
 <% end %>
 
-<br /><br />
-<h3>Kommentarer<%= feed_link "Følg med på kommentarer til #{@talk.title}", talk_comments_path(@talk, :format => :rss) %></h3><a name="comments"></a>
+<div class="comments section">
+  <h3>
+    Kommentarer
+    <div class="sub_info">
+      <%= link_to "Følg med på kommentarer til #{@talk.title}", talk_comments_path(@talk, :format => :rss), :class => "rss" %>
+    </div>
+  </h3>
 
-<div class="comments">
-  <%= render :partial => @talk.comments %>
+  <ul class="comments item-list">
+    <%= render :partial => @talk.comments %>
+  </ul>
 </div>
 
-<% if logged_in %>
-<h3 id="new_comment">Skriv en ny kommentar:</h3>
-<%= render :partial => "comments/new" %>
-<% else %>
-
-<h3><%= link_to "Logg inn for å skrive en ny kommentar", new_user_session_url(:save => true) %></h3>
-<% end %>
-
-
+<div class="new-comment section">
+  <% if logged_in %>
+    <h3 id="new_comment">Skriv en ny kommentar:</h3>
+    <%= render :partial => "comments/new" %>
+  <% else %>
+    <h3>
+      <%= link_to "Logg inn for å skrive en ny kommentar", new_user_session_url(:save => true) %>
+    </h3>
+  <% end %>
+</div>

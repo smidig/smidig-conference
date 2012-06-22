@@ -2,26 +2,35 @@
 
 <!--<p><a href="../info/til_lyntalere">Informasjon om hva slags opplegg vi har rundt lyntaler, tordentaler og workshops på Smidig 2012, samt noen generelle tips.</a></p>-->
 
-<p>
-  <h2 class="talks_header">Foreslåtte bidrag<%= feed_link "Følg med på alle nye foredrag", talks_path(:format => :rss) %></h2>
-  (Du kan også se alle <%= link_to "kommentarer", comments_url%><%= feed_link "Følg med på alle commentarer", comments_path(:format => :rss) %>)
-</p>
+<h2 class="page_title">Foreslåtte bidrag
+  <div class="sub_info">
+    <%= link_to "Foredrag", talks_path(:format => :rss), :title => "Følg med på alle nye foredrag", :class => "rss icon" %>
+
+    <%= link_to "Kommentarer", comments_path(:format => :rss), :title => "Følg med på alle nye kommentarer", :class => "rss icon" %>
+  </div>
+</h2>
+
 
 <div class="filters">
-  <select id="show_types">
-    <option value="alle">Alle</option>
-    <option value="lyntale">Lyntale</option>
-    <option value="workshop">Workshop</option>
-  </select>
-  <label><input type="checkbox" id="show_accepted" /> Vis bare godkjente</label>
+  <div class="type field">
+    <label for="show_types">Vis</label>
+    <select id="show_types">
+      <option value="alle">Alle</option>
+      <option value="lyntale">Lyntale</option>
+      <option value="workshop">Workshop</option>
+    </select>
+  </div>
+  <div class="checkbox-wrapper field">
+    <input type="checkbox" id="show_accepted" /> 
+    <label for="show_accepted">Vis bare godkjente</label>
+  </div>
 </div>
 
-<ul class="talks">
-<%= render :partial => @talks_sorted %>
+<ul class="item-list section">
+  <%= render :partial => @talks_sorted %>
 </ul>
 
-<br /><br />
-<h3>Savner du noe? <%= link_to "Foreslå noe selv!", new_talk_path %></h3>
+<%= link_to "Foreslå tale selv!", new_talk_path, :class => "button" %>
 
 <script>
   $("#show_accepted").removeAttr("checked");

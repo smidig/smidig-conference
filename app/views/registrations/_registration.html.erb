@@ -1,3 +1,4 @@
+<div class="section">
 <% if registration.free_ticket %>
 
   <% if not registration.registration_complete %>
@@ -10,7 +11,7 @@
 
 <% elsif registration.registration_complete %>
 
-Vi har registrert din betaling. Se din <%= link_to "kvittering", receipt_registration_path(registration) %>. Vi sees på Smidig 2012!
+  Vi har registrert din betaling. Se din <%= link_to "kvittering", receipt_registration_path(registration) %>. Vi sees på Smidig 2012!
 
 <% elsif registration.manual_payment %>
 
@@ -60,15 +61,19 @@ Vi har registrert din betaling. Se din <%= link_to "kvittering", receipt_registr
   </ul>
 
 <% end %>
-
+</div>
 
 <% if admin? %>
-  <h3 style="color:red">Admin: Registrer betaling</h3>
+  <div class="section">
+    <h3 style="color:red">Admin: Registrer betaling</h3>
 
-  <p>
-    <%= link_to "Oppdater registering manuelt", edit_registration_path(@user.registration) %>
-  </p>
-  <p>
-    <%= link_to "Skriv ut navnelapp", nametag_path(@user.registration, :format=> 'pdf') %>
-  </p>
+    <ul class="related-links">
+      <li>
+        <%= link_to "Oppdater registering manuelt", edit_registration_path(@user.registration) %>
+      </li>
+      <li>
+        <%= link_to "Skriv ut navnelapp", nametag_path(@user.registration, :format=> 'pdf') %>
+      </li>
+    </ul>
+  </div>
 <% end %>

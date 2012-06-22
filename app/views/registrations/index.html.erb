@@ -1,6 +1,6 @@
-<h2>Brukere</h2>
+<h2 class="page_title">Brukere</h2>
 
-<div class="graphs">
+<div class="graphs section">
 <%=
   if @registrations.present?
     x_labels = (0...@date_range.length).select { |i| i%10 == 0 }.collect { |i| @date_range[i].strftime("%d %b") }
@@ -32,31 +32,32 @@
 %>
 </div>
 
-<br />
-<h3>Oppfølging:</h3>
+<div class="section">
+  <h3>Oppfølging:</h3>
 
-<ul class="no-bullets">
-  <li><%= link_to "Manuelle registreringer", invoiced_registrations_path %></li>
-  <li><%= link_to "Foredragsholdere", speakers_registrations_path %></li>
-  <li><%= link_to "Statistikk", :controller => "statistics" %></li>
-  <li><%= link_to "Akseptering av foredrag", :controller => "acceptances" %></li>
-  <li><%= link_to "Navneskilt", :controller => "nametags", :format => "pdf" %></li>
-</ul>
+  <ul class="no-bullets">
+    <li><%= link_to "Manuelle registreringer", invoiced_registrations_path %></li>
+    <li><%= link_to "Foredragsholdere", speakers_registrations_path %></li>
+    <li><%= link_to "Statistikk", :controller => "statistics" %></li>
+    <li><%= link_to "Akseptering av foredrag", :controller => "acceptances" %></li>
+    <li><%= link_to "Navneskilt", :controller => "nametags", :format => "pdf" %></li>
+  </ul>
+</div>
 
-<br />
-<h3>Andre søk</h3>
+<div class="section">
+  <h3>Andre søk</h3>
 
-<ul class="no-bullets">
-  <li><%= link_to "Alle", :conditions => [] %></li>
-  <% for ticket_type in @ticket_types %>
-    <li><%= link_to ticket_type, :conditions => @conditions.merge({ :ticket_type => ticket_type })  %></li>
-  <% end %>
-  <li><%= link_to "Completed", :conditions => @conditions.merge({ :registration_complete => 1 })  %></li>
-  <li><%= link_to "Not completed", :conditions => @conditions.merge({ :registration_complete => 0 })  %></li>
-  <li><%= link_to "Dinner registrations", :conditions => @conditions.merge({ :includes_dinner => 1 })  %></li>
-</ul>
+  <ul class="no-bullets">
+    <li><%= link_to "Alle", :conditions => [] %></li>
+    <% for ticket_type in @ticket_types %>
+      <li><%= link_to ticket_type, :conditions => @conditions.merge({ :ticket_type => ticket_type })  %></li>
+    <% end %>
+    <li><%= link_to "Completed", :conditions => @conditions.merge({ :registration_complete => 1 })  %></li>
+    <li><%= link_to "Not completed", :conditions => @conditions.merge({ :registration_complete => 0 })  %></li>
+    <li><%= link_to "Dinner registrations", :conditions => @conditions.merge({ :includes_dinner => 1 })  %></li>
+  </ul>
 
-<br />
+</div>
 
 <%= render :partial => 'registration_list', :locals => { 
           :registrations => @registrations,
@@ -66,7 +67,7 @@
 <script type="text/javascript">
 //Hack layout
 $(function() {
- $("aside").remove();
- $(".row .eightcol").css("width", "100%");
+ $(".aside").remove();
+ $(".row .eightcol").removeClass("eightcol").addClass("twelvecol").addClass("last");
 });
 </script>

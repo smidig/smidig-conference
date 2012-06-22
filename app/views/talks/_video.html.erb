@@ -1,5 +1,7 @@
 <% unless @talk.video_url.blank? %>
-<p id="player1"><a href="http://www.macromedia.com/go/getflashplayer">Get the Flash Player</a> to see this player.</p> 
+<p id="player1">
+	<a href="http://www.macromedia.com/go/getflashplayer">Get the Flash Playe</a> to see this player.
+</p> 
 <script type="text/javascript" src="http://smidig2007.confreaks.com/ufo.js"></script> 
 <script type="text/javascript"> 
 var FO = {
@@ -15,7 +17,6 @@ var FO = {
 UFO.create(FO, "player1");
 </script>
 
-  <p><a href="http://smidig2007.confreaks.com/<%= @talk.video_url %>.html" target="_new">Last ned video i andre formater</a></p> 
-
+<a href="http://smidig2007.confreaks.com/<%= @talk.video_url %>.html" target="_new">Last ned video i andre formater</a>
  
 <% end %>

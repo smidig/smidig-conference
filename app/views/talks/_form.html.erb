@@ -3,6 +3,7 @@
 <%= javascript_include_tag "jquery-ui/jquery-ui-1.8.core-and-interactions.min.js", :charset => "utf-8" %>
 <%= javascript_include_tag "jquery-ui/jquery-ui-1.8.autocomplete.min.js", :charset => "utf-8" %>
 <%= javascript_include_tag "tag-it.js", :charset => "utf-8" %>
+
 <script>
 $(document).ready(function(){
   var availableTags = [];
@@ -20,33 +21,32 @@ $(document).ready(function(){
 
 <%= form_for @talk do |f| %>
 
-  <h3>Hva vil du snakke om?</h3>
-
+<h3>Hva vil du snakke om?</h3>
 <fieldset class="talk_details">
 
   <%= render "shared/error_messages", :target => @talk %>
 
-  <div class="field type">
+  <div class="group">
     <%= f.label :talk_type_id, "Type foredrag" %>
     <%= f.collection_select :talk_type_id, @types, :id, :name_and_duration %>
   </div>
 
   <% if !@talk.new_record? && @talk.workshop? %>
-    <div class="field max_participants">
+    <div class="group max_participants">
       <%= f.label :max_participants, "Max. antal deltagere" %>
       <%= f.text_field :max_participants, :size => 3 %>
     </div>
   <% end %>
 
-  <div class="field paastand">
+  <div class="group">
     <%= f.label :title, "Påstand" %>
     <%= help_tooltip() do %>
         <p>Dette er tittelen på foredraget ditt. Vår erfaring fra tidligere Smidig-konferanser er at gode lyntaler tar utgangspunkt i en påstand (for eksempel: 'gode lyntaler tar utgangspunkt i en påstand') og bruker foredraget på å diskutere bakgrunnen og konsekvensen av denne påstanden.</p>
     <% end %>
     <%= f.text_field :title %>
-    </div>
+  </div>
 
-  <div class="field argumentasjon">
+  <div class="group">
     <%= f.label :description, "Argumentasjon" %>
     <%= help_tooltip() do %>
         <p>Vår erfaring fra tidligere Smidig-konferanser er at gode lyntaler tar utgangspunkt i en påstand (for eksempel: 'gode lyntaler tar utgangspunkt i en påstand') og bruker foredraget på å diskutere bakgrunnen og konsekvensen av denne påstanden. Dette kalles ofte også for abstract.</p>
@@ -57,11 +57,11 @@ $(document).ready(function(){
 
 <fieldset class="confirmations">
   <% if @talk.new_record? %>
-    <div class="field format">
+    <div class="checkbox-wrapper format">
       <%= f.check_box :accepted_guidelines %>
       <%= f.label :accepted_guidelines, "Jeg kjenner til tidsbegrensningen og formatet for lyntaler/tordentaler/workshops på Smidig 2012" %>
     </div>
-    <div class="field cc">
+    <div class="checkbox-wrapper cc">
       <%= f.check_box :accepted_cc_license %>
       <%= f.label :accepted_cc_license, "Jeg forstår at foredraget blir gjort tilgjengelig med en <a href='http://creativecommons.org/licenses/by/3.0/no/' rel='external'>Creative Commons Navngivelse 3.0 Norge</a> lisens.".html_safe %>
     </div>
@@ -81,7 +81,7 @@ $(document).ready(function(){
 
 
 <div class="field buttons">
-    <%= f.submit "Publiser forslaget" %>
+    <%= f.submit "Publiser forslaget", :class => "button" %>
 </div>
 
 

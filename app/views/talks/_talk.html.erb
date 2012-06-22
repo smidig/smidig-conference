@@ -1,18 +1,24 @@
 <li id="<%= dom_id(talk) %>" class="alle <%= talk.talk_type.name.downcase %> <%= (talk.accepted? && 'accepted') %>">
-  <div class="title"><%= image_tag("approved_talk.png") if talk.accepted? %> <%= link_to h(talk.title), talk %>
-    <%= "(#{antall_stemmer(talk.votes_count)})" if talk.votes_count > 0 %>
-    <%= image_tag("icon_slides.gif") if admin? && talk.slide.file? %>
-  </div>
-  <div class="talk_type">
+  <h3>
+    <%= link_to h(talk.title), talk %>
+    <div class="sub_info">
+      <% if talk.votes_count > 0 %>
+        <%= talk.votes_count %>
+        <%= image_tag("icon_vote.png", :class => "icon") %>
+      <% end %>
+      <%= image_tag("icon_ok.png", :class => "icon") if talk.accepted? %>
+      <%= image_tag("icon_file.png", :class => "icon") if admin? && talk.slide.file? %>
+    </div>
+  </h3>
+  <p class="content">
     <%= talk.talk_type.name %> foreslått av <%= render :partial => talk.users %>
-    <span class="tags"><%= talk.tags.length == 0 ? "" : "i kategoriene:" %>
-    <% talk.tags.each do |tag| %>
-      <%= link_to tag.title, :controller=>"talks", :action=>"article_tags", :id=>tag.id %>
-    <% end %>
+    <span class="tags">
+      <%= talk.tags.length == 0 ? "" : "i kategoriene:" %>
+      <% talk.tags.each do |tag| %>
+        <%= link_to tag.title, :controller=>"talks", :action=>"article_tags", :id=>tag.id %>
+      <% end %>
     </span>
-  </div>
-
-    <span class="submitted_time">
-      <%=link_to "#{talk.comments_count or "Ingen"} kommentarer", talk_path(talk, :anchor => "comments") %>
-    </span>
+  </p>
+  <%= image_tag("icon_comments.png") %>
+  <%=link_to "#{talk.comments_count or "Ingen"} kommentarer", talk_path(talk, :anchor => "comments"), :class => "comments" %>
 </li>
