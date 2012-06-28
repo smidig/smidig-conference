@@ -18,19 +18,25 @@
 /* END TEMPORARY */
 
     body {
-    	font-family: Verdana, Arial;
-    	font-size: 12px;
-    	line-height: 14px;
+    	font-family: Georgia, Verdana, Arial;
+    	xfont-size: 12px;
+    	background: #EFEFEF;
+    	line-height: 1.4;
+    	color: #555;
     }
     
     h1, h2, h3, h4, h5 {
-		color: #555;
+		color: #000;
 		font-weight: normal;
-		margin-bottom: 5px;
+		margin-bottom: 3px;
     }
 
     a {
-    	color: #555;
+    	color: #000;
+    }
+
+    a:hover {
+    	color: red;
     }
 
     label,
@@ -133,6 +139,7 @@
 	.content-wrapper {
 		width: 95%;
 		margin: 0 auto;		
+		xline-height: 1.1em;
 	}
 
 	.notification {
@@ -228,17 +235,172 @@
 		margin-right: 15px;
 	}
 
+	.page-header {
+		background: #ffffff; /* Old browsers */
+		background: -moz-linear-gradient(top, #ffffff 0%, #EFEFEF 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#EFEFEF)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, #ffffff 0%,#EFEFEF 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, #ffffff 0%,#EFEFEF 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top, #ffffff 0%,#EFEFEF 100%); /* IE10+ */
+		background: linear-gradient(top, #ffffff 0%,#EFEFEF 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#EFEFEF',GradientType=0 ); /* IE6-9 */
+	}
+
+	.page-footer {
+		border-top: 1px solid black;
+		background: #555;
+		padding: 10px;
+		color: whiteSmoke;
+		margin-top: 10px;
+	}
+	.page-footer {
+		border-top: 1px solid black;
+		background: #555;
+		padding: 10px;
+		color: whiteSmoke;
+		margin-top: 10px;
+	}
+
+	.page-footer a, .page-footer h3 {
+		color: silver;
+		text-decoration: none;
+	}
+	.page-footer h3 {
+		margin: 10px 0;
+	}
+
+	.page-footer li {
+		list-style: disc inside;
+		margin: 0px 5px;
+	}
+
+	.event-title {
+		background: transparent url('/images/smidig_logo_60.png') no-repeat 0% 50%;
+		display: inline-block;
+		padding: 15px 0 15px 75px;
+		margin-top: 15px;
+		float: left;
+	}
+
+	.extra {
+		float: right;
+	}
+
+	.smidig-social {
+		float: left;
+		background-color: #6c8dd5;
+		-webkit-border-bottom-left-radius: 5px;
+		-moz-border-radius-bottomleft: 5px;
+		border-bottom-left-radius: 5px;
+		border: 1px solid #4573d5;
+		border-right: 0;
+		border-top: 0;
+	}
+
+	.smidig-social a {
+		display: block;
+		padding: 3px;
+	}
+
+	.event-details {
+		display: inline-block;
+		background-color: #f00;
+		-webkit-border-bottom-right-radius: 5px;
+		-webkit-border-bottom-left-radius: 5px;
+		-moz-border-radius-bottomright: 5px;
+		-moz-border-radius-bottomleft: 5px;
+		border-bottom-right-radius: 5px;
+		border-bottom-left-radius: 5px;
+		padding: 3px;
+		color: #fff;
+		border-left: 1px solid #be1e2d;
+		border-right: 1px solid #be1e2d;
+		border-bottom: 1px solid #be1e2d;
+	}
+
+	.event-tagline {
+		font-style: italic;
+	}
+
+	.event-details a {
+		color: white;
+		text-decoration: none;
+	}
+
+	.event-participate {
+		text-align: center;
+		font-size: 1.1em;
+		margin-top: 4px;
+		padding: 4px;
+		font-weight: bold;
+	}
+
+	.event-details:hover {
+		background: black;
+		opacity: 0.8;
+	}
+
+	.event-details .decoration {
+		padding: 5px 5px;
+		-webkit-border-bottom-right-radius: 5px;
+		-webkit-border-bottom-left-radius: 5px;
+		-moz-border-radius-bottomright: 5px;
+		-moz-border-radius-bottomleft: 5px;
+		border-bottom-right-radius: 5px;
+		border-bottom-left-radius: 5px;
+		border-left: 1px dashed #FF8392;
+		border-right: 1px dashed #FF8392;
+		border-bottom: 1px dashed #FF8392;
+	}
+
+	.event-details .event-date {
+		font-weight: bold;
+		font-size: 20px;
+	}
+
+	.page-nav {
+		list-style: none;
+		margin-top: 20px;
+	}
+
+	.page-nav li {
+		padding: 10px 15px;
+		float: left;
+		margin: 2px 5px;
+		font-weight: bold;
+		background: #EFEEFE;
+		border: 2px solid #BBB;
+	}
+
+	.page-nav li:hover {
+		color: white;
+		background: #444;
+		border: 2px solid #222;
+		border-bottom-color: red;
+	}
+
+	.page-nav li:hover a {
+		color: #FFF;
+	}
+
+	.page-nav li a {
+		text-decoration: none;
+		border-bottom: none;
+		color: #555;
+	}
+
 	.section {
 		margin-bottom: 15px;
 	}
 
 	.aside {
 		background-color: #fff;
+		float: right;
 	}
 
-	.aside ul {
-		border-left: 1px dotted #ccc;
-		border-right: 1px solid #ccc;
+	.aside .borders {
+		border: 1px dotted #ccc;
+		height: 100%;
 	}
 
 	.aside .sponsors {
@@ -261,6 +423,11 @@
 		display: block;
     }
 
+    .aside .info {
+    	padding: 10px;
+    	font-size: 12px;
+    }
+
 	.notification.login {
 		text-align: right;
 	}
@@ -270,7 +437,17 @@
 		display: block;
 	}
 
+	.contentblock {
+		margin: 30px 0;
+	}
+
 	/*** APP specific ***/
+	.sponsor-benefits {
+		margin-top: 5px;
+	}
+	.sponsor-benefits li {
+		margin-left: 30px;
+	}
 	.talk-details li {
 		list-style: none;
 		margin: 5px 0;
@@ -309,11 +486,12 @@
 @media handheld, only screen and (max-width: 767px) {
 
     body {
-        font-size: 14px;
+        xfont-size: 14px;
     }
 
 	.content-wrapper {
 		width: 100%;
+		font-size: 0.8em;
 	}
 
     input,
@@ -365,14 +543,98 @@
 		padding-top: 5px;
 	}
 
+
+	.event-title {
+		background: transparent url('/images/smidig_logo_30.png') no-repeat 0% 50%;
+		display: block;
+		padding: 0 0 0 35px;
+		width: auto;
+		margin-top: 5px;
+	}
+
+	.event-title h1 {
+
+		margin-bottom: 0px;
+		font-size: 18px;
+	}
+
+	.event-tagline {
+		margin-top: 0px;
+		font-size: 10px;
+	}
+
+	.extra {
+		float: left;
+		margin-top: 5px;
+	}
+
+	.smidig-social {
+		float: right;
+		background-color: #6c8dd5;
+		-webkit-border-bottom-left-radius: 0px;
+		-webkit-border-bottom-right-radius: 5px;
+		-webkit-border-top-right-radius: 5px;
+		-moz-border-radius-bottomleft: 0px;
+		-moz-border-radius-bottomright: 5px;
+		-moz-border-radius-topright: 5px;
+		border-bottom-left-radius: 0px;
+		border-bottom-right-radius: 5px;
+		border-top-right-radius: 5px;
+		border: 1px solid #4573d5;
+		border-left: 0;
+	}
+
+	.smidig-social a {
+		display: inline-block;
+		float: left;
+		line-height: 1em;
+	}
+
+	.event-details {
+		background-color: #f00;
+		-webkit-border-bottom-right-radius: 5px;
+		-webkit-border-bottom-left-radius: 5px;
+		-moz-border-radius-bottomright: 5px;
+		-moz-border-radius-bottomleft: 5px;
+		border-top-left-radius: 5px;
+		padding: 3px;
+		color: #fff;
+		border-left: 1px solid #be1e2d;
+	}
+
+	.event-details .decoration {
+		padding: 5px;
+		-webkit-border-top-right-radius: 5px;
+		-webkit-border-bottom-left-radius: 5px;
+		-webkit-border-top-left-radius: 5px;
+		-moz-border-radius-topright: 5px;
+		-moz-border-radius-bottomleft: 5px;
+		-moz-border-radius-topleft: 5px;
+		border-bottom-left-radius: 5px;
+		border-top-left-radius: 5px;
+		border-top: 1px dashed #FF8392;
+	}
+
+	.event-details .event-date,
+	.event-details .event-location {
+		font-size: 11px;
+	}
+
+	.page-nav {
+		font-size: 12px;
+	}
+
 	.aside {
 		padding-top: 15px;
     	margin-top: 20px;
     	border-top: 2px dotted #ccc;
 	}
 
+	.aside .borders {
+		border: none;
+	}
+
     .aside ul {
-    	
     	border-left: 0;
     	border-right: 0;
     }
