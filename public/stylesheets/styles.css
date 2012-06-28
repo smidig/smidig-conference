@@ -38,6 +38,9 @@
     a:hover {
     	color: red;
     }
+    a.button:hover {
+    	color: white;
+    }
 
     label,
     input,
