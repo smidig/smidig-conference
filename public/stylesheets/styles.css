@@ -369,17 +369,25 @@
 	.page-nav li {
 		padding: 10px 15px;
 		float: left;
-		margin: 2px 5px;
+		margin: 0px 1px;
 		font-weight: bold;
 		background: #CCC;
 		border: 2px solid #CCC;
-		border-radius: 8px;
 	}
+
+
+	.page-nav li.first {
+		border-radius:  8px 0 0 8px;
+	}
+
+	.page-nav li.last {
+		border-radius:  0 8px 8px 0;
+	}	
 
 	.page-nav li:hover {
 		color: white;
 		background: #444;
-		border: 2px solid #222;
+		border-color: #444;
 		border-bottom-color: red;
 	}
 
