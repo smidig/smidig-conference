@@ -5,7 +5,7 @@ free_prices: &free_prices
   sponsor: 0
 
 prices: &prices
-  early_bird: 1875
+  early_bird: 1
   full_price: 2750
   student: 500
   dinner: 0
