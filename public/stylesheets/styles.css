@@ -420,9 +420,10 @@
 	}
 
 	.aside .sponsors li {
-		height: 80px;
+		height: 100px;
 		width: 50%;
 		float: left;
+		line-height: 100px;
 	}
 
 	.aside .sponsors a {
@@ -432,7 +433,7 @@
 
     .aside .sponsors a img {
 		margin: 0 auto;
-		display: block;
+		vertical-align: middle;
     }
 
     .aside .info {
