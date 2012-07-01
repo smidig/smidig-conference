@@ -73,7 +73,7 @@ Setup:
     # Install your SSH keys (Uses ~/.ssh/id_rsa.pub)
     $ heroku keys:add
     $ cd smidig-conference
-    $ git remote add production git@heroku.com:participate.git
+    $ git remote add production git@heroku.com:participate2012.git
     $ git remote add staging git@heroku.com:stagingsmidig.git
 
 Fool around:
