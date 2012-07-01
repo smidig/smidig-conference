@@ -73,7 +73,7 @@ Setup:
     # Install your SSH keys (Uses ~/.ssh/id_rsa.pub)
     $ heroku keys:add
     $ cd smidig-conference
-    $ git remote add production git@heroku.com:smidig2012.git
+    $ git remote add production git@heroku.com:participate.git
     $ git remote add staging git@heroku.com:stagingsmidig.git
 
 Fool around:
@@ -81,15 +81,15 @@ Fool around:
     $ gem install taps
     # remote console
     $ heroku console --app stagingsmidig
-    $ heroku console --app smidig2012
+    $ heroku console --app participate
     # Pull data from the heroku app to your local db
-    $ heroku db:pull --app [stagingsmidig|smidig2012]
+    $ heroku db:pull --app [stagingsmidig|participate]
 
 Update (push):
 
     $ git push [production|staging|master]
     #DB changes? remember to migrate the server
-    $ heroku rake db:migrate --app [stagingsmidig|smidig2012]
+    $ heroku rake db:migrate --app [stagingsmidig|participate]
 
 Heroku app-owner privileges:
 
@@ -100,9 +100,9 @@ Heroku app-owner privileges:
 
 Heroku SendGrid:
     # For å sjekke user/pass:
-    $ heroku config --long --app smidig2012
+    $ heroku config --long --app participate
 
-Bundle without development or test gems. Set this once pr app
+Bundle without development or test gems. Set this once pr apps
     $ heroku config:add BUNDLE_WITHOUT="development test"
 
 
