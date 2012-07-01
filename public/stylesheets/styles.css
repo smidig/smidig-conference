@@ -425,12 +425,12 @@
 		float: left;
 	}
 
-	.aside .sponsors .sponsor-link {
+	.aside .sponsors a {
 		padding: 20px;
 		display: inline-block;
 	}
 
-    .aside .sponsors .sponsor-link img {
+    .aside .sponsors a img {
 		margin: 0 auto;
 		display: block;
     }
@@ -651,7 +651,7 @@
     	border-right: 0;
     }
 
-    .aside .sponsors .sponsor-link {
+    .aside .sponsors a {
 		display: inline;
 		padding: 5px;
 	}
