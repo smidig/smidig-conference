@@ -1,0 +1,13 @@
+.registrations th {
+	text-align: left;
+	color: #DDD;
+	background: #555;
+}
+
+.registrations tr:nth-of-type(odd) {
+	background-color: #ccc;
+}
+
+.registrations td {
+	padding: 5px 2px;
+}
