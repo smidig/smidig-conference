@@ -307,7 +307,7 @@
 
 	.event-details {
 		display: inline-block;
-		background-color: #f00;
+		background-color: #D41313;
 		-webkit-border-bottom-right-radius: 5px;
 		-webkit-border-bottom-left-radius: 5px;
 		-moz-border-radius-bottomright: 5px;
@@ -319,6 +319,7 @@
 		border-left: 1px solid #be1e2d;
 		border-right: 1px solid #be1e2d;
 		border-bottom: 1px solid #be1e2d;
+		text-align: center;
 	}
 
 	.event-tagline {
@@ -358,7 +359,7 @@
 
 	.event-details .event-date {
 		font-weight: bold;
-		font-size: 20px;
+		font-size: 19px;
 	}
 
 	.page-nav {
@@ -604,7 +605,7 @@
 	}
 
 	.event-details {
-		background-color: #f00;
+		background-color: #D41313;
 		-webkit-border-bottom-right-radius: 5px;
 		-webkit-border-bottom-left-radius: 5px;
 		-moz-border-radius-bottomright: 5px;
