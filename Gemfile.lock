@@ -142,5 +142,5 @@ DEPENDENCIES
   prawnto
   rails (= 3.0.7)
   shoulda
-  sqlite3-ruby
+  sqlite3
   taps
