@@ -335,8 +335,8 @@
 		text-align: center;
 		font-size: 1.1em;
 		margin-top: 4px;
-		padding: 4px;
 		font-weight: bold;
+		text-decoration: underline;
 	}
 
 	.event-details:hover {
@@ -407,13 +407,16 @@
 	}
 
 	.aside {
-		background-color: #fff;
 		float: right;
 	}
 
 	.aside .borders {
 		border: 1px dotted #ccc;
 		height: 100%;
+	}
+
+	.aside .sponsor-container {
+		background-color: #fff;
 	}
 
 	.aside .sponsors {
