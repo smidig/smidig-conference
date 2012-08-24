@@ -4,13 +4,13 @@
 	Er du allerede påmeldt? <%= link_to "Logg inn", new_user_session_path%>
 </p>
 
-<h2 class="page_title">Registrasjon</h2>
+<h2 class="page_title">Meld deg på Smidig i dag</h2>
 <% unless @user.registration.free_ticket %>
   <p>
     <%= @user.registration.ticket_description %> koster
     <%= @user.registration.ticket_price %>,- inklusive mva. for deltagere
     og 0,- for bidragsytere (dersom bidraget ditt
-    blir godkjent).
+    blir godkjent). Fristen for early-bird billett er 1.oktober og så lenge vi har nok billetter av denne typen. 
   </p>
 <% end %>
 

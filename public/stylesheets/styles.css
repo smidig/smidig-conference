@@ -497,6 +497,12 @@
 		border: 1px solid black;
 	}
 
+	.fb-like {
+		height: 60px;
+		width: 350px;
+		overflow: hidden;
+	}
+
 
 /* Mobile version */
 
