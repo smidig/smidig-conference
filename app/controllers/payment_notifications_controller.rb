@@ -18,12 +18,13 @@ class PaymentNotificationsController < ApplicationController
   end
   
   def index
-    @payment_notifications = PaymentNotification.find(:all)
+    render :nothing => true
+    #@payment_notifications = PaymentNotification.find(:all)
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @payment_notifications }
-    end
+    #respond_to do |format|
+    #  format.html # index.html.erb
+    #  format.xml  { render :xml => @payment_notifications }
+    #end
   end
   def new
     @payment_notification = PaymentNotification.new
