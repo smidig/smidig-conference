@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class PaymentNotificationsController < ApplicationController
-  protect_from_forgery :except => [:create]
+  #protect_from_forgery :except => [:create]
   def create
     registration = Registration.find_by_invoice(params[:invoice])
     registration.payment_notification_params = params
@@ -18,21 +18,25 @@ class PaymentNotificationsController < ApplicationController
   end
   
   def index
-    render :nothing => true
-    #@payment_notifications = PaymentNotification.find(:all)
+    #registration = Registration.find_by_invoice(params[:invoice])
 
-    #respond_to do |format|
-    #  format.html # index.html.erb
-    #  format.xml  { render :xml => @payment_notifications }
-    #end
+    @payment_notifications = PaymentNotification.find(:all)
+    logger.info 'Using get..'
+    render :xml => @payment_notifications
+#
+#    respond_to do |format|
+#      #format.html # index.html.erb
+#      format.xml  { render :xml => @payment_notifications }
+#    end
   end
   def new
     @payment_notification = PaymentNotification.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @payment_notification }
-    end
+    render :xml => @payment_notification
+    #respond_to do |format|
+      #format.html # new.html.erb
+    #  format.xml  { render :xml => @payment_notification }
+    #end
   end
   
 end
