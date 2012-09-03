@@ -18,11 +18,23 @@ class PaymentNotificationsController < ApplicationController
   end
   
   def index
-    #registration = Registration.find_by_invoice(params[:invoice])
+    logger.info 'Using get for payment_confirmation..'
 
-    @payment_notifications = PaymentNotification.find(:all)
-    logger.info 'Using get..'
-    render :xml => @payment_notifications
+    registration = Registration.find_by_invoice(params[:invoice])
+    registration.payment_notification_params = params
+    registration.paid_amount = params[:mc_gross].to_i
+    registration.payment_reference = params[:txn_id]
+    registration.payment_complete_at = Time.now
+    registration.registration_complete = (registration.paid_amount == registration.price)
+    registration.save!
+    
+    PaymentNotification.create!(:params => params, :registration => registration, :status => params[:payment_status], :transaction_id => params[:txn_id], :paid_amount => params[:mc_gross], :currency => params[:mc_currency])
+    
+    SmidigMailer.payment_confirmation(registration).deliver
+    
+    render :nothing => true
+#    @payment_notifications = PaymentNotification.find(:all)
+#    render :xml => @payment_notifications
 #
 #    respond_to do |format|
 #      #format.html # index.html.erb
