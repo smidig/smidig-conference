@@ -88,6 +88,15 @@
     	min-width: 0;
     }
 
+	.highlight {
+    	margin: 20px 0;
+    	padding: 5px;
+    	background-color: yellow;
+    	border-radius: 5px;
+    	display: inline-block;
+    	color: black;
+    }
+
 	.button {
 		background-color: #759ae9;
 		background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #759ae9), color-stop(50%, #376fe0), color-stop(50%, #1a5ad9), color-stop(100%, #2463de));
