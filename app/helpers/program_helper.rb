@@ -81,7 +81,7 @@ module ProgramHelper
 
   def abbr_for_talk(talk_type)
     if(talk_type == "tordentale")
-      '<abbr title="Tordentale">(T)</abbr> '
+      ""
     else
       ""
     end
