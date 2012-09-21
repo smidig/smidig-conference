@@ -33,12 +33,13 @@
 <%= link_to "Foreslå tale selv!", new_talk_path, :class => "button" %>
 
 <script>
+$(function() {
   $("#show_accepted").removeAttr("checked");
   $("#show_types").val("alle");
   filter_change = function() {
     var show_accepted = $("#show_accepted").attr("checked");
     var selection = $("#show_types").val();
-    $("ul.talks > li").each(function() {
+    $("ul.item-list > li").each(function() {
       var accepted = $(this).hasClass("accepted");
       var shown_type = $(this).hasClass(selection);
       if (!shown_type || (show_accepted && !accepted)) {
@@ -50,4 +51,5 @@
   }
   $("#show_accepted").change(filter_change);
   $("#show_types").change(filter_change);
+});
 </script>
