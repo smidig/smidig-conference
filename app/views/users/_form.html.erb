@@ -66,7 +66,9 @@
             <%= render :partial => 'confirmations', :locals => { :reg => reg, :f => f } %>
             <%= f.submit "Registrer deg" %>
           <% else %>
+            <br />
             <%= render :partial => 'confirmations', :locals => { :reg => reg, :f => f } %>
+            <br />
               <%= f.submit "Meld på som lyntaler og foreslå lyntale",:name => "speaker", :id => "lyntale_submit", :class => 'button' %>
               <%= help_tooltip() do %>
                 <p>Foreslå foredrag med en kort beskrivelse i neste steg. Blir foredraget antatt, er hele konferansen gratis. Blir foredraget avslått, kan du kjøpe billett til prisen når du registrerte deg.</p>
