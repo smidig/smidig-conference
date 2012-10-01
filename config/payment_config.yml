@@ -6,7 +6,7 @@ free_prices: &free_prices
 
 prices: &prices
   early_bird: 1875
-  full_price: 2750
+  full_price: 3000
   student: 500
   dinner: 0
   <<: *free_prices
@@ -39,7 +39,7 @@ production: &production
 staging:
   prices:
     early_bird: 10
-    full_price: 15
+    full_price: 30
     student: 1
     <<: *free_prices
   paypal_email: paypal@smidig.no

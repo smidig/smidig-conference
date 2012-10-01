@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     @user.registration = Registration.new
     @user.registration.manual_payment = params[:manual_payment]
     @user.registration.free_ticket = !params[:free_ticket].blank?
-    @user.registration.ticket_type = params[:free_ticket] || params[:ticket_type] || "early_bird" # TODO: Don't hardcode this # TODO: +1
+    @user.registration.ticket_type = params[:free_ticket] || params[:ticket_type] || "full_price" # TODO: Don't hardcode this # TODO: +1
     @user.registration.includes_dinner = @user.registration.discounted_ticket?
   end
 
