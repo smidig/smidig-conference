@@ -17,10 +17,10 @@ class PeriodsController < ApplicationController
     
     @edit = params[:edit] && admin?
     @all_talks = Talk.all_pending_and_approved if @edit
-    
+    @all_talks.sort!{|t1,t2|t1.id <=> t2.id}
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html {render :layout => 'plain' }# index.html.erb
       format.xml  { render :xml => @periods }
     end
   end

@@ -13,18 +13,10 @@ class ProgramController < ApplicationController
 
     @time_ids = @periods.collect { |p| p.time_id }.sort.uniq
 
-    @w = Array.new
-    @w[0] = [Talk.find(11), Talk.find(97)]
-    @w[1] = [Talk.find(35), Talk.find(88)]
-    @w[2] = [Talk.find(35), Talk.find(89)]
-    @w[3] = [Talk.find(41), Talk.find(36)]
-    @w[4] = [Talk.find(43), Talk.find(36)]
-    @w[5] = [Talk.find(24), Talk.find(82)]
-
     @selected = params[:selected]
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html {render :layout => 'program' } # index.html.erb
       format.xml
     end
   end

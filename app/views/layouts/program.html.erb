@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>
+      <%= content_for?(:title) ? yield(:title) : "Smidig 2012: 05. - 06. november på Radisson SAS Plaza Hotel Oslo" %>
+    </title>
+
+    <!--[if lte IE 9]>
+      <link rel="stylesheet" href="/stylesheets/ie_1140.css" type="text/css" media="screen" />
+    <![endif]-->
+
+
+    <%= stylesheet_link_tag '1140' %>
+    <%= stylesheet_link_tag 'styles' %>
+    <%= stylesheet_link_tag 'tooltip' %>
+    
+    <%= javascript_include_tag 'css3-mediaqueries' %>
+    <%= javascript_include_tag 'jquery-1.7.2.min' %>
+    <%= javascript_include_tag 'jquery.simpletip-1.3.1.min' %>
+    <%= javascript_include_tag 'application' %>
+
+    <!-- Sponsor widget -->
+    <%= javascript_include_tag ENV['INFO_APP_BASE']+'/javascript/sponsor.js' %>
+    <script type="text/javascript">
+      smidig.sponsor.init("<%= ENV['INFO_APP_BASE'] %>");
+    </script>
+    
+    <%= auto_discovery_link_tag :rss, {:controller => 'talks', :format => :rss}, {:title => "Alle lyntaler"} %>
+    <%= auto_discovery_link_tag :rss, {:controller => 'talks', :topic_id => @topic, :format => :rss}, {:title => "Lyntaler for #{@topic.title}"} if @topic %>
+    <%= auto_discovery_link_tag :rss, {:controller => 'comments', :talk_id => @talk, :format => :rss}, {:title => "Kommentarer for #{@talk.title}"} if @talk %>
+  </head>
+
+  <body>
+
+  <div class="row main">
+    <div class="twelvecol">
+      <div class="content-wrapper">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+  <footer class="page-footer">
+      <div class="row">
+        Smidigkonferansen 2012
+        <br>
+        <a href="mailto:kontakt@smidig.no">kontakt@smidig.no</a>
+        <h3>Godbiter fra tidligere konferanser</h3>
+        <ul>
+          <li>
+            <a href="http://vimeo.com/smidig">Videoarkiv på Vimeo</a>
+          </li>
+          <li>
+            <a href="http://smidig2011.no/">Smidig 2011</a>
+          </li>
+          <li>
+            <a href="http://smidig2010.no/">Smidig 2010</a>
+          </li>
+          <li>
+            <a href="http://smidig2009.no/">Smidig 2009</a>
+          </li>
+          <li>
+            <a href="http://smidig2008.no/">Smidig 2008</a>
+          </li>
+          <li>
+            <a href="http://smidig2007.no/">Smidig 2007</a>
+          </li>
+        </ul>
+        <h3>Følg oss</h3>
+        <ul>
+          <li>
+            <a href="https://twitter.com/smidig">@twitter</a>
+          </li>
+          <li>
+            <a href="http://www.facebook.com/smidig">Smidigkonferansen</a>
+          </li>
+          <li>
+            <a href="http://lanyrd.com/2012/smidig2012">Lanyrd</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <%= render :partial => 'layouts/facebook' %>
+    <%= render :partial => 'layouts/analytics' %>
+
+  </body>
+</html>

@@ -1,54 +1,54 @@
-<%= content_for :title, "Program" %>
-<%= content_for :additional_css, stylesheet_link_tag('program', :media => "all") %>
-<%= content_for :additional_css, stylesheet_link_tag('program-print', :media => "print") %>
-<%= stylesheet_link_tag "program" %>
-<%= javascript_include_tag  "jquery.ba-hashchange.min" %>
-<script type="text/javascript">
-var selected = <%= "'#{@selected}'" %>;
-$(document).ready(function() {
-  var selectTab = function(tab) {
-    if(tab === 'ws' || tab==='#ws') {
-      $('a.button.selected').removeClass('selected');
-      $('#ws_program_button').addClass('selected');
-      $('#ws_program').show();
-      $('#talk_program').hide();
-    } else {
-      $('a.button.selected').removeClass('selected');
-      $('#talk_program_button').addClass('selected');
-      $('#talk_program').show();
-      $('#ws_program').hide();
-      }
-    }
-  $(window).hashchange(function() {
-    selectTab(window.location.hash);
-  });
-  if (selected === 'ws' || window.location.hash === '#ws') {
-    selectTab('ws');
-  }
-});
-</script>
-
+<%= content_for :title, "Smidig 2012 - program" %>
 <% if admin? %>
-
-  <div class="admin">
-    <h3>Admin</h3>
-    <%= link_to "Endre programmet", :controller => 'periods', :action => 'index', :edit => true %>
-  </div>
-
+<div class="admin">
+  <%= link_to "Endre programmet", :controller => 'periods', :action => 'index', :edit => true %>
+</div>
 <% end %>
-  
-<div id="overskrift">
+
+<header>
+  <h1>Program for <a href="http://smidig2012.no">Smidig 2012</a></h1>
   <p>Under konferansen kan du følge med på oppdateringer <a href="http://twitter.com/smidig">på Twitter!</a></p> 
+</header>
+
+<div class="program">
+  <div class="row">
+  <section class="period one">
+    <header>
+      <time class="time">8:00-9:00</time>
+      <span class="location">Sal A</span>
+    </header>
+    <div class="slot">
+      <h2>Registrering og kaffe</h2>
+    </div>
+  </section>
+  </div>
+  <div class="row">
+  <section class="period one sal_a">
+    <header>
+      <time class="time">9:00-9:15</time>
+      <span class="location">Sal A</span>
+    </header>
+    <div class="slot">
+      <h2>Åpningstale</h2>
+    </div>
+  </section>
+</div>
+<div class="row">
+  <section class="period one sal_a">
+    <header>
+      <time class="time">9:15-10:00</time>
+      <span class="location">Sal A</span>
+    </header>
+    <div class="slot">
+      <h2>Keynote dag 1</h2>
+    </div>
+  </section>
 </div>
 
-<div>
-<a class="button selected" id="talk_program_button" href="#talk">Foredrag</a>
-<a class="button" id="ws_program_button" href="#ws">Workshops</a>
-</div>
+<%= timeslot_talks_row(@periods_by_time_and_scene[0]) %>
 
-<div class="program" id="ws_program" style="display:none;">
-  <%= render :partial => 'workshops' %>
-</div>
-<div class="program" id="talk_program">
-  <%= render :partial => 'talks' %>
+<%= timeslot_talks_row(@periods_by_time_and_scene[1]) %>
+
+<%= timeslot_talks_row(@periods_by_time_and_scene[2]) %>
+
 </div>

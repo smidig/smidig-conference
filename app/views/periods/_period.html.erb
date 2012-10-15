@@ -13,7 +13,7 @@
   <%= 
 #    select_tag "periods[#{period.id}]positions[#{position}]new_talk", "<option></option>" + 
 #      options_from_collection_for_select(@all_talks, 'id', 'option_text', period.talk_list[position] && period.talk_list[position].id)  
-    select_tag "periods[#{period.id}]positions[#{position}]new_talk", options_from_collection_for_select(@all_talks, 'id', 'option_text', period.talk_list[position] && period.talk_list[position].id)
+    select_tag "periods[#{period.id}]positions[#{position}]new_talk", options_from_collection_for_select(@all_talks, 'id', 'option_text', period.talk_list[position] && period.talk_list[position].id), {:include_blank => ''}
   %>
   
   <%= hidden_field_tag "periods[#{period.id}]positions[#{position}]previous_talk", (period.talk_list[position] && period.talk_list[position].id) %>
