@@ -1,5 +1,7 @@
 # -*- encoding : utf-8 -*-
 class FeedbackVotesController < ApplicationController
+  before_filter :require_admin, :only => [:index, :delete, :show, :new, :edit]
+
   # GET /feedback_votes
   # GET /feedback_votes.xml
   def index
@@ -45,9 +47,11 @@ class FeedbackVotesController < ApplicationController
 
     respond_to do |format|
       if @feedback_vote.save
+        format.json  { render :json => "{status: 'ok'}", :status => :created}
         format.html { redirect_to(@feedback_vote, :notice => 'FeedbackVote was successfully created.') }
         format.xml  { render :xml => @feedback_vote, :status => :created, :location => @feedback_vote }
       else
+        format.json  { render :json => "{status: 'failed'}", :status => :unprocessable_entity}
         format.html { render :action => "new" }
         format.xml  { render :xml => @feedback_vote.errors, :status => :unprocessable_entity }
       end

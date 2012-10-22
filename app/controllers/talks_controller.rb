@@ -40,8 +40,10 @@ class TalksController < ApplicationController
   def show
     @talk = Talk.find(params[:id], :include => [:users, :comments])
 
+    @layout = params[:layout] || "application"
+
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render :layout => @layout }
       format.xml  { render :xml => @talk }
     end
   end

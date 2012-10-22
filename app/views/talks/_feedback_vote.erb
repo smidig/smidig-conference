@@ -1,0 +1,27 @@
+<%= javascript_include_tag 'jquery.rating.pack' %>
+<%= javascript_include_tag 'feedback_vote.js' %>
+<%= stylesheet_link_tag 'jquery.rating' %>
+
+<h3>Gi tilbakemelding</h3>
+
+<form accept-charset="UTF-8" action="/feedback_votes" class="new_feedback_vote" id="new_feedback_vote" method="post">
+  <input name="feedback_vote[talk_id]" id="feedback_talk_id" type="hidden" value="<%= @talk.id %>">
+
+  <input name="feedback_vote[vote]" type="radio" class="star" value="1" />
+  <input name="feedback_vote[vote]" type="radio" class="star" value="2"/>
+  <input name="feedback_vote[vote]" type="radio" class="star" value="3"/>
+  <input name="feedback_vote[vote]" type="radio" class="star" value="4"/>
+  <input name="feedback_vote[vote]" type="radio" class="star" value="5"/>
+
+  <br /><br />
+  <input name="feedback_vote[comment]" size="30" type="text" placeholder="Frivillig kommentar"><br />
+
+  <input name="commit" type="submit" value="Lagre" class="button">
+</form>
+<div id="feedback_vote_loader" style="display:none">
+  <span class="ajaxloader" />
+</div>
+
+<div style="display:none" id="feedback_vote_finished" class="section">
+  <p>Takk, du har avgitt din stemme!</p>
+</div>

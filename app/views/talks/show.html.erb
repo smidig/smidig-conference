@@ -1,17 +1,16 @@
 <% content_for :title, "#{@talk.title}" %>
 
+<% if @layout != "program" %>
 <p class="notification">
   <%= link_to "Tilbake til liste over foredrag", talks_path %>
 </p>
+<% end %>
 
-<h2 class="page_title">
-  Tittel: <%= @talk.title %>
-
+<h2>
+  <%= @talk.title %>
   <div class="sub_info">
     <% if @talk.accepted?  %>
         <%= image_tag("icon_ok.png", :alt => "Talen er godkjennt", :title => "Talen er godkjennt", :class => "icon") %>
-    <% else %>
-        <%= image_tag("icon_remove.png", :alt => "Talen er ikke godkjennt / venter på godkjenning", :title => "Talen er ikke godkjennt / venter på godkjenning", :class => "icon" ) %>
     <% end  %>
   </div>
 </h2>
@@ -52,6 +51,10 @@
   <h3>Beskrivelse</h3>
   <%=simple_format h(@talk.description) %>
 </div>
+
+<% if @layout == "program" %>
+<%= render :partial => "talks/feedback_vote" %>
+<% end %>
 
 <div class="talk-files section">
   <h3>
@@ -94,6 +97,8 @@
   </div>
 <% end %>
 
+
+<% if @layout != "program" %>
 <div class="comments section">
   <h3>
     Kommentarer
@@ -117,3 +122,4 @@
     </h3>
   <% end %>
 </div>
+<% end %>

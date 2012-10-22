@@ -1,11 +1,11 @@
 <p>
   <b>Talk:</b>
-  <%=h @feedback_vote.talk %>
+  <%=h @feedback_vote.talk.try(:title) %>
 </p>
 
 <p>
   <b>Feedback:</b>
-  <%=h @feedback_vote.feedback %>
+  <%=h @feedback_vote.vote %>
 </p>
 
 <p>
