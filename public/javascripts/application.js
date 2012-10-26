@@ -14,8 +14,31 @@ function onApplicationLoad() {
 
 window.onload = onApplicationLoad;
 
+$(window).on("scroll resize", function(){
+  var pos=$('.location-explanation .time').offset();
+    if(pos.top < $('h3.time').eq(0).offset().top) {
+      $('.location-explanation .time').html(""); 
+    } else {
+      $('h3.time').each(function(){
+          if(pos.top >= $(this).offset().top && 
+             pos.top < $(this).next().offset().top || pos.top > $(this).next().offset().top)
+          {
+              // any way you want to get the date
+              $('.location-explanation .time').html($(this).html()); 
+              return; //break the loop
+          }
+      });
+    }
+});
+
 $(function() {
 	$(".tooltip-link").each(function() {
 		$(this).simpletip({ content: $(this).attr('data-tooltip')});
 	});
+
+  $(window).trigger('scroll');
+
+  $('.program .slot').on('click', function(event) {
+    $(event.target).closest('.talk').find('.description').slideToggle();
+  });
 });

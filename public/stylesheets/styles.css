@@ -15,6 +15,184 @@
 		display: none;
 	}
 
+/* START PROGRAM */
+
+.program {
+	margin-top: 10px;
+}
+
+.program .row {
+	margin-bottom: 10px;
+}
+
+.location-explanation {
+	display: none;
+}
+
+.program .period {
+	background-color: #ccc;
+}
+
+.program h3.time {
+	display: none;
+}
+
+.program .period header {
+	background-color: whiteSmoke;
+}
+
+.program .period header .location,
+.location-explanation .location span {
+	text-align: right;
+	padding: 3px 5px;
+	color: #fff;
+	display: inline-block;
+}
+
+.program .period.sal_a .location,
+.location-explanation .sal_a {
+	background-color: #555;
+}
+
+.program .period.sal_0 .location,
+.location-explanation .sal_0  {
+	background-color: #F90;
+}
+
+.program .period.sal_1 .location,
+.location-explanation .sal_1  {
+	background-color: #C00;
+}
+
+.program .period.sal_2 .location,
+.location-explanation .sal_2  {
+	background-color: #090;
+}
+
+.program .period .slot {
+	border-left: 6px solid;
+	line-height: 1.2em;
+}
+
+.program .period.pause {
+	background-color: whiteSmoke;
+	border: 1px dotted #999;
+	border-right: 0px;
+	border-left: 0px;
+}
+
+.program .period.pause .slot {
+	border-left: 0px;
+}
+
+.program .period.sal_0 .slot {
+	border-color: #F90;
+}
+
+.program .period.sal_1 .slot {
+	border-color: #C00;
+}
+
+.program .period.sal_2 .slot {
+	border-color: #090;
+}
+
+.program .period .slot .talk {
+	font-size: 14px;
+	padding: 10px;
+	border: 1px dotted #999;
+	border-left: 0;
+	border-top: 0;
+	min-height: 60px;
+}
+
+.program .period.one .slot .talk {
+	min-height: 0;
+}
+
+.program .period .slot .talk:hover {
+	cursor: pointer;
+	background-color: #DDD;
+}
+
+.program .period .slot .talk h3 {
+	font-weight: bold;
+}
+
+.program .period .slot .talk .author {
+	font-weight: normal;
+	display: block;
+}
+
+.program .period.one .slot .talk .author {
+	display: none;
+}
+
+.program .period .slot .talk .description {
+	display: none;
+	padding: 5px 0px;
+	color: black;
+}
+
+@media handheld, only screen and (max-width: 767px) {
+	.admin {
+		display: none;
+	}
+
+	.content-wrapper {
+		margin-top: 60px !important; /* Yes, way to lazy.. */
+	}
+
+	.location-explanation {
+		display: block;
+		position: fixed;
+		width: 100%;
+		background: #ccc;
+		top: 0;
+		left: 0;
+		border-bottom: 1px solid #999;
+	}
+
+	.location-explanation .time {
+		padding-bottom: 5px;
+	}
+
+	.location-explanation .location {
+		padding: 5px 0 0px;
+	}
+
+	.program .row,
+	.program .fourcol {
+		padding: 0;
+	}
+	
+	.program .period header {
+		display: none;
+	}
+
+	.program h3.time {
+		display: block;
+		padding: 0px 5px;
+		background: white;
+		margin: 0;
+	}
+
+	.program .period.one .slot .talk .author {
+		display: inline-block;
+		padding: 3px 0px;
+	}
+
+	.program .period.one .slot {
+		display: block;
+	}
+
+	.program .period .slot .talk {
+		min-height: 0;
+	}
+}
+
+/* END PROGRAM */
+
 /* END TEMPORARY */
 
     body {

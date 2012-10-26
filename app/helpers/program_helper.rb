@@ -98,25 +98,24 @@ module ProgramHelper
 
   def period_talks_slot(period)
     "<div class='slot'>" + period.talks.sort_by(&:position).collect { |t| 
-      "<h3>#{abbr_for_talk(t.talk_type.name.downcase)}#{link_to h(t.title), t} (#{t.speaker_name})</h3>" }.join + "</div>"
+      "<div class='talk'><h3>#{abbr_for_talk(t.talk_type.name.downcase)}#{t.title}</h3><span class='author'>#{t.speaker_name}</span><div class='description'>#{simple_format h(t.description)}</div></div>" }.join + "</div>"
   end 
 
   def timeslot_talks_section(period, index)
     last = index == 2 ? "last" : ""
     """
-      <section class='period one sal_#{period.scene_id} fourcol #{last}'>
+      <section class='period sal_#{period.scene_id} fourcol #{last}'>
       <header>
-        <time class='time'>#{period.time_of_day}</time>
         <span class='location'>Sal #{period.scene_id}</span>
+        <time class='time'>#{period.time_of_day}</time>
       </header>
       #{period_talks_slot(period)}
       </section>
-      
     """.html_safe
   end
 
   def timeslot_talks_row(periods)
-    html = "<div class='row'>"
+    html = "<div class='row'><h3 class='time'>#{periods[0].day}, #{periods[0].time_of_day}</h3>"
     periods.each do |index, period|
       html += timeslot_talks_section(period, index)
     end
