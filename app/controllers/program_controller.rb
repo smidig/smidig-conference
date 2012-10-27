@@ -17,6 +17,7 @@ class ProgramController < ApplicationController
 
     @keynotes = [];
     @keynotes.push Talk.find(113)
+    @keynotes.push Talk.find(114)
 
     respond_to do |format|
       format.html {render :layout => 'program' } # index.html.erb

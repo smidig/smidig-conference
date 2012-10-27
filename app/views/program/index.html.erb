@@ -16,9 +16,9 @@
     <div class="twelvecol">
       <p class="location">
         <span class="sal_a">Foaje</span>
-        <span class="sal_0">Sal 0</span>
-        <span class="sal_1">Sal 1</span>
-        <span class="sal_2">Sal 2</span>
+        <span class="sal_0">Olympia</span>
+        <span class="sal_1">Film</span>
+        <span class="sal_2">Kunst</span>
       </p>
       <div class="time"></div>
     </div>
@@ -29,36 +29,35 @@
   <div class="row">
     <section class="period one sal_a">
       <header>
-        <span class="location">Olympia</span>
-        <time class="time">8:00 - 9:00</time>
+        <span class="location">Foajé</span>
+        <time class="time">8:00 - 8:45</time>
       </header>
       <div class="slot">
         <div class="talk">
-          <span class="author">8:00 - 9:00 </span>
           <h3>Registrering og kaffe</h3>
         </div>
       </div>
     </section>
   </div>
   <div class="row">
-    <section class="period one sal_a">
+    <section class="period one sal_0">
       <header>
         <span class="location">Olympia</span>
-        <time class="time">9:00 - 9:15</time>
+        <time class="time">8:45 - 9:00</time>
       </header>
       <div class="slot">
         <div class="talk">
-          <span class="author">9:00 - 9:15 </span>
           <h3>Åpningstale</h3>
+          <span class="author">Smidigkonferansen</span>
         </div>
       </div>
     </section>
   </div>
   <div class="row">
-    <section class="period one sal_a">
+    <section class="period one sal_0">
       <header>
         <span class="location">Olympia</span>
-        <time class="time">9:15 - 10:00</time>
+        <time class="time">9:00 - 10:00</time>
       </header>
       <div class="slot">
         <%= render_talk(@keynotes[0]) %>
@@ -73,7 +72,7 @@
   <div class="row">
     <section class="period one sal_a">
       <header>
-        <span class="location">Foaje</span>
+        <span class="location">Resturant</span>
         <time class="time">12:00 - 13:15</time>
       </header>
       <div class="slot">
@@ -87,7 +86,64 @@
 
 <%= timeslot_talks_row(@periods_by_time_and_scene[2]) %>
 
+  <div class="row">
+    <section class="period one sal_a">
+      <header>
+        <span class="location">Alle</span>
+        <time class="time">14:15 - 17:00</time>
+      </header>
+      <div class="slot">
+        <div class="talk">
+          <h3>Open Space dag 1</h3>
+          <div class="description"><p> bla bla</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="row">
+    <section class="period one sal_a">
+      <header>
+        <span class="location">Foajé</span>
+        <time class="time">17:15 - 20:00</time>
+      </header>
+      <div class="slot">
+        <div class="talk">
+          <h3>Tapasmiddag</h3>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="row">
+    <section class="period one sal_a">
+      <header>
+        <span class="location">Mathallen</span>
+        <time class="time">21:00 - 01:00</time>
+      </header>
+      <div class="slot">
+        <div class="talk">
+          <h3>Sosial happening</h3>
+          <div class="description"><p> bla bla</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+<br /><br /><br />
+
 <h2>Tirsdag, 6. november</h2>
+
+<div class="row">
+    <section class="period one sal_a">
+      <header>
+        <span class="location">Olympia</span>
+        <time class="time">9:00 - 10:00</time>
+      </header>
+      <div class="slot">
+        <%= render_talk(@keynotes[1]) %>
+      </div>
+    </section>
+</div>
 
 <%= timeslot_talks_row(@periods_by_time_and_scene[3]) %>
 
@@ -109,5 +165,20 @@
   </div>
 
 <%= timeslot_talks_row(@periods_by_time_and_scene[5]) %>
+
+  <div class="row">
+    <section class="period one sal_a">
+      <header>
+        <span class="location">Alle</span>
+        <time class="time">14:15 - 16:30</time>
+      </header>
+      <div class="slot">
+        <div class="talk">
+          <h3>Open Space dag 2</h3>
+          <div class="description"><p> bla bla</p>
+        </div>
+      </div>
+    </section>
+  </div>
 
 </div>
