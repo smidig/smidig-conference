@@ -15,6 +15,9 @@ class ProgramController < ApplicationController
 
     @selected = params[:selected]
 
+    @keynotes = [];
+    @keynotes.push Talk.find(113)
+
     respond_to do |format|
       format.html {render :layout => 'program' } # index.html.erb
       format.xml

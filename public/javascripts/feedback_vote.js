@@ -10,34 +10,39 @@ smidig.voter = (function($) {
     }
   }
 
-  function save_vote() {
+  function save_vote($form, talk_id) {
     var votes = JSON.parse(localStorage.getItem("votes")) || {};
     votes[talk_id] = true;
     localStorage.setItem("votes", JSON.stringify(votes));
-    finished();
+    finished($form);
   }
 
-  function bind() {
-    $form.submit(function() {
+  function bind($form, talk_id) {
+    $form.find("input[name='commit']").click(function() {
       var data = $form.serializeObject();
-      $form.find("input[type=]").attr("disable", "disable");
-      $form.hide();
-      $loader.show();
+      if(!data["feedback_vote[vote]"]) {
+        alert("Du må gi minst 1 stjerne!");
+        return;  
+      }
+      
+      $form.find(".inputs").hide();
+      $form.find(".ajaxloader").show();
+      $form.find(".ajaxloader").css("visibility", "visible")
 
       $.ajax({
           type: "POST",
-          url: $(this).attr("action"),
+          url: $form.attr("action"),
           dataType: 'json',
           data: data,
           complete: function(xhr) {
             if (xhr.readyState == 4) {
               if (xhr.status == 201) {
-                smidig.voter.save_vote();
+                smidig.voter.save_vote($form, talk_id);
               }
             } else {
               alert("Det skjedde noe galt ved lagring. Prøv igjen");
-              $loader.hide();
-              $form.show();
+              $form.find(".ajaxloader").hide();
+              $form.find(".inputs").show();
             }
           }
       });
@@ -47,29 +52,24 @@ smidig.voter = (function($) {
     });
   }
 
-  function init() {
-    $form = $("#new_feedback_vote");
-    $notice = $("#feedback_vote_finished");
-    $loader = $("#feedback_vote_loader");
-    talk_id = $form.find("#feedback_talk_id").val();
-
+  function init($form, talk_id) {
     if(!supports_html5_storage()) {
       $notice.text("Din enhet støttes ikke");
-      finished();
+      finished($form);
     }
 
     var votes = JSON.parse(localStorage.getItem("votes")) || {};
     if(votes[talk_id]) {
-      finished();
+      finished($form);
     } else {
-      bind();
+      bind($form, talk_id);
     }
   }
 
-  function finished() {
-    $("#feedback_vote_loader").hide();
-    $form.hide();
-    $notice.show();
+  function finished($form) {
+    $form.empty();
+    $form.append("<em>(Du har stemt)</em>");
+    $form.show();
   }
 
   return {
@@ -78,15 +78,30 @@ smidig.voter = (function($) {
   };
 })(jQuery);
 
+
+//Document on load!
 $(function() {
-  smidig.voter.init();
+  //Disable feedback as long as possible
+  if(!window.location.search.match("feedback")) {
+    return;
+  }
+
+  $(".talk").each(function() {
+    var talk_id = $(this).data("talkid"); 
+      if(talk_id) {
+        var voteTmpl = $("#tmplVote").tmpl({talk_id: talk_id});
+        voteTmpl.find("input.star").rating();
+        $(this).find(".description").append(voteTmpl);
+        smidig.voter.init(voteTmpl, talk_id);
+      }
+  }); 
 });
 
 
 
 
 
-//Extensions
+//Extensions to serialize a form to a js-object.
 $.fn.serializeObject = function(){
   var o = {};
   var a = this.serializeArray();

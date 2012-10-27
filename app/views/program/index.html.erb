@@ -24,12 +24,12 @@
     </div>
   </div>
 
-  <h2>Mandag, 2 november</h2>
+  <h2>Mandag, 5. november</h2>
 
   <div class="row">
     <section class="period one sal_a">
       <header>
-        <span class="location">Foaje</span>
+        <span class="location">Olympia</span>
         <time class="time">8:00 - 9:00</time>
       </header>
       <div class="slot">
@@ -43,7 +43,7 @@
   <div class="row">
     <section class="period one sal_a">
       <header>
-        <span class="location">Foaje</span>
+        <span class="location">Olympia</span>
         <time class="time">9:00 - 9:15</time>
       </header>
       <div class="slot">
@@ -57,15 +57,11 @@
   <div class="row">
     <section class="period one sal_a">
       <header>
-        <span class="location">Foaje</span>
+        <span class="location">Olympia</span>
         <time class="time">9:15 - 10:00</time>
       </header>
       <div class="slot">
-        <div class="talk">
-          <span class="author">9:15 - 10:00</span>
-          <h3>Keynote dag 1</h3>
-          <p class="description"></p>
-        </div>
+        <%= render_talk(@keynotes[0]) %>
       </div>
     </section>
   </div>
@@ -91,7 +87,7 @@
 
 <%= timeslot_talks_row(@periods_by_time_and_scene[2]) %>
 
-<h2>Tirsdag, 3 november</h2>
+<h2>Tirsdag, 6. november</h2>
 
 <%= timeslot_talks_row(@periods_by_time_and_scene[3]) %>
 

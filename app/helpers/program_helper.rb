@@ -96,9 +96,16 @@ module ProgramHelper
     "#{link_to h(workshop.title), workshop}<br /> #{workshop.speaker_name}"
   end
 
+  def render_talk(t)
+    "<div class='talk' data-talkid='#{t.id}'>
+      <h3>#{abbr_for_talk(t.talk_type.name.downcase)}#{t.title}</h3>
+      <span class='author'>#{t.speaker_name}</span>
+      <div class='description'>#{simple_format h(t.description)}</div>
+    </div>".html_safe
+  end
+
   def period_talks_slot(period)
-    "<div class='slot'>" + period.talks.sort_by(&:position).collect { |t| 
-      "<div class='talk'><h3>#{abbr_for_talk(t.talk_type.name.downcase)}#{t.title}</h3><span class='author'>#{t.speaker_name}</span><div class='description'>#{simple_format h(t.description)}</div></div>" }.join + "</div>"
+    "<div class='slot'>" + period.talks.sort_by(&:position).collect { |t| "#{render_talk(t)}"}.join + "</div>"
   end 
 
   def timeslot_talks_section(period, index)

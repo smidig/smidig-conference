@@ -38,7 +38,7 @@ $(function() {
 
   $(window).trigger('scroll');
 
-  $('.program .slot').on('click', function(event) {
+  $('.program .slot .talk h3').on('click', function(event) {
     $(event.target).closest('.talk').find('.description').slideToggle();
   });
 });

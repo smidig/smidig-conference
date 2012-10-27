@@ -11,9 +11,12 @@ div.star-rating-readonly a{cursor:default !important}
 div.star-rating{background:transparent!important;overflow:hidden!important}
 /* END jQuery.Rating Plugin CSS */
 
+
+.rating-cancel{display: none!important}
+.feedback_vote input {margin-top: 8px;}
 span.ajaxloader {
-	background:url("ajaxloader.gif") no-repeat;
-	width: 32px;
-	height: 32px;
+	background:url("ajax-loader.gif") no-repeat;
+	width: 56px;
+	height: 21px;
 	display: inline-block;
 }
