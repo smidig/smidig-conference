@@ -134,6 +134,10 @@
 	color: black;
 }
 
+.program .period .slot .talk .description p {
+	margin-bottom: 10px;
+}
+
 @media handheld, only screen and (max-width: 767px) {
 	.admin {
 		display: none;
