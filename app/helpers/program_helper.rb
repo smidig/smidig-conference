@@ -80,8 +80,10 @@ module ProgramHelper
   end
 
   def abbr_for_talk(talk_type)
-    if(talk_type == "tordentale")
-      ""
+    if(talk_type == "lang workshop")
+      "(WS) "
+    elsif talk_type == "kort workshop"
+      "(WS) "
     else
       ""
     end
@@ -108,12 +110,23 @@ module ProgramHelper
     "<div class='slot'>" + period.talks.sort_by(&:position).collect { |t| "#{render_talk(t)}"}.join + "</div>"
   end 
 
+  def sal_name(id) 
+    if id == 0 
+      return "Olympia"
+    elsif id == 1 
+      return "Film"
+    else 
+      return "Kunst"
+    end
+      
+  end
+
   def timeslot_talks_section(period, index)
     last = index == 2 ? "last" : ""
     """
       <section class='period sal_#{period.scene_id} fourcol #{last}'>
       <header>
-        <span class='location'>Sal #{period.scene_id}</span>
+        <span class='location'>#{sal_name(period.scene_id)}</span>
         <time class='time'>#{period.time_of_day}</time>
       </header>
       #{period_talks_slot(period)}
