@@ -106,6 +106,22 @@ module ProgramHelper
     </div>".html_safe
   end
 
+  def workshop_link(t)
+    link_to("Påmelding", t)
+  end
+
+
+
+  def render_ws(t)
+    "<div class='talk' data-talkid='#{t.id}'>
+      <h3>#{t.title}</h3>
+      <span class='author'>#{t.speaker_name}</span>
+      <div class='description'>#{simple_format h(t.description)}
+      <p>#{workshop_link(t)}</p>
+      </div>
+    </div>".html_safe
+  end
+
   def period_talks_slot(period)
     "<div class='slot'>" + period.talks.sort_by(&:position).collect { |t| "#{render_talk(t)}"}.join + "</div>"
   end 

@@ -41,4 +41,29 @@ class ProgramController < ApplicationController
   
   end
 
+  def workshop
+                #[#sal][#slot]
+    @workshops = [[],[],[]]
+
+    #madonna
+    @workshops[0][0] = Talk.find(71)
+    @workshops[0][1] = Talk.find(39)
+    @workshops[0][2] = Talk.find(73) #day 2
+    @workshops[0][3] = Talk.find(15) #day 2
+
+    #dracula
+    @workshops[1][0] = Talk.find(85)
+    @workshops[1][1] = Talk.find(36) #day 2
+    @workshops[1][2] = Talk.find(62) #day 2
+
+    #Kunst
+    @workshops[2][0] = Talk.find(38) #day 2
+
+    respond_to do |format|
+      format.html {render :layout => 'program' } # index.html.erb
+      format.xml
+    end
+
+  end
+
 end
