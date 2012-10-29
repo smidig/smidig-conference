@@ -100,7 +100,7 @@ module ProgramHelper
 
   def render_talk(t)
     "<div class='talk' data-talkid='#{t.id}'>
-      <h3>#{abbr_for_talk(t.talk_type.name.downcase)}#{t.title}</h3>
+      <h3 title='(#{t.id}) #{t.title}'>#{abbr_for_talk(t.talk_type.name.downcase)}#{t.title}</h3>
       <span class='author'>#{t.speaker_name}</span>
       <div class='description'>#{simple_format h(t.description)}</div>
     </div>".html_safe
