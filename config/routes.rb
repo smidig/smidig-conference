@@ -50,6 +50,7 @@ SmidigConference::Application.routes.draw do
       get :phone_list
       get :invoiced
       get :speakers
+      get :emails
     end
     member do
       get :receipt

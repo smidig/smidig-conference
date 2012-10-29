@@ -39,9 +39,12 @@
   <ul class="no-bullets">
     <li><%= link_to "Manuelle registreringer", invoiced_registrations_path %></li>
     <li><%= link_to "Foredragsholdere", speakers_registrations_path %></li>
+    <li><%= link_to "Telefonliste", :controller => "registrations", :action => "phone_list" %></li>
+    <li><%= link_to "Epostliste", :controller => "registrations", :action => "emails" %></li>
     <li><%= link_to "Statistikk", :controller => "statistics" %></li>
     <li><%= link_to "Akseptering av foredrag", :controller => "acceptances" %></li>
     <li><%= link_to "Navneskilt", :controller => "nametags", :format => "pdf" %></li>
+
   </ul>
 </div>
 

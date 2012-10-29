@@ -1,0 +1,17 @@
+<h2>Filtrering:</h2>
+<ul>
+  <li><%= link_to "Alle", :conditions => '' %></li>
+  <% for ticket_type in @ticket_types %>
+    <li><%= link_to ticket_type, :conditions => { :ticket_type => ticket_type }  %></li>
+  <% end %>
+  <li><%= link_to "Completed", :conditions => { :registration_complete => 1 }  %></li>
+  <li><%= link_to "Not completed", :conditions => { :registration_complete => 0 }  %></li>
+  <li><%= link_to "Dinner registrations", :conditions => { :includes_dinner => 1 }  %></li>
+</ul>
+
+<h2>Epost-adresser (<%= @registrations.length %>):</h2>
+<textarea rows="40" cols="50">
+<% for registration in @registrations %>
+<%= registration.user.email %>
+<% end %>
+</textarea>
