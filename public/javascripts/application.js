@@ -16,6 +16,9 @@ window.onload = onApplicationLoad;
 
 $(window).on("scroll resize", function(){
   var pos=$('.location-explanation .time').offset();
+    if(!pos) {
+      return;
+    }
     if(pos.top < $('h3.time').eq(0).offset().top) {
       $('.location-explanation .time').html(""); 
     } else {
