@@ -25,6 +25,7 @@
     <%= javascript_include_tag 'jquery.rating.pack' %>
     <%= javascript_include_tag 'feedback_vote.js' %>
     <%= stylesheet_link_tag 'jquery.rating' %>
+
   </head>
 
   <body>
@@ -32,10 +33,16 @@
   <div class="row main">
     <div class="twelvecol">
       <div class="content-wrapper">
-        <p>Tilbake til <a href="http://smidig2012.no">Smidig2012.no</a></p>
-        <header>
-          <h1><%= link_to "PROGRAM", :controller => "program" %> - <%= link_to "WORKSHOPS", :controller => "program", :action => "workshop" %></h1>
-          <p>Under konferansen kan du følge med på oppdateringer på <a href="http://twitter.com/smidig">@smidig</a></p>
+        <header class="program">
+          <p>Tilbake til <a href="http://smidig2012.no">Smidig2012.no</a></p>
+          <ul class="menu">
+            <li><%= link_to "Mandag", :controller => "program", :anchor => "dag1" %></li>
+            <li><%= link_to "Tirsdag", :controller => "program", :anchor => "dag2" %></li>
+            <li class="last"><%= link_to "Workshops", :controller => "program", :action => "workshop" %></li>
+          </ul>
+          <div style="clear:both;"></div>
+          <p>Live oppdateringer: <a href="http://twitter.com/smidig">twitter.com/@smidig</a></p>
+          <span class="browserinfo"></span>
         </header>
         <%= yield %>
       </div>

@@ -138,6 +138,25 @@
 	margin-bottom: 10px;
 }
 
+header.program .menu {
+	font-size: 1.2em;
+	font-weight: bold;
+	display: block;
+	list-style: none;
+}
+header.program .menu a {
+	text-decoration: none;
+}
+
+header.program .menu li {
+	list-style: none;
+	float: left;
+	padding: 3px;
+	margin: 2px;
+	background-color: #DDD;
+	border-bottom: 1px solid #999;
+}
+
 @media handheld, only screen and (max-width: 767px) {
 	.admin {
 		display: none;

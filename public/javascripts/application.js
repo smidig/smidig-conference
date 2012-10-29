@@ -42,3 +42,9 @@ $(function() {
     $(event.target).closest('.talk').find('.description').slideToggle();
   });
 });
+
+$(function() {
+  if($.browser.msie) {
+    $(".browserinfo").text("NB: Programmet er laget for Chrome, Safari, Firefox og IE9. Eldre versjoner av IE får en kjip versjon. Du bruker IE" + $.browser.version);
+  }
+});
