@@ -20,4 +20,5 @@ span.ajaxloader {
 	width: 56px;
 	height: 21px;
 	display: inline-block;
+	float: left;
 }
