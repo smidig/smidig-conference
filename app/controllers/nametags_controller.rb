@@ -4,7 +4,8 @@ class NametagsController < ApplicationController
   before_filter :require_admin
 
   def index
-    @registrations = Registration.all
+    start_id = params[:start_id] || "0";
+    @registrations = Registration.find(:all, :conditions => 'id >= ' +start_id)
     @registrations += @registrations if params.has_key? "double"
     @registrations.sort! { |a, b| a.user.name <=> b.user.name }
 
