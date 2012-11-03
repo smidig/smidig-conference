@@ -2,7 +2,7 @@
 <html lang="no">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
 
     <title>
       <%= content_for?(:title) ? yield(:title) : "Smidig 2012: 05. - 06. november på Radisson SAS Plaza Hotel Oslo" %>
@@ -68,7 +68,7 @@
           <input name="feedback_vote[vote]" type="radio" class="star" value="6"/>
 
           <br /><br />
-          
+          <input name="feedback_vote[comment]" type="text" placeholder="Frivillig kommentar">
           <input name="commit" type="button" value="Lagre stemme" class="button">
         </div>
         <span class="ajaxloader" style="visibility:hidden;" />

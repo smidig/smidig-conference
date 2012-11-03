@@ -14,6 +14,7 @@ div.star-rating{background:transparent!important;overflow:hidden!important}
 
 .rating-cancel{display: none!important}
 .feedback_vote input {margin-top: 8px;}
+.feedback_vote input[type='text'] {width: 97%;}
 span.ajaxloader {
 	background:url("ajax-loader.gif") no-repeat;
 	width: 56px;
