@@ -81,11 +81,6 @@ smidig.voter = (function($) {
 
 //Document on load!
 $(function() {
-  //Disable feedback as long as possible
-  if(!window.location.search.match("feedback")) {
-    return;
-  }
-
   $(".talk").each(function() {
     var talk_id = $(this).data("talkid"); 
       if(talk_id) {
