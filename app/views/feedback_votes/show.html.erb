@@ -1,4 +1,7 @@
 <style>
+  table {
+  	vertical-align: top;
+  }
   .votes .vote {
     text-align: right;
   }
@@ -12,10 +15,20 @@
   .votes .title {
     padding-top: 20px;
   }
+  ul {
+  	list-style: none;
+  }
 </style>
 
 <%= link_to "Tilbake til foredrag",  @talk %><br />
 <% if @talk.users.include?(current_user)|| admin? %>
+
+<br />
+<ul>
+	<li>Min score: 1</li>
+	<li>Max score: 6</li>
+	<li>Konferansesnitt: <%= @total_avg %></li>
+</ul>
 
 <% sum=0.0; count=0.0; %>
 <table class="votes" cellspacing="0" cellpadding: "0">
