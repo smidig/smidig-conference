@@ -114,6 +114,13 @@ class SmidigMailer < ActionMailer::Base
          :subject => "Ditt bidrag \"#{talk.title}\" har ikke kommet med")
   end
 
+  def talk_vote_feedback(talk)
+    @talk = talk.title
+    @speaker = talk.speaker_name
+    mail(:to => talk.speaker_email,
+         :subject => "Feedback på ditt foredrag er klar")
+  end
+
   def upload_slides_notification(talk, edit_talk_url, new_password_reset_url)
     @talk = talk.title
     @speaker_email = talk.speaker_email
