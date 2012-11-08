@@ -2,6 +2,7 @@
 require 'ostruct'
 
 class FeedbackVotesController < ApplicationController
+  before_filter :require_user, :only => [:show]
   before_filter :require_admin, :only => [:index, :delete, :new, :edit]
 
   # GET /feedback_votes
