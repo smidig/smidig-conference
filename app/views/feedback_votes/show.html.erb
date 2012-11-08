@@ -1,18 +1,37 @@
-<p>
-  <b>Talk:</b>
-  <%=h @feedback_vote.talk.try(:title) %>
-</p>
+<style>
+  .votes .vote {
+    text-align: right;
+  }
+  .votes .sum td {
+    border-top: 1px solid silver;
+    border-bottom: 2px solid silver;
+    font-weight: bold;
+  }
+  .votes .title {
+    padding-top: 20px;
+  }
+</style>
 
-<p>
-  <b>Feedback:</b>
-  <%=h @feedback_vote.vote %>
-</p>
+<%= link_to "Tilbake til foredrag",  @talk %><br />
+<% if @talk.users.include?(current_user)|| admin? %>
 
-<p>
-  <b>Comment:</b>
-  <%=h @feedback_vote.comment %>
-</p>
-
-
-<%= link_to 'Edit', edit_feedback_vote_path(@feedback_vote) %> |
-<%= link_to 'Back', feedback_votes_path %>
+<% sum=0.0; count=0.0; %>
+<table class="votes" cellspacing="0" cellpadding: "0">
+  <tr>
+    <td colspan="2" class="title"><h2><%= @talk.try(:title) %></h2></td>
+  </tr>
+  <% @feedbacks.each do |vote|  %>
+  <% sum += vote.vote;count +=1; %>
+    <tr>
+      <td><%=h vote.comment %></td>
+      <td class="vote"><%=h vote.vote %></td>      
+    </tr>
+  <% end %>
+  <tr class="sum">
+    <td>Snitt:</td>
+    <td class="vote"><%=h sum/count %></td>      
+  </tr>
+</table>
+<% else %>
+	Du har ikke tilgang!
+<% end %>

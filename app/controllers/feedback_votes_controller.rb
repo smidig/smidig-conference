@@ -2,7 +2,7 @@
 require 'ostruct'
 
 class FeedbackVotesController < ApplicationController
-  before_filter :require_admin, :only => [:index, :delete, :show, :new, :edit]
+  before_filter :require_admin, :only => [:index, :delete, :new, :edit]
 
   # GET /feedback_votes
   # GET /feedback_votes.xml
@@ -30,10 +30,11 @@ class FeedbackVotesController < ApplicationController
   # GET /feedback_votes/1
   # GET /feedback_votes/1.xml
   def show
-    @feedback_vote = FeedbackVote.find(params[:id])
+    @feedbacks = FeedbackVote.find(:all, :conditions => {:talk_id => params[:id]})
+    @talk = Talk.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html {render :layout => "application"}
       format.xml  { render :xml => @feedback_vote }
     end
   end

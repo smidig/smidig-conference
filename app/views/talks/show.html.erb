@@ -19,6 +19,9 @@
   <div class="talk-admin section">
     <ul class="related-links">
       <li>
+        <%= link_to "Se stemmer", :controller => "feedback_votes", :action => "show" %>
+      </li>
+      <li>
         <%= link_to 'Rediger forslaget ditt', edit_talk_path(@talk) %>
       </li>
       <% if !@talk.slide_file_name.nil? %>
