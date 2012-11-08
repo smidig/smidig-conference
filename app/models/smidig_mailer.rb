@@ -115,7 +115,7 @@ class SmidigMailer < ActionMailer::Base
   end
 
   def talk_vote_feedback(talk)
-    @talk = talk.title
+    @talk = talk
     @speaker = talk.speaker_name
     mail(:to => talk.speaker_email,
          :subject => "Feedback på ditt foredrag er klar")
