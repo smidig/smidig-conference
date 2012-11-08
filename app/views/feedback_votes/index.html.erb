@@ -1,25 +1,32 @@
-<h1>Listing feedback_votes</h1>
+<style>
+  .votes .vote {
+    text-align: right;
+  }
+  .votes .sum td {
+    border-top: 1px solid silver;
+    border-bottom: 2px solid silver;
+    font-weight: bold;
+  }
+  .votes .title {
+    padding-top: 20px;
+  }
+</style>
 
-<table>
+<table class="votes" cellspacing="0" cellpadding: "0">
+  <% @talks_feedbacks_count.each do |element|  %>
   <tr>
-    <th>Talk</th>
-    <th>Vote</th>
-    <th>Feedback</th>
-    <th>Comment</th>
+    <td colspan="2" class="title"><h2><%= element.talk.try(:title) %></h2></td>
+  </tr>
+  <% element.feedbacks.each do |vote|  %>
+    <tr>
+      <td><%=h vote.comment %></td>
+      <td class="vote"><%=h vote.vote %></td>      
+    </tr>
+  <% end %>
+  <tr class="sum">
+    <td>Snitt:</td>
+    <td class="vote"><%=h element.avg %></td>      
   </tr>
 
-<% @feedback_votes.each do |feedback_vote| %>
-  <tr>
-    <td><%=h feedback_vote.talk.try(:title)  %></td>
-    <td><%=h feedback_vote.vote %></td>
-    <td><%=h feedback_vote.comment %></td>
-    <td><%= link_to 'Show', feedback_vote %></td>
-    <td><%= link_to 'Edit', edit_feedback_vote_path(feedback_vote) %></td>
-    <td><%= link_to 'Destroy', feedback_vote, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New feedback_vote', new_feedback_vote_path %>

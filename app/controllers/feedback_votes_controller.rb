@@ -1,14 +1,28 @@
 # -*- encoding : utf-8 -*-
+require 'ostruct'
+
 class FeedbackVotesController < ApplicationController
   before_filter :require_admin, :only => [:index, :delete, :show, :new, :edit]
 
   # GET /feedback_votes
   # GET /feedback_votes.xml
   def index
-    @feedback_votes = FeedbackVote.all
+    @talks_feedbacks = FeedbackVote.find(:all, :order => "talk_id").group_by { |vote| vote.talk }
+    @talks_feedbacks_count = []
+    @talks_feedbacks.each do |talk, feedbacks|
+      sum =0.0;count=0.0;
+      feedbacks.each do |f|
+        sum += f.vote
+        count += 1
+      end
+      data = OpenStruct.new({:talk => talk, :feedbacks => feedbacks, :avg => (sum/count), :count => count })
+      @talks_feedbacks_count.push data 
+    end
+
+    @talks_feedbacks_count.sort! { |a,b| b.avg <=> a.avg }
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html {render :layout => "application"} # index.html.erb
       format.xml  { render :xml => @feedback_votes }
     end
   end
