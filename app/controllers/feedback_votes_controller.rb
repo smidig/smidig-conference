@@ -32,6 +32,14 @@ class FeedbackVotesController < ApplicationController
   # GET /feedback_votes/1.xml
   def show
     @feedbacks = FeedbackVote.find(:all, :conditions => {:talk_id => params[:id]})
+
+    sum = 0.0
+    FeedbackVote.find(:all).each do |f|
+      sum += f.vote
+    end
+    @total_avg = sum/FeedbackVote.all.count
+
+
     @talk = Talk.find(params[:id])
 
     respond_to do |format|

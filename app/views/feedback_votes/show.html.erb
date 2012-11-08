@@ -4,8 +4,10 @@
   }
   .votes .sum td {
     border-top: 1px solid silver;
-    border-bottom: 2px solid silver;
     font-weight: bold;
+  }
+  .votes .total td {
+  	border-bottom: 2px solid silver;
   }
   .votes .title {
     padding-top: 20px;
@@ -28,8 +30,12 @@
     </tr>
   <% end %>
   <tr class="sum">
-    <td>Snitt:</td>
+    <td>Ditt snitt:</td>
     <td class="vote"><%=h sum/count %></td>      
+  </tr>
+  <tr class="sum total">
+    <td>Snitt for konferansen:</td>
+    <td class="vote"><%= @total_avg %></td>      
   </tr>
 </table>
 <% else %>
