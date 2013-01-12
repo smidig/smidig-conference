@@ -1,5 +1,5 @@
 source :gemcutter
-gem 'rails', '= 3.0.7'
+gem 'rails', '= 3.0.19'
 gem 'paperclip', '~>2.3.4'
 gem 'aws-s3', :require=>'aws/s3'
 
