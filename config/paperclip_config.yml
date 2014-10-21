@@ -2,6 +2,7 @@ s3: &s3
   storage: s3
   s3_credentials: <%= Rails.root %>/config/s3.yml
   path: ':id-:filename'
+  s3_host_name: 's3-eu-west-1.amazonaws.com'
 
 test:
   storage: filesystem
